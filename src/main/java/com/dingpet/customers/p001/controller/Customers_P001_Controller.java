@@ -4,16 +4,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.dingpet.customers.p001.service.CustomersP001Service;
+import com.dingpet.customers.p001.service.Customers_P001_Service;
 
 import lombok.AllArgsConstructor;
 
 @RequestMapping("/customers/p001/*")
 @AllArgsConstructor
 @Controller
-public class CustomersP001Controller {
+public class Customers_P001_Controller {
 	
-	private CustomersP001Service service;
+	private Customers_P001_Service service;
 	
 	@RequestMapping("/signin")
 	public void signin(Model model) {

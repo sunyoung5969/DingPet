@@ -1,5 +1,5 @@
 package com.dingpet.customers.p001.vo;
 
-public class CustomersP001VO {
+public class Customers_P001_VO {
 
 }

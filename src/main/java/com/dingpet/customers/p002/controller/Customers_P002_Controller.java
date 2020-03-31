@@ -4,16 +4,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.dingpet.customers.p002.service.CustomersP002Service;
+import com.dingpet.customers.p002.service.Customers_P002_Service;
 
 import lombok.AllArgsConstructor;
 
 @RequestMapping("/customers/p002/*")
 @AllArgsConstructor
 @Controller
-public class CustomersP002Controller {
+public class Customers_P002_Controller {
 
-	private CustomersP002Service service;
+	private Customers_P002_Service service;
 	
 	@RequestMapping("/lostid")
 	public void lostid(Model model) {

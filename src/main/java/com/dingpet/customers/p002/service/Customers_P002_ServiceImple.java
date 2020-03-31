@@ -2,15 +2,15 @@ package com.dingpet.customers.p002.service;
 
 import org.springframework.stereotype.Service;
 
-import com.dingpet.customers.p002.mapper.CustomersP002Mapper;
+import com.dingpet.customers.p002.mapper.Customers_P002_Mapper;
 
 import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
-public class CustomersP002ServiceImple implements CustomersP002Service{
+public class Customers_P002_ServiceImple implements Customers_P002_Service{
 	
-	private CustomersP002Mapper mapper;
+	private Customers_P002_Mapper mapper;
 	
 	@Override
 	public int getTotal() {
