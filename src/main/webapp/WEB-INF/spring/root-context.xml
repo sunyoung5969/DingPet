@@ -12,7 +12,7 @@
 		<property name="driverClassName"
 			value="oracle.jdbc.driver.OracleDriver"></property>
 		<property name="jdbcUrl"
-			value="jdbc:oracle:thin:@localhost:1521:XE"></property>
+			value="jdbc:oracle:thin:@projectdb.c4cty0dbhpqb.ap-northeast-2.rds.amazonaws.com:1521:XE"></property>
 		<property name="username" value="bit03"></property>
 		<property name="password" value="bit03"></property>
 	</bean>

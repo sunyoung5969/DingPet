@@ -14,6 +14,6 @@
 <a href="/customers/p003/infoupdate">정보수정</a>
 <a href="/customers/p004/withdraw">탈퇴</a>
 <a href="/customers/p005/massage">메시지</a>
-
+<a href="/petsitting/p001/sitterlist">펫시터</a>
 </body>
 </html>
