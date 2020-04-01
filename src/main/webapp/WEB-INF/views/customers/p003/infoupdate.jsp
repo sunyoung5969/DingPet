@@ -8,5 +8,7 @@
 </head>
 <body>
 <H1>${info }</H1>
+
+<h1><a href="/">메인으로가기</a></h1>
 </body>
 </html>
