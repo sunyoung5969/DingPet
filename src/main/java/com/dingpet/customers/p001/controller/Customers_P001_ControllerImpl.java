@@ -20,7 +20,7 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 	public void signin(Model model) {
 		// TODO Auto-generated method stub
 		
-		System.out.println("¿ÀÄÉ¤Ä¤»¿ÀÄáÄĞÄáÄÉ±¿À¿À¿ÀÄÉÄÉ±Q¿ÀÄĞÀÌ¿ÀÄÉÀÌ");
+		System.out.println("íšŒì›ê´€ë¦¬");
 		
 		int test = service.getTotal();
 		

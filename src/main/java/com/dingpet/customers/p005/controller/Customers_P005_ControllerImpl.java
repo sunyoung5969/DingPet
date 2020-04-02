@@ -11,7 +11,7 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/customers/p005/*")
 @AllArgsConstructor
 @Controller
-public class P005Controller {
+public class Customers_P005_ControllerImpl implements Customers_P005_Controller{
 
 	private CustomersP005Service service;
 	
