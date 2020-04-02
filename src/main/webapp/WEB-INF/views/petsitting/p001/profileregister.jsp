@@ -428,7 +428,7 @@
 		</div>
 		
 	</form>
-	<a href="sitterlist">완료</a>
+	<a href="sitterlist">등록</a>
 	<a href="sitterlist">취소</a>
 </body>
 </html>
