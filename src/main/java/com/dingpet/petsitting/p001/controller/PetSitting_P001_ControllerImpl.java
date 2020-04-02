@@ -24,12 +24,30 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 
 	@RequestMapping("profileregister")
 	@Override
-	public void profileregister(Model model) {
+	public void register(Model model) {
 		// TODO Auto-generated method stub
 		
 	}
 	
-	
-	
+	@RequestMapping("/lookup")
+	@Override
+	public void lookup(Model model) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@RequestMapping("/update")
+	@Override
+	public void update(Model model) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@RequestMapping("/delete")
+	@Override
+	public void delete(Model model) {
+		// TODO Auto-generated method stub
+		
+	}	
 	
 }

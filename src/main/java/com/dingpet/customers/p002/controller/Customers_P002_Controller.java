@@ -18,7 +18,7 @@ public class Customers_P002_Controller {
 	@RequestMapping("/lostid")
 	public void lostid(Model model) {
 		
-		System.out.println("©юди╓д╓╩©юдАдпдАди·╠©ю©ю©юдиди╠Q©юдпюл©юдиюл");
+		System.out.println("О©╫О©╫О©╫и╓д╓О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫и·О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫и╠QО©╫О©╫О©╫О©╫О©╫л©О©╫О©╫О©╫О©╫О©╫");
 		
 		int test2 = service.getTotal();
 		
