@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <h1>등록페이지입니당</h1>
 
 <h1>등록시 필요한 데이터</h1>

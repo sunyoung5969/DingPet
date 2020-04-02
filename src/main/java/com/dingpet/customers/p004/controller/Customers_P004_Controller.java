@@ -18,7 +18,7 @@ public class Customers_P004_Controller {
 	@RequestMapping("/withdraw")
 	public void withdraw(Model model) {
 		
-		model.addAttribute("with", "È¸¿øÅ»ÅğÆäÀÌÁöÀÔ´Ï´Ù");
+		model.addAttribute("with", "íšŒì›íƒˆí‡´ í˜ì´ì§€ ì…ë‹ˆë‹¹");
 	}
 	
 }

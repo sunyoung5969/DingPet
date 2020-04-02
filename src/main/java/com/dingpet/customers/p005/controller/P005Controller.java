@@ -18,7 +18,7 @@ public class P005Controller {
 	@RequestMapping("/massage")
 	public void massage(Model model) {
 		
-		model.addAttribute("massage", "¸Ş½ÃÁöÆäÀÌÁöÀÔ´Ï´ç");
+		model.addAttribute("massage", "ë©”ì‹œì§€ í˜ì´ì§€ ì…ë‹ˆë‹¹");
 		
 	}
 }

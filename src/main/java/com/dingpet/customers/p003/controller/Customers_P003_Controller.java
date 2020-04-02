@@ -18,7 +18,7 @@ public class Customers_P003_Controller {
 	@RequestMapping("/infoupdate")
 	public void infoupdate(Model model) {
 		
-		model.addAttribute("info", "infoupdate ÆäÀÌÁöÀÔ´Ï´Ù");
+		model.addAttribute("info", "infoupdate í˜ì´ì§€ ì…ë‹ˆë‹¹");
 		
 	}
 }
