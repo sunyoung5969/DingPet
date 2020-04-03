@@ -19,4 +19,9 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 	public void mylocation(Model model) {
 		
 	}
+	
+	@RequestMapping("/facilityMap")
+	public void facilityMap(Model model) {
+		
+	}
 }
