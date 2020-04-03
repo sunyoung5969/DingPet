@@ -19,7 +19,6 @@ public class Customers_P001_ServiceImple implements Customers_P001_Service{
 	
 	@Override
 	public int getTotal() {
-		// TODO Auto-generated method stub
 		return mapper.getTotal();
 	}
 	

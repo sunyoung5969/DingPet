@@ -3,13 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<H1>${test2 }</H1>
-<h1>아이디 찾기</h1>
-<h1><a href="/">메인으로가기</a></h1>
+<H1>${info }</H1>
 
+<h1><a href="/">메인으로가기</a></h1>
 </body>
 </html>

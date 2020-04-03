@@ -18,27 +18,24 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 	@RequestMapping("/signin")
 	@Override
 	public void signin(Model model) {
-		// TODO Auto-generated method stub
 		
-		System.out.println("회원관리");
+		System.out.println("로그인");
 		
 		int test = service.getTotal();
-		
-		model.addAttribute("test", test);
-		
+		model.addAttribute("test", test);	
 	}
 	
 	@RequestMapping("/signup")
 	@Override
 	public void signup(Model model) {
-		// TODO Auto-generated method stub
+		System.out.println("회원가입");
 		
 	}
 	
 	@RequestMapping("/change")
 	@Override
 	public void change(Model model) {
-		// TODO Auto-generated method stub
+		System.out.println("펫시터회원으로 전환");
 		
 	}
 	

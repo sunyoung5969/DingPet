@@ -18,11 +18,32 @@ public class Customers_P002_ControllerImpl implements Customers_P002_Controller 
 	@RequestMapping("/lostid")
 	public void lostid(Model model) {
 		
-		System.out.println("반려견을 잃어버렸어요");
+		System.out.println("아이디를 잊어버렸어요");
 		
 		int test2 = service.getTotal();
 		
 		model.addAttribute("test2", test2);
+		
+	}
+	
+	@RequestMapping("/checkid")
+	@Override
+	public void checkid(Model model) {
+		System.out.println("아이디 확인");
+		
+	}
+	
+	@RequestMapping("/lostpwd")
+	@Override
+	public void lostpwd(Model model) {
+		System.out.println("비밀번호를 잊어버렸어요");
+		
+	}
+
+	@RequestMapping("/changepwd")
+	@Override
+	public void changepwd(Model model) {
+		System.out.println("비밀번호를 변경할래요");
 		
 	}
 	
