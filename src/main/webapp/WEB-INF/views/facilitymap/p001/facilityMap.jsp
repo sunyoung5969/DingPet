@@ -33,13 +33,19 @@
 .placeinfo .tel {color:#0f7833;}
 .placeinfo .jibun {color:#999;font-size:11px;margin-top:0;}
 </style>
+
 </head>
 <body>
-<p style="margin-top:-12px">
+
+<input id="mylocation" type="button" value=" 내 현재 위치로 이동 " />
+<br><br>
+
+<p style= "margin-top:-12px" >
     <em class="link">
         <a href="http://apis.map.kakao.com/web/documentation/#CategoryCode" target="_blank">카테고리 코드목록을 보시려면 여기를 클릭하세요!</a>
     </em>
 </p>
+
 <div class="map_wrap">
     <div id="map" style=" width:100%; height:100%; position:relative; overflow:hidden; "></div>
     <ul id="category">

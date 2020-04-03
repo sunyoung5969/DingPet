@@ -31,11 +31,7 @@
             lat = pos.coords.latitude;
             lit = pos.coords.longitude;
             latlng =  new kakao.maps.LatLng(lat,lit);
-            mapOption = {
-       			 center:latlng,
-       		     level:3
-       		     }
-        	map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+            map.panTo(latlng);
             return map, lat, lit;
 		})
 	}

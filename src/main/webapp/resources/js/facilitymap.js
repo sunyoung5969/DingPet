@@ -1,18 +1,41 @@
+var latlng = null;
+var lat;
+var lit;
+var marker = new kakao.maps.Marker();
+
 // 	마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
 var placeOverlay = new kakao.maps.CustomOverlay({
 	zIndex : 1
 }), contentNode = document.createElement('div'), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다
-markers = [], // 마커를 담을 배열입니다
-currCategory = ''; // 현재 선택된 카테고리를 가지고 있을 변수입니다
+	markers = [], // 마커를 담을 배열입니다
+	currCategory = ''; // 현재 선택된 카테고리를 가지고 있을 변수입니다
+
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 mapOption = {
 	center : new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
 	level : 5
 // 지도의 확대 레벨
-};
+	};
 
 // 지도를 생성합니다
 var map = new kakao.maps.Map(mapContainer, mapOption);
+
+// 내 현 위치 찾기
+function findLocation() {
+navigator.geolocation.getCurrentPosition(function(pos) {
+	console.log("현위치");
+    lat = pos.coords.latitude;
+    lit = pos.coords.longitude;
+    latlng =  new kakao.maps.LatLng(lat,lit);
+    map.panTo(latlng);
+    marker.setPosition(latlng); 
+    marker.setMap(map); 
+    return map, lat, lit;
+	})
+}// find End
+
+findLocation();
+document.getElementById("mylocation").addEventListener("click", findLocation);
 
 // 장소 검색 객체를 생성합니다
 var ps = new kakao.maps.services.Places(map);
