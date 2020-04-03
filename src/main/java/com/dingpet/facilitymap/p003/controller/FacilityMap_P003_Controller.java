@@ -18,6 +18,6 @@ public class FacilityMap_P003_Controller {
 	@RequestMapping("/register")
 	public void test(Model model) {
 		
-		model.addAttribute("register", "½Ã¼³µî·ÏÆäÀÌÁöÀÔ´Ï´Ù");
+		model.addAttribute("register", "ë“±ë¡ í˜ì´ì§€ ì…ë‹ˆë‹¤");
 	}
 }

@@ -15,5 +15,7 @@
 <a href="/customers/p004/withdraw">탈퇴</a>
 <a href="/customers/p005/massage">메시지</a>
 <a href="/petsitting/p001/sitterlist">펫시터</a>
+<a href="/facilitymap/p001/mylocation">산책하기</a>
+<a href="/facilitymap/p003/register">시설 신규 등록</a>
 </body>
 </html>
