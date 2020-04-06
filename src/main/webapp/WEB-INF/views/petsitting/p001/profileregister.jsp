@@ -98,7 +98,7 @@
 	.CalendarDayDiv--btn{
 		border: 0px;
 		width: 100%;
-		background-color: transparent !important;
+		background-color: white;
 		color: #87CEEB;
 		font-weight: bold;
 	
@@ -107,7 +107,7 @@
 	.CalendarDayDiv--btndisabled{
 		border: 0px;
 		width: 100%;
-		background-color: transparent !important;
+		background-color: white;
 		color: gray;
 	
 	}
@@ -183,10 +183,8 @@
 						
 						this.month = (new Date().getMonth())+1;
 						
-					}else{
-						
-						this.month -= 1;
-						
+					}else{		
+						this.month -= 1;			
 					}
 					
 					$(".CalendarMonth").val(this.month);
@@ -268,34 +266,57 @@
 		closedDate: function(click){
 			
 			var closeddate = $(click).val();
-			
-			this.closed.push(closeddate);
+			var cancel = false;
+			 //$('.CalendarDayDiv--btn').css('background-color', 'blue');
 			
 			for(var i = 0; i < this.closed.length; i++){
 				
-				console.log(i +" 배열 데이터  - " + this.closed[i] );
+				if(this.closed[i] == closeddate){
+					var temp = this.closed[0];
+					this.closed[0] = this.closed[i];
+					this.closed[i] = temp;
+					
+					this.closed.shift();
+					$(click).css('background-color', 'white');
+					console.log($(click).val())
+					cancel = true;
+				}
 				
 			}
 			
+			if(!cancel){
+				this.closed.push(closeddate);
+				$(click).css('background-color', 'black');
+				console.log($(click).val())
+			}
+		
 		},
 		
 		closedSave: function(){
-			
+
 			var jsonstr = '{"closed":[';
-			for(var i = 0; i < this.closed.legnth; i++){
-				jsonstr	+= this.closed[i];
-				
-				console.log(this.closed[i]);
-			}
-			jsonstr	+= ']}';
 			
+			for(var i = 0; i < (this.closed).length; i++){
+				
+				jsonstr	+= '"' + this.closed[i] + '"';
+				
+				if(i != (this.closed).length -1){
+					jsonstr += ', '
+				}
+				
+			}
+			
+			jsonstr	+= ']}';
+			/*
 			console.log(jsonstr);
 			
 			var jsonparse = JSON.parse(jsonstr);
 			
-			console.log(jsonstr);
+			console.log(jsonparse);
 			
 			$(".closedSave").val(jsonparse);
+			*/
+			$(".closedSave").val(jsonstr);
 
 		}
 		
@@ -307,12 +328,12 @@
 	<div>
 		<h1>등록페이지입니당</h1>
 	</div>
-	<form action="/petsitting/p001/registerdata" method="post">
+	<form action="/petsitting/p001/registerdata" method="post" enctype="multipart/form-data">
 		<div class="filebox">
-			<label for="ex_file"><img style="width: 150px; height: 240px" src="">
+			<label for="uploadFile"><img style="width: 150px; height: 240px" src="https://i.imgur.com/hQaabc4.png">
 				<div class="img-text"><p>사 진 등 록</p></div>
 			</label>
-			<input type="file" name="profilepic" id="profilepic">
+			<input type="file" name="uploadFile" id="uploadFile" accept="image/*">
 		</div>
 		
 		<div class="form-group">

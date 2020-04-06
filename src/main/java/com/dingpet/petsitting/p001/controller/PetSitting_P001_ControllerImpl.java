@@ -1,11 +1,19 @@
 package com.dingpet.petsitting.p001.controller;
 
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.dingpet.petsitting.p001.service.PetSitting_P001_Service;
 
@@ -37,11 +45,13 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 	
 	@RequestMapping(value="registerdata", method=RequestMethod.POST)
 	@Override
-	public String registerdata(Model model) {
+	public String registerdata(Model model, MultipartFile uploadFile) {
 		// TODO Auto-generated method stub
+				
 		String small = "";
 		String middle = "";
 		String big = "";
+		String[] closed;
 		
 		try {
 			/*
@@ -88,18 +98,48 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 			log.info(extraAddress);			// 참고 항목
 			*/
 			
-		
+//--------------------------- 사진 업로드 데이터 처리 ---------------------------
 			
-		
-				
-				log.info(request.getParameterValues("closedSave.name"));
+			String uploadFolder = "C:\\test\\pic";
+			String filename = uploadFile.getOriginalFilename();
+			
+			File saveFile = new File(uploadFolder, filename);
+			
+			try {
+				uploadFile.transferTo(saveFile);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
 
+//---------------------------------------------------------------------------
+
+//--------------------------- 휴무일 데이터 처리-----------------------------
 			
+			//json형태의 문자열 가져오기
+			String json = request.getParameter("closedSave");
+			
+			//가져온 문자열을 json으로 변환
+			JSONParser jsonparser = new JSONParser();
+			JSONObject jsonOb = (JSONObject)jsonparser.parse(json);
+			
+			//json에 있는 배열을 가져오기
+			JSONArray jsonArr = (JSONArray)jsonOb.get("closed");
+			
+			closed = new String[jsonArr.size()];
+			
+			for(int i=0; i<jsonArr.size(); i++) {
+				closed[i] = (String)jsonArr.get(i);
+				System.out.println("제발제바레잘베랒베자발제발제발 " + closed[i]);
+				//service.휴무일인서트문();
+			}
 			
 		} catch (Exception e) {
 			// TODO: handle exception
-		}		
-	
+			log.info("너 여기 타는거니?!");
+			System.out.println(e);
+		}
+		
+//---------------------------------------------------------------------------
 	
 		return "/petsitting/p001/sitterlist";
 	}	
