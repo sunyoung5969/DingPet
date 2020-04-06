@@ -63,7 +63,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 		String[] closed;
 		
 		try {
-//--------------------------- 등록 데이터 -----------------------------	
+//--------------------------- 등록 데이터 처리 -----------------------------	
 			/*
 			 오케이
 			id = (String)request.getParameter("id");
@@ -79,7 +79,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 			
 //-------------------------------------------------------------
 			
-//--------------------------- 이용 가능 서비스	 --------------------------
+//--------------------------- 서비스 데이터 처리	 --------------------------
 			
 			petService = new String[8];
 
@@ -93,7 +93,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 			
 //--------------------------------------------------------------------
 
-//---------------------------	사진 업로드 데이터 처리	---------------------------
+//---------------------------	사진 업로드	---------------------------
 			
 			String uploadFolder = "C:\\test\\pic";
 			String filename = uploadFile.getOriginalFilename();
@@ -108,29 +108,29 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 
 //---------------------------------------------------------------------------
 
-//--------------------------- 휴무일 데이터 처리-----------------------------
+//--------------------------- 휴무일 데이터 처리 -----------------------------
 			
-			//json형태의 문자열 가져오기
+			//json까먹음
 			String json = request.getParameter("closedSave");
 			
-			//가져온 문자열을 json으로 변환
+			//json까먹음
 			JSONParser jsonparser = new JSONParser();
 			JSONObject jsonOb = (JSONObject)jsonparser.parse(json);
 			
-			//json에 있는 배열을 가져오기
+			//json까먹음
 			JSONArray jsonArr = (JSONArray)jsonOb.get("closed");
 			
 			closed = new String[jsonArr.size()];
 			
 			for(int i=0; i<jsonArr.size(); i++) {
 				closed[i] = (String)jsonArr.get(i);
-				System.out.println("제발제바레잘베랒베자발제발제발 " + closed[i]);
-				//service.휴무일인서트문();
+				System.out.println("json까먹음 " + closed[i]);
+				//json까먹음;
 			}
 			
 		} catch (Exception e) {
 			// TODO: handle exception
-			log.info("너 여기 타는거니?!");
+			log.info("wpqk?!");
 			System.out.println(e);
 		}
 		
@@ -156,6 +156,18 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 	@RequestMapping("/delete")
 	@Override
 	public void delete(Model model) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void profilelookup_f() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void profileregister_f() {
 		// TODO Auto-generated method stub
 		
 	}

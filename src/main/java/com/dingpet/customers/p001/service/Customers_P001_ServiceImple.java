@@ -14,7 +14,7 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class Customers_P001_ServiceImple implements Customers_P001_Service{
 	
-	@Setter(onMethod_ = @Autowired)
+	
 	private Customers_P001_Mapper mapper;
 	
 	@Override

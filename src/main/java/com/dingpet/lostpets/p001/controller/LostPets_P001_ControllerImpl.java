@@ -13,5 +13,18 @@ import lombok.AllArgsConstructor;
 public class LostPets_P001_ControllerImpl implements LostPets_P001_Controller {
 	
 	private LostPets_P001_Service service;
+
+	//샘플페이지 시작
+	@RequestMapping("/tempshelterslist_f")
+	@Override
+	public void tempshelterslist_f() {
+		
+	}
 	
+	@RequestMapping("/tempsheltersregister_f")
+	@Override
+	public void tempsheltersregister_f() {
+		
+	}
+	//샘플페이지 끝
 }

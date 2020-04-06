@@ -38,6 +38,21 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		System.out.println("펫시터회원으로 전환");
 		
 	}
+
+	@RequestMapping("/signin_f")
+	@Override
+	public void signin_f() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@RequestMapping("/signup_f")
+	@Override
+	public void signup_f() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	
 
 
