@@ -253,7 +253,7 @@
 				
 				str +=  "<td align='center' class='CalendarDayDiv--td'>"+
 						"<button type='button' onclick='calendar.closedDate(this)' class='"+classbtn+
-						"' "+disabled+"value='"+this.year+"-"+this.month+"-"+(i+1)+"'>"+(i+1)+"</button></td>";
+						"' "+disabled+" value='"+this.year+"-"+this.month+"-"+(i+1)+"'>"+(i+1)+"</button></td>";
 				
 				if((i-firstWeekDate)%7 == 6 && i > 6){
 					str += "</tr>";
@@ -343,10 +343,18 @@
 		<h3>이용가능서비스</h3>
 		<table>
 			<tr>
-				<td rowspan="2"><input class="check" type="checkbox" name="장기예약" value="Y"><img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td><td><small><b>장기예약</b></small></td>
-				<td rowspan="2"><input class="check" type="checkbox" name="노년케어" value="Y"><img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td><td><small><b>장기예약</b></small></td>
-				<td rowspan="2"><input class="check" type="checkbox" name="목욕가능" value="Y"><img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td><td><small><b>장기예약</b></small></td>
-				<td rowspan="2"><input class="check" type="checkbox" name="산책가능" value="Y"><img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td><td><small><b>장기예약</b></small></td>
+				<td rowspan="2"><input class="check" type="checkbox" name="0" value="Y">
+				<img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td>
+				<td><small><b>장기예약</b></small></td>
+				<td rowspan="2"><input class="check" type="checkbox" name="1" value="Y">
+				<img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td>
+				<td><small><b>장기예약</b></small></td>
+				<td rowspan="2"><input class="check" type="checkbox" name="2" value="Y">
+				<img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td>
+				<td><small><b>장기예약</b></small></td>
+				<td rowspan="2"><input class="check" type="checkbox" name="3" value="Y">
+				<img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td>
+				<td><small><b>장기예약</b></small></td>
 			</tr>
 			<tr>
 				<td><small>장기돌봄 가능</small></td>
@@ -355,10 +363,18 @@
 				<td><small>장기돌봄 가능</small></td>
 			</tr>
 			<tr>
-				<td rowspan="2"><input class="check" type="checkbox" name="약물복용" value="Y"><img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td><td><small><b>장기예약</b></small></td>
-				<td rowspan="2"><input class="check" type="checkbox" name="실내놀이" value="Y"><img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td><td><small><b>장기예약</b></small></td>
-				<td rowspan="2"><input class="check" type="checkbox" name="집앞픽업" value="Y"><img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td><td><small><b>장기예약</b></small></td>
-				<td rowspan="2"><input class="check" type="checkbox" name="퍼피케어" value="Y"><img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td><td><small><b>장기예약</b></small></td>
+				<td rowspan="2"><input class="check" type="checkbox" name="4" value="Y">
+				<img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td>
+				<td><small><b>장기예약</b></small></td>
+				<td rowspan="2"><input class="check" type="checkbox" name="5" value="Y">
+				<img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td>
+				<td><small><b>장기예약</b></small></td>
+				<td rowspan="2"><input class="check" type="checkbox" name="6" value="Y">
+				<img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td>
+				<td><small><b>장기예약</b></small></td>
+				<td rowspan="2"><input class="check" type="checkbox" name="7" value="Y">
+				<img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td>
+				<td><small><b>장기예약</b></small></td>
 			</tr>
 			<tr>
 				<td><small>장기돌봄 가능</small></td>
@@ -388,7 +404,8 @@
 				<td><input type="text" name="big"> 원</td>
 			</tr>
 		</table>
-		<h3>내 위치</h3>
+		<h3>내 위치 (가까운역이나 정류장 등 대략적인 위치를 입력해주세요)</h3>
+		
 		<input type="text" id="sample4_postcode" name="postcode" placeholder="우편번호">
 		<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 		<input type="text" id="sample4_roadAddress" name="roadAddress" placeholder="도로명주소">
