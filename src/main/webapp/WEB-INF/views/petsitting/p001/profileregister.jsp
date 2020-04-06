@@ -426,9 +426,11 @@
 				<script>calendar.calendarDay()</script>
 			</div>
 		</div>
+		<input type="submit" value="등록">
 		
+		<a type="button" href="sitterlist">취소</a>
 	</form>
-	<a href="sitterlist">오케이</a>
-	<a href="sitterlist">취소</a>
+	<button onclick="location.href=sitterlist">취소</button>
+
 </body>
 </html>

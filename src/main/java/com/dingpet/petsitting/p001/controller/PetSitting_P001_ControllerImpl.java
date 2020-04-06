@@ -48,6 +48,20 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 	public void delete(Model model) {
 		// TODO Auto-generated method stub
 		
-	}	
+	}
+
+	//샘플페이지 시작
+	@RequestMapping("/profilelookup_f")
+	@Override
+	public void profilelookup_f() {
+		
+	}
+	
+	@RequestMapping("/profileregister_f")
+	@Override
+	public void profileregister_f() {
+		
+	}
+	//샘플페이지 끝
 	
 }
