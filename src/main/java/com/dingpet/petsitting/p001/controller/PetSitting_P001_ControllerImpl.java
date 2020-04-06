@@ -63,7 +63,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 		String[] closed;
 		
 		try {
-//--------------------------- ?“±ë¡? ?°?´?„° -----------------------------	
+//--------------------------- ?ë²‘æ¿¡? ?ëœ²?ì” ?ê½£ -----------------------------	
 			/*
 			id = (String)request.getParameter("id");
 			content = (String)request.getParameter("content");
@@ -78,7 +78,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 			
 //-------------------------------------------------------------
 			
-//--------------------------- ?´?š© ê°??Š¥ ?„œë¹„ìŠ¤	 --------------------------
+//--------------------------- ?ì” ?ìŠœ åª›??ë’« ?ê½Œé®ê¾©ë’ª	 --------------------------
 			
 			petService = new String[8];
 
@@ -92,7 +92,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 			
 //--------------------------------------------------------------------
 
-//---------------------------	?‚¬ì§? ?—…ë¡œë“œ ?°?´?„° ì²˜ë¦¬	---------------------------
+//---------------------------	?ê¶—ï§? ?ë¾½æ¿¡ì’•ë±¶ ?ëœ²?ì” ?ê½£ ï§£ì„â”	---------------------------
 			
 			String uploadFolder = "C:\\test\\pic";
 			String filename = uploadFile.getOriginalFilename();
@@ -107,29 +107,29 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 
 //---------------------------------------------------------------------------
 
-//--------------------------- ?œ´ë¬´ì¼ ?°?´?„° ì²˜ë¦¬-----------------------------
+//--------------------------- ?ì‘•è‡¾ëŒì”ª ?ëœ²?ì” ?ê½£ ï§£ì„â”-----------------------------
 			
-			//json?˜•?ƒœ?˜ ë¬¸ì?—´ ê°?? ¸?˜¤ê¸?
+			//json?ì‚?ê¹­?ì“½ è‡¾ëª„ì˜„?ë¿´ åª›??ì¡‡?ì‚¤æ¹²?
 			String json = request.getParameter("closedSave");
 			
-			//ê°?? ¸?˜¨ ë¬¸ì?—´?„ json?œ¼ë¡? ë³??™˜
+			//åª›??ì¡‡?ì‚© è‡¾ëª„ì˜„?ë¿´?ì“£ json?ì‘æ¿¡? è¹‚??ì†š
 			JSONParser jsonparser = new JSONParser();
 			JSONObject jsonOb = (JSONObject)jsonparser.parse(json);
 			
-			//json?— ?ˆ?Š” ë°°ì—´?„ ê°?? ¸?˜¤ê¸?
+			//json?ë¿‰ ?ì—³?ë’— è«›ê³—ë¿´?ì“£ åª›??ì¡‡?ì‚¤æ¹²?
 			JSONArray jsonArr = (JSONArray)jsonOb.get("closed");
 			
 			closed = new String[jsonArr.size()];
 			
 			for(int i=0; i<jsonArr.size(); i++) {
 				closed[i] = (String)jsonArr.get(i);
-				System.out.println("? œë°œì œë°”ë ˆ?˜ë² ë’ë² ìë°œì œë°œì œë°? " + closed[i]);
-				//service.?œ´ë¬´ì¼?¸?„œ?Š¸ë¬?();
+				System.out.println("?ì £è«›ì’–ì £è«›ë¶¾ì …?ì˜’è¸°ì¢Šì˜Šè¸°ì¢ì˜„è«›ì’–ì £è«›ì’–ì £è«›? " + closed[i]);
+				//service.?ì‘•è‡¾ëŒì”ª?ì”¤?ê½Œ?ë“ƒè‡¾?();
 			}
 			
 		} catch (Exception e) {
 			// TODO: handle exception
-			log.info("?„ˆ ?—¬ê¸? ???Š”ê±°ë‹ˆ?!");
+			log.info("?ê¼« ?ë¿¬æ¹²? ???ë’—å«„ê³•ë•²?!");
 			System.out.println(e);
 		}
 		
@@ -155,6 +155,18 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 	@RequestMapping("/delete")
 	@Override
 	public void delete(Model model) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void profilelookup_f() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void profileregister_f() {
 		// TODO Auto-generated method stub
 		
 	}
