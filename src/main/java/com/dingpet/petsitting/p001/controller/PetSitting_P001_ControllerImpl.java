@@ -65,6 +65,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 		try {
 //--------------------------- 등록 데이터 -----------------------------	
 			/*
+			 오케이
 			id = (String)request.getParameter("id");
 			content = (String)request.getParameter("content");
 			small = (String)request.getParameter("small");
