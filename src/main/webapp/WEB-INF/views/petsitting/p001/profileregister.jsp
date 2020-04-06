@@ -98,7 +98,7 @@
 	.CalendarDayDiv--btn{
 		border: 0px;
 		width: 100%;
-		background-color: transparent !important;
+		background-color: white;
 		color: #87CEEB;
 		font-weight: bold;
 	
@@ -107,7 +107,7 @@
 	.CalendarDayDiv--btndisabled{
 		border: 0px;
 		width: 100%;
-		background-color: transparent !important;
+		background-color: white;
 		color: gray;
 	
 	}
@@ -136,6 +136,7 @@
 			
 		year : new Date().getFullYear(),
 		month : (new Date().getMonth())+1,
+		closed : new Array(),
 		
 		calendarYearMonth : function(event){
 				
@@ -182,10 +183,8 @@
 						
 						this.month = (new Date().getMonth())+1;
 						
-					}else{
-						
-						this.month -= 1;
-						
+					}else{		
+						this.month -= 1;			
 					}
 					
 					$(".CalendarMonth").val(this.month);
@@ -231,7 +230,9 @@
 						classbtn = 'CalendarDayDiv--btn'
 					}
 					
-					str += "<td align='center' class='CalendarDayDiv--td'><button class='"+classbtn+"' "+disabled+">"+(i+1)+"</button></td>";
+					str +=  "<td align='center' class='CalendarDayDiv--td'>"+
+							"<button type='button' onclick='calendar.closedDate(this)' class='"+classbtn+
+							"' "+disabled+" value='"+this.year+"-"+this.month+"-"+(i+1)+"'>"+(i+1)+"</button></td>";
 					
 					firstWeekDate++;
 				}
@@ -250,7 +251,9 @@
 					classbtn = 'CalendarDayDiv--btn'
 				}
 				
-				str += "<td align='center' class='CalendarDayDiv--td'><button name='"+i+"' value='"+(i+1)+"' class='"+classbtn+"' "+disabled+">"+(i+1)+"</button></td>";
+				str +=  "<td align='center' class='CalendarDayDiv--td'>"+
+						"<button type='button' onclick='calendar.closedDate(this)' class='"+classbtn+
+						"' "+disabled+" value='"+this.year+"-"+this.month+"-"+(i+1)+"'>"+(i+1)+"</button></td>";
 				
 				if((i-firstWeekDate)%7 == 6 && i > 6){
 					str += "</tr>";
@@ -258,7 +261,65 @@
 			}
 			
 			document.getElementsByClassName("CalendarDayDiv")[0].innerHTML = str;
+		},
+		
+		closedDate: function(click){
+			
+			var closeddate = $(click).val();
+			var cancel = false;
+			 //$('.CalendarDayDiv--btn').css('background-color', 'blue');
+			
+			for(var i = 0; i < this.closed.length; i++){
+				
+				if(this.closed[i] == closeddate){
+					var temp = this.closed[0];
+					this.closed[0] = this.closed[i];
+					this.closed[i] = temp;
+					
+					this.closed.shift();
+					$(click).css('background-color', 'white');
+					console.log($(click).val())
+					cancel = true;
+				}
+				
+			}
+			
+			if(!cancel){
+				this.closed.push(closeddate);
+				$(click).css('background-color', 'black');
+				console.log($(click).val())
+			}
+		
+		},
+		
+		closedSave: function(){
+
+			var jsonstr = '{"closed":[';
+			
+			for(var i = 0; i < (this.closed).length; i++){
+				
+				jsonstr	+= '"' + this.closed[i] + '"';
+				
+				if(i != (this.closed).length -1){
+					jsonstr += ', '
+				}
+				
+			}
+			
+			jsonstr	+= ']}';
+			/*
+			console.log(jsonstr);
+			
+			var jsonparse = JSON.parse(jsonstr);
+			
+			console.log(jsonparse);
+			
+			$(".closedSave").val(jsonparse);
+			*/
+			$(".closedSave").val(jsonstr);
+
 		}
+		
 	}
 </script>
 
@@ -267,12 +328,12 @@
 	<div>
 		<h1>등록페이지입니당</h1>
 	</div>
-	<form>
+	<form action="/petsitting/p001/registerdata" method="post" enctype="multipart/form-data">
 		<div class="filebox">
-			<label for="ex_file"><img style="width: 150px; height: 240px" src="https://i.imgur.com/wQojYBa.png">
+			<label for="uploadFile"><img style="width: 150px; height: 240px" src="https://i.imgur.com/hQaabc4.png">
 				<div class="img-text"><p>사 진 등 록</p></div>
 			</label>
-			<input type="file" id="ex_file">
+			<input type="file" name="uploadFile" id="uploadFile" accept="image/*">
 		</div>
 		
 		<div class="form-group">
@@ -282,10 +343,18 @@
 		<h3>이용가능서비스</h3>
 		<table>
 			<tr>
-				<td rowspan="2"><input class="check" type="checkbox" name="장기예약" value="Y"><img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td><td><small><b>장기예약</b></small></td>
-				<td rowspan="2"><input class="check" type="checkbox" name="노년케어" value="Y"><img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td><td><small><b>장기예약</b></small></td>
-				<td rowspan="2"><input class="check" type="checkbox" name="목욕가능" value="Y"><img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td><td><small><b>장기예약</b></small></td>
-				<td rowspan="2"><input class="check" type="checkbox" name="산책가능" value="Y"><img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td><td><small><b>장기예약</b></small></td>
+				<td rowspan="2"><input class="check" type="checkbox" name="0" value="Y">
+				<img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td>
+				<td><small><b>장기예약</b></small></td>
+				<td rowspan="2"><input class="check" type="checkbox" name="1" value="Y">
+				<img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td>
+				<td><small><b>장기예약</b></small></td>
+				<td rowspan="2"><input class="check" type="checkbox" name="2" value="Y">
+				<img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td>
+				<td><small><b>장기예약</b></small></td>
+				<td rowspan="2"><input class="check" type="checkbox" name="3" value="Y">
+				<img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td>
+				<td><small><b>장기예약</b></small></td>
 			</tr>
 			<tr>
 				<td><small>장기돌봄 가능</small></td>
@@ -294,10 +363,18 @@
 				<td><small>장기돌봄 가능</small></td>
 			</tr>
 			<tr>
-				<td rowspan="2"><input class="check" type="checkbox" name="약물복용" value="Y"><img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td><td><small><b>장기예약</b></small></td>
-				<td rowspan="2"><input class="check" type="checkbox" name="실내놀이" value="Y"><img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td><td><small><b>장기예약</b></small></td>
-				<td rowspan="2"><input class="check" type="checkbox" name="집앞픽업" value="Y"><img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td><td><small><b>장기예약</b></small></td>
-				<td rowspan="2"><input class="check" type="checkbox" name="퍼피케어" value="Y"><img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td><td><small><b>장기예약</b></small></td>
+				<td rowspan="2"><input class="check" type="checkbox" name="4" value="Y">
+				<img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td>
+				<td><small><b>장기예약</b></small></td>
+				<td rowspan="2"><input class="check" type="checkbox" name="5" value="Y">
+				<img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td>
+				<td><small><b>장기예약</b></small></td>
+				<td rowspan="2"><input class="check" type="checkbox" name="6" value="Y">
+				<img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td>
+				<td><small><b>장기예약</b></small></td>
+				<td rowspan="2"><input class="check" type="checkbox" name="7" value="Y">
+				<img class="serviceimg" src="https://i.imgur.com/EMu5v60.png"></td>
+				<td><small><b>장기예약</b></small></td>
 			</tr>
 			<tr>
 				<td><small>장기돌봄 가능</small></td>
@@ -314,27 +391,28 @@
 			<tr>
 				<td><p class="dogtype">소형견</p></td>
 				<td><img class="serviceimg" src="https://petplanet.co/static/images/page_details/price_pet_small.png"></td>
-				<td><input type="text" name="small"></td>
+				<td><input type="text" name="small"> 원</td>
 			</tr>
 			<tr>
 				<td><p class="dogtype">중형견</p></td>
 				<td><img class="serviceimg" src="https://petplanet.co/static/images/page_details/price_pet_small.png"></td>
-				<td><input type="text" name="middle"></td>
+				<td><input type="text" name="middle"> 원</td>
 			</tr>
 			<tr>
 				<td><p class="dogtype">대형견</p></td>
 				<td><img class="serviceimg" src="https://petplanet.co/static/images/page_details/price_pet_small.png"></td>
-				<td><input type="text" name="big"></td>
+				<td><input type="text" name="big"> 원</td>
 			</tr>
 		</table>
-		<h3>내 위치</h3>
-		<input type="text" id="sample4_postcode" placeholder="우편번호">
+		<h3>내 위치 (가까운역이나 정류장 등 대략적인 위치를 입력해주세요)</h3>
+		
+		<input type="text" id="sample4_postcode" name="postcode" placeholder="우편번호">
 		<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-		<input type="text" id="sample4_roadAddress" placeholder="도로명주소">
-		<input type="text" id="sample4_jibunAddress" placeholder="지번주소">
+		<input type="text" id="sample4_roadAddress" name="roadAddress" placeholder="도로명주소">
+		<input type="text" id="sample4_jibunAddress" name="jibunAddress" placeholder="지번주소">
 		<span id="guide" style="color:#999;display:none"></span>
-		<input type="text" id="sample4_detailAddress" placeholder="상세주소">
-		<input type="text" id="sample4_extraAddress" placeholder="참고항목">
+		<input type="text" id="sample4_detailAddress" name="detailAddress" placeholder="상세주소">
+		<input type="text" id="sample4_extraAddress" name="extraAddress" placeholder="참고항목">
 		
 		<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 		<script>
@@ -394,17 +472,16 @@
 		        }).open();
 		    }
 		</script>
-		
 		<h3>휴무일</h3>
 		
 		<div class='Calendar'>
 			<!-- <        > -->
 			<div align='center' class="CalendarMonth">
-				<button onclick="calendar.calendarYearMonth('before')"> < </button>
+				<button type="button" onclick="calendar.calendarYearMonth('before')"> < </button>
 				<small class='CalendarMonth_small'></small>
 				<hidden class='CalendarMonth'></hidden>
 				<hidden class='CalendarYear'></hidden>
-				<button onclick="calendar.calendarYearMonth('next')"> > </button>
+				<button type="button" onclick="calendar.calendarYearMonth('next')"> > </button>
 			</div>
 			
 			<!-- <     2020-03     > -->
@@ -425,12 +502,17 @@
 			<div align='center' class='CalendarDayDiv'>
 				<script>calendar.calendarDay()</script>
 			</div>
+			
+			<div align='center'>
+				<button type="button" onclick="calendar.closedSave()">휴무일 저장</button>
+			</div>
 		</div>
-		<input type="submit" value="등록">
 		
-		<a type="button" href="sitterlist">취소</a>
+		<input type="hidden" class="closedSave" name="closedSave">
+		
+		<input type="submit" value="등록">
+		<button type="button" onclick="location.href='sitterlist'">취소</button>
 	</form>
-	<button onclick="location.href=sitterlist">취소</button>
 
 </body>
 </html>
