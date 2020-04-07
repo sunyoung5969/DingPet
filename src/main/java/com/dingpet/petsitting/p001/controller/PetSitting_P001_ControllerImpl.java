@@ -95,7 +95,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 
 //---------------------------	사진 업로드	---------------------------
 			
-			String uploadFolder = "C:\\test\\pic";
+			String uploadFolder = "/home/testpic";
 			String filename = uploadFile.getOriginalFilename();
 			
 			File saveFile = new File(uploadFolder, filename);
