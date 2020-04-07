@@ -16,6 +16,6 @@ public class PetSitting_P001_ServiceImple implements PetSitting_P001_Service{
 	@Override
 	public void profile(PetSitting_P001_VO profile) {
 		// TODO Auto-generated method stub
-		
+		mapper.inserttest(profile);
 	}
 }
