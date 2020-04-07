@@ -1,21 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.dingpet.customers.p001.mapper.Customers_P001_Mapper">
 
 <!-- 일반회원 등록 -->
-<insert id="insert1">
-	insert into member(member_id, member_pwd, member_nickname, member_email, member_photo)
-	values(#{member_id}, #{member_pwd}, #{member_nickname}, #{member_email}, #{member_photo})
-</insert>
+<select id="insertmember">
+	insert into member(member_id, member_pwd, member_nickname, member_email)
+	values(#{member_id}, #{member_pwd}, #{member_nickname}, #{member_email})
+</select>
+
+
+
+
+
 
 <!-- 펫시터회원 등록 -->
-<update id="insert2">
+<!-- 
+<select id="insert2">
 	update member set sex=#{sex}, date_of_birth=#{date_of_birth},
 					  address=#{address}, profession=#{profession},
 					  active_hours=#{active_hours}, question1=#{question1},
 					  answer1=#{answer1}, question2=#{question2}, answer2=#{answer2},
 					  question3=#{question3}, answer3=#{answer3}
 				  	  where member_id=#{member_id}
-</update>
+</select>
+ -->
 
 </mapper>
