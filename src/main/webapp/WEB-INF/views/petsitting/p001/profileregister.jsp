@@ -54,6 +54,10 @@
 		left: 210px;
 	}
 	
+	.wkrurwmd{
+		display: inline-block;
+	}
+	
 	.form-control{
 		width: 450px;
 	}
@@ -330,16 +334,44 @@
 	</div>
 	<form action="/petsitting/p001/registerdata" method="post" enctype="multipart/form-data">
 		<div class="filebox">
-			<label for="uploadFile"><img style="width: 150px; height: 240px" src="https://i.imgur.com/hQaabc4.png">
+			<label for="profilePic"><img style="width: 150px; height: 240px" src="https://i.imgur.com/hQaabc4.png">
 				<div class="img-text"><p>사 진 등 록</p></div>
 			</label>
-			<input type="file" name="uploadFile" id="uploadFile" accept="image/*">
+			<input type="file" name="profilePic" id="profilePic" accept="image/*">
 		</div>
 		
 		<div class="form-group">
 			<label><h3>펫 시 터 소 개</h3></label>
 			<textarea class="form-control" rows="13" name="content"></textarea>
 		</div>
+		
+		<h3> 자격증 </h3>
+		<div>
+			<div class="filebox">
+				<label for="licensePic"><img style="width: 150px; height: 240px" src="https://i.imgur.com/hQaabc4.png">
+					<div class="img-text"><p>자격증사진</p></div>
+				</label>
+				<input type="file" name="licensePic" id="licensePic" accept="image/*">
+			</div>
+			<div class='wkrurwmd'>
+				<table>
+					<tr>
+						<td><h4>자격증 명</h4>
+						<input type="text" name="wkrurwmdaud"></td>
+					</tr>
+					<tr>
+						<td><h5>기관 명</h5>
+						<input type="text" name="rlrhksaud"></td>
+					</tr>
+					<tr>
+						<td><h5>취득날짜</h5>
+						<input type="text" name="cnlemrskfWk"></td>
+					</tr>
+				
+				</table>
+			</div>
+		</div>
+		
 		<h3>이용가능서비스</h3>
 		<table>
 			<tr>

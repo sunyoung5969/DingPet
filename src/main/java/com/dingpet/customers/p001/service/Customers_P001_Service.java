@@ -8,6 +8,11 @@ public interface Customers_P001_Service {
 	public void register1(Customers_P001_VO cust);
 	
 	//펫시터회원 등록
-	public void register2(Customers_P001_VO cust);
+	//public void register2(Customers_P001_VO cust);
+	
+	//등록
+	public void insertmember(Customers_P001_VO member);
+	
+
 	
 }
