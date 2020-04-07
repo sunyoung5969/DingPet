@@ -68,13 +68,18 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 			for(int i=0; i < 8; i++) {
 				if(request.getParameter(String.valueOf(i)) != null){
 					petService[i] = (String)request.getParameter(String.valueOf(i));
-					profile.setId("29938");
+					profile.setId("11224");
 					profile.setServiceyn(petService[i]);
 					profile.setServicename("service"+i);
 					profile.setCode(String.valueOf(i));
-					service.profile(profile);
+					//service.profile(profile);
 				}else {
 					petService[i] = "N";
+					profile.setId("11224");
+					profile.setServiceyn(petService[i]);
+					profile.setServicename("service"+i);
+					profile.setCode(String.valueOf(i));
+					//service.profile(profile);
 				}
 			}			
 			
@@ -82,7 +87,8 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 
 //---------------------------	사진 업로드 데이터 처리	---------------------------
 			
-			String uploadFolder = "C:\\test\\pic";
+			String uploadFolder = "/home/testpic";
+			//String uploadFolder = "C:\\test\\pic";
 			
 			String fileName = "";
 			
