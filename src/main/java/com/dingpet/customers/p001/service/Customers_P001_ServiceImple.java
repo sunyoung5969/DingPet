@@ -12,8 +12,8 @@ import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @Service
-@AllArgsConstructor
 @Log4j
+@AllArgsConstructor
 public class Customers_P001_ServiceImple implements Customers_P001_Service{
 	
 	private Customers_P001_Mapper mapper;
@@ -23,12 +23,27 @@ public class Customers_P001_ServiceImple implements Customers_P001_Service{
 		mapper.insert1(cust);
 		log.info("일반회원 가입");
 	}
+	
+	
+	//@Override
+	//public void register2(Customers_P001_VO cust) {
+		//	mapper.insert2(cust);
+		//	log.info("펫시터회원 가입");
+		//}	
+	
 
 	@Override
-	public void register2(Customers_P001_VO cust) {
-		mapper.insert2(cust);
-		log.info("펫시터회원 가입");
+	public void insertmember(Customers_P001_VO member) {
+		
+		mapper.insertmember(member);
+		log.info("등록");
+		
 	}
+
+
+
+	
+	
 	
 	
 

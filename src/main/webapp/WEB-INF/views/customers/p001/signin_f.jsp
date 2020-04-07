@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +16,13 @@
 </head>
 <body>
 
+	<!-- 
+	<form action="${contextPath}/min" method="get">
+		<input type="text" id="mem_id">
+		<input type="submit" value="로그인">
+	</form>
+	 -->
+	 
     <div class="main">
 
         <!-- Sing in  Form -->
@@ -26,15 +35,15 @@
                     </div>
 
                     <div class="signin-form">
-                        <h2 class="form-title">Sign in</h2>
+                        <h2 class="form-title">로 그 인</h2>
                         <form method="POST" class="register-form" id="login-form">
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="your_name" id="your_name" placeholder="Your Name"/>
+                                아이디<input type="text" name="your_name" id="your_name" placeholder="Your Name"/>
                             </div>
                             <div class="form-group">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="your_pass" id="your_pass" placeholder="Password"/>
+                                패스워드<input type="password" name="your_pass" id="your_pass" placeholder="Password"/>
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
