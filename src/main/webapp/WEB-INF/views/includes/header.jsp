@@ -8,18 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
     
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700, 900|Vollkorn:400i" rel="stylesheet">
-    <link rel="stylesheet" href="/resources/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/fonts/icomoon/style.css">
 
-    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/resources/css/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/resources/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="/resources/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="/resources/css/jquery.fancybox.min.css">
-    <link rel="stylesheet" href="/resources/css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="/resources/fonts/flaticon/font/flaticon.css">
-    <link rel="stylesheet" href="/resources/css/aos.css">
-    <link rel="stylesheet" href="/resources/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery-ui.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/aos.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
     <!--css 추가-->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
     
@@ -53,7 +53,7 @@
         <div class="row align-items-center">
           
           <div class="col-6 col-xl-2">
-            <h1 class="mb-0 site-logo"><a href="/" class="h2 mb-0"><img src="/resources/images/logo.png" alt="logo"><span class="text-primary">.</span> </a></h1>
+            <h1 class="mb-0 site-logo"><a href="/" class="h2 mb-0"><img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="logo"><span class="text-primary">.</span> </a></h1>
           </div>
 
           <div class="col-12 col-md-10 d-none d-xl-block">
