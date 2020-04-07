@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="includes/header.jsp"%>
+<%@include file="./includes/header.jsp"%>
 
 <section class="site-blocks-cover overflow-hidden bg-light">
       <div class="container">
@@ -26,7 +26,7 @@
 			
           </div>
           <div class="col-md-5 align-self-end text-center text-md-right">
-            <img src="/resources/images/dogger_img_1.png" alt="Image" class="img-fluid cover-img">
+            <img src="${pageContext.request.contextPath}/resources/images/dogger_img_1.png" alt="Image" class="img-fluid cover-img">
           </div>
         </div>
       </div>
@@ -49,7 +49,7 @@
             <div class="row">
               <div class="mb-4 mb-lg-0 col-lg-6 order-lg-2" data-aos="fade-right">
                 <a href="#" class="hover-1">
-                  <img src="/resources/images/dogger_img_sm_3.jpg" alt="Image" class="img-fluid">
+                  <img src="${pageContext.request.contextPath}/resources/images/dogger_img_sm_3.jpg" alt="Image" class="img-fluid">
                 </a>
               </div>
               <div class="col-lg-5 mr-auto text-lg-right align-self-center order-lg-1" data-aos="fade-left">
@@ -66,7 +66,7 @@
             <div class="row">
               <div class="mb-4 mb-lg-0 col-lg-6"  data-aos="fade-left">
                 <a href="#" class="hover-1">
-                  <img src="/resources/images/dogger_img_sm_1.jpg" alt="Image" class="img-fluid">
+                  <img src="${pageContext.request.contextPath}/resources/images/dogger_img_sm_1.jpg" alt="Image" class="img-fluid">
                 </a>
               </div>
               <div class="col-lg-5 ml-auto align-self-center"  data-aos="fade-right">
@@ -83,7 +83,7 @@
             <div class="row">
               <div class="mb-4 mb-lg-0 col-lg-6 order-lg-2" data-aos="fade-right">
                 <a href="#" class="hover-1">
-                  <img src="/resources/images/dogger_img_sm_2.jpg" alt="Image" class="img-fluid">
+                  <img src="${pageContext.request.contextPath}/resources/images/dogger_img_sm_2.jpg" alt="Image" class="img-fluid">
                 </a>
               </div>
               <div class="col-lg-5 mr-auto text-lg-right align-self-center order-lg-1" data-aos="fade-left">
@@ -119,7 +119,7 @@
               <span class="play">
                 <span class="icon-play"></span>
               </span>
-              <img src="/resources/images/dogger_img_big_1.jpg" alt="Image" class="img-fluid">
+              <img src="${pageContext.request.contextPath}/resources/images/dogger_img_big_1.jpg" alt="Image" class="img-fluid">
             </a>
           </div>
         </div>
@@ -142,7 +142,7 @@
           <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up" data-aos-delay="">
             <div class="trainer">
               <figure>
-              <img src="/resources/images/dogger_trainer_1.jpg" alt="Image" class="img-fluid">
+              <img src="${pageContext.request.contextPath}/resources/images/dogger_trainer_1.jpg" alt="Image" class="img-fluid">
               </figure>
               <div class="px-md-3">
                 <h3>Jessica White</h3>
@@ -158,7 +158,7 @@
           <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up" data-aos-delay="100">
             <div class="trainer">
               <figure>
-              <img src="/resources/images/dogger_trainer_2.jpg" alt="Image" class="img-fluid">
+              <img src="${pageContext.request.contextPath}/resources/images/dogger_trainer_2.jpg" alt="Image" class="img-fluid">
               </figure>
               <div class="px-md-3">
                 <h3>Valerie Elash</h3>
@@ -175,7 +175,7 @@
           <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up"  data-aos-delay="200">
             <div class="trainer">
               <figure>
-              <img src="/resources/images/dogger_trainer_3.jpg" alt="Image" class="img-fluid">
+              <img src="${pageContext.request.contextPath}/resources/images/dogger_trainer_3.jpg" alt="Image" class="img-fluid">
               </figure>
               <div class="px-md-3">
                 <h3>Alicia Jones</h3>
@@ -282,7 +282,7 @@
         </div>
         <div class="row accordion justify-content-center block__76208">
           <div class="col-lg-6 order-lg-2 mb-5 mb-lg-0" data-aos="fade-up"  data-aos-delay="">
-            <img src="/resources/images/dogger_img_sm_1.jpg" alt="Image" class="img-fluid rounded">
+            <img src="${pageContext.request.contextPath}/resources/images/dogger_img_sm_1.jpg" alt="Image" class="img-fluid rounded">
           </div>
           <div class="col-lg-5 mr-auto order-lg-1" data-aos="fade-up"  data-aos-delay="100">
             <div class="accordion-item">
@@ -357,7 +357,7 @@
                 </blockquote>
 
                 <figure>
-                  <img src="/resources/images/person_4.jpg" alt="Image" class="img-fluid rounded-circle mx-auto">
+                  <img src="${pageContext.request.contextPath}/resources/images/person_4.jpg" alt="Image" class="img-fluid rounded-circle mx-auto">
                 </figure>
                 <h3 class="font-size-20 text-black">Ricky Fisher</h3>
               </div>
@@ -373,7 +373,7 @@
                 </blockquote>
 
                 <figure>
-                  <img src="/resources/images/person_2.jpg" alt="Image" class="img-fluid rounded-circle mx-auto">
+                  <img src="${pageContext.request.contextPath}/resources/images/person_2.jpg" alt="Image" class="img-fluid rounded-circle mx-auto">
                 </figure>
                 <h3 class="font-size-20 mb-4 text-black">Ken Davis</h3>
 
@@ -390,7 +390,7 @@
                 </blockquote>
 
                 <figure>
-                  <img src="/resources/images/person_1.jpg" alt="Image" class="img-fluid rounded-circle mx-auto">
+                  <img src="${pageContext.request.contextPath}/resources/images/person_1.jpg" alt="Image" class="img-fluid rounded-circle mx-auto">
                 </figure>
                 <h3 class="font-size-20 text-black">Mellisa Griffin</h3>
 
@@ -408,7 +408,7 @@
                 </blockquote>
 
                 <figure>
-                  <img src="/resources/images/person_3.jpg" alt="Image" class="img-fluid rounded-circle mx-auto">
+                  <img src="${pageContext.request.contextPath}/resources/images/person_3.jpg" alt="Image" class="img-fluid rounded-circle mx-auto">
                 </figure>
                 <h3 class="font-size-20 mb-4 text-black">Robert Steward</h3>
 
@@ -434,29 +434,29 @@
         </div>
         <div class="row no-gutters">
           
-            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_1.jpg" data-fancybox="gal"><img src="/resources/images/dogger_img_sm_1.jpg" alt="Image" class="img-fluid"></a>
+            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_1.jpg" data-fancybox="gal"><img src="${pageContext.request.contextPath}/resources/images/dogger_img_sm_1.jpg" alt="Image" class="img-fluid"></a>
 
-            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_2.jpg" data-fancybox="gal"><img src="/resources/images/dogger_img_sm_2.jpg" alt="Image" class="img-fluid"></a>
+            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_2.jpg" data-fancybox="gal"><img src="${pageContext.request.contextPath}/resources/images/dogger_img_sm_2.jpg" alt="Image" class="img-fluid"></a>
           
-            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_3.jpg" data-fancybox="gal"><img src="/resources/images/dogger_img_sm_3.jpg" alt="Image" class="img-fluid"></a>
+            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_3.jpg" data-fancybox="gal"><img src="${pageContext.request.contextPath}/resources/images/dogger_img_sm_3.jpg" alt="Image" class="img-fluid"></a>
 
-            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_4.jpg" data-fancybox="gal"><img src="/resources/images/dogger_img_sm_4.jpg" alt="Image" class="img-fluid"></a>
+            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_4.jpg" data-fancybox="gal"><img src="${pageContext.request.contextPath}/resources/images/dogger_img_sm_4.jpg" alt="Image" class="img-fluid"></a>
           
-            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_5.jpg" data-fancybox="gal"><img src="/resources/images/dogger_img_sm_5.jpg" alt="Image" class="img-fluid"></a>
+            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_5.jpg" data-fancybox="gal"><img src="${pageContext.request.contextPath}/resources/images/dogger_img_sm_5.jpg" alt="Image" class="img-fluid"></a>
           
-            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_6.jpg" data-fancybox="gal"><img src="/resources/images/dogger_img_sm_6.jpg" alt="Image" class="img-fluid"></a>
+            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_6.jpg" data-fancybox="gal"><img src="${pageContext.request.contextPath}/resources/images/dogger_img_sm_6.jpg" alt="Image" class="img-fluid"></a>
           
-            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_1.jpg" data-fancybox="gal"><img src="/resources/images/dogger_img_sm_1.jpg" alt="Image" class="img-fluid"></a>
+            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_1.jpg" data-fancybox="gal"><img src="${pageContext.request.contextPath}/resources/images/dogger_img_sm_1.jpg" alt="Image" class="img-fluid"></a>
           
-            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_2.jpg" data-fancybox="gal"><img src="/resources/images/dogger_img_sm_2.jpg" alt="Image" class="img-fluid"></a>
+            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_2.jpg" data-fancybox="gal"><img src="${pageContext.request.contextPath}/resources/images/dogger_img_sm_2.jpg" alt="Image" class="img-fluid"></a>
           
-            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_3.jpg" data-fancybox="gal"><img src="/resources/images/dogger_img_sm_3.jpg" alt="Image" class="img-fluid"></a>
+            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_3.jpg" data-fancybox="gal"><img src="${pageContext.request.contextPath}/resources/images/dogger_img_sm_3.jpg" alt="Image" class="img-fluid"></a>
           
-            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_4.jpg" data-fancybox="gal"><img src="/resources/images/dogger_img_sm_4.jpg" alt="Image" class="img-fluid"></a>
+            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_4.jpg" data-fancybox="gal"><img src="${pageContext.request.contextPath}/resources/images/dogger_img_sm_4.jpg" alt="Image" class="img-fluid"></a>
           
-            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_5.jpg" data-fancybox="gal"><img src="/resources/images/dogger_img_sm_5.jpg" alt="Image" class="img-fluid"></a>
+            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_5.jpg" data-fancybox="gal"><img src="${pageContext.request.contextPath}/resources/images/dogger_img_sm_5.jpg" alt="Image" class="img-fluid"></a>
           
-            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_6.jpg" data-fancybox="gal"><img src="/resources/images/dogger_img_sm_6.jpg" alt="Image" class="img-fluid"></a>
+            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_6.jpg" data-fancybox="gal"><img src="${pageContext.request.contextPath}/resources/images/dogger_img_sm_6.jpg" alt="Image" class="img-fluid"></a>
 
         </div>
       </div>
@@ -479,7 +479,7 @@
           <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up" data-aos-delay="">
             
             <div class="block_service">
-              <img src="/resources/images/dogger_checkup.svg" alt="Image mb-5">
+              <img src="${pageContext.request.contextPath}/resources/images/dogger_checkup.svg" alt="Image mb-5">
               <h3>Dog Checkup</h3>
               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
             </div>
@@ -487,14 +487,14 @@
           </div>
           <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up"  data-aos-delay="100">
             <div class="block_service">
-              <img src="/resources/images/dogger_dermatology.svg" alt="Image mb-5">
+              <img src="${pageContext.request.contextPath}/resources/images/dogger_dermatology.svg" alt="Image mb-5">
               <h3>Dog Dermatology</h3>
               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
             </div>
           </div>
           <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up"  data-aos-delay="200">
             <div class="block_service">
-              <img src="/resources/images/dogger_bones.svg" alt="Image mb-5">
+              <img src="${pageContext.request.contextPath}/resources/images/dogger_bones.svg" alt="Image mb-5">
               <h3>For Strong Teeth</h3>
               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
             </div>
@@ -504,7 +504,7 @@
           <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up"  data-aos-delay="">
             
             <div class="block_service">
-              <img src="/resources/images/dogger_veterinary.svg" alt="Image mb-5">
+              <img src="${pageContext.request.contextPath}/resources/images/dogger_veterinary.svg" alt="Image mb-5">
               <h3>Dog First Aid</h3>
               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
             </div>
@@ -512,14 +512,14 @@
           </div>
           <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up"  data-aos-delay="100">
             <div class="block_service">
-              <img src="/resources/images/dogger_dryer.svg" alt="Image mb-5">
+              <img src="${pageContext.request.contextPath}/resources/images/dogger_dryer.svg" alt="Image mb-5">
               <h3>Dog Dryer</h3>
               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
             </div>
           </div>
           <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up"  data-aos-delay="200">
             <div class="block_service">
-              <img src="/resources/images/dogger_veterinarian.svg" alt="Image mb-5">
+              <img src="${pageContext.request.contextPath}/resources/images/dogger_veterinarian.svg" alt="Image mb-5">
               <h3>Expert Veterinarian</h3>
               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
             </div>
@@ -610,4 +610,4 @@
       </div>
     </section>
 
-<%@include file="includes/footer.jsp"%>
+<%@include file="./includes/footer.jsp"%>
