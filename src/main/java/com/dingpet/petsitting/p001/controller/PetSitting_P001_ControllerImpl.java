@@ -88,11 +88,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 //---------------------------	사진 업로드 데이터 처리	---------------------------
 			
 			String uploadFolder = "/home/testpic";
-<<<<<<< HEAD
-			String filename = uploadFile.getOriginalFilename();
-=======
 			//String uploadFolder = "C:\\test\\pic";
->>>>>>> refs/remotes/origin/master
 			
 			String fileName = "";
 			
