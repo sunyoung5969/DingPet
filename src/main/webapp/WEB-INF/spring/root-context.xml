@@ -11,7 +11,7 @@
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName"
 			value="oracle.jdbc.driver.OracleDriver"></property>
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:orcl"></property>
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@dingpetdb.clshste4jleh.ap-northeast-2.rds.amazonaws.com:1521:xe"></property>
 			<!-- 
 			value="jdbc:oracle:thin:@projectdb.c4cty0dbhpqb.ap-northeast-2.rds.amazonaws.com:1521:XE"></property>
 			 -->
