@@ -357,15 +357,15 @@
 				<table>
 					<tr>
 						<td><h4>자격증 명</h4>
-						<input type="text" name="wkrurwmdaud"></td>
+						<input type="text" name="licenseName"></td>
 					</tr>
 					<tr>
 						<td><h5>기관 명</h5>
-						<input type="text" name="rlrhksaud"></td>
+						<input type="text" name="licenseAgency"></td>
 					</tr>
 					<tr>
 						<td><h5>취득날짜</h5>
-						<input type="text" name="cnlemrskfWk"></td>
+						<input type="text" name="licenseDate"></td>
 					</tr>
 				
 				</table>
@@ -428,12 +428,12 @@
 			<tr>
 				<td><p class="dogtype">중형견</p></td>
 				<td><img class="serviceimg" src="https://petplanet.co/static/images/page_details/price_pet_small.png"></td>
-				<td><input type="text" name="middle"> 원</td>
+				<td><input type="text" name="medium"> 원</td>
 			</tr>
 			<tr>
 				<td><p class="dogtype">대형견</p></td>
 				<td><img class="serviceimg" src="https://petplanet.co/static/images/page_details/price_pet_small.png"></td>
-				<td><input type="text" name="big"> 원</td>
+				<td><input type="text" name="large"> 원</td>
 			</tr>
 		</table>
 		<h3>내 위치 (가까운역이나 정류장 등 대략적인 위치를 입력해주세요)</h3>

@@ -3,10 +3,37 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dingpet.petsitting.p001.mapper.PetSitting_P001_Mapper">
-
-	<insert id="inserttest">
-		insert into service (member_id, service_id, service_name, service_yn)
-		values(#{id}, #{code}, #{servicename}, #{serviceyn})
+	
+	<insert id="profileInsert">
+		insert into sitter_profile (member_id, profile_photo, profile_content, 
+		price_small, price_medium, price_large, profile_roadaddress, 
+		profile_jibunaddress, profile_detailaddress) 
+		values(#{id}, #{profilePicPath}, #{content}, #{small}, #{medium}, #{large}, 
+		#{roadAddress}, #{jibunAddress}, #{detailAddress})
+	</insert>
+	
+	<insert id="licenseInsert">
+		insert into license (member_id, license_id, license_photo, 
+		license_name, license_agency, license_date) 
+		values(#{id}, seq_license.nextval, #{licensePicPath}, 
+		#{licenseName}, #{licenseAgency}, #{licenseDate})
+	</insert>
+	
+	<insert id="petServiceInsert">
+		insert into service (member_id, service_00, service_01, service_02, service_03, 
+		service_04, service_05, service_06, service_07) 
+		values(#{id}, #{petService[0]}, #{petService[1]}, #{petService[2]}, 
+		#{petService[3]}, #{petService[4]}, #{petService[5]}, #{petService[6]}, #{petService[7]})
+	</insert>
+	
+	<insert id="closedInsert">
+		insert into schedule (member_id, schedule_id, schedule_closed) 
+		values(#{id}, seq_schedule.nextval, #{closed})
+	</insert>
+	
+	<insert id="albumInsert">
+		insert into photo () 
+		values()
 	</insert>
 	
 </mapper>

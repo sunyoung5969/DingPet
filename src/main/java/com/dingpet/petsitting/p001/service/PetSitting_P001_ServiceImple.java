@@ -14,8 +14,33 @@ public class PetSitting_P001_ServiceImple implements PetSitting_P001_Service{
 	private PetSitting_P001_Mapper mapper;
 
 	@Override
-	public void profile(PetSitting_P001_VO profile) {
+	public void profileInsert(PetSitting_P001_VO profile) {
 		// TODO Auto-generated method stub
-		mapper.inserttest(profile);
+		mapper.profileInsert(profile);
 	}
+
+	@Override
+	public void licenseInsert(PetSitting_P001_VO profile) {
+		// TODO Auto-generated method stub
+		mapper.licenseInsert(profile);
+	}
+
+	@Override
+	public void petServiceInsert(PetSitting_P001_VO profile) {
+		// TODO Auto-generated method stub
+		mapper.petServiceInsert(profile);
+	}
+
+	@Override
+	public void albumInsert(PetSitting_P001_VO profile) {
+		// TODO Auto-generated method stub
+		mapper.albumInsert(profile);
+	}
+
+	@Override
+	public void closedInsert(PetSitting_P001_VO profile) {
+		// TODO Auto-generated method stub
+		mapper.closedInsert(profile);
+	}
+
 }
