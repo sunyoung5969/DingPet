@@ -52,11 +52,11 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 	@Override
 	public String registerdata(Model model, PetSitting_P001_VO profile, MultipartHttpServletRequest uploadFile) {
 		// TODO Auto-generated method stub
-		String id = "";
-		String[] petServiceYN;
+
+		String[] petService;
 		String[] closed;
 		
-		id = String.valueOf((int)((Math.random()*8999)+1000));
+		String id = String.valueOf((int)((Math.random()*8999)+1000));
 		
 		profile.setId(id);
 		
@@ -64,7 +64,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 
 //--------------------------- 이용 가능 서비스	 --------------------------
 	
-			petServiceYN = new String[8];
+			String[] petServiceYN = new String[8];
 
 			for(int i=0; i < 8; i++) {
 				if(request.getParameter(String.valueOf(i)) != null){

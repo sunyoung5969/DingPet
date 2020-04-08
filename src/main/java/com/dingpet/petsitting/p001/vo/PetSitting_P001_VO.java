@@ -22,4 +22,5 @@ public class PetSitting_P001_VO {
 	private String closed;			// 휴무일
 
 	private String[] petService;	// 펫서비스
+
 }

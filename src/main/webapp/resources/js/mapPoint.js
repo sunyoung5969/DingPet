@@ -49,6 +49,7 @@
 			var options = { enableHighAccuracy: true };
 			
 			watchID = navigator.geolocation.watchPosition(current_position, onError, options);
+			btnTest2();
 			// 시간마다 자동 맵 마킹 함수
 		    // 3초 셋 setInterval End
 			playMark = setInterval(function() {
@@ -66,13 +67,12 @@
 			lat = position.coords.latitude;
 			lit = position.coords.longitude;
 			return lat, lit;
-			console.log("포"+lat);
-			console.log("포"+lit);
+			console.log("포_위도"+lat);
+			console.log("포_경도"+lit);
 			
 		}    // current End
 	
-	console.log("밖----"+lat);
-	console.log(lit);		   	   
+	console.log("외부--"+lat+"/"+lit);	
 		    
 	var drawingFlag = false; // 선이 그려지고 있는 상태를 가지고 있을 변수입니다
 	var moveLine; // 선이 그려지고 있을때 마우스 움직임에 따라 그려질 선 객체 입니다
