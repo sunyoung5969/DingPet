@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dingpet.customers.p003.mapper.Customers_P003_Mapper">
+
+<!-- 일반회원 등록 -->
+<update id="update1">
+	update member set 
+					  member_pwd=#{member_pwd}, 
+					  member_nickname=#{member_nickname}, 
+					  member_email=#{member_email}
+				where member_id=#{member_id}
+</update>
+
+
+
+<!-- 펫시터회원 등록 -->
+<update id="update2">
+	update member set sex=#{sex}, date_of_birth=#{date_of_birth},
+					  address=#{address}, profession=#{profession},
+					  active_hours=#{active_hours},
+					  answer1=#{answer1}, answer2=#{answer2},
+					  answer3=#{answer3}
+				  	  
+</update>
+
+
+
+</mapper>
