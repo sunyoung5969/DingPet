@@ -81,12 +81,17 @@ function searchPlaces() {
 function placesSearchCB(data, status, pagination) {
 	if (status === kakao.maps.services.Status.OK) {
 		// 정상적으로 검색이 완료됐으면 지도에 마커를 표출합니다
-		displayPlaces(data);
+		console.log(data);
+		displayPlaces(data);		
 	} else if (status === kakao.maps.services.Status.ZERO_RESULT) {
 		// 검색결과가 없는경우 해야할 처리가 있다면 이곳에 작성해 주세요
 	} else if (status === kakao.maps.services.Status.ERROR) {
 		// 에러로 인해 검색결과가 나오지 않은 경우 해야할 처리가 있다면 이곳에 작성해 주세요
 	}
+}
+// DB 병원/약국 장소 데이터 검색 
+function medicalPlacesSearch(){
+	
 }
 
 // 지도에 마커를 표출하는 함수입니다

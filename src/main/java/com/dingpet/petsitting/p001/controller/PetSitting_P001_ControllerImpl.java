@@ -65,23 +65,23 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 			
 			petService = new String[8];
 
-			for(int i=0; i < 8; i++) {
-				if(request.getParameter(String.valueOf(i)) != null){
-					petService[i] = (String)request.getParameter(String.valueOf(i));
-					profile.setId("11224");
-					profile.setServiceyn(petService[i]);
-					profile.setServicename("service"+i);
-					profile.setCode(String.valueOf(i));
-					//service.profile(profile);
-				}else {
-					petService[i] = "N";
-					profile.setId("11224");
-					profile.setServiceyn(petService[i]);
-					profile.setServicename("service"+i);
-					profile.setCode(String.valueOf(i));
-					//service.profile(profile);
-				}
-			}			
+//			for(int i=0; i < 8; i++) {
+//				if(request.getParameter(String.valueOf(i)) != null){
+//					petService[i] = (String)request.getParameter(String.valueOf(i));
+//					profile.setId("11224");
+//					profile.setServiceyn(petService[i]);
+//					profile.setServicename("service"+i);
+//					profile.setCode(String.valueOf(i));
+//					//service.profile(profile);
+//				}else {
+//					petService[i] = "N";
+//					profile.setId("11224");
+//					profile.setServiceyn(petService[i]);
+//					profile.setServicename("service"+i);
+//					profile.setCode(String.valueOf(i));
+//					//service.profile(profile);
+//				}
+//			}			
 			
 //--------------------------------------------------------------------
 
