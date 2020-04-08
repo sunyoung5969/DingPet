@@ -55,34 +55,35 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 
 		String[] petService;
 		String[] closed;
-
+		
+		String id = String.valueOf((int)((Math.random()*8999)+1000));
+		
+		profile.setId(id);
+		
 		try {
 
 //--------------------------- 이용 가능 서비스	 --------------------------
-			/*
-			인서트떄 넣어야 될것 - 서비스코드, 가능여부, 서비스 이름
-			 */
-			
-			petService = new String[8];
+	
+			String[] petServiceYN = new String[8];
 
 			for(int i=0; i < 8; i++) {
 				if(request.getParameter(String.valueOf(i)) != null){
-					petService[i] = (String)request.getParameter(String.valueOf(i));
-					profile.setId("29938");
-					profile.setServiceyn(petService[i]);
-					profile.setServicename("service"+i);
-					profile.setCode(String.valueOf(i));
-					service.profile(profile);
+					petServiceYN[i] = (String)request.getParameter(String.valueOf(i));
 				}else {
-					petService[i] = "N";
+					petServiceYN[i] = "N";
 				}
-			}			
+			}
 			
+			profile.setPetService(petServiceYN);
+			
+			service.petServiceInsert(profile);
 //--------------------------------------------------------------------
 
 //---------------------------	사진 업로드 데이터 처리	---------------------------
 			
+			//String uploadFolder = "/home/testpic";
 			String uploadFolder = "C:\\test\\pic";
+			
 			
 			String fileName = "";
 			
@@ -96,26 +97,26 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 				
 				MultipartFile mFile = uploadFile.getFile(index);
 				fileName = mFile.getOriginalFilename();
-				
 
-				if(index.equals("profilePic")) {
-					saveFile = new File(uploadFolder, "profile_"+fileName);
-					filePath = saveFile.getPath();
-					profile.setProfilePicPath(filePath);
-					System.out.println("vo파일경로 저장된거 잘 가져오니 = " + profile.getProfilePicPath());
-				}else {
-					saveFile = new File(uploadFolder, "license_"+fileName);
-					filePath = saveFile.getPath();
-					profile.setLicensePicPath(filePath);
-					System.out.println("vo파일경로 저장된거 잘 가져오니 = " + profile.getLicensePicPath());
-				}
-				
-				System.out.println("파일경로 = " + filePath);
+				if(!fileName.equals("")) {
 
-				try {
-					mFile.transferTo(saveFile);
-				} catch (Exception e) {
-					// TODO: handle exception
+					if(index.equals("profilePic")) {
+						saveFile = new File(uploadFolder, "profile_"+fileName);
+						filePath = saveFile.getPath();
+						profile.setProfilePicPath(filePath);
+					}else {
+						saveFile = new File(uploadFolder, "license_"+fileName);
+						filePath = saveFile.getPath();
+						profile.setLicensePicPath(filePath);
+						service.licenseInsert(profile);
+					}
+						
+					try {
+						mFile.transferTo(saveFile);
+					} catch (Exception e) {
+						// TODO: handle exception
+						System.out.println("사진업로드 Exception " + e);
+					}
 				}
 			}
 
@@ -136,13 +137,23 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 			closed = new String[jsonArr.size()];
 			
 			for(int i=0; i<jsonArr.size(); i++) {
-				closed[i] = (String)jsonArr.get(i);
+
+				profile.setClosed((String)jsonArr.get(i));
+				System.out.println("휴무일 뽑아봐 " + profile.getClosed());
+				service.closedInsert(profile);
 			}
+			
+			service.profileInsert(profile);
+			
+			System.out.println("컨트롤러 끗끝끗");
 			
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e);
 		}
+		
+		
+		
 		
 //---------------------------------------------------------------------------
 	

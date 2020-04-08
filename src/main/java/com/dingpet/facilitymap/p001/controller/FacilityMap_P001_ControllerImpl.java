@@ -3,8 +3,10 @@ package com.dingpet.facilitymap.p001.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.dingpet.facilitymap.p001.service.FacilityMap_P001_Service;
+import com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO;
 
 import lombok.AllArgsConstructor;
 
@@ -24,4 +26,12 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 	public void facilityMap(Model model) {
 		
 	}
+	
+	@RequestMapping(value="medicenterMap", method=RequestMethod.POST)
+	@Override
+	public void medicenterMap(Model model, FacilityMap_P001_VO vo) {
+		
+		
+	}	
+	
 }
