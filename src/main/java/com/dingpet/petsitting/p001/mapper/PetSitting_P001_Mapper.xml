@@ -6,7 +6,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="profileGetList" resultType="com.dingpet.petsitting.p001.vo.PetSitting_P001_VO">
 		select member_id, profile_picpath, profile_content, list_address, profile_picpath 
-		from sitter_profile 		
+		from sitter_profile 
+	</select>
+	
+	<select id="profileLookup" resultType="com.dingpet.petsitting.p001.vo.PetSitting_P001_VO">
+		select member_id, profile_picpath, profile_content, price_small, 
+		price_medium, price_large, list_address 
+		from sitter_profile 
+		where member_id = #{member_ID}
 	</select>
 	
 	<insert id="profileInsert">

@@ -25,7 +25,7 @@ public interface PetSitting_P001_Service {
 	public void albumInsert(PetSitting_P001_VO profile);
 
 	// 프로필 조회 SELECT
-	public void porofileLookup(PetSitting_P001_VO profile);
+	public PetSitting_P001_VO profileLookup(PetSitting_P001_VO profile);
 	
 
 }

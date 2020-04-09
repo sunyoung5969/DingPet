@@ -191,9 +191,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 	public void lookup(Model model, PetSitting_P001_VO profile) {
 		// TODO Auto-generated method stub
 		
-		//service.porofileLookup(profile);
-		
-		
+		model.addAttribute("profile", service.profileLookup(profile));		
 		
 	}
 	

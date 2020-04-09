@@ -27,4 +27,7 @@ public interface PetSitting_P001_Mapper {
 	// 활동 사진 INSERT
 	public void albumInsert(PetSitting_P001_VO profile);
 	
+	// 프로필 조회 SELECT
+	public PetSitting_P001_VO profileLookup(PetSitting_P001_VO profile);
+	
 }
