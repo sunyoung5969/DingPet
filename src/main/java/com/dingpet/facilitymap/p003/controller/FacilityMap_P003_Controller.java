@@ -20,4 +20,16 @@ public class FacilityMap_P003_Controller {
 		
 		model.addAttribute("register", "등록 페이지 입니다");
 	}
+	
+		//=== 샘플페이지 시작 ===
+		@RequestMapping("/facilityinfo_f")
+		public void facilityinfo_f(Model model) {
+			
+		}
+		
+		@RequestMapping("/facilityregister_f")
+		public void facilityregister_f(Model model) {
+			
+		}
+		//=== 샘플페이지 끝 ===	
 }

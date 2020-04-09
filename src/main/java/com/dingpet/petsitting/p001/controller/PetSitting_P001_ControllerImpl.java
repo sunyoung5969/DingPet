@@ -160,13 +160,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 		return "/petsitting/p001/sitterlist";
 	}	
 	
-	@RequestMapping("/profilelookup_f")
-	@Override
-	public void lookup(Model model) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 	@RequestMapping("/update")
 	@Override
 	public void update(Model model) {
@@ -186,12 +180,26 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 		// TODO Auto-generated method stub
 		
 	}
-
+	//===샘플 시작 ===
+	@RequestMapping("/profilelookup_f")
+	@Override
+	public void lookup(Model model) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@RequestMapping("/profileregister_f")
 	@Override
 	public void profileregister_f() {
 		// TODO Auto-generated method stub
 		
 	}
-
 	
+	@RequestMapping("/profilelist_f")
+	@Override
+	public void profilelist_f() {
+		// TODO Auto-generated method stub
+		
+	}
+	//===샘플 페이지 끝 ===
 }
