@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
     
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700, 900|Vollkorn:400i" rel="stylesheet">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="../resources/fonts/icomoon/style.css">
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery-ui.css">
@@ -80,7 +80,7 @@
                 <li class="has-children">
                   <a href="#trainers-section" class="nav-link">펫시터</a>
                   <ul class="dropdown">
-                    <li><a href="/petsitting/p001/profilelist" class="nav-link">펫시터 소개</a></li>
+                    <li><a href="${pageContext.request.contextPath}/petsitting/p001/profilelist" class="nav-link">펫시터 소개</a></li>
                     <li><a href="#" class="nav-link">예약 바로가기</a></li>
                     <li class="has-children">
                       <a href="#">More Links</a>
