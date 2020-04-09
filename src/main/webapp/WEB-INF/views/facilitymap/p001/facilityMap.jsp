@@ -186,7 +186,7 @@
 							<a href="http://apis.map.kakao.com/web/documentation/#CategoryCode" target="_blank">카테고리 코드목록을 보시려면 여기를 클릭하세요!</a>
 						</em>
 					</p>
-					<input id="mylocation" type="button" value=" 내 현재 위치로 이동 " /><br><br>
+					<input class="btn btn-primary" id="mylocation" type="button" value=" 내 현재 위치로 이동 " /><br><br>
 					
 					<div class="map_wrap">
 						<div id="map" style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>

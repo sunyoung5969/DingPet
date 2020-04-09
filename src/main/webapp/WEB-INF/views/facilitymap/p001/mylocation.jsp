@@ -106,13 +106,13 @@
 						<li>위도:<span id="latitude"></span></li>
 						<li>경도:<span id="longitude"></span></li>
 					</ul>
-					<div class="btn-group">
-						<input id="btnStart" type="button" value=" START " /> 
-						<input id="btnStop" type="button" value=" STOP " /> 
-						<input id="btnTest1" type="button" value="테스트 1" /> 
-						<input id="btnTest3" type="button" value="테스트 3" /> 
-						<input id="btnTest4" type="button" value="테스트 4" /> 
-						<input id="btnTest5" type="button" value="테스트 5" />
+					<div>
+						<input class="btn btn-primary" id="btnStart" type="button" value=" START " /> 
+						<input class="btn btn-primary" id="btnStop" type="button" value=" STOP " /> 
+						<input class="btn btn-primary" id="btnTest1" type="button" value="테스트 1" /> 
+						<input class="btn btn-primary" id="btnTest3" type="button" value="테스트 3" /> 
+						<input class="btn btn-primary" id="btnTest4" type="button" value="테스트 4" /> 
+						<input class="btn btn-primary" id="btnTest5" type="button" value="테스트 5" />
 					</div>
 					<div id="map" style="width: 100%; height: 350px;"></div>
 					<script src="${pageContext.request.contextPath}/resources/js/mapPoint.js" type="text/javascript"/>
