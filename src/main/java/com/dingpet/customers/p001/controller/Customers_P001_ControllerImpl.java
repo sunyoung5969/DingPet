@@ -1,60 +1,63 @@
 package com.dingpet.customers.p001.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dingpet.customers.p001.service.Customers_P001_Service;
 import com.dingpet.customers.p001.vo.Customers_P001_VO;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
 
 @RequestMapping("/customers/p001/*")
 @AllArgsConstructor
 @Controller
+@Log4j
 public class Customers_P001_ControllerImpl implements Customers_P001_Controller {
 	
 	private Customers_P001_Service service;
 	
-/*
-@RequestMapping("/min")
-	@Override
-	public String signin_f(ModelAndView mav, HttpServletRequest request, HttpServletResponse response) {
-		String mem_id = request.getParameter("mem_id");
-		
-		mav = new ModelAndView();
-		mav.addObject("mem_id", mem_id);
-		
-		return "change";
-	}
-*/
-	
-
-	@RequestMapping("/signup_f")
-	@Override
-	public void signup_f(Customers_P001_VO member) {
-		// TODO Auto-generated method stub
-
+	@GetMapping("/signin")
+	public void signin() {
+		log.info("로그인 페이지");
 	}
 	
-	
-	@RequestMapping("/insertmem")
-	public void insertmem(Customers_P001_VO member) {
-		
-		member.setMember_id("2999");
-		member.setMember_email("eeee");
-		member.setMember_nickname("nnnnn");
-		member.setMember_pwd("ppppp");
-		
-		service.insertmember(member);
+	@GetMapping("/signup")
+	public void signup() {
+		log.info("회원가입 페이지");
 	}
+	
+	@PostMapping("/signup")
+	public String signup(Customers_P001_VO customers) {
+		log.info("컨트롤러 회원가입 처리");
+		//customers.setMember_id("heoinhye");
+		//customers.setMember_pwd("12345");
+		//customers.setMember_email("hoinhye@naver.com");
+		//customers.setMember_nickname("허이네");
+		service.signup(customers);
+		
+		return "redirect:/customers/p001/signin";
+	}
+	
+	@GetMapping("/change")
+	public void change() {
+		log.info("펫시터회원 신청 페이지");
+	}
+	
+	@PostMapping("/change")
+	public void change(Customers_P001_VO customers) {
+		log.info("컨트롤러 펫시터회원 신청 처리");
+		service.change(customers);
+	}	
 	
 	
 
+
+
+	
 
 	
 	

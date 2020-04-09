@@ -18,33 +18,17 @@ public class Customers_P001_ServiceImple implements Customers_P001_Service{
 	
 	private Customers_P001_Mapper mapper;
 	
-	@Override
-	public void register1(Customers_P001_VO cust) {
-		mapper.insert1(cust);
-		log.info("일반회원 가입");
+	
+	public void signup(Customers_P001_VO customers) {
+		log.info("회원가입 서비스계층");
+		mapper.insert1(customers);
 	}
 	
-	
-	//@Override
-	//public void register2(Customers_P001_VO cust) {
-		//	mapper.insert2(cust);
-		//	log.info("펫시터회원 가입");
-		//}	
-	
-
-	@Override
-	public void insertmember(Customers_P001_VO member) {
-		
-		mapper.insertmember(member);
-		log.info("등록");
+	public void change(Customers_P001_VO customers) {
+		log.info("펫시터회원 가입 서비스계층");
+		mapper.insert2(customers);
 		
 	}
 
-
-
 	
-	
-	
-	
-
 }

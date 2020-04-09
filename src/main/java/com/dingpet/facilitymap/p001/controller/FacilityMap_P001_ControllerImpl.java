@@ -25,4 +25,12 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 		
 	}
 	
+	
+	@RequestMapping(value="medicenterMap", method=RequestMethod.POST)
+	@Override
+	public void medicenterMap(Model model, FacilityMap_P001_VO vo) {
+		
+		
+	}	
+	
 }
