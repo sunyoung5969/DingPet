@@ -6,6 +6,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -34,11 +35,13 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 	private HttpServletRequest request;
 	private PetSitting_P001_Service service;
 	
-	@RequestMapping("sitterlist")
+	@RequestMapping("profilelist")
 	@Override
-	public void petsitterlist(Model model) {
+	public void profilelist(Model model) {
 		// TODO Auto-generated method stub
-		
+				
+		model.addAttribute("list", service.profileGetList());
+
 	}
 
 	@RequestMapping("profileregister")
@@ -56,9 +59,8 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 		String[] petService;
 		String[] closed;
 		
-		String id = String.valueOf((int)((Math.random()*8999)+1000));
-		
-		profile.setMember_ID(id);
+		//String id = String.valueOf((int)((Math.random()*8999)+1000));
+		//profile.setMember_ID(id);
 		
 		try {
 
@@ -94,18 +96,20 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 				File saveFile;
 				String filePath;
 				String index = files.next();
-				
+				UUID profile_UUID = UUID.randomUUID();
+				UUID license_UUID = UUID.randomUUID();
+
 				MultipartFile mFile = uploadFile.getFile(index);
 				fileName = mFile.getOriginalFilename();
 
 				if(!fileName.equals("")) {
 
 					if(index.equals("profilePic")) {
-						saveFile = new File(uploadFolder, "profile_"+fileName);
+						saveFile = new File(uploadFolder, profile_UUID.toString()+"profile_"+fileName);
 						filePath = saveFile.getPath();
 						profile.setProfile_PicPath(filePath);
 					}else {
-						saveFile = new File(uploadFolder, "license_"+fileName);
+						saveFile = new File(uploadFolder, license_UUID.toString()+"license_"+fileName);
 						filePath = saveFile.getPath();
 						profile.setLicense_PicPath(filePath);
 						service.licenseInsert(profile);
@@ -174,17 +178,22 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	@RequestMapping("/profilelookup_f")
 	@Override
 	public void profilelookup_f() {
 		// TODO Auto-generated method stub
 		
 	}
 	//===샘플 시작 ===
-	@RequestMapping("/profilelookup_f")
+	@RequestMapping("/profilelookup")
 	@Override
-	public void lookup(Model model) {
+	public void lookup(Model model, PetSitting_P001_VO profile) {
 		// TODO Auto-generated method stub
+		
+		//service.porofileLookup(profile);
+		
+		
 		
 	}
 	

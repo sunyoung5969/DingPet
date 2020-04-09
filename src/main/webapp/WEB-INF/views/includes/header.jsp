@@ -80,7 +80,7 @@
                 <li class="has-children">
                   <a href="#trainers-section" class="nav-link">펫시터</a>
                   <ul class="dropdown">
-                    <li><a href="/petsitting/p001/profilelist_f" class="nav-link">펫시터 소개_f</a></li>
+                    <li><a href="/petsitting/p001/profilelist" class="nav-link">펫시터 소개</a></li>
                     <li><a href="#" class="nav-link">예약 바로가기</a></li>
                     <li class="has-children">
                       <a href="#">More Links</a>

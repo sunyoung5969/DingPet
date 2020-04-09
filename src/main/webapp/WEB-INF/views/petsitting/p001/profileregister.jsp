@@ -333,6 +333,7 @@
 		<h1>등록페이지입니당</h1>
 	</div>
 	<form action="/petsitting/p001/registerdata" method="post" enctype="multipart/form-data">
+		<input type="text" name="member_ID"><br><Br><Br><br><br>
 		<div class="filebox">
 			<label for="profilePic"><img style="width: 150px; height: 240px" src="https://i.imgur.com/hQaabc4.png">
 				<div class="img-text"><p>사 진 등 록</p></div>
@@ -445,6 +446,7 @@
 		<span id="guide" style="color:#999;display:none"></span>
 		<input type="text" id="sample4_detailAddress" name="profile_DetailAddress" placeholder="상세주소">
 		<input type="text" id="sample4_extraAddress" name="extraAddress" placeholder="참고항목">
+		<input type="hidden" id="sigungu_bname" name="list_Address">
 		
 		<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 		<script>
@@ -477,7 +479,7 @@
 		                document.getElementById('sample4_postcode').value = data.zonecode;
 		                document.getElementById("sample4_roadAddress").value = roadAddr;
 		                document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
-		                
+		                document.getElementById("sigungu_bname").value = data.sigungu +" "+data.bname;
 		                // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
 		                if(roadAddr !== ''){
 		                    document.getElementById("sample4_extraAddress").value = extraRoadAddr;

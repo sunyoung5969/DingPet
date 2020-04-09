@@ -20,6 +20,7 @@ public class PetSitting_P001_VO {
 	private String profile_JibunAddress;	// 지번 주소
 	private String profile_DetailAddress;	// 상세 주소
 	private String schedule_Closed;			// 휴무일
+	private String list_Address;			// 리스트 주소
 
 	private String[] petService;			// 펫서비스
 

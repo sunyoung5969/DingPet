@@ -1,11 +1,16 @@
 package com.dingpet.petsitting.p001.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
 import com.dingpet.petsitting.p001.vo.PetSitting_P001_VO;
 
-public interface PetSitting_P001_Mapper {
+public interface PetSitting_P001_Mapper {	
+
+	// 프로필 목록 SELECT
+	public List<PetSitting_P001_VO> profileGetList();
 	
 	// 프로필 기본데이터 INSERT
 	public void profileInsert(PetSitting_P001_VO profile);
