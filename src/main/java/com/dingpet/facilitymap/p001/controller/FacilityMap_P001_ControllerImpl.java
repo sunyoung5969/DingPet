@@ -24,4 +24,5 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 	public void facilityMap(Model model) {
 		
 	}
+	
 }

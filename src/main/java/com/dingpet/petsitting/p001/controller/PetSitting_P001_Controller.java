@@ -18,6 +18,7 @@ public interface PetSitting_P001_Controller {
 	//샘플페이지 시작
 	public void profilelookup_f();
 	public void profileregister_f();
+	public void profilelist_f();
 	//샘플페이지 시작
 	
 }
