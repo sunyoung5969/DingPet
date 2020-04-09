@@ -342,7 +342,7 @@
 		
 		<div class="form-group">
 			<label><h3>펫 시 터 소 개</h3></label>
-			<textarea class="form-control" rows="13" name="content"></textarea>
+			<textarea class="form-control" rows="13" name="profile_Content"></textarea>
 		</div>
 		
 		<h3> 자격증 </h3>
@@ -357,15 +357,15 @@
 				<table>
 					<tr>
 						<td><h4>자격증 명</h4>
-						<input type="text" name="licenseName"></td>
+						<input type="text" name="license_Name"></td>
 					</tr>
 					<tr>
 						<td><h5>기관 명</h5>
-						<input type="text" name="licenseAgency"></td>
+						<input type="text" name="license_Agency"></td>
 					</tr>
 					<tr>
 						<td><h5>취득날짜</h5>
-						<input type="text" name="licenseDate"></td>
+						<input type="text" name="license_Date"></td>
 					</tr>
 				
 				</table>
@@ -423,27 +423,27 @@
 			<tr>
 				<td><p class="dogtype">소형견</p></td>
 				<td><img class="serviceimg" src="https://petplanet.co/static/images/page_details/price_pet_small.png"></td>
-				<td><input type="text" name="small"> 원</td>
+				<td><input type="text" name="price_Small"> 원</td>
 			</tr>
 			<tr>
 				<td><p class="dogtype">중형견</p></td>
 				<td><img class="serviceimg" src="https://petplanet.co/static/images/page_details/price_pet_small.png"></td>
-				<td><input type="text" name="medium"> 원</td>
+				<td><input type="text" name="price_Medium"> 원</td>
 			</tr>
 			<tr>
 				<td><p class="dogtype">대형견</p></td>
 				<td><img class="serviceimg" src="https://petplanet.co/static/images/page_details/price_pet_small.png"></td>
-				<td><input type="text" name="large"> 원</td>
+				<td><input type="text" name="price_Large"> 원</td>
 			</tr>
 		</table>
 		<h3>내 위치 (가까운역이나 정류장 등 대략적인 위치를 입력해주세요)</h3>
 		
-		<input type="text" id="sample4_postcode" name="postcode" placeholder="우편번호">
+		<input type="text" id="sample4_postcode" name="profile_Postcode" placeholder="우편번호">
 		<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-		<input type="text" id="sample4_roadAddress" name="roadAddress" placeholder="도로명주소">
-		<input type="text" id="sample4_jibunAddress" name="jibunAddress" placeholder="지번주소">
+		<input type="text" id="sample4_roadAddress" name="profile_RoadAddress" placeholder="도로명주소">
+		<input type="text" id="sample4_jibunAddress" name="profile_JibunAddress" placeholder="지번주소">
 		<span id="guide" style="color:#999;display:none"></span>
-		<input type="text" id="sample4_detailAddress" name="detailAddress" placeholder="상세주소">
+		<input type="text" id="sample4_detailAddress" name="profile_DetailAddress" placeholder="상세주소">
 		<input type="text" id="sample4_extraAddress" name="extraAddress" placeholder="참고항목">
 		
 		<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

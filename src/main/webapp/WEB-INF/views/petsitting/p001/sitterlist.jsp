@@ -8,7 +8,9 @@
 </head>
 <body>
 <h1>탑메뉴</h1>
-<a href="profileregister">등록</a>
-<a href="profilelookup_f">조회</a>
+<div>
+	<a href="profileregister">등록</a>
+	<a href="profilelookup_f">조회</a>
+</div>
 </body>
 </html>

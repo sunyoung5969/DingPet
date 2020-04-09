@@ -58,7 +58,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 		
 		String id = String.valueOf((int)((Math.random()*8999)+1000));
 		
-		profile.setId(id);
+		profile.setMember_ID(id);
 		
 		try {
 
@@ -103,11 +103,11 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 					if(index.equals("profilePic")) {
 						saveFile = new File(uploadFolder, "profile_"+fileName);
 						filePath = saveFile.getPath();
-						profile.setProfilePicPath(filePath);
+						profile.setProfile_PicPath(filePath);
 					}else {
 						saveFile = new File(uploadFolder, "license_"+fileName);
 						filePath = saveFile.getPath();
-						profile.setLicensePicPath(filePath);
+						profile.setLicense_PicPath(filePath);
 						service.licenseInsert(profile);
 					}
 						
@@ -138,8 +138,8 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 			
 			for(int i=0; i<jsonArr.size(); i++) {
 
-				profile.setClosed((String)jsonArr.get(i));
-				System.out.println("휴무일 뽑아봐 " + profile.getClosed());
+				profile.setSchedule_Closed((String)jsonArr.get(i));
+				System.out.println("휴무일 뽑아봐 " + profile.getSchedule_Closed());
 				service.closedInsert(profile);
 			}
 			
