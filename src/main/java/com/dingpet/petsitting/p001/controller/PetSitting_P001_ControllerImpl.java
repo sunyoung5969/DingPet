@@ -78,7 +78,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 			
 			profile.setPetService(petServiceYN);
 			
-			service.petServiceInsert(profile);
+			//service.petServiceInsert(profile);
 //--------------------------------------------------------------------
 
 //---------------------------	사진 업로드 데이터 처리	---------------------------
