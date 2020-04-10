@@ -96,8 +96,8 @@
                   <a href="#services-section" class="nav-link">동반시설지도</a>
                   <ul class="dropdown">
                     <li><a href="/facilitymap/p001/facilityMap" class="nav-link">시설지도</a></li>
-                    <li><a href="/facilitymap/p003/facilityregister_f" class="nav-link">시설지도 등록_f</a></li>
-                    <li><a href="/facilitymap/p003/facilityinfo_f" class="nav-link">시설지도 보기_f</a></li>
+                    <li><a href="/facilitymap/p003/facilityregister" class="nav-link">시설지도 등록_f</a></li>
+                    <li><a href="/facilitymap/p003/facilityinfo" class="nav-link">시설지도 보기_f</a></li>
                     <li class="has-children">
                       <a href="#">More Links</a>
                       <ul class="dropdown">
