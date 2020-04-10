@@ -3,32 +3,48 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dingpet.petsitting.p001.mapper.PetSitting_P001_Mapper">
+
+	<select id="profileGetList" resultType="com.dingpet.petsitting.p001.vo.PetSitting_P001_VO">
+		select member_id, profile_picpath, profile_content, list_address, profile_picpath 
+		from sitter_profile 
+	</select>
+	
+	<select id="profileLookup" resultType="com.dingpet.petsitting.p001.vo.PetSitting_P001_VO">
+		select member_id, profile_picpath, profile_content, price_small, 
+		price_medium, price_large, list_address 
+		from sitter_profile 
+		where member_id = #{member_ID}
+	</select>
 	
 	<insert id="profileInsert">
-		insert into sitter_profile (member_id, profile_photo, profile_content, 
+		insert into sitter_profile (member_id, profile_picpath, profile_content, 
 		price_small, price_medium, price_large, profile_roadaddress, 
-		profile_jibunaddress, profile_detailaddress) 
-		values(#{id}, #{profilePicPath}, #{content}, #{small}, #{medium}, #{large}, 
-		#{roadAddress}, #{jibunAddress}, #{detailAddress})
+		profile_jibunaddress, profile_detailaddress, list_address, 
+		service_00, service_01, service_02, service_03, 
+		service_04, service_05, service_06, service_07) 
+		values(#{member_ID}, #{profile_PicPath}, #{profile_Content}, #{price_Small}, #{price_Medium}, #{price_Large}, 
+		#{profile_RoadAddress}, #{profile_JibunAddress}, #{profile_DetailAddress}, #{list_Address}, 
+		#{petService[0]}, #{petService[1]}, #{petService[2]}, #{petService[3]}, 
+		#{petService[4]}, #{petService[5]}, #{petService[6]}, #{petService[7]})
 	</insert>
 	
 	<insert id="licenseInsert">
-		insert into license (member_id, license_id, license_photo, 
+		insert into license (member_id, license_id, license_picpath, 
 		license_name, license_agency, license_date) 
-		values(#{id}, seq_license.nextval, #{licensePicPath}, 
-		#{licenseName}, #{licenseAgency}, #{licenseDate})
+		values(#{member_ID}, seq_license.nextval, #{license_PicPath}, 
+		#{license_Name}, #{license_Agency}, #{license_Date})
 	</insert>
 	
 	<insert id="petServiceInsert">
 		insert into service (member_id, service_00, service_01, service_02, service_03, 
 		service_04, service_05, service_06, service_07) 
-		values(#{id}, #{petService[0]}, #{petService[1]}, #{petService[2]}, 
+		values(#{member_ID}, #{petService[0]}, #{petService[1]}, #{petService[2]}, 
 		#{petService[3]}, #{petService[4]}, #{petService[5]}, #{petService[6]}, #{petService[7]})
 	</insert>
 	
 	<insert id="closedInsert">
 		insert into schedule (member_id, schedule_id, schedule_closed) 
-		values(#{id}, seq_schedule.nextval, #{closed})
+		values(#{member_ID}, seq_schedule.nextval, #{schedule_Closed})
 	</insert>
 	
 	<insert id="albumInsert">

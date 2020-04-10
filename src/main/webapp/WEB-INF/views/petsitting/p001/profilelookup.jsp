@@ -17,14 +17,14 @@
                                     <img src="https://img.sbs.co.kr/newsnet/etv/upload/2019/01/21/30000621766.jpg" alt="Circle Image" class="img-raised rounded-circle img-fluid">
                                 </div>
                                 <div class="name text-center">
-                                    <h4 class="title">리정혁 동무</h4>
+                                    <h4 class="title">${profile.member_ID }</h4>
                                     <h6>PetSitter</h6>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="description text-center">
-                        <p>우연한 기회에 펫시터에 대해 알게 되었고 제가 너무 좋아하고 잘할 수 있는 일이라 생각되어 시작하게 되었습니다.. 활동을 하다보니 역시나 저에게 너무 잘 맞았고 일이라는 생각이 전혀 안 들 정도로 아이들과 교감하는 것이 행복했습니다. 집에 오는 아가들이 잘 따르고 편안해 할 때와 너무 만족해 하시며 고마워 하시는 견주님들을 볼 때 너무 보람있고 행복한 일이라고 느끼고 있습니다. 앞으로도 처음 그 마음처럼 사랑과 정성으로 아이들을 돌보겠습니다~~^^</p>
+                        <p>${profile.profile_Content }</p>
                     </div>
                     <div class="service_warp">
                       <div class="service_list">

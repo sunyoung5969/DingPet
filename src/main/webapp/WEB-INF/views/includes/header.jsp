@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
     
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700, 900|Vollkorn:400i" rel="stylesheet">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="../resources/fonts/icomoon/style.css">
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery-ui.css">
@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
     <!--css 추가-->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-    
+     <link rel="stylesheet" type="text/css" href="https://assets.mypetlife.co.kr/map/wp-content/themes/listify/css/style.min.css">
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300" id="home-section">
   
@@ -64,7 +64,7 @@
                 <li class="has-children">
                   <a href="#about-section" class="nav-link">반려견 찾기</a>
                   <ul class="dropdown">
-                    <li><a href="/lostpets/p001/tempshelterslist_f" class="nav-link">유기견 보호</a></li>
+                    <li><a href="/lostpets/p001/tempshelterslist_f" class="nav-link">유기견 보호_f</a></li>
                     <li><a href="#" class="nav-link">유기견 찾기</a></li>
                     <li class="has-children">
                       <a href="#">More Links</a>
@@ -80,7 +80,7 @@
                 <li class="has-children">
                   <a href="#trainers-section" class="nav-link">펫시터</a>
                   <ul class="dropdown">
-                    <li><a href="#" class="nav-link">펫시터 소개</a></li>
+                    <li><a href="${pageContext.request.contextPath}/petsitting/p001/profilelist" class="nav-link">펫시터 소개</a></li>
                     <li><a href="#" class="nav-link">예약 바로가기</a></li>
                     <li class="has-children">
                       <a href="#">More Links</a>
@@ -95,8 +95,9 @@
                 <li class="has-children">
                   <a href="#services-section" class="nav-link">동반시설지도</a>
                   <ul class="dropdown">
-                    <li><a href="/facilitymap/p001/facilityMap" class="nav-link">동반시설지도</a></li>
-                    <li><a href="/facilitymap/p003/register" class="nav-link">동반시설지도 등록</a></li>
+                    <li><a href="/facilitymap/p001/facilityMap" class="nav-link">시설지도</a></li>
+                    <li><a href="/facilitymap/p003/facilityregister" class="nav-link">시설지도 등록_f</a></li>
+                    <li><a href="/facilitymap/p003/facilityinfo" class="nav-link">시설지도 보기_f</a></li>
                     <li class="has-children">
                       <a href="#">More Links</a>
                       <ul class="dropdown">

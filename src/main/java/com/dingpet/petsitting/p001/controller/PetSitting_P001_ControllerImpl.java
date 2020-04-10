@@ -6,6 +6,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -34,11 +35,13 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 	private HttpServletRequest request;
 	private PetSitting_P001_Service service;
 	
-	@RequestMapping("sitterlist")
+	@RequestMapping("profilelist")
 	@Override
-	public void petsitterlist(Model model) {
+	public void profilelist(Model model) {
 		// TODO Auto-generated method stub
-		
+				
+		model.addAttribute("list", service.profileGetList());
+
 	}
 
 	@RequestMapping("profileregister")
@@ -56,9 +59,8 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 		String[] petService;
 		String[] closed;
 		
-		String id = String.valueOf((int)((Math.random()*8999)+1000));
-		
-		profile.setId(id);
+		//String id = String.valueOf((int)((Math.random()*8999)+1000));
+		//profile.setMember_ID(id);
 		
 		try {
 
@@ -76,7 +78,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 			
 			profile.setPetService(petServiceYN);
 			
-			service.petServiceInsert(profile);
+			//service.petServiceInsert(profile);
 //--------------------------------------------------------------------
 
 //---------------------------	사진 업로드 데이터 처리	---------------------------
@@ -94,20 +96,22 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 				File saveFile;
 				String filePath;
 				String index = files.next();
-				
+				UUID profile_UUID = UUID.randomUUID();
+				UUID license_UUID = UUID.randomUUID();
+
 				MultipartFile mFile = uploadFile.getFile(index);
 				fileName = mFile.getOriginalFilename();
 
 				if(!fileName.equals("")) {
 
 					if(index.equals("profilePic")) {
-						saveFile = new File(uploadFolder, "profile_"+fileName);
+						saveFile = new File(uploadFolder, profile_UUID.toString()+"profile_"+fileName);
 						filePath = saveFile.getPath();
-						profile.setProfilePicPath(filePath);
+						profile.setProfile_PicPath(filePath);
 					}else {
-						saveFile = new File(uploadFolder, "license_"+fileName);
+						saveFile = new File(uploadFolder, license_UUID.toString()+"license_"+fileName);
 						filePath = saveFile.getPath();
-						profile.setLicensePicPath(filePath);
+						profile.setLicense_PicPath(filePath);
 						service.licenseInsert(profile);
 					}
 						
@@ -138,8 +142,8 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 			
 			for(int i=0; i<jsonArr.size(); i++) {
 
-				profile.setClosed((String)jsonArr.get(i));
-				System.out.println("휴무일 뽑아봐 " + profile.getClosed());
+				profile.setSchedule_Closed((String)jsonArr.get(i));
+				System.out.println("휴무일 뽑아봐 " + profile.getSchedule_Closed());
 				service.closedInsert(profile);
 			}
 			
@@ -160,13 +164,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 		return "/petsitting/p001/sitterlist";
 	}	
 	
-	@RequestMapping("/profilelookup_f")
-	@Override
-	public void lookup(Model model) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 	@RequestMapping("/update")
 	@Override
 	public void update(Model model) {
@@ -180,18 +178,35 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	@RequestMapping("/profilelookup_f")
 	@Override
 	public void profilelookup_f() {
 		// TODO Auto-generated method stub
 		
 	}
-
+	//===샘플 시작 ===
+	@RequestMapping("/profilelookup")
+	@Override
+	public void lookup(Model model, PetSitting_P001_VO profile) {
+		// TODO Auto-generated method stub
+		
+		model.addAttribute("profile", service.profileLookup(profile));		
+		
+	}
+	
+	@RequestMapping("/profileregister_f")
 	@Override
 	public void profileregister_f() {
 		// TODO Auto-generated method stub
 		
 	}
-
 	
+	@RequestMapping("/profilelist_f")
+	@Override
+	public void profilelist_f() {
+		// TODO Auto-generated method stub
+		
+	}
+	//===샘플 페이지 끝 ===
 }
