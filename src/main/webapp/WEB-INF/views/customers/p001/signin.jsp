@@ -42,7 +42,7 @@
                         <h2 class="form-title">로 그 인</h2>
                         
                         
-                        <form method="POST" class="register-form" id="login-form" action="signinCheck">
+                        <form method="POST" class="register-form" id="login-form" action="signin">
                             
                             <div class="form-group">
                                 <label for="your_id"><i class="zmdi zmdi-account material-icons-name"></i></label>
