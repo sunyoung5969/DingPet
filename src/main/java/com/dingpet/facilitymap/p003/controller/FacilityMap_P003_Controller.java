@@ -22,12 +22,12 @@ public class FacilityMap_P003_Controller {
 	}
 	
 	//=== 샘플페이지 시작 ===
-	@RequestMapping("/facilityinfo_f")
+	@RequestMapping("/facilityinfo")
 	public void facilityinfo_f(Model model) {
 		
 	}
 		
-	@RequestMapping("/facilityregister_f")
+	@RequestMapping("/facilityregister")
 	public void facilityregister_f(Model model) {
 		
 	}
