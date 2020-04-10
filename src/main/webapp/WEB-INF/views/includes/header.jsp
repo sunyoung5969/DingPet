@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!doctype html>
-<html lang=ko">
+<html lang="ko">
   <head>
     <title>DingPet.</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
     
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700, 900|Vollkorn:400i" rel="stylesheet">
-    <link rel="stylesheet" href="../resources/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/fonts/icomoon/style.css">
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery-ui.css">
@@ -98,6 +98,8 @@
                     <li><a href="/facilitymap/p001/facilityMap" class="nav-link">시설지도</a></li>
                     <li><a href="/facilitymap/p003/facilityregister" class="nav-link">시설지도 등록_f</a></li>
                     <li><a href="/facilitymap/p003/facilityinfo" class="nav-link">시설지도 보기_f</a></li>
+                    <li><a href="/facilitymap/p003/register" class="nav-link">시설test</a></li>
+                    <li><a href="/facilitymap/p003/infopage" class="nav-link">시설인포test</a></li>
                     <li class="has-children">
                       <a href="#">More Links</a>
                       <ul class="dropdown">

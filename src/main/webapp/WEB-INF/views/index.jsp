@@ -21,7 +21,8 @@
 				<a href="/petsitting/p001/sitterlist">펫시터</a>
 				<a href="/facilitymap/p001/mylocation">산책하기</a>
 				<a href="/facilitymap/p001/facilityMap">시설 지도</a>
-				<a href="/facilitymap/p003/facilityregister">시설 신규 등록</a>
+				<a href="/facilitymap/p003/register">시설 신규 등록</a>
+				<a href="/facilitymap/p003/infopage">시설 상세정보</a>
 			</div>
 			
           </div>
