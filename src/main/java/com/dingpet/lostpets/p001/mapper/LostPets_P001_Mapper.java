@@ -1,6 +1,28 @@
 package com.dingpet.lostpets.p001.mapper;
 
-public interface LostPets_P001_Mapper {
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import com.dingpet.lostpets.p001.vo.LostPets_P001_VO;
+
+public interface LostPets_P001_Mapper {
+	
+	//목록 조회
+	public List<Map<String,String>> list();
+	
+	//등록
+	public void writeLost(Map<String, String> writeMap);
+	public void writeDog(Map<String, String> writeMap);
+	
+	//조회
+	public LostPets_P001_VO view(String board_id);
+	
+	//수정
+	public int modify(LostPets_P001_VO lostVO);
+	
+	//삭제
+	public int delete(String board_id);
+	
 	
 }

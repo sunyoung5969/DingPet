@@ -15,11 +15,11 @@
                         <div class="card">
                             <div class="card-header">임시보호 등록</div>
                             <div class="card-body pd40">
-                                <form action="" method="">
+                                <form action="/lostpets/p001/write" method="post">
                                     <div class="form-group row">
                                         <label class="col-md-4 col-form-label text-md-right">제목</label>
                                         <div class="col-md-6">
-                                            <input type="text" id="tempshelters-title" class="form-control" name="tempshelters-title">
+                                            <input type="text" id="tempshelters-title" class="form-control" name="title">
                                         </div>
                                     </div>
         
@@ -62,13 +62,13 @@
                                     <div class="form-group row">
                                         <label class="col-md-4 col-form-label text-md-right">내용</label>
                                         <div class="col-md-6">
-                                            <textarea id="form_message" name="form_message" class="form-control" rows="4" ></textarea>
+                                            <textarea id="form_message" name="content" class="form-control" rows="4" ></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-4 col-form-label text-md-right">사진</label>
                                         <div class="col-md-6">
-                                            <input type="file" name="profile_pt" id="profile_pt" onchange="previewImage(this,'View_area')">
+                                            <input type="file" name="photo_front" id="profile_pt" onchange="previewImage(this,'View_area')">
                                             <div id='View_area' class="img_up"></div>
                                         </div>
                                     </div>

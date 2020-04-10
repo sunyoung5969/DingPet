@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/fonts/flaticon/font/flaticon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/aos.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/list.css">
     <!--css 추가-->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
     
@@ -64,7 +65,7 @@
                 <li class="has-children">
                   <a href="#about-section" class="nav-link">반려견 찾기</a>
                   <ul class="dropdown">
-                    <li><a href="/lostpets/p001/tempshelterslist_f" class="nav-link">유기견 보호</a></li>
+                    <li><a href="/lostpets/p001/list" class="nav-link">유기견 보호</a></li>
                     <li><a href="#" class="nav-link">유기견 찾기</a></li>
                     <li class="has-children">
                       <a href="#">More Links</a>
