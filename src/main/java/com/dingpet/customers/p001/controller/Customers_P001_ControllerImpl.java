@@ -35,7 +35,7 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		log.info("로그인 페이지 출력");
 	}
 	
-	@PostMapping("/signinCheck")
+	@PostMapping("/signin")
 	public ModelAndView signin(@ModelAttribute("customers") Customers_P001_VO customers,
 			HttpServletRequest request, HttpServletResponse response)  {
 		log.info("로그인 처리");	
