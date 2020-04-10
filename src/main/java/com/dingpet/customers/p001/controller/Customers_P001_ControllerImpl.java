@@ -46,7 +46,7 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 			HttpSession session = request.getSession();
 			session.setAttribute("customers", result);
 			session.setAttribute("isLogOn", true);
-			mav.setViewName("redirect:/");
+			mav.setViewName("redirect:/index");
 			log.info("로그인 성공");
 			
 		}else {

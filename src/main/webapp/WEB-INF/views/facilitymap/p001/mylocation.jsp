@@ -76,21 +76,10 @@
 <meta charset="UTF-8">
 <title>DingPet_산책하기</title>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=78d603c9ceea19aeba68479415b917d4"/>
-<script>
-	// 버튼 이벤트 추가  
-	function bodyInit() {
-		document.getElementById("btnTest1").addEventListener("click", btnTest);
-		document.getElementById("btnTest3").addEventListener("click", btnTest3);
-		document.getElementById("btnTest4").addEventListener("click", btnTest4);
-		document.getElementById("btnTest5").addEventListener("click", btnTest5);
-		document.getElementById("btnStop")
-				.addEventListener("click", clearWatch);
-	}
-</script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=78d603c9ceea19aeba68479415b917d4"></script>
 </head>
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
-<body onload='bodyInit()'>
+<body>
 	<section class="site-blocks-cover overflow-hidden bg-light">
 		<div class="container">
 			<div class="row">
@@ -115,7 +104,7 @@
 						<input class="btn btn-primary" id="btnTest5" type="button" value="테스트 5" />
 					</div>
 					<div id="map" style="width: 100%; height: 350px;"></div>
-					<script src="${pageContext.request.contextPath}/resources/js/mapPoint.js" type="text/javascript"/>
+					<script src="${pageContext.request.contextPath}/resources/js/mapPoint.js" type="text/javascript"></script>
 					<p>
 						<em>지도 Start 클릭하면 선 그리기가 시작되고<br>Stop 버튼을 클릭하면 선 그리기가
 							종료됩니다
