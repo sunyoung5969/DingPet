@@ -1,7 +1,5 @@
 package com.dingpet.customers.p001.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -11,8 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 import com.dingpet.customers.p001.service.Customers_P001_Service;
 import com.dingpet.customers.p001.vo.Customers_P001_VO;
@@ -30,12 +29,12 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 	private Customers_P001_Service service;
 	
 	
-	@GetMapping("/signin")
+	@RequestMapping(value="/signin", method = {RequestMethod.GET})
 	public void signin() {
 		log.info("로그인 페이지 출력");
 	}
 	
-	@PostMapping("/signin")
+	@RequestMapping(value="/signin", method = {RequestMethod.POST})
 	public ModelAndView signin(@ModelAttribute("customers") Customers_P001_VO customers,
 			HttpServletRequest request, HttpServletResponse response)  {
 		log.info("로그인 처리");	

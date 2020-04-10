@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>DingPet SignIn</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/fonts/material-icon/css/material-design-iconic-font.min.css">
