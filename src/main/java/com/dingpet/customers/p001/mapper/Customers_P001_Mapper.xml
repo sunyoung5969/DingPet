@@ -29,5 +29,10 @@
 </select>
 
 
+<!-- id중복체크 -->
+<select id="overlappedId" resultType="int" parameterType="String">
+	select count(member_id) from member where member_id = #{memebr_id}
+</select>
+
 
 </mapper>

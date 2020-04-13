@@ -4,7 +4,7 @@ import org.apache.ibatis.annotations.Select;
 
 public interface Customers_P002_Mapper {
 
-	@Select("select count(*) from tbl_board")
+	@Select("select count(*) from member")
 	public int getTotal();
 
 }

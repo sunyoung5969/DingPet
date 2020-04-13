@@ -12,4 +12,7 @@ public interface Customers_P001_Mapper {
 
 	//로그인 
 	public Customers_P001_VO loginCheck(Customers_P001_VO customers);
+	
+	//id중복체크
+	public int overlappedId(String id);
 }

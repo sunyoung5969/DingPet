@@ -34,17 +34,12 @@
         <section class="sign-in">
             <div class="container">
                 <div class="signin-content">
-                    <div class="signin-image">
-                        <figure><img src="${pageContext.request.contextPath}/resources/images/sign/signin-image.png" alt="sing up image"></figure>
-                        <a href="signup" class="signup-image-link">회원가입</a>
-                    </div>
 
                     <div class="signin-form">
                         <h2 class="form-title">로 그 인</h2>
                         
                         
-                        <form method="POST" class="register-form" id="login-form" action="signin">
-                            
+                        <form method="POST" class="register-form" id="login-form" action="signin">                    
                             <div class="form-group">
                                 <label for="your_id"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 아이디<input type="text" name="member_id" id="member_id" placeholder="Your ID"/>
@@ -54,14 +49,14 @@
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
                                 패스워드<input type="password" name="member_pwd" id="member_pwd" placeholder="Password"/>
                             </div>
+                                                                                    
+                            <div class="form-group form-button">
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                            </div>   
                             
                             <div class="form-group">
                                 <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
-                                <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
-                            </div>
-                            
-                            <div class="form-group form-button">
-                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                                <label for="remember-me" class="label-agree-term"><span><span></span></span>로그인 상태 유지</label>
                             </div>
                             
                         </form>
@@ -75,7 +70,23 @@
                                 <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
                             </ul>
                         </div>
+                        
+                        
                     </div>
+                    
+                    <div class="signin-image">
+                        <figure><img src="${pageContext.request.contextPath}/resources/images/sign/signin-image.png" alt="sing up image"></figure>
+                        <a href="signup" class="signup-image-link">회원가입</a>
+                    </div>
+                    
+                    <div class="signin-image">
+                        <a href="/customers/p002/lostid">아이디 찾기</a>
+                    </div>
+                    
+                    <div class="signin-image">
+                        <a href="signup" class="signup-image-link">비밀번호 찾기</a>
+                    </div>
+                    
                 </div>
             </div>
         </section>

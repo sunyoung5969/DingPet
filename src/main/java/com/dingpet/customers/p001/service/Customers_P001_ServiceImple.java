@@ -29,10 +29,13 @@ public class Customers_P001_ServiceImple implements Customers_P001_Service{
 	
 	//로그인
 	public Customers_P001_VO loginCheck(Customers_P001_VO customers) {
-		
 		return mapper.loginCheck(customers);
 		
 	}
-
+	
+	//id중복체크
+	public int overlappedId(String id) {
+		return mapper.overlappedId(id);
+	}
 
 }
