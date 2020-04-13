@@ -187,7 +187,8 @@
 						</em>
 					</p>
 					<input class="btn btn-primary" id="mylocation" type="button" value=" 내 현재 위치로 이동 " /><br><br>
-					
+					<input type="hidden" name="lat" id="latitude">
+					<input type="hidden" name="lit" id="longitude">
 					<div class="map_wrap">
 						<div id="map" style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
 						<ul id="category">

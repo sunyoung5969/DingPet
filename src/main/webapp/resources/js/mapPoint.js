@@ -3,7 +3,11 @@
 	
 	
 	document.getElementById("btnStart").addEventListener("click", init);
-	
+	document.getElementById("btnTest1").addEventListener("click", btnTest);
+	document.getElementById("btnTest3").addEventListener("click", btnTest3);
+	document.getElementById("btnTest4").addEventListener("click", btnTest4);
+	document.getElementById("btnTest5").addEventListener("click", btnTest5);
+	document.getElementById("btnStop").addEventListener("click", clearWatch);
 	var watchID = null;
 	var setNum = 0;
 	var ele = document.getElementById("map");

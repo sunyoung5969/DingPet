@@ -9,12 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>DingPet SignIn</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/fonts/material-icon/css/material-design-iconic-font.min.css">
 
     <!-- Main css -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sign.css">
+    
+    
 </head>
 <body>
 
@@ -40,16 +43,16 @@
                         <h2 class="form-title">로 그 인</h2>
                         
                         
-                        <form method="GET" class="register-form" id="login-form" action="/signin">
+                        <form method="POST" class="register-form" id="login-form" action="signin">
                             
                             <div class="form-group">
                                 <label for="your_id"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                아이디<input type="text" name="your_id" id="your_id" placeholder="Your ID"/>
+                                아이디<input type="text" name="member_id" id="member_id" placeholder="Your ID"/>
                             </div>
                             
                             <div class="form-group">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                패스워드<input type="password" name="your_pass" id="your_pass" placeholder="Password"/>
+                                패스워드<input type="password" name="member_pwd" id="member_pwd" placeholder="Password"/>
                             </div>
                             
                             <div class="form-group">

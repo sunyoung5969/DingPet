@@ -90,9 +90,43 @@ function placesSearchCB(data, status, pagination) {
 	}
 }
 // DB 병원/약국 장소 데이터 검색 
-function medicalPlacesSearch(){
-	
-}
+$("#HP8").on("click", function(e){
+		findLocation();
+		if (lat != null ) { 
+
+		} else {
+
+		}
+		var myX = $("#latitude").val();
+		var myY = $("#longitude").val();
+		$.ajax({
+			url: '/login/loginCheck',
+			data: {email:email, pw:pw},
+			type: 'post',
+			datatype:'JSON',
+			success: function(msg){
+				console.log(msg);
+				if(msg == "성공"){
+					email
+					$(location).attr("href","/login/login");
+				}else{
+					
+					var frm = document.loginForm;
+			        if (!frm.email.value) { //아이디를 입력하지 않으면.
+			            alert("아이디를 입력 해주세요!");
+			            frm.email.focus();
+			            return;
+			        }
+			        if (!frm.pw.value) { //패스워드를 입력하지 않으면.
+			            alert("패스워드를 제발 입력 해주세요!");
+			            frm.pw.focus();
+			            return;
+			        }
+					alert("아이디와 비밀번호를 확인해주세요.");
+				}
+			}	
+		}); // end of ajax		
+	});
 
 // 지도에 마커를 표출하는 함수입니다
 function displayPlaces(places) {
