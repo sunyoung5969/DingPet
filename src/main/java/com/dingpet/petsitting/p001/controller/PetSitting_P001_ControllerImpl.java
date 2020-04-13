@@ -192,7 +192,8 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 		// TODO Auto-generated method stub
 		
 		model.addAttribute("profile", service.profileLookup(profile));		
-		
+		model.addAttribute("closed", service.getClosedList(profile));
+		model.addAttribute("license", service.getLicenseList(profile));
 	}
 	
 	@RequestMapping("/profileregister_f")

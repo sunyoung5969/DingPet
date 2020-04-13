@@ -28,7 +28,7 @@
 								<div class="col-md-4 col-sm-6 col-s-12 pt-5 pb-5">
 		                            <div class="card">
 	                            		<!-- 사진 -->
-	                                    <img class="card-img-top" src='${sitter.profile_PicPath }' >
+	                                    <img class="card-img-top" src='/resources/images/dogger_img_sm_6.jpg'> <!-- ${sitter.profile_PicPath } -->
 		                                <div class="card-body">
 		                                	<!-- 이름 / 한줄 자기소개 내용 -->
 		                                	<h5 class="card-name" style="margin-top: 0px">${sitter.member_ID }</h5>
@@ -49,9 +49,7 @@
 								</c:if>
 							</c:forEach>
                         </div>
-                        
                     </div>
-                    
                 </div>
             </div>
         </div>
