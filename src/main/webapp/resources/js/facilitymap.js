@@ -94,8 +94,8 @@ $("#HP8").on("click", function(e){
 		findLocation();
 		if (lat != null ) { 
 
-		} else { // 아이디 저장을 체크 하지 않았을때
-			setCookie("email", document.loginForm.email.value, 0); //날짜를 0으로 저장하여 쿠키삭제
+		} else {
+
 		}
 		var myX = $("#latitude").val();
 		var myY = $("#longitude").val();
