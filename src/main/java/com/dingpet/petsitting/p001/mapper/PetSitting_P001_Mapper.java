@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.dao.PessimisticLockingFailureException;
 
 import com.dingpet.petsitting.p001.vo.PetSitting_P001_VO;
 
@@ -11,6 +12,12 @@ public interface PetSitting_P001_Mapper {
 
 	// 프로필 목록 SELECT
 	public List<PetSitting_P001_VO> profileGetList();
+	
+	// 휴무일 SELECT
+	public List<PetSitting_P001_VO> getClosedList(PetSitting_P001_VO profile);
+	
+	// 자격증 SELECT
+	public List<PetSitting_P001_VO> getLicenseList(PetSitting_P001_VO profile);
 	
 	// 프로필 기본데이터 INSERT
 	public void profileInsert(PetSitting_P001_VO profile);

@@ -2,6 +2,7 @@ package com.dingpet.petsitting.p001.service;
 
 import java.util.List;
 
+import org.springframework.dao.PessimisticLockingFailureException;
 import org.springframework.stereotype.Service;
 
 import com.dingpet.petsitting.p001.mapper.PetSitting_P001_Mapper;
@@ -59,5 +60,18 @@ public class PetSitting_P001_ServiceImple implements PetSitting_P001_Service{
 		return mapper.profileLookup(profile);
 	}
 
+	@Override
+	public List<PetSitting_P001_VO> getClosedList(PetSitting_P001_VO profile) {
+		// TODO Auto-generated method stub
+		return mapper.getClosedList(profile);
+	}
+
+	@Override
+	public List<PetSitting_P001_VO> getLicenseList(PetSitting_P001_VO profile) {
+		// TODO Auto-generated method stub
+		return mapper.getLicenseList(profile);
+	}
+
+	
 
 }
