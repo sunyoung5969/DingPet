@@ -6,6 +6,7 @@
     <title>DingPet.</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
+    <link href="/resources/images/favicon.png" rel="icon" type="image/png" >
     
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700, 900|Vollkorn:400i" rel="stylesheet">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/fonts/icomoon/style.css">
@@ -276,6 +277,11 @@
                   </ul> 
                 </li>
                 <li><a href="#" class="nav-link">자주하는 질문</a></li>
+                <li>
+                	<div>
+				    	<a href="customers/p001/signin" class="nav-link btn btn-primary"" style="color: #fff !important; line-height: 1rem;">로그인</a>
+				    </div>
+                </li>
               </ul>
             </nav>
           </div>
