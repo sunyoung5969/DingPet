@@ -186,13 +186,14 @@
 							<a href="http://apis.map.kakao.com/web/documentation/#CategoryCode" target="_blank">카테고리 코드목록을 보시려면 여기를 클릭하세요!</a>
 						</em>
 					</p>
-					<input class="btn btn-primary" id="mylocation" type="button" value=" 내 현재 위치로 이동 " /><br><br>
+					<
 					<input type="hidden" name="lat" id="latitude">
 					<input type="hidden" name="lit" id="longitude">
+					<input class="btn btn-primary" id="mylocation" type="button" value=" 내 현재 위치로 이동 " /><br><br>
 					<div class="map_wrap">
 						<div id="map" style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
 						<ul id="category">
-							<li id="HP8" data-order="0"><span class="category_bg pharmacy"></span>
+							<li id="HP9" data-order="0"><span class="category_bg pharmacy"></span>
 							병원</li>
 							<li id="MT1" data-order="1"><span class="category_bg mart"></span>
 							마트</li>

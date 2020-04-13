@@ -1,11 +1,18 @@
 package com.dingpet.facilitymap.p001.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dingpet.facilitymap.p001.dto.PlaceDTO;
 import com.dingpet.facilitymap.p001.service.FacilityMap_P001_Service;
@@ -33,12 +40,40 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 	}
 	
 	@GetMapping("/medicenterMap")
+	@ResponseBody
 	@Override
-	public void medicenterMap(@ModelAttribute("PlaceDTO") PlaceDTO dto, Model model, FacilityMap_P001_VO vo) {
+	public ResponseEntity<List<FacilityMap_P001_VO>> medicenterMap(PlaceDTO dto) {
+		HttpHeaders responseHeaders = new HttpHeaders(); // 헤더변경 시 사용
+		responseHeaders.add("Content-Type", "text/html; charset=utf-8"); 
+		System.out.println("11111111111");
 		log.info("====mediMap Method====");
+		List<FacilityMap_P001_VO> list = service.getMediMap(dto);
 		log.info(dto);
 		log.info(service);
+		String msg = "";
+		boolean status = list.isEmpty();
+		if (status) {
+			msg = "fail";
+		} else {
+			msg = "success";
+		}
+		log.info(msg);
+		log.info("====End Map Method====");
+		return new ResponseEntity<>(list, HttpStatus.OK);	
+	} // medicenter End
+	
+	@RequestMapping("/register")
+	public void test(Model model) {
+		
+		model.addAttribute("register", "등록 페이지 입니다");
+	}
+	@RequestMapping("/infopage")
+	public void facilityinfo(@ModelAttribute("place_num") int place_num, Model model) {
+		model.addAttribute("infopage", "조회 페이지 입니다");
 		model.addAttribute("sample", "Hello List");
-		model.addAttribute("places", service.getMediMap(dto));		
-	}	
+		model.addAttribute("info", service.getMediCenter(place_num));
+		
+	}
+	
+	
 }
