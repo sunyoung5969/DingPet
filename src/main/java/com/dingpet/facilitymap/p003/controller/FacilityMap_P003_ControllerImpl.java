@@ -21,14 +21,10 @@ public class FacilityMap_P003_ControllerImpl implements FacilityMap_P003_Control
 	
 	private FacilityMap_P003_Service service;
 	
-	@RequestMapping("/register")
-	public void test(Model model) {
-		
-		model.addAttribute("register", "등록 페이지 입니다");
-	}
-	@RequestMapping("/infopage")
-	public void facilityinfo(Model model) {
-		model.addAttribute("info", "등록 페이지 입니다");
-	}
+//	@RequestMapping("/register")
+//	public void test(Model model) {
+//		
+//		model.addAttribute("register", "등록 페이지 입니다");
+//	}
 	
 }
