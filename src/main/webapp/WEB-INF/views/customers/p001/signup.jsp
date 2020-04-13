@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +13,39 @@
 
     <!-- Main css -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sign.css">
+    
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript">
+		function fn_process(){
+			
+			var _id = $("#member_id").val();
+			
+			if(_id == ''){
+				alert("ID를 입력하세요");
+				return;
+			}
+			
+			$.ajax({
+				type:"post",
+				async: false,
+				url:"http://localhost:8080/customers/p001/mem",
+				data: {id: _id},
+				success: function (data, textStatus){
+					if(data == "usable"){
+						
+						$('#btn_duplicate').prop("disabled", true);
+						alert("사용가능한 id입니다");
+					}else{
+						
+						alert("사용 불가능한 id입니다");
+					}
+				}
+				
+			})
+		}
+    
+    </script>    
+    
 </head>
 <body>
 
@@ -31,10 +62,15 @@
                         
                         <form method="POST" class="register-form" id="register-form" 
                         action="signup">
-                            <div class="form-group">
+                        
+                           
                                 <label for="new_id"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                아이디<input type="text" name="member_id" placeholder="Your ID"/>
-                            </div>
+                                아이디<input type="text" id="member_id" name="member_id" placeholder="Your ID"/>
+                            
+                            <input type="button" value="ID중복체크" id="btn_duplicate" onClick="fn_process()" />
+                            
+                            
+                            
                             <div class="form-group">
                                 <label for="pass"><i class="zmdi zmdi-lock"></i></label>
                                 비밀번호<input type="password" name="member_pwd" id="pass" placeholder="Password"/>

@@ -11,9 +11,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="profileLookup" resultType="com.dingpet.petsitting.p001.vo.PetSitting_P001_VO">
 		select member_id, profile_picpath, profile_content, price_small, 
-		price_medium, price_large, list_address 
+		price_medium, price_large, list_address, profile_jibunAddress   
 		from sitter_profile 
 		where member_id = #{member_ID}
+	</select>
+	
+	<select id="getLicenseList" resultType="com.dingpet.petsitting.p001.vo.PetSitting_P001_VO">
+		select license_name, license_agency, license_date, license_picpath 
+		from license
+		where member_id = #{member_ID}
+	
+	</select>
+	
+	<select id="getClosedList" resultType="com.dingpet.petsitting.p001.vo.PetSitting_P001_VO">
+		select schedule_closed from schedule 
+		where member_id = #{member_ID} 
+		order by schedule_closed
 	</select>
 	
 	<insert id="profileInsert">
