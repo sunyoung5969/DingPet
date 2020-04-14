@@ -213,7 +213,7 @@
 		</div>
 	</section>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=78d603c9ceea19aeba68479415b917d4&libraries=services"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/facilitymap.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/facilitymap.js?v=<%=System.currentTimeMillis() %>" type="text/javascript"></script>
 </body>
 <%@ include file="/WEB-INF/views/includes/footer.jsp"%>
 </html>
