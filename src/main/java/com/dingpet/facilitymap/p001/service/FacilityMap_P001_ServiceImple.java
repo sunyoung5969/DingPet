@@ -23,4 +23,9 @@ public class FacilityMap_P001_ServiceImple implements FacilityMap_P001_Service {
 		return mapper.meditest(dto);
 	}
 	
+	@Override
+	public FacilityMap_P001_VO getMediCenter(int num) {
+		// TODO Auto-generated method stub
+		return mapper.readcenter(num);
+	}
 }
