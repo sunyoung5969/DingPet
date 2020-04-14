@@ -11,7 +11,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="profileLookup" resultType="com.dingpet.petsitting.p001.vo.PetSitting_P001_VO">
 		select member_id, profile_picpath, profile_content, price_small, 
-		price_medium, price_large, list_address, profile_jibunAddress   
+		price_medium, price_large, list_address, profile_jibunAddress, 
+		service_00, service_01, service_02, service_03, service_04, 
+		service_05, service_06, service_07   
 		from sitter_profile 
 		where member_id = #{member_ID}
 	</select>

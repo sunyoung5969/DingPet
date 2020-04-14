@@ -279,7 +279,7 @@
                 <li><a href="#" class="nav-link">자주하는 질문</a></li>
                 <li>
                 	<div>
-				    	<a href="customers/p001/signin" class="nav-link btn btn-primary"" style="color: #fff !important; line-height: 1rem;">로그인</a>
+				    	<a href="/customers/p001/signin" class="nav-link btn btn-primary"" style="color: #fff !important; line-height: 1rem;">로그인</a>
 				    </div>
                 </li>
               </ul>
