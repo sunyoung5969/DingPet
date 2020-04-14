@@ -23,7 +23,7 @@
                             <div class="content-single-job_listing-hero-wrapper cover-wrapper container">
                                 <div class="content-single-job_listing-hero-inner row">
                                     <div class="content-single-job_listing-hero-company col-md-7 col-sm-12">
-                                        <h2>149플라밍고</h2>
+                                        <h2>${info.place_name }</h2>
                                         <div class="listing-rating listing-rating--single">
                                             <div class="rate">
                                                 <input type="radio" id="star5" name="rate" value="5" />
@@ -40,8 +40,8 @@
                                             <span class="listing-rating-count listing-rating-count--single">
                                             <a href="#respond">0개의 리뷰</a>	</span>
                                         </div>
-                                        <div class="job_listing-location job_listing-location-none">서울특별시 중랑구 상봉로 131 듀오트리스 2F</div>
-                                        <div class="job_listing-location job_listing-location-none">02-1234-5687</div>
+                                        <div class="job_listing-location job_listing-location-none">${info.address_name }</div>
+                                        <div class="job_listing-location job_listing-location-none">${info.phone }</div>
                                     </div>
                                     
                                     <div class="content-single-job_listing-hero-actions col-md-5 col-sm-12">

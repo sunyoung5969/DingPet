@@ -12,20 +12,22 @@ var placeOverlay = new kakao.maps.CustomOverlay({
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 mapOption = {
-	center : new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+	center : new kakao.maps.LatLng(37.566821, 126.9786561), // 지도의 중심좌표
 	level : 5
 // 지도의 확대 레벨
 	};
 
 // 지도를 생성합니다
 var map = new kakao.maps.Map(mapContainer, mapOption);
-
+var myX, myY;
 // 내 현 위치 찾기
 function findLocation() {
 navigator.geolocation.getCurrentPosition(function(pos) {
 	console.log("현위치");
     lat = pos.coords.latitude;
     lit = pos.coords.longitude;
+    $('#latitude').html(pos.coords.latitude);     // 위도 입력
+    $('#longitude').html(pos.coords.longitude); // 경도 입력 
     latlng =  new kakao.maps.LatLng(lat,lit);
     map.panTo(latlng);
     marker.setPosition(latlng); 
@@ -33,7 +35,14 @@ navigator.geolocation.getCurrentPosition(function(pos) {
     return map, lat, lit;
 	})
 }// find End
-
+function findLocation2() {
+		var center = map.getCenter(); 
+		myY = center.getLat();
+	    myX = center.getLng();
+	    $('#latitude').html(myY);     // 위도 입력
+	    $('#longitude').html(myX); // 경도 입력 
+	    return myY, myX;
+}
 findLocation();
 document.getElementById("mylocation").addEventListener("click", findLocation);
 
@@ -73,14 +82,51 @@ function searchPlaces() {
 	placeOverlay.setMap(null);
 	// 지도에 표시되고 있는 마커를 제거합니다
 	removeMarker();
+	console.log(currCategory);
+	findLocation2();
+	console.log("x: "+myX);
+	console.log("y: "+myY);
+	if (currCategory == "HP9" ){
+		$.ajax({
+			url: '/facilitymap/p001/medicenterMap',
+			data: {myX:myX,myY:myY,useMapBounds : true},
+			type: 'GET',
+			datatype:'JSON',
+			success: function(list){
+				console.log(list);
+				if(list == null){
+					alert("현재위치를 확인해주세요.");
+					return;					
+				} else {		
+					status = "OK";
+					order = 0;
+					pagination = { 
+					totalCount: 45,
+					hasNextPage: true,
+					hasPrevPage: false,
+					first: 1,
+					current: 1,
+					last: 3,
+					perPage: 15
+					}
+					placesSearchCB(list, status, pagination);
+					useMapBounds : true
+					console.log("AJAX");
+				}
+				
+			}
+		}); // end of ajax
+	}else{
 	ps.categorySearch(currCategory, placesSearchCB, {
 		useMapBounds : true
 	});
+	}
 }
 // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
 function placesSearchCB(data, status, pagination) {
 	if (status === kakao.maps.services.Status.OK) {
 		// 정상적으로 검색이 완료됐으면 지도에 마커를 표출합니다
+		console.log(status);
 		console.log(data);
 		displayPlaces(data);		
 	} else if (status === kakao.maps.services.Status.ZERO_RESULT) {
@@ -89,58 +135,57 @@ function placesSearchCB(data, status, pagination) {
 		// 에러로 인해 검색결과가 나오지 않은 경우 해야할 처리가 있다면 이곳에 작성해 주세요
 	}
 }
-// DB 병원/약국 장소 데이터 검색 
-$("#HP8").on("click", function(e){
-		findLocation();
-		if (lat != null ) { 
-
-		} else {
-
-		}
-		var myX = $("#latitude").val();
-		var myY = $("#longitude").val();
+// 병원찾기
+function searchMediPlaces() {
+	
+}
+// DB 병원/약국 장소 데이터 검색
+/*
+$("#HP9").on("click", function(e){
+		findLocation2(); // 현위치 재탐색
+		var myY = $("#latitude").val(); // 입력된 위도,경도값   
+		var myX = $("#longitude").val(); 
 		$.ajax({
-			url: '/login/loginCheck',
-			data: {email:email, pw:pw},
-			type: 'post',
+			url: '/facilitymap/p001/medicenterMap',
+			data: {myX:myX,myY:myY,useMapBounds : true},
+			type: 'GET',
 			datatype:'JSON',
-			success: function(msg){
-				console.log(msg);
-				if(msg == "성공"){
-					email
-					$(location).attr("href","/login/login");
-				}else{
-					
-					var frm = document.loginForm;
-			        if (!frm.email.value) { //아이디를 입력하지 않으면.
-			            alert("아이디를 입력 해주세요!");
-			            frm.email.focus();
-			            return;
-			        }
-			        if (!frm.pw.value) { //패스워드를 입력하지 않으면.
-			            alert("패스워드를 제발 입력 해주세요!");
-			            frm.pw.focus();
-			            return;
-			        }
-					alert("아이디와 비밀번호를 확인해주세요.");
+			success: function(list){
+				console.log(list);
+				if(list == null){
+					alert("현재위치를 확인해주세요.");
+					return;					
+				} else {		
+					status = "OK";
+					order = 0;
+					pagination = { 
+					totalCount: 45,
+					hasNextPage: true,
+					hasPrevPage: false,
+					first: 1,
+					current: 1,
+					last: 3,
+					perPage: 15
+					}
+					placesSearchCB(list, status, pagination);
 				}
-			}	
+				
+			}
 		}); // end of ajax		
 	});
+*/
 
 // 지도에 마커를 표출하는 함수입니다
 function displayPlaces(places) {
 
 	// 몇번째 카테고리가 선택되어 있는지 얻어옵니다
 	// 이 순서는 스프라이트 이미지에서의 위치를 계산하는데 사용됩니다
-	var order = document.getElementById(currCategory)
-			.getAttribute('data-order');
+	var order = document.getElementById(currCategory).getAttribute('data-order');
 
 	for (var i = 0; i < places.length; i++) {
 
 		// 마커를 생성하고 지도에 표시합니다
-		var marker = addMarker(new kakao.maps.LatLng(places[i].y, places[i].x),
-				order);
+		var marker = addMarker(new kakao.maps.LatLng(places[i].y, places[i].x));
 
 		// 마커와 검색결과 항목을 클릭 했을 때
 		// 장소정보를 표출하도록 클릭 이벤트를 등록합니다
@@ -153,7 +198,7 @@ function displayPlaces(places) {
 }
 
 // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
-function addMarker(position, order) {
+function addMarker(position) {
 	var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png', // 마커
 	// 이미지
 	// url,
@@ -163,7 +208,7 @@ function addMarker(position, order) {
 	imageSize = new kakao.maps.Size(27, 28), // 마커 이미지의 크기
 	imgOptions = {
 		spriteSize : new kakao.maps.Size(72, 208), // 스프라이트 이미지의 크기
-		spriteOrigin : new kakao.maps.Point(46, (order * 36)), // 스프라이트 이미지 중
+		spriteOrigin : new kakao.maps.Point(46, (1 * 36)), // 스프라이트 이미지 중
 		// 사용할 영역의 좌상단
 		// 좌표
 		offset : new kakao.maps.Point(11, 28)

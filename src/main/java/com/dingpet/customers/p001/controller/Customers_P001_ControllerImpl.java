@@ -1,5 +1,9 @@
 package com.dingpet.customers.p001.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -27,6 +31,38 @@ import lombok.extern.log4j.Log4j;
 public class Customers_P001_ControllerImpl implements Customers_P001_Controller {
 	
 	private Customers_P001_Service service;
+	
+
+	@RequestMapping(value="/mem", method = {RequestMethod.POST})
+	public void signin(HttpServletRequest request, HttpServletResponse response) throws IOException{
+		
+		log.info("id중복체크");
+
+		PrintWriter pw = response.getWriter();
+		
+		String id = (String)request.getParameter("id");
+	
+		int overlappedId = service.overlappedId(id);
+		
+		if(overlappedId >= 1) {
+			pw.print("not_usable");
+		}else {
+			pw.print("usable");
+		}
+	
+	}	
+	
+	
+	@RequestMapping(value="/logout", method= {RequestMethod.GET})
+	public ModelAndView signout(HttpServletRequest request, HttpServletResponse response) {
+		log.info("로그아웃");
+		HttpSession session = request.getSession();
+		session.removeAttribute("customers");
+		session.removeAttribute("isLogOn");
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:/");
+		return mav;
+	}
 	
 	
 	@RequestMapping(value="/signin", method = {RequestMethod.GET})
@@ -84,6 +120,19 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		service.change(customers);
 	}
 
+
+
+	@RequestMapping(value="/myinfo", method= {RequestMethod.GET})
+	public void myinfo() {
+		log.info("내정보");
+	}
+
+
+	@Override
+	public void signout() {
+		// TODO Auto-generated method stub
+		
+	}
 
 
 

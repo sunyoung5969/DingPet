@@ -18,7 +18,7 @@
             <div>
 				 <c:choose>
 				 	<c:when test="${isLogOn == true && customers != null}">
-				 		<h3>${customers.member_id }님 ${customers.member_pwd }진짜진짜환영해요</h3>
+				 		<h3>${customers.member_id}님 진짜진짜환영해요</h3>
 				 		<a href="/customers/p001/logout">로그아웃</a>
 				 	</c:when>
 				 	<c:otherwise>

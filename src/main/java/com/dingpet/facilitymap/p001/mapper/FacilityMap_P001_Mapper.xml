@@ -3,12 +3,19 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dingpet.facilitymap.p001.mapper.FacilityMap_P001_Mapper">
-	<select id="meditest" resultType="com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO">
+	<select id="meditest" resultType="com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO" parameterType="com.dingpet.facilitymap.p001.dto.PlaceDTO">
 		<![CDATA[
-		SELECT PLACE_NUM, PLACE_NAME, ADDRESS_NAME, ROAD_ADDRESS_NAME, CATEGORY_NAME, PHONE, X, Y
-		FROM PET_MEDICENTER WHERE X < (#{myX}+0.003) AND X > (#{myX}-0.003) OR
-		Y < (#{myY}+0.003) AND Y > (#{myY}-0.003);
+		SELECT PLACE_NUM, PLACE_NAME, ADDRESS_NAME, ROAD_ADDRESS_NAME, CATEGORY_NAME, PHONE, X, Y, PLACE_URL
+		FROM PET_MEDICENTER WHERE X < (#{myX, jdbcType=VARCHAR}+0.05) AND X > (#{myX, jdbcType=VARCHAR}-0.05) OR
+		Y < (#{myY, jdbcType=VARCHAR}+0.00015) AND Y > (#{myY, jdbcType=VARCHAR}-0.00015)
 		]]>	
 	</select>
+	<select id="readcenter" resultType="com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO">
+		<![CDATA[
+		SELECT PLACE_NUM, PLACE_NAME, ADDRESS_NAME, ROAD_ADDRESS_NAME, CATEGORY_NAME, PHONE, X, Y, PLACE_URL
+		FROM PET_MEDICENTER WHERE PLACE_NUM = #{PLACE_NUM}
+		]]>	
+	</select>
+	
 	
 </mapper>
