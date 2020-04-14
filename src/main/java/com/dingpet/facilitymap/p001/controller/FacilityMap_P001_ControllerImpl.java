@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dingpet.facilitymap.p001.dto.PlaceDTO;
@@ -90,7 +91,8 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 		model.addAttribute("register", "등록 페이지 입니다");
 	}
 	@RequestMapping("/infopage")
-	public void facilityinfo(@ModelAttribute("place_num") int place_num, Model model) {
+	public void facilityinfo(@RequestParam("place_num") int place_num, Model model) {
+		System.out.println("1111111111111111111111111111111111111111111111111111111111111111111");
 		model.addAttribute("infopage", "조회 페이지 입니다");
 		model.addAttribute("sample", "Hello List");
 		model.addAttribute("info", service.getMediCenter(place_num));
