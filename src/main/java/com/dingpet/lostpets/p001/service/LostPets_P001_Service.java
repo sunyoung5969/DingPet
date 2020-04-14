@@ -11,7 +11,7 @@ public interface LostPets_P001_Service {
 	// 목록 조회
 	public List<Map<String,String>> list();
 	
-	public void write(Map<String, String> writeMap);
+	public void write(Map<String, Object> writeMap) throws Exception;
 
 	// 등록
 	//public void write(LostPets_P001_VO lostVO);
@@ -20,7 +20,7 @@ public interface LostPets_P001_Service {
 	public LostPets_P001_VO view(String board_id);
 
 	// 삭제
-	public boolean delete(String board_id);
+	public boolean delete(String board_id, String dog_id);
 
 	// 수정
 	public boolean modify(LostPets_P001_VO lostVO);

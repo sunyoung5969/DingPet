@@ -2,6 +2,42 @@ package com.dingpet.lostpets.p001.vo;
 
 
 public class LostPets_P001_VO {
+
+	private String category;
+	private String board_id;
+	private String member_id;
+	private String dog_id;
+	private String title;
+	private String content;
+	private String board_date;
+	private String status;
+	private String status_reason;
+	private String lost_found_report;
+	private String found_date;
+	private String found_location;
+	private String dog_breed;
+	private String dog_sex;
+	private String dog_note;
+	
+	private byte[] photo_front;
+	private String photo_front_name;
+	private byte[] photo_front_thumb;
+	private byte[] photo_side;
+	private String photo_side_name;
+	private byte[] photo_side_thumb;
+	private byte[] photo_whole;
+	private String photo_whole_name;
+	private byte[] photo_whole_thumb;
+	
+	private String photo_test;
+	
+	
+	public String getPhoto_test() {
+		return photo_test;
+	}
+	public void setPhoto_test(String photo_test) {
+		this.photo_test = photo_test;
+	}
 	public String getCategory() {
 		return category;
 	}
@@ -98,11 +134,35 @@ public class LostPets_P001_VO {
 	public void setPhoto_front(byte[] photo_front) {
 		this.photo_front = photo_front;
 	}
+	public String getPhoto_front_name() {
+		return photo_front_name;
+	}
+	public void setPhoto_front_name(String photo_front_name) {
+		this.photo_front_name = photo_front_name;
+	}
+	public byte[] getPhoto_front_thumb() {
+		return photo_front_thumb;
+	}
+	public void setPhoto_front_thumb(byte[] photo_front_thumb) {
+		this.photo_front_thumb = photo_front_thumb;
+	}
 	public byte[] getPhoto_side() {
 		return photo_side;
 	}
 	public void setPhoto_side(byte[] photo_side) {
 		this.photo_side = photo_side;
+	}
+	public String getPhoto_side_name() {
+		return photo_side_name;
+	}
+	public void setPhoto_side_name(String photo_side_name) {
+		this.photo_side_name = photo_side_name;
+	}
+	public byte[] getPhoto_side_thumb() {
+		return photo_side_thumb;
+	}
+	public void setPhoto_side_thumb(byte[] photo_side_thumb) {
+		this.photo_side_thumb = photo_side_thumb;
 	}
 	public byte[] getPhoto_whole() {
 		return photo_whole;
@@ -110,27 +170,19 @@ public class LostPets_P001_VO {
 	public void setPhoto_whole(byte[] photo_whole) {
 		this.photo_whole = photo_whole;
 	}
-	private String category;
-	private String board_id;
-	private String member_id;
-	private String dog_id;
-	private String title;
-	private String content;
-	private String board_date;
-	private String status;
-	private String status_reason;
-	private String lost_found_report;
-	private String found_date;
-	private String found_location;
-	private String dog_breed;
-	private String dog_sex;
-	private String dog_note;
-	
-	private byte[] photo_front;
-	private byte[] photo_side;
-	private byte[] photo_whole;
+	public String getPhoto_whole_name() {
+		return photo_whole_name;
+	}
+	public void setPhoto_whole_name(String photo_whole_name) {
+		this.photo_whole_name = photo_whole_name;
+	}
+	public byte[] getPhoto_whole_thumb() {
+		return photo_whole_thumb;
+	}
+	public void setPhoto_whole_thumb(byte[] photo_whole_thumb) {
+		this.photo_whole_thumb = photo_whole_thumb;
+	}
 	
 	
 	
-
-}
+	}

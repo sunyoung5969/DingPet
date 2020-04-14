@@ -90,13 +90,14 @@
                                     <div class="form-group row">
                                         <label class="col-md-4 col-form-label text-md-right">내용</label>
                                         <div class="col-md-6">
-                                            <textarea id="form_message" name="content" class="form-control" rows="4"  readonly = "readonly"><c:out value = "${board.content}"/></textarea>
+                                            <textarea id="form_message" name="content" class="form-control" rows="4"  readonly = "readonly">
+                                            <c:out value = "${board.content}"/></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-4 col-form-label text-md-right">사진1</label>
                                         <div class="col-md-6">
-                                            <input type="file" name="photo_front" id="profile_pt" onchange="previewImage(this,'View_area')" >
+											<img src = "${board.photo_test }"/>
                                             <div id='View_area' class="img_up"></div>
                                         </div>
                                     </div>

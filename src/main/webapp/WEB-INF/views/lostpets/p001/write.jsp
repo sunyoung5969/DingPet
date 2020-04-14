@@ -15,7 +15,7 @@
                         <div class="card">
                             <div class="card-header">임시보호 등록</div>
                             <div class="card-body pd40">
-                                <form action="/lostpets/p001/write" method="post">
+                                <form action="/lostpets/p001/write" method="post" enctype = "multipart/form-data">
                                     <div class="form-group row">
                                         <label class="col-md-4 col-form-label text-md-right">제목</label>
                                         <div class="col-md-6">
@@ -80,11 +80,25 @@
                                     <div class="form-group row">
                                         <label class="col-md-4 col-form-label text-md-right">사진1</label>
                                         <div class="col-md-6">
-                                            <input type="file" name="photo_front" id="profile_pt" onchange="previewImage(this,'View_area')">
-                                            <div id='View_area' class="img_up"></div>
+                                            <input type="file" name="file" id="photo_front" >
+                                            <div class="img_up1"><img src = ""/></div>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
+                                    
+                                    <script>
+                                    	$("#photo_front").change(function(){
+                                    		if(this.files && this.files[0]){
+                                    			var reader = new FileReader;
+                                    			reader.onload = function(data){
+                                    				$(".img_up1 img").attr("src", data.target.result).width(500);
+                                    			}
+                                    			reader.readAsDataURL(this.files[0]);
+                                    		}
+                                    	});
+                                    </script>
+                                    <%=request.getRealPath("/") %>
+                                    
+									<div class="form-group row">
                                         <label class="col-md-4 col-form-label text-md-right">사진2</label>
                                         <div class="col-md-6">
                                             <input type="file" name="photo_front" id="profile_pt" onchange="previewImage(this,'View_area')">
@@ -98,9 +112,8 @@
                                             <div id='View_area' class="img_up"></div>
                                         </div>
                                     </div>
-                                       
                                     <div class="text-center pd40">
-                                        <button type="submit" class="btn btn-primary">
+                                        <button type="submit"   class="btn btn-primary">
                                            	 등록하기
                                         </button>
                                        

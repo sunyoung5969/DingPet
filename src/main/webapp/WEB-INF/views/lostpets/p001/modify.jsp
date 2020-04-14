@@ -125,6 +125,8 @@
                                     </div>
                           </form></div>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 	<script type="text/javascript">
     	$(document).ready(function(){
     		var form = $("form");
@@ -137,7 +139,7 @@
     			if(operation === 'delete'){
     				form.attr("action", "/lostpets/p001/delete" );
     			}else if(operation === 'list'){
-    				self.location = "lostpets/p001/list";
+    				self.location = "/lostpets/p001/list";
     				return;
     			}
     			form.submit();
