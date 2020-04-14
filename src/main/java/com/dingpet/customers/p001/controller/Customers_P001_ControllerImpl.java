@@ -121,12 +121,18 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 	}
 
 
+
+	@RequestMapping(value="/myinfo", method= {RequestMethod.GET})
+	public void myinfo() {
+		log.info("내정보");
+	}
+
+
 	@Override
 	public void signout() {
 		// TODO Auto-generated method stub
 		
 	}
-
 
 
 

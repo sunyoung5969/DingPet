@@ -6,5 +6,6 @@ public interface Customers_P001_Controller {
 	public void signout();
 	public void signup();
 	public void change();
+	public void myinfo();
 
 }

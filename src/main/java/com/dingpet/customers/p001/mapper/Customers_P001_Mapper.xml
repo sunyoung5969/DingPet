@@ -25,7 +25,7 @@
 
 <!-- 로그인 -->
 <select id="loginCheck" resultType="com.dingpet.customers.p001.vo.Customers_P001_VO">
-	select member_id from member where member_id=#{member_id} and member_pwd=#{member_pwd}
+	select member_id and memebr_nickname from member where member_id=#{member_id} and member_pwd=#{member_pwd}
 </select>
 
 
