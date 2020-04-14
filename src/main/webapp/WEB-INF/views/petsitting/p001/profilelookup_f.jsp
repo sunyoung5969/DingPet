@@ -6,7 +6,7 @@
 
 <!--====  str of contents  ====-->
     <section style="padding-top:87px">
-        <div class="page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-one-banner.png'); transform: translate3d(0px, 0px, 0px);"></div>
+        <div class="page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); transform: translate3d(0px, 0px, 0px);"></div>
         <div class="main main-raised">
             <div class="profile-content">
                 <div class="container">
@@ -86,7 +86,7 @@
       
                     <section class="pb-xl-5" id="gallery-section">
                         <div class="container-fluid">
-                          <div class="row justify-content-center" data-aos="fade-up">
+                          <div class="row justify-content-center">
                             <div class="col-lg-6 text-center heading-section mb-5">
                               <div class="paws">
                                 <span class="icon-paw"></span>

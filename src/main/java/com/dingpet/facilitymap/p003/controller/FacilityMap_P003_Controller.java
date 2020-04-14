@@ -8,16 +8,9 @@ import com.dingpet.facilitymap.p003.service.FacilityMap_P003_Service;
 
 import lombok.AllArgsConstructor;
 
-@RequestMapping("/facilitymap/p003/*")
-@AllArgsConstructor
-@Controller
-public class FacilityMap_P003_Controller {
+public interface FacilityMap_P003_Controller {
 
-	private FacilityMap_P003_Service service;
-	
-	@RequestMapping("/register")
-	public void test(Model model) {
-		
-		model.addAttribute("register", "등록 페이지 입니다");
-	}
+//	public void test(Model model);
+//	public void facilityinfo(Model model);
+//	
 }

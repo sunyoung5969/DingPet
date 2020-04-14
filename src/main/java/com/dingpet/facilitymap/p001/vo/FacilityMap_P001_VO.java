@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class FacilityMap_P001_VO {
-
+	private int place_num; 				// 넘버
 	private String address_name; 		// 주소  
 	private String category_group_code;	// 카테고리 그룹 코드
 	private String category_group_name; // 카테고리 그룹 명

@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
+<<<<<<< HEAD
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +30,9 @@
 		<input type="submit" value="로그인">
 	</form>
 	 -->
+=======
+<%@include file="../../includes/header.jsp"%>
+>>>>>>> refs/remotes/origin/master
 	 
     <div class="main">
 
@@ -36,35 +40,35 @@
         <section class="sign-in">
             <div class="container">
                 <div class="signin-content">
-                    <div class="signin-image">
+					<div class="signin-image">
                         <figure><img src="${pageContext.request.contextPath}/resources/images/sign/signin-image.png" alt="sing up image"></figure>
-                        <a href="signup" class="signup-image-link">회원가입</a>
                     </div>
-
                     <div class="signin-form">
                         <h2 class="form-title">로 그 인</h2>
                         
-                        
-                        <form method="GET" class="register-form" id="login-form" action="/signin">
-                            
+                        <form method="POST" class="register-form" id="login-form" action="signin">                    
                             <div class="form-group">
                                 <label for="your_id"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                아이디<input type="text" name="your_id" id="your_id" placeholder="Your ID"/>
+                                아이디<input type="text" name="member_id" id="member_id" placeholder="Your ID"/>
                             </div>
                             
                             <div class="form-group">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                패스워드<input type="password" name="your_pass" id="your_pass" placeholder="Password"/>
+                                패스워드<input type="password" name="member_pwd" id="member_pwd" placeholder="Password"/>
                             </div>
+                                                                                    
+                            <div class="form-group form-button">
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                            </div>   
                             
                             <div class="form-group">
                                 <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
-                                <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
+                                <label for="remember-me" class="label-agree-term"><span><span></span></span>로그인 상태 유지</label>
                             </div>
                             
-                            <div class="form-group form-button">
-                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
-                            </div>
+                        <a href="/customers/p001/signup">회원가입</a>
+                        <a href="/customers/p002/lostid">아이디 찾기</a>
+                        <a href="/customers/p002/lostpwd">비밀번호 찾기</a>
                             
                         </form>
                         
@@ -77,6 +81,7 @@
                                 <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
                             </ul>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -84,8 +89,4 @@
 
     </div>
 
-    <!-- JS -->
-    <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
-</html>
+<%@include file="../../includes/footer.jsp"%>
