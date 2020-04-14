@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="meditest" resultType="com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO" parameterType="com.dingpet.facilitymap.p001.dto.PlaceDTO">
 		<![CDATA[
 		SELECT PLACE_NUM, PLACE_NAME, ADDRESS_NAME, ROAD_ADDRESS_NAME, CATEGORY_NAME, PHONE, X, Y, PLACE_URL
-		FROM PET_MEDICENTER WHERE X < (#{myX, jdbcType=VARCHAR}+0.05) AND X > (#{myX, jdbcType=VARCHAR}-0.05) OR
-		Y < (#{myY, jdbcType=VARCHAR}+0.00015) AND Y > (#{myY, jdbcType=VARCHAR}-0.00015)
+		FROM PET_MEDICENTER WHERE CATEGORY_NAME='동물병원' AND X < (#{myX, jdbcType=VARCHAR}+0.05) AND X > (#{myX, jdbcType=VARCHAR}-0.05) OR
+		Y < (#{myY, jdbcType=VARCHAR}+0.00015) AND Y > (#{myY, jdbcType=VARCHAR}-0.00015) 
 		]]>	
 	</select>
 	<select id="readcenter" resultType="com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO">
@@ -16,6 +16,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM PET_MEDICENTER WHERE PLACE_NUM = #{PLACE_NUM}
 		]]>	
 	</select>
-	
+	<select id="medicenterSearch" resultType="com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO" parameterType="com.dingpet.facilitymap.p001.dto.PlaceDTO">
+		<![CDATA[
+		SELECT PLACE_NUM, PLACE_NAME, ADDRESS_NAME, ROAD_ADDRESS_NAME, CATEGORY_NAME, PHONE, X, Y, PLACE_URL
+		FROM PET_MEDICENTER WHERE CATEGORY_NAME='동물약국' AND X < (#{myX, jdbcType=VARCHAR}+0.05) AND X > (#{myX, jdbcType=VARCHAR}-0.05) OR
+		Y < (#{myY, jdbcType=VARCHAR}+0.00015) AND Y > (#{myY, jdbcType=VARCHAR}-0.00015) 
+		]]>	
+	</select>
 	
 </mapper>

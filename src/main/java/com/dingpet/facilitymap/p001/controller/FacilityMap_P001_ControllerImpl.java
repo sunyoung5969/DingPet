@@ -61,6 +61,28 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 		log.info("====End Map Method====");
 		return new ResponseEntity<>(list, HttpStatus.OK);	
 	} // medicenter End
+		
+	@GetMapping("/mediMap2")
+	@ResponseBody
+	@Override
+	public ResponseEntity<List<FacilityMap_P001_VO>> mediMap2(PlaceDTO dto) {
+		HttpHeaders responseHeaders = new HttpHeaders(); // 헤더변경 시 사용
+		responseHeaders.add("Content-Type", "text/html; charset=utf-8"); 
+		log.info("====Map22 Method====");
+		List<FacilityMap_P001_VO> data = service.getMediMap2(dto);
+		log.info(dto);
+		log.info(service);
+		String msg = "";
+		boolean status = data.isEmpty();
+		if (status) {
+			msg = "fail";
+		} else {
+			msg = "success";
+		}
+		log.info(msg);
+		log.info("====End Map22 Method====");
+		return new ResponseEntity<>(data, HttpStatus.OK);	
+	} // mediMap End
 	
 	@RequestMapping("/register")
 	public void test(Model model) {

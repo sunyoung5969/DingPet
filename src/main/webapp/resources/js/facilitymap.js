@@ -39,8 +39,6 @@ function findLocation2() {
 		var center = map.getCenter(); 
 		myY = center.getLat();
 	    myX = center.getLng();
-	    $('#latitude').html(myY);     // 위도 입력
-	    $('#longitude').html(myX); // 경도 입력 
 	    return myY, myX;
 }
 findLocation();
@@ -86,18 +84,49 @@ function searchPlaces() {
 	findLocation2();
 	console.log("x: "+myX);
 	console.log("y: "+myY);
+	if (currCategory == "HP2"){
+		console.log("약국찾아");
+		$.ajax({
+			url: '/facilitymap/p001/mediMap2',
+			data: {myX:myX,myY:myY,useMapBounds : true},
+			type: 'GET',
+			datatype:'JSON',
+			success: function(data){
+				if(data == null){
+					alert("현재위치를 확인해주세요.");
+					return;					
+				} else {		
+					status = "OK";
+					order = 0;
+					pagination = { 
+					totalCount: 45,
+					hasNextPage: true,
+					hasPrevPage: false,
+					first: 1,
+					current: 1,
+					last: 3,
+					perPage: 15
+					};
+					placesSearchCB(data, status, pagination);
+					useMapBounds : true;
+					console.log("AJAX");
+				}
+				
+			}
+		}); // end of ajax	
+	}
 	if (currCategory == "HP9" ){
+		console.log("병원찾아");
 		$.ajax({
 			url: '/facilitymap/p001/medicenterMap',
 			data: {myX:myX,myY:myY,useMapBounds : true},
 			type: 'GET',
 			datatype:'JSON',
 			success: function(list){
-				console.log(list);
 				if(list == null){
 					alert("현재위치를 확인해주세요.");
 					return;					
-				} else {		
+				}else {		
 					status = "OK";
 					order = 0;
 					pagination = { 
@@ -116,7 +145,8 @@ function searchPlaces() {
 				
 			}
 		}); // end of ajax
-	}else{
+	} 
+	else{
 	ps.categorySearch(currCategory, placesSearchCB, {
 		useMapBounds : true
 	});
@@ -135,45 +165,9 @@ function placesSearchCB(data, status, pagination) {
 		// 에러로 인해 검색결과가 나오지 않은 경우 해야할 처리가 있다면 이곳에 작성해 주세요
 	}
 }
-// 병원찾기
-function searchMediPlaces() {
-	
-}
-// DB 병원/약국 장소 데이터 검색
-/*
-$("#HP9").on("click", function(e){
-		findLocation2(); // 현위치 재탐색
-		var myY = $("#latitude").val(); // 입력된 위도,경도값   
-		var myX = $("#longitude").val(); 
-		$.ajax({
-			url: '/facilitymap/p001/medicenterMap',
-			data: {myX:myX,myY:myY,useMapBounds : true},
-			type: 'GET',
-			datatype:'JSON',
-			success: function(list){
-				console.log(list);
-				if(list == null){
-					alert("현재위치를 확인해주세요.");
-					return;					
-				} else {		
-					status = "OK";
-					order = 0;
-					pagination = { 
-					totalCount: 45,
-					hasNextPage: true,
-					hasPrevPage: false,
-					first: 1,
-					current: 1,
-					last: 3,
-					perPage: 15
-					}
-					placesSearchCB(list, status, pagination);
-				}
-				
-			}
-		}); // end of ajax		
-	});
-*/
+
+//$("#HP9").on("click", function(e){
+
 
 // 지도에 마커를 표출하는 함수입니다
 function displayPlaces(places) {

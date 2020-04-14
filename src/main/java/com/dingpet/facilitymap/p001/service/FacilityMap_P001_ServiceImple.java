@@ -19,8 +19,14 @@ public class FacilityMap_P001_ServiceImple implements FacilityMap_P001_Service {
 	
 	@Override
 	public List<FacilityMap_P001_VO> getMediMap(PlaceDTO dto) {
-		// TODO Auto-generated method stub
+		// 동물병원 맵 마킹
 		return mapper.meditest(dto);
+	}
+	
+	@Override
+	public List<FacilityMap_P001_VO> getMediMap2(PlaceDTO dto) {
+		// 약국 맵 마킹
+		return mapper.medicenterSearch(dto);
 	}
 	
 	@Override
