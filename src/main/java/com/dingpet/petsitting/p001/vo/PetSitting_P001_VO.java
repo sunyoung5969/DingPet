@@ -21,6 +21,14 @@ public class PetSitting_P001_VO {
 	private String profile_DetailAddress;	// 상세 주소
 	private String schedule_Closed;			// 휴무일
 	private String list_Address;			// 리스트 주소	
+	private String service_00;
+	private String service_01;
+	private String service_02;
+	private String service_03;
+	private String service_04;
+	private String service_05;
+	private String service_06;
+	private String service_07;
 	
 	private String[] petService;			// 펫서비스
 

@@ -2369,6 +2369,47 @@ figure figcaption {
   .testimonial {
     padding-bottom: 7rem;
   }
+<<<<<<< HEAD
+  
+  
+ /*탭 메뉴*/
+ tab-nav > .tab-nav.tab-nav-tabs{
+
+  border: none;
+    color:#fff;
+    background:#272e38;
+    border-radius:0;
+
+}
+nav > div a.nav-item.nav-link,
+nav > div a.nav-item.nav-link.active
+{
+  border: none;
+    padding: 18px 25px;
+    color:#fff;
+    background:#272e38;
+    border-radius:0;
+}
+
+nav > div a.nav-item.nav-link.active:after
+ {
+  content: "";
+  position: relative;
+  bottom: -60px;
+  left: -10%;
+  border: 15px solid transparent;
+  border-top-color: #e74c3c ;
+}
+
+nav > div a.nav-item.nav-link:hover,
+nav > div a.nav-item.nav-link:focus
+{
+  border: none;
+    background: #e74c3c;
+    color:#fff;
+    border-radius:0;
+    transition:background 0.20s linear;
+=======
 
   .about .image-block img {
     border-radius: 100%;
@@ -2429,4 +2470,5 @@ figure figcaption {
   }
 .rBtn {
 	font-family: "Noto Sans KR", sans-serif;font-size: 14px;letter-spacing: 0.01em;color: rgb(83, 130, 235);margin: 0;
+>>>>>>> refs/remotes/origin/master
 }

@@ -198,42 +198,57 @@
 						<div class="service_list" style="padding:10px">
 						  <h2 class="service_h2">이 용 가 능 서 비 스</h2>
 						  <div class="service_box">
-						    <div class="service_ico"><img width="32" height="32" src="/resources/images/icon/pet4.png">
-						      <div class="service_txtbox">
-						        <p class="service_txth1">장기 예약</p>
-						        <p class="service_txth2">14일 이상 돌봄 가능</p>
-						      </div>
-						    </div>
-						    <div  class="service_ico"><img width="32" height="32" src="/resources/images/icon/pet8.png">
-						      <div class="service_txtbox">
-						        <p class="service_txth1">실내 놀이</p>
-						        <p class="service_txth2">터그놀이, 노즈워크 등</p>
-						      </div>
-						    </div>
+						  	
+						  	
+						  	<c:if test="${profile.service_00 == 'Y' }">
 						    <div class="service_ico"><img width="32" height="32" src="/resources/images/icon/pet1.png">
 						      <div class="service_txtbox">
 						        <p class="service_txth1">매일 산책</p>
 						        <p class="service_txth2">산책 및 실외 배변 가능</p>
 						      </div>
 						    </div>
+						    </c:if>
+						  	<c:if test="${profile.service_01 == 'Y' }">
 						    <div class="service_ico"><img width="32" height="32" src="/resources/images/icon/pet2.png">
 						      <div class="service_txtbox">
 						        <p class="service_txth1">목욕 가능</p>
 						        <p class="service_txth2">비용은 펫시터와 협의</p>
 						      </div>
 						    </div>
+						    </c:if>
+						  	<c:if test="${profile.service_02 == 'Y' }">
 						    <div class="service_ico"><img width="32" height="32" src="/resources/images/icon/pet3.png">
 						      <div class="service_txtbox">
 						        <p class="service_txth1">약물 복용</p>
 						        <p class="service_txth2">경구(입) 약물 복용 가능</p>
 						      </div>
 						    </div>
+						    </c:if>
+						    <c:if test="${profile.service_03 == 'Y' }">
+							    <div class="service_ico"><img width="32" height="32" src="/resources/images/icon/pet4.png">
+							      <div class="service_txtbox">
+							        <p class="service_txth1">장기 예약</p>
+							        <p class="service_txth2">14일 이상 돌봄 가능</p>
+							      </div>
+							    </div>
+						    </c:if>
+						    
+						  	<c:if test="${profile.service_06 == 'Y' }">
 						    <div class="service_ico"><img width="32" height="32" src="/resources/images/icon/pet7.png">
 						      <div class="service_txtbox">
 						        <p class="service_txth1">집앞 픽업</p>
 						        <p class="service_txth2">비용은 펫시터와 협의</p>
 						      </div>
 						    </div>
+						    </c:if>
+						    <c:if test="${profile.service_07 == 'Y' }">
+						    <div  class="service_ico"><img width="32" height="32" src="/resources/images/icon/pet8.png">
+						      <div class="service_txtbox">
+						        <p class="service_txth1">실내 놀이</p>
+						        <p class="service_txth2">터그놀이, 노즈워크 등</p>
+						      </div>
+						    </div>
+						    </c:if>
 						  </div>
 						</div>
 						
@@ -436,7 +451,7 @@
                     <div class="testimonials-wrap">
                         <div class="container">
                             <div class="heading-section">
-                                <span class="sub-heading">Testimonials</span>
+                                <span class="sub-heading">R E V I E W</span>
                                 <h2>펫시터 이용 후기</h2>
                             </div>
                             <div class="carousel-testimonial owl-carousel">

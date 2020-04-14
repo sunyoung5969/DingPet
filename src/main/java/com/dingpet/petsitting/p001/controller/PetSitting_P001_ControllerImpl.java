@@ -190,6 +190,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 	@Override
 	public void lookup(Model model, PetSitting_P001_VO profile) {
 		// TODO Auto-generated method stub
+		System.out.println(service.profileLookup(profile));		
 		
 		model.addAttribute("profile", service.profileLookup(profile));		
 		model.addAttribute("closed", service.getClosedList(profile));
