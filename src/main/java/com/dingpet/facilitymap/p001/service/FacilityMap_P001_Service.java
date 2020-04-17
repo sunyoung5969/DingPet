@@ -12,4 +12,7 @@ public interface FacilityMap_P001_Service {
 	public List<FacilityMap_P001_VO> getMediMap2(PlaceDTO dto);
 	// 상세정보 (동물병원,약국)
 	public FacilityMap_P001_VO getMediCenter(int num);
+	// 시설등록(업로드)
+	public void register(FacilityMap_P001_VO vo);
+
 }

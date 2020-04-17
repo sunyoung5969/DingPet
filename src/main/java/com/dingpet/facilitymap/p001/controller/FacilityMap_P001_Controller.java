@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dingpet.facilitymap.p001.dto.PlaceDTO;
 import com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO;
@@ -21,7 +22,7 @@ public interface FacilityMap_P001_Controller {
 	// 등록 페이지 register 
 	public void test(Model model);
 	// 등록 Action
-	public void registerAction(Model model);
+	public String registerAction(FacilityMap_P001_VO vo, RedirectAttributes rttr);
 	// 상세페이지 조회 info
 	public void facilityinfo(@ModelAttribute("place_num") int place_num, Model model);
 	
