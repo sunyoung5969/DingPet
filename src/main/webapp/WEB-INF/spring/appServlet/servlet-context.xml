@@ -31,14 +31,13 @@
 	<context:component-scan
 		base-package="com.dingpet.*.*.controller" />
 
-	<!-- 업로드 패스 설정 -->
+	<!-- 업로드 패스 설정	
 	<beans:bean class = "java.lang.String" id = "uploadPath" >
 		<beans:constructor-arg value = "C:\Users\vegai\OneDrive\바탕 화면\Programming\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\DingPet\resources"/>
-	</beans:bean>
-	
-	<resources mapping = "/imgUpload/**" location = "/resources/imgUpload/"/> 
+	</beans:bean> 
+		<resources mapping = "/imgUpload/**" location = "/resources/imgUpload/"/>-->
 	
 	<beans:bean id = "multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<beans:property name="maxUploadSize" value = "1048570"/>
+		<beans:property name="maxUploadSize" value = "5048570"/>
 	</beans:bean>
 </beans:beans>

@@ -2,6 +2,7 @@ package com.dingpet.facilitymap.p001.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dingpet.facilitymap.p001.dto.PlaceDTO;
@@ -15,6 +16,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class FacilityMap_P001_ServiceImple implements FacilityMap_P001_Service {
 	
+	@Autowired
 	private FacilityMap_P001_Mapper mapper;
 	
 	@Override

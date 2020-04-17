@@ -18,9 +18,10 @@ public interface FacilityMap_P001_Controller {
 	public ResponseEntity<List<FacilityMap_P001_VO>> medicenterMap(PlaceDTO dto);
 	// 시설지도 약국 카테고리 조회
 	public ResponseEntity<List<FacilityMap_P001_VO>> mediMap2(PlaceDTO dto);
-	// 등록 register 
+	// 등록 페이지 register 
 	public void test(Model model);
-	
+	// 등록 Action
+	public void registerAction(Model model);
 	// 상세페이지 조회 info
 	public void facilityinfo(@ModelAttribute("place_num") int place_num, Model model);
 	

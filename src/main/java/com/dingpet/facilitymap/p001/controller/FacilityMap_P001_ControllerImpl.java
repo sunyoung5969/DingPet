@@ -85,10 +85,16 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 		return new ResponseEntity<>(data, HttpStatus.OK);	
 	} // mediMap End
 	
-	@RequestMapping("/register")
+	@RequestMapping(value="/register", method = {RequestMethod.GET})
 	public void test(Model model) {
 		
 		model.addAttribute("register", "등록 페이지 입니다");
+	}
+	@RequestMapping(value="/register", method = {RequestMethod.POST})
+	public void registerAction(Model model) {
+		log.info("========register 등록중====");
+		log.info("==========================");
+		model.addAttribute("register", "등록 액션 입니다");
 	}
 	@RequestMapping("/infopage")
 	public void facilityinfo(@RequestParam("place_num") int place_num, Model model) {

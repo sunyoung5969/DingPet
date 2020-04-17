@@ -8,7 +8,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +40,6 @@ public class LostPets_P001_ControllerImpl implements LostPets_P001_Controller {
 	@Autowired
 	private LostPets_P001_Service service;
 	
-	@Resource(name = "uploadPath")
-	private String uploadPath;
 	
 	// 목록 조회
 	@GetMapping("/list")
@@ -60,6 +57,7 @@ public class LostPets_P001_ControllerImpl implements LostPets_P001_Controller {
 	// 글 등록
 	@PostMapping("/write")
 	public String write(@RequestParam Map<String, Object> writeMap, MultipartFile file, RedirectAttributes rttr) throws Exception {
+		String uploadPath = "C://upload/";
 		//파일 업로드
 		String imgUploadPath = uploadPath + File.separator + "imgUpload";
 		String ymdPath = FileUploadUtils.calcPath(imgUploadPath);

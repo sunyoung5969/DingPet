@@ -12,7 +12,7 @@ import com.dingpet.facilitymap.p001.dto.PlaceDTO;
 import com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO;
 
 public interface FacilityMap_P001_UploadController {
-
+	
 	// AJAX 업로드 Action
 	public ResponseEntity<List<String>> uploadFormPost(MultipartFile[] uploadFile);
 	// Display

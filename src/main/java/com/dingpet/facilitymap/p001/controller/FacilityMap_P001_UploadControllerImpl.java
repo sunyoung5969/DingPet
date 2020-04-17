@@ -7,35 +7,22 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.file.Files;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.dingpet.facilitymap.p001.dto.PlaceDTO;
 import com.dingpet.facilitymap.p001.service.FacilityMap_P001_Service;
-import com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO;
-
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import net.coobird.thumbnailator.Thumbnailator;
@@ -45,16 +32,13 @@ import net.coobird.thumbnailator.Thumbnailator;
 @Log4j
 @Controller
 public class FacilityMap_P001_UploadControllerImpl implements FacilityMap_P001_UploadController{
-
-	private String uploadFolder = "C:\\upload";
-
+	
+	@Autowired
 	private FacilityMap_P001_Service service;
-	@GetMapping("/uploadForm")
-	public void uploadForm() {
-
-		log.info("upload form");
-	}
-	@GetMapping("/display")	
+	
+//	private String uploadFolder = "C:\\upload";
+	
+	@RequestMapping("/display")	
 	@ResponseBody
 	public ResponseEntity<byte[]> getFile(String fname) {
 
@@ -78,9 +62,9 @@ public class FacilityMap_P001_UploadControllerImpl implements FacilityMap_P001_U
 		return result;
 	}
 
-	@PostMapping("/uploadAjaxAction")
+	@RequestMapping(value="/uploadAjaxAction", method = {RequestMethod.POST})
 	public ResponseEntity<List<String>> uploadFormPost(MultipartFile[] uploadFile) {
-		
+		String uploadFolder = "C:\\upload";
 		List<String> nameList = new ArrayList<>();
 
 		for (MultipartFile multipartFile : uploadFile) {
