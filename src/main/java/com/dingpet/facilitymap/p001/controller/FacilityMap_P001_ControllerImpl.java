@@ -1,7 +1,10 @@
 package com.dingpet.facilitymap.p001.controller;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -14,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dingpet.facilitymap.p001.dto.PlaceDTO;
@@ -93,16 +98,59 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 	}
 	
 	@RequestMapping(value="/register", method = {RequestMethod.POST})
-	public String registerAction(FacilityMap_P001_VO vo, RedirectAttributes rttr) {
+	public String registerAction(Model model, FacilityMap_P001_VO vo, MultipartHttpServletRequest uploadFile) {
 		log.info("========register 등록중====");
 		log.info("register: " + vo);
 
+		//---------------------------	사진 업로드 데이터 처리	---------------------------
+					
+					//String uploadFolder = "/home/testpic";
+					String uploadFolder = "C:\\upload";
+					
+					
+					String fileName = "";
+					
+					Iterator<String> files = uploadFile.getFileNames();
+					
+					while(files.hasNext()) {
+						
+						File saveFile;
+						String filePath;
+						String index = files.next();
+						UUID placeimg_UUID = UUID.randomUUID();
+						UUID site_UUID = UUID.randomUUID();
+
+						MultipartFile mFile = uploadFile.getFile(index);
+						fileName = mFile.getOriginalFilename();
+
+						if(!fileName.equals("")) {
+
+							if(index.equals("placePic")) {
+								saveFile = new File(uploadFolder, placeimg_UUID.toString()+"placepic_"+fileName);
+								filePath = saveFile.getPath();
+								vo.setPlace_pic(filePath);
+							}else {
+								saveFile = new File(uploadFolder, site_UUID.toString()+"site_"+fileName);
+								filePath = saveFile.getPath();
+								vo.setSite_pic(filePath);
+								//service.licenseInsert(vo);
+							}
+								
+							try {
+								mFile.transferTo(saveFile);
+							} catch (Exception e) {
+								// TODO: handle exception
+								System.out.println("사진업로드 Exception " + e);
+							}
+						}
+					}
+
+		//---------------------------------------------------------------------------
 		log.info("==========================");
 		service.register(vo);
 
-		rttr.addFlashAttribute("result", vo.getSite_num());
 
-		return "redirect:/";
+		return "redirect:/facilitymap/p001/facilitymap";
 	}
 	
 	@RequestMapping("/infopage")

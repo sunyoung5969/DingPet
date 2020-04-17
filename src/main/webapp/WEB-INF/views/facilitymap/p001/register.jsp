@@ -66,18 +66,18 @@
                         <div class="col-md-10  pb-5">
                             <div class="card">
                                 <div class="card-body pd40">
-                                    <form role="form" action="/facilitymap/p001/register" method="post">
+                                    <form role="form" action="/facilitymap/p001/register" method="post" enctype="multipart/form-data">
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label text-md-right">시설명</label>
                                             <div class="col-md-7">
-                                                <input type="text" id="place-name" class="form-control" name="place-name">
+                                                <input type="text" id="place_name" class="form-control" name="place_name">
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label text-md-right">주소</label>
                                             <div class="col-md-7">
-                                                <input type="text" id="adress-name" class="form-control" name="adress-name">
+                                                <input type="text" id="adress_name" class="form-control" name="adress_name">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -86,7 +86,7 @@
                                                 <div class="row">
                                                     <div class="col-sm-4">
                                                         <select class="form-control">
-                                                        <optgroup label="시설 종류" name="categoty-name">
+                                                        <optgroup label="시설 종류" name="categoty_name">
                                                             <option value="ground">운동장</option>
                                                             <option value="shopping">쇼핑몰</option>
                                                             <option value="Restaurant">동반식당</option>
@@ -102,19 +102,20 @@
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label text-md-right">휴대전화</label>
                                             <div class="col-md-7">
-                                                <input type="text" id="phone_num" class="form-control" name="phone">
+                                                <input type="text" id="phone" class="form-control" name="phone">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label text-md-right">위도</label>
                                             <div class="col-md-7">
-                                                <input type="text" id="Latitude" class="form-control" name="Latitude">
+                                                <input type="text" id="Latitude" class="form-control" name="X">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label text-md-right">경도</label>
                                             <div class="col-md-7">
-                                            	<input type="text" id="longitude" class="form-control" name="longitude">
+                                            	<input type="text" id="longitude" class="form-control" name="Y">
+                                            	<hidden type="text" id="place_url" class="form-control" name="place_url" value="https://www.dingpet.shop/facilitymap/p001/infopage/?site_id=">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -127,7 +128,7 @@
                                             <label class="col-md-3 col-form-label text-md-right">시설사진</label>
                                             <div class="col-md-7">
                                                 <div id='View_area' class="img_up"></div>                                               
-                                                <input type="file" name="profile_pt" id="profile_pt"  maxlength="5" onchange="previewImage(this,'View_area')">       
+                                                <input type="file" name="placePic" id="placePic"  accept="image/*" maxlength="5" onchange="previewImage(this,'View_area')">       
                                             </div>
                                         </div>
                                         <div class="form-group row">

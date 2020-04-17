@@ -46,7 +46,7 @@ public class FacilityMap_P001_ServiceImple implements FacilityMap_P001_Service {
 	@Override
 	public void register(FacilityMap_P001_VO vo) {
 		log.info("register...."+vo);
-		
+		mapper.registerPlace(vo);
 		//mapper.insertSelectKey(vo);
 
 //		if (vo.getAttachList() == null || vo.getAttachList().size() <= 0) {
