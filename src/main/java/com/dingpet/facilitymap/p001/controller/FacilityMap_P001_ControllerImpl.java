@@ -41,7 +41,7 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 		
 	}
 	
-	@RequestMapping("/facilityMap")
+	@RequestMapping(value="/facilityMap", method = {RequestMethod.GET})
 	public void facilityMap(Model model) {
 		
 	}
@@ -144,14 +144,21 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 							}
 						}
 					}
-
+		log.info("사진 업로드 완료");
 		//---------------------------------------------------------------------------
+		// ------- 시퀀스 url 삽입 --------------
+		int sitesq = service.getSeq();
+		log.info(vo.getSitesq());
+		log.info(sitesq);
+		String url = vo.getPlace_url()+sitesq;
+		vo.setPlace_url(url);
+		// -------===============--------------
 		log.info("==========================");
 		service.register(vo);
 
 
-		return "redirect:/facilitymap/p001/facilitymap";
-	}
+		return "/facilitymap/p001/facilityMap";
+		}
 	
 	@RequestMapping("/infopage")
 	public void facilityinfo(@RequestParam("place_num") int place_num, Model model) {

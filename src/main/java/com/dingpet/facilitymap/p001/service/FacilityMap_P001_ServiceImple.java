@@ -41,6 +41,11 @@ public class FacilityMap_P001_ServiceImple implements FacilityMap_P001_Service {
 		// TODO Auto-generated method stub
 		return mapper.readcenter(num);
 	}
+	@Override
+	public int getSeq() {
+		// TODO Auto-generated method stub
+		return mapper.getseq();
+	}
 	
 	
 	@Override

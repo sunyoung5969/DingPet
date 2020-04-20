@@ -13,7 +13,8 @@ public interface FacilityMap_P001_Mapper {
 	public List<FacilityMap_P001_VO> medicenterSearch(PlaceDTO dto);
 	//상세정보 페이지 (동물병원,약국)
 	public FacilityMap_P001_VO readcenter(int PLACE_NUM);
-	
+	//시퀀스 get 
+	public int getseq();
 	//시설정보 등록 
-	public List<FacilityMap_P001_VO> registerPlace(FacilityMap_P001_VO vo);
+	public void registerPlace(FacilityMap_P001_VO vo);
 }

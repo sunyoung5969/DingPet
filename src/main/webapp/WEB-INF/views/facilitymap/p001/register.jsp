@@ -77,7 +77,7 @@
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label text-md-right">주소</label>
                                             <div class="col-md-7">
-                                                <input type="text" id="adress_name" class="form-control" name="adress_name">
+                                                <input type="text" id="adress_name" class="form-control" name="address_name">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -85,8 +85,8 @@
                                             <div class="col-md-7">
                                                 <div class="row">
                                                     <div class="col-sm-4">
-                                                        <select class="form-control">
-                                                        <optgroup label="시설 종류" name="categoty_name">
+                                                        <select class="form-control" name="category_name">
+                                                        <optgroup label="시설 종류" >
                                                             <option value="ground">운동장</option>
                                                             <option value="shopping">쇼핑몰</option>
                                                             <option value="Restaurant">동반식당</option>
@@ -115,7 +115,7 @@
                                             <label class="col-md-3 col-form-label text-md-right">경도</label>
                                             <div class="col-md-7">
                                             	<input type="text" id="longitude" class="form-control" name="Y">
-                                            	<hidden type="text" id="place_url" class="form-control" name="place_url" value="https://www.dingpet.shop/facilitymap/p001/infopage/?site_id=">
+                                            	<input type="hidden" id="place_url" class="form-control" name="place_url" value="https://www.dingpet.shop/facilitymap/p001/infopage/?site_id=">
                                             </div>
                                         </div>
                                         <div class="form-group row">

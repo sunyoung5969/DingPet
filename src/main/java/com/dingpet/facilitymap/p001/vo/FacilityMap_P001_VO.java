@@ -22,5 +22,6 @@ public class FacilityMap_P001_VO {
 	private String place_text;			// 시설 간단 소개
 	private String place_pic;			// 사진
 	private String site_pic;			// 상세사진
+	private int sitesq;			// 시퀀스
 	
 }

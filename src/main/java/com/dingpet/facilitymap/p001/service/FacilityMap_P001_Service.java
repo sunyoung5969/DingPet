@@ -14,5 +14,6 @@ public interface FacilityMap_P001_Service {
 	public FacilityMap_P001_VO getMediCenter(int num);
 	// 시설등록(업로드)
 	public void register(FacilityMap_P001_VO vo);
-
+	// 시퀀스 get 
+	public int getSeq();
 }
