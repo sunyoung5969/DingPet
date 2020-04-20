@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dingpet.facilitymap.p001.mapper.FacilityMap_P001_AttachMapper">
+	
+	<insert id="insert">
+		insert into site_attach (uuid, uploadpath, filename,
+		filetype, site_id)
+		values (#{uuid}, #{uploadPath}, #{fileName},
+		#{fileType}, #{site_id} )
+	</insert>
+
+	<delete id="delete">
+		delete from site_attach where uuid = #{uuid}
+	</delete>
+
+	<select id="findBySiteno" resultType="com.dingpet.facilitymap.p001.vo.FacilityMap_AttachVO">
+		select * from site_attach where site_id = #{site_id}
+	</select>
+
+	<delete id="deleteAll">
+		delete site_attach where site_id = #{site_id}
+	</delete>
+
+	
+</mapper>

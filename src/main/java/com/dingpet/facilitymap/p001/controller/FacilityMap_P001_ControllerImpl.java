@@ -1,13 +1,13 @@
 package com.dingpet.facilitymap.p001.controller;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dingpet.facilitymap.p001.dto.PlaceDTO;
 import com.dingpet.facilitymap.p001.service.FacilityMap_P001_Service;
+import com.dingpet.facilitymap.p001.vo.FacilityMap_AttachVO;
 import com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO;
 
 import lombok.AllArgsConstructor;
@@ -98,10 +99,15 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 	}
 	
 	@RequestMapping(value="/register", method = {RequestMethod.POST})
-	public String registerAction(Model model, FacilityMap_P001_VO vo, MultipartHttpServletRequest uploadFile) {
+	public String registerAction(Model model, FacilityMap_P001_VO vo, MultipartHttpServletRequest uploadFile, RedirectAttributes rttr) {
 		log.info("========register 등록중====");
 		log.info("register: " + vo);
+		log.info("AJAX 업로드: " + vo.getAttachList());
+		if (vo.getAttachList() != null) {
 
+			vo.getAttachList().forEach(attach -> log.info(attach));
+
+		}
 		//---------------------------	사진 업로드 데이터 처리	---------------------------
 					
 					//String uploadFolder = "/home/testpic";
@@ -114,7 +120,7 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 					
 					while(files.hasNext()) {
 						
-						File saveFile;
+						File saveFile = null;
 						String filePath;
 						String index = files.next();
 						UUID placeimg_UUID = UUID.randomUUID();
@@ -129,12 +135,7 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 								saveFile = new File(uploadFolder, placeimg_UUID.toString()+"placepic_"+fileName);
 								filePath = saveFile.getPath();
 								vo.setPlace_pic(filePath);
-							}else {
-								saveFile = new File(uploadFolder, site_UUID.toString()+"site_"+fileName);
-								filePath = saveFile.getPath();
-								vo.setSite_pic(filePath);
-								//service.licenseInsert(vo);
-							}
+							} else {}
 								
 							try {
 								mFile.transferTo(saveFile);
@@ -146,16 +147,9 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 					}
 		log.info("사진 업로드 완료");
 		//---------------------------------------------------------------------------
-		// ------- 시퀀스 url 삽입 --------------
-		int sitesq = service.getSeq();
-		log.info(vo.getSitesq());
-		log.info(sitesq);
-		String url = vo.getPlace_url()+sitesq;
-		vo.setPlace_url(url);
-		// -------===============--------------
 		log.info("==========================");
 		service.register(vo);
-
+		rttr.addFlashAttribute("result", vo.getSite_id());
 
 		return "/facilitymap/p001/facilityMap";
 		}
@@ -168,6 +162,15 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 		model.addAttribute("info", service.getMediCenter(place_num));
 		
 	}
-	
+
+	@RequestMapping(value = "/getAttachList", method = {RequestMethod.GET}, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ResponseBody
+	public ResponseEntity<List<FacilityMap_AttachVO>> getAttachList(int site_id) {
+
+		log.info("getAttachList " + site_id);
+
+		return new ResponseEntity<>(service.getAttachList(site_id), HttpStatus.OK);
+
+	}
 	
 }

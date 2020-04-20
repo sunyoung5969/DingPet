@@ -3,6 +3,7 @@ package com.dingpet.facilitymap.p001.service;
 import java.util.List;
 
 import com.dingpet.facilitymap.p001.dto.PlaceDTO;
+import com.dingpet.facilitymap.p001.vo.FacilityMap_AttachVO;
 import com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO;
 
 public interface FacilityMap_P001_Service {
@@ -16,4 +17,8 @@ public interface FacilityMap_P001_Service {
 	public void register(FacilityMap_P001_VO vo);
 	// 시퀀스 get 
 	public int getSeq();
+	// 첨부파일 리스트 get
+	public List<FacilityMap_AttachVO> getAttachList(int site_id);
+	// 첨부 삭제 
+	public void removeAttach(int site_id);
 }

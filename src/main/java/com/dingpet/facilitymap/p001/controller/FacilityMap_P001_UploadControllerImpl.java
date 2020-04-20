@@ -7,7 +7,9 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.file.Files;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -17,11 +19,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.dingpet.facilitymap.p001.dto.FileAttachDTO;
 import com.dingpet.facilitymap.p001.service.FacilityMap_P001_Service;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -38,13 +42,13 @@ public class FacilityMap_P001_UploadControllerImpl implements FacilityMap_P001_U
 	
 //	private String uploadFolder = "C:\\upload";
 	
-	@RequestMapping("/display")	
+	@RequestMapping(value="/display", method = {RequestMethod.GET})
 	@ResponseBody
-	public ResponseEntity<byte[]> getFile(String fname) {
+	public ResponseEntity<byte[]> getFile(String fileName) {
 
-		log.info("fileName: " + fname);
+		log.info("fileName: " + fileName);
 
-		File file = new File("c:\\upload\\" + fname);
+		File file = new File(fileName);
 
 		log.info("file: " + file);
 
@@ -61,46 +65,120 @@ public class FacilityMap_P001_UploadControllerImpl implements FacilityMap_P001_U
 		}
 		return result;
 	}
+	
+	
+	
+	private boolean checkImageType(File file) {
+
+		try {
+			String contentType = Files.probeContentType(file.toPath());
+
+			return contentType.startsWith("image");
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return false;
+	}
+
+	private String getFolder() {
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+		Date date = new Date();
+
+		String str = sdf.format(date);
+
+		return str.replace("-", File.separator);
+	}
+
 
 	@RequestMapping(value="/uploadAjaxAction", method = {RequestMethod.POST})
-	public ResponseEntity<List<String>> uploadFormPost(MultipartFile[] uploadFile) {
+	public ResponseEntity<List<FileAttachDTO>> uploadFormPost(MultipartFile[] uploadFile) {
 		String uploadFolder = "C:\\upload";
-		List<String> nameList = new ArrayList<>();
+		String uploadFolderPath = getFolder();
+		List<FileAttachDTO> nameList = new ArrayList<>();
 
 		for (MultipartFile multipartFile : uploadFile) {
 			
-			UUID uuid = UUID.randomUUID();
+			FileAttachDTO attachDTO = new FileAttachDTO();
+			
+			String uploadFileName = multipartFile.getOriginalFilename();
 
+			UUID uuid = UUID.randomUUID();
+			
+			uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
 			log.info("-------------------------------------");
+			log.info("upload file name -----" + uploadFileName);
 			log.info("Upload File Name: " + multipartFile.getOriginalFilename());
 			log.info("Upload File Size: " + multipartFile.getSize());
-			
-			String saveFileName = uuid.toString()+"_"+ multipartFile.getOriginalFilename();
-			
-			File saveFile = new File(uploadFolder,saveFileName );
-		      
-		      try {
-		    	
-		    	  nameList.add("s_"+ saveFileName);
-		    	  
-		        multipartFile.transferTo(saveFile);
-		        		        
-	            FileOutputStream thumbnail = 
-	                      new FileOutputStream(new File(uploadFolder, "s_" + saveFileName));
-	            
-	            Thumbnailator.createThumbnail(
-	            		multipartFile.getInputStream(), 
-	            		thumbnail, 100, 100);
-	            
-	            thumbnail.close();
 
-		        
-		      } catch (Exception e) {
-		        log.error(e.getMessage());
-		      }//end catch
+			String saveFileName = uuid.toString()+"_"+ multipartFile.getOriginalFilename();
+			attachDTO.setFileName(uploadFileName);
+			
+			try {
+				File saveFile = new File(uploadFolder, saveFileName);
+				multipartFile.transferTo(saveFile);
+
+				attachDTO.setUuid(uuid.toString());
+				attachDTO.setUploadPath(uploadFolder);
+
+				// check image type file
+				if (checkImageType(saveFile)) {
+
+					attachDTO.setImage(true);
+
+					FileOutputStream thumbnail = new FileOutputStream(new File(uploadFolder, "s_" + saveFileName));
+
+					Thumbnailator.createThumbnail(multipartFile.getInputStream(), thumbnail, 100, 100);
+
+					thumbnail.close();
+				}
+
+				// add to List
+				nameList.add(attachDTO);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}//end for
 		
 		return new ResponseEntity<>(nameList, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/deleteFile", method = {RequestMethod.POST})
+	@ResponseBody
+	public ResponseEntity<String> deleteFile(String fileName, String type) {
+
+		log.info("deleteFile: " + fileName);
+
+		File file;
+
+		try {
+			file = new File("c:\\upload\\" + URLDecoder.decode(fileName, "UTF-8"));
+
+			file.delete();
+
+			if (type.equals("image")) {
+
+				String largeFileName = file.getAbsolutePath().replace("s_", "");
+
+				log.info("largeFileName: " + largeFileName);
+
+				file = new File(largeFileName);
+
+				file.delete();
+			}
+
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+
+		return new ResponseEntity<String>("deleted", HttpStatus.OK);
+
 	}
 	
 }

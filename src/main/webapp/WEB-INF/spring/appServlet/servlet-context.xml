@@ -38,6 +38,7 @@
 		<resources mapping = "/imgUpload/**" location = "/resources/imgUpload/"/>-->
 	
 	<beans:bean id = "multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxInMemorySize" value = "377759039"/>
 		<beans:property name="maxUploadSize" value = "5048570"/>
 	</beans:bean>
 </beans:beans>

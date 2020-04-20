@@ -1,14 +1,15 @@
 package com.dingpet.facilitymap.p001.service;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.dingpet.facilitymap.p001.dto.PlaceDTO;
+import com.dingpet.facilitymap.p001.mapper.FacilityMap_P001_AttachMapper;
 import com.dingpet.facilitymap.p001.mapper.FacilityMap_P001_Mapper;
+import com.dingpet.facilitymap.p001.vo.FacilityMap_AttachVO;
 import com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO;
 
 import lombok.AllArgsConstructor;
@@ -23,6 +24,8 @@ public class FacilityMap_P001_ServiceImple implements FacilityMap_P001_Service {
 	
 	@Autowired
 	private FacilityMap_P001_Mapper mapper;
+	@Autowired
+	private FacilityMap_P001_AttachMapper attachMapper;
 	
 	@Override
 	public List<FacilityMap_P001_VO> getMediMap(PlaceDTO dto) {
@@ -47,22 +50,44 @@ public class FacilityMap_P001_ServiceImple implements FacilityMap_P001_Service {
 		return mapper.getseq();
 	}
 	
-	
+	@Transactional
 	@Override
 	public void register(FacilityMap_P001_VO vo) {
 		log.info("register...."+vo);
+		// ------- 시퀀스 url 삽입 --------------
+		int sitesq = mapper.getseq();
+		log.info(vo.getSitesq());
+		log.info(sitesq);
+		String url = vo.getPlace_url()+sitesq;
+		vo.setSite_id(sitesq);
+		vo.setPlace_url(url);
+		// -------===============--------------
 		mapper.registerPlace(vo);
-		//mapper.insertSelectKey(vo);
+		log.info("입력 중.."+vo);
+		if (vo.getAttachList() == null || vo.getAttachList().size() <= 0) {
+			return;
+		}
 
-//		if (vo.getAttachList() == null || vo.getAttachList().size() <= 0) {
-//			return;
-//		}
-//
-//		vo.getAttachList().forEach(attach -> {
-//
-//			attach.setBno(board.getBno());
-//			attachMapper.insert(attach);
-//		});
+		vo.getAttachList().forEach(attach -> {
+			attach.setSite_id(vo.getSite_id());
+			attachMapper.insert(attach);
+		});
+	}
+	
+	@Override
+	public List<FacilityMap_AttachVO> getAttachList(int site_id) {
+
+		log.info("get Attach list by siteid" + site_id);
+
+		return attachMapper.findBySiteno(site_id);
+	}
+
+	@Override
+	public void removeAttach(int site_id) {
+
+		log.info("remove all attach files");
+
+		attachMapper.deleteAll(site_id);
 	}
 	
 }

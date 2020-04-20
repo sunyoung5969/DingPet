@@ -23,7 +23,7 @@ public interface FacilityMap_P001_Controller {
 	// 등록 페이지 register 
 	public void test(Model model);
 	// 등록 Action
-	public String registerAction(Model model, FacilityMap_P001_VO vo, MultipartHttpServletRequest uploadFile);
+	public String registerAction(Model model, FacilityMap_P001_VO vo, MultipartHttpServletRequest uploadFile, RedirectAttributes rttr);
 	// 상세페이지 조회 info
 	public void facilityinfo(@ModelAttribute("place_num") int place_num, Model model);
 	
