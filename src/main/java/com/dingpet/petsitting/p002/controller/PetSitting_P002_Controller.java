@@ -1,16 +1,15 @@
 package com.dingpet.petsitting.p002.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import javax.servlet.http.HttpServletRequest;
 
-import com.dingpet.petsitting.p002.service.PetSitting_P002_Service;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import lombok.AllArgsConstructor;
+import com.dingpet.petsitting.p002.vo.PetSitting_P002_VO;
 
-@RequestMapping("/petsitting/p002/*")
-@AllArgsConstructor
-@Controller
-public class PetSitting_P002_Controller {
+public interface PetSitting_P002_Controller {
+
+	public String reservation(HttpServletRequest request ,PetSitting_P002_VO reserved, Model model);
 	
-	private PetSitting_P002_Service service;
+	public void kakaoPaySuccess(String pg_token,HttpServletRequest request, Model model);
 }

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.or//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- LOST -->
+<mapper
+	namespace="com.dingpet.lostpets.p001.mapper.LostPets_P001_Mapper">
+
+
+	<!-- 목록 조회 -->
+	<select id="list" resultMap="listMap">
+		SELECT board_id, title, dog_breed, dog_sex, found_location, photo_front
+		FROM lost_found LF, dog D
+		WHERE LF.dog_id = D.dog_id
+		ORDER BY LF.board_id desc
+	</select>
+	<resultMap id = "listMap" type = "java.util.HashMap">
+		<result column = "board_id" property = "board_id"/>
+		<result column = "title" property = "title"/>
+		<result column = "dog_breed" property = "dog_breed"/>
+		<result column = "dog_sex" property = "dog_sex"/>
+		<result column = "found_location" property = "found_location"/>
+		<result column = "photo_front" property = "photo_front"/>
+	</resultMap>
+
+	<!-- 글 등록 --> 
+	<insert id="writeLost" parameterType="java.util.Map">
+		insert into lost_found
+		(category, board_id, member_id, dog_id, title, content, 
+		board_date, status, status_reason, lost_found_report, photo_front, photo_side, photo_whole)
+		values (#{category}, seq_lost.nextval, #{member_id}, #{dog_id}, #{title}, #{content},
+		to_char(sysdate, 'yyyymmddhh24mi'), #{status, jdbcType=VARCHAR}, 
+		#{status_reason, jdbcType=VARCHAR}, #{lost_found_report,	jdbcType=VARCHAR},
+		#{photo_test, jdbcType=VARCHAR}, #{photo_side, jdbcType=BLOB}, #{photo_whole, jdbcType=BLOB})
+	</insert>
+
+	<insert id = "writeDog" parameterType = "java.util.Map">
+		 insert into dog (dog_id, dog_type, member_id, dog_breed, dog_sex, dog_note, 
+			found_date, found_location)
+		values (#{dog_id}, '유기견', #{member_id}, #{dog_breed}, #{dog_sex}, #{dog_note},
+			#{found_date}, #{found_location})
+	</insert>
+	
+
+	<!-- 글 조회 -->
+	<select id="view" resultType="com.dingpet.lostpets.p001.vo.LostPets_P001_VO" parameterType = "String">
+		select board_id, title, category, LF.member_id, LF.dog_id, found_date, found_location, 
+			dog_breed, dog_sex, dog_note, content
+		from lost_found LF, dog D 
+		where LF.dog_id = D.dog_id
+		and board_id = #{board_id}
+	</select>
+
+
+	<!-- 글 수정 : 게시판 분류, 제목, 내용, 완료여부, 완료사유, 사진1,2,3 -->
+	<update id="modify"  parameterType="com.dingpet.lostpets.p001.vo.LostPets_P001_VO" >
+		update lost_found
+		set 
+		category = #{category,  jdbcType=VARCHAR},
+		title = #{title,  jdbcType=VARCHAR},
+		content = #{content,  jdbcType=VARCHAR},
+		status = #{status, jdbcType=CHAR},
+		status_reason = #{status_reason, jdbcType=VARCHAR},
+		photo_front = #{photo_front, jdbcType=BLOB}, 
+		photo_side = #{photo_side, jdbcType=BLOB}, 
+		photo_whole = #{photo_whole, jdbcType=BLOB}
+
+		where (board_id=#{board_id,  jdbcType=VARCHAR})
+	</update>
+
+	<!-- 글 삭제 -->
+	<delete id="deleteLost">
+		delete from lost_found 
+		where board_id = #{board_id}
+	</delete>
+	
+	<delete id="deleteDog">
+		delete from Dog 
+		where dog_id = #{dog_id}
+	</delete>
+
+
+</mapper>

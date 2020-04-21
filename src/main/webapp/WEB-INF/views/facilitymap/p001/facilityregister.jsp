@@ -51,7 +51,7 @@
                                             <div class="col-md-7">
                                                 <div class="row">
                                                     <div class="col-sm-4">
-                                                        <select class="form-control">
+                                                        <select class="form-control" name="category_name">
                                                         <optgroup label="시설 종류">
                                                             <option value="ground">운동장</option>
                                                             <option value="shopping">쇼핑몰</option>

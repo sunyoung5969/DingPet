@@ -39,7 +39,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 	@Override
 	public void profilelist(Model model) {
 		// TODO Auto-generated method stub
-				
+		System.out.println("제발 오니?");
 		model.addAttribute("list", service.profileGetList());
 
 	}
@@ -83,8 +83,8 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 
 //---------------------------	사진 업로드 데이터 처리	---------------------------
 			
-			//String uploadFolder = "/home/testpic";
-			String uploadFolder = "C:\\test\\pic";
+			String uploadFolder = "/home/testpic";
+			//String uploadFolder = "C:\\test\\pic";
 			
 			
 			String fileName = "";
@@ -161,7 +161,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 		
 //---------------------------------------------------------------------------
 	
-		return "/petsitting/p001/sitterlist";
+		return "/petsitting/p001/profilelist";
 	}	
 	
 	
@@ -189,8 +189,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 	@RequestMapping("/profilelookup")
 	@Override
 	public void lookup(Model model, PetSitting_P001_VO profile) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub		
 		model.addAttribute("profile", service.profileLookup(profile));		
 		model.addAttribute("closed", service.getClosedList(profile));
 		model.addAttribute("license", service.getLicenseList(profile));

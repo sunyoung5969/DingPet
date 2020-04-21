@@ -49,8 +49,12 @@
 
 <!-- 로그인 -->
 <select id="loginCheck" resultType="com.dingpet.customers.p001.vo.Customers_P001_VO">
+<<<<<<< HEAD
 	select member_id, member_nickname, member_pwd, member_email 
 	from member where member_id=#{member_id} and member_pwd=#{member_pwd}
+=======
+	select member_id, member_nickname from member where member_id=#{member_id} and member_pwd=#{member_pwd}
+>>>>>>> refs/remotes/origin/master
 </select>
 
 
