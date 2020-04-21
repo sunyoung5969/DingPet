@@ -42,7 +42,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<select id="dogcenter" resultType="com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO">
 		<![CDATA[
-		SELECT SITE_ID, PLACE_NAME, ADDRESS_NAME, CATEGORY_NAME, PHONE, X, Y, PLACE_URL, PLACE_PIC
+		SELECT SITE_ID, PLACE_NAME, ADDRESS_NAME, CATEGORY_NAME, PHONE, X, Y, PLACE_URL, PLACE_PIC, PLACE_TEXT, PLACE_PICNAME
 		FROM SITE WHERE SITE_ID = #{site_id}
 		]]>	
 	</select>

@@ -182,15 +182,16 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 	public void facilityinfo(@RequestParam("place_num") int place_num, Model model) {
 		System.out.println("1111111111111111111111111111111111111111111111111111111111111111111");
 		model.addAttribute("infopage", "조회 페이지 입니다");
-		model.addAttribute("sample", "Hello List");
+		model.addAttribute("url", "https://www.dingpet.shop/img/");
 		model.addAttribute("info", service.getMediCenter(place_num));
+		
 		
 	}
 	@RequestMapping(value= "/mapinfo", method = {RequestMethod.GET})
 	public void Mapinfo(@RequestParam("site_id") int site_id, Model model) {
 		System.out.println("1111111111111111111111111111111111111111111111111111111111111111111");
 		model.addAttribute("infopage", "조회 페이지 입니다");
-		model.addAttribute("sample", "Hello List");
+		model.addAttribute("url", "https://www.dingpet.shop/img/");
 		model.addAttribute("info", service.getDogPlace(site_id));
 		
 	}
