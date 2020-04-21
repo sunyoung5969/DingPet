@@ -18,4 +18,11 @@ public interface Customers_P001_Service {
 	//id중복체크
 	public int overlappedId(String id);
 	
+	//내정보 조회
+	public Customers_P001_VO myinfo(Customers_P001_VO cust);
+	
+	//정보수정
+	public boolean modify(Customers_P001_VO cust);
+	
+	public boolean withdraw(Customers_P001_VO id);
 }

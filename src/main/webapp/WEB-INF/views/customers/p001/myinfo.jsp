@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +15,36 @@
 
     <!-- Main css -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sign.css">
+    
+    <!-- JS -->
+    <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		
+    		var formObj = $("form");
+    		
+    		$('button').on("click", function(e){
+    			
+    			e.preventDefault(); //기본 동작 막음
+    			
+    			var operation = $(this).data("oper");
+    			console.log(operation);
+    			
+    			if(operation === 'withdraw'){
+    				formObj.attr("action", "/customers/p001/withdraw");
+    				alert("잘가요안녕");
+    			}else if(operation  === 'change'){
+    				formObj.attr("action", "/customers/p001/change");
+    				alert("펫시터신청페이지로 이동합니다");
+    			}
+    			formObj.submit();
+    		});
+    	});
+    </script>
+  
 </head>
 
 <body>
@@ -25,48 +57,52 @@
                 
                     <div class="signup-form">
                         <h2 class="form-title">나 의 정 보</h2>
-                        
-                        <form method="POST" class="register-form" id="register-form" action="signup">
-                        
-                           
-                                <label for="new_id"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                아이디<input type="text" id="member_id" name="member_id" placeholder="Your ID"/>
-                            
-                            <input type="button" value="ID중복체크" id="btn_duplicate" onClick="fn_process()" />
-                            
-                            
-                            
+			
+			<form method="post" action="myinfo">
+			
                             <div class="form-group">
+                                <label for="new_id"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                아이디<input type="text" name="member_id" value="<c:out value="${customers.member_id}" />" readonly="readonly" />
+                             </div>
+
+   							<div class="form-group">
                                 <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                비밀번호<input type="password" name="member_pwd" id="pass" placeholder="Password"/>
+                                비밀번호<input type="text" name="member_pwd" value="<c:out value="${customers.member_pwd}" />" />
                             </div>
        
-                            
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                닉네임<input type="text" name="member_nickname" id="name" placeholder="Your Name"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                이메일<input type="email" name="member_email" id="email" placeholder="Your Email"/>
+                                닉네임<input type="text" name="member_nickname" value="<c:out value="${customers.member_nickname}" />" >
                             </div>
                             
                             <div class="form-group">
-                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                이메일<input type="text" name="member_email" value="<c:out value="${customers.member_email}" />" >
                             </div>
+
+                  
+               <!-- 
+               				<div class="form-group form-button">
+                                <input type="submit" class="form-submit" value="정보수정">
+                            </div>    
+                            
                             <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
+                                <input type="button" onClick="withdraw()" id="withdrawBtn" class="form-submit" value="회원탈퇴" />
                             </div>
-                        </form>    
+               
+                            <div class="form-group form-button">
+                                <input type="button" onClick="change()" class="form-submit" value="회원전환" />
+                            </div>
+                -->
+                            
+                            
+                            <button type="submit" data-oper='modify' class="form-group form-button">정보수정</button>
+							<button type="submit" data-oper='withdraw' class="form-group form-button">회원탈퇴</button>
+							<button type="submit" data-oper='change' class="form-group form-button">회원전환</button>	
+            </form>    
+                      
                     </div>
-                    
-                    
-                    <div class="signup-image">
-                        <figure><img src="${pageContext.request.contextPath}/resources/images/sign/signup-image.png" alt="sing up image"></figure>
-                        <a href="#" class="signup-image-link">I am already member</a>
-                    </div>
-                    
+                   
                     
                 </div>
             </div>
@@ -74,11 +110,9 @@
 
     </div>
     
-
-    <!-- JS -->
-    <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
-
     
+
+
+ 
 </body>
 </html>
