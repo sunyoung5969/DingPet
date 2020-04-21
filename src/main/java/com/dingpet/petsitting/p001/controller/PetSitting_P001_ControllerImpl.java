@@ -64,7 +64,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 		
 		try {
 
-//--------------------------- 이용 가능 서비스	 --------------------------
+//------------------------------ 이용 가능 서비스	 -------------------------------
 	
 			String[] petServiceYN = new String[8];
 
@@ -79,7 +79,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 			profile.setPetService(petServiceYN);
 			
 			//service.petServiceInsert(profile);
-//--------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 
 //---------------------------	사진 업로드 데이터 처리	---------------------------
 			
