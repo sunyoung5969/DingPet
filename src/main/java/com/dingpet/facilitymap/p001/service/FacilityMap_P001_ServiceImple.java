@@ -53,7 +53,7 @@ public class FacilityMap_P001_ServiceImple implements FacilityMap_P001_Service {
 	@Transactional
 	@Override
 	public void register(FacilityMap_P001_VO vo) {
-		log.info("register...."+vo);
+		log.info("register....");
 		// ------- 시퀀스 url 삽입 --------------
 		int sitesq = mapper.getseq();
 		log.info(vo.getSitesq());
@@ -63,7 +63,7 @@ public class FacilityMap_P001_ServiceImple implements FacilityMap_P001_Service {
 		vo.setPlace_url(url);
 		// -------===============--------------
 		mapper.registerPlace(vo);
-		log.info("입력 중.."+vo);
+		log.info("Insert End...:"+vo);
 		if (vo.getAttachList() == null || vo.getAttachList().size() <= 0) {
 			return;
 		}
@@ -77,7 +77,7 @@ public class FacilityMap_P001_ServiceImple implements FacilityMap_P001_Service {
 	@Override
 	public List<FacilityMap_AttachVO> getAttachList(int site_id) {
 
-		log.info("get Attach list by siteid" + site_id);
+		log.info("get Attach list by site_id : " + site_id);
 
 		return attachMapper.findBySiteno(site_id);
 	}
@@ -85,7 +85,7 @@ public class FacilityMap_P001_ServiceImple implements FacilityMap_P001_Service {
 	@Override
 	public void removeAttach(int site_id) {
 
-		log.info("remove all attach files");
+		log.info("remove all attach files : ");
 
 		attachMapper.deleteAll(site_id);
 	}
