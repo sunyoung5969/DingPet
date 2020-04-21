@@ -15,4 +15,14 @@ public interface Customers_P001_Mapper {
 	
 	//id중복체크
 	public int overlappedId(String id);
+	
+	//내정보 조회
+	public Customers_P001_VO read(Customers_P001_VO cust);
+	
+	//정보수정
+	public boolean update(Customers_P001_VO cust);
+	
+	//탈퇴
+	public boolean delete(Customers_P001_VO id);
+
 }

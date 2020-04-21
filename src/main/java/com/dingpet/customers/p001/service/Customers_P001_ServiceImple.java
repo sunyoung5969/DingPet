@@ -17,6 +17,22 @@ public class Customers_P001_ServiceImple implements Customers_P001_Service{
 	
 	private Customers_P001_Mapper mapper;
 	
+	public boolean withdraw(Customers_P001_VO id) {
+		log.info("회원탈퇴service");
+		return mapper.delete(id);
+	}
+	
+	public boolean modify(Customers_P001_VO cust) {
+		log.info("내정보수정service");
+		return mapper.update(cust);
+	}
+	
+	//내정보 조회
+	public Customers_P001_VO myinfo(Customers_P001_VO cust) {
+		log.info("내정보조회service");
+		return mapper.read(cust);
+	}
+	
 	public void signup(Customers_P001_VO customers) {
 		log.info("회원가입 서비스계층");
 		mapper.insert1(customers);

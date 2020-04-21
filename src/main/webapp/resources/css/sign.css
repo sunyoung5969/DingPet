@@ -1,3 +1,5 @@
+.signinImg {width: 100%;}
+
 /* @extend display-flex; */
 display-flex, .display-flex, .display-flex-center, .signup-content, .signin-content, .social-login, .socials {
   display: flex;
@@ -259,11 +261,21 @@ body {
   width: 50%;
   overflow: hidden; }
 
+.change-form{
+	width : 100%;
+	margin-left: 75px;
+ 	margin-right: 75px;
+  	padding-left: 34px;
+    /* box-sizing: border-box; */
+    padding: 0 30px; }
+}
+
 .signup-image {
   margin: 0 55px; }
 
 .form-title {
-  margin-bottom: 33px; }
+  margin-bottom: 33px; 
+  text-align : center;}
 
 .signup-image {
   margin-top: 45px; }
@@ -590,3 +602,9 @@ label.valid {
     margin-bottom: 10px; } }
 
 /*# sourceMappingURL=style.css.map */
+
+/*change.jsp*/
+
+#post_btn{
+	width : 200px;
+}

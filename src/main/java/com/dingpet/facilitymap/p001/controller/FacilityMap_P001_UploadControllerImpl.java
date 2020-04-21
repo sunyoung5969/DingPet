@@ -97,7 +97,8 @@ public class FacilityMap_P001_UploadControllerImpl implements FacilityMap_P001_U
 
 	@RequestMapping(value="/uploadAjaxAction", method = {RequestMethod.POST})
 	public ResponseEntity<List<FileAttachDTO>> uploadFormPost(MultipartFile[] uploadFile) {
-		String uploadFolder = "C:\\upload";
+		//String uploadFolder = "C:\\upload";
+		String uploadFolder = "/var/lib/tomcat8/webapps/siteimg";
 		String uploadFolderPath = getFolder();
 		List<FileAttachDTO> nameList = new ArrayList<>();
 
@@ -157,8 +158,8 @@ public class FacilityMap_P001_UploadControllerImpl implements FacilityMap_P001_U
 		File file;
 
 		try {
-			file = new File("c:\\upload\\" + URLDecoder.decode(fileName, "UTF-8"));
-
+			//file = new File("c:\\upload\\" + URLDecoder.decode(fileName, "UTF-8"));
+			file = new File("/var/lib/tomcat8/webapps/siteimg" + URLDecoder.decode(fileName, "UTF-8"));
 			file.delete();
 
 			if (type.equals("image")) {

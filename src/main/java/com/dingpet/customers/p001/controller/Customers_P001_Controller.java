@@ -1,11 +1,13 @@
 package com.dingpet.customers.p001.controller;
 
+import com.dingpet.customers.p001.vo.Customers_P001_VO;
+
 public interface Customers_P001_Controller {
 	
-	public void signin();
-	public void signout();
-	public void signup();
-	public void change();
-	public void myinfo();
-
+	public void myinfo(); //내정보조회
+	public void signin(); //로그인
+	public void signout(); //로그아웃
+	public void signup(); //회원가입
+	public void change(); //펫시터전환
+	public void withdraw(); //탈퇴
 }
