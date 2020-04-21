@@ -195,6 +195,53 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 		model.addAttribute("info", service.getDogPlace(site_id));
 		
 	}
+	@RequestMapping(value= "/revregister", method = {RequestMethod.POST})
+	public String ReviewRegister (Model model, FacilityMap_P001_VO vo, MultipartHttpServletRequest uploadFile, RedirectAttributes rttr)  {
+		System.out.println("============Review write!!!!!");
+		
+		//---------------------------	사진 업로드 데이터 처리	---------------------------
+		//String uploadFolder = "/home/testpic";
+		String uploadFolder = "C:\\upload";		
+		String fileName = "";		
+		Iterator<String> files = uploadFile.getFileNames();		
+		while(files.hasNext()) {			
+			File saveFile = null;
+			String saveFileName;
+			String filePath;
+			String index = files.next();
+			UUID placeimg_UUID = UUID.randomUUID();
+
+			MultipartFile mFile = uploadFile.getFile(index);
+			fileName = mFile.getOriginalFilename();
+
+			if(!fileName.equals("")) {
+				if(index.equals("placePic")) {
+					saveFileName = placeimg_UUID.toString()+"placepic_"+fileName;
+					saveFile = new File(uploadFolder, saveFileName);
+					filePath = saveFile.getPath();
+					vo.setPlace_pic(filePath);
+					vo.setPlace_picname(saveFileName);
+				} else {}
+				
+				try {
+					mFile.transferTo(saveFile);
+				} catch (Exception e) {
+					// TODO: handle exception
+					System.out.println("사진업로드 Exception " + e);
+				}
+			}
+		}
+		
+		log.info("사진 업로드 완료");
+		//---------------------------------------------------------------------------
+		log.info("==========================");
+		service.register(vo);
+		rttr.addFlashAttribute("result", vo.getSite_id());
+		
+		return "/facilitymap/p001/facilityMap";
+		
+	} // ReviewRegister End
+	
 	@RequestMapping(value = "/getAttachList", method = {RequestMethod.GET}, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
 	public ResponseEntity<List<FacilityMap_AttachVO>> getAttachList(int site_id) {
