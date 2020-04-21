@@ -11,8 +11,12 @@ public interface FacilityMap_P001_Service {
 	public List<FacilityMap_P001_VO> getMediMap(PlaceDTO dto);
 	// 약국 맵 마킹
 	public List<FacilityMap_P001_VO> getMediMap2(PlaceDTO dto);
+	// 카페 맵 마킹
+	public List<FacilityMap_P001_VO> getCafeMap(PlaceDTO dto);
 	// 상세정보 (동물병원,약국)
 	public FacilityMap_P001_VO getMediCenter(int num);
+	// 상세정보 (카페, 호텔 등(test))
+	public FacilityMap_P001_VO getDogPlace(int num);
 	// 시설등록(업로드)
 	public void register(FacilityMap_P001_VO vo);
 	// 시퀀스 get 

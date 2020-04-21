@@ -10,16 +10,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		Y < (#{myY, jdbcType=VARCHAR}+0.00015) AND Y > (#{myY, jdbcType=VARCHAR}-0.00015) 
 		]]>	
 	</select>
-	<select id="readcenter" resultType="com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO">
-		<![CDATA[
-		SELECT PLACE_NUM, PLACE_NAME, ADDRESS_NAME, ROAD_ADDRESS_NAME, CATEGORY_NAME, PHONE, X, Y, PLACE_URL
-		FROM PET_MEDICENTER WHERE PLACE_NUM = #{PLACE_NUM}
-		]]>	
-	</select>
 	<select id="medicenterSearch" resultType="com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO" parameterType="com.dingpet.facilitymap.p001.dto.PlaceDTO">
 		<![CDATA[
 		SELECT PLACE_NUM, PLACE_NAME, ADDRESS_NAME, ROAD_ADDRESS_NAME, CATEGORY_NAME, PHONE, X, Y, PLACE_URL
 		FROM PET_MEDICENTER WHERE CATEGORY_NAME='동물약국' AND X < (#{myX, jdbcType=VARCHAR}+0.05) AND X > (#{myX, jdbcType=VARCHAR}-0.05) OR
+		Y < (#{myY, jdbcType=VARCHAR}+0.00015) AND Y > (#{myY, jdbcType=VARCHAR}-0.00015) 
+		]]>	
+	</select>
+	<select id="cafeSearch" resultType="com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO" parameterType="com.dingpet.facilitymap.p001.dto.PlaceDTO">
+		<![CDATA[
+		SELECT SITE_ID, PLACE_NAME, ADDRESS_NAME, CATEGORY_NAME, PHONE, X, Y, PLACE_URL
+		FROM SITE WHERE CATEGORY_NAME='dog_cafe' AND X < (#{myX, jdbcType=VARCHAR}+0.05) AND X > (#{myX, jdbcType=VARCHAR}-0.05) OR
 		Y < (#{myY, jdbcType=VARCHAR}+0.00015) AND Y > (#{myY, jdbcType=VARCHAR}-0.00015) 
 		]]>	
 	</select>
@@ -28,10 +29,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select> 
 	<insert id="registerPlace">		
 		<![CDATA[
-		INSERT INTO SITE (SITE_ID, PLACE_NAME, ADDRESS_NAME, CATEGORY_NAME, PHONE, X, Y, PLACE_URL, PLACE_TEXT, PLACE_PIC)
+		INSERT INTO SITE (SITE_ID, PLACE_NAME, ADDRESS_NAME, CATEGORY_NAME, PHONE, X, Y, PLACE_URL, PLACE_TEXT, PLACE_PIC, PLACE_PICNAME)
 		VALUES(place_seq.currval, #{place_name, jdbcType=VARCHAR}, #{address_name, jdbcType=VARCHAR}, #{category_name, jdbcType=VARCHAR}, #{phone, jdbcType=VARCHAR}, #{x, jdbcType=VARCHAR}, #{y, jdbcType=VARCHAR},
-		 #{place_url, jdbcType=VARCHAR}, #{place_text, jdbcType=VARCHAR}, #{place_pic, jdbcType=VARCHAR})	
+		 #{place_url, jdbcType=VARCHAR}, #{place_text, jdbcType=VARCHAR}, #{place_pic, jdbcType=VARCHAR}, #{place_picname, jdbcType=VARCHAR})	
 		]]>	
 	</insert>
+	<select id="readcenter" resultType="com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO">
+		<![CDATA[
+		SELECT PLACE_NUM, PLACE_NAME, ADDRESS_NAME, ROAD_ADDRESS_NAME, CATEGORY_NAME, PHONE, X, Y, PLACE_URL
+		FROM PET_MEDICENTER WHERE PLACE_NUM = #{PLACE_NUM}
+		]]>	
+	</select>
+	<select id="dogcenter" resultType="com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO">
+		<![CDATA[
+		SELECT SITE_ID, PLACE_NAME, ADDRESS_NAME, CATEGORY_NAME, PHONE, X, Y, PLACE_URL, PLACE_PIC
+		FROM SITE WHERE SITE_ID = #{site_id}
+		]]>	
+	</select>
 	
 </mapper>

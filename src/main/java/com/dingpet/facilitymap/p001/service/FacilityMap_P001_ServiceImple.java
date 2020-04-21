@@ -40,9 +40,21 @@ public class FacilityMap_P001_ServiceImple implements FacilityMap_P001_Service {
 	}
 	
 	@Override
+	public List<FacilityMap_P001_VO> getCafeMap(PlaceDTO dto) {
+		// 약국 맵 마킹
+		return mapper.cafeSearch(dto);
+	}
+	
+	@Override
 	public FacilityMap_P001_VO getMediCenter(int num) {
 		// TODO Auto-generated method stub
 		return mapper.readcenter(num);
+	}
+	
+	@Override
+	public FacilityMap_P001_VO getDogPlace(int num) {
+		// TODO Auto-generated method stub
+		return mapper.dogcenter(num);
 	}
 	@Override
 	public int getSeq() {

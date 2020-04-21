@@ -23,6 +23,7 @@ public class FacilityMap_P001_VO {
 	private String detailAddress;		// 상세 주소
 	private String place_text;			// 시설 간단 소개
 	private String place_pic;			// 사진
+	private String place_picname;		// 사진 이름
 	private int sitesq;					// 시퀀스
 	private List<FacilityMap_AttachVO> attachList; // 첨부파일 리스트
 	

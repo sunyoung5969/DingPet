@@ -114,7 +114,7 @@
                                             <label class="col-md-3 col-form-label text-md-right">경도</label>
                                             <div class="col-md-7">
                                             	<input type="text" id="longitude" class="form-control" name="Y">
-                                            	<input type="hidden" id="place_url" class="form-control" name="place_url" value="https://www.dingpet.shop/facilitymap/p001/infopage/?site_id=">
+                                            	<input type="hidden" id="place_url" class="form-control" name="place_url" value="https://www.dingpet.shop/facilitymap/p001/mapinfo?site_id=">
                                             </div>
                                         </div>
                                         <div class="form-group row">

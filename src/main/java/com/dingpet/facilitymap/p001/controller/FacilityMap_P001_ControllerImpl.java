@@ -92,6 +92,28 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 		return new ResponseEntity<>(data, HttpStatus.OK);	
 	} // mediMap End
 	
+	@GetMapping("/cafeMap")
+	@ResponseBody
+	@Override
+	public ResponseEntity<List<FacilityMap_P001_VO>> cafeMap(PlaceDTO dto) {
+		HttpHeaders responseHeaders = new HttpHeaders(); // 헤더변경 시 사용
+		responseHeaders.add("Content-Type", "text/html; charset=utf-8"); 
+		log.info("====CAFE Map Method====");
+		List<FacilityMap_P001_VO> data = service.getCafeMap(dto);
+		log.info(dto);
+		log.info(service);
+		String msg = "";
+		boolean status = data.isEmpty();
+		if (status) {
+			msg = "fail";
+		} else {
+			msg = "success";
+		}
+		log.info(msg);
+		log.info("====End Map22 Method====");
+		return new ResponseEntity<>(data, HttpStatus.OK);	
+	} // CafeMap End
+	
 	@RequestMapping(value="/register", method = {RequestMethod.GET})
 	public void test(Model model) {
 		
@@ -121,10 +143,10 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 					while(files.hasNext()) {
 						
 						File saveFile = null;
+						String saveFileName;
 						String filePath;
 						String index = files.next();
 						UUID placeimg_UUID = UUID.randomUUID();
-						UUID site_UUID = UUID.randomUUID();
 
 						MultipartFile mFile = uploadFile.getFile(index);
 						fileName = mFile.getOriginalFilename();
@@ -132,9 +154,11 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 						if(!fileName.equals("")) {
 
 							if(index.equals("placePic")) {
-								saveFile = new File(uploadFolder, placeimg_UUID.toString()+"placepic_"+fileName);
+								saveFileName = placeimg_UUID.toString()+"placepic_"+fileName;
+								saveFile = new File(uploadFolder, saveFileName);
 								filePath = saveFile.getPath();
 								vo.setPlace_pic(filePath);
+								vo.setPlace_picname(saveFileName);
 							} else {}
 								
 							try {
@@ -162,7 +186,14 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 		model.addAttribute("info", service.getMediCenter(place_num));
 		
 	}
-
+	@RequestMapping(value= "/mapinfo", method = {RequestMethod.GET})
+	public void Mapinfo(@RequestParam("site_id") int site_id, Model model) {
+		System.out.println("1111111111111111111111111111111111111111111111111111111111111111111");
+		model.addAttribute("infopage", "조회 페이지 입니다");
+		model.addAttribute("sample", "Hello List");
+		model.addAttribute("info", service.getDogPlace(site_id));
+		
+	}
 	@RequestMapping(value = "/getAttachList", method = {RequestMethod.GET}, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
 	public ResponseEntity<List<FacilityMap_AttachVO>> getAttachList(int site_id) {

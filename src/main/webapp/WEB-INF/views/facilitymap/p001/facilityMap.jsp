@@ -197,8 +197,8 @@
 							병원</li>
 							<li id="HP2" data-order="1"><span class="category_bg pharmacy"></span>
 							약국</li>
-							<li id="PM9" data-order="2"><span class="category_bg pharmacy"></span>
-							약국</li>
+							<li id="CA7" data-order="2"><span class="category_bg cafe"></span>
+							카페</li>
 							<li id="OL7" data-order="3"><span class="category_bg oil"></span>
 							주유소</li>
 							<li id="CE7" data-order="4"><span class="category_bg cafe"></span>

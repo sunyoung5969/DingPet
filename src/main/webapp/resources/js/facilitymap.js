@@ -84,10 +84,10 @@ function searchPlaces() {
 	findLocation2();
 	console.log("x: "+myX);
 	console.log("y: "+myY);
-	if (currCategory == "HP2"){
-		console.log("약국찾아");
+	if (currCategory == "CA7"){
+		console.log("카페찾아");
 		$.ajax({
-			url: '/facilitymap/p001/mediMap2',
+			url: '/facilitymap/p001/cafeMap',
 			data: {myX:myX,myY:myY,useMapBounds : true},
 			type: 'GET',
 			datatype:'JSON',
@@ -109,13 +109,42 @@ function searchPlaces() {
 					};
 					placesSearchCB(data, status, pagination);
 					useMapBounds : true;
-					console.log("AJAX");
+					console.log("CAFE AJAX");
 				}
 				
 			}
 		}); // end of ajax	
-	}
-	if (currCategory == "HP9" ){
+	} else if (currCategory == "HP2"){
+			console.log("약국찾아");
+			$.ajax({
+				url: '/facilitymap/p001/mediMap2',
+				data: {myX:myX,myY:myY,useMapBounds : true},
+				type: 'GET',
+				datatype:'JSON',
+				success: function(data){
+					if(data == null){
+						alert("현재위치를 확인해주세요.");
+						return;					
+					} else {		
+						status = "OK";
+						order = 0;
+						pagination = { 
+						totalCount: 45,
+						hasNextPage: true,
+						hasPrevPage: false,
+						first: 1,
+						current: 1,
+						last: 3,
+						perPage: 15
+						};
+						placesSearchCB(data, status, pagination);
+						useMapBounds : true;
+						console.log("YAK AJAX");
+					}
+					
+				}
+			}); // end of ajax	
+		} else if (currCategory == "HP9" ){
 		console.log("병원찾아");
 		$.ajax({
 			url: '/facilitymap/p001/medicenterMap',
@@ -140,13 +169,12 @@ function searchPlaces() {
 					}
 					placesSearchCB(list, status, pagination);
 					useMapBounds : true
-					console.log("AJAX");
+					console.log("Hospital AJAX");
 				}
 				
 			}
 		}); // end of ajax
-	} 
-	else{
+	} else{
 	ps.categorySearch(currCategory, placesSearchCB, {
 		useMapBounds : true
 	});
