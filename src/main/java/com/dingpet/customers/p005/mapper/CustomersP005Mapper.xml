@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dingpet.customers.p005.mapper.CustomersP005Mapper">
+
+
+<!-- 메시지함 -->
+<select id="inbox" resultType="com.dingpet.customers.p005.vo.CustomersP005VO">
+	select * from message where message_id 
+	in (select max(message_id) from message where target=#{member_id} or sender=#{member_id} group by sender, target)
+</select>
+
+
+</mapper>

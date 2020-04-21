@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/fonts/flaticon/font/flaticon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/aos.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+    
     <!--css 추가-->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="https://assets.mypetlife.co.kr/map/wp-content/themes/listify/css/style.min.css">
@@ -279,7 +280,7 @@
                 <li><a href="#" class="nav-link">자주하는 질문</a></li>
                 <li>
                 	<div>
-				    	<a href="customers/p001/signin" class="nav-link btn btn-primary"" style="color: #fff !important; line-height: 1rem;">로그인</a>
+				    	<a href="/customers/p001/signin" class="nav-link btn btn-primary"" style="color: #fff !important; line-height: 1rem;">로그인</a>
 				    </div>
                 </li>
               </ul>

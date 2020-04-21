@@ -18,8 +18,10 @@
             <div>
 				 <c:choose>
 				 	<c:when test="${isLogOn == true && customers != null}">
-				 		<h3>${customers.member_id}님 진짜진짜환영해요</h3>
+				 		<h3>${customers.member_nickname}님 진짜진짜환영해요</h3>
 				 		<a href="/customers/p001/logout">로그아웃</a>
+
+				 		<a href="/customers/p001/myinfo">내정보조회</a>
 				 	</c:when>
 				 	<c:otherwise>
 				 		<a href="/customers/p001/signin">로그인</a>
@@ -29,7 +31,7 @@
 				<a href="/customers/p002/lostid">아이디찾기</a>
 				<a href="/customers/p003/infoupdate">정보수정</a>
 				<a href="/customers/p004/withdraw">탈퇴</a>
-				<a href="/customers/p005/massage">메시지</a>
+				<a href="/customers/p005/message">메시지</a>
 				<a href="/petsitting/p001/profilelist">펫시터</a>
 				<a href="/facilitymap/p001/mylocation">산책하기</a>
 				<a href="/facilitymap/p001/facilityMap">시설 지도</a>

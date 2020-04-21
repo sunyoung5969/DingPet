@@ -5,6 +5,26 @@
 
 <mapper namespace="com.dingpet.customers.p001.mapper.Customers_P001_Mapper">
 
+
+<!-- 회원탈퇴 -->
+<delete id="delete">
+	delete from member where member_id = #{member_id}
+</delete>
+
+<!-- 정보수정 -->
+<update id="update">
+	update member set member_nickname = #{member_nickname}, 
+						   member_email = #{member_email}, 
+						   member_pwd = #{member_pwd} 
+						where member_id = #{member_id}
+</update>
+
+<!-- 내정보 조회 -->
+<select id="read" resultType="com.dingpet.customers.p001.vo.Customers_P001_VO">
+	select member_id, member_nickname, member_email, member_pwd from member
+	where member_id = #{member_id}
+</select>
+
 <!-- 일반회원 등록 -->
 <select id="insert1">
 	insert into member(member_id, member_pwd, member_nickname, member_email)
@@ -12,20 +32,25 @@
 </select>
 
 
-
 <!-- 펫시터회원 등록 -->
-<select id="insert2">
-	insert into member(sex, date_of_birth, address, profession,
-					  active_hours, answer1, answer2, answer3)
-				values(#{sex}, #{date_of_birth}, #{address}, #{profession},
-					  #{active_hours}, #{answer1}, #{answer2}, #{answer3})		  	  
-</select>
+<update id="insert2">
+	update member set sex = #{sex}, 
+					  date_of_birth = #{date_of_birth}, 
+					  address = #{address}, 
+					  profession = #{profession},
+					  active_hours = #{active_hours}, 
+					  answer1 = #{answer1}, 
+					  answer2 = #{answer2}, 
+					  answer3 = #{answer3}
+		where member_id = #{member_id, jdbcType=VARCHAR}	  	  
+</update>
 
 
 
 <!-- 로그인 -->
 <select id="loginCheck" resultType="com.dingpet.customers.p001.vo.Customers_P001_VO">
-	select member_id and memebr_nickname from member where member_id=#{member_id} and member_pwd=#{member_pwd}
+	select member_id, member_nickname, member_pwd, member_email 
+	from member where member_id=#{member_id} and member_pwd=#{member_pwd}
 </select>
 
 
