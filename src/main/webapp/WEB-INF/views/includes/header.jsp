@@ -24,6 +24,12 @@
     
     <!--css 추가-->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    
+    <!--탭 메뉴 -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
     <link rel="stylesheet" type="text/css" href="https://assets.mypetlife.co.kr/map/wp-content/themes/listify/css/style.min.css">
   	
   	<Style>
@@ -426,7 +432,7 @@
                 <li class="has-children">
                   <a href="#about-section" class="nav-link">반려견 찾기</a>
                   <ul class="dropdown">
-                    <li><a href="/lostpets/p001/tempshelterslist_f" class="nav-link">유기견 보호_f</a></li>
+                    <li><a href="/lostpets/p001/list" class="nav-link">유기견 보호</a></li>
                     <li><a href="#" class="nav-link">유기견 찾기</a></li>
                     <li class="has-children">
                       <a href="#">More Links</a>
