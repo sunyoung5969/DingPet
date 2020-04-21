@@ -92,7 +92,7 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 		return new ResponseEntity<>(data, HttpStatus.OK);	
 	} // mediMap End
 	
-	@GetMapping("/cafeMap")
+	@RequestMapping(value="/cafeMap", method = {RequestMethod.GET})
 	@ResponseBody
 	@Override
 	public ResponseEntity<List<FacilityMap_P001_VO>> cafeMap(PlaceDTO dto) {
@@ -110,7 +110,7 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 			msg = "success";
 		}
 		log.info(msg);
-		log.info("====End Map22 Method====");
+		log.info("====End Map Method====");
 		return new ResponseEntity<>(data, HttpStatus.OK);	
 	} // CafeMap End
 	
@@ -132,8 +132,8 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 		}
 		//---------------------------	사진 업로드 데이터 처리	---------------------------
 					
-					//String uploadFolder = "/home/testpic";
-					String uploadFolder = "C:\\upload";
+					String uploadFolder = "/var/lib/tomcat8/webapps/siteimg";
+					//String uploadFolder = "C:\\upload";
 					
 					
 					String fileName = "";
@@ -182,7 +182,7 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 	public void facilityinfo(@RequestParam("place_num") int place_num, Model model) {
 		System.out.println("1111111111111111111111111111111111111111111111111111111111111111111");
 		model.addAttribute("infopage", "조회 페이지 입니다");
-		model.addAttribute("url", "https://www.dingpet.shop/img/");
+		model.addAttribute("url", "https://www.dingpet.shop/siteimg/");
 		model.addAttribute("info", service.getMediCenter(place_num));
 		
 		
@@ -191,7 +191,7 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 	public void Mapinfo(@RequestParam("site_id") int site_id, Model model) {
 		System.out.println("1111111111111111111111111111111111111111111111111111111111111111111");
 		model.addAttribute("infopage", "조회 페이지 입니다");
-		model.addAttribute("url", "https://www.dingpet.shop/img/");
+		model.addAttribute("url", "https://www.dingpet.shop/siteimg/");
 		model.addAttribute("info", service.getDogPlace(site_id));
 		
 	}
@@ -200,8 +200,8 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 		System.out.println("============Review write!!!!!");
 		
 		//---------------------------	사진 업로드 데이터 처리	---------------------------
-		//String uploadFolder = "/home/testpic";
-		String uploadFolder = "C:\\upload";		
+		String uploadFolder = "/var/lib/tomcat8/webapps/siteimg";
+		//String uploadFolder = "C:\\upload";		
 		String fileName = "";		
 		Iterator<String> files = uploadFile.getFileNames();		
 		while(files.hasNext()) {			
