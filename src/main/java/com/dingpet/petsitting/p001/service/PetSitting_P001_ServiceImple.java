@@ -56,7 +56,6 @@ public class PetSitting_P001_ServiceImple implements PetSitting_P001_Service{
 	@Override
 	public PetSitting_P001_VO profileLookup(PetSitting_P001_VO profile) {
 		// TODO Auto-generated method stub
-		System.out.println("서비스에 오니니니?"+ profile.getMember_ID());
 		return mapper.profileLookup(profile);
 	}
 

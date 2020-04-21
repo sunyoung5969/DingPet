@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dingpet.petsitting.p002.mapper.PetSitting_P002_Mapper">
+
+	<select id="getOrderIdSequence" resultType="int">
+		select seq_order_id.nextval from dual
+	</select>
+	
+	<insert id="reservationInsert">
+		insert into reservation (order_id, member_id, sitter_id, start_date, start_time, 
+		end_date, end_time, total_amount, payment_date, item_name, vat) 
+		values( #{order_ID}, #{member_ID}, #{sitter_ID}, #{start_Date}, #{start_Time}, 
+		#{end_Date}, #{end_Time}, #{total_amount}, #{payment_Date}, #{item_Name}, #{vat}) 
+	</insert>
+
+</mapper>

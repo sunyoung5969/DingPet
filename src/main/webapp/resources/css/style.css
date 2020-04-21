@@ -2104,7 +2104,7 @@ figure figcaption {
     }
     
     .profile img {
-      max-width: 160px;
+      max-width: 30%;
       width: 100%;
       margin: 0 auto;
       -webkit-transform: translate3d(0,-50%,0);

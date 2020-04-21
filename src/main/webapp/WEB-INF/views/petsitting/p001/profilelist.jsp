@@ -31,7 +31,7 @@
 	                                    <img class="card-img-top" src='/resources/images/dogger_img_sm_6.jpg'> <!-- ${sitter.profile_PicPath } -->
 		                                <div class="card-body">
 		                                	<!-- 이름 / 한줄 자기소개 내용 -->
-		                                	<h5 class="card-name" style="margin-top: 0px">${sitter.member_ID }</h5>
+		                                	<h5 class="card-name" style="margin-top: 0px">${sitter.member_NickName }</h5>
 		                                	<h5 class="card-title" style="margin-top: 0px">${sitter.profile_Content } </h5>
 		                                    <!-- 주소 -->
 		                                    <p class="card-text">${sitter.list_Address }</p>
