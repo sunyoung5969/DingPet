@@ -331,12 +331,30 @@
 		<h1>등록페이지입니당</h1>
 	</div>
 	<form action="/petsitting/p001/registerdata" method="post" enctype="multipart/form-data">
-		<input type="text" name="member_ID"><br><Br><Br><br><br>
+		<input type="hidden" name="member_ID" value="${customers.member_id }">
 		<div class="filebox">
-			<label for="profilePic"><img style="width: 150px; height: 240px" src="https://i.imgur.com/hQaabc4.png">
+			<label for="profilePic">
+				<img id="preview_profile" style="width: 150px; height: 240px" src="">
 				<div class="img-text"><p>사 진 등 록</p></div>
 			</label>
 			<input type="file" name="profilePic" id="profilePic" accept="image/*">
+			
+			<script>
+			    var upload = document.querySelector('#profilePic');
+			 	
+			    upload.addEventListener('change',function (e) {
+			   
+			        //FileReader 객체 생성
+			        var reader = new FileReader();
+			        
+			        // reader 시작시 함수 구현
+			        reader.onload = function(aImg){
+				        $("#preview_profile").attr("src", aImg.target.result)
+			        }
+			        reader.readAsDataURL(e.target.files[0])
+			    })
+			</script>
+			
 		</div>
 		
 		<div class="form-group">
@@ -347,11 +365,29 @@
 		<h3> 자격증 </h3>
 		<div>
 			<div class="filebox">
-				<label for="licensePic"><img style="width: 150px; height: 240px" src="https://i.imgur.com/hQaabc4.png">
+				<label for="licensePic"><img id="preview_license" style="width: 150px; height: 240px" src="">
 					<div class="img-text"><p>자격증사진</p></div>
 				</label>
 				<input type="file" name="licensePic" id="licensePic" accept="image/*">
 			</div>
+			
+			
+			<script>
+			    var upload = document.querySelector('#licensePic');
+			 	
+			    upload.addEventListener('change',function (e) {
+			   
+			        //FileReader 객체 생성
+			        var reader = new FileReader();
+			        
+			        // reader 시작시 함수 구현
+			        reader.onload = function(aImg){
+				        $("#preview_license").attr("src", aImg.target.result)
+			        }
+			        reader.readAsDataURL(e.target.files[0])
+			    })
+			</script>
+			
 			<div class='wkrurwmd'>
 				<table>
 					<tr>

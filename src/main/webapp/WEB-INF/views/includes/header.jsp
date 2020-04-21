@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/fonts/flaticon/font/flaticon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/aos.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+    
     <!--css 추가-->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
     
@@ -30,171 +31,366 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     
     <link rel="stylesheet" type="text/css" href="https://assets.mypetlife.co.kr/map/wp-content/themes/listify/css/style.min.css">
+  	
   	<Style>
-	  	.DayOfTheWeek_li{
-			display: inline-block;
-			padding: 5px;
-		}
-			
-		.Calendar {
-		
-			width: 80%;
-		
-		}
-		
-		.imgbtn{
-			padding-bottom: 8px;
-		}
-		
-		.CalendarMonth_small{
-			padding: 10px 30px 10px 30px;
-			margin: 0px;
-			display: inline-block;
-		}
-		
-		.CalendarDayDiv--td { 
-		
-			padding: 5px;
-		
-		}
-		
-		.CalendarDayDiv{
-			border: 0px;
-			width: 100%;
-			background-color: white;
-			color: #87CEEB;		
-		}
-		
-		.CalendarDayDiv--closed{
-			border: 0px;
-			width: 100%;
-			background-color: white;
-			color: gray;
-		
-		}		
-		
-		.DayOfTheWeek_li{
-			display: inline-block;
-			padding: 5px 21.3px 5px 21.3px;
-			font-size: 17px;
-		}
-		
-		.DayOfTheWeek_ui{
-		
-			width: 100%;
-			padding: 0px;
-			margin: 0px;
-		}
-		
-		.service_warp{
-			width:100%;
-		}
-		
-		.service_txth1, .service_txth2{
-			margin-bottom: 0px;
-		}
-		
-		.service_ico{
-			position: relative;
-			left: 12%;
-		}
-		
-		.dogtype{
-			display: inline-block;
-			position: relative;
-			top: 15px;
-			width: 28%;
-		}
-		
-		
-		.price_type{
-			position: relative;
-			display: inline-block;
-			left: 9%;
-			top: -20px;
-			padding: 0px;
-			width: 90%;
-		}
-		
-		.kg{
-			margin:0px;
-			font-size: 10px;
-		}
-		
-		.type_text{
-			display: inline-block;
-			font-size: 15px;
-			padding: 10px 10px 10px 10px;
-			margin: 0px;
-			width: 100%;
-		}
-		
-		.pricediv{
-			display: inline-block;
-		    position: relative;
-		    left: 8%;
-			
-		}
-		
-		.price_text{
-			display: inline-block;
-			position: relative;
-		    left: 10%;
-			font-size: 15px;
-			padding: 0px;
-			margin: 0px;
-		}
-		
-		.price{
-			display: inline-block;
-			width: 55%;
-		}
-		
-		.number{
-			display: inline-block;
-			position:relative;
-			width: 18%;
-			left: 6%;
-			font-size: 15px;
-		}
-		
-		.num{
-			display: inline-block;
-			margin:0px;
-		}
-		
-		.justify-content-center{
-			padding-top: 25px;
-		}
-		
-		.paws{
-			margin: 0px;
-		}
-		
-		.heading-section h2{
-			
-			padding:0px;
-			font-size: 23px;
-		}
-		
-		.licenseDiv{
-			display: inline-flex;
-			padding-left: 20px;
-			padding-right: 20px;
-		}
-		
-		.license_txth1{
-			margin-bottom: 0px;
-			padding: 4px 10px 4px 20px;
-			font-weight: 600;
-		}
-		
-		.license_txth2{
-			margin-bottom: 0px;
-			padding: 0px 10px 5px 20px;
-		}
-		
-  	</Style>
+        .DayOfTheWeek_li{
+         display: inline-block;
+         padding: 5px;
+      }
+         
+      .Calendar {
+      
+         width: 80%;
+      
+      }
+      
+      .imgbtn{
+         padding-bottom: 8px;
+      }
+      
+      .CalendarMonth_small{
+         padding: 10px 30px 10px 30px;
+         margin: 0px;
+         display: inline-block;
+      }
+      
+      .CalendarDayDiv--td { 
+      
+         padding: 5px;
+      
+      }
+      
+      .CalendarDayDiv{
+         border: 0px;
+         width: 100%;
+         background-color: white;
+         color: #87CEEB;      
+      }
+      
+      .CalendarDayDiv--closed{
+         border: 0px;
+         width: 100%;
+         background-color: white;
+         color: gray;
+      
+      }      
+      
+      .DayOfTheWeek_li{
+         display: inline-block;
+         padding: 5px 21.3px 5px 21.3px;
+         font-size: 17px;
+      }
+      
+      .DayOfTheWeek_ui{
+      
+         width: 100%;
+         padding: 0px;
+         margin: 0px;
+      }
+      
+      .service_h2-reservation{
+          font-weight: 600;
+          font-size: 17px;
+          letter-spacing: -0.2px;
+          line-height: 25px;
+          color: rgb(57, 60, 71);
+          margin-top: 15px;
+          display: inline-block;
+          
+      }
+      
+      .service_warp{
+         width:100%;
+      }
+      
+      .service_txth1, .service_txth2{
+         margin-bottom: 0px;
+      }
+      
+      .service_ico{
+         position: relative;
+         left: 12%;
+      }
+            
+      .profile-reservation, .price-reservation, .schedule-reservation{
+           display: inline-block;
+        }
+        
+      .dogtype{
+         display: inline-block;
+         position: relative;
+         top: 15px;
+         width: 28%;
+      }
+      
+      
+      .price_type{
+         position: relative;
+         display: inline-block;
+         left: 9%;
+         top: -20px;
+         padding: 0px;
+         width: 90%;
+      }
+      
+      .kg{
+         margin:0px;
+         font-size: 10px;
+      }
+      
+      .type_text{
+         display: inline-block;
+         font-size: 15px;
+         padding: 10px 10px 10px 10px;
+         margin: 0px;
+         width: 100%;
+      }
+      .price-reservation-container{
+         display: inline-block;
+         width: 36%;
+         min-width: 380px;
+         min-height: 380px;
+         position:relative;
+      }
+      
+      .priceDiv{
+         display: inline-block;
+          position: relative;
+          left: 8%;
+      }
+      
+      .priceDiv-reservation{
+         display: inline-block;
+          position: absolute;
+          padding: 10px;
+      }
+      
+      .price_text{
+         display: inline-block;
+         position: relative;
+          left: 10%;
+         font-size: 15px;
+         padding: 0px;
+         margin: 0px;
+      }
+      
+      .price{
+         display: inline-block;
+         width: 55%;
+      }
+      
+      .price-reservation{
+          display: inline-block;
+          width: 65%;
+          position: relative;
+          left: -6%;
+      }
+      
+      .number{
+         display: inline-block;
+         position:relative;
+         width: 18%;
+         left: 6%;
+         font-size: 15px;
+      }
+      
+      .number-reservation{
+          display: inline-block;
+          position: relative;
+          width: 18%;
+          left: 3%;
+          font-size: 15px;
+      }
+      
+      .num, .num-small, .num-medium, .num-large{
+         display: inline-block;
+         margin:0px;
+      }
+      
+      .justify-content-center{
+         padding-top: 25px;
+      }
+      
+      .paws{
+         margin: 0px;
+      }
+      
+      .heading-section h2{
+         
+         padding:0px;
+         font-size: 23px;
+      }
+      
+      .licenseDiv{
+         display: inline-flex;
+         padding-left: 20px;
+         padding-right: 20px;
+      }
+      
+      .license_txth1{
+         margin-bottom: 0px;
+         padding: 4px 10px 4px 20px;
+         font-weight: 600;
+      }
+      
+      .license_txth2{
+         margin-bottom: 0px;
+         padding: 0px 10px 5px 20px;
+      }
+      
+      .reservationDiv{
+      	 width:100%;
+      	 padding: 0 15%;
+         display: none;
+         position: absolute;
+         background-color: white;
+         z-index: 100;
+         border-top: lightgoldenrodyellow solid 2px;
+         border-bottom: lightgoldenrodyellow solid 2px;
+      }
+      
+      .profile-reservation{
+         width: 27%;
+         min-width: 380px;
+         min-height: 380px;
+         position: relative;
+         top: 0;
+      }
+      .profile-reservationDiv {
+      	position: absolute;
+      }
+      .profileIMGDiv-reservation{
+         display: inline;
+         padding: 25px;
+      }
+      
+      .profileIMG-reservation{
+         border-radius: 50% !important;
+         max-width: 25%;
+      }
+        
+        .profile_h6Div-reservation{
+           display: inline-block;
+           padding: 20px;
+           width: 60%;
+           text-align: left;
+        }
+        
+        .profile_h6-reservation{
+           margin: 0px;
+        }
+        
+        .service_swap-reservation{
+           width: 100%;
+        }
+        
+        .service_list-reservation{
+           padding:10px;
+        }
+        /*
+        .service_h2-reservation{
+           margin:0px;
+            font-weight: 600;
+          font-size: 14px;
+          letter-spacing: -0.2px;
+          line-height: 25px;
+          color: rgb(57, 60, 71);
+        }
+        */
+        .service_ico-reservation{
+           display: flex;
+          flex-direction: row;
+          align-items: center;
+          width: 158px;
+          height: 69px;
+          margin-left: 20px;
+        }
+        
+        .service_txtbox-reservation{
+          margin-left: 10px;
+          width: 115px;
+          min-width: 115px;
+        }
+        
+        .price_type-reservation{
+          position: relative;
+          display: inline-block;
+          /* left: 9%; */
+          top: 0;
+          padding: 10px 0	;
+          width: 100%;
+        }
+
+        .schedule-reservation{
+           position: static;
+        }
+        
+        .Calendar-reservation{
+        	position: absolute;
+        	top:0;
+        	width:23%;
+        }
+        .APMDiv{
+        	display:flex;
+        }
+        .btn-reservation{
+        	padding-top: 5%;
+        	padding-bottom: 5%;
+    		padding-left: 30%;
+        }
+        
+      .dateTime{
+          display: none;
+          position: absolute;
+          width: 100%;
+          background-color: white;
+          top: 42px;
+        }
+        
+        .time-setting{
+          font-size: 20px;
+          margin: 0px;
+          padding: 10px;
+        }
+        
+        .time-btn{
+          width: 100%;
+          height: 44px;
+          padding: 0px;
+          background-color: white;
+          border: gainsboro solid 1px;
+        }
+        .time-text{
+           margin: 0px;
+           color: #87CEEB;
+        }
+        
+        .APM{
+         width: 49.5%;
+         height: 40px;
+          background-color: white;
+          border: gainsboro solid 1px;
+        }
+        
+        .time{
+           text-align: center;
+           padding: 0px;
+        }
+      
+      .backbtn {
+      	position: absolute;
+	    bottom: -25px;
+	    display: inline-block;
+	    left: 50%;
+      }
+      
+      .reservtext{
+         margin: 0px;
+      }
+      
+      
+     </Style>
+ 
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300" id="home-section">
   

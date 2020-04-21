@@ -5,17 +5,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.dingpet.petsitting.p001.mapper.PetSitting_P001_Mapper">
 
 	<select id="profileGetList" resultType="com.dingpet.petsitting.p001.vo.PetSitting_P001_VO">
-		select member_id, profile_picpath, profile_content, list_address, profile_picpath 
-		from sitter_profile 
+		select s.member_id, m.member_nickname, s.profile_picpath, s.profile_content, s.list_address, s.profile_picpath 
+		from sitter_profile s, member m 
+		where s.member_id = m.member_id
 	</select>
 	
 	<select id="profileLookup" resultType="com.dingpet.petsitting.p001.vo.PetSitting_P001_VO">
-		select member_id, profile_picpath, profile_content, price_small, 
-		price_medium, price_large, list_address, profile_jibunAddress, 
-		service_00, service_01, service_02, service_03, service_04, 
-		service_05, service_06, service_07   
-		from sitter_profile 
-		where member_id = #{member_ID}
+		select s.member_id, s.profile_picpath, s.profile_picname, s.profile_content, s.price_small, 
+		s.price_medium, s.price_large, s.list_address, s.profile_jibunAddress, 
+		s.service_00, s.service_01, s.service_02, s.service_03, s.service_04, 
+		s.service_05, s.service_06, s.service_07, m.member_nickname
+		from sitter_profile s, member m 
+		where s.member_id = #{member_ID} and s.member_id = m.member_id
 	</select>
 	
 	<select id="getLicenseList" resultType="com.dingpet.petsitting.p001.vo.PetSitting_P001_VO">

@@ -6,7 +6,9 @@ import lombok.Data;
 public class PetSitting_P001_VO {
 	
 	private String member_ID;				// 회원 아이디
+	private String member_NickName;			// 회원 닉네임
 	private String profile_PicPath;			// 프로필 사진 경로
+	private String profile_PicName;			// 프로필 사진 이름
 	private String profile_Content;			// 자기 소개
 	private String license_PicPath;			// 자격증 사진 경로
 	private String license_Name;			// 자격증 명
@@ -21,14 +23,14 @@ public class PetSitting_P001_VO {
 	private String profile_DetailAddress;	// 상세 주소
 	private String schedule_Closed;			// 휴무일
 	private String list_Address;			// 리스트 주소	
-	private String service_00;
-	private String service_01;
-	private String service_02;
-	private String service_03;
-	private String service_04;
-	private String service_05;
-	private String service_06;
-	private String service_07;
+	private String service_00;				//
+	private String service_01;				//
+	private String service_02;				//
+	private String service_03;				//
+	private String service_04;				//
+	private String service_05;				//
+	private String service_06;				//
+	private String service_07;				//
 	
 	private String[] petService;			// 펫서비스
 
