@@ -5,6 +5,7 @@
 <%@include file="../../includes/header.jsp"%>
 
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/profilelookup.css">
 
 <!--====  str of contents  ====-->
     <section style="padding-top:87px">
