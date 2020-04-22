@@ -8,9 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>DingPet SignIn</title>
 
-    <!-- Font Icon -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/fonts/material-icon/css/material-design-iconic-font.min.css">
-
     <!-- Main css -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sign.css">
     
@@ -128,11 +125,6 @@
         </section>
 
     </div>
-    
-
-    <!-- JS -->
-    <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
 
     
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->

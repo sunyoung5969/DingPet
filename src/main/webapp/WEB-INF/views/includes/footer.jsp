@@ -37,19 +37,20 @@
     </footer>
 
   </div> <!-- .site-wrap -->
-
-  <script src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/jquery-ui.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/owl.carousel.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/jquery.countdown.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/jquery.easing.1.3.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/aos.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/jquery.fancybox.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/jquery.sticky.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/isotope.pkgd.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/jquery-ui.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/owl.carousel.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/jquery.countdown.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/jquery.easing.1.3.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/aos.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/jquery.fancybox.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/jquery.sticky.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/isotope.pkgd.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
   
   </body>
 </html>

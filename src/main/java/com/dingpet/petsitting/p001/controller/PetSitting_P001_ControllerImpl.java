@@ -76,6 +76,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 				}
 			}
 			
+			
 			profile.setPetService(petServiceYN);
 			
 			//service.petServiceInsert(profile);
@@ -90,7 +91,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 			String fileName = "";
 			
 			Iterator<String> files = uploadFile.getFileNames();
-			
+
 			while(files.hasNext()) {
 				
 				File saveFile;
