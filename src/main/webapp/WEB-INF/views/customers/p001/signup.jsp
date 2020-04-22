@@ -28,7 +28,6 @@
 
 		$.ajax({
 			type : "post",
-			async : false,
 			url : "http://localhost:8080/customers/p001/mem",
 			data : {
 				id : _id
