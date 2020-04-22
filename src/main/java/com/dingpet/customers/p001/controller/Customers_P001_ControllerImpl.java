@@ -3,7 +3,6 @@ package com.dingpet.customers.p001.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -148,6 +146,10 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		log.info("회원가입 처리");
 		log.info(customers);
 		service.signup(customers);
+		
+		
+		
+		
 		return "redirect:/customers/p001/signin";
 	}	
 	

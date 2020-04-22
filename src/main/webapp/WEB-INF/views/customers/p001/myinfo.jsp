@@ -72,30 +72,24 @@
        
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                닉네임<input type="text" name="member_nickname" value="<c:out value="${customers.member_nickname}" />" >
+                                이름<input type="text" name="member_name" value="<c:out value="${customers.member_name}" />" readonly="readonly" />
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="nickname"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                닉네임<input type="text" name="member_nickname" value="<c:out value="${customers.member_nickname}" />" />
                             </div>
                             
                             <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>
                                 이메일<input type="text" name="member_email" value="<c:out value="${customers.member_email}" />" >
                             </div>
-
-                  
-               <!-- 
-               				<div class="form-group form-button">
-                                <input type="submit" class="form-submit" value="정보수정">
-                            </div>    
                             
-                            <div class="form-group form-button">
-                                <input type="button" onClick="withdraw()" id="withdrawBtn" class="form-submit" value="회원탈퇴" />
+                              <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                사진<input type="file" name="member_email" value="<c:out value="${customers.member_photo}" />" >
                             </div>
-               
-                            <div class="form-group form-button">
-                                <input type="button" onClick="change()" class="form-submit" value="회원전환" />
-                            </div>
-                -->
-                            
-                            
+                                               
                             <button type="submit" data-oper='modify' class="form-group form-button">정보수정</button>
 							<button type="submit" data-oper='withdraw' class="form-group form-button">회원탈퇴</button>
 							<button type="submit" data-oper='change' class="form-group form-button">회원전환</button>	

@@ -9,6 +9,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.dingpet.lostpets.p001.mapper.LostPets_P001_Mapper;
+import com.dingpet.lostpets.p001.vo.Criteria;
 import com.dingpet.lostpets.p001.vo.LostPets_P001_VO;
 
 import lombok.AllArgsConstructor;
@@ -21,14 +22,20 @@ public class LostPets_P001_ServiceImpl implements LostPets_P001_Service{
 
 	private LostPets_P001_Mapper mapper;
 
-	//목록
-	public List<Map<String,String>> list() {
-		log.info("list**********");
-		return mapper.list();
+	//목록 조회
+	public List<Map<String, String>> list(Criteria cri) {
+		log.info("list is called at Service");
+		return mapper.listWithPaging(cri);
+	}
+	
+	public int getTotalAmount(Criteria cri) {
+		return mapper.getTotalAmount(cri);
 	}
 
 	//등록
 	public void write(Map<String, Object> writeMap) throws Exception{
+		String dog_id = mapper.getDogId();
+		writeMap.put("dog_id", dog_id);
 		mapper.writeLost(writeMap);
 		mapper.writeDog(writeMap);
 		log.info("write");
@@ -54,42 +61,7 @@ public class LostPets_P001_ServiceImpl implements LostPets_P001_Service{
 	//수정
 	public boolean modify(LostPets_P001_VO lostVO) {
 		log.info("modify==========" + lostVO);
-		return mapper.modify(lostVO) == 1;
+		return mapper.modifyLost(lostVO) == 1 && mapper.modifyDog(lostVO) == 1;
 	}
-	
-	//image to byte array
-	public static byte[] imageToByteArray(String filePath) throws Exception{
-		byte[] imageInByte = null;
-		ByteArrayOutputStream baos = null;
-		FileInputStream fis = null;
-		
-		try {
-			baos = new ByteArrayOutputStream();
-			fis = new FileInputStream(filePath);
-			
-			byte[] buffer = new byte[1024 * 8];
-			int read = 0;
-			
-			while((read = fis.read(buffer, 0, buffer.length)) != -1) {
-				baos.write(buffer, 0, read);
-			}
-			
-			imageInByte = baos.toByteArray();
-		
-		}catch(Exception e) {
-			e.printStackTrace();
-		
-		}finally {
-			if(baos != null) {
-				baos.close();
-			}
-			if(fis != null) {
-				fis.close();
-			}
-		}
-		
-		return imageInByte;
-	}
-
 	
 }

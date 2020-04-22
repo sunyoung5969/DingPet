@@ -14,21 +14,22 @@
 <!-- 정보수정 -->
 <update id="update">
 	update member set member_nickname = #{member_nickname}, 
-						   member_email = #{member_email}, 
-						   member_pwd = #{member_pwd} 
-						where member_id = #{member_id}
+						member_email = #{member_email}, 
+						member_name = #{member_name},    
+						member_pwd = #{member_pwd} 
+					where member_id = #{member_id}
 </update>
 
 <!-- 내정보 조회 -->
 <select id="read" resultType="com.dingpet.customers.p001.vo.Customers_P001_VO">
-	select member_id, member_nickname, member_email, member_pwd from member
+	select member_id, member_nickname, member_name, member_email, member_pwd from member
 	where member_id = #{member_id}
 </select>
 
 <!-- 일반회원 등록 -->
 <select id="insert1">
-	insert into member(member_id, member_pwd, member_nickname, member_email)
-	values(#{member_id}, #{member_pwd}, #{member_nickname}, #{member_email})
+	insert into member(member_id, member_pwd, member_name, member_nickname, member_email, member_photo)
+	values(#{member_id}, #{member_pwd}, #{member_name}, #{member_nickname}, #{member_email}, #{member_photo})
 </select>
 
 
@@ -50,7 +51,8 @@
 <!-- 로그인 -->
 <select id="loginCheck" resultType="com.dingpet.customers.p001.vo.Customers_P001_VO">
 
-	select member_id, member_nickname, member_pwd, member_email 
+	select member_id, member_pwd, member_name, member_nickname, member_email
+
 	from member where member_id=#{member_id} and member_pwd=#{member_pwd}
 
 </select>
