@@ -7,10 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>DingPet SignIn</title> <<<<<<< HEAD
-<!-- Font Icon -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/fonts/material-icon/css/material-design-iconic-font.min.css">
+<title>DingPet SignIn</title>
 
 <!-- Main css -->
 <link rel="stylesheet"
@@ -18,12 +15,7 @@
 
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript">
-<!-- Main css -->
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sign.css">
 
-	<script src="http://code.jquery.com/jquery-latest.min.js">
-</script>
 <script type="text/javascript">
 	function fn_process() {
 
@@ -121,8 +113,7 @@
 
 
 							<div class="filebox">
-								사진 <input type="file" name="photo" id="member_photo"
-									accept="image/*">
+								사진 <input type="file" name="photo" id="member_photo" accept="image/*">
 
 								<!-- 사진미리보기 JS -->
 								<script>
