@@ -1,7 +1,10 @@
 package com.dingpet.customers.p001.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Iterator;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +17,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -142,13 +147,50 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 	
 	//회원가입 처리
 	@PostMapping("/signup")
-	public String signup(Customers_P001_VO customers) {
+	public String signup(Customers_P001_VO customers, MultipartHttpServletRequest uploadFile) {
 		log.info("회원가입 처리");
 		log.info(customers);
+		
+		//---------------------------	사진 업로드 데이터 처리	---------------------------
+		
+		//String uploadFolder = "/home/testpic";
+		String uploadFolder = "C:\\test\\pic";
+		
+		
+		String fileName = "";
+		
+		Iterator<String> files = uploadFile.getFileNames();
+		
+		while(files.hasNext()) {
+			
+			File saveFile;
+			String filePath;
+			String index = files.next();
+			UUID profile_UUID = UUID.randomUUID();
+			UUID license_UUID = UUID.randomUUID();
+
+			MultipartFile mFile = uploadFile.getFile(index);
+			fileName = mFile.getOriginalFilename();
+
+			if(!fileName.equals("")) {
+
+				saveFile = new File(uploadFolder, profile_UUID.toString() + "profile_" + fileName);
+				filePath = saveFile.getPath();
+				customers.setMember_photo(filePath);
+
+				try {
+					mFile.transferTo(saveFile);
+				} catch (Exception e) {
+					// TODO: handle exception
+					System.out.println("사진업로드 Exception " + e);
+				}
+			}
+		}
+
+//---------------------------------------------------------------------------
+
 		service.signup(customers);
-		
-		
-		
+
 		
 		return "redirect:/customers/p001/signin";
 	}	
