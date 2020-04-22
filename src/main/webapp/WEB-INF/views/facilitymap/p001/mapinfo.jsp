@@ -170,8 +170,8 @@
       </section>
     <!--====  end of contents  ====-->  
     
-<script src="/resources/js/star1.js?v=2"></script>
-<script src="/resources/js/star2.js?v=2"></script>
+<script src="${pageContext.request.contextPath}/resources/js/star1.js?v=2"></script>
+<script src="${pageContext.request.contextPath}/resources/js/star2.js?v=2"></script>
 </body>
 <%@ include file="/WEB-INF/views/includes/footer.jsp"%>
 </html>
