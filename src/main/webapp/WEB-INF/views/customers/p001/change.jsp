@@ -16,8 +16,6 @@
     
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-
-
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     function sample4_execDaumPostcode() {
         new daum.Postcode({
@@ -73,6 +71,19 @@
             }
         }).open();
     }
+    
+    
+    function applyBtn(){
+    	//메인으로 이동, 펫시터전환신청완료 알림창
+    	alert("펫시터 회원 신청이 완료되었습니다.");
+    	return location.href='/';
+    }
+    
+    function cancleBtn(){
+    	//메인으로 이동
+    	return location.href='/';
+    }
+   
 </script>
     
 </head>
@@ -89,23 +100,18 @@
                     <div class="change-form">
                         <h2 class="form-title">펫시터 전환 신청</h2>
                         
-                        <form method="POST" class="register-form" id="register-form" 
-                        action="signup">
+                        <form method="POST" class="register-form" id="register-form">
                         
-                           <div class="form-group">
-                           <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                이름<input type="text" id="name" name="member_name" placeholder="Your Name" required/>
-                           </div>
                             
                             <div class="form-group">
                                 <label for="contact"><i class="zmdi zmdi-lock"></i></label>
-                               연락처<input type="text" name="member_contact" id="contact" placeholder="Password" required/>
+                               연락처<input type="text" name="member_contact" id="member_contact" placeholder="Your contact info." required/>
                             </div>                   
                             
                             
                             <div class="form-group">
                                 <label for="gender"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                성별<input type="text" name="sex" id="gender" placeholder="Your Name" required/>
+                                성별<input type="text" name="sex" id="sex" placeholder="Your Gender" required/>
                             </div>
                             
                             <div class="form-group">
@@ -115,7 +121,7 @@
                             
                             <div class="form-group">
                                 <label for="job"><i class="zmdi zmdi-email"></i></label>
-                                직업<input type="text" name="profession" id="job" placeholder="Your job" required/>
+                                직업<input type="text" name="profession" id="profession" placeholder="Your job" required/>
                             </div>
 	
 							<div class="form-group">
@@ -133,7 +139,7 @@
 
 							<div class="form-group">
                                 <label for="time"><i class="zmdi zmdi-email"></i></label>
-                               활동가능시간<input type="text" name="active_hours" id="time" placeholder="Your address" required/>
+                               활동가능시간<input type="text" name="active_hours" id="time" placeholder="Your time available" required/>
                             </div>
                             
                             <div class="form-group">
@@ -156,8 +162,8 @@
                   
                             
                             <div class="form-group form-button">
-                                <input type="submit" name="apply" id="apply" class="form-submit" value="신청" />
-                                <input type="reset" name="cancle" id="cancle" class="form-submit" value="취소" />
+                                <input type="submit" name="apply" id="apply" class="form-submit" onClick="applyBtn()" value="신청" />
+                                <input type="submit" name="cancle" id="cancle" class="form-submit" onClick="cancleBtn()" value="취소" />
                             </div>
                             
                         </form>    

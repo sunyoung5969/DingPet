@@ -13,7 +13,7 @@ public class Customers_P001_VO {
 	private String member_nickname;
 	private String member_email;
 	private String member_contact;
-	private BLOB member_photo;
+	private String member_photo;
 	private byte sex;
 	private String date_of_birth;
 	private String address;

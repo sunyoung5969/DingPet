@@ -51,6 +51,7 @@ public class KakaoPay {
 		params.add("quantity", "1"); 								// 수량
 		params.add("total_amount", reserved_info.getTotal_amount()); // 총 금액
 		params.add("tax_free_amount", "0"); // 비과세 금액
+		
 		//params.add("approval_url", "http://localhost:8099/petsitting/p002/kakaoPaySuccess"); // 결제 성공 시 리다이렉트
 		//params.add("cancel_url", "http://localhost:8099/kakaoPayCancel"); // 결제 취소 시 리다이렉트
 		//params.add("fail_url", "http://localhost:8099/kakaoPaySuccessFail"); // 결제 실패 시 리다이렉트
