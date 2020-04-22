@@ -27,12 +27,12 @@
     
     <!--탭 메뉴 -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     
     <link rel="stylesheet" type="text/css" href="https://assets.mypetlife.co.kr/map/wp-content/themes/listify/css/style.min.css">
   	
-  	<Style>
+    <Style>
         .DayOfTheWeek_li{
          display: inline-block;
          padding: 5px;
@@ -95,6 +95,7 @@
           line-height: 25px;
           color: rgb(57, 60, 71);
           margin-top: 15px;
+          margin-bottom: 24px;
           display: inline-block;
           
       }
@@ -145,13 +146,13 @@
          margin: 0px;
          width: 100%;
       }
-      .price-reservation-container{
-         display: inline-block;
-         width: 36%;
-         min-width: 380px;
-         min-height: 380px;
-         position:relative;
-      }
+    .price-reservation-container{
+		position: relative;
+		display: inline-block;
+		width: 30%;
+		min-width: 380px;
+		left: 6%;
+    }
       
       .priceDiv{
          display: inline-block;
@@ -161,7 +162,7 @@
       
       .priceDiv-reservation{
          display: inline-block;
-          position: absolute;
+          position: relative;
           padding: 10px;
       }
       
@@ -239,8 +240,6 @@
       }
       
       .reservationDiv{
-      	 width:100%;
-      	 padding: 0 15%;
          display: none;
          position: absolute;
          background-color: white;
@@ -250,14 +249,11 @@
       }
       
       .profile-reservation{
-         width: 27%;
-         min-width: 380px;
-         min-height: 380px;
+         width: 30%;
+         min-width: 400px;
          position: relative;
-         top: 0;
-      }
-      .profile-reservationDiv {
-      	position: absolute;
+         left: 7%;
+         top: -84px;
       }
       .profileIMGDiv-reservation{
          display: inline;
@@ -272,8 +268,6 @@
         .profile_h6Div-reservation{
            display: inline-block;
            padding: 20px;
-           width: 60%;
-           text-align: left;
         }
         
         .profile_h6-reservation{
@@ -303,7 +297,6 @@
           align-items: center;
           width: 158px;
           height: 69px;
-          margin-left: 20px;
         }
         
         .service_txtbox-reservation{
@@ -312,31 +305,26 @@
           min-width: 115px;
         }
         
-        .price_type-reservation{
-          position: relative;
-          display: inline-block;
-          /* left: 9%; */
-          top: 0;
-          padding: 10px 0	;
-          width: 100%;
-        }
+		.price_type-reservation{
+			position: relative;
+			display: inline-block;
+			top: -20px;
+			padding-top: 5px;
+			padding-bottom: 8px;
+			width: 100%;
+		}
 
         .schedule-reservation{
-           position: static;
+           position: absolute;
+           left: 68%;
         }
         
         .Calendar-reservation{
-        	position: absolute;
-        	top:0;
-        	width:23%;
+        
         }
-        .APMDiv{
-        	display:flex;
-        }
+        
         .btn-reservation{
-        	padding-top: 5%;
-        	padding-bottom: 5%;
-    		padding-left: 30%;
+        
         }
         
       .dateTime{
@@ -377,17 +365,11 @@
            padding: 0px;
         }
       
-      .backbtn {
-      	position: absolute;
-	    bottom: -25px;
-	    display: inline-block;
-	    left: 50%;
-      }
-      
       .reservtext{
          margin: 0px;
       }
       
+     </Style>
       
      </Style>
  
