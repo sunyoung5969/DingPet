@@ -25,12 +25,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>	
 	</select>
 	<select id="getseq" resultType="int">
-	    SELECT place_seq.nextval as sitesq from dual
+	    SELECT site_seq.nextval as sitesq from dual
     </select> 
 	<insert id="registerPlace">		
 		<![CDATA[
 		INSERT INTO SITE (SITE_ID, PLACE_NAME, ADDRESS_NAME, CATEGORY_NAME, PHONE, X, Y, PLACE_URL, PLACE_TEXT, PLACE_PIC, PLACE_PICNAME)
-		VALUES(place_seq.currval, #{place_name, jdbcType=VARCHAR}, #{address_name, jdbcType=VARCHAR}, #{category_name, jdbcType=VARCHAR}, #{phone, jdbcType=VARCHAR}, #{x, jdbcType=VARCHAR}, #{y, jdbcType=VARCHAR},
+		VALUES(site_seq.currval, #{place_name, jdbcType=VARCHAR}, #{address_name, jdbcType=VARCHAR}, #{category_name, jdbcType=VARCHAR}, #{phone, jdbcType=VARCHAR}, #{x, jdbcType=VARCHAR}, #{y, jdbcType=VARCHAR},
 		 #{place_url, jdbcType=VARCHAR}, #{place_text, jdbcType=VARCHAR}, #{place_pic, jdbcType=VARCHAR}, #{place_picname, jdbcType=VARCHAR})	
 		]]>	
 	</insert>
