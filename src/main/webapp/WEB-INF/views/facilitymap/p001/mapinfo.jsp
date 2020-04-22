@@ -9,6 +9,45 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+      /*star start*/
+	.rate {
+	  float: left;
+	  height: 46px;
+	  padding: 0 10px;
+	}
+	.rate:not(:checked) > input {
+	  position:absolute;
+	  top:-9999px;
+	}
+	.rate:not(:checked) > label {
+	  float:right;
+	  width:1em;
+	  overflow:hidden;
+	  white-space:nowrap;
+	  cursor:pointer;
+	  font-size:30px;
+	  color:#ccc;
+	}
+	.rate:not(:checked) > label:before {
+	  content: '★ ';
+	}
+	.rate > input:checked ~ label {
+	  color: #ffc700;    
+	}
+	.rate:not(:checked) > label:hover,
+	.rate:not(:checked) > label:hover ~ label {
+	  color: #deb217;  
+	}
+	.rate > input:checked + label:hover,
+	.rate > input:checked + label:hover ~ label,
+	.rate > input:checked ~ label:hover,
+	.rate > input:checked ~ label:hover ~ label,
+	.rate > label:hover ~ input:checked ~ label {
+	  color: #c59b08;
+	}
+	/*star end*/
+</style>
 </head>
 <body>
   <!--====  str of contents  ====-->
@@ -124,6 +163,7 @@
                         <div class="comment-respond">
                             <h3 id="reply-title" class="comment-reply-title"> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/map/listing/%ec%88%98%ec%9b%90%ec%8b%9c-%ec%98%81%ed%86%b5%ea%b5%ac-%eb%b2%95%ec%a1%b0%eb%a1%9c149%eb%b2%88%ea%b8%b8-47-1%ec%b8%b5-94-149%ed%94%8c%eb%9d%bc%eb%b0%8d%ea%b3%a0/#respond" style="display:none;">댓글 취소</a></small></h3><form action="https://mypetlife.co.kr/map/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="" enctype="multipart/form-data">
                             <form action="/facilitymap/p001/revregister" method="post" id="commentform" class="comment-form" novalidate="" enctype="multipart/form-data">
+                            <input type="hidden" class="form-control" name="site_id" value="${info.site_id }">
                                 <div id="wpjmr-submit-ratings">
                                 	<h2 id="respond" class="widget-title widget-title__job_listing ion-ios-compose-outline">별점주기</h2>
                                     <div class="listing-rating listing-rating--single">

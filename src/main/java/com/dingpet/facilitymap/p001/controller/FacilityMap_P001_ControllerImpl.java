@@ -196,7 +196,7 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 		
 	}
 	@RequestMapping(value= "/revregister", method = {RequestMethod.POST})
-	public String ReviewRegister (Model model, FacilityMap_P001_VO vo, MultipartHttpServletRequest uploadFile, RedirectAttributes rttr)  {
+	public void ReviewRegister (Model model, FacilityMap_P001_VO vo, MultipartHttpServletRequest uploadFile, RedirectAttributes rttr)  {
 		System.out.println("============Review write!!!!!");
 		
 		//---------------------------	사진 업로드 데이터 처리	---------------------------
@@ -237,8 +237,9 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 		log.info("==========================");
 		service.register(vo);
 		rttr.addFlashAttribute("result", vo.getSite_id());
-		
-		return "/facilitymap/p001/facilityMap";
+		model.addAttribute("url", "https://www.dingpet.shop/siteimg/");
+		int site = vo.getSite_id();
+		model.addAttribute("info", service.getDogPlace(site));
 		
 	} // ReviewRegister End
 	
