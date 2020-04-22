@@ -52,6 +52,7 @@
 <select id="loginCheck" resultType="com.dingpet.customers.p001.vo.Customers_P001_VO">
 
 	select member_id, member_pwd, member_name, member_nickname, member_email
+
 	from member where member_id=#{member_id} and member_pwd=#{member_pwd}
 
 </select>
@@ -61,6 +62,5 @@
 <select id="overlappedId" resultType="int" parameterType="String">
 	select count(member_id) from member where member_id = #{memebr_id}
 </select>
-
 
 </mapper>

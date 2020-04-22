@@ -92,7 +92,7 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 		return new ResponseEntity<>(data, HttpStatus.OK);	
 	} // mediMap End
 	
-	@GetMapping("/cafeMap")
+	@RequestMapping(value="/cafeMap", method = {RequestMethod.GET})
 	@ResponseBody
 	@Override
 	public ResponseEntity<List<FacilityMap_P001_VO>> cafeMap(PlaceDTO dto) {
@@ -110,7 +110,7 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 			msg = "success";
 		}
 		log.info(msg);
-		log.info("====End Map22 Method====");
+		log.info("====End Map Method====");
 		return new ResponseEntity<>(data, HttpStatus.OK);	
 	} // CafeMap End
 	
@@ -132,8 +132,8 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 		}
 		//---------------------------	사진 업로드 데이터 처리	---------------------------
 					
-					//String uploadFolder = "/home/testpic";
-					String uploadFolder = "C:\\upload";
+					String uploadFolder = "/var/lib/tomcat8/webapps/siteimg";
+					//String uploadFolder = "C:\\upload";
 					
 					
 					String fileName = "";
@@ -182,7 +182,7 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 	public void facilityinfo(@RequestParam("place_num") int place_num, Model model) {
 		System.out.println("1111111111111111111111111111111111111111111111111111111111111111111");
 		model.addAttribute("infopage", "조회 페이지 입니다");
-		model.addAttribute("url", "https://www.dingpet.shop/img/");
+		model.addAttribute("url", "https://www.dingpet.shop/siteimg/");
 		model.addAttribute("info", service.getMediCenter(place_num));
 		
 		
@@ -191,10 +191,58 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 	public void Mapinfo(@RequestParam("site_id") int site_id, Model model) {
 		System.out.println("1111111111111111111111111111111111111111111111111111111111111111111");
 		model.addAttribute("infopage", "조회 페이지 입니다");
-		model.addAttribute("url", "https://www.dingpet.shop/img/");
+		model.addAttribute("url", "https://www.dingpet.shop/siteimg/");
 		model.addAttribute("info", service.getDogPlace(site_id));
 		
 	}
+	@RequestMapping(value= "/revregister", method = {RequestMethod.POST})
+	public void ReviewRegister (Model model, FacilityMap_P001_VO vo, MultipartHttpServletRequest uploadFile, RedirectAttributes rttr)  {
+		System.out.println("============Review write!!!!!");
+		
+		//---------------------------	사진 업로드 데이터 처리	---------------------------
+		String uploadFolder = "/var/lib/tomcat8/webapps/siteimg";
+		//String uploadFolder = "C:\\upload";		
+		String fileName = "";		
+		Iterator<String> files = uploadFile.getFileNames();		
+		while(files.hasNext()) {			
+			File saveFile = null;
+			String saveFileName;
+			String filePath;
+			String index = files.next();
+			UUID placeimg_UUID = UUID.randomUUID();
+
+			MultipartFile mFile = uploadFile.getFile(index);
+			fileName = mFile.getOriginalFilename();
+
+			if(!fileName.equals("")) {
+				if(index.equals("placePic")) {
+					saveFileName = placeimg_UUID.toString()+"placepic_"+fileName;
+					saveFile = new File(uploadFolder, saveFileName);
+					filePath = saveFile.getPath();
+					vo.setPlace_pic(filePath);
+					vo.setPlace_picname(saveFileName);
+				} else {}
+				
+				try {
+					mFile.transferTo(saveFile);
+				} catch (Exception e) {
+					// TODO: handle exception
+					System.out.println("사진업로드 Exception " + e);
+				}
+			}
+		}
+		
+		log.info("사진 업로드 완료");
+		//---------------------------------------------------------------------------
+		log.info("==========================");
+		service.register(vo);
+		rttr.addFlashAttribute("result", vo.getSite_id());
+		model.addAttribute("url", "https://www.dingpet.shop/siteimg/");
+		int site = vo.getSite_id();
+		model.addAttribute("info", service.getDogPlace(site));
+		
+	} // ReviewRegister End
+	
 	@RequestMapping(value = "/getAttachList", method = {RequestMethod.GET}, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
 	public ResponseEntity<List<FacilityMap_AttachVO>> getAttachList(int site_id) {

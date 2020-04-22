@@ -15,10 +15,4 @@ public interface PetSitting_P001_Controller {
 	public void update(Model model);	// 프로필 수정
 	public void delete(Model model);	// 프로필 삭제
 	
-	//샘플페이지 시작
-	public void profilelookup_f();
-	public void profileregister_f();
-	public void profilelist_f();
-	//샘플페이지 시작
-	
 }
