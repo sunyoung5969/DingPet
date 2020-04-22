@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.dingpet.lostpets.p001.mapper.LostPets_Photos_Mapper">
+
+<insert id = "insert">
+	insert into lost_found_photo (uuid, uploadPath, fileName, filetype, board_id, category)
+	values (#{uuid}, #{uploadPath}, #{fileName}, #{filetype}, #{board_id}, #{category})
+</insert>
+
+<delete id = "delete" parameterType = "String">
+	delete from lost_found_photo where uuid = #{uuid}
+</delete>
+
+<select id = "readPhoto" resultType = "com.dingpet.lostpets.p001.vo.LostPets_photos_VO">
+	select * from lost_found_photo where board_id = #{board_id}
+</select>
+
+</mapper>
