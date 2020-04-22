@@ -8,8 +8,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>상세페이지</title>
 <style>
+h2 {font-size:15px;}
+.star-rating {width:304px; }
+.star-rating,.star-rating span {
+display:inline-block; height:55px; overflow:hidden; 
+background:url(${pageContext.request.contextPath}/resources/images/star2.png)no-repeat; }
+.star-rating span{background-position:left bottom; line-height:0; vertical-align:top; }
+
       /*star start*/
 	.rate {
 	  float: left;
@@ -72,20 +79,17 @@
                             <div class="content-single-job_listing-hero-wrapper cover-wrapper container">
                                 <div class="content-single-job_listing-hero-inner row">
                                     <div class="content-single-job_listing-hero-company col-md-7 col-sm-12">
-                                        <h2>${info.place_name }</h2>
-                                        <div class="listing-rating listing-rating--single">
-                                            <div class="rate-main">
-                                                <input type="radio" name="ratemain" value="5" />
-                                                <label for="star5" title="text">5 stars</label>
-                                                <input type="radio" name="ratemain" value="4" />
-                                                <label for="star4" title="text">4 stars</label>
-                                                <input type="radio" name="ratemain" value="3" />
-                                                <label for="star3" title="text">3 stars</label>
-                                                <input type="radio" name="ratemain" value="2" />
-                                                <label for="star2" title="text">2 stars</label>
-                                                <input type="radio" name="ratemain" value="1" />
-                                                <label for="star1" title="text">1 star</label>
-                                              </div>
+                                        <h2 style="font-weight: 600;font-size: 35px;margin: 10px;font-size: x-large;line-height: 1;">${info.place_name }</h2>
+                                        
+                                        	<div class="wrap-star">
+										   		<div class='star-rating'>
+							    		   		<span style ="width:80%"></span>
+							    				</div>        
+							    			<span style="position: right; margin: 0px;">4/5</span>	
+                                             </div>
+                                             
+                                         <br><br>
+                                         <div>                                         
                                             <span class="listing-rating-count listing-rating-count--single">
                                             <a href="#respond">0개의 리뷰</a>	</span>
                                         </div>
@@ -161,22 +165,23 @@
                             </li><!-- #comment-## -->
                          </ol>
                         <div class="comment-respond">
-                            <h3 id="reply-title" class="comment-reply-title"> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/map/listing/%ec%88%98%ec%9b%90%ec%8b%9c-%ec%98%81%ed%86%b5%ea%b5%ac-%eb%b2%95%ec%a1%b0%eb%a1%9c149%eb%b2%88%ea%b8%b8-47-1%ec%b8%b5-94-149%ed%94%8c%eb%9d%bc%eb%b0%8d%ea%b3%a0/#respond" style="display:none;">댓글 취소</a></small></h3><form action="https://mypetlife.co.kr/map/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="" enctype="multipart/form-data">
-                            <form action="/facilitymap/p001/revregister" method="post" id="commentform" class="comment-form" novalidate="" enctype="multipart/form-data">
+                            <h3 id="reply-title" class="comment-reply-title"></h3>
+                           <!--  <small><a rel="nofollow" id="cancel-comment-reply-link" href="/map/listing/%ec%88%98%ec%9b%90%ec%8b%9c-%ec%98%81%ed%86%b5%ea%b5%ac-%eb%b2%95%ec%a1%b0%eb%a1%9c149%eb%b2%88%ea%b8%b8-47-1%ec%b8%b5-94-149%ed%94%8c%eb%9d%bc%eb%b0%8d%ea%b3%a0/#respond" style="display:none;">댓글 취소</a></small></h3> -->
+                            <form role="form" action="/facilitymap/p001/revregister" method="post" enctype="multipart/form-data">
                             <input type="hidden" class="form-control" name="site_id" value="${info.site_id }">
                                 <div id="wpjmr-submit-ratings">
-                                	<h2 id="respond" class="widget-title widget-title__job_listing ion-ios-compose-outline">별점주기</h2>
+                                	<h2 class="widget-title widget-title__job_listing ion-ios-compose-outline">별점주기</h2>
                                     <div class="listing-rating listing-rating--single">
-                                        <div class="rate">
-                                        <input type="radio" id="star5" name="rate" value="5" />
+                                        <div class="rate" id="rate" >
+                                        <input type="radio" id="star5" name="review_star" value="5" />
                                         <label for="star5" title="text">5 stars</label>
-                                        <input type="radio" id="star4" name="rate" value="4" />
+                                        <input type="radio" id="star4" name="review_star" value="4" />
                                         <label for="star4" title="text">4 stars</label>
-                                        <input type="radio" id="star3" name="rate" value="3" />
+                                        <input type="radio" id="star3" name="review_star" value="3" />
                                         <label for="star3" title="text">3 stars</label>
-                                        <input type="radio" id="star2" name="rate" value="2" />
+                                        <input type="radio" id="star2" name="review_star" value="2" />
                                         <label for="star2" title="text">2 stars</label>
-                                        <input type="radio" id="star1" name="rate" value="1" />
+                                        <input type="radio" id="star1" name="review_star" value="1" />
                                         <label for="star1" title="text">1 star</label>
                                         </div>
                                     </div><!-- .star-ratings.ratings -->
@@ -186,7 +191,7 @@
                                 	<h2 id="respond" class="widget-title widget-title__job_listing ion-ios-compose-outline pt-5">갤러리 사진 업로드</h2>
                                     <div class="form-group row">
                                         <div class="col-md-6">
-                                            <input type="file" name="profile_pt" id="profile_pt" onchange="previewImage(this,'View_area')">
+                                            <input type="file" name="reviewpic" id="reviewpic" onchange="previewImage(this,'View_area')">
                                             <div id='View_area' class="img_up"></div>
                                         </div>
                                     </div>
@@ -197,18 +202,18 @@
                                 
                                 <p class="comment-form-comment pt-3">
                                     <label for="comment">리뷰</label> 
-                                    <textarea id="comment" name="comment" cols="45" rows="8"  class="form-control" maxlength="65525" required="required"></textarea>
+                                    <textarea id="review_content" name="review_content" cols="45" rows="8"  class="form-control" maxlength="65525" required="required"></textarea>
                                 </p>
                                 <p class="comment-form-author">
                                     <label for="author">이름 <span class="required">*</span></label> 
-                                    <input id="author" name="author" type="text"  class="form-control" value="" size="30" maxlength="245" required="required">
+                                    <input id="review_name" name="review_name" type="text"  class="form-control" value="" size="30" maxlength="245" required="required">
                                 </p>
                                 <p class="comment-form-email">
                                     <label for="email">이메일 <span class="required">*</span></label> 
-                                    <input id="email" name="email" type="email"  class="form-control" value="" size="30" maxlength="100" required="required">
+                                    <input id="review_email" name="review_email" type="email"  class="form-control" value="" size="30" maxlength="100" required="required">
                                 </p>
                                 <p class="form-submit float-right">
-                                    <input name="submit" type="submit" id="submit" class="btn btn-primary btn-sm" value="작성완료"> 
+                                    <input name="submit" type="submit" id="submit" class="btn btn-primary btn-sm" value="리뷰등록"> 
                                     
                                 </p>
                             </form>	

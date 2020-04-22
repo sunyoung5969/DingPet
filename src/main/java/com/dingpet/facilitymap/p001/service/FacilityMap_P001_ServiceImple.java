@@ -10,6 +10,7 @@ import com.dingpet.facilitymap.p001.dto.PlaceDTO;
 import com.dingpet.facilitymap.p001.mapper.FacilityMap_P001_AttachMapper;
 import com.dingpet.facilitymap.p001.mapper.FacilityMap_P001_Mapper;
 import com.dingpet.facilitymap.p001.vo.FacilityMap_AttachVO;
+import com.dingpet.facilitymap.p001.vo.FacilityMap_P001_ReplyVO;
 import com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO;
 
 import lombok.AllArgsConstructor;
@@ -84,6 +85,19 @@ public class FacilityMap_P001_ServiceImple implements FacilityMap_P001_Service {
 			attach.setSite_id(vo.getSite_id());
 			attachMapper.insert(attach);
 		});
+	}
+	
+	@Transactional
+	@Override
+	public void reviewregister(FacilityMap_P001_ReplyVO vo) {
+		log.info("REVIEW register....");
+		// ------- site id - get --------------
+		int sitesq = vo.getSite_id();
+		log.info(sitesq);		
+		// -------===============--------------
+		mapper.reviewRegister(vo);
+		log.info("DB Insert End...:"+vo);
+
 	}
 	
 	@Override

@@ -24,6 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.dingpet.facilitymap.p001.dto.PlaceDTO;
 import com.dingpet.facilitymap.p001.service.FacilityMap_P001_Service;
 import com.dingpet.facilitymap.p001.vo.FacilityMap_AttachVO;
+import com.dingpet.facilitymap.p001.vo.FacilityMap_P001_ReplyVO;
 import com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO;
 
 import lombok.AllArgsConstructor;
@@ -37,16 +38,19 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 	
 	private FacilityMap_P001_Service service;
 	
+	// 산책 페이지 
 	@RequestMapping("/mylocation")
 	public void mylocation(Model model) {
 		
 	}
 	
+	// 시설지도 페이지
 	@RequestMapping(value="/facilityMap", method = {RequestMethod.GET})
 	public void facilityMap(Model model) {
 		
 	}
-	
+
+	// 시설지도 - 병원 마킹
 	@GetMapping("/medicenterMap")
 	@ResponseBody
 	@Override
@@ -69,7 +73,8 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 		log.info("====End Map Method====");
 		return new ResponseEntity<>(list, HttpStatus.OK);	
 	} // medicenter End
-		
+	
+	// 시설지도 - 약국 마킹 	
 	@GetMapping("/mediMap2")
 	@ResponseBody
 	@Override
@@ -92,6 +97,7 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 		return new ResponseEntity<>(data, HttpStatus.OK);	
 	} // mediMap End
 	
+	// 시설지도 - 카페 마킹
 	@RequestMapping(value="/cafeMap", method = {RequestMethod.GET})
 	@ResponseBody
 	@Override
@@ -114,12 +120,14 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 		return new ResponseEntity<>(data, HttpStatus.OK);	
 	} // CafeMap End
 	
+	// 시설지도 등록페이지 
 	@RequestMapping(value="/register", method = {RequestMethod.GET})
 	public void test(Model model) {
 		
 		model.addAttribute("register", "등록 페이지 입니다");
 	}
-	
+
+	// 시설지도 등록 Action
 	@RequestMapping(value="/register", method = {RequestMethod.POST})
 	public String registerAction(Model model, FacilityMap_P001_VO vo, MultipartHttpServletRequest uploadFile, RedirectAttributes rttr) {
 		log.info("========register 등록중====");
@@ -178,25 +186,29 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 		return "/facilitymap/p001/facilityMap";
 		}
 	
+	// 시설지도 상세페이지 (병원,약국)
 	@RequestMapping("/infopage")
 	public void facilityinfo(@RequestParam("place_num") int place_num, Model model) {
-		System.out.println("1111111111111111111111111111111111111111111111111111111111111111111");
+		System.out.println("==============  Map Info Page");
 		model.addAttribute("infopage", "조회 페이지 입니다");
 		model.addAttribute("url", "https://www.dingpet.shop/siteimg/");
 		model.addAttribute("info", service.getMediCenter(place_num));
 		
 		
 	}
+	// 시설지도 상세페이지 (카페, 기타)
 	@RequestMapping(value= "/mapinfo", method = {RequestMethod.GET})
 	public void Mapinfo(@RequestParam("site_id") int site_id, Model model) {
-		System.out.println("1111111111111111111111111111111111111111111111111111111111111111111");
+		System.out.println("==============  Map Info Page");
 		model.addAttribute("infopage", "조회 페이지 입니다");
 		model.addAttribute("url", "https://www.dingpet.shop/siteimg/");
 		model.addAttribute("info", service.getDogPlace(site_id));
 		
 	}
+
+	// 상세페이지 리뷰 등록 Action
 	@RequestMapping(value= "/revregister", method = {RequestMethod.POST})
-	public void ReviewRegister (Model model, FacilityMap_P001_VO vo, MultipartHttpServletRequest uploadFile, RedirectAttributes rttr)  {
+	public String ReviewRegister (Model model, FacilityMap_P001_ReplyVO vo, MultipartHttpServletRequest uploadFile, RedirectAttributes rttr)  {
 		System.out.println("============Review write!!!!!");
 		
 		//---------------------------	사진 업로드 데이터 처리	---------------------------
@@ -215,12 +227,12 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 			fileName = mFile.getOriginalFilename();
 
 			if(!fileName.equals("")) {
-				if(index.equals("placePic")) {
-					saveFileName = placeimg_UUID.toString()+"placepic_"+fileName;
+				if(index.equals("reviewPic")) {
+					saveFileName = placeimg_UUID.toString()+"reviewpic_"+fileName;
 					saveFile = new File(uploadFolder, saveFileName);
 					filePath = saveFile.getPath();
-					vo.setPlace_pic(filePath);
-					vo.setPlace_picname(saveFileName);
+					vo.setReview_pic(filePath);
+					vo.setReview_picname(saveFileName);
 				} else {}
 				
 				try {
@@ -235,14 +247,16 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 		log.info("사진 업로드 완료");
 		//---------------------------------------------------------------------------
 		log.info("==========================");
-		service.register(vo);
+		service.reviewregister(vo);
 		rttr.addFlashAttribute("result", vo.getSite_id());
 		model.addAttribute("url", "https://www.dingpet.shop/siteimg/");
 		int site = vo.getSite_id();
-		model.addAttribute("info", service.getDogPlace(site));
+		//model.addAttribute("info", service.getDogPlace(site));
 		
+		return "redirect:/facilitymap/p001/mapinfo?site_id="+site;
 	} // ReviewRegister End
-	
+
+	// 시설 상세 사진 첨부(AJAX)  
 	@RequestMapping(value = "/getAttachList", method = {RequestMethod.GET}, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
 	public ResponseEntity<List<FacilityMap_AttachVO>> getAttachList(int site_id) {
