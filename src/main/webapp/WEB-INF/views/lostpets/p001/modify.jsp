@@ -4,6 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@include file="../../includes/header.jsp"%>
 
+<!-- lost_found.CSS -->
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/lost_found.css">
 
 <!--====  str of contents  ====-->
 <section class="section testimonial pt-7">

@@ -4,6 +4,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@include file="../../includes/header.jsp"%>
 
+	<!-- lost_found.CSS -->
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/lost_found.css">
+    <!--탭 메뉴 -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
 <!--====  str of contents  ====-->
 <section class="site-section container pt-7">

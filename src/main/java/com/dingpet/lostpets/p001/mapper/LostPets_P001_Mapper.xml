@@ -19,6 +19,7 @@
 				AND board_id > 0
 			)
 			where rn > (#{pageNum} - 1) * #{amount}
+			ORDER BY board_id DESC
 		]]> 
 	</select>
 	<resultMap id = "listWithPagingMap" type = "java.util.HashMap">

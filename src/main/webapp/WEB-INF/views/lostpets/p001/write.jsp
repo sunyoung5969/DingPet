@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../../includes/header.jsp"%>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+<!-- lost_found.CSS -->
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/lost_found.css">
 
     <!--====  str of contents  ====-->
     <section style="padding-top:87px">

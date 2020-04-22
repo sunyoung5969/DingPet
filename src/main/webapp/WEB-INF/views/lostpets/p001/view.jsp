@@ -4,6 +4,9 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 
+<!-- lost_found.CSS -->
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/lost_found.css">
+
     <!--====  str of contents  ====-->
     <section style="padding-top:87px">
         <div class="page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); transform: translate3d(0px, 0px, 0px);"></div>
@@ -207,8 +210,8 @@
 										str += "<li class = 'mb-2' data-reply_id ='" + list[i].reply_id + "'>";
 										str += "<div><div class = 'width100 reply_info'><span><strong>" + list[i].replyer +"</strong>님</span>";
 										str += "<span><small>" + replyService.formatDate(list[i].reply_date) + "</small></span>";
-										str += "<button class = 'basic_btn btn btn-primary' id = 'reply_modify'>수정</button><button class = 'basic_btn btn btn-primary' id = 'reply_delete'>삭제</button></div>";
-										str += "<div class='comment-content comment col-md-10 col-sm-9 col-12 width100'>";
+										str += "<button class = 'small_btn btn btn-primary float-right' id = 'reply_modify'>수정</button><button class = 'small_btn btn btn-primary float-right' id = 'reply_delete'>삭제</button></div>";
+										str += "<div class='comment-content comment reply_info'>";
 										str += "<p id = 'original_content' class = 'fn'>" + list[i].reply + "</p>";
 										str += "<div class = 'toggle_div' style = 'display : none''><textarea cols='45' rows='4'  class='form-control' maxlength='65525' required></textarea>";
 										str += "<button id = 'modified_submit' class = 'basic_btn btn btn-primary'>등록</button><button id = 'modified_cancel' class = 'basic_btn btn btn-primary'>취소</button>";
