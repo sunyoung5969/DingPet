@@ -178,13 +178,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 		// TODO Auto-generated method stub
 		
 	}
-	
-	@RequestMapping("/profilelookup_f")
-	@Override
-	public void profilelookup_f() {
-		// TODO Auto-generated method stub
-		
-	}
+
 	//===샘플 시작 ===
 	@RequestMapping("/profilelookup")
 	@Override
@@ -195,18 +189,5 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 		model.addAttribute("license", service.getLicenseList(profile));
 	}
 	
-	@RequestMapping("/profileregister_f")
-	@Override
-	public void profileregister_f() {
-		// TODO Auto-generated method stub
-		
-	}
 	
-	@RequestMapping("/profilelist_f")
-	@Override
-	public void profilelist_f() {
-		// TODO Auto-generated method stub
-		
-	}
-	//===샘플 페이지 끝 ===
 }
