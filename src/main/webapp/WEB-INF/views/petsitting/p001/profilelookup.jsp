@@ -641,7 +641,7 @@
     <!--====  end of contents  ====-->
 
 
-<script src="${pageContext.request.contextPath}/resources/js/profilelookup.js?v=2"></script>
+<script src="${pageContext.request.contextPath}/resources/js/profilelookup.js?v=4"></script>
 
 <script>timeClick.apm('default')</script>
 <script>calendar.calendarYearMonth()</script>

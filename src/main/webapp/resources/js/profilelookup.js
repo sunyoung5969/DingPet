@@ -92,14 +92,14 @@ function addnumber(size){
 			$(".num-large").text(num);
 			
 			price = parseInt($('.price-large').val());
-			sum += numberWithCommas(price);
+			sum += price;
 			price *= num;
 			
 			$('.total_amount').val(sum);
 			$('.total_amount--hidden').val(sum);
 			$('.total_amount_text').text(numberWithCommas(sum));			
 			
-			str += price;
+			str += numberWithCommas(price);
 			str += ' 원 / 1시간';
 			
 			$('.price_text--large').empty(str);
