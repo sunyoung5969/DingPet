@@ -3,15 +3,15 @@
 
 <%@include file="../../includes/header.jsp"%>
 
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sign.css">
-	 
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sign.css">
+    
     <div class="main">
 
         <!-- Sing in Form -->
         <section class="sign-in">
-            <div class="container">
-                <div class="signin-content">
-					<div class="signin-image">
+            <div class="container sign_container">
+                <div class="signin-content ">
+               <div class="signin-image">
                         <figure><img class="signinImg" src="${pageContext.request.contextPath}/resources/images/sign/signin-image.png" alt="sing up image"></figure>
                     </div>
                     <div class="signin-form">
@@ -28,7 +28,7 @@
                                 패스워드<input type="password" name="member_pwd" id="member_pwd" placeholder="Password"  required/>
                             </div>
                                                                                     
-                            <div class="form-group form-button">
+                            <div class="form-group  display-flex-center">
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
                             </div>   
                             
