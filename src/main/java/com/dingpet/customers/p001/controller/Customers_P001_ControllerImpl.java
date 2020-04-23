@@ -150,8 +150,8 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		
 		//---------------------------	사진 업로드 데이터 처리	---------------------------
 		
-		//String uploadFolder = "/home/testpic";
-		String uploadFolder = "C:\\test\\pic";
+		String uploadFolder = "/var/lib/tomcat8/webapps/img";
+		//String uploadFolder = "C:\\test\\pic";
 		
 		
 		String fileName = "";

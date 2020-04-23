@@ -7,6 +7,46 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+
+      /*star start*/
+	.rate {
+	  float: left;
+	  height: 46px;
+	  padding: 0 10px;
+	}
+	.rate:not(:checked) > input {
+	  position:absolute;
+	  top:-9999px;
+	}
+	.rate:not(:checked) > label {
+	  float:right;
+	  width:1em;
+	  overflow:hidden;
+	  white-space:nowrap;
+	  cursor:pointer;
+	  font-size:30px;
+	  color:#ccc;
+	}
+	.rate:not(:checked) > label:before {
+	  content: '★ ';
+	}
+	.rate > input:checked ~ label {
+	  color: #ffc700;    
+	}
+	.rate:not(:checked) > label:hover,
+	.rate:not(:checked) > label:hover ~ label {
+	  color: #deb217;  
+	}
+	.rate > input:checked + label:hover,
+	.rate > input:checked + label:hover ~ label,
+	.rate > input:checked ~ label:hover,
+	.rate > input:checked ~ label:hover ~ label,
+	.rate > label:hover ~ input:checked ~ label {
+	  color: #c59b08;
+	}
+	/*star end*/
+</style>
 <body>
   <!--====  str of contents  ====-->
     <section style="padding-top:87px">
@@ -31,7 +71,7 @@
                                     <div class="content-single-job_listing-hero-company col-md-7 col-sm-12">
                                         <h2>${info.place_name }</h2>
                                         <div class="listing-rating listing-rating--single">
-                                            <div class="rate">
+                                            <div class="rate" >
                                                 <input type="radio" id="star5" name="rate" value="5" />
                                                 <label for="star5" title="text">5 stars</label>
                                                 <input type="radio" id="star4" name="rate" value="4" />
@@ -72,9 +112,9 @@
                         </div>
                     </div>
                     <section  class="txt-box ">
-                        <p>럭셔리한 애견카페 비안코 이탈리아의 상봉점입니다.</p>
-                        <p>다른 애견카페 대비하여 공간이 넓은 편에 속하여, 중/대형견을 데리고 가기 좋습니다.</p>
-                        <p>또한, 트레이너들이 상주하고 있어 안심이 됩니다.</p>
+                        <p>안녕하세요 !  ${info.place_name }입니다.</p>
+                        <p>다른 곳에 비하여 공간이 넓은 편에 속하여, 중/대형견을 데리고 가기 좋습니다.</p>
+                        <p>또한, 직원들이 상주하고 있어 안심서비스를 제공합니다. ^^ </p>
                     </section>
                     <!--=============================
                     =            Gallery            =

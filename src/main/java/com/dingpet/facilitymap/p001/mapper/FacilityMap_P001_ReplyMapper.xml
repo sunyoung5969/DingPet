@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dingpet.facilitymap.p001.mapper.FacilityMap_P001_ReplyMapper">
+	<!-- 댓글 쓰기 -->
+	<insert id="reviewRegister">		
+		<![CDATA[
+		INSERT INTO SITE_REVIEW (SITE_ID, REVIEW_ID, REVIEW_CONTENT, REVIEW_STAR, REVIEW_NAME, REVIEW_EMAIL, REVIEW_PIC, REVIEW_PICNAME, REVIEW_REPORT, REVIEW_DATE)
+		VALUES(#{site_id}, review_seq.nextval, #{review_content, jdbcType=VARCHAR}, #{review_star}, #{review_name, jdbcType=VARCHAR}, #{review_email, jdbcType=VARCHAR},
+		#{review_pic, jdbcType=VARCHAR}, #{review_picname, jdbcType=VARCHAR}, 0, sysdate)	
+		]]>	
+	</insert>
+	<!-- 댓글 조회-->
+	<select id = "view" resultType = "com.dingpet.facilitymap.p001.vo.FacilityMap_P001_ReplyVO">
+		SELECT *
+		FROM lost_found_reply
+		WHERE reply_id = #{reply_id}
+	</select>
+	
+	<!-- 댓글 삭제 -->
+	<delete id = "delete">
+		DELETE 
+		FROM lost_found_reply
+		WHERE reply_id = #{reply_id}
+	</delete>
+	
+	<!-- 댓글 수정 -->
+	<update id = "modify" >
+		UPDATE lost_found_reply
+		SET reply = #{reply}
+		WHERE reply_id = #{reply_id} 
+	</update>
+	
+	<!-- 댓글 목록 -->
+	<select id="list" resultType = "com.dingpet.facilitymap.p001.vo.FacilityMap_P001_ReplyVO">
+		SELECT reply_id, board_id, reply, replyer, reply_date
+		FROM lost_found_reply
+		WHERE board_id = #{board_id}
+		ORDER BY reply_id
+	</select>	
+</mapper>
