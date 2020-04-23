@@ -148,22 +148,22 @@ background:url(${pageContext.request.contextPath}/resources/images/star2.png)no-
 
                     <!--====  End of Gallery  ====-->
                     <aside id="listify_widget_panel_listing_comments-1" class="widget widget-job_listing listify_widget_panel_listing_comments pb-5">
+                    <!-- 댓글 시작 -->    
                         <h2 id="respond" class="widget-title widget-title__job_listing ion-ios-compose-outline">리뷰</h2>
+                        <!-- 댓글 목록 표시 -->
                         <ol id="comments" class="commentlist">
-		                    <li class="comment byuser comment-author-be-my-pet-official even thread-even depth-1" id="comment-8">
-                                <article id="comment-8" class="comment row">
-                                    <header class="comment-author col-md-2 col-sm-3 col-12">
-                                        <img src="/resources/images/dogger_img_sm_15.jpg" width="100" height="100" alt="리뷰" class="avatar avatar-100 wp-user-avatar wp-user-avatar-100 alignnone photo">		
-                                    </header><!-- .comment-meta -->
-                                    <section class="comment-content comment col-md-10 col-sm-9 col-12">
-                                        <p class="vcard author">
-                                            <b class="fn">리뷰를 써용요오오오오오오오오오오오옹</b>
-                                        </p>
-                                        
-                                    </section><!-- .comment-content -->
-                                </article><!-- #comment-## -->
+		                    <li class = "mb-2" data-reply_id ='6'>		                    
+                                <div>
+                                	<div class = "">
+                                		<strong>댓글 작성자</strong>
+                                		<small>댓글 작성일시</small>
+                                	</div>
+                                    <div class="comment-content comment col-md-10 col-sm-9 col-12 width100">
+                                        <p class = "fn">댓글 내용</p>
+                                    </div><!-- .comment-content -->
+                                </div><!-- #comment-## -->
                             </li><!-- #comment-## -->
-                         </ol>
+                         </ol><!-- 댓글 목록 표시 끝-->
                         <div class="comment-respond">
                             <h3 id="reply-title" class="comment-reply-title"></h3>
                            <!--  <small><a rel="nofollow" id="cancel-comment-reply-link" href="/map/listing/%ec%88%98%ec%9b%90%ec%8b%9c-%ec%98%81%ed%86%b5%ea%b5%ac-%eb%b2%95%ec%a1%b0%eb%a1%9c149%eb%b2%88%ea%b8%b8-47-1%ec%b8%b5-94-149%ed%94%8c%eb%9d%bc%eb%b0%8d%ea%b3%a0/#respond" style="display:none;">댓글 취소</a></small></h3> -->
