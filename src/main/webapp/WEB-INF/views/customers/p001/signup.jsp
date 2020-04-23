@@ -28,7 +28,7 @@
 
 		$.ajax({
 			type : "post",
-			url : "http://localhost:8080/customers/p001/mem",
+			url : "/customers/p001/mem",
 			data : {
 				id : _id
 			},
