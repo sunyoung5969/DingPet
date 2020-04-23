@@ -49,6 +49,7 @@
 </style>
 </head>
 <body>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <!--====  str of contents  ====-->
     <section style="padding-top:87px">
         <div class="page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); transform: translate3d(0px, 0px, 0px);"></div>
@@ -273,7 +274,7 @@ $(document).ready(function(){
 				str += "<span> "+ obj.fileName+"</span>";
 				str += "<button type='button' data-file=\'"+fileCallPath+"\' data-type='file' " 
 				str += "class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
-				str += "<img src='/resources/img/attach.png'></a>";
+				str += "<img src='/resources/imges/attach.png'></a>";
 				str += "</div>";
 				str +"</li>";
 			}
