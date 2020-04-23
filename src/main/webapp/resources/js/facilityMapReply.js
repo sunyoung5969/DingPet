@@ -8,7 +8,7 @@ var replyService = (function(){
 	function write(reply, callback, error){
 		$.ajax({
 			type : 'post',
-			url : '/replies/new',
+			url : '/replymap/new',
 			data : JSON.stringify(reply),
 			contentType : "application/json; charset = utf-8",
 			success : function(result, status, xhr){
@@ -25,13 +25,13 @@ var replyService = (function(){
 	}
 	//댓글 목록
 	function getList(param, callback, error){
-		var board_id = param.board_id;
+		var site_id = param.site_id;
 		var page = param.pageNum || 1;
 		
-		$.getJSON("/replies/pages/" + board_id + "/" + page + ".json",
+		$.getJSON("/replymap/pages/" + site_id + "/" + page + ".json",
 				function(data){
 					if(callback){
-						callback(data);
+						callback(data.replyCnt, data.list);
 					}
 				}).fail(function(xhr, status, err){
 					if(error){
@@ -40,10 +40,10 @@ var replyService = (function(){
 				});
 	}
 	//댓글 삭제
-	function remove(reply_id, callback, error){
+	function remove(review_id, callback, error){
 		$.ajax({
 			type : 'delete',
-			url : '/replies/' + reply_id,
+			url : '/replymap/' + review_id,
 			success : function(deleteResult, status, xhr){
 				if(callback){
 					callback(deleteResult);
@@ -59,11 +59,11 @@ var replyService = (function(){
 	
 	//댓글 수정
 	function modify(reply, callback, error){
-		console.log("reply_id : " + reply.reply_id);
+		console.log("review_id : " + reply.review_id);
 		
 		$.ajax({
 			type : 'put',
-			url : '/replies/' + reply.reply_id,
+			url : '/replymap/' + reply.review_id,
 			data : JSON.stringify(reply),
 			contentType : "application/json; charset = uft-8",
 			success : function(result, status, xhr){
@@ -80,8 +80,8 @@ var replyService = (function(){
 	}
 	
 	//댓글 조회
-	function view(reply_id, callback, error){
-		$.get("/replies/" + reply_id + ".json", function(result){
+	function view(review_id, callback, error){
+		$.get("/replymap/" + review_id + ".json", function(result){
 			
 			if(callback){
 				callback(result);

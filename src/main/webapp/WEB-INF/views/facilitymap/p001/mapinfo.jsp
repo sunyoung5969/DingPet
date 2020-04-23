@@ -151,7 +151,7 @@ background:url(${pageContext.request.contextPath}/resources/images/star2.png)no-
                     <!-- 댓글 시작 -->    
                         <h2 id="respond" class="widget-title widget-title__job_listing ion-ios-compose-outline">리뷰</h2>
                         <!-- 댓글 목록 표시 -->
-                        <ol id="comments" class="commentlist">
+                        <ul id="comments" class="commentlist">
 		                    <li class = "mb-2" data-reply_id ='6'>		                    
                                 <div>
                                 	<div class = "">
@@ -163,7 +163,8 @@ background:url(${pageContext.request.contextPath}/resources/images/star2.png)no-
                                     </div><!-- .comment-content -->
                                 </div><!-- #comment-## -->
                             </li><!-- #comment-## -->
-                         </ol><!-- 댓글 목록 표시 끝-->
+                         </ul><!-- 댓글 목록 표시 끝-->
+                         <div class='panel-footer'></div>
                         <div class="comment-respond">
                             <h3 id="reply-title" class="comment-reply-title"></h3>
                            <!--  <small><a rel="nofollow" id="cancel-comment-reply-link" href="/map/listing/%ec%88%98%ec%9b%90%ec%8b%9c-%ec%98%81%ed%86%b5%ea%b5%ac-%eb%b2%95%ec%a1%b0%eb%a1%9c149%eb%b2%88%ea%b8%b8-47-1%ec%b8%b5-94-149%ed%94%8c%eb%9d%bc%eb%b0%8d%ea%b3%a0/#respond" style="display:none;">댓글 취소</a></small></h3> -->
@@ -224,7 +225,166 @@ background:url(${pageContext.request.contextPath}/resources/images/star2.png)no-
         </div>
       </section>
     <!--====  end of contents  ====-->  
-    
+console.log(${info.site_date});
+console.log(${info.place_name});
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<!-- 댓글 ajax 처리 -->
+<script type = "text/javascript" src = "/resources/js/facilityMapReply.js?v=2"></script>
+<script type = "text/javascript">
+	//날짜 포맷 변경
+	var boardDate = "202004231617";
+	var dateString = boardDate.toString();
+	$("#board_date").html("<small>" + replyService.formatDate(dateString) + "</small>");
+		
+	//댓글 목록 표시
+	var site_idValue = '<c:out value = "${info.site_id}"/>';
+	var replyUL = $("#comments");
+				
+	showList(1);
+						
+	function showList(pageNum){
+			replyService.getList({site_id : site_idValue, pageNum : pageNum || 1},
+			function(replyCnt, list){
+				var str = "";
+
+		        console.log("replyCnt: "+ replyCnt );
+		        console.log("list: " + list);
+		        if(pageNum == -1){
+		          pageNume = Math.ceil(replyCnt/10.0);
+		          showList(pageNume);
+		          return;
+		        }
+				if(list == null || list.length == 0){
+					replyUL.html("아직 작성된 댓글이 없습니다.");
+					return;
+					}
+				for(var i = 0, length = list.length || 0; i < length; i++){
+					str += "<li class = 'mb-2' data-reply_id ='" + list[i].review_id + "'>";
+					str += "<div><div class = 'reply_info'><span><strong>" + list[i].review_name +"</strong>님</span>";
+					str += "<span><small>" + replyService.formatDate(list[i].review_date) + "</small></span>";
+					str += "<button class = 'small_btn btn btn-primary float-right' id = 'reply_modify'>수정</button><button class = 'small_btn btn btn-primary float-right' id = 'reply_delete'>삭제</button></div>";
+					str += "<div class='comment-content comment reply_info'>";
+					str += "<p id = 'original_content' class = 'fn ml-3 mr-3'>" + list[i].review_content + "</p>";
+					str += "<div class = 'flex_row toggle_div pb-2' style = 'display : none'><div class = 'w-90'><textarea cols='45' rows='4'  class='form-control' maxlength='65525' required></textarea></div>";
+					str += "<div class = 'flex_column w-10'><button id = 'modified_submit' class = 'small_btn btn btn-primary'>등록</button><button id = 'modified_cancel' class = 'small_btn btn btn-primary'>취소</button>";
+					str += "</div></div></div></div></li>";
+					}
+					replyUL.html(str);
+					showReplyPage(replyCnt);
+			}); //list End
+		}; // showList End
+		
+		 var pageNum = 1;
+		 var replyPageFooter = $(".panel-footer");
+		    
+		 function showReplyPage(replyCnt){
+		      
+		   var endNum = Math.ceil(pageNum / 10.0) * 10;  
+		   var startNum = endNum - 9; 
+		      
+		   var prev = startNum != 1;
+		   var next = false;
+		      
+		   if(endNum * 10 >= replyCnt){
+		      endNum = Math.ceil(replyCnt/10.0);
+		    }
+		      
+		   if(endNum * 10 < replyCnt){
+		     next = true;
+		    }
+		      
+		   var str = "<ul class='pagination pull-right'>";		      
+		   if(prev){
+		     str+= "<li class='page-item'><a class='page-link' href='"+(startNum -1)+"'>Previous</a></li>";
+		    } 
+		   for(var i = startNum ; i <= endNum; i++){
+			   var active = pageNum == i? "active":"";
+		       str+= "<li class='page-item "+active+" '><a class='page-link' href='"+i+"'>"+i+"</a></li>";
+		    }
+		   if(next){
+		        str+= "<li class='page-item'><a class='page-link' href='"+(endNum + 1)+"'>Next</a></li>";
+		    }		      
+		   str += "</ul></div>";
+		   console.log(str);
+		   replyPageFooter.html(str);
+		   }
+		     
+		 replyPageFooter.on("click","li a", function(e){
+		     e.preventDefault();
+		     console.log("page click");
+		     var targetPageNum = $(this).attr("href");		        
+		     console.log("targetPageNum: " + targetPageNum);		        
+		     pageNum = targetPageNum;		        
+		     showList(pageNum);
+		   });     				
+					
+		//댓글 쓰기
+		$("#reply_submit").on("click", function(e){
+        	var reply = {
+        			reply : $("#comment").val(),
+        			replyer : $("#replyer").val(),
+        			site_id : site_idValue
+        			};
+        	
+            replyService.write(reply, function(result){
+            	alert(result);
+            	$("#comment").val("");
+				$("#replyer").val("");
+				showList(1);
+				});
+            });
+			
+		$("#comments").on("click", "li", function(e){
+			var review_idValue = $(this).data("review_id");
+			console.log(review_idValue);
+			//댓글 삭제
+			if($(e.target).attr('id') === $("#reply_delete").attr('id')){
+				if(confirm("정말로 삭제하시겠어요?")){
+					replyService.remove(review_idValue, function(result){
+						alert('댓글이 삭제되었습니다.');
+						showList(1);
+						})
+						}else{
+							console.log("선택되지 않음");
+						}
+				} // if end
+							
+		//댓글 수정
+		var toggle_div = $(this).find(".toggle_div");
+		var textarea = $(this).find('textarea');
+		var modified_content = $(this).find('textarea').val();
+		if($(e.target).attr('id') === $("#reply_modify").attr('id')){
+			toggle_div.slideToggle("slow", "swing");
+			}
+							
+		//댓글 수정 중 등록 버튼 클릭시
+		if($(e.target).attr('id') == 'modified_submit'){
+			var reply = {
+					review_id : review_idValue,
+					site_id : site_idValue,
+					reply : modified_content
+					}
+			console.log("reply.reply : " + reply.reply);
+			console.log("reply.reply type : " + typeof(reply.reply));
+			//내용이 없을 때 체크
+			if(!reply.reply){
+				alert('내용을 입력해주세요')
+			} else{ //내용이 있으면 modify
+				replyService.modify(reply, function(result){
+				textarea.val("");
+				toggle_div.attr("style", "display : none");
+				showList(1);
+					});
+				}
+			}	
+							
+			//댓글 수정 중 취소 버튼 클릭시
+			if($(e.target).attr('id') == 'modified_cancel'){
+				textarea.val("");
+				toggle_div.slideToggle("slow", "swing");
+				}
+			});
+</script><!-- 댓글 끝 -->
 </body>
 <%@ include file="/WEB-INF/views/includes/footer.jsp"%>
 </html>

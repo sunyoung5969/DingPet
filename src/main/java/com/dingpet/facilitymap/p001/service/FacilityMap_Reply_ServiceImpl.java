@@ -19,22 +19,11 @@ public class FacilityMap_Reply_ServiceImpl implements FacilityMap_Reply_Service 
 
 	private FacilityMap_P001_ReplyMapper mapper;
 	
-	@Transactional
-	@Override
-	public void reviewregister(FacilityMap_P001_ReplyVO vo) {
-		log.info("REVIEW register....");
-		// ------- site id - get --------------
-		int sitesq = vo.getSite_id();
-		log.info(sitesq);		
-		// -------===============--------------
-		mapper.reviewRegister(vo);
-		log.info("DB Insert End...:"+vo);
-
+	
+	public int write(FacilityMap_P001_ReplyVO reply_vo) {
+		log.info("writing reply");
+		return mapper.write(reply_vo);
 	}
-//	public int write(FacilityMap_P001_ReplyVO reply_vo) {
-//		log.info("writing reply");
-//		return mapper.write(reply_vo);
-//	}
 
 	public FacilityMap_P001_ReplyVO view(String review_id) {
 		log.info("viewing reply");

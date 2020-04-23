@@ -86,7 +86,18 @@ public class FacilityMap_P001_ServiceImple implements FacilityMap_P001_Service {
 			attachMapper.insert(attach);
 		});
 	}
-		
+	@Transactional
+	@Override
+	public void reviewregister(FacilityMap_P001_ReplyVO vo) {
+		log.info("REVIEW register....");
+		// ------- site id - get --------------
+		int sitesq = vo.getSite_id();
+		log.info(sitesq);		
+		// -------===============--------------
+		log.info("DB Insert End...:"+vo);
+		mapper.reviewRegister(vo);
+	}
+	
 	@Override
 	public List<FacilityMap_AttachVO> getAttachList(int site_id) {
 

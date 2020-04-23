@@ -185,7 +185,57 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 
 		return "/facilitymap/p001/facilityMap";
 		}
-	
+		
+		// 상세페이지 리뷰 등록 Action
+		@RequestMapping(value= "/revregister", method = {RequestMethod.POST})
+		public String ReviewRegister (Model model, FacilityMap_P001_ReplyVO vo, MultipartHttpServletRequest uploadFile, RedirectAttributes rttr)  {
+			System.out.println("============Review write!!!!!");
+			
+			//---------------------------	사진 업로드 데이터 처리	---------------------------
+			String uploadFolder = "/var/lib/tomcat8/webapps/siteimg";
+			//String uploadFolder = "C:\\upload";		
+			String fileName = "";		
+			Iterator<String> files = uploadFile.getFileNames();		
+			while(files.hasNext()) {			
+				File saveFile = null;
+				String saveFileName;
+				String filePath;
+				String index = files.next();
+				UUID placeimg_UUID = UUID.randomUUID();
+
+				MultipartFile mFile = uploadFile.getFile(index);
+				fileName = mFile.getOriginalFilename();
+
+				if(!fileName.equals("")) {
+					if(index.equals("reviewPic")) {
+						saveFileName = placeimg_UUID.toString()+"reviewpic_"+fileName;
+						saveFile = new File(uploadFolder, saveFileName);
+						filePath = saveFile.getPath();
+						vo.setReview_pic(filePath);
+						vo.setReview_picname(saveFileName);
+					} else {}
+					
+					try {
+						mFile.transferTo(saveFile);
+					} catch (Exception e) {
+						// TODO: handle exception
+						System.out.println("사진업로드 Exception " + e);
+					}
+				}
+			}
+			
+			log.info("사진 업로드 완료");
+			//---------------------------------------------------------------------------
+			log.info("==========================");
+			service.reviewregister(vo);
+			rttr.addFlashAttribute("result", vo.getSite_id());
+			model.addAttribute("url", "https://www.dingpet.shop/siteimg/");
+			int site = vo.getSite_id();
+			//model.addAttribute("info", service.getDogPlace(site));
+			
+			return "redirect:/facilitymap/p001/mapinfo?site_id="+site;
+		} // ReviewRegister End
+		
 	// 시설지도 상세페이지 (병원,약국)
 	@RequestMapping("/infopage")
 	public void facilityinfo(@RequestParam("place_num") int place_num, Model model) {
