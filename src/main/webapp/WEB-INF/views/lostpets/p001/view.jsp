@@ -19,7 +19,7 @@
                         </div>
                     </div>
                     <!-- 제목, 작성자, 작성일시-->
-                    <div class="ml-3 mt-3 mb-3 align-self-center">
+                    <div class="ml-3 mr-3 mt-3 align-self-center border_bottom pb-3">
 	                	<h2 class = "mb-2 color_blue" ><c:out  value = "${board.title}"/></h2>
 	                    <div class = "top_info">
 		    	            <span><strong><c:out value = "${board.member_id}"/></strong></span>
@@ -27,51 +27,51 @@
 	                    </div>
                    	</div>
                     <div class="row pt-3 dp-webkit">
-                        <div class="col-lg-4 col-md-6 align-self-center">
+                        <div class="col-lg-5 col-md-6 align-self-center">
                             <div class="image-block bg-about">
                                 <img class="img-fluid" src="/resources/images/dogger_img_big_1.jpg" alt="">
                             </div>
                         </div>
-                        <div class="col-lg-8 col-md-6 align-self-center">
+                        <div class="col-lg-7 col-md-6 align-self-center">
                             <aside class="nav-tabs">
                             	<div class="mt-1 color_blue pt-3 pb-3"><strong>강아지 이름</strong> </div>
-                                <div class="pb-3">
+                                <div class="ml-2 pb-3">
                                     <span class="h6"><c:out  value = "${board.dog_name}"/></span>
                                 </div>
                             </aside>
                             <aside class="nav-tabs">
 		                    	<div class="mt-1 color_blue pt-3 pb-3"><strong>견종</strong> </div>
-		                        <div class="pb-3">
+		                        <div class="ml-2 pb-3">
 		                            <span class="h6"><c:out  value = "${board.dog_breed}"/></span>
 		                        </div>
 		                    </aside>
                             <aside class="nav-tabs">
 		                    	<div class="mt-1 color_blue pt-3 pb-3"><strong>성별</strong> </div>
-		                        <div class="pb-3">
+		                        <div class="ml-2 pb-3">
 		                            <span class="h6"><c:out  value = "${board.dog_sex}"/></span>
 		                        </div>
 		                    </aside>
                             <aside class="nav-tabs">
 		                    	<div class=" mt-1 color_blue pt-3 pb-3"><strong>크기</strong> </div>
-		                        <div class="pb-3">
+		                        <div class="ml-2 pb-3">
 		                            <span class="h6"><c:out  value = "${board.dog_size}"/></span>
 		                        </div>
 		                    </aside>
                             <aside class="nav-tabs">
 		                    	<div class=" mt-1 color_blue pt-3 pb-3"><strong>특이사항</strong> </div>
-		                        <div class="pb-3">
+		                        <div class="ml-2 pb-3">
 		                            <span class="h6"><c:out  value = "${board.dog_note}"/></span>
 		                        </div>
 		                    </aside>
                             <aside class="nav-tabs">
                             	<div class=" mt-1 color_blue pt-3 pb-3"><strong>발견일시</strong> </div>
-                                <div class="pb-3">
+                                <div class="ml-2 pb-3">
                                     <span class="h6"><c:out  value = "${board.found_date}"/></span>
                                 </div>
                             </aside>
                             <aside class="nav-tabs">
                             	<div class=" mt-1 color_blue pt-3 pb-3"><strong>발견장소</strong> </div>
-                                <div class="pb-3">
+                                <div class="ml-2 pb-3">
                                     <span class="h6"><c:out  value = "${board.found_location}"/></span>
                                 </div>
                             </aside>
@@ -80,7 +80,7 @@
                     </div>
                     
                     <section class="nav-tabs">
-                    	<div class="mt-1 color_blue pt-3 pb-3"><strong>내용</strong> </div>
+                    	<div class="ml-2 mt-1 color_blue pt-3 pb-3"><strong>내용</strong> </div>
 	                    <div  class="txt-box ">
 	                        <p class = "h6"><c:out  value = "${board.dog_note}"/></p>
 	                    </div>
@@ -110,7 +110,7 @@
                         <ul id="comments" class="mt-4 mb-4 ">
 		                    <li class = "mb-2" data-reply_id ='6'>
                                 <div>
-                                	<div class = "width100">
+                                	<div class = "">
                                 		<strong>댓글 작성자</strong>
                                 		<small>댓글 작성일시</small>
                                 	</div>
@@ -122,24 +122,24 @@
                          </ul><!-- 댓글 목록 표시 끝-->
                          
                          <!-- 댓글 작성 폼-->
-                        <div class="comment-respond pt-5">
+                        <div class="comment-respond pt-3">
                                 <!-- wsl_render_auth_widget -->
                                 <h2 id="respond" class="widget-title widget-title__job_listing ion-ios-compose-outline ">댓글 작성</h2>
-                                댓글 작성자 : <input type = "text" id = "replyer">
-                                <div class="comment-form-comment w-100 float-left">
+                                <div> 댓글 작성자 : <input type = "text" id = "replyer" > </div>
+                                <div class="comment-form-comment w-80 float-left">
                                     <textarea id ="comment" cols="45" rows="4"  class="form-control" maxlength="65525" placeholder = "댓글을 쓰려면 먼저 로그인 해주세요! "required></textarea>
                                 </div>
                                 <div class="form-submit float-right">
-                                    <button id="reply_submit" type = "button" class="btn btn-primary btn-sm" >댓글 등록</button> 
+                                    <button id="reply_submit" type = "button" class="mr-3 btn btn-primary btn-sm" >댓글 등록</button> 
                                	</div>
                         </div><!-- #respond -->
                      </aside>
                      
 					<!-- buttons -->
-					<div class="text-center pt-5 pb-5">
-						<button data-oper="list" class="basic_btn btn btn-primary">목록으로</button>
-						<button data-oper="modify" class="basic_btn btn btn-primary">수정</button>
-						<button data-oper="delete" class="basic_btn btn btn-primary">삭제</button>
+					<div class="text-center pb-5">
+						<button data-oper="list" class="btn-sm btn btn-primary">목록으로</button>
+						<button data-oper="modify" class="btn-sm btn btn-primary">수정</button>
+						<button data-oper="delete" class="btn-sm btn btn-primary">삭제</button>
 					</div>
 					<!-- buttons end--> 
 					</div>
@@ -208,14 +208,14 @@
 									}
 									for(var i = 0, length = list.length || 0; i < length; i++){
 										str += "<li class = 'mb-2' data-reply_id ='" + list[i].reply_id + "'>";
-										str += "<div><div class = 'width100 reply_info'><span><strong>" + list[i].replyer +"</strong>님</span>";
+										str += "<div><div class =  reply_info'><span><strong>" + list[i].replyer +"</strong>님</span>";
 										str += "<span><small>" + replyService.formatDate(list[i].reply_date) + "</small></span>";
 										str += "<button class = 'small_btn btn btn-primary float-right' id = 'reply_modify'>수정</button><button class = 'small_btn btn btn-primary float-right' id = 'reply_delete'>삭제</button></div>";
 										str += "<div class='comment-content comment reply_info'>";
-										str += "<p id = 'original_content' class = 'fn'>" + list[i].reply + "</p>";
-										str += "<div class = 'toggle_div' style = 'display : none''><textarea cols='45' rows='4'  class='form-control' maxlength='65525' required></textarea>";
-										str += "<button id = 'modified_submit' class = 'basic_btn btn btn-primary'>등록</button><button id = 'modified_cancel' class = 'basic_btn btn btn-primary'>취소</button>";
-										str += "</div></div></div></li>";
+										str += "<p id = 'original_content' class = 'fn ml-3 mr-3'>" + list[i].reply + "</p>";
+										str += "<div class = 'flex_row toggle_div pb-2' style = 'display : none'><div class = 'w-90'><textarea cols='45' rows='4'  class='form-control' maxlength='65525' required></textarea></div>";
+										str += "<div class = 'flex_column w-10'><button id = 'modified_submit' class = 'small_btn btn btn-primary'>등록</button><button id = 'modified_cancel' class = 'small_btn btn btn-primary'>취소</button>";
+										str += "</div></div></div></div></li>";
 									}
 									replyUL.html(str);
 							});
@@ -258,7 +258,7 @@
 							var modified_content = $(this).find('textarea').val();
 							
 							if($(e.target).attr('id') === $("#reply_modify").attr('id')){
-								toggle_div.attr("style", "display : block");
+								toggle_div.slideToggle("slow", "swing");
 							}
 							
 							//댓글 수정 중 등록 버튼 클릭시
@@ -268,10 +268,12 @@
 									board_id : board_idValue,
 									reply : modified_content
 								}
-								//내용이 null일 때 체크
-								if(reply.reply == null){
+								console.log("reply.reply : " + reply.reply);
+								console.log("reply.reply type : " + typeof(reply.reply));
+								//내용이 없을 때 체크
+								if(!reply.reply){
 									alert('내용을 입력해주세요');
-								}else{ //내용이 null이 아니면 modify
+								}else{ //내용이 있으면 modify
 									replyService.modify(reply, function(result){
 										textarea.val("");
 										toggle_div.attr("style", "display : none");
@@ -283,7 +285,7 @@
 							//댓글 수정 중 취소 버튼 클릭시
 							if($(e.target).attr('id') == 'modified_cancel'){
 								textarea.val("");
-								toggle_div.attr("style", "display : none");
+								toggle_div.slideToggle("slow", "swing");
 							}
 						});
 					</script><!-- 댓글 끝 -->
