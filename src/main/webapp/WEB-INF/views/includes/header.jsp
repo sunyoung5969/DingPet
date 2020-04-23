@@ -26,7 +26,9 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
     
     <link rel="stylesheet" type="text/css" href="https://assets.mypetlife.co.kr/map/wp-content/themes/listify/css/style.min.css">
-
+	
+	<!-- Font Awesome 아이콘 -->
+	<script src="https://kit.fontawesome.com/790887e3ce.js" crossorigin="anonymous"></script>
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300" id="home-section">
   

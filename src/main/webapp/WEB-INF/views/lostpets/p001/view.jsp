@@ -19,13 +19,14 @@
                         </div>
                     </div>
                     <!-- 제목, 작성자, 작성일시-->
-                    <div class="ml-3 mr-3 mt-3 align-self-center border_bottom pb-3">
+                    <div class="ml-3 mr-3 mt-3 align-self-center pb-3">
 	                	<h2 class = "mb-2 color_blue" ><c:out  value = "${board.title}"/></h2>
 	                    <div class = "top_info">
 		    	            <span><strong><c:out value = "${board.member_id}"/></strong></span>
 		    	            <span id = "board_date"></span>
 	                    </div>
                    	</div>
+                   	<hr class = "hr_style">
                     <div class="row pt-3 dp-webkit">
                         <div class="col-lg-5 col-md-6 align-self-center">
                             <div class="image-block bg-about">
