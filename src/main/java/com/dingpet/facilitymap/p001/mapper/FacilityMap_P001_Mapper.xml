@@ -34,6 +34,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 #{place_url, jdbcType=VARCHAR}, #{place_text, jdbcType=VARCHAR}, #{place_pic, jdbcType=VARCHAR}, #{place_picname, jdbcType=VARCHAR})	
 		]]>	
 	</insert>
+	
 	<select id="readcenter" resultType="com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO">
 		<![CDATA[
 		SELECT PLACE_NUM, PLACE_NAME, ADDRESS_NAME, ROAD_ADDRESS_NAME, CATEGORY_NAME, PHONE, X, Y, PLACE_URL

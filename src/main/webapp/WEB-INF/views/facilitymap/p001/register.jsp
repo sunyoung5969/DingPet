@@ -49,6 +49,7 @@
 </style>
 </head>
 <body>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <!--====  str of contents  ====-->
     <section style="padding-top:87px">
         <div class="page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); transform: translate3d(0px, 0px, 0px);"></div>
@@ -70,14 +71,14 @@
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label text-md-right">시설명</label>
                                             <div class="col-md-7">
-                                                <input type="text" id="place_name" class="form-control" name="place_name">
+                                                <input type="text" id="place_name" class="form-control" name="place_name"  required>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label text-md-right">주소</label>
                                             <div class="col-md-7">
-                                                <input type="text" id="adress_name" class="form-control" name="address_name">
+                                                <input type="text" id="adress_name" class="form-control" name="address_name"  required>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -85,7 +86,7 @@
                                             <div class="col-md-7">
                                                 <div class="row">
                                                     <div class="col-sm-4">
-                                                        <select class="form-control" name="category_name">
+                                                        <select class="form-control" name="category_name" >
                                                         <optgroup label="시설 종류" >
                                                             <option value="hospital">동물병원</option>
                                                             <option value="medicenter">동물약국</option>
@@ -107,13 +108,13 @@
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label text-md-right">위도</label>
                                             <div class="col-md-7">
-                                                <input type="text" id="Latitude" class="form-control" name="X">
+                                                <input type="text" id="Latitude" class="form-control" name="X"  required>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label text-md-right">경도</label>
                                             <div class="col-md-7">
-                                            	<input type="text" id="longitude" class="form-control" name="Y">
+                                            	<input type="text" id="longitude" class="form-control" name="Y"  required>
                                             	<input type="hidden" id="place_url" class="form-control" name="place_url" value="https://www.dingpet.shop/facilitymap/p001/mapinfo?site_id=">
                                             </div>
                                         </div>
@@ -273,7 +274,7 @@ $(document).ready(function(){
 				str += "<span> "+ obj.fileName+"</span>";
 				str += "<button type='button' data-file=\'"+fileCallPath+"\' data-type='file' " 
 				str += "class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
-				str += "<img src='/resources/img/attach.png'></a>";
+				str += "<img src='/resources/imges/attach.png'></a>";
 				str += "</div>";
 				str +"</li>";
 			}

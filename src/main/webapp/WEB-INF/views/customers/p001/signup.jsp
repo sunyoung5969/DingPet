@@ -49,6 +49,33 @@
    function cancleBtn(){
       return location.href='/';
    }
+		$.ajax({
+			type : "post",
+			url : "/customers/p001/mem",
+			data : {
+				id : _id
+			},
+			success : function(data, textStatus) {
+				if (data == "usable") {
+					$('#btn_duplicate').prop("disabled", true); //.prop("disabled", true) 버튼 비활성화
+					alert("사용가능한 id입니다");
+				} else {
+					alert("사용 불가능한 id입니다");
+				}
+			}
+		})
+	}
+
+	function passwordCheck() {
+		var member_pwd = $('#member_pwd').val();
+		var re_member_pwd = $('#re_member_pwd').val();
+
+		if (member_pwd != re_member_pwd) {
+			$('#passwordCheckMessage').html('비밀번호가 일치하지 않습니다.');
+		} else {
+			$('#passwordCheckMessage').html('');
+		}
+	}
 </script>
 
    <div class="main">

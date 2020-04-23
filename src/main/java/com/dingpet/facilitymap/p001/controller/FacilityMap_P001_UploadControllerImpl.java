@@ -41,7 +41,8 @@ public class FacilityMap_P001_UploadControllerImpl implements FacilityMap_P001_U
 	private FacilityMap_P001_Service service;
 	
 //	private String uploadFolder = "C:\\upload";
-	
+
+	// 다중 파일첨부 AJAX 뷰  
 	@RequestMapping(value="/display", method = {RequestMethod.GET})
 	@ResponseBody
 	public ResponseEntity<byte[]> getFile(String fileName) {
@@ -67,7 +68,7 @@ public class FacilityMap_P001_UploadControllerImpl implements FacilityMap_P001_U
 	}
 	
 	
-	
+	// 이미지 타입 체크
 	private boolean checkImageType(File file) {
 
 		try {
@@ -83,6 +84,7 @@ public class FacilityMap_P001_UploadControllerImpl implements FacilityMap_P001_U
 		return false;
 	}
 
+	// 폴더 경로 get
 	private String getFolder() {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -94,7 +96,7 @@ public class FacilityMap_P001_UploadControllerImpl implements FacilityMap_P001_U
 		return str.replace("-", File.separator);
 	}
 
-
+	// AJAX 다중 업로드 Action
 	@RequestMapping(value="/uploadAjaxAction", method = {RequestMethod.POST})
 	public ResponseEntity<List<FileAttachDTO>> uploadFormPost(MultipartFile[] uploadFile) {
 		//String uploadFolder = "C:\\upload";
@@ -149,6 +151,7 @@ public class FacilityMap_P001_UploadControllerImpl implements FacilityMap_P001_U
 		return new ResponseEntity<>(nameList, HttpStatus.OK);
 	}
 	
+	// AJAX 업로드 Delete
 	@RequestMapping(value="/deleteFile", method = {RequestMethod.POST})
 	@ResponseBody
 	public ResponseEntity<String> deleteFile(String fileName, String type) {

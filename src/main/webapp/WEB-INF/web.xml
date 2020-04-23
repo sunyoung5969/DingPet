@@ -28,8 +28,8 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 		<multipart-config>
-			<location>C:\\upload\\temp</location>
-			<!-- <location>/home/temp</location> 	임시 파일 폴더 경로 지정  -->
+			<!--<location>C:\\upload\\temp</location>-->
+			<location>/home/temp</location> 	임시 파일 폴더 경로 지정  
 			<max-file-size>10485760</max-file-size> <!--10MB / 파일 하나당 업로드 크기 제한 -->
 			<max-request-size>41943040</max-request-size><!-- 40MB / 전체 업로드 파일들의 크기 제한 -->
 			<!-- 20MB / 업로드 파일의 크기가 이 태그에 지정한 크기보다 크면  임시파일생성-->

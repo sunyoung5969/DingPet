@@ -10,6 +10,7 @@ import com.dingpet.facilitymap.p001.dto.PlaceDTO;
 import com.dingpet.facilitymap.p001.mapper.FacilityMap_P001_AttachMapper;
 import com.dingpet.facilitymap.p001.mapper.FacilityMap_P001_Mapper;
 import com.dingpet.facilitymap.p001.vo.FacilityMap_AttachVO;
+import com.dingpet.facilitymap.p001.vo.FacilityMap_P001_ReplyVO;
 import com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO;
 
 import lombok.AllArgsConstructor;
@@ -85,7 +86,7 @@ public class FacilityMap_P001_ServiceImple implements FacilityMap_P001_Service {
 			attachMapper.insert(attach);
 		});
 	}
-	
+		
 	@Override
 	public List<FacilityMap_AttachVO> getAttachList(int site_id) {
 
