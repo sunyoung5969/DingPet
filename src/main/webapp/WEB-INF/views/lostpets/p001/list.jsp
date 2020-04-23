@@ -16,7 +16,7 @@
 	<div class="row ">
 		<div class="features">
 			<div class="t_bar">
-				<div class="sub_title">유기견을 찾습니다</div>
+				<div class="sub_title">주인을 찾습니다</div><p>유기견을 보호하고 계신가요? 하루 빨리 주인을 찾을 수 있게, 지금 바로 게시글을 등록해주세요!</p>
 				<a href="/lostpets/p001/write" class="btn_a"><span class="sub_txt">등록하기
 					<img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr"></span>
 				</a>
@@ -30,15 +30,15 @@
 							<div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
 								<a class="nav-item nav-link active" id="nav-home-tab"
 									data-toggle="tab" href="#nav-home" role="tab"
-									aria-controls="nav-home" aria-selected="true"> 임시보호</a> <a
+									aria-controls="nav-home" aria-selected="true"><strong>임시보호</strong></a> <a
 									class="nav-item nav-link" id="nav-profile-tab"
 									data-toggle="tab" href="#nav-profile" role="tab"
-									aria-controls="nav-profile" aria-selected="false"> 찾기</a>
+									aria-controls="nav-profile" aria-selected="false"><strong>실종견 찾기</strong></a>
 							</div>
 						</nav>
 						
 						<!-- 탭 내용 -->
-						<div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+						<div class="tab-content py-3 px-3 px-sm-0 border_top" id="nav-tabContent">
 							<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 								
 								<!-- 내용이 없는 경우 -->
