@@ -49,22 +49,7 @@
    function cancleBtn(){
       return location.href='/';
    }
-		$.ajax({
-			type : "post",
-			url : "/customers/p001/mem",
-			data : {
-				id : _id
-			},
-			success : function(data, textStatus) {
-				if (data == "usable") {
-					$('#btn_duplicate').prop("disabled", true); //.prop("disabled", true) 버튼 비활성화
-					alert("사용가능한 id입니다");
-				} else {
-					alert("사용 불가능한 id입니다");
-				}
-			}
-		})
-	}
+
 
 	function passwordCheck() {
 		var member_pwd = $('#member_pwd').val();
@@ -140,7 +125,7 @@
 								</div>
 		
 								<div class="form-group">
-									특이사항<input type="text" id="dog_size" name="dog_size" maxlength="10" placeholder="Remark" />
+									특이사항<input type="text" id="" name="dog_size" maxlength="10" placeholder="Remark" />
 								</div>
 		
 								<div class="filebox">
