@@ -17,20 +17,20 @@
          alert("ID를 입력하세요");
          return;
       }
-
+      
       $.ajax({
-         type : "post",
-         url : "http://localhost:8080/customers/p001/mem",
-         data : {id : _id},
-         success : function(data, textStatus) {
-                  if (data == "usable") {
-                  $('#btn_duplicate').prop("disabled", true); //.prop("disabled", true) 버튼 비활성화
-                  alert("사용가능한 id입니다");
-                  } else {
-                  alert("사용 불가능한 id입니다");
-                  }
-               }
-      })
+          type : "post",
+          url : "/customers/p001/mem",
+          data : {id : _id},
+          success : function(data, textStatus) {
+                   if (data == "usable") {
+                   //$('#btn_duplicate').prop("disabled", true); //.prop("disabled", true) 버튼 비활성화
+                   alert("사용가능한 id입니다");
+                   } else {
+                   alert("사용 불가능한 id입니다");
+                   }
+                }
+       })
    }
    
    //pw일치체크 함수
@@ -49,22 +49,7 @@
    function cancleBtn(){
       return location.href='/';
    }
-		$.ajax({
-			type : "post",
-			url : "/customers/p001/mem",
-			data : {
-				id : _id
-			},
-			success : function(data, textStatus) {
-				if (data == "usable") {
-					$('#btn_duplicate').prop("disabled", true); //.prop("disabled", true) 버튼 비활성화
-					alert("사용가능한 id입니다");
-				} else {
-					alert("사용 불가능한 id입니다");
-				}
-			}
-		})
-	}
+
 
 	function passwordCheck() {
 		var member_pwd = $('#member_pwd').val();

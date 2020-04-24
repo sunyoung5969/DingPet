@@ -29,6 +29,8 @@
 	
 	<!-- Font Awesome 아이콘 -->
 	<script src="https://kit.fontawesome.com/790887e3ce.js" crossorigin="anonymous"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300" id="home-section">
   
