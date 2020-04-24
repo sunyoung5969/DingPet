@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.dingpet.facilitymap.p001.dto.ReplyPageDTO;
 import com.dingpet.facilitymap.p001.mapper.FacilityMap_P001_AttachMapper;
 import com.dingpet.facilitymap.p001.service.FacilityMap_Reply_Service;
 import com.dingpet.facilitymap.p001.vo.Criteria;
@@ -55,12 +56,13 @@ public class FacilityMap_Reply_ControllerImpl {
 	//댓글 목록 조회
 	@RequestMapping(value = "/pages/{site_id}/{pageNum}", method = {RequestMethod.GET},
 			produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<List<FacilityMap_P001_ReplyVO>> list(@PathVariable("site_id") String site_id, @PathVariable("pageNum") int pageNum){
+	public ResponseEntity<ReplyPageDTO> list(@PathVariable("site_id") String site_id, @PathVariable("pageNum") int pageNum){
 		
 		log.info("listing");		
 		log.info("site_id:"+site_id);
-		Criteria cri = new Criteria(pageNum, 10);
-		return new ResponseEntity<>(service.list(cri, site_id), HttpStatus.OK);
+		Criteria cri = new Criteria(pageNum, 5);
+		
+		return new ResponseEntity<>(service.getListPage(cri, site_id), HttpStatus.OK);
 	}
 	
 	//댓글 조회

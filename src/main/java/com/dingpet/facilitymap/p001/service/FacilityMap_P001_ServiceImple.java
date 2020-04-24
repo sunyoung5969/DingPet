@@ -62,7 +62,10 @@ public class FacilityMap_P001_ServiceImple implements FacilityMap_P001_Service {
 		// TODO Auto-generated method stub
 		return mapper.getseq();
 	}
-	
+	@Override
+	public String getStarAvg(String site_id) {
+		return mapper.getstaravg(site_id);
+	}
 	@Transactional
 	@Override
 	public void register(FacilityMap_P001_VO vo) {

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.dingpet.facilitymap.p001.dto.ReplyPageDTO;
 import com.dingpet.facilitymap.p001.mapper.FacilityMap_P001_ReplyMapper;
 import com.dingpet.facilitymap.p001.vo.Criteria;
 import com.dingpet.facilitymap.p001.vo.FacilityMap_P001_ReplyVO;
@@ -44,5 +45,12 @@ public class FacilityMap_Reply_ServiceImpl implements FacilityMap_Reply_Service 
 		log.info("listing replies");
 		return mapper.list(cri, site_id);
 	}
+
+	@Override
+	public ReplyPageDTO getListPage(Criteria cri, String site_id) {
+
+		return new ReplyPageDTO(mapper.getCountByRno(site_id), mapper.list(cri, site_id));
+	}
+
 
 }

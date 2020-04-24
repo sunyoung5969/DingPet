@@ -27,6 +27,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getseq" resultType="int">
 	    SELECT site_seq.nextval as sitesq from dual
     </select> 
+    <select id="getstaravg" resultType="String">
+	    SELECT round(AVG(review_star),1) FROM site_review where site_id = #{site_id, jdbcType=VARCHAR}
+    </select> 
 	<insert id="registerPlace">		
 		<![CDATA[
 		INSERT INTO SITE (SITE_ID, PLACE_NAME, ADDRESS_NAME, CATEGORY_NAME, PHONE, X, Y, PLACE_URL, PLACE_TEXT, PLACE_PIC, PLACE_PICNAME)

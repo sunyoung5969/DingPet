@@ -20,9 +20,12 @@ public interface FacilityMap_P001_Mapper {
 	public FacilityMap_P001_VO dogcenter(int site_id);
 	//시퀀스 get 
 	public int getseq();
+	// 별점 평균 get
+	public String getstaravg(String site_id);
 	//시설정보 등록 
 	public void registerPlace(FacilityMap_P001_VO vo);
 	//시설 리뷰 등록 
 	public void reviewRegister(FacilityMap_P001_ReplyVO vo);
-	
+	// 리뷰 번호 가져오기
+	public int getCountByRno(String site_id);
 }

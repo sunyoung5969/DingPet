@@ -30,14 +30,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SET reply = #{reply}
 		WHERE reply_id = #{reply_id} 
 	</update>
-	
+	<select id="getCountByRno" resultType="int">
+		<![CDATA[
+		select count(review_id) from site_review where site_id = #{site_id}
+		]]>
+	</select>
 	<!-- 댓글 목록 -->
 	<select id="list" resultType = "com.dingpet.facilitymap.p001.vo.FacilityMap_P001_ReplyVO">
 		<![CDATA[
 		SELECT *
 		FROM (
-    	select /*+INDEX(tbl_reply idx_reply) */ 
-    	  rownum rn, review_id, site_id, review_content, review_name, review_date
+    	select rownum rn, review_id, site_id, review_content, review_name, review_date
     	from site_review
     	where site_id =  #{site_id}
    		 and review_id > 0

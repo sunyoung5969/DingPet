@@ -251,6 +251,8 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 	public void Mapinfo(@RequestParam("site_id") int site_id, Model model) {
 		System.out.println("==============  Map Info Page");
 		model.addAttribute("infopage", "조회 페이지 입니다");
+		String site = String.valueOf(site_id);
+		model.addAttribute("star", Double.valueOf(service.getStarAvg(site)));
 		model.addAttribute("url", "https://www.dingpet.shop/siteimg/");
 		model.addAttribute("info", service.getDogPlace(site_id));
 		

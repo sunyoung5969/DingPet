@@ -21,4 +21,6 @@ public interface FacilityMap_P001_ReplyMapper {
 	public int modify(FacilityMap_P001_ReplyVO reply_vo);
 	// 댓글 목록
 	public List<FacilityMap_P001_ReplyVO> list(@Param("cri") Criteria cri, @Param("site_id") String site_id);
+	// 리뷰번호 가져오기
+	public int getCountByRno(String site_id);
 }
