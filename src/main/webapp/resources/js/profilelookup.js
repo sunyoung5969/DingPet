@@ -1,11 +1,7 @@
 // 기타 버튼 상호작용
  
-function reservation(state){
-	if(!state){
-		$(".reservationDiv").css('display', 'block')
-	}else{
-		$(".reservationDiv").css('display', 'none')
-	}
+function reservation(){
+	$(".reservationDiv").slideToggle("slow", "swing");
 }
 
 function addnumber(size){
@@ -13,7 +9,7 @@ function addnumber(size){
 	var str = '';
 	var price = '';
 	var small_total = 0;
-	var sum = parseInt($('.total_amount--hidden').val());
+	var sum = parseInt($('.temp_price').val());
 	
 	var num = 0;
 	var maxnum = 0;
@@ -26,6 +22,8 @@ function addnumber(size){
 		
 		if(maxnum < 6){
 			
+			$('.total_amount_text').text(0);
+			
 			num += parseInt($('.num-small').text());
 			
 			num += 1;
@@ -33,17 +31,14 @@ function addnumber(size){
 			
 			price = parseInt($('.price-small').val());
 			
-			
 			sum += price;
-			
 			
 			price *= num;
 			small_total = price;
 			
-			$('.total_amount').val(sum);
-			$('.total_amount--hidden').val(sum);
-			$('.total_amount_text').text(numberWithCommas(sum));				
-			
+			$('.temp_price').val(sum);
+			console.log(sum);
+
 			str += numberWithCommas(price);
 			str += ' 원 / 1시간';
 			
@@ -58,6 +53,8 @@ function addnumber(size){
 		maxnum += parseInt($('.num-large').text());
 		
 		if(maxnum < 6){
+			
+			$('.total_amount_text').text(0);
 
 			num = parseInt($('.num-medium').text());
 			num += 1;
@@ -67,9 +64,8 @@ function addnumber(size){
 			sum += price;
 			price *= num;
 			
-			$('.total_amount').val(sum);
-			$('.total_amount--hidden').val(sum);
-			$('.total_amount_text').text(numberWithCommas(sum));			
+			$('.temp_price').val(sum);
+			console.log(sum)
 			
 			str += numberWithCommas(price);
 			str += ' 원 / 1시간';
@@ -87,6 +83,8 @@ function addnumber(size){
 		
 		if(maxnum < 6){
 			
+			$('.total_amount_text').text(0);
+			
 			num = parseInt($('.num-large').text());
 			num += 1;
 			$(".num-large").text(num);
@@ -95,9 +93,9 @@ function addnumber(size){
 			sum += price;
 			price *= num;
 			
-			$('.total_amount').val(sum);
-			$('.total_amount--hidden').val(sum);
-			$('.total_amount_text').text(numberWithCommas(sum));			
+			$('.temp_price').val(sum);
+			
+			console.log(sum)
 			
 			str += numberWithCommas(price);
 			str += ' 원 / 1시간';
@@ -115,7 +113,7 @@ function subnumber(size){
 	
 	var str = '';
 	var price = '';
-	var sum = parseInt($('.total_amount--hidden').val());
+	var sum = parseInt($('.temp_price').val());
 	
 	var num = '';
 	
@@ -125,6 +123,8 @@ function subnumber(size){
 		
 		if(num > 0){
 			
+			$('.total_amount_text').text(0);
+			
 			num -= 1;
 			$(".num-small").text(num);
 			
@@ -132,9 +132,9 @@ function subnumber(size){
 			sum -= price;
 			price *= num;
 			
-			$('.total_amount').val(sum);
-			$('.total_amount--hidden').val(sum);
-			$('.total_amount_text').text(numberWithCommas(sum));		
+			$('.temp_price').val(sum);
+			
+			console.log(sum);
 			
 			str += numberWithCommas(price);
 			str += ' 원 / 1시간';
@@ -150,6 +150,8 @@ function subnumber(size){
 		
 		if(num > 0){
 			
+			$('.totla_amount_text').text(0);
+			
 			num -= 1;
 			$(".num-medium").text(num);
 			
@@ -157,9 +159,10 @@ function subnumber(size){
 			sum -= price;
 			price *= num;
 			
-			$('.total_amount').val(sum);
-			$('.total_amount--hidden').val(sum);
-			$('.total_amount_text').text(numberWithCommas(sum));	
+			$('.temp_price').val(sum);
+			
+			
+			console.log(sum);
 			
 			str += numberWithCommas(price);
 			str += ' 원 / 1시간';
@@ -169,13 +172,13 @@ function subnumber(size){
 			
 		}
 		
-		
-		
 	}else if(size == 'large'){
 		
 		num = parseInt($('.num-large').text());
 		
 		if(num > 0){
+			
+			$('.total_amount_text').text(0)
 			
 			num -= 1;
 			$(".num-large").text(num);
@@ -184,9 +187,10 @@ function subnumber(size){
 			sum -= price;
 			price *= num;
 			
-			$('.total_amount').val(sum);
-			$('.total_amount--hidden').val(sum);
-			$('.total_amount_text').text(numberWithCommas(sum));				
+			$('.temp_price').val(sum);
+			
+			console.log(sum)
+			
 			str += numberWithCommas(price);
 			str += ' 원 / 1시간';
 			$('.price_text--large').empty(str);
@@ -206,147 +210,176 @@ function numberWithCommas(x){
 
 // 예약 결제 팝업
 
-	function reservation_Patment(){
-		
-		var popupX = (window.screen.width/2) - 250;
-		// 만들 팝업창 width 크기의 1/2 만큼 보정값으로 빼주었음
+function reservation_Payment(){
+	
+	var popupX = (window.screen.width/2) - 250;
+	// 만들 팝업창 width 크기의 1/2 만큼 보정값으로 빼주었음
 
 	var popupY= (window.screen.height/2) - 360;
 	// 만들 팝업창 height 크기의 1/2 만큼 보정값으로 빼주었음
 	
-	var popup = window.open('','payviewer', 'width=500,height=550, left ='+ popupX +', top='+popupY);
+	var popup = window.open('','payviewer', 'width=500,height=549, left ='+ popupX +', top='+popupY);
 	var frm = document.confirm;
 	frm.action = '/petsitting/p002/reservation';
 	frm.target ="payviewer";
 	frm.method ="post";
 	frm.submit();
+
+}
+
+function closedPopup(){
 	
+	opener.location.reload();
+    window.close();
 	
-	
-	// popup.moveBy(250, 150);
-	}
+}
+
 	
 //----------------------------------------------------------------------------------
 
 // 시간
 
 	var timeClick = {
-				
+		
+		// 예약 시간 DOM 설정
 		apm : function(apm){
 			
 			var str = '';
-		var time = '';
-		
-		str += "<table>"
-		
-		if(apm == 'am'){
+			var time = '';
 			
-			for(var i=0; i<12; i++){
-				
-				time = this.addzero(i, 2);
-
-				if( i%3 == 0){
-					str += "<tr>";
-				}
-				
-				str += "<td class='time'><button type='button' onclick='timeClick.timeSelect(this)' class='time-btn' value='"+time+"'><p class='time-text'>"+time+" : 00</p></td>"
-				if( i%3 == 2){
-					str += "</tr>"
-				}
-			}
+			str += "<table>"
 			
-		}else if(apm == 'pm' || apm == 'default'){
-			
-			for(var i=12; i<24; i++){
+			if(apm == 'am'){
 				
-				time = this.addzero(i, 2);
-				
-				if( i%3 == 0){
-					str += "<tr>";
-				}
-				
-				str += "<td class='time'><button type='button' onclick='timeClick.timeSelect(this)' class='time-btn' value='"+time+"'> <p class='time-text'>"+time+" : 00</p></button></td>"
-				
-				if( i%3 == 2){
-					str += "</tr>"
-				}
-			}
-		}
-		$(".time-reservation").empty();
-		$(".time-reservation").append(str);
-		
-	},
+				for(var i=0; i<12; i++){
+					
+					time = this.addzero(i, 2);
 	
-	addzero : function(num, digit){
-		
-		var zero = '';
-		num = num.toString();
-		
-		if(num.length >= digit){
-			return num;
-		}else{
+					if( i%3 == 0){
+						str += "<tr>";
+					}
+					
+					str += "<td class='time'><button type='button' onclick='timeClick.timeSelect(this)' class='time-btn' value='"+time+"'><p class='time-text'>"+time+" : 00</p></td>"
+					if( i%3 == 2){
+						str += "</tr>"
+					}
+				}
 			
-			for(var i = 0; i<(digit-num.length); i++){
-				zero += '0';
+			}else if(apm == 'pm' || apm == 'default'){
+				
+				for(var i=12; i<24; i++){
+					
+					time = this.addzero(i, 2);
+					
+					if( i%3 == 0){
+						str += "<tr>";
+					}
+					
+					str += "<td class='time'><button type='button' onclick='timeClick.timeSelect(this)' class='time-btn' value='"+time+"'> <p class='time-text'>"+time+" : 00</p></button></td>"
+					
+					if( i%3 == 2){
+						str += "</tr>"
+					}
+				}
+			}
+			$(".time-reservation").empty();
+			$(".time-reservation").append(str);
+		
+		},
+	
+		// 0 추가
+		addzero : function(num, digit){
+			
+			var zero = '';
+			num = num.toString();
+			
+			if(num.length >= digit){
+				return num;
+			}else{
+				
+				for(var i = 0; i<(digit-num.length); i++){
+					zero += '0';
+				}
+				
+				zero += num;
+				return zero;
 			}
 			
-			zero += num;
-			return zero;
-		}
-		
-	},
+		},
 	
-	timeSelect : function(event){
-		
-		var time = $(event).val();
-
-		if($(".startDate").val() != '' && $(".startTime").val() == ''){
-		// 시작시간 설정
-		
-			$(".startTime").val(time);	// 시작시간 저장
-			console.log("시작시간 : " +$(".startTime").val() )
+		// 예약 날짜, 시간 저장
+		timeSelect : function(event){
 			
-		}else if($(".startDate").val() == $(".endDate").val() && $(".startTime").val() >= time){
-		// 같은날에 시작시간보다 종료시간이 이를때
+			var time = $(event).val();
+	
+			if($(".startDate").val() != '' && $(".startTime").val() == ''){
+			// 시작시간 설정
+			
+				$(".startTime").val(time);	// 시작시간 저장
+				console.log("시작시간 : " +$(".startTime").val() )
+				
+			}else if($(".startDate").val() == $(".endDate").val() && $(".startTime").val() >= time){
+			// 같은날에 시작시간보다 종료시간이 이를때
+			
+				console.log("종료시간이 잘못되었습니다");
+				$(".endDate").val('');		// 종료일 초기화
+				$(".startTime").val(time);	// 선택한시간을 시작시간으로 변경
+				console.log("시작날짜 : " + $(".startDate").val());
+				console.log("시작시간 : " + $(".startTime").val());
+				
+			}else if($(".endDate").val() != '' && $(".endTime").val() == ''){
+			// 종료시간 설정
+				
+				$(".endTime").val(time);	// 종료시간 저장
+	
+				var total_time = parseInt($(".endTime").val() - $(".startTime").val());
+				var price = parseInt($(".temp_price").val());
+				
+				console.log("종료시간 : " +$(".endTime").val())
+				
+				console.log("총 예약 시간 : " + total_time)
+				//console.log("결제금액 : " + price)
+			
+				price *= total_time;
+				
+				
+				$(".total_amount--hidden").val(price);
+				console.log("총 결제금액 : " + $(".total_amount--hidden").val())
+				
+				var price2 = Math.floor(price/10);
+				var price1 = price-price2;
+
+				var str = "돌봄 비용 \u00A0 " + numberWithCommas(price1) + 
+						  " \u00A0\u00A0\u00A0\u00A0\u00A0 부가세 \u00A0 " + numberWithCommas(price2) +
+						  " \u00A0\u00A0\u00A0\u00A0\u00A0 총 금액 \u00A0 "+ numberWithCommas(price);
+				
+				$(".total_amount_text").text(str);
+	
+			}
+			
+			$('.dateTime').css('display', 'none');
+			
+		},
 		
-			console.log("종료시간이 잘못되었습니다");
-			$(".endDate").val('');		// 종료일 초기화
-			$(".startTime").val(time);	// 선택한시간을 시작시간으로 변경
+		// 예약시간 취소
+		reselect : function(){
+			
 			console.log("시작날짜 : " + $(".startDate").val());
 			console.log("시작시간 : " + $(".startTime").val());
 			
-		}else if($(".endDate").val() != '' && $(".endTime").val() == ''){
-		// 종료시간 설정
-		
-			$(".endTime").val(time);	// 종료시간 저장
-
-			console.log("종료시간 : " +$(".endTime").val())
-
-		}
-		
-		$('.dateTime').css('display', 'none');
-		
-		
-	},
+			if($(".startDate").val() != '' && $(".startTime").val() == ''){
+				
+				$(".startDate").val('');	// 시작날짜 초기화
+				console.log("시작시간 취소")
+				
+			}else if($(".endDate").val() != '' && $(".endTime").val() == ''){
+				
+				$(".endDate").val('');		// 종료날짜 초기화
+				console.log("종료시간 취소")
 	
-	reselect : function(){
-		
-		console.log("시작날짜 : " + $(".startDate").val());
-		console.log("시작시간 : " + $(".startTime").val());
-		
-		if($(".startDate").val() != '' && $(".startTime").val() == ''){
-			
-			$(".startDate").val('');	// 시작날짜 초기화
-			console.log("시작시간 취소")
-			
-		}else if($(".endDate").val() != '' && $(".endTime").val() == ''){
-			
-			$(".endDate").val('');		// 종료날짜 초기화
-			console.log("종료시간 취소")
-
-		}
-		$('.dateTime').css('display', 'none');
-
+			}
+			$('.dateTime').css('display', 'none');
+	
 		}
 			
 	}

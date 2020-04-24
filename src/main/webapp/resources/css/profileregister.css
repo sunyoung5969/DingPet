@@ -1,0 +1,178 @@
+@charset "UTF-8";
+
+.info-part1, .info-part2, .info-part3, .info-part4, .info-part5, .info-part6{
+
+	padding: 20px;
+}
+
+.info-part1{
+    display: flex;
+}
+
+.info-part2--contents{
+    display: flex;
+}
+
+.license-info{
+
+    width: 80%;
+	padding-left: 3%;
+
+}
+
+.license-info--title{
+	margin: 0px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.filebox{
+	display: inline-block;
+	float: left;
+}
+
+.filebox label {
+  display: inline-block;
+  padding: .5em .75em;
+  width:200px;
+  height: 260px;
+  color: #fff;
+  font-size: inherit;
+  line-height: normal;
+  vertical-align: middle;
+  background-color: graytext;
+  cursor: pointer;
+  border: 1px solid #4ca;
+  border-radius: .25em;
+  -webkit-transition: background-color 0.2s;
+  transition: background-color 0.2s;
+}
+
+.filebox label:hover {
+  background-color: gray;
+}
+
+.filebox label:active {
+  background-color: #367c36;
+}
+
+.filebox input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.form-group{
+	padding-left: 3%;
+	display: inline-block;
+	width: 80%;
+}
+.form-group label h3 {
+	font-size: 22px;
+   	line-height: 1.0909090909;
+   	margin:12px 0;
+}
+
+.tit_h3 {
+	font-size: 22px;
+   	line-height: 1.0909090909;
+   	margin:12px 0;
+}
+
+
+.license-info h5 {
+	font-size: 14px;
+   	line-height: 1.0909090909;
+   	margin:12px 0;
+}
+
+.form-control{
+	width: 100%;
+}
+
+.serviceimg {
+
+	width: 40px;
+
+}
+
+.img-text{
+	background-color: gray;
+	position: relative;
+	width: fit-content;
+	top:-140px;
+	left: 20%;
+}
+
+.check{
+	position: relative;
+	top: -15px;
+   }
+   
+   .dogtype{
+   
+   	display: inline-block;
+   }
+   
+
+.Calendar {
+
+	width: 50%;
+
+}
+
+.CalendarDayDiv--td { 
+
+	padding: 0px;
+
+}
+
+.CalendarDayDiv--btn{
+	border: 0px;
+	width: 100%;
+	background-color: white;
+	color: #87CEEB;
+	font-weight: bold;
+	height: 50px;
+}
+
+.CalendarDayDiv--btndisabled{
+
+	border: 0px;
+	width: 100%;
+	background-color: white;
+	color: gray;
+	height: 50px;
+}
+
+
+
+.DayOfTheWeek_li{
+	display: inline-block;
+    padding: 5px 28px 5px 28px;
+    font-size: 17px;
+}
+
+.DayOfTheWeek_ui{
+
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+.CalendarMonth_small{
+    padding: 10px 30px 10px 30px;
+    margin: 0px;
+    display: inline-block;
+}
+
+.imgbtn{
+	padding: 4px;
+    margin-bottom: 10px;
+}
+

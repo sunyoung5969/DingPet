@@ -10,6 +10,8 @@ public interface PetSitting_P001_Controller {
 
 	public void profilelist(Model model);		// 펫시터 목록
 	public void register(Model model);	// 펫시터 프로필 등록
+	public void register_f(Model model);
+
 	public String registerdata(Model model, PetSitting_P001_VO profile, MultipartHttpServletRequest uploadFile);
 	public void lookup(Model model, PetSitting_P001_VO profile);	// 프로필 조회
 	public void update(Model model);	// 프로필 수정
