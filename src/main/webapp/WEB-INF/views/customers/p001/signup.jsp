@@ -125,7 +125,7 @@
 								</div>
 		
 								<div class="form-group">
-									특이사항<input type="text" id="dog_size" name="dog_size" maxlength="10" placeholder="Remark" />
+									특이사항<input type="text" id="" name="dog_size" maxlength="10" placeholder="Remark" />
 								</div>
 		
 								<div class="filebox">
