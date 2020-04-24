@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.dingpet.facilitymap.p001.dto.PlaceDTO;
 import com.dingpet.facilitymap.p001.vo.FacilityMap_AttachVO;
+import com.dingpet.facilitymap.p001.vo.FacilityMap_P001_ReplyVO;
 import com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO;
 
 public interface FacilityMap_P001_Service {
@@ -25,4 +26,5 @@ public interface FacilityMap_P001_Service {
 	public List<FacilityMap_AttachVO> getAttachList(int site_id);
 	// 첨부 삭제 
 	public void removeAttach(int site_id);
+	
 }

@@ -25,5 +25,11 @@ public class Customers_P001_VO {
 	private String answer2;
 //	private String question3;
 	private String answer3;
+	
+	private String dog_name;
+	private String dog_breed;
+	private String dog_size;
+	private String dog_note;
+	private String dog_photo;
 
 }
