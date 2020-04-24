@@ -40,7 +40,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<![CDATA[
 		SELECT *
 		FROM (
-    	select rownum rn, review_id, site_id, review_content, review_name, review_date
+    	select rownum rn, review_id, site_id, review_content, review_name, review_date, review_star
     	from site_review
     	where site_id =  #{site_id}
    		 and review_id > 0

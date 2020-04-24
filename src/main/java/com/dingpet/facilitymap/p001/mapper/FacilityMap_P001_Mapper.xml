@@ -42,7 +42,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<![CDATA[
 		INSERT INTO SITE_REVIEW (SITE_ID, REVIEW_ID, REVIEW_CONTENT, REVIEW_STAR, REVIEW_NAME, REVIEW_EMAIL, REVIEW_PIC, REVIEW_PICNAME, REVIEW_REPORT, REVIEW_DATE)
 		VALUES(#{site_id}, review_seq.nextval, #{review_content, jdbcType=VARCHAR}, #{review_star}, #{review_name, jdbcType=VARCHAR}, #{review_email, jdbcType=VARCHAR},
-		#{review_pic, jdbcType=VARCHAR}, #{review_picname, jdbcType=VARCHAR}, 0, sysdate)	
+		#{review_pic, jdbcType=VARCHAR}, #{review_picname, jdbcType=VARCHAR}, 0, #{review_date, jdbcType=VARCHAR})	
 		]]>	
 	</insert>
 	<select id="readcenter" resultType="com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO">
