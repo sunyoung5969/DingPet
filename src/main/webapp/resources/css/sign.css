@@ -94,10 +94,8 @@ body {
   font-weight: 400;
   }
 
-.container {
-  width: 900px;
+.sign_container {
   background: #fff;
-  margin: 0 auto;
   box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
   -webkit-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
@@ -154,10 +152,10 @@ body {
   overflow: hidden; }
 
 .change-form{
-	width : 100%;
-	margin-left: 75px;
- 	margin-right: 75px;
-  	padding-left: 34px;
+   width : 100%;
+   margin-left: 75px;
+    margin-right: 75px;
+     padding-left: 34px;
     /* box-sizing: border-box; */
     padding: 0 30px; }
 }
@@ -419,11 +417,11 @@ label.valid {
   margin-top: 10px; }
 
 @media screen and (max-width: 1200px) {
-  .container {
+  .sign_container {
     width: calc( 100% - 30px);
     max-width: 100%; } }
 @media screen and (min-width: 1024px) {
-  .container {
+  .sign_container {
     max-width: 1200px; } }
 @media screen and (max-width: 768px) {
   .signup-content, .signin-content {
@@ -497,5 +495,5 @@ label.valid {
 /*change.jsp*/
 
 #post_btn{
-	width : 200px;
+   width : 200px;
 }

@@ -1,0 +1,78 @@
+@charset "UTF-8";
+body{
+	margin: 0px;
+}
+.payment_info-title{
+
+	border-bottom: #cccccc87 solid 3px;
+}
+
+.payment-info-contents--container{
+	
+	padding-top: 20px;
+
+}
+.payment-info-contents--container::after {
+	width: 100%;
+    height: 100%;
+    content: "";
+    background: url(https://i.imgur.com/lClSqSz.png) no-repeat 10% 50%, -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#c7c7c7ba));
+    background-size: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.payment-info-contents{
+    position: relative;
+    width: 70%;
+    left: 13%;
+    z-index: 50;
+}
+
+.info-name{
+	
+	width: 50%;
+    height: 50px;
+    font-weight: 600;
+
+}
+
+.info-data{
+
+    width: 50%;
+    font-weight: 600;	
+}
+
+.closed-div{
+
+	padding-top: 50px;
+
+}
+
+.closed-btn{
+
+	width: 40%;
+    height: 68px;
+    font-size: 17px;
+    font-weight: 600;
+
+}
+
+.img-bottom{
+
+	width: 100%;
+
+}
+.background-gradation{
+	position: absolute;
+	top: -26px;
+	left: 5%;
+	width: 90%;
+	height: 600px;
+	background: radial-gradient(white, #ffffffa3, #ffffff00, transparent);
+	z-index: 6;
+
+}

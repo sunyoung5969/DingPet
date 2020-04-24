@@ -5,191 +5,240 @@
 <%@include file="../../includes/header.jsp"%>
 
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/profilelookup.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/profilelookup.css?v=8">
 
 <!--====  str of contents  ====-->
     <section style="padding-top:87px">
     
    		<div class="reservationDiv">
-			<div class="profile-reservation">
-				<div class="profile-reservationDiv pt-5">
-	 				<!-- 프로필 사진 -->
-					<div class="profileIMGDiv-reservation" align="center">
-						<img class="profileIMG-reservation" alt="Circle Image" src="/resources/images/dogger_img_big_1.jpg">
-					</div>
-					<!-- 프로필 자기소개 한줄 -->
-					<div class="profile_h6Div-reservation" align="center">                       		
-						<h6 class="profile_h6-reservation">${profile.profile_Content }</h6>
-					</div>
-					<div>
-						<!-- 이용가능서비스 -->
-	                    <div class="service_warp-reservation pt-3">
-							<div class="service_list-reservation">
-							 	<div class="service_box">
-									<c:if test="${profile.service_00 == 'Y' }">
-										<div class="service_ico-reservation"><img width="32" height="32" src="/resources/images/icon/pet1.png">
-											<div class="service_txtbox-reservation">
-												<p class="service_txth1">매일 산책</p>
-												<p class="service_txth2">산책 및 실외 배변 가능</p>
+   			<div class="reservation-contationer">
+				<div class="profile-reservation">
+					<div class="profile-reservationDiv pt-5">
+		 				<!-- 프로필 사진 -->
+						<div class="profileIMGDiv-reservation" align="center">
+							<img class="profileIMG-reservation" alt="Circle Image" src="/resources/images/dogger_img_big_1.jpg">
+						</div>
+						<!-- 프로필 자기소개 한줄 -->
+						<div class="profile_h6Div-reservation" align="center">                       		
+							<h6 class="profile_h6-reservation">${profile.profile_Content }</h6>
+						</div>
+						<div>
+							<!-- 이용가능서비스 -->
+		                    <div class="service_warp-reservation pt-3">
+								<div class="service_list-reservation">
+								 	<div class="service_box">
+										<c:if test="${profile.service_00 == 'Y' }">
+											<div class="service_ico-reservation"><img width="32" height="32" src="/resources/images/icon/pet1.png">
+												<div class="service_txtbox-reservation">
+													<p class="service_txth1">매일 산책</p>
+													<p class="service_txth2">산책 및 실외 배변 가능</p>
+												</div>
 											</div>
-										</div>
-									</c:if>
-									<c:if test="${profile.service_01 == 'Y' }">
-										<div class="service_ico-reservation"><img width="32" height="32" src="/resources/images/icon/pet2.png">
+										</c:if>
+										<c:if test="${profile.service_01 == 'Y' }">
+											<div class="service_ico-reservation"><img width="32" height="32" src="/resources/images/icon/pet2.png">
+												<div class="service_txtbox-reservation">
+													<p class="service_txth1">목욕 가능</p>
+													<p class="service_txth2">비용은 펫시터와 협의</p>
+												</div>
+											</div>
+										</c:if>
+										<c:if test="${profile.service_02 == 'Y' }">
+											<div class="service_ico-reservation"><img width="32" height="32" src="/resources/images/icon/pet3.png">
+												<div class="service_txtbox-reservation">
+													<p class="service_txth1">약물 복용</p>
+													<p class="service_txth2">경구(입) 약물 복용 가능</p>
+												</div>
+											</div>
+									    </c:if>
+									    <c:if test="${profile.service_03 == 'Y' }">
+										    <div class="service_ico-reservation"><img width="32" height="32" src="/resources/images/icon/pet4.png">
+												<div class="service_txtbox-reservation">
+													<p class="service_txth1">장기 예약</p>
+													<p class="service_txth2">14일 이상 돌봄 가능</p>
+												</div>
+											</div>
+									    </c:if>
+									    
+									    <c:if test="${profile.service_04 == 'Y' }">
+										    <div class="service_ico-reservation"><img width="32" height="32" src="/resources/images/icon/pet4.png">
+												<div class="service_txtbox-reservation">
+													<p class="service_txth1">퍼피 케어</p>
+													<p class="service_txth2">1년 미만 퍼피 돌봄</p>
+												</div>
+											</div>
+									    </c:if>
+									    
+									    <c:if test="${profile.service_05 == 'Y' }">
+										    <div class="service_ico-reservation"><img width="32" height="32" src="/resources/images/icon/pet4.png">
+												<div class="service_txtbox-reservation">
+													<p class="service_txth1">노년 케어</p>
+													<p class="service_txth2">8년 이상 노견 돌봄</p>
+												</div>
+											</div>
+									    </c:if>
+									    
+									  	<c:if test="${profile.service_06 == 'Y' }">
+									    <div class="service_ico-reservation"><img width="32" height="32" src="/resources/images/icon/pet7.png">
 											<div class="service_txtbox-reservation">
-												<p class="service_txth1">목욕 가능</p>
+												<p class="service_txth1">집앞 픽업</p>
 												<p class="service_txth2">비용은 펫시터와 협의</p>
 											</div>
-										</div>
-									</c:if>
-									<c:if test="${profile.service_02 == 'Y' }">
-										<div class="service_ico-reservation"><img width="32" height="32" src="/resources/images/icon/pet3.png">
-											<div class="service_txtbox-reservation">
-												<p class="service_txth1">약물 복용</p>
-												<p class="service_txth2">경구(입) 약물 복용 가능</p>
+									    </div>
+									    </c:if>
+									    <c:if test="${profile.service_07 == 'Y' }">
+										    <div  class="service_ico-reservation"><img width="32" height="32" src="/resources/images/icon/pet8.png">
+												<div class="service_txtbox-reservation">
+													<p class="service_txth1">실내 놀이</p>
+													<p class="service_txth2">터그놀이, 노즈워크 등</p>
+												</div>
 											</div>
-										</div>
-								    </c:if>
-								    <c:if test="${profile.service_03 == 'Y' }">
-									    <div class="service_ico-reservation"><img width="32" height="32" src="/resources/images/icon/pet4.png">
-											<div class="service_txtbox-reservation">
-												<p class="service_txth1">장기 예약</p>
-												<p class="service_txth2">14일 이상 돌봄 가능</p>
-											</div>
-										</div>
-								    </c:if>
-								    
-								  	<c:if test="${profile.service_06 == 'Y' }">
-								    <div class="service_ico-reservation"><img width="32" height="32" src="/resources/images/icon/pet7.png">
-										<div class="service_txtbox-reservation">
-											<p class="service_txth1">집앞 픽업</p>
-											<p class="service_txth2">비용은 펫시터와 협의</p>
-										</div>
-								    </div>
-								    </c:if>
-								    <c:if test="${profile.service_07 == 'Y' }">
-									    <div  class="service_ico-reservation"><img width="32" height="32" src="/resources/images/icon/pet8.png">
-											<div class="service_txtbox-reservation">
-												<p class="service_txth1">실내 놀이</p>
-												<p class="service_txth2">터그놀이, 노즈워크 등</p>
-											</div>
-										</div>
-									</c:if>
+										</c:if>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="price-reservation-container pt-5">
-				<div class="priceDiv-reservation" align="center">
-					<h2 class="service_h2-reservation">이 용 요 금 </h2><small> (최대 6마리)</small>
-					<div class="price_box">
-						<div class="price_type-reservation">
-							<div class="price-reservation" >
-								<img src="https://petplanet.co/static/images/page_details/price_pet_small.png">
-								<div class="dogtype">
-									<p class="type_text" align="center">소형견</p>
-									<p class="kg" align="center">10kg 미만</p>
+				<div class="price-reservation-container pt-5">
+					<div class="priceDiv-reservation" align="center">
+						<h2 class="service_h2-reservation">이 용 요 금 </h2><small> (최대 6마리)</small>
+						<div class="price_box">
+							<div class="price_type-reservation">
+								<div class="price-reservation" >
+									<img src="https://petplanet.co/static/images/page_details/price_pet_small.png">
+									<div class="dogtype">
+										<p class="type_text" align="center">소형견</p>
+										<p class="kg" align="center">10kg 미만</p>
+									</div>
+									<p class="price_text price_text--small">${profile.price_Small } 원 / 1시간</p>
 								</div>
-								<p class="price_text price_text--small">${profile.price_Small } 원 / 1시간</p>
+								<div class="number-reservation" align="center">	
+									<img width="25px" align="left" onclick="subnumber('small')" src="/resources/images/petsitting/calendar_before.png">
+									<p class="num-small">0</p> 
+									<img width="25px" align="right" onclick="addnumber('small')" src="/resources/images/petsitting/calendar_next.png">
+								</div>
 							</div>
-							<div class="number-reservation" align="center">	
-								<img width="25px" align="left" onclick="subnumber('small')" src="/resources/images/petsitting/calendar_before.png">
-								<p class="num-small">0</p> 
-								<img width="25px" align="right" onclick="addnumber('small')" src="/resources/images/petsitting/calendar_next.png">
+							<div class="price_type-reservation">
+								<div class="price-reservation">
+									<img src="https://petplanet.co/static/images/page_details/price_pet_small.png">
+									<div class="dogtype">
+										<p class="type_text" align="center">중형견</p>
+										<p class="kg" align="center">10kg ~ 25kg</p>
+									</div>										
+									<p class="price_text price_text--medium">${profile.price_Medium } 원 / 1시간</p>
+								</div>
+								<div class="number-reservation" align="center">
+									<img width="25px" align="left" onclick="subnumber('medium')" src="/resources/images/petsitting/calendar_before.png">
+									<p class="num-medium">0</p>
+									<img width="25px" align="right" onclick="addnumber('medium')" src="/resources/images/petsitting/calendar_next.png">
+								</div>
+							</div>
+							<div class="price_type-reservation">
+								<div class="price-reservation">	
+									<img src="https://petplanet.co/static/images/page_details/price_pet_small.png">
+									<div class="dogtype">
+										<p class="type_text" align="center">대형견</p>
+										<p class="kg" align="center">25kg 이상</p>
+									</div>										
+									<p class="price_text price_text--large">${profile.price_Large } 원 / 1시간</p>
+								</div>
+								<div class="number-reservation" align="center">
+									<img width="25px" align="left" onclick="subnumber('large')" src="/resources/images/petsitting/calendar_before.png">
+									<p class="num-large">0</p> 
+									<img width="25px" align="right" onclick="addnumber('large')" src="/resources/images/petsitting/calendar_next.png">
+								</div>
 							</div>
 						</div>
-						<div class="price_type-reservation">
-							<div class="price-reservation">
-								<img src="https://petplanet.co/static/images/page_details/price_pet_small.png">
-								<div class="dogtype">
-									<p class="type_text" align="center">중형견</p>
-									<p class="kg" align="center">10kg ~ 25kg</p>
-								</div>										
-								<p class="price_text price_text--medium">${profile.price_Medium } 원 / 1시간</p>
+					</div>
+				</div>
+				<div class="schedule-reservation">
+					<div class='Calendar-reservation pt-5'>	
+						<div class="dateTime">
+							<div class="dateTime-text">
+								<button type="button" onclick="timeClick.reselect()">뒤로</button>
+								<p class="time-setting"> 시간 설정 </p>
 							</div>
-							<div class="number-reservation" align="center">
-								<img width="25px" align="left" onclick="subnumber('medium')" src="/resources/images/petsitting/calendar_before.png">
-								<p class="num-medium">0</p>
-								<img width="25px" align="right" onclick="addnumber('medium')" src="/resources/images/petsitting/calendar_next.png">
+							<div class="APMDiv">
+								<button type="button" class="APM" onclick="timeClick.apm('am')">오 전</button>
+								<button type="button" class="APM" onclick="timeClick.apm('pm')">오 후</button>
 							</div>
-						</div>
-						<div class="price_type-reservation">
-							<div class="price-reservation">	
-								<img src="https://petplanet.co/static/images/page_details/price_pet_small.png">
-								<div class="dogtype">
-									<p class="type_text" align="center">대형견</p>
-									<p class="kg" align="center">25kg 이상</p>
-								</div>										
-								<p class="price_text price_text--large">${profile.price_Large } 원 / 1시간</p>
-							</div>
-							<div class="number-reservation" align="center">
-								<img width="25px" align="left" onclick="subnumber('large')" src="/resources/images/petsitting/calendar_before.png">
-								<p class="num-large">0</p> 
-								<img width="25px" align="right" onclick="addnumber('large')" src="/resources/images/petsitting/calendar_next.png">
+							<div class="time-reservation">
+								<!-- 시간 출력 div -->
+								<!-- <script>timeClick.apm('default')</script> -->
 							</div>
 						</div>
+						<div class="closedDiv">
+							<c:forEach items="${ closed}" var="closed" varStatus="status">
+								<c:set var="id" value="${id+1 }"></c:set>
+								<input type="hidden" class="closed${id }" value="${closed.schedule_Closed }">
+							</c:forEach>
+						</div>							
+						<!-- <        > -->
+						<div align='center' class="CalendarMonth">
+							<img width="35px" class="imgbtn" onclick="calendar.calendarYearMonth('before')" src="/resources/images/petsitting/calendar_before.png">
+							<h3 class='CalendarMonth_small'></h3>
+							
+							<img width="35px" class="imgbtn" onclick="calendar.calendarYearMonth('next')" src="/resources/images/petsitting/calendar_next.png">
+						</div>
+						
+							
+						<div align='center' class="DayOfTheWeek">
+							<ul class="DayOfTheWeek_ui">
+								<li class="DayOfTheWeek_li"><small>일</small></li>
+								<li class="DayOfTheWeek_li"><small>월</small></li>
+								<li class="DayOfTheWeek_li"><small>화</small></li>
+								<li class="DayOfTheWeek_li"><small>수</small></li>
+								<li class="DayOfTheWeek_li"><small>목</small></li>
+								<li class="DayOfTheWeek_li"><small>금</small></li>
+								<li class="DayOfTheWeek_li"><small>토</small></li>
+							</ul>
+						</div>
+						<div align='center' class='CalendarDayDiv'></div>
+						<div id="askldlka">
+						
+						</div>
+						<hidden class='CalendarMonth'></hidden>
+						<hidden class='CalendarYear'></hidden>
+						<input type='hidden' class='price-small' value="${profile.price_Small }">
+						<input type='hidden' class='price-medium' value="${profile.price_Medium }">
+						<input type='hidden' class='price-large' value="${profile.price_Large }">
+						
 					</div>
 				</div>
 			</div>
-			<div class="schedule-reservation">
-				<div class='Calendar-reservation pt-5'>	
-					<div class="dateTime">
-						<div class="dateTime-text">
-							<button type="button" onclick="timeClick.reselect()">뒤로</button>
-							<p class="time-setting"> 시간 설정 </p>
-						</div>
-						<div class="APMDiv">
-							<button type="button" class="APM" onclick="timeClick.apm('am')">오 전</button>
-							<button type="button" class="APM" onclick="timeClick.apm('pm')">오 후</button>
-						</div>
-						<div class="time-reservation">
-							<!-- 시간 출력 div -->
-							<!-- <script>timeClick.apm('default')</script> -->
-						</div>
-					</div>
-					<div class="closedDiv">
-						<c:forEach items="${ closed}" var="closed" varStatus="status">
-							<c:set var="id" value="${id+1 }"></c:set>
-							<input type="hidden" class="closed${id }" value="${closed.schedule_Closed }">
-						</c:forEach>
-					</div>							
-					<!-- <        > -->
-					<div align='center' class="CalendarMonth">
-						<img width="35px" class="imgbtn" onclick="calendar.calendarYearMonth('before')" src="/resources/images/petsitting/calendar_before.png">
-						<h3 class='CalendarMonth_small'></h3>
-						
-						<img width="35px" class="imgbtn" onclick="calendar.calendarYearMonth('next')" src="/resources/images/petsitting/calendar_next.png">
-					</div>
+			<div class='price_contents-div' align='center'>
+				<h2 class='total_amount_text' align='center'>0</h2>		
+			
+				<div class='paymentbtn'>
+					<svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="goo">
+					  <defs>
+					    <filter id="goo">
+					      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+					      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+					      <feComposite in="SourceGraphic" in2="goo"/>
+					    </filter>
+					  </defs>
+					</svg>
 					
-						
-					<div align='center' class="DayOfTheWeek">
-						<ul class="DayOfTheWeek_ui">
-							<li class="DayOfTheWeek_li"><small>일</small></li>
-							<li class="DayOfTheWeek_li"><small>월</small></li>
-							<li class="DayOfTheWeek_li"><small>화</small></li>
-							<li class="DayOfTheWeek_li"><small>수</small></li>
-							<li class="DayOfTheWeek_li"><small>목</small></li>
-							<li class="DayOfTheWeek_li"><small>금</small></li>
-							<li class="DayOfTheWeek_li"><small>토</small></li>
-						</ul>
-					</div>
-					<div align='center' class='CalendarDayDiv'></div>
-					<div id="askldlka">
+					<span class="bubblebtn--bubble__container">
+					  <input type='submit' onclick="reservation_Payment()" class="bubblebtn bubblebtn--bubble" value="Hover me">
+					  <span class="bubblebtn--bubble__effect-container">
+					    <span class="circle top-left"></span>
+					    <span class="circle top-left"></span>
+					    <span class="circle top-left"></span>
 					
-					</div>
-					<hidden class='CalendarMonth'></hidden>
-					<hidden class='CalendarYear'></hidden>
-					<input type='hidden' class='price-small' value="${profile.price_Small }">
-					<input type='hidden' class='price-medium' value="${profile.price_Medium }">
-					<input type='hidden' class='price-large' value="${profile.price_Large }">
+					    <span class="bubblebtn effect-bubblebtn"></span>
 					
+					    <span class="circle bottom-right"></span>
+					    <span class="circle bottom-right"></span>
+					    <span class="circle bottom-right"></span>
+					  </span>
+					</span>
 				</div>
+	
 			</div>
 			<div class="btn-reservation">
-				이용금액
-				<h2 class='total_amount_text'>0</h2>
 				<form action='' name='confirm' method='post'>
 					<input type="hidden" name='member_ID' value='${customers.member_id }'>
 					<input type="hidden" name='sitter_ID' value='${profile.member_ID }'>
@@ -197,13 +246,15 @@
 					<input type="hidden" class='startTime' name='start_Time'>
 					<input type="hidden" class='endDate' name='end_Date'>
 					<input type="hidden" class='endTime' name='end_Time'>
+					<input type='hidden' class='temp_price' value='0'>
 					<input type="hidden" class='total_amount--hidden' name='total_amount' value='0'>
 				</form>
-				<input type='button' onclick="reservation_Patment()" class="nav-link btn btn-primary" value='예 약 하 기'>
 				
 			</div>
 			<div class="backbtn">
-				<button type="button" onclick="reservation(true)" class="btn btn-secondary"><p class="reservtext">X</p></button>
+				<button type="button" onclick="reservation()" class="btn btn-secondary">
+					<p class="reservtext">X</p>
+				</button>
 			</div>
 		</div>
     
@@ -230,7 +281,7 @@
 									<a href="#" class="btn btn-primary">문의하기</a>
 								</li>
 								<li class="list-inline-item" style="padding: 0.5rem;">
-									<button type="button" onclick="reservation(false)" class="btn btn-secondary"><p class="reservtext">예약하기</p></button>
+									<button type="button" onclick="reservation()" class="btn btn-secondary"><p class="reservtext">예약하기</p></button>
 								</li>
 							</ul>
                         </div>
@@ -641,12 +692,72 @@
     <!--====  end of contents  ====-->
 
 
-<script src="${pageContext.request.contextPath}/resources/js/profilelookup.js?v=4"></script>
+<script src="${pageContext.request.contextPath}/resources/js/profilelookup.js?v=10"></script>
 
 <script>timeClick.apm('default')</script>
 <script>calendar.calendarYearMonth()</script>
 <script>calendar.calendarDay('none')</script>
 <script>calendar.calendarYearMonth()</script>
 <script>calendar.calendarDay('none')</script>
+
+
+<script src ="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/plugins/CSSPlugin.min.js"></script>
+<script src ="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/easing/EasePack.min.js"></script>
+<script src ="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/TweenLite.min.js"></script>
+<script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src ="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TimelineLite.min.js"></script>
+
+<!-- 예약 버튼 -->
+<script>
+
+$('.bubblebtn--bubble').each(function() {
+	  var $circlesTopLeft = $(this).parent().find('.circle.top-left');
+	  var $circlesBottomRight = $(this).parent().find('.circle.bottom-right');
+
+	  var tl = new TimelineLite();
+	  var tl2 = new TimelineLite();
+
+	  var btTl = new TimelineLite({ paused: true });
+
+	  tl.to($circlesTopLeft, 1.2, { x: -25, y: -25, scaleY: 2, ease: SlowMo.ease.config(0.1, 0.7, false) });
+	  tl.to($circlesTopLeft.eq(0), 0.1, { scale: 0.2, x: '+=6', y: '-=2' });
+	  tl.to($circlesTopLeft.eq(1), 0.1, { scaleX: 1, scaleY: 0.8, x: '-=10', y: '-=7' }, '-=0.1');
+	  tl.to($circlesTopLeft.eq(2), 0.1, { scale: 0.2, x: '-=15', y: '+=6' }, '-=0.1');
+	  tl.to($circlesTopLeft.eq(0), 1, { scale: 0, x: '-=5', y: '-=15', opacity: 0 });
+	  tl.to($circlesTopLeft.eq(1), 1, { scaleX: 0.4, scaleY: 0.4, x: '-=10', y: '-=10', opacity: 0 }, '-=1');
+	  tl.to($circlesTopLeft.eq(2), 1, { scale: 0, x: '-=15', y: '+=5', opacity: 0 }, '-=1');
+
+	  var tlBt1 = new TimelineLite();
+	  var tlBt2 = new TimelineLite();
+	  
+	  tlBt1.set($circlesTopLeft, { x: 0, y: 0, rotation: -45 });
+	  tlBt1.add(tl);
+
+	  tl2.set($circlesBottomRight, { x: 0, y: 0 });
+	  tl2.to($circlesBottomRight, 1.1, { x: 30, y: 30, ease: SlowMo.ease.config(0.1, 0.7, false) });
+	  tl2.to($circlesBottomRight.eq(0), 0.1, { scale: 0.2, x: '-=6', y: '+=3' });
+	  tl2.to($circlesBottomRight.eq(1), 0.1, { scale: 0.8, x: '+=7', y: '+=3' }, '-=0.1');
+	  tl2.to($circlesBottomRight.eq(2), 0.1, { scale: 0.2, x: '+=15', y: '-=6' }, '-=0.2');
+	  tl2.to($circlesBottomRight.eq(0), 1, { scale: 0, x: '+=5', y: '+=15', opacity: 0 });
+	  tl2.to($circlesBottomRight.eq(1), 1, { scale: 0.4, x: '+=7', y: '+=7', opacity: 0 }, '-=1');
+	  tl2.to($circlesBottomRight.eq(2), 1, { scale: 0, x: '+=15', y: '-=5', opacity: 0 }, '-=1');
+	  
+	  tlBt2.set($circlesBottomRight, { x: 0, y: 0, rotation: 45 });
+	  tlBt2.add(tl2);
+
+	  btTl.add(tlBt1);
+	  btTl.to($(this).parent().find('.bubblebtn.effect-bubblebtn'), 0.8, { scaleY: 1.1 }, 0.1);
+	  btTl.add(tlBt2, 0.2);
+	  btTl.to($(this).parent().find('.bubblebtn.effect-bubblebtn'), 1.8, { scale: 1, ease: Elastic.easeOut.config(1.2, 0.4) }, 1.2);
+
+	  btTl.timeScale(2.6);
+
+	  $(this).on('mouseover', function() {
+	    btTl.restart();
+	  });
+	});
+
+</script>
+
 
 <%@include file="../../includes/footer.jsp"%>

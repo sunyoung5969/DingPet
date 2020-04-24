@@ -9,7 +9,8 @@
 
     <!--====  str of contents  ====-->
     <section style="padding-top:87px">
-        <div class="page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); transform: translate3d(0px, 0px, 0px);"></div>
+        <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); 
+        	transform: translate3d(0px, 0px, 0px);"></div>
         <div class="main main-raised">
             <div class="profile-content">
                 <div class="container">
@@ -19,13 +20,14 @@
                         </div>
                     </div>
                     <!-- 제목, 작성자, 작성일시-->
-                    <div class="ml-3 mr-3 mt-3 align-self-center border_bottom pb-3">
+                    <div class="ml-3 mr-3 mt-3 align-self-center pb-3">
 	                	<h2 class = "mb-2 color_blue" ><c:out  value = "${board.title}"/></h2>
 	                    <div class = "top_info">
 		    	            <span><strong><c:out value = "${board.member_id}"/></strong></span>
 		    	            <span id = "board_date"></span>
 	                    </div>
                    	</div>
+                   	<hr class = "hr_style">
                     <div class="row pt-3 dp-webkit">
                         <div class="col-lg-5 col-md-6 align-self-center">
                             <div class="image-block bg-about">
@@ -82,7 +84,7 @@
                     <section class="nav-tabs">
                     	<div class="ml-2 mt-1 color_blue pt-3 pb-3"><strong>내용</strong> </div>
 	                    <div  class="txt-box ">
-	                        <p class = "h6"><c:out  value = "${board.dog_note}"/></p>
+	                        <p class = "h6"><c:out  value = "${board.content}"/></p>
 	                    </div>
                     </section>
 
@@ -110,12 +112,12 @@
                         <ul id="comments" class="mt-4 mb-4 ">
 		                    <li class = "mb-2" data-reply_id ='6'>
                                 <div>
-                                	<div class = "">
-                                		<strong>댓글 작성자</strong>
-                                		<small>댓글 작성일시</small>
+                                	<div>
+                                		<strong></strong>
+                                		<small></small>
                                 	</div>
                                     <div class="comment-content comment col-md-10 col-sm-9 col-12 width100">
-                                        <p class = "fn">댓글 내용</p>
+                                        <p class = "fn"></p>
                                     </div><!-- .comment-content -->
                                 </div><!-- #comment-## -->
                             </li><!-- #comment-## -->
@@ -125,21 +127,33 @@
                         <div class="comment-respond pt-3">
                                 <!-- wsl_render_auth_widget -->
                                 <h2 id="respond" class="widget-title widget-title__job_listing ion-ios-compose-outline ">댓글 작성</h2>
-                                <div> 댓글 작성자 : <input type = "text" id = "replyer" > </div>
                                 <div class="comment-form-comment w-80 float-left">
-                                    <textarea id ="comment" cols="45" rows="4"  class="form-control" maxlength="65525" placeholder = "댓글을 쓰려면 먼저 로그인 해주세요! "required></textarea>
+                                    <textarea id ="comment" cols="45" rows="4"  class="form-control" maxlength="65525" placeholder = "댓글을 쓰려면 먼저 로그인 해주세요! " disabled required></textarea>
                                 </div>
-                                <div class="form-submit float-right">
-                                    <button id="reply_submit" type = "button" class="mr-3 btn btn-primary btn-sm" >댓글 등록</button> 
+                                <div class="form-submit float-right w-20 flex_row p-3">
+                                    <button id="reply_submit" type = "button" class="btn btn-primary btn-sm " >댓글 등록</button> 
                                	</div>
                         </div><!-- #respond -->
                      </aside>
                      
+                     <script>
+                     	$(document).ready(function(){
+                     		var loggedInId = '${customers.member_id}';
+                     		
+                     		if(loggedInId){
+                     			$("#comment").attr("placeholder", `안녕하세요, loggedInId님! 댓글을 남겨 회원들과 소통해보세요!`);
+                     			$("#comment").removeAttr("disabled");
+                     		}
+                     	});
+                     </script>
+                     
 					<!-- buttons -->
 					<div class="text-center pb-5">
 						<button data-oper="list" class="btn-sm btn btn-primary">목록으로</button>
-						<button data-oper="modify" class="btn-sm btn btn-primary">수정</button>
-						<button data-oper="delete" class="btn-sm btn btn-primary">삭제</button>
+						<c:if test = "${customers.member_id == board.member_id}">
+							<button data-oper="modify" class="btn-sm btn btn-primary">수정</button>
+							<button data-oper="delete" class="btn-sm btn btn-primary">삭제</button>
+						</c:if>
 					</div>
 					<!-- buttons end--> 
 					</div>
@@ -195,6 +209,7 @@
 						//댓글 목록 표시
 						var board_idValue = '<c:out value = "${board.board_id}"/>';
 						var replyUL = $("#comments");
+						var loggedInId = '${customers.member_id}';
 						
 						showList(1);
 						
@@ -210,8 +225,14 @@
 										str += "<li class = 'mb-2' data-reply_id ='" + list[i].reply_id + "'>";
 										str += "<div><div class =  reply_info'><span><strong>" + list[i].replyer +"</strong>님</span>";
 										str += "<span><small>" + replyService.formatDate(list[i].reply_date) + "</small></span>";
-										str += "<button class = 'small_btn btn btn-primary float-right' id = 'reply_modify'>수정</button><button class = 'small_btn btn btn-primary float-right' id = 'reply_delete'>삭제</button></div>";
-										str += "<div class='comment-content comment reply_info'>";
+										
+										//댓글 작성자에게만 수정 삭제 버튼 표시
+										if(list[i].replyer == loggedInId){
+											str += "<button class = 'small_btn btn btn-primary float-right' id = 'reply_modify'>수정</button>";
+											str += "<button class = 'small_btn btn btn-primary float-right' id = 'reply_delete'>삭제</button>";
+										}
+
+										str += "</div><div class='comment-content comment reply_info'>";
 										str += "<p id = 'original_content' class = 'fn ml-3 mr-3'>" + list[i].reply + "</p>";
 										str += "<div class = 'flex_row toggle_div pb-2' style = 'display : none'><div class = 'w-90'><textarea cols='45' rows='4'  class='form-control' maxlength='65525' required></textarea></div>";
 										str += "<div class = 'flex_column w-10'><button id = 'modified_submit' class = 'small_btn btn btn-primary'>등록</button><button id = 'modified_cancel' class = 'small_btn btn btn-primary'>취소</button>";
@@ -220,19 +241,17 @@
 									replyUL.html(str);
 							});
 						};
-						
+					
 					
 						//댓글 쓰기
 						 $("#reply_submit").on("click", function(e){
                     		 var reply = {
                     				 reply : $("#comment").val(),
-                    				 replyer : $("#replyer").val(),
+                    				 replyer : loggedInId,
                     				 board_id : board_idValue
                     		 };
                     		 replyService.write(reply, function(result){
-                    			 alert(result);
                     			 $("#comment").val("");
-                    			 $("#replyer").val("");
                     			 showList(1);
                     		 });
                     	 });
@@ -252,24 +271,27 @@
 								}
 							}
 							
+							
 							//댓글 수정
 							var toggle_div = $(this).find(".toggle_div");
 							var textarea = $(this).find('textarea');
 							var modified_content = $(this).find('textarea').val();
+							var original_content = $(this).find("p").text();
 							
+							//수정 버튼 클릭 시 원문 표시와 토글
 							if($(e.target).attr('id') === $("#reply_modify").attr('id')){
+								textarea.val(original_content);
 								toggle_div.slideToggle("slow", "swing");
 							}
 							
-							//댓글 수정 중 등록 버튼 클릭시
+							//댓글 수정 중 등록 버튼 클릭 시 
 							if($(e.target).attr('id') == 'modified_submit'){
 								var reply = {
 									reply_id : reply_idValue,
 									board_id : board_idValue,
 									reply : modified_content
 								}
-								console.log("reply.reply : " + reply.reply);
-								console.log("reply.reply type : " + typeof(reply.reply));
+
 								//내용이 없을 때 체크
 								if(!reply.reply){
 									alert('내용을 입력해주세요');

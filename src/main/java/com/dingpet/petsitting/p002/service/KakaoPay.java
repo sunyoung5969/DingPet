@@ -52,13 +52,13 @@ public class KakaoPay {
 		params.add("total_amount", reserved_info.getTotal_amount()); // 총 금액
 		params.add("tax_free_amount", "0"); // 비과세 금액
 		
-		//params.add("approval_url", "http://localhost:8099/petsitting/p002/kakaoPaySuccess"); // 결제 성공 시 리다이렉트
-		//params.add("cancel_url", "http://localhost:8099/kakaoPayCancel"); // 결제 취소 시 리다이렉트
-		//params.add("fail_url", "http://localhost:8099/kakaoPaySuccessFail"); // 결제 실패 시 리다이렉트
+		params.add("approval_url", "http://localhost:8099/petsitting/p002/kakaoPaySuccess"); // 결제 성공 시 리다이렉트
+		params.add("cancel_url", "http://localhost:8099/kakaoPayCancel"); // 결제 취소 시 리다이렉트
+		params.add("fail_url", "http://localhost:8099/kakaoPaySuccessFail"); // 결제 실패 시 리다이렉트
 		
-		params.add("approval_url", "https://www.dingpet.shop/petsitting/p002/kakaoPaySuccess"); // 결제 성공 시 리다이렉트
-		params.add("cancel_url", "https://www.dingpet.shop/kakaoPayCancel"); // 결제 취소 시 리다이렉트
-		params.add("fail_url", "https://www.dingpet.shop/kakaoPaySuccessFail"); // 결제 실패 시 리다이렉트
+		//params.add("approval_url", "https://www.dingpet.shop/petsitting/p002/kakaoPaySuccess"); // 결제 성공 시 리다이렉트
+		//params.add("cancel_url", "https://www.dingpet.shop/kakaoPayCancel"); // 결제 취소 시 리다이렉트
+		//params.add("fail_url", "https://www.dingpet.shop/kakaoPaySuccessFail"); // 결제 실패 시 리다이렉트
 		
 		HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
 

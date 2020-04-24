@@ -10,4 +10,6 @@ public interface Customers_P001_Controller {
 	public void signup(); //회원가입
 	public void change(); //펫시터전환
 	public void withdraw(); //탈퇴
+	public void signup_(); //회원가입 완료
+	
 }

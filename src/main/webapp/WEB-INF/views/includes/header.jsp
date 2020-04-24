@@ -26,7 +26,11 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
     
     <link rel="stylesheet" type="text/css" href="https://assets.mypetlife.co.kr/map/wp-content/themes/listify/css/style.min.css">
-
+	
+	<!-- Font Awesome 아이콘 -->
+	<script src="https://kit.fontawesome.com/790887e3ce.js" crossorigin="anonymous"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300" id="home-section">
   
@@ -117,7 +121,16 @@
                 <li><a href="#" class="nav-link">자주하는 질문</a></li>
                 <li>
                 	<div>
-				    	<a href="/customers/p001/signin" class="nav-link btn btn-primary"" style="color: #fff !important; line-height: 1rem;">로그인</a>
+                		<c:choose>
+				 			<c:when test="${isLogOn == true && customers != null}">
+				    			<a href="/customers/p001/logout" class="nav-link btn btn-primary" style="color: #fff !important; line-height: 1rem;">로그아웃</a>
+				    			<a href="/customers/p001/myinfo" class="nav-link btn btn-primary" style="color: #fff !important; line-height: 1rem;">마이페이지</a>
+				    		</c:when>
+				 			<c:otherwise>
+				 				<a href="/customers/p001/signin" class="nav-link btn btn-primary" style="color: #fff !important; line-height: 1rem;">로그인</a>
+				    			<a href="/customers/p001/signup" class="nav-link btn btn-primary" style="color: #fff !important; line-height: 1rem;">회원가입</a>
+				    		</c:otherwise>
+					 	</c:choose>
 				    </div>
                 </li>
               </ul>
