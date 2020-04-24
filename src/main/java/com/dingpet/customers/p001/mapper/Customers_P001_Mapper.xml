@@ -17,7 +17,7 @@
 						member_email = #{member_email}, 
 						member_name = #{member_name},    
 						member_pwd = #{member_pwd},
-						member_contact = #{member_contact},
+						member_contact = #{member_contact, jdbcType=VARCHAR},
 						member_photo = #{member_photo},
 					where member_id = #{member_id}
 </update>
