@@ -1,21 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>DingPet SignIn</title>
+<%@include file="../../includes/header.jsp"%>
 
-    <!-- Font Icon -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/fonts/material-icon/css/material-design-iconic-font.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sign.css">
 
-    <!-- Main css -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sign.css">
-    
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     function sample4_execDaumPostcode() {
         new daum.Postcode({
@@ -73,114 +66,86 @@
     }
     
     
+    //펫시터전환 신청&취소 버튼 동작
     function applyBtn(){
-    	//메인으로 이동, 펫시터전환신청완료 알림창
     	alert("펫시터 회원 신청이 완료되었습니다.");
     	return location.href='/';
     }
     
     function cancleBtn(){
-    	//메인으로 이동
     	return location.href='/';
     }
    
 </script>
-    
-</head>
-<body>
 
-     <div class="main">
+<div class="main">
 
-        <!-- Sign up form -->
-        <section class="signup">
-            <div class="container">
-                <div class="signup-content">
-                
-                
-                    <div class="change-form">
-                        <h2 class="form-title">펫시터 전환 신청</h2>
-                        
-                        <form method="POST" class="register-form" id="register-form">
-                        
+	<!-- Sign up form -->
+	<section class="signup">
+		<div class="container">
+			<div class="signup-content">
+				<div class="change-form">
+				
+				<h2 class="form-title">펫시터 전환 신청</h2>
+					
+				<form method="POST" class="register-form" id="register-form">
+              
+					<div class="form-group">
+					성별<input type="text" name="sex" id="sex" placeholder="Your Gender" required/>
+					</div>
                             
-                            <div class="form-group">
-                                <label for="contact"><i class="zmdi zmdi-lock"></i></label>
-                               연락처<input type="text" name="member_contact" id="member_contact" placeholder="Your contact info." required/>
-                            </div>                   
+					<div class="form-group">
+					생년월일<input type="number" name="date_of_birth" id="dob" placeholder="Your DOB" required/>
+					</div>
                             
-                            
-                            <div class="form-group">
-                                <label for="gender"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                성별<input type="text" name="sex" id="sex" placeholder="Your Gender" required/>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="dob"><i class="zmdi zmdi-email"></i></label>
-                                생년월일<input type="number" name="date_of_birth" id="dob" placeholder="Your DOB" required/>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="job"><i class="zmdi zmdi-email"></i></label>
-                                직업<input type="text" name="profession" id="profession" placeholder="Your job" required/>
-                            </div>
+					<div class="form-group">
+					직업<input type="text" name="profession" id="profession" placeholder="Your job" maxlength="10" required/>
+					</div>
 	
-							<div class="form-group">
-								<label for="add"><i class="zmdi zmdi-email"></i></label> 
-								주소
-									<input type="text" id="sample4_postcode" placeholder="우편번호">
-									<input id = "post_btn"type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br> 
-									<input type="text" id="sample4_roadAddress" placeholder="도로명주소"> 
-									<input type="text" id="sample4_jibunAddress" placeholder="지번주소">
-									<span id="guide" style="color: #999; display: none"></span> 
-									<input type="text" id="sample4_detailAddress" placeholder="상세주소" maxlength="50">
-									<input type="text" id="sample4_extraAddress" placeholder="참고항목">
-							</div>
+					<div class="form-group" id="address">
+					주소<input type="text" id="sample4_postcode" placeholder="우편번호">
+						<input id = "post_btn"type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br> 
+						<input type="text" id="sample4_roadAddress" placeholder="도로명주소"> 
+						<input type="text" id="sample4_jibunAddress" placeholder="지번주소">
+						<span id="guide" style="color: #999; display: none"></span> 
+						<input type="text" id="sample4_detailAddress" placeholder="상세주소" maxlength="50">
+						<input type="text" id="sample4_extraAddress" placeholder="참고항목">
+					</div>
 
-
-							<div class="form-group">
-                                <label for="time"><i class="zmdi zmdi-email"></i></label>
-                               활동가능시간<input type="text" name="active_hours" id="time" placeholder="Your time available" required/>
-                            </div>
+					<div class="form-group">
+					활동가능시간<input type="text" name="active_hours" id="time" placeholder="Your time available" required/>
+					</div>
                             
-                            <div class="form-group">
-                                <label for="firstA"><i class="zmdi zmdi-email"></i></label>
-                        Q1. 다른 사람의 강아지를 돌봐준 경험이 있나요?<br>
-                        <input type="text" name="answer1" id="firstA" placeholder="50자 이내로 기입하세요" maxlength="100" required/>
-                         </div>
+					<div class="form-group">
+                    Q1. 다른 사람의 반려동물을 돌봐준 경험이 있으세요?<br>
+					<input type="text" name="answer1" id="firstA" placeholder="50자 이내로 기입하세요" maxlength="100" required/>
+					</div>
                          
-                         <div class="form-group">
-                       			 <label for="secA"><i class="zmdi zmdi-email"></i></label>
-                        Q2. 다른 사람의 강아지를 돌봐준 경험이 있나요? <br>
-                        <input type="text" name="answer2" id="secA" placeholder="50자 이내로 기입하세요" maxlength="100" required/>
-                         </div>
+					<div class="form-group">
+                    Q2. 반려동물 관련 자격증을 보유하고 계신가요? <br>
+					<input type="text" name="answer2" id="secA" placeholder="50자 이내로 기입하세요" maxlength="100" required/>
+					</div>
                          
-                         <div class="form-group">
-                        		<label for="thirdA"><i class="zmdi zmdi-email"></i></label>
-                        Q3. 다른 사람의 강아지를 돌봐준 경험이 있나요? <br>
-                        <input type="text" name="answer3" id="thirdA" placeholder="50자 이내로 기입하세요" maxlength="100" required/>
-                            </div>
+					<div class="form-group">
+                    Q3. 펫시터를 지원하게 된 동기가 궁금해요. <br>
+					<input type="text" name="answer3" id="thirdA" placeholder="50자 이내로 기입하세요" maxlength="100" required/>
+					</div>
                   
+					<div class="form-group form-button">
+					<input type="submit" name="apply" id="apply" class="form-submit" onClick="applyBtn()" value="신청" />
+					<input type="submit" name="cancle" id="cancle" class="form-submit" onClick="cancleBtn()" value="취소" />
+					</div>
                             
-                            <div class="form-group form-button">
-                                <input type="submit" name="apply" id="apply" class="form-submit" onClick="applyBtn()" value="신청" />
-                                <input type="submit" name="cancle" id="cancle" class="form-submit" onClick="cancleBtn()" value="취소" />
-                            </div>
-                            
-                        </form>    
-                    </div>
-                    
-                    
-                </div>
-            </div>
-        </section>
+				</form>    
+				</div>
+			</div>
+		</div>
+	</section>
+	</div>
 
-    </div>
-    
 
-    <!-- JS -->
-    <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
 
-    
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
-</html>
+
+
+
+<%@include file="../../includes/footer.jsp"%>

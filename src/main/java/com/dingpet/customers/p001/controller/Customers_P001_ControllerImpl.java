@@ -38,7 +38,7 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 	private Customers_P001_Service service;
 	HttpServletRequest request;
 	HttpSession session;
-	
+		
 	//회원탈퇴
 	@RequestMapping(value="/withdraw", method={RequestMethod.POST})
 	public String myinfo(Customers_P001_VO cust, RedirectAttributes rttr) {
@@ -51,11 +51,8 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 			//rttr.addFlashAttribute("result", "success");
 			session.removeAttribute("customers");
 			session.removeAttribute("isLogOn");
-			mav.setViewName("redirect:/");
-			return "redirect:/";	
-		
-			//model.addAttribute("customers", service.myinfo(cust));
-		
+			mav.setViewName("redirect:/withdraw_");
+			return "redirect:/customers/p004/withdraw_";	
 	}
 
 	
@@ -121,7 +118,7 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 			HttpServletRequest request, HttpServletResponse response)  {
 		log.info("로그인 처리");	
 		ModelAndView mav = new ModelAndView();
-		Customers_P001_VO result = service.loginCheck(customers);
+		Customers_P001_VO result = service.loginCheck(customers); //result에는 member_id, member_pwd, member_name, member_nickname, member_email가 담김
 				
 		if(result != null) {
 			HttpSession session = request.getSession();
@@ -192,8 +189,13 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		service.signup(customers);
 
 		
-		return "redirect:/customers/p001/signin";
+		return "redirect:/customers/p001/signup_";
 	}	
+	
+	@RequestMapping(value="/signup_", method = {RequestMethod.GET})
+	public void signup_() {
+		log.info("회원가입완료 페이지");
+	}
 	
 	
 	//펫시터전환신청 페이지

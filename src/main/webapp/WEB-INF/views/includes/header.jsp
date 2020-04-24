@@ -119,7 +119,16 @@
                 <li><a href="#" class="nav-link">자주하는 질문</a></li>
                 <li>
                 	<div>
-				    	<a href="/customers/p001/signin" class="nav-link btn btn-primary"" style="color: #fff !important; line-height: 1rem;">로그인</a>
+                		<c:choose>
+				 			<c:when test="${isLogOn == true && customers != null}">
+				    			<a href="/customers/p001/logout" class="nav-link btn btn-primary" style="color: #fff !important; line-height: 1rem;">로그아웃</a>
+				    			<a href="/customers/p001/myinfo" class="nav-link btn btn-primary" style="color: #fff !important; line-height: 1rem;">마이페이지</a>
+				    		</c:when>
+				 			<c:otherwise>
+				 				<a href="/customers/p001/signin" class="nav-link btn btn-primary" style="color: #fff !important; line-height: 1rem;">로그인</a>
+				    			<a href="/customers/p001/signup" class="nav-link btn btn-primary" style="color: #fff !important; line-height: 1rem;">회원가입</a>
+				    		</c:otherwise>
+					 	</c:choose>
 				    </div>
                 </li>
               </ul>

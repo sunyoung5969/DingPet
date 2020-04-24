@@ -40,8 +40,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		service_04, service_05, service_06, service_07) 
 		values(#{member_ID}, #{profile_PicPath}, #{profile_Content}, #{price_Small}, #{price_Medium}, #{price_Large}, 
 		#{profile_RoadAddress}, #{profile_JibunAddress}, #{profile_DetailAddress}, #{list_Address}, 
-		#{petService[0]}, #{petService[1]}, #{petService[2]}, #{petService[3]}, 
-		#{petService[4]}, #{petService[5]}, #{petService[6]}, #{petService[7]})
+		#{service_00}, #{service_01}, #{service_02}, #{service_03}, 
+		#{service_04}, #{service_05}, #{service_06}, #{service_07})
 	</insert>
 	
 	<insert id="licenseInsert">

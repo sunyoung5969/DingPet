@@ -51,10 +51,21 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 		
 	}
 	
+	@RequestMapping("profileregister_f")
+	@Override
+	public void register_f(Model model) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	@RequestMapping(value="registerdata", method=RequestMethod.POST)
 	@Override
 	public String registerdata(Model model, PetSitting_P001_VO profile, MultipartHttpServletRequest uploadFile) {
 		// TODO Auto-generated method stub
+		
+		
+		System.out.println("-----------------------------------1");
+		System.out.println(profile);
 
 		String[] petService;
 		String[] closed;
@@ -65,21 +76,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 		try {
 
 //------------------------------ 이용 가능 서비스	 -------------------------------
-	
-			String[] petServiceYN = new String[8];
 
-			for(int i=0; i < 8; i++) {
-				if(request.getParameter(String.valueOf(i)) != null){
-					petServiceYN[i] = (String)request.getParameter(String.valueOf(i));
-				}else {
-					petServiceYN[i] = "N";
-				}
-			}
-			
-			
-			profile.setPetService(petServiceYN);
-			
-			//service.petServiceInsert(profile);
 //-----------------------------------------------------------------------------
 
 //---------------------------	사진 업로드 데이터 처리	---------------------------
@@ -113,7 +110,6 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 						saveFile = new File(uploadFolder, license_UUID.toString()+"license_"+fileName);
 						filePath = saveFile.getPath();
 						profile.setLicense_PicPath(filePath);
-						service.licenseInsert(profile);
 					}
 						
 					try {
@@ -124,13 +120,14 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 					}
 				}
 			}
+			System.out.println("-----------------------------------3");
 
 //---------------------------------------------------------------------------
 
 //--------------------------- 휴무일 데이터 처리 -----------------------------
-			
+
 			//json형태의 문자열 가져오기
-			String json = request.getParameter("closedSave");
+			String json = profile.getSchedule_Closed();
 			
 			//문자열을 json형태로 변환
 			JSONParser jsonparser = new JSONParser();
@@ -146,6 +143,12 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 				profile.setSchedule_Closed((String)jsonArr.get(i));
 				System.out.println("휴무일 뽑아봐 " + profile.getSchedule_Closed());
 				service.closedInsert(profile);
+			}
+			System.out.println("-----------------------------------4");
+			System.out.println(profile);
+			
+			if(profile.getLicense_Date() != null && profile.getLicense_Agency() != null && profile.getLicense_Name() != null) {
+				service.licenseInsert(profile);
 			}
 			
 			service.profileInsert(profile);
