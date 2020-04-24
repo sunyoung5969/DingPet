@@ -292,7 +292,7 @@ $(document).ready(function() {
 		          return;
 		        }
 				if(list == null || list.length == 0){
-					replyUL.html("아직 작성된 댓글이 없습니다.");
+					replyUL.html("아직 작성된 리뷰가 없습니다.");
 					return;
 					}
 				for(var i = 0, length = list.length || 0; i < length; i++){

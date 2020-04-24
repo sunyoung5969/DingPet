@@ -141,7 +141,7 @@
                      		var loggedInId = '${customers.member_id}';
                      		
                      		if(loggedInId){
-                     			$("#comment").attr("placeholder", `안녕하세요, loggedInId님! 댓글을 남겨 회원들과 소통해보세요!`);
+                     			$("#comment").attr("placeholder", "안녕하세요," + loggedInId + "님! 댓글을 남겨 회원들과 소통해보세요!");
                      			$("#comment").removeAttr("disabled");
                      		}
                      	});
