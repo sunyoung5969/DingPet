@@ -11,8 +11,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="profileLookup" resultType="com.dingpet.petsitting.p001.vo.PetSitting_P001_VO">
-		select s.member_id, s.profile_picpath, s.profile_picname, s.profile_content, s.price_small, 
-		s.price_medium, s.price_large, s.list_address, s.profile_jibunAddress, 
+		select s.member_id, s.profile_picpath, s.profile_picname, s.profile_title, s.profile_content, 
+		s.price_small, s.price_medium, s.price_large, s.list_address, s.profile_jibunAddress, 
 		s.service_00, s.service_01, s.service_02, s.service_03, s.service_04, 
 		s.service_05, s.service_06, s.service_07, m.member_nickname
 		from sitter_profile s, member m 

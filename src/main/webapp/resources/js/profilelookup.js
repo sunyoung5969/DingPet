@@ -393,30 +393,30 @@ function closedPopup(){
 			
 		state : false,
 		year : new Date().getFullYear(),
-		month : (new Date().getMonth())+1,
+		month : new Date().getMonth()+1,
 		closed : new Array(),
 		
 		calendarYearMonth : function(event){
 				
 			if(event == null){
 			
-				$(".CalendarMonth").val(this.month);
+			$(".CalendarMonth").val(this.addzero(this.month, 2));
 			$(".CalendarYear").val(this.year);
 			
-			$(".CalendarMonth1").val(this.month);
+			$(".CalendarMonth1").val(this.addzero(this.month, 2));
 			$(".CalendarYear1").val(this.year);
 			
 			if(!this.state){
-				document.getElementsByClassName("CalendarMonth_small")[0].innerHTML = this.year + '년 ' + this.month +'월' ;
+				document.getElementsByClassName("CalendarMonth_small")[0].innerHTML = this.year + '년 ' + this.addzero(this.month, 2) +'월' ;
 			}else{
-				document.getElementsByClassName("CalendarMonth_small1")[0].innerHTML = this.year + '년 ' + this.month +'월' ;
+				document.getElementsByClassName("CalendarMonth_small1")[0].innerHTML = this.year + '년 ' + this.addzero(this.month, 2) +'월' ;
 			}
 		}else if(event == 'next'){
-			
 			event = null;
 			this.month = $(".CalendarMonth").val();
 			this.year = $(".CalendarYear").val();
-			
+			//console.log("이건먼데 : " + this.month);
+
 			if(this.month == 12){
 				this.month = 0;
 				this.year *= 1;
@@ -425,10 +425,10 @@ function closedPopup(){
 			
 			this.month *= 1;
 			this.month += 1;
-			$(".CalendarMonth").val(this.month);
+			$(".CalendarMonth").val(this.addzero(this.month, 2));
 			$(".CalendarYear").val(this.year);
 			
-			document.getElementsByClassName("CalendarMonth_small")[0].innerHTML = this.year + '년 ' + this.month +'월' ;
+			document.getElementsByClassName("CalendarMonth_small")[0].innerHTML = this.year + '년 ' + this.addzero(this.month, 2) +'월' ;
 			this.calendarDay(false);
 			
 		}else if(event == 'before'){
@@ -451,12 +451,12 @@ function closedPopup(){
 					this.month -= 1;			
 				}
 				
-				$(".CalendarMonth").val(this.month);
+				$(".CalendarMonth").val(this.addzero(this.month, 2));
 				$(".CalendarYear").val(this.year);
 				
 				// console.log(month);
 
-					document.getElementsByClassName("CalendarMonth_small")[0].innerHTML = this.year + '년 ' + this.month +'월' ;
+					document.getElementsByClassName("CalendarMonth_small")[0].innerHTML = this.year + '년 ' + this.addzero(this.month, 2) +'월' ;
 					this.calendarDay(false);
 
 		}else if(event == 'next2'){
@@ -473,10 +473,10 @@ function closedPopup(){
 			
 			this.month *= 1;
 			this.month += 1;
-			$(".CalendarMonth1").val(this.month);
+			$(".CalendarMonth1").val(this.addzero(this.month, 2));
 			$(".CalendarYear1").val(this.year);
 
-				document.getElementsByClassName("CalendarMonth_small1")[0].innerHTML = this.year + '년 ' + this.month +'월' ;
+				document.getElementsByClassName("CalendarMonth_small1")[0].innerHTML = this.year + '년 ' + this.addzero(this.month, 2) +'월' ;
 				this.calendarDay(true);
 
 			
@@ -500,12 +500,12 @@ function closedPopup(){
 					this.month -= 1;			
 				}
 				
-				$(".CalendarMonth1").val(this.month);
+				$(".CalendarMonth1").val(this.addzero(this.month, 2));
 				$(".CalendarYear1").val(this.year);
 				
 				// console.log(month);
 			
-					document.getElementsByClassName("CalendarMonth_small1")[0].innerHTML = this.year + '년 ' + this.month +'월' ;
+					document.getElementsByClassName("CalendarMonth_small1")[0].innerHTML = this.year + '년 ' + this.addzero(this.month, 2) +'월' ;
 					this.calendarDay(true);
 
 		}
@@ -524,14 +524,20 @@ function closedPopup(){
 		var closedMonthArr = new Array();
 		var closedDateArr = new Array();
 		var closed ='';
+		var classname ='';
+		
+		if(!tf){
+			classname = ".CalendarMonth";
+		}else if(tf){
+			classname = ".CalendarMonth1";
+		}
 		
 		for(var i=0; i<1000; i++){
 			if($(".closed"+(i+1)).val() != undefined){
 				var temp = (String)($(".closed"+(i+1)).val());
 				closed = temp.split("-");
-				closedMonthArr[i] = closed[1];
-				closedDateArr[i] = closed[2];
-				// console.log("휴무일 : " + closedDateArr[i])
+				closedMonthArr[i] = this.addzero(closed[1], 2);
+				closedDateArr[i] = this.addzero(closed[2], 2);				
 			}else{
 				break;
 			}
@@ -557,27 +563,29 @@ function closedPopup(){
 				btnstr += "<td class='CalendarDayDiv--td-reservation'></td>";
 			}
 			
-			for(var i=0; i< 6-yestermonthDay; i++){
+			for(var i=0; i< 6-yestermonthDay; i++){		
 				
-				if((i+1) > new Date().getDate() && $(".CalendarMonth").val() == closedMonthArr[j]){
+				if((i+1) > new Date().getDate()){
 					disabled = '';
-					classDayDiv = 'CalendarDayDiv'
-					
-					for(var j = 0; j < closedDateArr.length; j++){
-						if((i+1) == closedDateArr[j]){
-							disabled = 'disabled';
-							classDayDiv = 'CalendarDayDiv--closed';
-						}
-					}
-					
+					classDayDiv = 'CalendarDayDiv';
 				}
 				
+				for(var j = 0; j < closedDateArr.length; j++){
+					
+					if(this.addzero((i+1), 2) == closedDateArr[j] && $(classname).val() == closedMonthArr[j]){
+						disabled = 'disabled';
+						classDayDiv = 'CalendarDayDiv--closed';
+						break;
+					}
+				}
+				
+	
 				str +=  "<td align='center' class='CalendarDayDiv--td'>"+
 						"<p class='"+classDayDiv+"'>"+(i+1)+"</p></td>";
 				
 				btnstr += "<td align='left' class='CalendarDayDiv--td-reservation'>"+
 						"<button type='button' onclick='calendar.dateSelect(this)' class='"+classDayDiv+
-						"' "+disabled+" value='"+this.year+"-"+this.month+"-"+(i+1)+"'>"+(i+1)+"</button></td>";
+						"' "+disabled+" value='"+this.year+"-"+this.addzero(this.month, 2)+"-"+this.addzero((i+1), 2)+"'>"+(i+1)+"</button></td>";
 				
 				firstWeekDate++;
 			}
@@ -594,14 +602,20 @@ function closedPopup(){
 				btnstr += "<tr>"
 			}
 			
-			if((i+1) > new Date().getDate()){
+			if((i+1) > new Date().getDate() ){
 				disabled = '';
 				classDayDiv = 'CalendarDayDiv';
-				for(var j = 0; j < closedDateArr.length; j++){
-					if((i+1) == closedDateArr[j] && $(".CalendarMonth").val() == closedMonthArr[j]){
-						disabled = 'disabled';
-						classDayDiv = 'CalendarDayDiv--closed';
-					}
+			}else if($(classname).val() != (new Date().getMonth())+1){
+				disabled = '';
+				classDayDiv = 'CalendarDayDiv';
+			}
+			
+			for(var j = 0; j < closedDateArr.length; j++){
+								
+				if(this.addzero((i+1), 2) == closedDateArr[j] && $(classname).val() == closedMonthArr[j]){
+					disabled = 'disabled';
+					classDayDiv = 'CalendarDayDiv--closed';
+					break;
 				}
 			}
 			
@@ -610,7 +624,7 @@ function closedPopup(){
 			
 			btnstr +=  "<td align='left' class='CalendarDayDiv--td-reservation'>"+
 			"<button type='button' onclick='calendar.dateSelect(this)' class='"+classDayDiv+
-			"' "+disabled+" value='"+this.year+"-"+this.month+"-"+(i+1)+"'>"+(i+1)+"</button></td>";
+			"' "+disabled+" value='"+this.year+"-"+this.addzero(this.month, 2)+"-"+this.addzero((i+1), 2)+"'>"+(i+1)+"</button></td>";
 			
 			if((i-firstWeekDate)%7 == 6 && i > 6){
 				str += "</tr>";
@@ -671,7 +685,27 @@ function closedPopup(){
 		
 		$(".dateTime").css('display', 'inline-block')
 
-	}
+	},
+	
+	// 0 추가
+	addzero : function(num, digit){
+		
+		var zero = '';
+		num = num.toString();
+		
+		if(num.length >= digit){
+			return num;
+		}else{
+			
+			for(var i = 0; i<(digit-num.length); i++){
+				zero += '0';
+			}
+			
+			zero += num;
+			return zero;
+		}
+		
+	},
 }
 
 //----------------------------------------------------------------------------------
