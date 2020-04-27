@@ -38,7 +38,26 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 	private Customers_P001_Service service;
 	HttpServletRequest request;
 	HttpSession session;
+	
+	//내정보조회 
+	@RequestMapping(value="/toMyinfo", method={RequestMethod.GET})
+	public void toMyinfo() {
+		log.info("정보조회를 위해 비밀번호 입력하는 페이지");
+	}
+	
+	@RequestMapping(value="/toMyinfo", method={RequestMethod.POST})
+	public String toMyinfo(Customers_P001_VO pwd) {
+		log.info("정보조회를 위해 비밀번호 확인");
+		int a = service.readPw(pwd);
 		
+		if(a >= 1) {
+			return "redirect:/customers/p001/myinfo";
+		}else {
+			return "redirect:/customers/p001/toMyinfo";
+		}
+		
+	}
+	
 	//회원탈퇴
 	@RequestMapping(value="/withdraw", method={RequestMethod.POST})
 	public String myinfo(Customers_P001_VO cust, RedirectAttributes rttr) {
@@ -48,14 +67,42 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		ModelAndView mav = new ModelAndView();
 		
 		service.withdraw(cust);
-			//rttr.addFlashAttribute("result", "success");
-			session.removeAttribute("customers");
-			session.removeAttribute("isLogOn");
-			mav.setViewName("redirect:/withdraw_");
-			return "redirect:/customers/p004/withdraw_";	
+		//rttr.addFlashAttribute("result", "success");
+		session.removeAttribute("customers");
+		session.removeAttribute("isLogOn");
+		mav.setViewName("redirect:/withdraw_");
+		return "redirect:/customers/p004/withdraw_";	
+	}
+	
+	//로그인 페이지
+	@RequestMapping(value="/signin", method = {RequestMethod.GET})
+	public void signin() {
+		log.info("로그인 페이지 출력");
+	}
+		
+	//로그인 처리
+	@RequestMapping(value="/signin", method = {RequestMethod.POST})
+	public ModelAndView signin(@ModelAttribute("customers") Customers_P001_VO customers,
+								HttpServletRequest request, HttpServletResponse response)  {
+		log.info("로그인 처리");	
+		ModelAndView mav = new ModelAndView();
+		Customers_P001_VO result = service.loginCheck(customers); 
+		//result에는 member_id, member_pwd, member_name, member_nickname, member_email 저장
+					
+		if(result != null) {
+			HttpSession session = request.getSession(); //세션처리
+			session.setAttribute("customers", result);
+			session.setAttribute("isLogOn", true);
+			mav.setViewName("redirect:/");
+			log.info("로그인 성공");	
+		} else {
+			mav.setViewName("redirect:/customers/p001/signin");
+			log.info("로그인 실패");
+		}
+			
+		return mav;
 	}
 
-	
 	//내정보조회
 	@RequestMapping(value="/myinfo", method={RequestMethod.GET})
 	public void myinfo(Customers_P001_VO cust, Model model) {
@@ -70,22 +117,20 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 	public String myinfo(Customers_P001_VO cust, RedirectAttributes rttr, Model model) {
 		log.info("내정보수정");
 		log.info(service.modify(cust));
-		if(service.modify(cust)) {
-			//rttr.addFlashAttribute("result", "success");
-			
-		}
-			//model.addAttribute("customers", service.myinfo(cust));
-
+		
+		service.modify(cust);
+		
 		return "redirect:/";
 	}
 	
-	//ID중복체크
-	@RequestMapping(value="/mem", method = {RequestMethod.POST})
+	//id중복체크
+	@RequestMapping(value="/possibleId", method = {RequestMethod.POST})
 	public void signin(HttpServletRequest request, HttpServletResponse response) throws IOException{
-		log.info("id중복체크");
+		log.info("id중복체크control");
 		PrintWriter pw = response.getWriter();
 		String id = (String)request.getParameter("id");	
 		int overlappedId = service.overlappedId(id);
+		
 			if(overlappedId >= 1) {
 				pw.print("not_usable");
 			}else {
@@ -105,37 +150,6 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		return mav;
 	}
 	
-	
-	//로그인 페이지
-	@RequestMapping(value="/signin", method = {RequestMethod.GET})
-	public void signin() {
-		log.info("로그인 페이지 출력");
-	}
-	
-	//로그인 처리
-	@RequestMapping(value="/signin", method = {RequestMethod.POST})
-	public ModelAndView signin(@ModelAttribute("customers") Customers_P001_VO customers,
-			HttpServletRequest request, HttpServletResponse response)  {
-		log.info("로그인 처리");	
-		ModelAndView mav = new ModelAndView();
-		Customers_P001_VO result = service.loginCheck(customers); //result에는 member_id, member_pwd, member_name, member_nickname, member_email가 담김
-				
-		if(result != null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("customers", result);
-			session.setAttribute("isLogOn", true);
-			mav.setViewName("redirect:/");
-			log.info("로그인 성공");
-			
-		}else {
-			mav.setViewName("redirect:/customers/p001/signin");
-			log.info("로그인 실패");
-		}
-		
-		return mav;
-	}
-	
-	
 	//회원가입 페이지
 	@GetMapping("/signup")
 	public void signup() {
@@ -152,8 +166,7 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		
 		String uploadFolder = "/var/lib/tomcat8/webapps/img";
 		//String uploadFolder = "C:\\test\\pic";
-		
-		
+	
 		String fileName = "";
 		
 		Iterator<String> files = uploadFile.getFileNames();
@@ -183,11 +196,10 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 				}
 			}
 		}
-
-//---------------------------------------------------------------------------
+		//---------------------------------------------------------------------------
 
 		service.signup(customers);
-
+		service.signupPet(customers);
 		
 		return "redirect:/customers/p001/signup_";
 	}	

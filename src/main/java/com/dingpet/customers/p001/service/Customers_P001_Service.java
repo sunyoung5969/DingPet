@@ -8,6 +8,7 @@ public interface Customers_P001_Service {
 	
 	//일반회원 등록
 	public void signup(Customers_P001_VO customers);
+	public void signupPet(Customers_P001_VO customers);
 	
 	//펫시터회원 등록
 	public void change(Customers_P001_VO customers);
@@ -20,6 +21,7 @@ public interface Customers_P001_Service {
 	
 	//내정보 조회
 	public Customers_P001_VO myinfo(Customers_P001_VO cust);
+	public int readPw(Customers_P001_VO cust);
 	
 	//정보수정
 	public boolean modify(Customers_P001_VO cust);

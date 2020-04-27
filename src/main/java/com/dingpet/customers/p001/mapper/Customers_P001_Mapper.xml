@@ -17,23 +17,37 @@
 						member_email = #{member_email}, 
 						member_name = #{member_name},    
 						member_pwd = #{member_pwd},
-						member_contact = #{member_contact, jdbcType=VARCHAR},
-						member_photo = #{member_photo},
+						member_contact = #{member_contact, jdbcType=VARCHAR}
 					where member_id = #{member_id}
 </update>
 
+
 <!-- 내정보 조회 -->
 <select id="read" resultType="com.dingpet.customers.p001.vo.Customers_P001_VO">
-	select member_id, member_nickname, member_name, member_email, member_pwd, member_photo, member_contact from member
-	where member_id = #{member_id}
+	select m.member_id, m.member_nickname, m.member_name, m.member_email, m.member_pwd, m.member_contact,
+		   d.dog_name, d.dog_breed, d.dog_sex, d.dog_size, d.activity_level, d.dog_note
+	from member m, dog d
+	where m.member_id = d.member_id and m.member_id = #{member_id}
 </select>
+
+<!-- 정보조회 비밀번호 입력처리 -->
+<select id="readPw" resultType="int">
+	select member_pwd from member where member_pwd =#{member_pwd}
+</select>
+
 
 <!-- 일반회원 등록 -->
 <select id="insert1">
-	insert into member(member_id, member_pwd, member_name, member_nickname, member_email, member_photo, member_contact)
-	values(#{member_id}, #{member_pwd}, #{member_name}, #{member_nickname}, #{member_email}, #{member_photo}, #{member_contact, jdbcType=VARCHAR} )
+	insert into member(member_type, member_id, member_pwd, member_name, member_nickname, member_email, member_photo, member_contact)
+	values('user', #{member_id}, #{member_pwd}, #{member_name}, #{member_nickname}, #{member_email}, #{member_photo, jdbcType=VARCHAR}, #{member_contact} )
 </select>
 
+<!-- 반려견정보 등록 -->
+<select id="insertPet">
+	insert into dog(member_id, dog_id, dog_type, dog_name, dog_breed, dog_sex, dog_size, activity_level, dog_note)
+	values(#{member_id}, seq_dog.nextval, 'myPet', #{dog_name, jdbcType=VARCHAR}, #{dog_breed, jdbcType=VARCHAR}, #{dog_sex, jdbcType=VARCHAR}, 
+		   #{dog_size, jdbcType=VARCHAR}, #{activity_level, jdbcType=VARCHAR}, #{dog_note, jdbcType=VARCHAR})
+</select>
 
 <!-- 펫시터회원 등록 -->
 <update id="insert2">

@@ -33,9 +33,18 @@ public class Customers_P001_ServiceImple implements Customers_P001_Service{
 		return mapper.read(cust);
 	}
 	
+	public int readPw(Customers_P001_VO cust) {
+		log.info("정보조회를 위한 비밀번호 입력 처리 service");
+		return mapper.readPw(cust);
+	}
+	
 	public void signup(Customers_P001_VO customers) {
 		log.info("회원가입 서비스계층");
 		mapper.insert1(customers);
+	}
+	public void signupPet(Customers_P001_VO customers) {
+		log.info("반려견 정보 등록 service");
+		mapper.insertPet(customers);
 	}
 	
 	public void change(Customers_P001_VO customers) {
@@ -51,6 +60,7 @@ public class Customers_P001_ServiceImple implements Customers_P001_Service{
 	
 	//id중복체크
 	public int overlappedId(String id) {
+		log.info("id중복체크 service");
 		return mapper.overlappedId(id);
 	}
 

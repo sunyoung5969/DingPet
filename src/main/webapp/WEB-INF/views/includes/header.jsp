@@ -125,7 +125,7 @@
                 		<c:choose>
 				 			<c:when test="${isLogOn == true && customers != null}">
 				    			<a href="/customers/p001/logout" class="nav-link btn btn-primary" style="color: #fff !important; line-height: 1rem;">로그아웃</a>
-				    			<a href="/customers/p001/myinfo" class="nav-link btn btn-primary" style="color: #fff !important; line-height: 1rem;">마이페이지</a>
+				    			<a href="/customers/p001/toMyinfo" class="nav-link btn btn-primary" style="color: #fff !important; line-height: 1rem;">마이페이지</a>
 				    		</c:when>
 				 			<c:otherwise>
 				 				<a href="/customers/p001/signin" class="nav-link btn btn-primary" style="color: #fff !important; line-height: 1rem;">로그인</a>
