@@ -10,9 +10,45 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="reservationInsert">
 		insert into reservation (order_id, member_id, sitter_id, start_date, start_time, 
-		end_date, end_time, total_amount, payment_date, item_name, vat) 
+								 end_date, end_time, total_amount, payment_date, item_name, vat) 
 		values( #{order_ID}, #{member_ID}, #{sitter_ID}, #{start_Date}, #{start_Time}, 
-		#{end_Date}, #{end_Time}, #{total_amount}, #{payment_Date}, #{item_Name}, #{vat}) 
+				#{end_Date}, #{end_Time}, #{total_amount}, #{payment_Date}, #{item_Name}, #{vat}) 
 	</insert>
+	
+	<!-- 예약신청한 고객의 예약리스트 -->
+	<select id="reservedSitterList" resultType="com.dingpet.petsitting.p002.vo.PetSitting_P002_VO">
+		select r.order_id, s.sitter_photo, s.sitter_nickname, 
+			   r.start_date, r.start_time, r.end_date, r.end_time 
+		
+		from member m, reservation r, 
+		
+		(select sr.order_id, sm.member_nickname as sitter_nickname, sm.member_photo as sitter_photo
+		from member sm, reservation sr
+		where sr.sitter_id = sm.member_id ) s
+		
+		where m.member_id = r.member_id and r.order_id = s.order_id and #{member_ID} = r.member_id
+		
+		group by r.order_id, s.sitter_photo, s.sitter_nickname, 
+				 r.start_date, r.start_time, r.end_date, r.end_time
+		
+	</select>
+	
+	<!-- 예약받은 펫시터의 예약리스트 -->
+	<select id="reservedCustList" resultType="com.dingpet.petsitting.p002.vo.PetSitting_P002_VO">
+		
+		select r.order_id, s.member_photo, s.member_nickname, 
+			   r.start_date, r.start_time, r.end_date, r.end_time 
+		
+		from member m, reservation r, 
+		
+		(select sr.order_id, sm.member_nickname as member_nickname, sm.member_photo as member_photo
+		from member sm, reservation sr
+		where sr.member_id = sm.member_id ) s
+		
+		where m.member_id = r.member_id and r.order_id = s.order_id and #{member_ID} = r.sitter_id
+		
+		group by r.order_id, s.member_photo, s.member_nickname, 
+				 r.start_date, r.start_time, r.end_date, r.end_time
+	</select>
 
 </mapper>

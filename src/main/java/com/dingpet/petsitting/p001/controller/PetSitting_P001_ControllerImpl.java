@@ -3,12 +3,15 @@ package com.dingpet.petsitting.p001.controller;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -60,34 +63,23 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 	
 	@RequestMapping(value="registerdata", method=RequestMethod.POST)
 	@Override
-	public String registerdata(Model model, PetSitting_P001_VO profile, MultipartHttpServletRequest uploadFile) {
+	public String registerdata(Model model, PetSitting_P001_VO profile, MultipartHttpServletRequest uploadFile, HttpServletRequest request) {
 		// TODO Auto-generated method stub
 		
-		
-		System.out.println("-----------------------------------1");
 		System.out.println(profile);
 
-		String[] petService;
 		String[] closed;
-		
-		//String id = String.valueOf((int)((Math.random()*8999)+1000));
-		//profile.setMember_ID(id);
 		
 		try {
 
-//------------------------------ 이용 가능 서비스	 -------------------------------
-
-//-----------------------------------------------------------------------------
-
 //---------------------------	사진 업로드 데이터 처리	---------------------------
 			
-			String uploadFolder = "/var/lib/tomcat8/webapps/img";
-			//String uploadFolder = "C:\\test\\pic";
-			
+			//String uploadFolder = "/var/lib/tomcat8/webapps/img";
+			String uploadFolder = "C:\\test\\pic";
 			
 			String fileName = "";
 			
-			Iterator<String> files = uploadFile.getFileNames();
+			Iterator<String> files = uploadFile.getFileNames();		// 
 
 			while(files.hasNext()) {
 				
@@ -96,28 +88,68 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 				String index = files.next();
 				UUID profile_UUID = UUID.randomUUID();
 				UUID license_UUID = UUID.randomUUID();
+				UUID gallery_UUID = UUID.randomUUID();
 
 				MultipartFile mFile = uploadFile.getFile(index);
 				fileName = mFile.getOriginalFilename();
-
+				
 				if(!fileName.equals("")) {
 
-					if(index.equals("profilePic")) {
+					if(index.equals("profilePic")) { // 단일 파일
 						saveFile = new File(uploadFolder, profile_UUID.toString()+"profile_"+fileName);
 						filePath = saveFile.getPath();
 						profile.setProfile_PicPath(filePath);
-					}else {
+						
+						try {
+							mFile.transferTo(saveFile);
+						} catch (Exception e) {
+							// TODO: handle exception
+							System.out.println("사진업로드 Exception " + e);
+						}
+					}else if(index.equals("licensePic")){ // 단일 파일
 						saveFile = new File(uploadFolder, license_UUID.toString()+"license_"+fileName);
 						filePath = saveFile.getPath();
 						profile.setLicense_PicPath(filePath);
-					}
 						
-					try {
-						mFile.transferTo(saveFile);
-					} catch (Exception e) {
-						// TODO: handle exception
-						System.out.println("사진업로드 Exception " + e);
-					}
+						try {
+							mFile.transferTo(saveFile);
+						} catch (Exception e) {
+							// TODO: handle exception
+							System.out.println("사진업로드 Exception " + e);
+						}
+					}else if(index.equals("photo-gallery")){		// 다중 파일
+						
+						HttpSession session = request.getSession();
+						
+						MultipartFile[] filesArr = (MultipartFile[])session.getAttribute("files");
+						// 파일 배열 생성 하고 저장
+						
+						List<MultipartFile> fileList = new ArrayList<MultipartFile>();
+						// 파일들을 담을리스트생성
+						
+						for(int i = 0; i < filesArr.length; i++) {
+							fileList.add(filesArr[i]);	// 리스트에 파일들 담기
+						}
+						int fileindex = 0;
+						for(MultipartFile filePart : fileList) {
+							
+							fileName = filePart.getOriginalFilename();
+							saveFile = new File(uploadFolder, gallery_UUID.toString()+"gallery_"+fileName);
+							filePath = saveFile.getPath();
+							
+							try {
+								mFile = filesArr[fileindex];
+								mFile.transferTo(saveFile);
+								fileindex++;
+							} catch (Exception e) {
+								// TODO: handle exception
+								System.out.println("사진업로드 Exception " + e);
+							}
+						}
+						
+						//마지막에 세션 제거
+						session.removeAttribute("files");
+					}				
 				}
 			}
 			System.out.println("-----------------------------------3");
@@ -143,14 +175,17 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 				profile.setSchedule_Closed((String)jsonArr.get(i));
 				System.out.println("휴무일 뽑아봐 " + profile.getSchedule_Closed());
 				service.closedInsert(profile);
+				closed[i] = profile.getSchedule_Closed();
 			}
 			System.out.println("-----------------------------------4");
+
+//---------------------------------------------------------------------------
+			
 			System.out.println(profile);
 			
 			if(profile.getLicense_Date() != null && profile.getLicense_Agency() != null && profile.getLicense_Name() != null) {
 				service.licenseInsert(profile);
 			}
-			
 			service.profileInsert(profile);
 			
 			System.out.println("컨트롤러 끗끝끗");
@@ -159,10 +194,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 			// TODO: handle exception
 			System.out.println(e);
 		}
-		
-		
-		
-		
+
 //---------------------------------------------------------------------------
 	
 		return "/petsitting/p001/profilelist";
@@ -191,6 +223,19 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 		model.addAttribute("profile", service.profileLookup(profile));		
 		model.addAttribute("closed", service.getClosedList(profile));
 		model.addAttribute("license", service.getLicenseList(profile));
+	}
+	
+	@RequestMapping(value="/filessaved", method=RequestMethod.POST)
+	@Override
+	public void filessaved(HttpServletRequest request, MultipartFile[] files) {
+		// TODO Auto-generated method stub
+		
+		HttpSession session = request.getSession();
+		
+		session.setAttribute("files", files);
+		
+		System.out.println("ajax 세션 "+ session.getAttribute("files"));
+		
 	}
 	
 	
