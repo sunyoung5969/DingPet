@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="ko">
   <head>
@@ -104,18 +105,15 @@
                   <a href="#services-section" class="nav-link">동반시설지도</a>
                   <ul class="dropdown">
                     <li><a href="/facilitymap/p001/facilityMap" class="nav-link">시설지도</a></li>
-                    <li><a href="/facilitymap/p003/facilityregister" class="nav-link">시설지도 등록_f</a></li>
-                    <li><a href="/facilitymap/p003/facilityinfo" class="nav-link">시설지도 보기_f</a></li>
-                    <li><a href="/facilitymap/p003/register" class="nav-link">시설test</a></li>
-                    <li><a href="/facilitymap/p003/infopage" class="nav-link">시설인포test</a></li>
-                    <li class="has-children">
+                    <li><a href="/facilitymap/p001/register" class="nav-link">시설지도 등록</a></li>
+                    <!-- <li class="has-children">
                       <a href="#">More Links</a>
                       <ul class="dropdown">
                         <li><a href="#">Menu One</a></li>
                         <li><a href="#">Menu Two</a></li>
                         <li><a href="#">Menu Three</a></li>
-                      </ul>
-                    </li>
+                      </ul> 
+                    </li>-->
                   </ul> 
                 </li>
                 <li><a href="#" class="nav-link">자주하는 질문</a></li>
@@ -124,7 +122,7 @@
                 		<c:choose>
 				 			<c:when test="${isLogOn == true && customers != null}">
 				    			<a href="/customers/p001/logout" class="nav-link btn btn-primary" style="color: #fff !important; line-height: 1rem;">로그아웃</a>
-				    			<a href="/customers/p001/myinfo" class="nav-link btn btn-primary" style="color: #fff !important; line-height: 1rem;">마이페이지</a>
+				    			<a href="/customers/p001/toMyinfo" class="nav-link btn btn-primary" style="color: #fff !important; line-height: 1rem;">마이페이지</a>
 				    		</c:when>
 				 			<c:otherwise>
 				 				<a href="/customers/p001/signin" class="nav-link btn btn-primary" style="color: #fff !important; line-height: 1rem;">로그인</a>
