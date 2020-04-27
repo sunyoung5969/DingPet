@@ -11,11 +11,16 @@
 <title>상세페이지</title>
 <style>
 h2 {font-size:15px;}
-.star-rating {width:304px; }
+.star-rating {width:150px; }
 .star-rating,.star-rating span {
-display:inline-block; height:55px; overflow:hidden; 
-background:url(${pageContext.request.contextPath}/resources/images/star2.png)no-repeat; }
+display:inline-block; height:26px; overflow:hidden; 
+background:url(${pageContext.request.contextPath}/resources/images/bigstar.png)no-repeat; }
 .star-rating span{background-position:left bottom; line-height:0; vertical-align:top; }
+.star-review {width:80px; }
+.star-review,.star-review span {
+display:inline-block; height:14px; overflow:hidden; 
+background:url(${pageContext.request.contextPath}/resources/images/ministar.png)no-repeat; }
+.star-review span{background-position:left bottom; line-height:0; vertical-align:top; }
 
       /*star start*/
 	.rate {
@@ -200,11 +205,12 @@ background:url(${pageContext.request.contextPath}/resources/images/star2.png)no-
                            <!--  <small><a rel="nofollow" id="cancel-comment-reply-link" href="/map/listing/%ec%88%98%ec%9b%90%ec%8b%9c-%ec%98%81%ed%86%b5%ea%b5%ac-%eb%b2%95%ec%a1%b0%eb%a1%9c149%eb%b2%88%ea%b8%b8-47-1%ec%b8%b5-94-149%ed%94%8c%eb%9d%bc%eb%b0%8d%ea%b3%a0/#respond" style="display:none;">댓글 취소</a></small></h3> -->
                             <form role="form" action="/facilitymap/p001/revregister" method="post" enctype="multipart/form-data">
                             <input type="hidden" class="form-control" name="site_id" value="${info.site_id }">
+                            <input type="hidden" id="hiddendate"class="form-control" name="review_date" value="">                            
                                 <div id="wpjmr-submit-ratings">
                                 	<h2 class="widget-title widget-title__job_listing ion-ios-compose-outline">별점주기</h2>
                                     <div class="listing-rating listing-rating--single">
                                         <div class="rate" id="rate" >
-                                        <input type="radio" id="star5" name="review_star" value="5" required="required" />
+                                        <input type="radio" id="star5" name="review_star" value="5" />
                                         <label for="star5" title="5점">5 stars</label>
                                         <input type="radio" id="star4" name="review_star" value="4" />
                                         <label for="star4" title="4점">4 stars</label>
@@ -212,7 +218,7 @@ background:url(${pageContext.request.contextPath}/resources/images/star2.png)no-
                                         <label for="star3" title="3점">3 stars</label>
                                         <input type="radio" id="star2" name="review_star" value="2" />
                                         <label for="star2" title="2점">2 stars</label>
-                                        <input type="radio" id="star1" name="review_star" value="1" />
+                                        <input type="radio" id="star1" name="review_star" value="1" checked="checked"/>
                                         <label for="star1" title="1점">1 star</label>
                                         </div>
                                     </div><!-- .star-ratings.ratings -->
@@ -267,7 +273,32 @@ $(document).ready(function() {
 		$(this).val($(this).val().substring(0, 250));
 		}
 	});
+	
+
 });
+
+function getTimeStamp() {
+  var d = new Date();
+  var s =
+    leadingZeros(d.getFullYear(), 4) + 
+    leadingZeros(d.getMonth() + 1, 2) + 
+    leadingZeros(d.getDate(), 2) +
+    leadingZeros(d.getHours(), 2)+
+    leadingZeros(d.getMinutes(), 2);
+  return s;
+}
+
+function leadingZeros(n, digits) {
+  var zero = '';
+  n = n.toString();
+
+  if (n.length < digits) {
+    for (i = 0; i < digits - n.length; i++)
+      zero += '0';
+  }
+  return zero + n;
+}
+document.getElementById('hiddendate').value = getTimeStamp();
 	//날짜 포맷 변경
 	var boardDate = "202004231617";
 	var dateString = boardDate.toString();
@@ -300,6 +331,7 @@ $(document).ready(function() {
 					str += "<div><div class = 'reply_info'><span><strong>" + list[i].review_name +"</strong>님</span>";
 					str += "<span><small>" + replyService.formatDate(list[i].review_date) + "</small></span>";
 					str += "<button class = 'small_btn btn btn-primary float-right' id = 'reply_modify'>수정</button><button class = 'small_btn btn btn-primary float-right' id = 'reply_delete'>삭제</button></div>";
+					str += "<div class='wrap-star'>	<div class='star-review'><span style ='width:"+ list[i].review_star*20 + "%'></span></div></div>"
 					str += "<div class='comment-content comment reply_info'>";
 					str += "<p id = 'original_content' class = 'fn ml-3 mr-3'>" + list[i].review_content + "</p>";
 					str += "<div class = 'flex_row toggle_div pb-2' style = 'display : none'><div class = 'w-90'><textarea cols='45' rows='4'  class='form-control' maxlength='65525' required></textarea></div>";
