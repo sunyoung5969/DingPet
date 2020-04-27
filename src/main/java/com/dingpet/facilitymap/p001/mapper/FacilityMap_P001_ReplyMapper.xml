@@ -20,15 +20,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 댓글 삭제 -->
 	<delete id = "delete">
 		DELETE 
-		FROM lost_found_reply
-		WHERE reply_id = #{reply_id}
+		FROM SITE_REVIEW
+		WHERE review_id = #{review_id}
 	</delete>
 	
 	<!-- 댓글 수정 -->
 	<update id = "modify" >
-		UPDATE lost_found_reply
-		SET reply = #{reply}
-		WHERE reply_id = #{reply_id} 
+		UPDATE SITE_REVIEW
+		SET review_content = #{review_content}
+		WHERE review_id = #{review_id} 
 	</update>
 	<select id="getCountByRno" resultType="int">
 		<![CDATA[

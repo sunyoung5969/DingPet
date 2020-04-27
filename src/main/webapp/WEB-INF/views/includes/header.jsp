@@ -105,18 +105,15 @@
                   <a href="#services-section" class="nav-link">동반시설지도</a>
                   <ul class="dropdown">
                     <li><a href="/facilitymap/p001/facilityMap" class="nav-link">시설지도</a></li>
-                    <li><a href="/facilitymap/p003/facilityregister" class="nav-link">시설지도 등록_f</a></li>
-                    <li><a href="/facilitymap/p003/facilityinfo" class="nav-link">시설지도 보기_f</a></li>
-                    <li><a href="/facilitymap/p003/register" class="nav-link">시설test</a></li>
-                    <li><a href="/facilitymap/p003/infopage" class="nav-link">시설인포test</a></li>
-                    <li class="has-children">
+                    <li><a href="/facilitymap/p001/register" class="nav-link">시설지도 등록</a></li>
+                    <!-- <li class="has-children">
                       <a href="#">More Links</a>
                       <ul class="dropdown">
                         <li><a href="#">Menu One</a></li>
                         <li><a href="#">Menu Two</a></li>
                         <li><a href="#">Menu Three</a></li>
-                      </ul>
-                    </li>
+                      </ul> 
+                    </li>-->
                   </ul> 
                 </li>
                 <li><a href="#" class="nav-link">자주하는 질문</a></li>
