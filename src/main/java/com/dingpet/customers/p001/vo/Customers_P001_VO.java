@@ -1,7 +1,6 @@
 package com.dingpet.customers.p001.vo;
 
 import lombok.Data;
-import oracle.sql.BLOB;
 
 @Data
 public class Customers_P001_VO {
