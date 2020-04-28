@@ -102,7 +102,7 @@
 								</div>
 								
 								<div class="filebox">
-									사진<input type="file" name="photo" id="member_photo" accept="image/*" required>
+									사진<input type="file" name="photo" id="member_photo" accept="image/*" >
 								</div>
 							</div>
 						</div>

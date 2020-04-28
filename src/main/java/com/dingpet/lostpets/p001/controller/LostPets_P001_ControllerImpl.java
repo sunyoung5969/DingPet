@@ -1,18 +1,8 @@
 package com.dingpet.lostpets.p001.controller;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,14 +10,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dingpet.lostpets.p001.service.LostPets_P001_Service;
-import com.dingpet.lostpets.p001.util.FileUploadUtils;
 import com.dingpet.lostpets.p001.vo.Criteria;
 import com.dingpet.lostpets.p001.vo.LostPets_P001_VO;
 import com.dingpet.lostpets.p001.vo.PageDTO;
@@ -43,6 +29,7 @@ public class LostPets_P001_ControllerImpl implements LostPets_P001_Controller {
 
 	@Autowired
 	private LostPets_P001_Service service;
+	
 	
 	//목록 조회
 	@GetMapping("/list")
@@ -99,8 +86,11 @@ public class LostPets_P001_ControllerImpl implements LostPets_P001_Controller {
 		log.info("delete");
 		return "redirect:/lostpets/p001/list";
 	}
-
-
+	
+	@GetMapping("/chat")
+	public void chat() {
+		
+	}
 
 
 }

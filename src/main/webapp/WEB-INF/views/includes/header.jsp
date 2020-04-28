@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 <!doctype html>
 <html lang="ko">
   <head>
@@ -61,7 +62,7 @@
         <div class="row align-items-center">
           
           <div class="col-6 col-xl-2">
-            <h1 class="mb-0 site-logo"><a href="/" class="h2 mb-0"><img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="logo"><span class="text-primary">.</span> </a></h1>
+            <a href="/" class="h2 mb-0"><img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="logo"><span class="text-primary">.</span> </a>
           </div>
 
           <div class="col-12 col-md-10 d-none d-xl-block">
@@ -118,7 +119,20 @@
                     </li>
                   </ul> 
                 </li>
-                <li><a href="#" class="nav-link">자주하는 질문</a></li>
+                <!-- 알림 -->
+ 				<li>
+                	<div class="notification_container">
+                		<span class = "notification_bubble">1</span>
+                		<i class="far fa-bell"></i>
+                	</div>
+               	</li>
+               	<!-- 채팅 -->
+               	<li>
+                	<div class = "chat_container">
+                		<span class = "chat_bubble">2</span>
+                    	<a href="#"><i class="far fa-comments"></i></a>
+                    </div>
+                </li>
                 <li>
                 	<div>
                 		<c:choose>
@@ -142,5 +156,18 @@
 
         </div>
       </div>
+      
+      
+	<script>
+		$(function() {
+			$('.notification_container').click(function() {
+				$('.notification_bubble').show(400);
+			});
+			
+			$('.chat_container').click(function() {
+				$('.chat_bubble').show(400);
+			});
+		});
+	</script>	
       
     </header>

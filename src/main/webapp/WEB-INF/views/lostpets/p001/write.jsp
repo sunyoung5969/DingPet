@@ -47,8 +47,26 @@
 							<label
 								class="col-md-4 col-form-label text-md-right color_blue lost_found_label">견종</label>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="dog_breed"
+								<input list = "dog_breed" class="form-control" name="dog_breed"
 									maxlength="30" placeholder="예) 골든 리트리버" required>
+								<datalist id = "dog_breed">
+									<option value ="골든 리트리버">
+									<option value ="닥스훈트">
+									<option value ="달마시안">
+									<option value ="도베르만">
+									<option value ="동경이">
+									<option value ="래브라도 리트리버">
+									<option value ="말티즈">
+									<option value ="미니어쳐 핀셔">
+									<option value ="보더콜리">
+									<option value ="불독">
+									<option value ="비글">
+									<option value ="비숑 프리제">
+									<option value ="사모예드">
+									<option value ="삽살개">
+									<option value ="시바">
+									 
+								</datalist>
 							</div>
 						</div>
 						<div class="form-group row">

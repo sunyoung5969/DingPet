@@ -3,7 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
@@ -30,12 +32,6 @@
 	-->
 	<context:component-scan
 		base-package="com.dingpet.*.*.controller" />
-
-	<!-- 업로드 패스 설정	
-	<beans:bean class = "java.lang.String" id = "uploadPath" >
-		<beans:constructor-arg value = "C:\Users\vegai\OneDrive\바탕 화면\Programming\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\DingPet\resources"/>
-	</beans:bean> 
-		<resources mapping = "/imgUpload/**" location = "/resources/imgUpload/"/>-->
 	
 	<beans:bean id = "multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="maxInMemorySize" value = "377759039"/>
