@@ -10,8 +10,9 @@ import com.dingpet.facilitymap.p001.vo.FacilityMap_P001_ReplyVO;
 import com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO;
 
 public interface FacilityMap_P001_ReplyMapper {
-	//시설 리뷰 등록 
-	public void reviewRegister(FacilityMap_P001_ReplyVO vo);
+	
+	// 리뷰 작성
+	public int write(FacilityMap_P001_ReplyVO reply_vo);
 	// 댓글 조회
 	public FacilityMap_P001_ReplyVO view(String review_id);
 	// 댓글 삭제
@@ -20,4 +21,6 @@ public interface FacilityMap_P001_ReplyMapper {
 	public int modify(FacilityMap_P001_ReplyVO reply_vo);
 	// 댓글 목록
 	public List<FacilityMap_P001_ReplyVO> list(@Param("cri") Criteria cri, @Param("site_id") String site_id);
+	// 리뷰번호 가져오기
+	public int getCountByRno(String site_id);
 }

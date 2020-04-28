@@ -1,7 +1,6 @@
 package com.dingpet.customers.p001.vo;
 
 import lombok.Data;
-import oracle.sql.BLOB;
 
 @Data
 public class Customers_P001_VO {
@@ -26,8 +25,12 @@ public class Customers_P001_VO {
 //	private String question3;
 	private String answer3;
 	
+	private String dog_id;
+	private String dog_type;
 	private String dog_name;
+	private String dog_sex;
 	private String dog_breed;
+	private String activity_level;
 	private String dog_size;
 	private String dog_note;
 	private String dog_photo;
