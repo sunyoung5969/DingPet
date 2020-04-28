@@ -2,7 +2,6 @@ package com.dingpet.customers.p002.vo;
 
 import lombok.Data;
 
-
 @Data
 public class Customers_P002_VO {
 
