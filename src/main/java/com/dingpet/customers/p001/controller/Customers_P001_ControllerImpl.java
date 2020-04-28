@@ -39,10 +39,10 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 	HttpServletRequest request;
 	HttpSession session;
 	
-	//내정보조회 
+	//내정보조회 11111111
 	@RequestMapping(value="/toMyinfo", method={RequestMethod.GET})
 	public void toMyinfo() {
-		log.info("정보조회를 위해 비밀번호 입력하는 페이지");
+		log.info("정보조회를 위해 비밀번호 입력하는 페이지111");
 	}
 	
 	@RequestMapping(value="/toMyinfo", method={RequestMethod.POST})
