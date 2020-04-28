@@ -38,9 +38,9 @@ public class LostPets_Reply_ServiceImpl implements LostPets_Reply_Service {
 		return mapper.modify(reply_vo);
 	}
 
-	public List<LostPets_Reply_VO> list(Criteria cri, String site_id) {
+	public List<LostPets_Reply_VO> list(Criteria cri, String board_id) {
 		log.info("listing replies");
-		return mapper.list(cri, site_id);
+		return mapper.list(cri, board_id);
 	}
 
 }

@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.dingpet.facilitymap.p001.dto.ReplyPageDTO;
 import com.dingpet.facilitymap.p001.mapper.FacilityMap_P001_ReplyMapper;
 import com.dingpet.facilitymap.p001.vo.Criteria;
 import com.dingpet.facilitymap.p001.vo.FacilityMap_P001_ReplyVO;
@@ -20,11 +19,22 @@ public class FacilityMap_Reply_ServiceImpl implements FacilityMap_Reply_Service 
 
 	private FacilityMap_P001_ReplyMapper mapper;
 	
-	
-	public int write(FacilityMap_P001_ReplyVO reply_vo) {
-		log.info("writing reply");
-		return mapper.write(reply_vo);
+	@Transactional
+	@Override
+	public void reviewregister(FacilityMap_P001_ReplyVO vo) {
+		log.info("REVIEW register....");
+		// ------- site id - get --------------
+		int sitesq = vo.getSite_id();
+		log.info(sitesq);		
+		// -------===============--------------
+		mapper.reviewRegister(vo);
+		log.info("DB Insert End...:"+vo);
+
 	}
+//	public int write(FacilityMap_P001_ReplyVO reply_vo) {
+//		log.info("writing reply");
+//		return mapper.write(reply_vo);
+//	}
 
 	public FacilityMap_P001_ReplyVO view(String review_id) {
 		log.info("viewing reply");
@@ -45,12 +55,5 @@ public class FacilityMap_Reply_ServiceImpl implements FacilityMap_Reply_Service 
 		log.info("listing replies");
 		return mapper.list(cri, site_id);
 	}
-
-	@Override
-	public ReplyPageDTO getListPage(Criteria cri, String site_id) {
-
-		return new ReplyPageDTO(mapper.getCountByRno(site_id), mapper.list(cri, site_id));
-	}
-
 
 }

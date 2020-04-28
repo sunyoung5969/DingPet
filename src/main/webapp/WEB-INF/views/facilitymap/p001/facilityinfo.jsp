@@ -1,63 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" isELIgnored="false"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-    
-<!DOCTYPE html>
-<%@ include file="/WEB-INF/views/includes/header.jsp"%>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>상세페이지</title>
-<style>
-h2 {font-size:15px;}
-.star-rating {width:304px; }
-.star-rating,.star-rating span {
-display:inline-block; height:55px; overflow:hidden; 
-background:url(${pageContext.request.contextPath}/resources/images/star2.png)no-repeat; }
-.star-rating span{background-position:left bottom; line-height:0; vertical-align:top; }
+    pageEncoding="UTF-8"%>
+<%@include file="../../includes/header.jsp"%>
 
-      /*star start*/
-	.rate {
-	  float: left;
-	  height: 46px;
-	  padding: 0 10px;
-	}
-	.rate:not(:checked) > input {
-	  position:absolute;
-	  top:-9999px;
-	}
-	.rate:not(:checked) > label {
-	  float:right;
-	  width:1em;
-	  overflow:hidden;
-	  white-space:nowrap;
-	  cursor:pointer;
-	  font-size:30px;
-	  color:#ccc;
-	}
-	.rate:not(:checked) > label:before {
-	  content: '★ ';
-	}
-	.rate > input:checked ~ label {
-	  color: #ffc700;    
-	}
-	.rate:not(:checked) > label:hover,
-	.rate:not(:checked) > label:hover ~ label {
-	  color: #deb217;  
-	}
-	.rate > input:checked + label:hover,
-	.rate > input:checked + label:hover ~ label,
-	.rate > input:checked ~ label:hover,
-	.rate > input:checked ~ label:hover ~ label,
-	.rate > label:hover ~ input:checked ~ label {
-	  color: #c59b08;
-	}
-	/*star end*/
-</style>
-</head>
-<body>
-  <!--====  str of contents  ====-->
+    <!--====  str of contents  ====-->
     <section style="padding-top:87px">
         <div class="page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); transform: translate3d(0px, 0px, 0px);"></div>
         <div class="main main-raised">
@@ -71,25 +16,27 @@ background:url(${pageContext.request.contextPath}/resources/images/star2.png)no-
                     <div class="row pt-3">
                         <div class="col-lg-4 col-md-6 align-self-center">
                             <div class="image-block bg-about">
-                            		<c:set var="imgsite" value="${url}${info.place_picname }" />
-                            	<img class="img-fluid" src="${info.place_pic != null?imgsite:'/resources/images/dogger_img_sm_15.jpg' }" alt="">
+                                <img class="img-fluid" src="/resources/images/dogger_img_sm_15.jpg" alt="">
                             </div>
                         </div>
                         <div class="col-lg-8 col-md-6 align-self-center">
                             <div class="content-single-job_listing-hero-wrapper cover-wrapper container">
                                 <div class="content-single-job_listing-hero-inner row">
                                     <div class="content-single-job_listing-hero-company col-md-7 col-sm-12">
-                                        <h2 style="font-weight: 600;font-size: 35px;margin: 10px;font-size: x-large;line-height: 1;">${info.place_name }</h2>
-                                        
-                                        	<div class="wrap-star">
-										   		<div class='star-rating'>
-							    		   		<span style ="width:80%"></span>
-							    				</div>        
-							    			<span style="position: right; margin: 0px;">4/5</span>	
-                                             </div>
-                                             
-                                         <br><br>
-                                         <div>                                         
+                                        <h2>${info.place_name }</h2>
+                                        <div class="listing-rating listing-rating--single">
+                                            <div class="rate">
+                                                <input type="radio" id="star5" name="rate" value="5" />
+                                                <label for="star5" title="text">5 stars</label>
+                                                <input type="radio" id="star4" name="rate" value="4" />
+                                                <label for="star4" title="text">4 stars</label>
+                                                <input type="radio" id="star3" name="rate" value="3" />
+                                                <label for="star3" title="text">3 stars</label>
+                                                <input type="radio" id="star2" name="rate" value="2" />
+                                                <label for="star2" title="text">2 stars</label>
+                                                <input type="radio" id="star1" name="rate" value="1" />
+                                                <label for="star1" title="text">1 star</label>
+                                              </div>
                                             <span class="listing-rating-count listing-rating-count--single">
                                             <a href="#respond">0개의 리뷰</a>	</span>
                                         </div>
@@ -119,7 +66,9 @@ background:url(${pageContext.request.contextPath}/resources/images/star2.png)no-
                         </div>
                     </div>
                     <section  class="txt-box ">
-                        <p>${info.place_text }</p>
+                        <p>럭셔리한 애견카페 비안코 이탈리아의 상봉점입니다.</p>
+                        <p>다른 애견카페 대비하여 공간이 넓은 편에 속하여, 중/대형견을 데리고 가기 좋습니다.</p>
+                        <p>또한, 트레이너들이 상주하고 있어 안심이 됩니다.</p>
                     </section>
                     <!--=============================
                     =            Gallery            =
@@ -148,42 +97,40 @@ background:url(${pageContext.request.contextPath}/resources/images/star2.png)no-
 
                     <!--====  End of Gallery  ====-->
                     <aside id="listify_widget_panel_listing_comments-1" class="widget widget-job_listing listify_widget_panel_listing_comments pb-5">
-                    <!-- 댓글 시작 -->    
                         <h2 id="respond" class="widget-title widget-title__job_listing ion-ios-compose-outline">리뷰</h2>
-                        <!-- 댓글 목록 표시 -->
                         <ol id="comments" class="commentlist">
-		                    <li class = "mb-2" data-reply_id ='6'>		                    
-                                <div>
-                                	<div class = "">
-                                		<strong>댓글 작성자</strong>
-                                		<small>댓글 작성일시</small>
-                                	</div>
-                                    <div class="comment-content comment col-md-10 col-sm-9 col-12 width100">
-                                        <p class = "fn">댓글 내용</p>
-                                    </div><!-- .comment-content -->
-                                </div><!-- #comment-## -->
+		                    <li class="comment byuser comment-author-be-my-pet-official even thread-even depth-1" id="comment-8">
+                                <article id="comment-8" class="comment row">
+                                    <header class="comment-author col-md-2 col-sm-3 col-12">
+                                        <img src="/resources/images/dogger_img_sm_15.jpg" width="100" height="100" alt="리뷰" class="avatar avatar-100 wp-user-avatar wp-user-avatar-100 alignnone photo">		
+                                    </header><!-- .comment-meta -->
+                                    <section class="comment-content comment col-md-10 col-sm-9 col-12">
+                                        <p class="vcard author">
+                                            <b class="fn">리뷰를 써용요오오오오오오오오오오오옹</b>
+                                        </p>
+                                        
+                                    </section><!-- .comment-content -->
+                                </article><!-- #comment-## -->
                             </li><!-- #comment-## -->
-                         </ol><!-- 댓글 목록 표시 끝-->
+                         </ol>
                         <div class="comment-respond">
-                            <h3 id="reply-title" class="comment-reply-title"></h3>
-                           <!--  <small><a rel="nofollow" id="cancel-comment-reply-link" href="/map/listing/%ec%88%98%ec%9b%90%ec%8b%9c-%ec%98%81%ed%86%b5%ea%b5%ac-%eb%b2%95%ec%a1%b0%eb%a1%9c149%eb%b2%88%ea%b8%b8-47-1%ec%b8%b5-94-149%ed%94%8c%eb%9d%bc%eb%b0%8d%ea%b3%a0/#respond" style="display:none;">댓글 취소</a></small></h3> -->
-                            <form role="form" action="/facilitymap/p001/revregister" method="post" enctype="multipart/form-data">
-                            <input type="hidden" class="form-control" name="site_id" value="${info.site_id }">
+                            <h3 id="reply-title" class="comment-reply-title"> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/map/listing/%ec%88%98%ec%9b%90%ec%8b%9c-%ec%98%81%ed%86%b5%ea%b5%ac-%eb%b2%95%ec%a1%b0%eb%a1%9c149%eb%b2%88%ea%b8%b8-47-1%ec%b8%b5-94-149%ed%94%8c%eb%9d%bc%eb%b0%8d%ea%b3%a0/#respond" style="display:none;">댓글 취소</a></small></h3><form action="https://mypetlife.co.kr/map/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="" enctype="multipart/form-data">
+                            <form action="#" method="post" id="commentform" class="comment-form" novalidate="" enctype="multipart/form-data">
                                 <div id="wpjmr-submit-ratings">
-                                	<h2 class="widget-title widget-title__job_listing ion-ios-compose-outline">별점주기</h2>
+                                	<h2 id="respond" class="widget-title widget-title__job_listing ion-ios-compose-outline">별점주기</h2>
                                     <div class="listing-rating listing-rating--single">
-                                        <div class="rate" id="rate" >
-                                        <input type="radio" id="star5" name="review_star" value="5" />
-                                        <label for="star5" title="text">5 stars</label>
-                                        <input type="radio" id="star4" name="review_star" value="4" />
-                                        <label for="star4" title="text">4 stars</label>
-                                        <input type="radio" id="star3" name="review_star" value="3" />
-                                        <label for="star3" title="text">3 stars</label>
-                                        <input type="radio" id="star2" name="review_star" value="2" />
-                                        <label for="star2" title="text">2 stars</label>
-                                        <input type="radio" id="star1" name="review_star" value="1" />
-                                        <label for="star1" title="text">1 star</label>
-                                        </div>
+                                        <div class="rate">
+                                            <input type="radio" id="star5" name="rate" value="5" />
+                                            <label for="star5" title="text">5 stars</label>
+                                            <input type="radio" id="star4" name="rate" value="4" />
+                                            <label for="star4" title="text">4 stars</label>
+                                            <input type="radio" id="star3" name="rate" value="3" />
+                                            <label for="star3" title="text">3 stars</label>
+                                            <input type="radio" id="star2" name="rate" value="2" />
+                                            <label for="star2" title="text">2 stars</label>
+                                            <input type="radio" id="star1" name="rate" value="1" />
+                                            <label for="star1" title="text">1 star</label>
+                                          </div>
                                     </div><!-- .star-ratings.ratings -->
                                 </div><!-- #wpjmr-submit-ratings -->
                             
@@ -191,7 +138,7 @@ background:url(${pageContext.request.contextPath}/resources/images/star2.png)no-
                                 	<h2 id="respond" class="widget-title widget-title__job_listing ion-ios-compose-outline pt-5">갤러리 사진 업로드</h2>
                                     <div class="form-group row">
                                         <div class="col-md-6">
-                                            <input type="file" name="reviewpic" id="reviewpic" onchange="previewImage(this,'View_area')">
+                                            <input type="file" name="profile_pt" id="profile_pt" onchange="previewImage(this,'View_area')">
                                             <div id='View_area' class="img_up"></div>
                                         </div>
                                     </div>
@@ -199,21 +146,23 @@ background:url(${pageContext.request.contextPath}/resources/images/star2.png)no-
                                                     
                                 <!-- wsl_render_auth_widget -->
                                 <h2 id="respond" class="widget-title widget-title__job_listing ion-ios-compose-outline pt-5">리뷰 작성</h2>
-                                
                                 <p class="comment-form-comment pt-3">
                                     <label for="comment">리뷰</label> 
-                                    <textarea id="review_content" name="review_content" cols="45" rows="8"  class="form-control" maxlength="65525" required="required"></textarea>
+                                    <textarea id="comment" name="comment" cols="45" rows="8"  class="form-control" maxlength="65525" required="required"></textarea>
                                 </p>
                                 <p class="comment-form-author">
                                     <label for="author">이름 <span class="required">*</span></label> 
-                                    <input id="review_name" name="review_name" type="text"  class="form-control" value="" size="30" maxlength="245" required="required">
+                                    <input id="author" name="author" type="text"  class="form-control" value="" size="30" maxlength="245" required="required">
                                 </p>
                                 <p class="comment-form-email">
                                     <label for="email">이메일 <span class="required">*</span></label> 
-                                    <input id="review_email" name="review_email" type="email"  class="form-control" value="" size="30" maxlength="100" required="required">
+                                    <input id="email" name="email" type="email"  class="form-control" value="" size="30" maxlength="100" required="required">
                                 </p>
+                                <p class="comment-form-url">
+                                    <label for="url">웹사이트</label> 
+                                    <input id="url" name="url" type="url" class="form-control" value="" size="30" maxlength="200"></p>
                                 <p class="form-submit float-right">
-                                    <input name="submit" type="submit" id="submit" class="btn btn-primary btn-sm" value="리뷰등록"> 
+                                    <input name="submit" type="submit" id="submit" class="btn btn-primary btn-sm" value="저장"> 
                                     
                                 </p>
                             </form>	
@@ -223,8 +172,6 @@ background:url(${pageContext.request.contextPath}/resources/images/star2.png)no-
             </div>
         </div>
       </section>
-    <!--====  end of contents  ====-->  
-    
-</body>
-<%@ include file="/WEB-INF/views/includes/footer.jsp"%>
-</html>
+    <!--====  end of contents  ====-->    
+
+<%@include file="../../includes/footer.jsp"%>

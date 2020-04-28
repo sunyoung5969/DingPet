@@ -20,12 +20,8 @@ public interface FacilityMap_P001_Service {
 	public FacilityMap_P001_VO getDogPlace(int num);
 	// 시설등록(업로드)
 	public void register(FacilityMap_P001_VO vo);
-	// 시설 리뷰 등록 
-	public void reviewregister(FacilityMap_P001_ReplyVO vo);
 	// 시퀀스 get 
 	public int getSeq();
-	// 총 별점 평균 get
-	public String getStarAvg(String site_id);
 	// 첨부파일 리스트 get
 	public List<FacilityMap_AttachVO> getAttachList(int site_id);
 	// 첨부 삭제 

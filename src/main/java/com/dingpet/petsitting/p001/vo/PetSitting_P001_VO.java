@@ -32,6 +32,4 @@ public class PetSitting_P001_VO {
 	private String service_06="N";				//
 	private String service_07="N";				//
 	
-	private String photo_gallery;
-	private String[] closed;
 }

@@ -1,6 +1,7 @@
 package com.dingpet.customers.p003.vo;
 
 import lombok.Data;
+import oracle.sql.BLOB;
 
 @Data
 public class Customers_P003_VO {
@@ -12,7 +13,7 @@ public class Customers_P003_VO {
 	private String member_nickname;
 	private String member_email;
 	private String member_contact;
-	private String member_photo;
+	private BLOB member_photo;
 	private byte sex;
 	private String date_of_birth;
 	private String address;
