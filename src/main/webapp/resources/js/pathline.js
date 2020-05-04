@@ -19,18 +19,20 @@ function pathLine(){
 	
 		latArr.push(jsonOb.lat);			// 위도들 배열에 담기
 		litArr.push(jsonOb.lit);			// 경도들 배열에 담기
+		
 	}
 	
 	latArr.sort();		// 정렬
 	litArr.sort();		// 정렬
-	
+	console.log(latArr);
+	console.log(litArr);
 	minLat = latArr[0];
 	minLit = litArr[0];
 	maxLat = latArr[latArr.length-1];
 	maxLit = litArr[litArr.length-1];
 	
-	var centerLat = minLat + ((maxLat - minLat) / 2);	// 위도 중심좌표 구하기
-	var centerLit = minLit + ((maxLit - minLit) / 2);	// 경도 중심좌표 구하기
+	var centerLat = parseFloat(minLat) + ((maxLat - minLat) / 2);	// 위도 중심좌표 구하기
+	var centerLit = parseFloat(minLit) + ((maxLit - minLit) / 2);	// 경도 중심좌표 구하기
 
 // ---------------------------------------------------------------------
 
