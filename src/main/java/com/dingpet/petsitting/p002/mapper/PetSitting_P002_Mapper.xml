@@ -10,9 +10,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="reservationInsert">
 		insert into reservation (order_id, member_id, sitter_id, start_date, start_time, 
-								 end_date, end_time, total_amount, payment_date, item_name, vat) 
-		values( #{order_ID}, #{member_ID}, #{sitter_ID}, #{start_Date}, #{start_Time}, 
-				#{end_Date}, #{end_Time}, #{total_amount}, #{payment_Date}, #{item_Name}, #{vat}) 
+								 end_date, end_time, total_amount, payment_date, item_name, vat, tid) 
+		values( #{order_ID}, #{member_ID}, #{sitter_ID}, 
+				#{start_Date}, #{start_Time}, #{end_Date}, #{end_Time}, 
+				#{total_amount}, #{payment_Date}, #{item_Name}, #{vat}, #{tid}) 
 	</insert>
 	
 	<!-- 예약신청한 고객의 예약리스트 -->
@@ -51,4 +52,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				 r.start_date, r.start_time, r.end_date, r.end_time
 	</select>
 
+	<select id="getReservedInfo" resultType="com.dingpet.petsitting.p002.vo.PetSitting_P002_VO">
+	
+		select order_id, tid, total_amount from reservation
+		where order_id = #{order_ID}
+	
+	</select>
+	
+	<delete id="deleteReserved">
+		delete from reservation where order_id = #{order_ID}
+	</delete>
+	
 </mapper>

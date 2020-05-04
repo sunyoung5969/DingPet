@@ -20,5 +20,6 @@ public class PetSitting_P002_VO {
 	private String end_Time;		// 종료시간
 	private int vat;				// 부과세
 	private String total_amount;	// 총금액
+	private String tid;				// 결제번호
 	
 }

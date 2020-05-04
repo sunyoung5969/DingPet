@@ -16,6 +16,7 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import com.dingpet.petsitting.p002.vo.KakaoPayApprovalVO;
+import com.dingpet.petsitting.p002.vo.KakaoPayCancelVO;
 import com.dingpet.petsitting.p002.vo.KakaoPayReadyVO;
 import com.dingpet.petsitting.p002.vo.PetSitting_P002_VO;
 
@@ -30,6 +31,7 @@ public class KakaoPay {
 
 	private KakaoPayReadyVO kakaoPayReadyVO;
     private KakaoPayApprovalVO kakaoPayApprovalVO;
+    private KakaoPayCancelVO kakaoPayCancelVO;
     
 
 	public String kakaoPayReady(PetSitting_P002_VO reserved_info) {
@@ -53,7 +55,7 @@ public class KakaoPay {
 		params.add("tax_free_amount", "0"); // 비과세 금액
 		
 		params.add("approval_url", "http://localhost:8099/petsitting/p002/kakaoPaySuccess"); // 결제 성공 시 리다이렉트
-		params.add("cancel_url", "http://localhost:8099/kakaoPayCancel"); // 결제 취소 시 리다이렉트
+		params.add("cancel_url", "http://localhost:8099/petsitting/p002/kakaoPayCancel"); // 결제 취소 시 리다이렉트
 		params.add("fail_url", "http://localhost:8099/kakaoPaySuccessFail"); // 결제 실패 시 리다이렉트
 		
 		//params.add("approval_url", "https://www.dingpet.shop/petsitting/p002/kakaoPaySuccess"); // 결제 성공 시 리다이렉트
@@ -85,7 +87,6 @@ public class KakaoPay {
 
 	public KakaoPayApprovalVO kakaoPayInfo(String pg_token, PetSitting_P002_VO reserved_info) {
 
-
 		log.info("KakaoPayInfoVO............................................");
 		log.info("reserved_info : " + reserved_info);
 		log.info("kakaoPayReadyVO.getTid() : "+kakaoPayReadyVO.getTid());
@@ -116,6 +117,52 @@ public class KakaoPay {
 			log.info("" + kakaoPayApprovalVO);
 
 			return kakaoPayApprovalVO;
+
+		} catch (RestClientException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+	
+	public KakaoPayCancelVO kakaoPayCancel(PetSitting_P002_VO reserved_info) {
+
+		RestTemplate restTemplate = new RestTemplate();
+
+		// 서버로 요청할 Header
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Authorization", "KakaoAK " + "b4064e8fcc9c7b07fa3ca3d1b1c628d2");
+		headers.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
+		headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8");
+
+		// 서버로 요청할 Body
+		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
+		params.add("cid", "TC0ONETIME");			// 가맹점 코드
+		params.add("tid", reserved_info.getTid());						// 주문 번호 YYYYMMDDHH
+		params.add("cancel_amount", reserved_info.getTotal_amount());	// 총 금액
+		params.add("cancel_tax_free_amount", "0"); // 비과세 금액
+		
+		params.add("approval_url", "http://localhost:8099/petsitting/p002/kakaoPaySuccess"); // 결제 성공 시 리다이렉트
+		params.add("cancel_url", "http://localhost:8099/petsitting/p002/kakaoPayCancel"); // 결제 취소 시 리다이렉트
+		params.add("fail_url", "http://localhost:8099/kakaoPaySuccessFail"); // 결제 실패 시 리다이렉트
+		
+		//params.add("approval_url", "https://www.dingpet.shop/petsitting/p002/kakaoPaySuccess"); // 결제 성공 시 리다이렉트
+		//params.add("cancel_url", "https://www.dingpet.shop/kakaoPayCancel"); // 결제 취소 시 리다이렉트
+		//params.add("fail_url", "https://www.dingpet.shop/kakaoPaySuccessFail"); // 결제 실패 시 리다이렉트
+		
+		HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
+
+		try {
+			kakaoPayCancelVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/cancel"), body,
+					KakaoPayCancelVO.class);
+
+			log.info("" + kakaoPayCancelVO);
+
+			return kakaoPayCancelVO;
 
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block

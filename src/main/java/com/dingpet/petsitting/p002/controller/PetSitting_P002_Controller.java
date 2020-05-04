@@ -14,4 +14,6 @@ public interface PetSitting_P002_Controller {
 	public void kakaoPaySuccess(String pg_token,HttpServletRequest request, Model model);
 	
 	public void reservationlist(HttpServletRequest request, Model model, PetSitting_P002_VO reserved);
+
+	public String reservationicancel(Model model, PetSitting_P002_VO reserved);
 }

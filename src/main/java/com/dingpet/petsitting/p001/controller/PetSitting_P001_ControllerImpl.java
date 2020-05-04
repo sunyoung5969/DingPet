@@ -74,8 +74,8 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 
 //---------------------------	사진 업로드 데이터 처리	---------------------------
 			
-			//String uploadFolder = "/var/lib/tomcat8/webapps/img";
-			String uploadFolder = "C:\\test\\pic";
+			String uploadFolder = "/var/lib/tomcat8/webapps/img";
+			//String uploadFolder = "C:\\test\\pic";
 			
 			String fileName = "";
 			
@@ -197,7 +197,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 
 //---------------------------------------------------------------------------
 	
-		return "/petsitting/p001/profilelist";
+		return "redirect: /petsitting/p001/profilelist";
 	}	
 	
 	

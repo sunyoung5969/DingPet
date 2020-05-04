@@ -209,7 +209,6 @@ function numberWithCommas(x){
 //---------------------------------------------------------------------------------
 
 // 예약 결제 팝업
-
 function reservation_Payment(){
 	
 	var popupX = (window.screen.width/2) - 250;

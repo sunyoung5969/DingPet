@@ -14,6 +14,7 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import com.dingpet.petsitting.p002.mapper.PetSitting_P002_Mapper;
+import com.dingpet.petsitting.p002.vo.KakaoPayCancelVO;
 import com.dingpet.petsitting.p002.vo.KakaoPayReadyVO;
 import com.dingpet.petsitting.p002.vo.PetSitting_P002_VO;
 
@@ -49,6 +50,18 @@ public class PetSitting_P002_ServiceImple implements PetSitting_P002_Service{
 	public List<PetSitting_P002_VO> reservedCustList(PetSitting_P002_VO vo) {
 		// TODO Auto-generated method stub
 		return mapper.reservedSitterList(vo);
+	}
+
+	@Override
+	public PetSitting_P002_VO getReservedInfo(PetSitting_P002_VO vo) {
+		// TODO Auto-generated method stub
+		return mapper.getReservedInfo(vo);
+	}
+
+	@Override
+	public void deleteReserved(PetSitting_P002_VO vo) {
+		// TODO Auto-generated method stub
+		mapper.deleteReserved(vo);
 	}
 
 }

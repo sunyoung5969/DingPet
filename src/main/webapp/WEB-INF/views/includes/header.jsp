@@ -26,11 +26,17 @@
     <!--css 추가-->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
     
-    <link rel="stylesheet" type="text/css" href="https://assets.mypetlife.co.kr/map/wp-content/themes/listify/css/style.min.css">
+	<link rel="stylesheet" type="text/css" href="https://assets.mypetlife.co.kr/map/wp-content/themes/listify/css/style.min.css?v=3"> 
 	
 	<!-- Font Awesome 아이콘 -->
 	<script src="https://kit.fontawesome.com/790887e3ce.js" crossorigin="anonymous"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+	<style>
+		.container{
+			padding : 0px 15px !important;
+		}
+	</style>
 	
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300" id="home-section">

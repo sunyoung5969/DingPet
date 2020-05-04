@@ -16,6 +16,7 @@ import com.dingpet.customers.p001.vo.Customers_P001_VO;
 import com.dingpet.petsitting.p002.service.KakaoPay;
 import com.dingpet.petsitting.p002.service.PetSitting_P002_Service;
 import com.dingpet.petsitting.p002.vo.KakaoPayApprovalVO;
+import com.dingpet.petsitting.p002.vo.KakaoPayCancelVO;
 import com.dingpet.petsitting.p002.vo.PetSitting_P002_VO;
 
 import lombok.AllArgsConstructor;
@@ -88,13 +89,30 @@ public class PetSitting_P002_ControllerImpl implements PetSitting_P002_Controlle
         reserved.setPayment_Date(date);
         reserved.setVat(reserved_info.getAmount().getVat()); 	
         reserved.setItem_Name(reserved_info.getItem_name());
-       
+        reserved.setTid(reserved_info.getTid());
         session.removeAttribute("reinfo");
         
         service.reservationInsert(reserved);
         
         model.addAttribute("info", reserved);
-        
+	}
+    
+    @RequestMapping("kakaoPayCancel")
+	@Override
+	public String reservationicancel(Model model, PetSitting_P002_VO reserved) {
+		// TODO Auto-generated method stub
+		
+    	reserved = service.getReservedInfo(reserved);
+    	    	
+    	KakaoPayCancelVO cancelVO = kakaoPay.kakaoPayCancel(reserved);
+    	
+    	service.deleteReserved(reserved);
+
+    	System.out.println("삭제완료 ㅎㅎ");
+    	
+    	
+    	
+    	return "redirect: /petsitting/p002/reservationlist";
 	}
 
     @RequestMapping("reservationlist")
@@ -102,16 +120,19 @@ public class PetSitting_P002_ControllerImpl implements PetSitting_P002_Controlle
 	public void reservationlist(HttpServletRequest request, Model model, PetSitting_P002_VO reserved) {
 		// TODO Auto-generated method stub
     	
-    	
     	HttpSession session = request.getSession();
     	Customers_P001_VO user_id = (Customers_P001_VO)session.getAttribute("customers");
     	reserved.setMember_ID(user_id.getMember_id());
+    	
+    	System.out.println(reserved);
+    	
 		// 고객이 예약한 예약리스트
 		model.addAttribute("mySitterList", service.reservedSitterList(reserved));
-    	
+    	System.out.println("뭐나오냐?" +service.reservedSitterList(reserved));
 		//시터가 예약받은 예약리스트
     	model.addAttribute("myCustList", service.reservedCustList(reserved));
     	
 	}
+ 
     
 }

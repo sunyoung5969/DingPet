@@ -183,6 +183,7 @@
 			var savestr ="<div class='closed--savedDiv'>";
 			var jsonstr = '{"closed":[';
 			
+			
 			this.closed.sort();
 			
 			for(var i = 0; i < (this.closed).length; i++){
