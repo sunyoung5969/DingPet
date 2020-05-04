@@ -1,11 +1,8 @@
 package com.dingpet.petsitting.p002.mapper;
 
-<<<<<<< HEAD
 import java.util.List;
 
 import com.dingpet.petsitting.p002.vo.KakaoPayCancelVO;
-=======
->>>>>>> refs/remotes/origin/master
 import com.dingpet.petsitting.p002.vo.PetSitting_P002_VO;
 
 public interface PetSitting_P002_Mapper {
@@ -15,7 +12,6 @@ public interface PetSitting_P002_Mapper {
 
 	// 예약 정보 삽입 INSERT
 	public void reservationInsert(PetSitting_P002_VO reserved);
-<<<<<<< HEAD
 	
 	// 예약 정보 가져오기 SELECT
 	public PetSitting_P002_VO getReservedInfo(PetSitting_P002_VO vo);
@@ -29,6 +25,4 @@ public interface PetSitting_P002_Mapper {
 	// 예약 삭제 DELETE
 	public void deleteReserved(PetSitting_P002_VO vo);
 
-=======
->>>>>>> refs/remotes/origin/master
 }

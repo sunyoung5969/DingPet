@@ -27,6 +27,7 @@
 				<a href="/facilitymap/p001/facilityMap">시설 지도</a>
 				<a href="/facilitymap/p001/register">시설 신규 등록</a>
 				<a href="/facilitymap/p001/infopage?place_num=1">시설 상세정보</a>
+				<a href="/chat/chatpage"> 채팅 하기 </a>
 			</div>
 			
           </div>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.dingpet.customers.p001.vo.Customers_P001_VO;
 import com.dingpet.petsitting.p002.service.KakaoPay;
 import com.dingpet.petsitting.p002.service.PetSitting_P002_Service;
 import com.dingpet.petsitting.p002.vo.KakaoPayApprovalVO;
@@ -114,7 +115,6 @@ public class PetSitting_P002_ControllerImpl implements PetSitting_P002_Controlle
     	return "redirect: /petsitting/p002/reservationlist";
 	}
 
-<<<<<<< HEAD
     @RequestMapping("reservationlist")
 	@Override
 	public void reservationlist(HttpServletRequest request, Model model, PetSitting_P002_VO reserved) {
@@ -135,6 +135,4 @@ public class PetSitting_P002_ControllerImpl implements PetSitting_P002_Controlle
 	}
  
     
-=======
->>>>>>> refs/remotes/origin/master
 }

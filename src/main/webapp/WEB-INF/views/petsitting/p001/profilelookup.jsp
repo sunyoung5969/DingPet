@@ -5,7 +5,7 @@
 <%@include file="../../includes/header.jsp"%>
 
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/profilelookup.css?v=8">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/profilelookup.css?v=3">
 
 <!--====  str of contents  ====-->
     <section style="padding-top:87px">
@@ -19,7 +19,7 @@
 							<img class="profileIMG-reservation" alt="Circle Image" src="/resources/images/dogger_img_big_1.jpg">
 						</div>
 						<!-- 프로필 자기소개 한줄 -->
-						<div class="profile_h6Div-reservation" align="center">                       		
+						<div class="profile_h6Div-reservation" align="center">
 							<h6 class="profile_h6-reservation">${profile.profile_Content }</h6>
 						</div>
 						<div>
@@ -271,7 +271,7 @@
                                 </div>
                                 <div class="name text-center">
                                     <h4 class="title">${profile.member_NickName }</h4>
-                                    <h6>PetSitter</h6>
+                                    <h6>한줄소개</h6>
                                 </div>
                            </div>
                         </div>
@@ -692,7 +692,7 @@
     <!--====  end of contents  ====-->
 
 
-<script src="${pageContext.request.contextPath}/resources/js/profilelookup.js?v=10"></script>
+<script src="${pageContext.request.contextPath}/resources/js/profilelookup.js?v=13"></script>
 
 <script>timeClick.apm('default')</script>
 <script>calendar.calendarYearMonth()</script>

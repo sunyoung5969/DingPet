@@ -2,14 +2,14 @@ package com.dingpet.facilitymap.p001.service;
 
 import java.util.List;
 
+import com.dingpet.facilitymap.p001.dto.ReplyPageDTO;
 import com.dingpet.facilitymap.p001.vo.Criteria;
 import com.dingpet.facilitymap.p001.vo.FacilityMap_P001_ReplyVO;
 
 public interface FacilityMap_Reply_Service {
-	// 시설 리뷰 등록 
-	public void reviewregister(FacilityMap_P001_ReplyVO vo);
+	
 	// 댓글 작성
-	//public int write(FacilityMap_P001_ReplyVO reply_vo) ;
+	public int write(FacilityMap_P001_ReplyVO reply_vo) ;
 	// 댓글 조회
 	public FacilityMap_P001_ReplyVO view(String review_id);
 	// 댓글 삭제
@@ -18,5 +18,6 @@ public interface FacilityMap_Reply_Service {
 	public int modify(FacilityMap_P001_ReplyVO reply_vo) ;
 	// 댓글 목록
 	public List<FacilityMap_P001_ReplyVO> list(Criteria cri, String site_id);
-
+	// 댓글 목록 페이징 리스트 
+	public ReplyPageDTO getListPage(Criteria cri, String site_id);
 }
