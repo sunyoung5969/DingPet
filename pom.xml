@@ -14,8 +14,8 @@
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
+	
 	<dependencies>
-
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -52,11 +52,7 @@
 			<artifactId>spring-tx</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-websocket</artifactId>
-			<version>4.1.1.RELEASE</version>
-      	</dependency>
+
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
@@ -87,7 +83,7 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.bgee.log4jdbc-log4j2</groupId>
 			<artifactId>log4jdbc-log4j2-jdbc4</artifactId>
@@ -180,13 +176,6 @@
 		</dependency>
 
 		<!-- Servlet에서 JSON데이터 사용시 필요 -->
-		<!-- https://mvnrepository.com/artifact/org.json/json -->
-		<dependency>
-		    <groupId>org.json</groupId>
-		    <artifactId>json</artifactId>
-		    <version>20190722</version>
-		</dependency>
-				
 		<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
 		<dependency>
 			<groupId>com.googlecode.json-simple</groupId>
@@ -199,21 +188,18 @@
 			<version>1.4</version>
 		</dependency>
 
-		<!-- 이메일 전송 -->
 		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>mail</artifactId>
-			<version>1.4.7</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>5.2.5.RELEASE</version>
 		</dependency>
+		
 		<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-context-support</artifactId>
-		<version>${org.springframework-version}</version>
-		</dependency>
-	
-
+          <groupId>org.json</groupId>
+          <artifactId>json</artifactId>
+          <version>20190722</version>
+      </dependency>
 	</dependencies>
-
 
 	<build>
 		<plugins>

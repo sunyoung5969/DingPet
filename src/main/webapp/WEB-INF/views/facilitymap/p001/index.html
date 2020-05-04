@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rater Js Example</title>
+</head>
+<body>
+ 
+<h1>Rater Js Example</h1> 
+<a href="https://fredolss.github.io/rater-js/">Back to home page</a>
+<h2>Basic 5 star rater</h2>
+
+<div id="rater"></div>
+
+<pre>
+    <code>
+    {
+        starSize:32,
+        element:document.querySelector("#rater"),
+        rateCallback:function rateCallback(rating, done) {
+            this.setRating(rating); 
+            done(); 
+        }
+    }
+</code>
+</pre>
+
+
+<script src="../index.js?v=2"></script>
+<script src="index.js?v=2"></script>
+</body>
+</html>

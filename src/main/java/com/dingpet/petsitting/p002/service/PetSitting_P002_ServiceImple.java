@@ -2,7 +2,6 @@ package com.dingpet.petsitting.p002.service;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -40,6 +39,7 @@ public class PetSitting_P002_ServiceImple implements PetSitting_P002_Service{
 		mapper.reservationInsert(reserved);
 	}
 
+<<<<<<< HEAD
 	@Override
 	public List<PetSitting_P002_VO> reservedSitterList(PetSitting_P002_VO vo) {
 		// TODO Auto-generated method stub
@@ -64,4 +64,6 @@ public class PetSitting_P002_ServiceImple implements PetSitting_P002_Service{
 		mapper.deleteReserved(vo);
 	}
 
+=======
+>>>>>>> refs/remotes/origin/master
 }

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@include file="../../includes/header.jsp"%>
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 
@@ -10,18 +9,16 @@
 
     <!--====  str of contents  ====-->
     <section style="padding-top:87px">
-        <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); 
-        	transform: translate3d(0px, 0px, 0px);"></div>
+        <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); transform: translate3d(0px, 0px, 0px);">
+       		<div class="floating_text pt-5 pb-5  mt-5 text-center heading-section m-auto">
+                  	<h1 class="mb-2 color_white">임시보호 견 상세 정보</h1>
+           	</div>	
+        </div>
         <div class="main main-raised">
             <div class="profile-content">
-                <div class="container">
-                    <div class="row justify-content-center pt-5 pb-5" data-aos="fade-up">
-                        <div class="text-center heading-section">
-                          <h2 class="text-black mb-2">임시보호견 상세 정보</h2>
-                        </div>
-                    </div>
+                <div class="container w-75">
                     <!-- 제목, 작성자, 작성일시-->
-                    <div class="ml-3 mr-3 mt-3 align-self-center pb-3">
+                    <div class="ml-3 mr-3 pt-5 align-self-center pb-3">
 	                	<h2 class = "mb-2 color_blue" ><c:out  value = "${board.title}"/></h2>
 	                    <div class = "top_info">
 		    	            <span><strong><c:out value = "${board.member_id}"/></strong></span>
@@ -36,51 +33,72 @@
                             </div>
                         </div>
                         <div class="col-lg-7 col-md-6 align-self-center">
-                            <aside class="nav-tabs">
-                            	<div class="mt-1 color_blue pt-3 pb-3"><strong>강아지 이름</strong> </div>
-                                <div class="ml-2 pb-3">
-                                    <span class="h6"><c:out  value = "${board.dog_name}"/></span>
-                                </div>
-                            </aside>
-                            <aside class="nav-tabs">
-		                    	<div class="mt-1 color_blue pt-3 pb-3"><strong>견종</strong> </div>
-		                        <div class="ml-2 pb-3">
-		                            <span class="h6"><c:out  value = "${board.dog_breed}"/></span>
-		                        </div>
-		                    </aside>
-                            <aside class="nav-tabs">
-		                    	<div class="mt-1 color_blue pt-3 pb-3"><strong>성별</strong> </div>
-		                        <div class="ml-2 pb-3">
-		                            <span class="h6"><c:out  value = "${board.dog_sex}"/></span>
-		                        </div>
-		                    </aside>
-                            <aside class="nav-tabs">
-		                    	<div class=" mt-1 color_blue pt-3 pb-3"><strong>크기</strong> </div>
-		                        <div class="ml-2 pb-3">
-		                            <span class="h6"><c:out  value = "${board.dog_size}"/></span>
-		                        </div>
-		                    </aside>
+                  
+                            <div class = "flex_row">
+	                            <div class="nav-tabs d-inline-block w-50">
+	                            	<div class="mt-1 color_blue pt-3 pb-3"><strong>이름</strong> </div>
+	                                <div class="pl-3 pb-3">
+	                                    <span class="h6"><c:out  value = "${board.dog_name}"/></span>
+	                                </div>
+	                            </div>
+	                            <div class="nav-tabs d-inline-block w-50">
+			                    	<div class="mt-1 color_blue pt-3 pb-3"><strong>견종</strong> </div>
+			                        <div class="pl-3 pb-3">
+			                            <span class="h6"><c:out  value = "${board.dog_breed}"/></span>
+			                        </div>
+			                    </div>
+			                </div>
+
+			                <div class = "flex_row">
+	                            <div class="nav-tabs d-inline-block w-50">
+			                    	<div class="mt-1 color_blue pt-3 pb-3"><strong>성별</strong> </div>
+			                        <div class="pl-3 pb-3">
+			                            <span class="h6"><c:out  value = "${board.dog_sex}"/></span>
+			                        </div>
+			                    </div>
+	                            <div class="nav-tabs d-inline-block w-50">
+			                    	<div class=" mt-1 color_blue pt-3 pb-3"><strong>크기</strong> </div>
+			                        <div class="pl-3 pb-3">
+			                            <span class="h6"><c:out  value = "${board.dog_size}"/></span>
+			                        </div>
+			                    </div>
+		                    </div>
+		                    
+		                    <div class = "flex_row">
+	                            <div class="nav-tabs d-inline-block w-50">
+	                            	<div class=" mt-1 color_blue pt-3 pb-3"><strong>발견일시</strong> </div>
+	                                <div class="pl-3 pb-3">
+	                                    <span class="h6"><c:out  value = "${board.found_date}"/></span>
+	                                </div>
+	                            </div>
+	                            <div class="nav-tabs d-inline-block w-50">
+	                            	<div class=" mt-1 color_blue pt-3 pb-3"><strong>발견장소</strong> </div>
+	                                <div class="pl-3 pb-3">
+	                                    <span class="h6"><c:out  value = "${board.found_location}"/></span>
+	                                </div>
+	                            </div>
+                            </div>
                             <aside class="nav-tabs">
 		                    	<div class=" mt-1 color_blue pt-3 pb-3"><strong>특이사항</strong> </div>
 		                        <div class="ml-2 pb-3">
 		                            <span class="h6"><c:out  value = "${board.dog_note}"/></span>
 		                        </div>
 		                    </aside>
-                            <aside class="nav-tabs">
-                            	<div class=" mt-1 color_blue pt-3 pb-3"><strong>발견일시</strong> </div>
-                                <div class="ml-2 pb-3">
-                                    <span class="h6"><c:out  value = "${board.found_date}"/></span>
-                                </div>
-                            </aside>
-                            <aside class="nav-tabs">
-                            	<div class=" mt-1 color_blue pt-3 pb-3"><strong>발견장소</strong> </div>
-                                <div class="ml-2 pb-3">
-                                    <span class="h6"><c:out  value = "${board.found_location}"/></span>
-                                </div>
-                            </aside>
-                            
+		                    <div class = "flex_row_around pt-3">
+	                            <button class = "btn btn-primary">문의하기</button>
+    	                        <button id = "confirmation_request"class = "btn btn-primary ">확인 요청</button>
+		                    </div>
                         </div>
                     </div>
+                    
+                    <script>
+                    	var wsocket;
+                    	
+                    	$(document).ready(function(){
+                    		$("#confirmation_request").on('click', function(){
+                    		})
+                    	});
+                    </script>
                     
                     <section class="nav-tabs">
                     	<div class="ml-2 mt-1 color_blue pt-3 pb-3"><strong>내용</strong> </div>

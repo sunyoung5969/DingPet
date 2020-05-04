@@ -4,8 +4,13 @@
 	color : #088cf3;
 }
 
-.to_center{
-	align-content: center;
+.color_white{
+	color: #F9F9F9;
+}
+
+.floating_text{
+	display : relative;
+	z-index: 1;
 }
 
 .text_left{
@@ -67,6 +72,13 @@
 	display : flex;
 	flex-direction: row;
 	justify-content : center;
+	align-items : center;
+}
+
+.flex_row_around{
+	display : flex;
+	flex-direction: row;
+	justify-content : space-around;
 	align-items : center;
 }
 
@@ -181,6 +193,7 @@
 
 .nav-link:hover, .nav-link:focus {
 	text-decoration: none;
+	outline: none;
 }
 
 .nav-link.disabled {
@@ -520,3 +533,4 @@ nav>div a.nav-item.nav-link:hover {
  	height: 1px; 
   	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(8, 140, 243, 0.5), rgba(0, 0, 0, 0));
 }
+

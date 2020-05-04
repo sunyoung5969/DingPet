@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
-<%@include file="./includes/header.jsp"%>
+
 <div class="content-wrapper" style="min-height: 901px;">
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
@@ -36,7 +36,7 @@
 				<!-- DIRECT CHAT WARNING -->
 				<div class="box box-warning direct-chat direct-chat-warning">
 					<div class="box-header with-border">
-						<h3 class="box-title">Direct Chat</h3>
+						<h3 class="box-title chatTitle"></h3>
 					</div>
 					<!-- /.box-header -->
 					<div class="box-body">
@@ -130,14 +130,9 @@
 				</div>
 				<div class="modal-footer modalBtnContainer-modifyEvent">
 					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-					<button type="button" class="btn btn-danger" id="delete-chat">채팅방삭제</button>
-					<button type="button" class="btn btn-info" id="update-chat">채팅방수정</button>
-					<button type="button" class="btn btn-warning enter-chat">채팅하기</button>
-				</div>
-				<div class="modal-footer modalBtnContainer-enterEvent">
-					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 					<button type="button" class="btn btn-danger" id="exit-chat">채팅방 나가기</button>
-					<button type="button" class="btn btn-warning enter-chat">채팅하기</button>
+					<button type="button" class="btn btn-info" id="update-chat">채팅방 이름변경</button>
+					<button type="button" class="btn btn-warning" id="enter-chat">채팅하기</button>
 				</div>
 				<!-- /.modal-footer -->
 			</div>
@@ -149,18 +144,17 @@
 	
 </div>
 <!-- /.content-wrapper -->
-<%@include file="./includes/footer.jsp"%>
+
 <link href='${contextPath}/resources/css/rice_chatcss.css' rel='stylesheet' />
 
-<script src="${contextPath}/resources/api/js/moment.min.js"></script>
-<script src="${contextPath}/resources/api/js/sockjs-0.3.4.js"></script>
+
+<script src="${contextPath}/resources/js/sockjs-0.3.4.js"></script>
 <script src="${contextPath}/resources/js/rice_chatjs.js"></script>
 <script type="text/javascript">
-	var wsocket;
-
 	$(document).ready(function() {	
 		setmemNum('${loginMem.memNum}');
 		setauthId('${loginMem.authId}');
+		setmemId('${loginMem.memId}')
 		
 		getFriendList(memNum, authId);	// 친구목록 가져오기 ajax
 		getChatroomList(memNum);		// 채팅방 목록 가져오기 ajax
@@ -178,91 +172,5 @@
 // 		$('#exitBtn').click(function() { disconnect(); });
 	});
 	
-	// 채팅방 참여 버튼 event
-	btn_enterchat.click(function (e) {
-		if(wsocket == undefined || wsocket == null) { // 연결이 안되어 있을 경우에만 연결
-			connect();
-		} 
-	});
-		
-	function connect(target) {	// 연결 시키기 함수
-		alert(chatroomId);
-	
-		wsocket = new SockJS("/echo");
-		wsocket.onopen = onOpen;
-		wsocket.onmessage = onMessage;
-		wsocket.onclose = onClose;	
-	}
-	
-	function disconnect() {	// 연결 끊기 함수
-		wsocket.close();
-	}
-	
-	function onOpen(evt) {	// 연결됨
-		direct_chat_messages.html('');
-		var open_msg = {
-			type : 'register',
-			userid : '${loginMem.memNum}',
-			send_memNum : '',
-			send_name : '',
-			send_msg : '${loginMem.memName}' + "님이 입장했습니다",
-			send_time : moment().format('YYYY[-]MM[-]DD HH:mm')
-		}
-		wsocket.send(JSON.stringify(open_msg));
-	}
-	
-	function onClose(evt) {	// 끊어짐
-// 		var close_msg = {
-// 			type : 'close',
-// 			send_memNum : '',
-// 			send_name : '',
-// 			send_msg : "연결을 끊었습니다.",
-// 			send_time : moment().format('YYYY[-]MM[-]DD HH:mm')
-// 		}
-// 		appendMessage(JSON.stringify(close_msg));
-		console.log("연결 끊김");
-	}
-	
-	function onMessage(evt) {	// 받음
-		var data = evt.data;
-		appendMessage(data);
-		alert(data);
-	}
-	
-	function send() {		// 보냄
-		var send_msg = {
-			type : 'chat',
-			send_memNum : '${loginMem.memNum}',
-			send_name : '${loginMem.memName}',
-			send_msg : $("#message").val(),
-			send_time : moment().format('YYYY[-]MM[-]DD HH:mm'),
-			send_target : send_target
-		}
-		wsocket.send(JSON.stringify(send_msg));
-		$("#message").val("");
-	}
-	
-	function appendMessage(msg) {	// 받은 메시지 화면에 보여주기 function 
-		var obj = JSON.parse( msg );
-		
-		if(obj.send_memNum  == '${loginMem.memNum}') {
-			str = '<div class="direct-chat-msg right">'
-		} else {
-			str = '<div class="direct-chat-msg">'
-		}
-		str += '<div class="direct-chat-info clearfix">'
-				+ '<span class="direct-chat-name pull-left">'
-				+ obj.send_name + '</span>'
-				+'<span class="direct-chat-timestamp pull-right">'
-				+ obj.send_time + '</span></div>'
-				+ '<div class="direct-chat-text">'
-				+ obj.send_msg
-				+ '</div></div>';
-			
-		var direct_chat_messages = $(".direct-chat-messages");
-		direct_chat_messages.append(str);
-		direct_chat_messages.scrollTop(direct_chat_messages[0].scrollHeight);
-	}
-
 </script>
 </html>

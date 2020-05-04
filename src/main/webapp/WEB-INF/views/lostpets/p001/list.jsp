@@ -12,11 +12,16 @@
 
 <!--====  str of contents  ====-->
 <section style="padding-top:87px">
-    <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); transform: translate3d(0px, 0px, 0px);"></div>
+    <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); transform: translate3d(0px, 0px, 0px);">
+    	<div class="floating_text pt-5 pb-5  mt-5 text-center heading-section m-auto">
+                  	<h1 class="mb-2 color_white">유기견 찾기</h1>
+                 </div>
+    </div>
         <div class="main main-raised">
 		<div class="row ">
 			<!-- 페이지 정보 div -->
 			<div class="col-xs-12 features">
+				 <!-- 
 				 <div class="pt-5 pb-5  mt-5 text-center heading-section">
                   	<h2 class="text-black mb-2">유기견 찾기</h2>
                  </div>
