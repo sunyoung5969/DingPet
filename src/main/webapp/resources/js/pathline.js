@@ -46,8 +46,8 @@ function pathLine(){
 	// 선을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 선을 표시합니다
 	var linePath = new Array();
 	
-	for(var i=0; i<jsonparse.count; i++){
-		linePath.push(new kakao.maps.LatLng(jsonparse['location_'+i].lat, jsonparse['location_'+i].lit));
+	for(var j=0; j<jsonparse.count; j++){
+		linePath.push(new kakao.maps.LatLng(jsonparse['location_'+j].lat, jsonparse['location_'+j].lit));
 	}
 
 	console.log(linePath)

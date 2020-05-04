@@ -368,10 +368,13 @@
 											종료시 등록을 하지않으면 산책경로가 저장되지 않습니다.
 										</em>
 									</p>
-									<script src="${pageContext.request.contextPath}/resources/js/mapPoint.js?v=7" type="text/javascript"></script>
+									<script src="${pageContext.request.contextPath}/resources/js/mapPoint.js?v=18" type="text/javascript"></script>
 								</div>
 							</div>
 						</div>	
+						<input type="hidden" id="latitude">
+						<input type="hidden" id="longitude">
+
 					<form action="/petsitting/p003/walklogregister" method="post" enctype="multipart/form-data">
 						<input type="hidden" class="start_Time" name="start_Time">
 						<input type="hidden" class="end_Time" name="end_Time">

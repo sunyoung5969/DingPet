@@ -256,7 +256,7 @@
         </div>
       </section>
       
-	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=120117830cb36f64bd2dd6f74cd41ec0&libraries=services"></script>
+	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=78d603c9ceea19aeba68479415b917d4"></script>
    	<script src="${pageContext.request.contextPath}/resources/js/pathline.js?v=11"></script>
 	<script>pathLine()</script>
 	

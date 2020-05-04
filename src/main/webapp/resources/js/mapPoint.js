@@ -24,15 +24,14 @@
 		     level:3
 		     };
 	var map;
-	var walkLocation = {};
 	var routeLocation = new Array();
 
 		
 	function findLocation() {
 		navigator.geolocation.getCurrentPosition(function(pos) {
 			console.log("현위치");
-			$('#latitude').html(pos.coords.latitude);     // 위도
-            $('#longitude').html(pos.coords.longitude); // 경도
+			$('#latitude').val(pos.coords.latitude);     // 위도
+            $('#longitude').val(pos.coords.longitude); // 경도
             lat = pos.coords.latitude;
             lit = pos.coords.longitude;
             latlng =  new kakao.maps.LatLng(lat,lit);
@@ -104,9 +103,9 @@
 			console.log("포지션====");
 			lat = position.coords.latitude;
 			lit = position.coords.longitude;
-			return lat, lit;
 			console.log("포_위도"+lat);
 			console.log("포_경도"+lit);
+			return lat, lit;
 			
 		}    // current End
 	
@@ -307,11 +306,24 @@
 		}
 	
 	function btnTest2() {
+			var walkLocation = {};
+			var index = 0;
 		    latlng = new kakao.maps.LatLng(lat, lit);
 		    console.log("실시간찍힘");
 			console.log(latlng);
 			var clickPosition = latlng;
-			
+		    
+		    walkLocation.lat = lat;
+		    walkLocation.lit = lit;
+		    
+		    console.log("디비에 넣을 데이터 = " + walkLocation.lat);
+		    console.log("디비에 넣을 데이터 = " + walkLocation.lit);
+
+		    routeLocation.push(walkLocation);
+			console.log("위도 경도 객체 ============== ");
+			console.log(walkLocation)
+			console.log("==========================")
+			console.log(routeLocation);
 		    // 지도 클릭이벤트가 발생했는데 선을 그리고있는 상태가 아니면
 		    if (!drawingFlag) {
 		
@@ -363,14 +375,7 @@
 		        var distance = Math.round(clickLine.getLength());
 		        displayCircleDot(clickPosition, distance);
 		    }
-		    
-		    walkLocation.lat = lat;
-		    walkLocation.lit = lit;
-		    
-		    console.log("디비에 넣을 데이터 = " + walkLocation.lat);
-		    console.log("디비에 넣을 데이터 = " + walkLocation.lit);
-		    
-		    routeLocation.push(walkLocation);
+
 			
 		}
 	
@@ -479,8 +484,6 @@
 		        // 상태를 false로, 그리지 않고 있는 상태로 변경합니다
 		        drawingFlag = false;          
 		    }  
-			navigator.geolocation.clearWatch(watchID);
-		    watchID = null;
 		    
 		    var date = new Date();
 			var endTime = '';
@@ -517,8 +520,8 @@
 			
 			var jsonstr = '{ ';
 			
-			for(var i=0; i<routeLocation.length; i++){
-				jsonstr += '"location_'+i+'" : { "lat" : "'+lat+'", "lit" : "'+lit+'" }, ';
+			for(var w=0; w<routeLocation.length; w++){
+				jsonstr += '"location_'+w+'" : { "lat" : "'+routeLocation[w].lat+'", "lit" : "'+routeLocation[w].lit+'" }, ';
 				count++;
 			}			
 			
@@ -532,7 +535,10 @@
 			$(".end_Time").val(endTime);
 			$(".locationJSON").val(jsonstr);
 			console.log("데이터 들어가니? "+$(".distance").val() +" "+$(".end_Time")+" "+$(".locationArr").val())
-		} // clearWatch End
+		
+			navigator.geolocation.clearWatch(watchID);
+		    watchID = null;
+	} // clearWatch End
 		
 		
 	// onError Callback receives a PositionError object    

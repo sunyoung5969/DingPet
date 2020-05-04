@@ -139,7 +139,7 @@
 								</form>
 							</div>
 	                    </div>
-	                   	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=120117830cb36f64bd2dd6f74cd41ec0&libraries=services"></script>
+	                   	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=78d603c9ceea19aeba68479415b917d4"></script>
 						
 						<div class="info-part1">
 							<div class="info-part1--contents" align="center">
@@ -173,7 +173,7 @@
 							function map (){
 
 							// ------------------------ 중심 좌표 구하기 ------------------------------
-
+								//var map = new Array();
 								var latArr = new Array();	// 위도 담을 배열
 								var litArr = new Array();	// 경도 담을 배열
 								var minLat = '';			// 위도 중 제일 작은 값
@@ -185,18 +185,20 @@
 								console.log(count)
 								var logID = '';
 								for(var i=0; i<count; i++){
-									
+									latArr = [];
+									litArr = [];
 									//console.log($(".locationJSON_"+i).val().toString())
 									var strJSON = $(".locationJSON_"+i).val();	// JSON 문자열 가져오기
 									var jsonOb = '';
 									
 									var jsonparse = JSON.parse(strJSON);		// JSON문자열 파싱
 									
-									jsonOb = jsonparse['location_'+i];		// JSON안의 객체 가져오기
-								
-									latArr.push(jsonOb.lat);				// 위도들 배열에 담기
-									litArr.push(jsonOb.lit);				// 경도들 배열에 담기
-								
+									for(var j=0; j<jsonparse.count; j++){
+										jsonOb = jsonparse['location_'+j];		// JSON안의 객체 가져오기
+									
+										latArr.push(jsonOb.lat);				// 위도들 배열에 담기
+										litArr.push(jsonOb.lit);				// 경도들 배열에 담기
+									}
 									latArr.sort();		// 정렬
 									litArr.sort();		// 정렬
 									
@@ -205,8 +207,8 @@
 									maxLat = latArr[latArr.length-1];
 									maxLit = litArr[litArr.length-1];
 									
-									var centerLat = minLat + ((maxLat - minLat) / 2);	// 위도 중심좌표 구하기
-									var centerLit = minLit + ((maxLit - minLit) / 2);	// 경도 중심좌표 구하기
+									var centerLat = parseFloat(minLat) + ((maxLat - minLat) / 2);	// 위도 중심좌표 구하기
+									var centerLit = parseFloat(minLit) + ((maxLit - minLit) / 2);	// 경도 중심좌표 구하기
 
 								// ---------------------------------------------------------------------									
 									
@@ -215,6 +217,10 @@
 						      		console.log(logID);
 							  		var mapContainer = document.getElementById("map_"+i) // 지도를 표시할 div
 							  		console.log("맵컨테이너" + mapContainer)
+							  		//centerLat *= 1;
+							  		//centerLit *= 1;
+							  		console.log("센터값 머들어가 = "+centerLat)
+							  		console.log("센터값 머들어가 = "+centerLit)
 							  		mapOption = {
 							  		center : new kakao.maps.LatLng(centerLat, centerLit), // 지도의 중심좌표
 							  		level : 5		// 지도의 확대 레벨
@@ -225,8 +231,8 @@
 							  		// 선을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 선을 표시합니다
 							  		var linePath = new Array();
 							  		
-							  		for(var j=0; j<jsonparse.count; j++){
-							  			linePath.push(new kakao.maps.LatLng(jsonparse['location_'+j].lat, jsonparse['location_'+j].lit));
+							  		for(var k=0; k<jsonparse.count; k++){
+							  			linePath.push(new kakao.maps.LatLng(jsonparse['location_'+k].lat, jsonparse['location_'+k].lit));
 							  		}
 
 							  		console.log(linePath)
