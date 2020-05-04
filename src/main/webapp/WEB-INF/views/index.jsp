@@ -21,6 +21,8 @@
 					<h3>${customers.member_nickname}님 어서오세요!</h3>
 				</c:when>
 				</c:choose>
+				<a href="/customers/p001/signin">로그인</a>
+				<a href="/petsitting/p002/reservationlist">예약리스트</a>
 				<a href="/customers/p005/message">메시지</a>
 				<a href="/petsitting/p001/profilelist">펫시터</a>
 				<a href="/facilitymap/p001/mylocation">산책하기</a>
