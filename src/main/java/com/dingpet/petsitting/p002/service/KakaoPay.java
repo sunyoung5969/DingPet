@@ -3,9 +3,6 @@ package com.dingpet.petsitting.p002.service;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -20,7 +17,6 @@ import com.dingpet.petsitting.p002.vo.KakaoPayCancelVO;
 import com.dingpet.petsitting.p002.vo.KakaoPayReadyVO;
 import com.dingpet.petsitting.p002.vo.PetSitting_P002_VO;
 
-import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 @Log4j

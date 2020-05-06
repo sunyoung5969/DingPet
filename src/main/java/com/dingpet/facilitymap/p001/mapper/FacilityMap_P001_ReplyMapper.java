@@ -4,10 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.dingpet.facilitymap.p001.dto.PlaceDTO;
 import com.dingpet.facilitymap.p001.vo.Criteria;
 import com.dingpet.facilitymap.p001.vo.FacilityMap_P001_ReplyVO;
-import com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO;
 
 public interface FacilityMap_P001_ReplyMapper {
 	

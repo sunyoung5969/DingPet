@@ -1,4 +1,4 @@
-package com.dingpet.common.chat.vo;
+package com.dingpet.chat.p001.vo;
 
 import lombok.Builder;
 import lombok.Data;

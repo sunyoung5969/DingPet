@@ -1,7 +1,5 @@
 package com.dingpet.customers.p001.service;
 
-import javax.servlet.http.HttpSession;
-
 import com.dingpet.customers.p001.vo.Customers_P001_VO;
 
 public interface Customers_P001_Service {

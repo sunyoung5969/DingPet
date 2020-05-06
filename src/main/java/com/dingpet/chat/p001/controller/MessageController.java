@@ -1,16 +1,15 @@
-package com.dingpet.common.chat.controller;
+package com.dingpet.chat.p001.controller;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dingpet.common.chat.vo.Message;
+import com.dingpet.chat.p001.vo.Message;
 
 
 

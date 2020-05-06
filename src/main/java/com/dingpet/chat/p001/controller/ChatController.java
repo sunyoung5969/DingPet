@@ -1,11 +1,13 @@
-package com.dingpet.common.chat.controller;
+package com.dingpet.chat.p001.controller;
 
 import java.security.Principal;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,13 +20,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.dingpet.common.chat.service.ChatService;
-import com.dingpet.common.chat.vo.ChatRoom;
-import com.dingpet.common.chat.vo.Criteria;
-import com.dingpet.common.chat.vo.PageMaker;
+import com.dingpet.chat.p001.service.ChatService;
+import com.dingpet.chat.p001.vo.ChatRoom;
+import com.dingpet.chat.p001.vo.Criteria;
+import com.dingpet.chat.p001.vo.PageMaker;
 import com.dingpet.customers.p001.service.Customers_P001_Service;
+import com.dingpet.customers.p001.vo.Customers_P001_VO;
 
 import lombok.extern.log4j.Log4j;
+import sun.tools.serialver.resources.serialver;
 
 @Log4j
 @RequestMapping("/chat/*")
@@ -58,14 +62,14 @@ public class ChatController {
 		return resultMap;
 	}
 	@RequestMapping(value = "createRoom", method = RequestMethod.POST) // 방 만들 때
-	public String createRoomPost(ChatRoom room, Criteria cri, Principal princ) throws Exception {
+	public String createRoomPost(ChatRoom room, Criteria cri, HttpServletRequest request, Model model ) throws Exception {
 		logger.info("-------------------------------->>>>>>>>>>>>>>>>>>>>>>>" + room);
-
-		room.setOwner(princ.getName());
-		room.setRoomMember(princ.getName());
+		room.setRoomType(room.getRoomPw() == "" || room.getRoomPw() == null? "Normal" : "Secret");
 		
+		model.addAttribute("owner", room.getRoom_owner());
 		chatService.createRoom(room); // db에 방 넣어줌
 		// 알아서 페이지값이 들어옴
+		
 		return	"redirect:/chat/enterRoom";
 			
 	}
@@ -96,28 +100,30 @@ public class ChatController {
 //	RoomL
 
 
-	@RequestMapping(value = "enterRoom", method =RequestMethod.GET) // 방 들어갈 때, createRoom후에 url 바꾸기 위해 만듦
-	public String chat(Principal princ, Model model, Criteria cri) throws Exception {
+	@RequestMapping(value = "enterRoom", method = {RequestMethod.GET}) // 방 들어갈 때, createRoom후에 url 바꾸기 위해 만듦
+	public String chat(HttpServletRequest request, HttpSession session, Model model, Criteria cri) throws Exception {
 		// 방에 멤버 추가해줌
-		
-		ChatRoom room2 = chatService.getRoomByOwner(princ.getName());
+		Customers_P001_VO sessionId = (Customers_P001_VO) session.getAttribute("customers");
+		System.out.println("세션id는 : "+sessionId.getMember_id());
+		ChatRoom room2 = chatService.getRoomByOwner(sessionId.getMember_id());
 		
 		model.addAttribute("room", room2);
 		model.addAttribute("cri", cri);
-		//model.addAttribute("member", userService.getUser(princ.getName()).getUserName());
+		
 		return "chat/room";
 	}
 //	
-	@RequestMapping(value = "enterRoom", method =RequestMethod.POST) // 방 들어갈 때, list에서 pick해서 들어갈 때
-	public String chat(int roomNo, Principal princ,ChatRoom room, Model model
+	@RequestMapping(value = "enterRoom", method = {RequestMethod.POST}) // 방 들어갈 때, list에서 pick해서 들어갈 때
+	public String chat(int roomNo, HttpServletRequest request, HttpSession session, ChatRoom room, Model model
 												, Criteria cri) throws Exception {
+		Customers_P001_VO sessionId = (Customers_P001_VO) session.getAttribute("customers");
 		// 방에 멤버 추가해줌
 		System.out.println(roomNo +""+ room + "---- -------");
-		
-		chatService.addMember(roomNo, princ.getName());
+		System.out.println(sessionId.getMember_id());
+		chatService.addMember(roomNo, sessionId.getMember_id());
 		model.addAttribute("cri", cri);
 		model.addAttribute("room", chatService.getRoom(roomNo));
-		//model.addAttribute("member", userService.getUser(princ.getName()).getUserName());
+		
 
 		return "chat/room";
 	}

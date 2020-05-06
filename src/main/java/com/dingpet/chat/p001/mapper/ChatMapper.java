@@ -1,10 +1,10 @@
-package com.dingpet.common.chat.mapper;
+package com.dingpet.chat.p001.mapper;
 
 import java.util.List;
 import java.util.Map;
 
-import com.dingpet.common.chat.vo.ChatRoom;
-import com.dingpet.common.chat.vo.Criteria;
+import com.dingpet.chat.p001.vo.ChatRoom;
+import com.dingpet.chat.p001.vo.Criteria;
 
 public interface ChatMapper {
 
@@ -16,7 +16,6 @@ public interface ChatMapper {
 	public ChatRoom getRoomByOwner(String owner) throws Exception;
 	public String getMembers(int roomNo) throws Exception;
 	public void addMember(Map<String, String> params) throws Exception;
-	public int updatePass(Map<String, String> params) throws Exception;
 	public String getOwner(int roomNo) throws Exception;
 	public void updateOwner(Map<String, String> params2)throws Exception;
 	public String getRoomType(int roomNo) throws Exception;

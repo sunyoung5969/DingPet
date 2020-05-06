@@ -1,17 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>{{room.roomName}}</title>
-<script src="/dist/sockjs.min.js"></script>
+<title>Chatting</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-<script type="text/javascript" src="/js/jquery-1.12.4.js"></script>
-<script type="text/javascript" src="/js/socket.js"></script>
-
-
+<script src="${pageContext.request.contextPath}/resources/dist/sockjs.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/chat_socket.js?v=<%=System.currentTimeMillis() %>" type="text/javascript"></script>
 
 
 <style>
@@ -225,10 +225,10 @@
    <div class="fix_btn">
 		<input type="text" id="msgi" name="msg" placeholder="메세지를 입력하세요" />
        <button type="button" class="send">보내기</button>
-       <button type="button" class="roomOut" value="${user.username}">방 나가기</button>
+       <button type="button" class="roomOut" value="${customers.member_id}">방 나가기</button>
        <input type="hidden" value="${cri.page}" id="page" name="page"/>
        <input type="hidden" value="${cri.perPageNum }" id="perPageNum" name="perPageNum"/>
-       <button type="button" class="btnPass" onclick="return isOwner(${room.roomNo}, '${user.username}')">방 수정하기</button>
+       <button type="button" class="btnPass" onclick="return isOwner(${room.roomNo}, '${customers.member_id}')">방 수정하기</button>
    </div>
 </div>
 </div>

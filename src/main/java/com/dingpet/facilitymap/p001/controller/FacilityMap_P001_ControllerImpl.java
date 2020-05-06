@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,6 +44,7 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 	}
 	
 	// 시설지도 페이지
+	@Override
 	@RequestMapping(value="/facilityMap", method = {RequestMethod.GET})
 	public void facilityMap(Model model) {
 		
@@ -121,6 +121,7 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 	} // CafeMap End
 	
 	// 시설지도 등록페이지 
+	@Override
 	@RequestMapping(value="/register", method = {RequestMethod.GET})
 	public void test(Model model) {
 		
@@ -128,6 +129,7 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 	}
 
 	// 시설지도 등록 Action
+	@Override
 	@RequestMapping(value="/register", method = {RequestMethod.POST})
 	public String registerAction(Model model, FacilityMap_P001_VO vo, MultipartHttpServletRequest uploadFile, RedirectAttributes rttr) {
 		log.info("========register 등록중====");
@@ -187,6 +189,7 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 		}
 		
 		// 상세페이지 리뷰 등록 Action
+		@Override
 		@RequestMapping(value= "/revregister", method = {RequestMethod.POST})
 		public String ReviewRegister (Model model, FacilityMap_P001_ReplyVO vo, MultipartHttpServletRequest uploadFile, RedirectAttributes rttr)  {
 			System.out.println("============Review write!!!!!");
@@ -237,6 +240,7 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 		} // ReviewRegister End
 		
 	// 시설지도 상세페이지 (병원,약국)
+	@Override
 	@RequestMapping("/infopage")
 	public void facilityinfo(@RequestParam("place_num") int place_num, Model model) {
 		System.out.println("==============  Map Info Page");

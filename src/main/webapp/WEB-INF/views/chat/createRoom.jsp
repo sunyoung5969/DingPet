@@ -143,23 +143,28 @@
 
 </style>
 <%-- <jsp:include page ="/WEB-INF/views/common/header.jsp" flush="false" />  --%>
-
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+var id = '${customers.member_id }';
+var name = '${customers.member_name }';
+console.log(id);
+console.log(name);
+</script>
 <div id="container2">
 <div class="wrap loginwrap">
 <h1 class="cre_tit">채팅방 생성</h1>
 <form method="post">
-   <input type='hidden' name='${customers.member_id }' value='${customers.member_id }' /> 
+   <input type='hidden' name='userId' value='${customers.member_id }' />
+   <input type='hidden' name='room_owner' value='${customers.member_id }' /> 
+   <input type='hidden' name='roomMember' value='${customers.member_name }' />
+   
    <input type="hidden" name='page' value='${cri.page }'/>
    <input type="hidden" name='perPageNum' value='${cri.perPageNum }'/>
    <div class="form">
       <div>
          <label class="lab">방 제목</label>
-         <input type="text" name="roomName" id="roomName" placeholder="방제를 설정하세요"/>
-      </div>
-      <div>
-         <label class="lab">비밀번호</label>
-         <input type="password" name="roomPw" id="roomPw" placeholder="비밀번호를 설정하세요"/>
-      </div>
+         <input type="text" name="roomName" id="roomName" placeholder="유저를 설정하세요"/>
+      </div>      
    </div>
    <div>
       <button type='submit' class="btn">방 만들기</button>

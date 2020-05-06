@@ -1,12 +1,11 @@
-package com.dingpet.common.chat.service;
+package com.dingpet.chat.p001.service;
 
 
-import java.util.HashMap;
-import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dingpet.common.chat.mapper.ChatMapper;
+import com.dingpet.chat.p001.mapper.ChatMapper;
+
 
 @Service
 public class AjaxService {

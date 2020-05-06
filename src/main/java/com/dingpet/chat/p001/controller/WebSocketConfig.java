@@ -1,4 +1,4 @@
-package com.dingpet.common.chat.controller;
+package com.dingpet.chat.p001.controller;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;

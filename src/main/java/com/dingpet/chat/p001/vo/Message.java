@@ -1,7 +1,4 @@
-package com.dingpet.common.chat.vo;
-
-import java.util.HashMap;
-import java.util.Map;
+package com.dingpet.chat.p001.vo;
 
 public class Message {
 	private String roomName;

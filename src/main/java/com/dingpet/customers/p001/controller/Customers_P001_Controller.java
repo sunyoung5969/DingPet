@@ -1,7 +1,5 @@
 package com.dingpet.customers.p001.controller;
 
-import com.dingpet.customers.p001.vo.Customers_P001_VO;
-
 public interface Customers_P001_Controller {
 	
 	public void toMyinfo(); //내정보조회

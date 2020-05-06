@@ -2,7 +2,6 @@ package com.dingpet.petsitting.p001.service;
 
 import java.util.List;
 
-import org.springframework.dao.PessimisticLockingFailureException;
 import org.springframework.stereotype.Service;
 
 import com.dingpet.petsitting.p001.mapper.PetSitting_P001_Mapper;

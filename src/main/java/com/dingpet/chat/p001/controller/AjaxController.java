@@ -1,4 +1,4 @@
-package com.dingpet.common.chat.controller;
+package com.dingpet.chat.p001.controller;
 
 
 import org.slf4j.Logger;
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dingpet.common.chat.service.AjaxService;
-import com.dingpet.common.chat.service.ChatService;
+import com.dingpet.chat.p001.service.AjaxService;
+import com.dingpet.chat.p001.service.ChatService;
 
 @RestController
 public class AjaxController {
@@ -31,7 +31,7 @@ public class AjaxController {
 	      
 	      // 멤버 인원수 구하기
 	      if(members == null) {
-	    	  System.out.println("멤버가널인데?");
+	    	  System.out.println("멤버가 널");
 	      }
 	      
 	      if (members.startsWith(",")) {

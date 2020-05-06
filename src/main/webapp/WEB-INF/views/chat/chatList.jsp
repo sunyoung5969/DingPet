@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
-
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
 function checkPersonnel(roomNo, roomPw, result) {
 	  /* 	alert(typeof roomNo + roomPw + result); */
@@ -25,7 +25,7 @@ function checkPersonnel(roomNo, roomPw, result) {
 	            alert("방 인원이 꽉 찼습니다");
 	            return false;
 	         } else {
-	        	 alert(!result + data );
+	        	 alert("들어갈수 있음"+!result + data );
 	            if (!result) {
 	               check(roomNo, roomPw);
 	            } else {
@@ -165,7 +165,8 @@ function submitForm(roomNo){
 </head>
 <body>
 	<form action="/chat/enterRoom" method="post" id="formByNo">
-		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+		<input type="hidden" name="userId" value="${customers.member_id }"/>
+		<input type="hidden" name="userName" value="${customers.member_name }"/>
 		<input type="hidden" id="subNo" name="roomNo" />
 		<input type="hidden" value='${pageMaker.cri.page }'/>
 		<input type="hidden" value='${pageMaker.cri.perPageNum }'/>

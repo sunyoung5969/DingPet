@@ -40,6 +40,7 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 	HttpSession session;
 	
 	//내정보조회 
+	@Override
 	@RequestMapping(value="/toMyinfo", method={RequestMethod.GET})
 	public void toMyinfo() {
 		log.info("정보조회를 위해 비밀번호 입력하는 페이지");
@@ -75,6 +76,7 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 	}
 	
 	//로그인 페이지
+	@Override
 	@RequestMapping(value="/signin", method = {RequestMethod.GET})
 	public void signin() {
 		log.info("로그인 페이지 출력");
@@ -128,7 +130,7 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 	public void signin(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		log.info("id중복체크control");
 		PrintWriter pw = response.getWriter();
-		String id = (String)request.getParameter("id");	
+		String id = request.getParameter("id");	
 		int overlappedId = service.overlappedId(id);
 		
 			if(overlappedId >= 1) {
@@ -151,6 +153,7 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 	}
 	
 	//회원가입 페이지
+	@Override
 	@GetMapping("/signup")
 	public void signup() {
 		log.info("회원가입 페이지");
@@ -204,6 +207,7 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		return "redirect:/customers/p001/signup_";
 	}	
 	
+	@Override
 	@RequestMapping(value="/signup_", method = {RequestMethod.GET})
 	public void signup_() {
 		log.info("회원가입완료 페이지");
@@ -211,6 +215,7 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 	
 	
 	//펫시터전환신청 페이지
+	@Override
 	@PostMapping("/change")
 	public void change() {
 		log.info("펫시터회원 신청 페이지");

@@ -1,9 +1,9 @@
-package com.dingpet.common.chat.service;
+package com.dingpet.chat.p001.service;
 
 import java.util.List;
 
-import com.dingpet.common.chat.vo.ChatRoom;
-import com.dingpet.common.chat.vo.Criteria;
+import com.dingpet.chat.p001.vo.ChatRoom;
+import com.dingpet.chat.p001.vo.Criteria;
 
 
 public interface ChatService {

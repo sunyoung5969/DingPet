@@ -14,7 +14,6 @@ import com.dingpet.facilitymap.p001.vo.FacilityMap_P001_ReplyVO;
 import com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO;
 
 import lombok.AllArgsConstructor;
-import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j;
 
 

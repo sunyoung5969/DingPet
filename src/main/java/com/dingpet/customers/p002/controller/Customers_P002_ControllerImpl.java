@@ -1,9 +1,6 @@
 package com.dingpet.customers.p002.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
-
 import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -13,17 +10,13 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.dingpet.customers.p002.service.Customers_P002_Service;
 import com.dingpet.customers.p002.vo.Customers_P002_VO;
 
 import lombok.AllArgsConstructor;
-import lombok.extern.log4j.Log4j;
 
 
 @RequestMapping("/customers/p002/*")
@@ -80,6 +73,7 @@ public class Customers_P002_ControllerImpl implements Customers_P002_Controller 
 	return mav;
 	}
 	
+	@Override
 	@RequestMapping(value="/lostid", method = {RequestMethod.GET})
 	public void lostid() {
 		System.out.println("아이디찾기 페이지");
@@ -119,6 +113,7 @@ public class Customers_P002_ControllerImpl implements Customers_P002_Controller 
 	
 	
 	
+	@Override
 	@RequestMapping(value="/lostpwd", method = {RequestMethod.GET})
 	public void lostpwd() {
 	System.out.println("비밀번호찾기 페이지");
