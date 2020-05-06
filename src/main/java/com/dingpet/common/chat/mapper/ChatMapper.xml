@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dingpet.common.chat.mapper.ChatMapper">
+<!-- 회원가입 -->
+<insert id="createRoom">
+      insert into chatRoom (roomNo, roomName, room_owner, roomMember, roomType, roomPw)
+      values (room_SEQ.nextval, #{roomName}, #{owner}, #{roomMember}, #{roomType}, #{roomPw})
+ </insert>
+ 
+  <select id="listChatRoom" resultType="com.dingpet.common.chat.vo.ChatRoom">
+     select * from chatRoom order by reg_date DESC
+  </select>
+  
+  <select id="countRoom" resultType="int">
+  	select count(*) from chatRoom
+  </select>
+  
+  <select id="getRoom" resultType="com.dingpet.common.chat.vo.ChatRoom">
+  	select * from chatRoom where roomNo = #{roomNo}
+  </select>
+  
+  <select id="getRoomByOwner" resultType="com.dingpet.common.chat.vo.ChatRoom">
+  	select * from chatRoom where room_owner = #{owner}
+  </select>
+  
+  <select id="getMembers" resultType="String">
+  	select roomMember from chatRoom where roomNo = #{roomNo}
+  </select>
+  
+  <update id="addMember">
+  	update chatRoom set roomMember = #{members} where roomNo = ${roomNo}
+  </update>
+  
+  <select id="getType" resultType="String">
+  	select roomType from chatRoom where roomNo = #{roomNo}
+  </select>
+ 
+  <update id="changeRoomType">
+  	update chatRoom set roomType = #{roomType} where roomNo = ${roomNo}
+  </update> 
+ 
+  <delete id="removeRoom">
+  	delete from chatRoom where roomNo = #{roomNo}
+  </delete>
+  
+  <select id="getOwner" resultType="String"><!-- 방장체크 -->
+     select room_owner from chatRoom where roomNo = #{roomNo} 
+  </select>
+  
+  <update id="updatePass">
+     update chatRoom set roomPw = #{newPass} where roomNo = ${roomNo}
+  </update>
+  
+  <update id="updateOwner">
+      update chatRoom set room_owner = #{newOwner} where roomNo = ${roomNo}
+   </update>
+</mapper>

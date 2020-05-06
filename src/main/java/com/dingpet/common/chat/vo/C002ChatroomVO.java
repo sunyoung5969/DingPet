@@ -1,4 +1,4 @@
-package com.dingpet.chat.vo;
+package com.dingpet.common.chat.vo;
 
 public class C002ChatroomVO {
 	/*

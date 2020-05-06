@@ -1,8 +1,8 @@
-package com.dingpet.chat.vo;
+package com.dingpet.common.chat.vo;
 
 public class C002MemberChatVO {
 	/*
-	 	TABLE MEMBERCHAT
+	 	TABLE CHATMEMBER
 		    memNum    VARCHAR2(20)     NOT NULL,
 		    chatroomId    VARCHAR2(20) NOT NULL
 	 */

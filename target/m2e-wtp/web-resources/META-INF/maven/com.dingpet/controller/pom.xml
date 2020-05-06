@@ -57,6 +57,12 @@
 			<artifactId>spring-websocket</artifactId>
 			<version>4.1.1.RELEASE</version>
       	</dependency>
+      	
+     <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-messaging</artifactId>
+    	<version>4.1.1.RELEASE</version>
+	</dependency>
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
