@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      select room_SEQ.nextval as roomNo from dual
   </select>
   <select id="listChatRoom" resultType="com.dingpet.chat.p001.vo.ChatRoom">
-     select * from chatRoom order by reg_date DESC
+     select * from chatRoom WHERE room_owner = #{newOwner, jdbcType=VARCHAR} OR roomMember = #{newOwner, jdbcType=VARCHAR} order by reg_date DESC 
   </select>
   
   <select id="getTotalRoomNum" resultType="int">

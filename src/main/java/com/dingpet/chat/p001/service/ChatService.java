@@ -8,7 +8,7 @@ import com.dingpet.chat.p001.vo.Criteria;
 
 public interface ChatService {
 
-	List<ChatRoom> listChatRoom(Criteria cri) throws Exception;
+	List<ChatRoom> listChatRoom(Criteria cri, String newOwner) throws Exception;
 	public int totalRoomNum() throws Exception;
 	public int getChatRoomNo() throws Exception ;
 	public void createRoom(ChatRoom room) throws Exception;

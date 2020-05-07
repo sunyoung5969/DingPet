@@ -1,5 +1,6 @@
 package com.dingpet.chat.p001.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -70,13 +71,15 @@ public class ChatController {
 		chatService.createRoom(room); // db에 방 넣어줌
 		// 알아서 페이지값이 들어옴
 		
-		return	"redirect:/chat/enterRoom";
+		return	"redirect:/chat/chatList";
 			
 	}
 	
-	@RequestMapping(value="chatList", method = RequestMethod.GET)
-	public String tempPage(Criteria cri, Model model) throws Exception {
-		
+	@RequestMapping(value="/chatList", method = RequestMethod.GET)
+	public String tempPage(Criteria cri, Model model, HttpSession session) throws Exception {
+		Customers_P001_VO sessionId = (Customers_P001_VO) session.getAttribute("customers");
+		String newOwner = sessionId.getMember_id();
+		System.out.println("세션id는 :"+ newOwner);		
 		PageMaker pagemaker = new PageMaker();
 		int total = chatService.totalRoomNum();
 		
@@ -92,7 +95,7 @@ public class ChatController {
 			pagemaker.setTotalCount(total);
 		}
 		
-		model.addAttribute("roomList", chatService.listChatRoom(cri));
+		model.addAttribute("roomList", chatService.listChatRoom(cri, newOwner));
 		model.addAttribute("pageMaker", pagemaker);
 		
 		return "chat/chatList";

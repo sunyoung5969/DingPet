@@ -18,8 +18,8 @@ public class ChatServiceImpl implements ChatService {
 	ChatMapper dao;
 
 	@Override
-	public List<ChatRoom> listChatRoom(Criteria cri) throws Exception {
-		return dao.listChatRoom(cri);
+	public List<ChatRoom> listChatRoom(Criteria cri, String newOwner) throws Exception {
+		return dao.listChatRoom(cri, newOwner);
 	}
 	@Override
 	public int getChatRoomNo() throws Exception {

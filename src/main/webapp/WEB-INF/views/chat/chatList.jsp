@@ -1,12 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page session="false"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<%@ include file="/WEB-INF/views/includes/header.jsp"%>
+
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
@@ -60,47 +62,6 @@ function submitForm(roomNo){
 
 </script>
 <style>
-	body{
-		overflow: hidden;
-	}
-	#header li a{
-		color:#3d3d3d;
-	}
-	
-	#header li a:hover{
-		color:#adadad;
-	}
-	
-	.wrap{
-		text-align: center;
-		
-		position: absolute;
-		top: 120px;
-	}
-	
-	.wrap h2{
-		margin: 20px auto;
-	}
-	
-	.table{	
-		width: 80%;
-		margin: 0 auto;
-		text-align: center;
-	}
-	.table, tr, td, th{
-		border: 1px solid #3d3d3d;
-		border-collapse:collapse;
-		
-	}
-	
-	thead tr{
-		height: 40px;
-	}
-	
-	tbody tr{
-		height: 34px;
-	}
-	
 	button{
 		width:50%;
 		text-align: center;
@@ -164,15 +125,17 @@ function submitForm(roomNo){
 </style>
 </head>
 <body>
-	<form action="/chat/enterRoom" method="post" id="formByNo">
+<section class="site-blocks-cover overflow-hidden bg-light">
+		<div class="container">
+			<div class="row">
+			<form action="/chat/enterRoom" method="post" id="formByNo">
 		<input type="hidden" name="userId" value="${customers.member_id }"/>
 		<input type="hidden" name="userName" value="${customers.member_name }"/>
 		<input type="hidden" id="subNo" name="roomNo" />
 		<input type="hidden" value='${pageMaker.cri.page }'/>
 		<input type="hidden" value='${pageMaker.cri.perPageNum }'/>
-	</form>
-	
-		<div class="wrap_table">
+			</form>
+		<div class="wrap_table col-md-12 align-self-center">
 			<table class="table">
 			   <tr class="thead">
 			      <th>방 이름</th>
@@ -186,7 +149,6 @@ function submitForm(roomNo){
 			         <td>${room.roomName}</td>
 			         <td>${room.roomType}</td>
 			         <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${room.reg_date}" /></td>
-			     
 			         <c:choose>
 			         	<c:when test="${room.roomPw == '' || room.roomPw eq null ||  room.roomPw eq ''}">
 			         		<td><button type="button" onclick="return checkPersonnel(${room.roomNo}, ${room.roomNo}, true)">방 입장하기</button></td>
@@ -198,9 +160,6 @@ function submitForm(roomNo){
 			      </tr>
 			   </c:forEach><!-- 룸 리스트 -->
 			</table>
-	
-	
-		
 			<div class="text-center">
 				<ul class="pagination">	
 					<c:if test="${pageMaker.prev}">
@@ -219,8 +178,10 @@ function submitForm(roomNo){
 				</ul>
 				<div class="cre"><a href="/chat/createRoom">방 만들기</a></div>
 		</div><!-- text-center꺼 -->
-		
-  		
 	</div>
+	</div>
+	</div>
+	</section>
 </body>
+<%@ include file="/WEB-INF/views/includes/footer.jsp"%>
 </html>

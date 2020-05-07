@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     
 
 <style>
@@ -154,15 +154,14 @@ console.log(name);
 <div class="wrap loginwrap">
 <h1 class="cre_tit">채팅방 생성</h1>
 <form method="post">
-   <input type='hidden' name='room_owner' value='${customers.member_id }' /> 
-   <input type='hidden' name='roomMember' value='${customers.member_name }' />
-   
+   <input type='hidden' name='room_owner' value='${customers.member_id }' />    
    <input type="hidden" name='page' value='${cri.page }'/>
    <input type="hidden" name='perPageNum' value='${cri.perPageNum }'/>
    <div class="form">
       <div>
          <label class="lab">방 제목</label>
          <input type="text" name="roomName" id="roomName" placeholder="유저를 설정하세요"/>
+         <input type='hidden' name='roomMember' value='${customers.member_name }' />
       </div>      
    </div>
    <div>

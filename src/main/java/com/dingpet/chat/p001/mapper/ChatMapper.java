@@ -3,12 +3,14 @@ package com.dingpet.chat.p001.mapper;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.dingpet.chat.p001.vo.ChatRoom;
 import com.dingpet.chat.p001.vo.Criteria;
 
 public interface ChatMapper {
 
-	public List<ChatRoom> listChatRoom(Criteria cri) throws Exception;
+	public List<ChatRoom> listChatRoom(@Param("cri") Criteria cri, @Param("newOwner") String newOwner) throws Exception;
 	public int getTotalRoomNum() throws Exception;
 	public void createRoom(ChatRoom room) throws Exception;
 	public int getChatRoomNo() throws Exception;
