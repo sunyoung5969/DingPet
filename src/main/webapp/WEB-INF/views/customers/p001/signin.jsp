@@ -17,7 +17,8 @@
 	
 		<div class="signin-form">
 			<h2 class="form-title">로 그 인</h2>
-        	<form method="POST" class="register-form" id="login-form" action="signin">                   
+        	<form method="POST" class="register-form" id="login-form" action="signin">
+        	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				<div class="form-group">
 				<label for="your_id"><i class="zmdi zmdi-account material-icons-name"></i></label>
 				아이디<input type="text" name="member_id" id="member_id" placeholder="Your ID"  required/>

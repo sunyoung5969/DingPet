@@ -11,9 +11,10 @@ public interface ChatMapper {
 	public List<ChatRoom> listChatRoom(Criteria cri) throws Exception;
 	public int getTotalRoomNum() throws Exception;
 	public void createRoom(ChatRoom room) throws Exception;
+	public int getChatRoomNo() throws Exception;
 	public void removeRoom(int roomNo) throws Exception;
 	public ChatRoom getRoom(int roomNo) throws Exception;
-	public ChatRoom getRoomByOwner(String owner) throws Exception;
+	public ChatRoom getRoomByOwner(ChatRoom room) throws Exception;
 	public String getMembers(int roomNo) throws Exception;
 	public void addMember(Map<String, String> params) throws Exception;
 	public String getOwner(int roomNo) throws Exception;

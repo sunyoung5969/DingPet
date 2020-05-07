@@ -21,7 +21,11 @@ public class ChatServiceImpl implements ChatService {
 	public List<ChatRoom> listChatRoom(Criteria cri) throws Exception {
 		return dao.listChatRoom(cri);
 	}
-
+	@Override
+	public int getChatRoomNo() throws Exception {
+		
+		return dao.getChatRoomNo(); 
+	}
 	@Override
 	public void createRoom(ChatRoom room) throws Exception {
 		dao.createRoom(room);
@@ -97,8 +101,8 @@ public class ChatServiceImpl implements ChatService {
 	}
 
 	@Override
-	public ChatRoom getRoomByOwner(String owner) throws Exception {
-		return dao.getRoomByOwner(owner);
+	public ChatRoom getRoomByOwner(ChatRoom room) throws Exception {
+		return dao.getRoomByOwner(room);
 	}
 
 	@Override

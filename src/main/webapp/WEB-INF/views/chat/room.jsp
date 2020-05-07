@@ -208,7 +208,6 @@
 </style>
 </head>
 <body>
-
 <div id="container2">
 <div class="chatWrap">
 <div class="main_tit"><h1>방 이름 [ ${room.roomName} ] </h1></div>

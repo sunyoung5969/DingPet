@@ -37,22 +37,9 @@ $(document).ready(function(){
                 	chatBox.append("<li>" + content.writer + " :  <br/>" + content.message + "</li>").append('<span>' + "[보낸 시간]" + content.chatdate + "</span>" + "<br>");
                 	  
                 }else{
-                	$('.user ul').empty();
-                	
+                	$('.user ul').empty();                	
                 	chatBox.append("<li>" + content.messageType + " :  <br/>" + content.message + "</li>").append('<span>' + "[보낸 시간]" + content.chatdate + "</span>" + "<br>");
-                	
-                	var members = content.memberList.split(",");
-                	
-	            	for(var i = 0; i < members.length - 1; i++){
-	                	if(i == 0){
-	                		$('.user ul').append('<li>' + members[i] + '<span> [ 방장 ] </span>' + '</li>');
-	                	}else{
-	                		$('.user ul').append('<li>' + members[i] + '</li>');
-	                	}
-	            		
-	            	
-	            	}
-	            	
+                	var members = content.memberList;	            		            	
                 }
                 
                 $(".chatcontent").scrollTop($(".chatcontent")[0].scrollHeight);

@@ -154,7 +154,6 @@ console.log(name);
 <div class="wrap loginwrap">
 <h1 class="cre_tit">채팅방 생성</h1>
 <form method="post">
-   <input type='hidden' name='userId' value='${customers.member_id }' />
    <input type='hidden' name='room_owner' value='${customers.member_id }' /> 
    <input type='hidden' name='roomMember' value='${customers.member_name }' />
    

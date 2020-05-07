@@ -1,10 +1,8 @@
 package com.dingpet.chat.p001.controller;
 
-import java.security.Principal;
 import java.util.List;
 import java.util.Map;
 
-import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -19,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.dingpet.chat.p001.service.ChatService;
 import com.dingpet.chat.p001.vo.ChatRoom;
@@ -65,7 +64,8 @@ public class ChatController {
 	public String createRoomPost(ChatRoom room, Criteria cri, HttpServletRequest request, Model model ) throws Exception {
 		logger.info("-------------------------------->>>>>>>>>>>>>>>>>>>>>>>" + room);
 		room.setRoomType(room.getRoomPw() == "" || room.getRoomPw() == null? "Normal" : "Secret");
-		
+		room.setRoomNo(chatService.getChatRoomNo());
+		request.setAttribute("room", room);
 		model.addAttribute("owner", room.getRoom_owner());
 		chatService.createRoom(room); // db에 방 넣어줌
 		// 알아서 페이지값이 들어옴
@@ -105,8 +105,11 @@ public class ChatController {
 		// 방에 멤버 추가해줌
 		Customers_P001_VO sessionId = (Customers_P001_VO) session.getAttribute("customers");
 		System.out.println("세션id는 : "+sessionId.getMember_id());
-		ChatRoom room2 = chatService.getRoomByOwner(sessionId.getMember_id());
 		
+		ChatRoom room = (ChatRoom) request.getAttribute("room");
+		ChatRoom room2 = chatService.getRoomByOwner(room);
+		System.out.println("room1: "+room);
+		System.out.println("room2: "+room2);
 		model.addAttribute("room", room2);
 		model.addAttribute("cri", cri);
 		
@@ -114,12 +117,14 @@ public class ChatController {
 	}
 //	
 	@RequestMapping(value = "enterRoom", method = {RequestMethod.POST}) // 방 들어갈 때, list에서 pick해서 들어갈 때
-	public String chat(int roomNo, HttpServletRequest request, HttpSession session, ChatRoom room, Model model
+	public String chat(int roomNo, HttpSession session, HttpServletRequest request, ChatRoom room, Model model
 												, Criteria cri) throws Exception {
+		//세션 id 가져오기 
 		Customers_P001_VO sessionId = (Customers_P001_VO) session.getAttribute("customers");
+		System.out.println("세션 아이디 "+sessionId);
 		// 방에 멤버 추가해줌
-		System.out.println(roomNo +""+ room + "---- -------");
-		System.out.println(sessionId.getMember_id());
+		System.out.println(roomNo +"```"+ room + "---- -------");
+		System.out.println("id는 " + sessionId.getMember_id());
 		chatService.addMember(roomNo, sessionId.getMember_id());
 		model.addAttribute("cri", cri);
 		model.addAttribute("room", chatService.getRoom(roomNo));

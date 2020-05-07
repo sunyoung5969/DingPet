@@ -6,9 +6,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 회원가입 -->
 <insert id="createRoom">
       insert into chatRoom (roomNo, roomName, room_owner, roomMember, roomType, roomPw)
-      values (room_SEQ.nextval, #{roomName, jdbcType=VARCHAR}, #{room_owner, jdbcType=VARCHAR}, #{roomMember, jdbcType=VARCHAR}, #{roomType}, #{roomPw, jdbcType=VARCHAR})
+      values (room_SEQ.currval, #{roomName, jdbcType=VARCHAR}, #{room_owner, jdbcType=VARCHAR}, #{roomMember, jdbcType=VARCHAR}, #{roomType}, #{roomPw, jdbcType=VARCHAR})
  </insert>
- 
+  <select id="getChatRoomNo" resultType="int">
+     select room_SEQ.nextval as roomNo from dual
+  </select>
   <select id="listChatRoom" resultType="com.dingpet.chat.p001.vo.ChatRoom">
      select * from chatRoom order by reg_date DESC
   </select>
@@ -25,8 +27,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   	select * from chatRoom where roomNo = #{roomNo}
   </select>
   
-  <select id="getRoomByOwner" resultType="com.dingpet.chat.p001.vo.ChatRoom">
-  	select * from chatRoom where room_owner = #{room_owner} AND roomName = #{roomName}
+  <select id="getRoomByOwner" resultType="com.dingpet.chat.p001.vo.ChatRoom" parameterType="com.dingpet.chat.p001.vo.ChatRoom">
+  	select * from chatRoom where room_owner = #{room_owner, jdbcType=VARCHAR} AND roomName = #{roomName, jdbcType=VARCHAR} AND roomNo = #{roomNo, jdbcType=VARCHAR}
   </select>
   
   <select id="getMembers" resultType="String">
