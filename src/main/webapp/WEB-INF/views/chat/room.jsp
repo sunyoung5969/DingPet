@@ -212,7 +212,7 @@
 <div id="container2">
 <div class="chatWrap">
 <div class="main_tit"><h1>방 이름 [ ${room.roomName} ] </h1></div>
-<div class="content chatcontent" data-room-no="${room.roomNo}" data-member="${member}">
+<div class="content chatcontent" data-room-no="${room.roomNo}" data-member="${customers.member_id}">
 <div class="user">
 	<ul>
 		
