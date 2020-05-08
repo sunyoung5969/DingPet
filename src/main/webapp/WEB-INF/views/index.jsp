@@ -22,6 +22,7 @@
 				</c:when>
 				</c:choose>
 				<a href="/customers/p001/signin">로그인</a>
+				<a href="/customers/p001/admin_board">펫시터신청목록</a>
 				<a href="/petsitting/p002/reservationlist">예약리스트</a>
 				<a href="/customers/p005/message">메시지</a>
 				<a href="/petsitting/p001/profilelist">펫시터</a>
