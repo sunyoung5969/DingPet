@@ -69,7 +69,8 @@ public class FacilityMap_Reply_ControllerImpl {
 				? new ResponseEntity<>("success", HttpStatus.OK)
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	
+
+	//댓글수정
 	@RequestMapping(method = {RequestMethod.PUT, RequestMethod.PATCH}, value = "/{review_id}",
 			consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<String> modify(@RequestBody FacilityMap_P001_ReplyVO reply_vo, @PathVariable("review_id") String review_id){

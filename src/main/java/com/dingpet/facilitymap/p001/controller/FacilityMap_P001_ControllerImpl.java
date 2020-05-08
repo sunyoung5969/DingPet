@@ -230,6 +230,7 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 			log.info("사진 업로드 완료");
 			//---------------------------------------------------------------------------
 			log.info("==========================");
+			log.info("rev id : "+vo.getMember_id());
 			service.reviewregister(vo);
 			rttr.addFlashAttribute("result", vo.getSite_id());
 			model.addAttribute("url", "https://www.dingpet.shop/siteimg/");

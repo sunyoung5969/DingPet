@@ -5,34 +5,63 @@
 
 <mapper namespace="com.dingpet.customers.p001.mapper.Customers_P001_Mapper">
 
+<!-- 펫시터전환 관리자 승인여부 -->
+<update id="approval">
+update member set member_type = 'sitter' where member_id = #{member_id}
+</update>
+<update id="reject">
+update member set member_type = 'user' where member_id = #{member_id}
+</update>
 
-<!-- 회원탈퇴 -->
+<!-- 관리자페이지 -->
+<select id="getList" resultType="com.dingpet.customers.p001.vo.Customers_P001_VO">
+	select * from member where member_type = 'processing'
+</select>
+
+<!-- 탈퇴 -->
 <delete id="delete">
 	delete from member where member_id = #{member_id}
+</delete>
+<delete id="deletePet">
+	delete from dog where member_id = #{member_id}
 </delete>
 
 <!-- 정보수정 -->
 <update id="update">
 	update member set member_nickname = #{member_nickname}, 
-						member_email = #{member_email}, 
-						member_name = #{member_name},    
-						member_pwd = #{member_pwd},
-						member_contact = #{member_contact, jdbcType=VARCHAR}
-					where member_id = #{member_id}
+					  member_email = #{member_email},    
+					  member_pwd = #{member_pwd},
+					  member_contact = #{member_contact},
+					  m.member_photo = #{m.member_photo}
+	where member_id = #{member_id}
+</update>
+<update id="updatePet">
+	update dog set dog_name = #{dog_name},
+				   dog_breed = #{dog_breed}, 
+				   dog_sex = #{dog_sex}, 
+				   dog_size = #{dog_size}, 
+				   activity_level = #{activity_level}, 
+				   dog_note = #{dog_note}
+	where member_id = #{member_id}
 </update>
 
 
-<!-- 내정보 조회 -->
+<!-- 일반회원 정보조회 -->
 <select id="read" resultType="com.dingpet.customers.p001.vo.Customers_P001_VO">
-	select m.member_id, m.member_nickname, m.member_name, m.member_email, m.member_pwd, m.member_contact,
+	select m.member_id, m.member_nickname, m.member_name, m.member_email, m.member_pwd, m.member_contact, m.member_photo,
 		   d.dog_name, d.dog_breed, d.dog_sex, d.dog_size, d.activity_level, d.dog_note
 	from member m, dog d
 	where m.member_id = d.member_id and m.member_id = #{member_id}
 </select>
 
+<!-- 펫시터 정보조회 -->
+<select id="readPetSitter" resultType="com.dingpet.customers.p001.vo.Customers_P001_VO">
+	select * from member where member_id = #{member_id}
+</select>
+
 <!-- 정보조회 비밀번호 입력처리 -->
-<select id="readPw" resultType="int">
-	select member_pwd from member where member_pwd =#{member_pwd}
+<select id="readPw" resultType="com.dingpet.customers.p001.vo.Customers_P001_VO">
+	select member_pwd from member where member_id = #{member_id} and member_pwd =#{member_pwd}
 </select>
 
 
@@ -44,39 +73,58 @@
 
 <!-- 반려견정보 등록 -->
 <select id="insertPet">
-	insert into dog(member_id, dog_id, dog_type, dog_name, dog_breed, dog_sex, dog_size, activity_level, dog_note)
-	values(#{member_id}, seq_dog.nextval, 'myPet', #{dog_name, jdbcType=VARCHAR}, #{dog_breed, jdbcType=VARCHAR}, #{dog_sex, jdbcType=VARCHAR}, 
-		   #{dog_size, jdbcType=VARCHAR}, #{activity_level, jdbcType=VARCHAR}, #{dog_note, jdbcType=VARCHAR})
+	insert into dog(member_id, 
+					dog_id, dog_type, 
+					dog_name, dog_breed, dog_sex, 
+					dog_size, activity_level, dog_note, dog_photo)
+			 values(#{member_id}, seq_dog.nextval, 'myPet', 
+					#{dog_name, jdbcType=VARCHAR}, #{dog_breed, jdbcType=VARCHAR}, #{dog_sex, jdbcType=VARCHAR}, 
+		   			#{dog_size, jdbcType=VARCHAR}, #{activity_level, jdbcType=VARCHAR}, #{dog_note, jdbcType=VARCHAR}, #{dog_photo, jdbcType=VARCHAR})
 </select>
 
 <!-- 펫시터회원 등록 -->
 <update id="insert2">
-	update member set sex = #{sex}, 
+	update member set member_type = 'processing',
+					  sex = #{sex}, 
 					  date_of_birth = #{date_of_birth}, 
-					  address = #{address}, 
-					  profession = #{profession},
+					  zipcode = #{zipcode},
+					  address1 = #{address1}, 
+					  address2 = #{address2}, 
+					  address3 = #{address3, jdbcType=VARCHAR}, 
+					  address4 = #{address4, jdbcType=VARCHAR}, 
+					  profession = #{profession}, 
 					  active_hours = #{active_hours}, 
+					  question1 = '펫시터를 지원하게 된 동기가 무엇인가요?',
 					  answer1 = #{answer1}, 
+					  question2 = '현재 강아지를 기르고 계신가요?',
 					  answer2 = #{answer2}, 
+					  question3 = '다른 사람의 강아지를 돌봐준 경험이 있나요?',
 					  answer3 = #{answer3}
-		where member_id = #{member_id, jdbcType=VARCHAR}	  	  
+	where member_id = #{member_id} 
 </update>
-
-
 
 <!-- 로그인 -->
 <select id="loginCheck" resultType="com.dingpet.customers.p001.vo.Customers_P001_VO">
-
-	select member_id, member_pwd, member_name, member_nickname, member_email
-
-	from member where member_id=#{member_id} and member_pwd=#{member_pwd}
-
+	select member_id, member_pwd, member_name, member_nickname, member_email, member_contact, member_photo
+	from member m
+	where member_id=#{member_id} and member_pwd=#{member_pwd}
 </select>
 
+<!-- 펫정보 -->
+<select id="dogInfo" resultType="com.dingpet.customers.p001.vo.Customers_P001_VO">
+	select member_id, dog_name, dog_breed, dog_sex, dog_size, activity_level, dog_note, dog_photo
+	from dog
+	where member_id = #{member_id}
+</select>
 
 <!-- id중복체크 -->
 <select id="overlappedId" resultType="int" parameterType="String">
 	select count(member_id) from member where member_id = #{memebr_id}
 </select>
+<!-- email중복체크 -->
+<select id="overlappedEmail" resultType="int" parameterType="String">
+	select count(member_email) from member where member_email = #{memebr_email, jdbcType=VARCHAR}
+</select>
+
 
 </mapper>
