@@ -24,17 +24,6 @@ public class AjaxService {
 		 
 		    String members = chatdao.getMembers(roomNo); // 챗룸에 남아있는 멤버들
 	
-		    if (members.startsWith(",")) {
-		       members = members.replaceFirst(",", "");		       
-		    }
-		    
-		    String[] users = members.split(",");
-		    
-		    for (int i = 0; i < users.length; i++) {
-		    	
-		      // list += userdao.getUser(users[i]).getUserName() + ",";
-		    }
-		    
 		    return list;
 	 }
 			

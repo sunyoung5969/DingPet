@@ -34,11 +34,7 @@ public class AjaxController {
 	    	  System.out.println("멤버가 널");
 	      }
 	      
-	      if (members.startsWith(",")) {
-	         members = members.replaceFirst(",", "");
-	      }
-	      
-	      return members.split(",").length;
+	      return 1;
 	   }
 		
 	 @RequestMapping(value = "/memberOut", method = RequestMethod.GET)

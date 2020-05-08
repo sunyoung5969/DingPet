@@ -160,8 +160,9 @@ console.log(name);
    <div class="form">
       <div>
          <label class="lab">방 제목</label>
-         <input type="text" name="roomName" id="roomName" placeholder="유저를 설정하세요"/>
-         <input type='hidden' name='roomMember' value='${customers.member_name }' />
+         <input type="text" name="roomName" id="roomName" placeholder="유저이름 를 설정하세요"/>
+         <label class="lab">상대 유저</label>
+         <input type="text" name="roomMember" id="roomMember" placeholder="유저ID 를 설정하세요"/>
       </div>      
    </div>
    <div>

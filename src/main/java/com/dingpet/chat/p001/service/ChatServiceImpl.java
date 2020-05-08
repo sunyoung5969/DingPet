@@ -46,28 +46,18 @@ public class ChatServiceImpl implements ChatService {
       String members = dao.getMembers(roomNo);
 
       String[] s = members.split(",");
-      for (String name : s) {
-    	  
-         if (name.equals(member)) {
-            return;
-         }
-      }
-      
+
       members += "," + member;
       Map<String, String> params = new HashMap<>();
       
       params.put("members", members);
       params.put("roomNo", roomNo + "");
       
-      dao.addMember(params);
    }
 	@Override
 	public int removeMember(int roomNo, String member) throws Exception {
 		String members = dao.getMembers(roomNo);
 		System.out.println("멤버" + members );
-		
-		members = members.startsWith(member) ? members.replace(member, "") : members.replace("," + member, "");
-		// 방에 멤버가 존재하지 않는 경우 //
 		
 		if (members.isEmpty()) {
 			dao.removeRoom(roomNo); // 방 삭제
@@ -80,22 +70,6 @@ public class ChatServiceImpl implements ChatService {
 		
 		params.put("members", members);
 		params.put("roomNo", roomNo + "");
-		
-		dao.addMember(params); // member 제거된 members로 룸멤버 업데이트
-
-		// 방장 업데이트 파트
-		if (members.startsWith(",")) {
-			members = members.replaceFirst(",", "");
-		}
-		
-		String newOwner = members.split(",")[0];
-		
-		Map<String, String> params2 = new HashMap<>();
-		
-		params2.put("roomNo", roomNo + "");
-		params2.put("newOwner", newOwner);
-		
-		dao.updateOwner(params2); // 방장 업데이트
 		
 		return -1; // 방 존재 알림
 	}
