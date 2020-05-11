@@ -9,7 +9,7 @@
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 
-    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.11
     function sample4_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
@@ -66,86 +66,87 @@
     }
     
     
-    //펫시터전환 신청&취소 버튼 동작
+    /*
     function applyBtn(){
     	alert("펫시터 회원 신청이 완료되었습니다.");
     	return location.href='/';
     }
+    */
     
     function cancleBtn(){
     	return location.href='/';
     }
-   
 </script>
 
 <div class="main">
-
-	<!-- Sign up form -->
 	<section class="signup">
-		<div class="container">
-			<div class="signup-content">
-				<div class="change-form">
-				
-				<h2 class="form-title">펫시터 전환 신청</h2>
+	<div class="sign_container m-auto w-50">
+	<div class="signup-content d-block" >
+	<div class="w-75 m-auto">
+		<h2 class="form-title">펫시터 전환 신청</h2>
 					
-				<form method="POST" class="register-form" id="register-form">
-              
-					<div class="form-group">
-					성별<input type="text" name="sex" id="sex" placeholder="Your Gender" required/>
-					</div>
-                            
-					<div class="form-group">
-					생년월일<input type="number" name="date_of_birth" id="dob" placeholder="Your DOB" required/>
-					</div>
-                            
-					<div class="form-group">
-					직업<input type="text" name="profession" id="profession" placeholder="Your job" maxlength="10" required/>
-					</div>
-	
-					<div class="form-group" id="address">
-					주소<input type="text" id="sample4_postcode" placeholder="우편번호">
-						<input id = "post_btn"type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br> 
-						<input type="text" id="sample4_roadAddress" placeholder="도로명주소"> 
-						<input type="text" id="sample4_jibunAddress" placeholder="지번주소">
-						<span id="guide" style="color: #999; display: none"></span> 
-						<input type="text" id="sample4_detailAddress" placeholder="상세주소" maxlength="50">
-						<input type="text" id="sample4_extraAddress" placeholder="참고항목">
-					</div>
-
-					<div class="form-group">
-					활동가능시간<input type="text" name="active_hours" id="time" placeholder="Your time available" required/>
-					</div>
-                            
-					<div class="form-group">
-                    Q1. 다른 사람의 반려동물을 돌봐준 경험이 있으세요?<br>
-					<input type="text" name="answer1" id="firstA" placeholder="50자 이내로 기입하세요" maxlength="100" required/>
-					</div>
-                         
-					<div class="form-group">
-                    Q2. 반려동물 관련 자격증을 보유하고 계신가요? <br>
-					<input type="text" name="answer2" id="secA" placeholder="50자 이내로 기입하세요" maxlength="100" required/>
-					</div>
-                         
-					<div class="form-group">
-                    Q3. 펫시터를 지원하게 된 동기가 궁금해요. <br>
-					<input type="text" name="answer3" id="thirdA" placeholder="50자 이내로 기입하세요" maxlength="100" required/>
-					</div>
-                  
-					<div class="form-group form-button">
-					<input type="submit" name="apply" id="apply" class="form-submit" onClick="applyBtn()" value="신청" />
-					<input type="submit" name="cancle" id="cancle" class="form-submit" onClick="cancleBtn()" value="취소" />
-					</div>
-                            
-				</form>    
-				</div>
+		<form method="POST" class="register-form" id="register-form" action="apply">    		
+			<div class="form-group">
+			<strong>성별</strong> &nbsp;&nbsp;&nbsp;
+			여성<input type="radio" id="sex" name="sex" value="F" />
+			남성<input type="radio" id="sex" name="sex" value="M" />
 			</div>
-		</div>
-	</section>
+                        
+			<div class="form-group">
+			<strong>생년월일</strong>
+			<input type="date" name="date_of_birth" id="date_of_birth" min="2020-01-01" placeholder="Your DOB" required/>
+			</div>
+                            
+			<div class="form-group">
+			<strong>직업</strong>
+			<input type="text" name="profession" id="profession" placeholder="Your job" maxlength="10" required/>
+			</div>
+	
+			<div class="form-group" id="address">
+			<strong>주소</strong>
+			<input type="text" id="sample4_postcode" name="zipcode" placeholder="우편번호">
+			<input id = "post_btn" type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+						 
+			<input type="text" id="sample4_roadAddress" name="address1" placeholder="도로명주소"> 
+			<input type="text" id="sample4_jibunAddress" name="address2" placeholder="지번주소">
+			<span id="guide" style="color: #999; display: none"></span> 
+			<input type="text" id="sample4_detailAddress" name="address3" placeholder="상세주소" maxlength="50">
+			<input type="text" id="sample4_extraAddress" name="address4" placeholder="참고항목">
+			</div>
+
+			<div class="form-group">
+			<strong>활동가능시간</strong>
+			<input type="text" name="active_hours" id="time" placeholder="Your time available" required/>
+			</div>
+                            
+			<div class="form-group">
+			<strong>펫시터 전환 여부의 지표가 될 자료입니다. 성실하게 작성해 주세요.</strong>
+			<br>
+        	Q1. 펫시터를 지원하게 된 동기가 무엇인가요?<br>
+			<input type="text" name="answer1" id="firstA" placeholder="50자 이내로 기입하세요" maxlength="100" required/>
+			<br>           
+        	Q2. 현재 강아지를 기르고 계신가요? <br>
+			<input type="text" name="answer2" id="secA" placeholder="50자 이내로 기입하세요" maxlength="100" required/>
+			<br> 
+        	Q3. 다른 사람의 강아지를 돌봐준 경험이 있나요? <br>
+			<input type="text" name="answer3" id="thirdA" placeholder="50자 이내로 기입하세요" maxlength="100" required/>
+			</div>
+                  
+			<div class="form-group form-button" align="center">
+			<input type="submit" name="apply" id="apply" class="form-submit" value="신청" />
+			<input type="submit" name="cancle" id="cancle" class="form-submit" onClick="cancleBtn()" value="취소" />
+			</div>
+                    
+        	<div class="form-group form-button">
+			<input type="hidden" id="member_id" name="member_id" value="${customers.member_id}">  
+			</div>		
+		</form>   
+		 
 	</div>
-
-
-
-
+	</div>
+	</div>
+	</section>
+</div>
 
 
 <%@include file="../../includes/footer.jsp"%>

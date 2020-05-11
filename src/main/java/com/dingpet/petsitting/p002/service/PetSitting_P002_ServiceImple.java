@@ -1,21 +1,9 @@
 package com.dingpet.petsitting.p002.service;
 
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.List;
 
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.RestTemplate;
-
 import com.dingpet.petsitting.p002.mapper.PetSitting_P002_Mapper;
-import com.dingpet.petsitting.p002.vo.KakaoPayCancelVO;
-import com.dingpet.petsitting.p002.vo.KakaoPayReadyVO;
 import com.dingpet.petsitting.p002.vo.PetSitting_P002_VO;
 
 import lombok.AllArgsConstructor;

@@ -88,16 +88,15 @@ public class Customers_P002_ControllerImpl implements Customers_P002_Controller 
 	/*
 	//아이디 찾기
 	@RequestMapping(value="/lostid", method = {RequestMethod.POST})
-	public ModelAndView lostid(Model model, HttpServletRequest request, HttpServletResponse response)
-	throws ServletException, IOException{
+	public ModelAndView lostid(Model model) throws ServletException, IOException{
 		System.out.println("아이디찾기 controller");
 		
 		ModelAndView mav = new ModelAndView();
 		
-		String id = request.getParameter("member_email");
+		String id = request.getParameter("member_email"); //입력한 email
 		System.out.println(id);
 		
-		String _id = service.lostId(id);
+		String _id = service.lostId(id); //id
 		System.out.println(_id);
 		
 		request.setCharacterEncoding("utf-8");
@@ -115,45 +114,53 @@ public class Customers_P002_ControllerImpl implements Customers_P002_Controller 
 	}
 	 */
 
-	
-	
-	
-	
+	//pw찾기 페이지
 	@RequestMapping(value="/lostpwd", method = {RequestMethod.GET})
 	public void lostpwd() {
-	System.out.println("비밀번호찾기 페이지");
+		System.out.println("pw찾기 페이지");
 	}
 	
-	
-	//비밀번호 찾기
+	//pw찾기 처리
 	@RequestMapping(value="/lostpwd", method = {RequestMethod.POST})
-	public ModelAndView lostpwd(Customers_P002_VO vo, HttpServletRequest request, HttpServletResponse response) 
-	throws Exception{
+	public ModelAndView lostpwd(Customers_P002_VO vo) throws Exception {
 		
-		System.out.println("비밀번호찾기 controller");
+		System.out.println("pw찾기 controller");
 	
 		ModelAndView mav = new ModelAndView();
 		
 		System.out.println(service.lostPwd(vo));
+		String ohyes = service.lostPwd(vo); //비밀번호
 		
-		String ohyes = service.lostPwd(vo);
+		String receiver = vo.getMember_email();
+		String sender ="pepupx2@gmail.com";		
+		String title ="[Dingpet] 비밀번호 안내";
+		String content = "귀하의 비밀번호는\""+ohyes+"\"입니다";
 		
 		if(ohyes != null) {
 			System.out.println("비밀번호도 찾았다!!");
-			mav.addObject("yespw", ohyes);
+			mav.addObject("yespw", "입력하신 이메일주소로 비밀번호를 전송했어요");
+			
+			try{
+				MimeMessage msg = mailSender.createMimeMessage();
+				MimeMessageHelper msgHelper = new MimeMessageHelper(msg, true, "UTF-8");
+				msgHelper.setFrom(sender);
+				msgHelper.setTo(receiver);
+				msgHelper.setSubject(title);
+				msgHelper.setText(content);
+				
+				mailSender.send(msg);
+
+			}catch(Exception e){
+				System.out.println(e);
+			}
 		}else {
 			System.out.println("일치하는 비밀번호 없음");
 			mav.addObject("nopw", "일치하는 비밀번호를 찾을 수 없어요");
-			
 		}
-			
 		return mav; 
 	}
 	
-	
-	
 	@RequestMapping("/checkid")
-	@Override
 	public void checkid() {
 		System.out.println("아이디 확인");
 	}

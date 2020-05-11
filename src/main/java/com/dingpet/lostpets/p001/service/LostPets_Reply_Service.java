@@ -2,8 +2,6 @@ package com.dingpet.lostpets.p001.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
 import com.dingpet.lostpets.p001.vo.Criteria;
 import com.dingpet.lostpets.p001.vo.LostPets_Reply_VO;
 

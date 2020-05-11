@@ -2,8 +2,6 @@ package com.dingpet.petsitting.p002.vo;
 
 import java.util.Date;
 
-import org.springframework.stereotype.Component;
-
 import lombok.Data;
 
 @Data

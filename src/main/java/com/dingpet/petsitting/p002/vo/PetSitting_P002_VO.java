@@ -1,7 +1,5 @@
 package com.dingpet.petsitting.p002.vo;
 
-import java.util.Date;
-
 import lombok.Data;
 
 @Data

@@ -2,7 +2,6 @@ package com.dingpet.petsitting.p002.service;
 
 import java.util.List;
 
-import com.dingpet.petsitting.p002.vo.KakaoPayCancelVO;
 import com.dingpet.petsitting.p002.vo.PetSitting_P002_VO;
 
 public interface PetSitting_P002_Service {

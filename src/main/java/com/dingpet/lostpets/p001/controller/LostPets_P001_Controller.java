@@ -4,7 +4,6 @@ import java.util.Map;
 
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dingpet.lostpets.p001.vo.Criteria;

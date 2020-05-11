@@ -8,7 +8,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +44,7 @@ public class LostPets_P001_ControllerImpl implements LostPets_P001_Controller {
 	private LostPets_P001_Service service;
 	
 	//목록 조회
+	@Override
 	@GetMapping("/list")
 	public void list(Criteria cri, Model model) {
 		log.info("list" + cri);
@@ -61,6 +61,7 @@ public class LostPets_P001_ControllerImpl implements LostPets_P001_Controller {
 	}
 	
 	// 글 등록
+	@Override
 	@PostMapping("/write")
 	public String write(@RequestParam Map<String, Object> writeMap, MultipartFile file, RedirectAttributes rttr) throws Exception {
 		service.write(writeMap);
@@ -70,6 +71,7 @@ public class LostPets_P001_ControllerImpl implements LostPets_P001_Controller {
 	}
 	
 	// 글 조회
+	@Override
 	@GetMapping({"/view", "/modify"})
 	public void view(@RequestParam("board_id") String board_id, @ModelAttribute("cri") Criteria cri, Model model) {
 		model.addAttribute("board", service.view(board_id));
@@ -77,6 +79,7 @@ public class LostPets_P001_ControllerImpl implements LostPets_P001_Controller {
 	}
 
 	// 글 수정
+	@Override
 	@PostMapping("/modify")
 	public String modify( LostPets_P001_VO lostVO, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
 		if (service.modify(lostVO)) {
@@ -89,6 +92,7 @@ public class LostPets_P001_ControllerImpl implements LostPets_P001_Controller {
 	}
 
 	// 글 삭제
+	@Override
 	@PostMapping("/delete")
 	public String delete(@RequestParam("board_id") String board_id, @RequestParam("dog_id") String dog_id, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
 		if (service.delete(board_id, dog_id)) {
