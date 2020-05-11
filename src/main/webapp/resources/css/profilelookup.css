@@ -221,8 +221,8 @@
 	position: absolute;
 	background-color: white;
 	z-index: 100;
-	border-top: lightgoldenrodyellow solid 2px;
-	border-bottom: lightgoldenrodyellow solid 2px;
+	border-top: #6c757d solid 2px;
+	border-bottom: #6c757d solid 2px;
 }
 
 .profile-reservation {
@@ -299,7 +299,7 @@
 }
 
 .Calendar-reservation {
-	
+	padding-top: 2rem !important;
 }
 
 .btn-reservation {
@@ -344,6 +344,16 @@
 	text-align: center;
 	padding: 0px;
 }
+.reserved-date--text{
+	margin-bottom: 10px;
+}
+.start-date--text, .end-date--text{
+	margin: 0px;
+    font-size: 15px;
+    display: inline-block;
+    width: 49%;
+    text-align: center;
+}
 
 .reservtext {
 	margin: 0px;
@@ -352,6 +362,11 @@
 .owl-prev, .owl-next{
 	padding: 20px;
     display: inline-block;
+}
+
+.backbtn{
+	position: relative;
+    top: 20px;
 }
 
 /* 예약 버튼 css */

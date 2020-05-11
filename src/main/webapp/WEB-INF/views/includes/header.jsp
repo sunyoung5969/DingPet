@@ -26,7 +26,7 @@
 	
 	<link rel="stylesheet" type="text/css" href="https://assets.mypetlife.co.kr/map/wp-content/themes/listify/css/style.min.css?v=3">
 	
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css?v=9">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css?v=3">
 	
 	<!-- Font Awesome 아이콘 -->
 	<script src="https://kit.fontawesome.com/790887e3ce.js" crossorigin="anonymous"></script>
@@ -75,7 +75,6 @@
 							</a>
 						</h1>
 					</div>
-
 					<div class="col-12 col-md-10 d-none d-xl-block">
 						<nav class="site-navigation position-relative text-right" role="navigation">
 							<ul	class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
@@ -97,15 +96,14 @@
 										</li>
 									</ul>
 								</li>
-
 								<li class="has-children">
 									<a href="#trainers-section" class="nav-link">펫시터</a>
 									<ul class="dropdown">
 										<li>
-											<a href="${pageContext.request.contextPath}/petsitting/p001/profilelist" class="nav-link">펫시터 목록</a>
+											<a href="${pageContext.request.contextPath}/petsitting/p001/profilelist" id="headersitterlist" class="nav-link">펫시터 목록</a>
 										</li>
 										<li>
-											<a href="${pageContext.request.contextPath}/petsitting/p002/reservationlist" class="nav-link">예약 현황</a></li>
+											<a href="${pageContext.request.contextPath}/petsitting/p002/reservationlist" id="headerreservedlist" class="nav-link">예약 현황</a></li>
 									</ul>
 								</li>
 								<li class="has-children">
@@ -153,7 +151,6 @@
 							</ul>
 						</nav>
 					</div>
-
 					<div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;">
 						<a href="#" class="site-menu-toggle js-menu-toggle float-right">
 							<span class="icon-menu h3"></span>

@@ -8,6 +8,7 @@ public interface Customers_P001_Mapper {
 	
 	//펫시터전환 관리자 승인여부
 	public void approval(String id);
+	public void approvall(String id);
 	public void reject(String id);
 	
 	//펫시터 신청자 목록
@@ -15,6 +16,7 @@ public interface Customers_P001_Mapper {
 	
 	//일반회원 등록
 	public void insert1(Customers_P001_VO customers);
+	public void insert11(Customers_P001_VO customers);
 	public void insertPet(Customers_P001_VO customers);
 		
 	//펫시터회원 등록

@@ -1,10 +1,12 @@
 package com.dingpet.customers.p001.controller;
 
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
 
 import com.dingpet.customers.p001.vo.Customers_P001_VO;
+
 
 public interface Customers_P001_Controller {
 	
@@ -18,5 +20,5 @@ public interface Customers_P001_Controller {
 	public void withdraw(); //탈퇴
 	public void signup_(); //회원가입 완료
 	public void sitterApplyBoard(); //펫시터 신청 게시판
-	public void callback(); //소셜로그인 처리
+	
 }

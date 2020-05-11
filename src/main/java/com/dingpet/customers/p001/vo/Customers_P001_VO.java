@@ -39,4 +39,5 @@ public class Customers_P001_VO {
 	private String dog_note;
 	private String dog_photo;
 
+	private String privilege_id;
 }

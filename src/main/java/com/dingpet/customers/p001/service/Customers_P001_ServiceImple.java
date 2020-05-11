@@ -22,6 +22,10 @@ public class Customers_P001_ServiceImple implements Customers_P001_Service{
 		log.info("펫시터전환 관리자 승인 service");
 		mapper.approval(id);
 	}
+	public void approvall(String id) {
+		log.info("펫시터전환 관리자 승인 service!");
+		mapper.approvall(id);
+	}
 	public void reject(String id) {
 		log.info("펫시터전환 관리자 거절 service");
 		mapper.reject(id);
@@ -77,6 +81,10 @@ public class Customers_P001_ServiceImple implements Customers_P001_Service{
 	public void signup(Customers_P001_VO customers) {
 		log.info("회원가입 서비스계층");
 		mapper.insert1(customers);
+	}
+	public void signupp(Customers_P001_VO customers) {
+		log.info("회원가입 서비스계층");
+		mapper.insert11(customers);
 	}
 	public void signupPet(Customers_P001_VO customers) {
 		log.info("반려견 정보 등록 service");

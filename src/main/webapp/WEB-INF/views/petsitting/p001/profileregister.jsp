@@ -296,7 +296,6 @@
 									</script>
 								</div>
 								
-								
 								<div class="form-group">
 									<div class='profile-info-titleDiv'>
 										<h5 class="profile-info-title">한줄 소개 * </h5>
@@ -325,12 +324,8 @@
 													$(".bytesRemain").empty();
 													$(".bytesRemain").append(str);
 													$(".bytesRemain").css('color', 'indianred');
-											
 												}
-												
-
 											})
-											
 										});
 									</script>
 									
@@ -439,7 +434,6 @@
 								            </div>
 										</td>
 									</tr>
-		
 									<tr>
 										<td>
 											<div class="media media-testimonial">
@@ -743,7 +737,7 @@
 								
 							}
 							
-						//--------------------------데이터 POST 전송 AJAX --------------------
+					//--------------------------데이터 POST 전송 AJAX----------------------------
 							
 							function formsubmit(){
 							

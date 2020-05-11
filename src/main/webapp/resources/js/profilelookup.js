@@ -10,7 +10,6 @@ function addnumber(size){
 	var price = '';
 	var small_total = 0;
 	var sum = parseInt($('.temp_price').val());
-	
 	var num = 0;
 	var maxnum = 0;
 	
@@ -114,7 +113,6 @@ function subnumber(size){
 	var str = '';
 	var price = '';
 	var sum = parseInt($('.temp_price').val());
-	
 	var num = '';
 	
 	if(size == 'small'){
@@ -223,21 +221,16 @@ function reservation_Payment(){
 	frm.target ="payviewer";
 	frm.method ="post";
 	frm.submit();
-
 }
 
 function closedPopup(){
-	
 	opener.location.reload();
     window.close();
-	
 }
 
-	
 //----------------------------------------------------------------------------------
 
 // 시간
-
 	var timeClick = {
 		
 		// 예약 시간 DOM 설정
@@ -309,13 +302,21 @@ function closedPopup(){
 		// 예약 날짜, 시간 저장
 		timeSelect : function(event){
 			
+			if($(".num-small").text()=='0' && $(".num-medium").text()=='0' && $(".num-large").text()=='0'){
+				alert("맡기실 강아지를 먼저 선택해주세요")
+				return
+			}
+			
 			var time = $(event).val();
 	
 			if($(".startDate").val() != '' && $(".startTime").val() == ''){
 			// 시작시간 설정
-			
+				
 				$(".startTime").val(time);	// 시작시간 저장
 				console.log("시작시간 : " +$(".startTime").val() )
+				$(".start-date--text").empty();
+				$(".end-date--text").empty();
+				$(".start-date--text").text("시 작 : "+$(".startDate").val() +" "+ $(".startTime").val()+":00")
 				
 			}else if($(".startDate").val() == $(".endDate").val() && $(".startTime").val() >= time){
 			// 같은날에 시작시간보다 종료시간이 이를때
@@ -325,7 +326,9 @@ function closedPopup(){
 				$(".startTime").val(time);	// 선택한시간을 시작시간으로 변경
 				console.log("시작날짜 : " + $(".startDate").val());
 				console.log("시작시간 : " + $(".startTime").val());
-				
+				$(".start-date--text").empty();
+				$(".start-date--text").text("시 작 : "+$(".startDate").val() +" "+ $(".startTime").val()+":00")
+
 			}else if($(".endDate").val() != '' && $(".endTime").val() == ''){
 			// 종료시간 설정
 				
@@ -335,7 +338,8 @@ function closedPopup(){
 				var price = parseInt($(".temp_price").val());
 				
 				console.log("종료시간 : " +$(".endTime").val())
-				
+				$(".end-date--text").text("종 료 : "+$(".endDate").val() +" "+ $(".endTime").val()+":00")
+
 				console.log("총 예약 시간 : " + total_time)
 				//console.log("결제금액 : " + price)
 			
@@ -357,7 +361,7 @@ function closedPopup(){
 			}
 			
 			$('.dateTime').css('display', 'none');
-			
+			$('.calender-div').css('display', 'inline-block');
 		},
 		
 		// 예약시간 취소
@@ -681,7 +685,7 @@ function closedPopup(){
 			console.log("시작날짜 : "+$(".startDate").val() )
 
 		}
-		
+		$(".calender-div").css('display', 'none')
 		$(".dateTime").css('display', 'inline-block')
 
 	},
@@ -703,7 +707,6 @@ function closedPopup(){
 			zero += num;
 			return zero;
 		}
-		
 	},
 }
 

@@ -153,7 +153,11 @@
 					</div>
 				</div>
 				<div class="schedule-reservation">
-					<div class='Calendar-reservation pt-5'>	
+					<div class='Calendar-reservation pt-5'>
+						<div class="reserved-date--text">
+							<h4 class="start-date--text"></h4>
+							<h4 class="end-date--text"></h4>
+						</div>	
 						<div class="dateTime">
 							<div class="dateTime-text">
 								<button type="button" onclick="timeClick.reselect()">뒤로</button>
@@ -175,26 +179,27 @@
 							</c:forEach>
 						</div>							
 						<!-- <        > -->
-						<div align='center' class="CalendarMonth">
-							<img width="35px" class="imgbtn" onclick="calendar.calendarYearMonth('before')" src="/resources/images/petsitting/calendar_before.png">
-							<h3 class='CalendarMonth_small'></h3>
-							
-							<img width="35px" class="imgbtn" onclick="calendar.calendarYearMonth('next')" src="/resources/images/petsitting/calendar_next.png">
-						</div>
-						
-							
-						<div align='center' class="DayOfTheWeek">
-							<ul class="DayOfTheWeek_ui">
-								<li class="DayOfTheWeek_li"><small>일</small></li>
-								<li class="DayOfTheWeek_li"><small>월</small></li>
-								<li class="DayOfTheWeek_li"><small>화</small></li>
-								<li class="DayOfTheWeek_li"><small>수</small></li>
-								<li class="DayOfTheWeek_li"><small>목</small></li>
-								<li class="DayOfTheWeek_li"><small>금</small></li>
-								<li class="DayOfTheWeek_li"><small>토</small></li>
-							</ul>
-						</div>
+						<div class="calender-div">
+							<div align='center' class="CalendarMonth">
+								<img width="35px" class="imgbtn" onclick="calendar.calendarYearMonth('before')" src="/resources/images/petsitting/calendar_before.png">
+								<h3 class='CalendarMonth_small'></h3>
+								
+								<img width="35px" class="imgbtn" onclick="calendar.calendarYearMonth('next')" src="/resources/images/petsitting/calendar_next.png">
+							</div>
+								
+							<div align='center' class="DayOfTheWeek">
+								<ul class="DayOfTheWeek_ui">
+									<li class="DayOfTheWeek_li"><small>일</small></li>
+									<li class="DayOfTheWeek_li"><small>월</small></li>
+									<li class="DayOfTheWeek_li"><small>화</small></li>
+									<li class="DayOfTheWeek_li"><small>수</small></li>
+									<li class="DayOfTheWeek_li"><small>목</small></li>
+									<li class="DayOfTheWeek_li"><small>금</small></li>
+									<li class="DayOfTheWeek_li"><small>토</small></li>
+								</ul>
+							</div>
 						<div align='center' class='CalendarDayDiv'></div>
+						</div>
 						<div id="askldlka">
 						
 						</div>
@@ -251,7 +256,7 @@
 				</form>
 				
 			</div>
-			<div class="backbtn">
+			<div class="backbtn" align="center">
 				<button type="button" onclick="reservation()" class="btn btn-secondary">
 					<p class="reservtext">X</p>
 				</button>

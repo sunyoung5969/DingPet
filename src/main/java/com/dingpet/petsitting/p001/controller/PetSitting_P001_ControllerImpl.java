@@ -50,13 +50,6 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 		
 	}
 	
-	@RequestMapping("profileregister_f")
-	@Override
-	public void register_f(Model model) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 	@RequestMapping(value="registerdata", method=RequestMethod.POST)
 	@Override
 	public String registerdata(Model model, PetSitting_P001_VO profile, MultipartHttpServletRequest uploadFile, HttpServletRequest request) {
@@ -124,7 +117,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 						// 파일들을 담을리스트생성
 						
 						for(int i = 0; i < filesArr.length; i++) {
-							fileList.add(filesArr[i]);	// 리스트에 파일들 담기
+							fileList.add(filesArr[i]);		// 리스트에 파일들 담기
 						}
 						int fileindex = 0;
 						for(MultipartFile filePart : fileList) {
@@ -142,9 +135,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 								System.out.println("사진업로드 Exception " + e);
 							}
 						}
-						
-						//마지막에 세션 제거
-						session.removeAttribute("files");
+						session.removeAttribute("files");	// 마지막에 세션 제거
 					}				
 				}
 			}
@@ -228,12 +219,8 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 		// TODO Auto-generated method stub
 		
 		HttpSession session = request.getSession();
-		
 		session.setAttribute("files", files);
-		
 		System.out.println("ajax 세션 "+ session.getAttribute("files"));
-		
 	}
-	
 	
 }

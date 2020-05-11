@@ -9,6 +9,9 @@
 <update id="approval">
 update member set member_type = 'sitter' where member_id = #{member_id}
 </update>
+<update id="approvall">
+update priv_user set privilege_id = '01' where member_id = #{member_id}
+</update>
 <update id="reject">
 update member set member_type = 'user' where member_id = #{member_id}
 </update>
@@ -49,9 +52,11 @@ update member set member_type = 'user' where member_id = #{member_id}
 <!-- 일반회원 정보조회 -->
 <select id="read" resultType="com.dingpet.customers.p001.vo.Customers_P001_VO">
 	select m.member_id, m.member_nickname, m.member_name, m.member_email, m.member_pwd, m.member_contact, m.member_photo,
-		   d.dog_name, d.dog_breed, d.dog_sex, d.dog_size, d.activity_level, d.dog_note
-	from member m, dog d
-	where m.member_id = d.member_id and m.member_id = #{member_id}
+		   d.dog_name, d.dog_breed, d.dog_sex, d.dog_size, d.activity_level, d.dog_note,
+		   pu.privilege_id
+	from member m, dog d, priv_user pu
+	where m.member_id = d.member_id 
+	and m.member_id = #{member_id}
 </select>
 
 <!-- 펫시터 정보조회 -->
@@ -69,6 +74,9 @@ update member set member_type = 'user' where member_id = #{member_id}
 <select id="insert1">
 	insert into member(member_type, member_id, member_pwd, member_name, member_nickname, member_email, member_photo, member_contact)
 	values('user', #{member_id}, #{member_pwd}, #{member_name}, #{member_nickname}, #{member_email}, #{member_photo, jdbcType=VARCHAR}, #{member_contact} )
+</select>
+<select id="insert11">
+	insert into priv_user(privilege_id, member_id) values('02', #{member_id})
 </select>
 
 <!-- 반려견정보 등록 -->
@@ -105,9 +113,10 @@ update member set member_type = 'user' where member_id = #{member_id}
 
 <!-- 로그인 -->
 <select id="loginCheck" resultType="com.dingpet.customers.p001.vo.Customers_P001_VO">
-	select member_id, member_pwd, member_name, member_nickname, member_email, member_contact, member_photo
-	from member m
-	where member_id=#{member_id} and member_pwd=#{member_pwd}
+	select m.member_id, m.member_pwd, m.member_name, m.member_nickname, m.member_email, m.member_contact, m.member_photo, pu.privilege_id
+	from member m, priv_user pu
+	where m.member_id = pu.member_id 
+	and m.member_id=#{member_id} and m.member_pwd=#{member_pwd}
 </select>
 
 <!-- 펫정보 -->

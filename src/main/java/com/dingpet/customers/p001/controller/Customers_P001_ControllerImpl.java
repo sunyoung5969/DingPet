@@ -2,15 +2,20 @@ package com.dingpet.customers.p001.controller;
 
 import java.io.File;
 import java.io.IOException;
+
 import java.io.PrintWriter;
+
 import java.util.Iterator;
+
 import java.util.UUID;
 
 import javax.mail.internet.MimeMessage;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
@@ -27,7 +32,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dingpet.customers.p001.service.Customers_P001_Service;
 import com.dingpet.customers.p001.vo.Customers_P001_VO;
-import com.fasterxml.jackson.databind.JsonNode;
+
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -44,7 +49,7 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 	HttpServletRequest request;
 	HttpServletResponse response;
 	HttpSession session;
-	
+
 	@RequestMapping(value = "/admin_board", method = {RequestMethod.GET})
 	public void list(Model model) {
 		log.info("펫시터 전환 신청자 목록 controller");
@@ -63,22 +68,24 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 	public void signin(){
 		log.info("로그인 화면");
 	}
-
-    //로그인 
+	
+    //로그인 처리
 	@RequestMapping(value = "/signin", method = {RequestMethod.POST })
 	public ModelAndView signin(Customers_P001_VO customers, RedirectAttributes rttr)
 	throws Exception{
 		
-		//로그인 처리
 		ModelAndView mav = new ModelAndView();
+		
 		Customers_P001_VO result = service.loginCheck(customers); 
 		Customers_P001_VO dogResult = service.dogInfo(customers); 
-		
+		 
 		if(result != null) {
 			HttpSession session = request.getSession(); //세션처리
 			session.setAttribute("customers", result);
 			session.setAttribute("dogs", dogResult);
 			session.setAttribute("isLogOn", true);
+
+			log.info(session.getAttribute("customers"));
 			log.info("로그인 성공");
 			mav.setViewName("redirect:/");
 			
@@ -89,6 +96,9 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		}
 		return mav;
 	}
+	
+
+	
 	
 
 	//내정보조회
@@ -236,6 +246,7 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		//---------------------------------------------------------------------------
 
 		service.signup(customers);
+		service.signupp(customers);
 		service.signupPet(customers);
 		
 		
@@ -296,6 +307,7 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		
 		String id = request.getParameter("member_id");
 		service.approval(id);
+		service.approvall(id);
 		mav.setViewName("redirect:/customers/p001/admin_board");
 		
 		return mav;
@@ -329,16 +341,18 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		return null;
 	}
 
+	
 	@RequestMapping("/callback")
-	public void callback() {
-		log.info("소셜로그인처리");
-
+	public void callback(){
+		log.info("네아로");
+		
 	}
-
+	
 	@Override
 	public void readPetSitter(String id) {
 		// TODO Auto-generated method stub
 		
 	}
+
 
 }
