@@ -349,6 +349,10 @@
 	margin: 0px;
 }
 
+.owl-prev, .owl-next{
+	padding: 20px;
+    display: inline-block;
+}
 
 /* 예약 버튼 css */
 

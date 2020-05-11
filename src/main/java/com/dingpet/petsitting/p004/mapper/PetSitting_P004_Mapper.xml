@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dingpet.petsitting.p004.mapper.PetSitting_P004_Mapper">
+
+	<select id="getReviewIDSequence" resultType="int">
+		select seq_review_id.nextval from dual	
+	</select>
+	
+	<update id="setReview">
+		update reservation set
+		review_id = #{review_ID},
+		review_content = #{review_Content}, 
+		review_star = #{review_Star}, 
+		review_date = #{review_Date}
+		where order_id = #{reservation_ID}
+	</update>
+
+</mapper>

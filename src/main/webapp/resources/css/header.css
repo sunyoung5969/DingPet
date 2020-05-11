@@ -1,0 +1,109 @@
+.tl_box {
+	display: none;
+	width: 400px;
+	position: fixed;
+	left: 52.9%;
+	top: 65px;
+	z-index: 999;
+}
+
+.tl_config {
+	height: 38px;
+	padding-top: 16px;
+	background: url(../../resources/images/icon/notice_top.png) no-repeat
+		center top;
+	position: relative;
+}
+
+.tit_config {
+	height: 37px;
+	line-height: 37px;
+	padding: 0 0 0 10px;
+	float: left;
+	width: 183px;
+	font-weight: bold;
+	border-top: 2px solid #ddd;
+	border-left: 2px solid #ddd;
+	margin: 0px;
+	background: #fff;
+}
+
+.btn_config {
+	float: right;
+	width: 183px;
+	height: 37px;
+	border-top: 2px solid #ddd;
+	padding: 0 10px 0 0;
+	margin: 0px;
+	border-right: 2px solid #ddd;
+	background: #fff;
+}
+
+.close {
+	display: block;
+	height: 37px;
+	line-height: 37px !important;
+	color: #999 !important;
+	text-align: right;
+	float: right;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.tl_scroll {
+	position: relative;
+	width: 100%;
+	height: 250px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	background: #fff;
+	border: 2px solid #ddd;
+	z-index: 100;
+	border-top: 1.5px solid #c3c3c3;
+}
+
+.newnotice {
+	background: #e5f1ff;
+	border-bottom: solid 1px #c3c3c3;
+}
+
+.confirmnotice {
+	background: #eee;
+	border-bottom: solid 1px #c3c3c3;
+	color: #474d83;
+}
+
+.notice-div {
+	text-align: center;
+	margin-left: 50px;
+}
+
+.notice-id {
+	padding-left: 10px;
+}
+
+.notice-contents {
+	margin: 0px;
+	text-align: center;
+	padding: 10px;
+}
+
+.send-date {
+	display: block;
+	text-align: right;
+	padding-right: 10px;
+}
+
+.notice_count--div {
+	
+}
+
+.dd_center {
+	height: 36px;
+	float: left;
+	margin: 0px;
+	width: 34px;
+	background: #fff;
+	position: relative;
+	top: 3px;
+}

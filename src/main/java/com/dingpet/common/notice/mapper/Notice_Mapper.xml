@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dingpet.common.notice.mapper.Notice_Mapper">
+
+	<insert id="setNotice">
+		insert into notice (notice_type, notice_id, member_id, sender_id, send_date, notice_contents, url)
+		values (#{notice_Type}, #{notice_ID}, #{member_ID}, #{sender_ID}, #{send_Date}, #{notice_Contents}, #{url, jdbcType=VARCHAR})
+	</insert>
+	
+	<select id="getNoticeIdSequence" resultType="int">
+		select seq_notice_id.nextval from dual
+	</select>
+
+	<select id="getNoticeCount" resultType="int">
+		select count(notice_id) from notice where member_id=#{member_ID} and confirm_read = 'N'
+	</select>
+	
+	<select id="getNotice" resultType="com.dingpet.common.notice.vo.Notice_VO">
+		select notice_id, notice_type, send_date, notice_contents, confirm_read, url
+		from notice
+		where member_id = #{member_ID} order by confirm_read, send_date desc
+	</select>
+	
+	<update id="readNotice">
+		update notice set confirm_read = 'Y' where notice_type = #{notice_Type} and member_id = #{member_ID}
+	</update>
+
+</mapper>

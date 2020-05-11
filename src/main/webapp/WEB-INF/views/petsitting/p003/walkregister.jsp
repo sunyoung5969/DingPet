@@ -263,12 +263,6 @@
 
 
 
-
-
-
-
-
-
 @media screen and (max-width: 770px) {
 	
 	.main-raised {

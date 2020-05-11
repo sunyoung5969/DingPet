@@ -1,16 +1,13 @@
 package com.dingpet.petsitting.p004.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
 
-import com.dingpet.petsitting.p004.service.PetSitting_P004_Service;
+import com.dingpet.petsitting.p004.vo.PetSitting_P004_VO;
 
-import lombok.AllArgsConstructor;
+public interface PetSitting_P004_Controller {
 
-@RequestMapping("/petsitting/p004/*")
-@AllArgsConstructor
-@Controller
-public class PetSitting_P004_Controller {
+	public void reviewregister(Model model, PetSitting_P004_VO reviewVO);
 	
-	private PetSitting_P004_Service service;
+	public void reviewregisterconfirm(Model model, PetSitting_P004_VO reviewVO);
+
 }

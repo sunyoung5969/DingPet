@@ -142,7 +142,7 @@ public class PetSitting_P003_ControllerImpl implements PetSitting_P003_Controlle
 	// 일지 데이터 처리	
 	@RequestMapping("/logregisterdata")
 	@Override
-	public void logregisterdata(Model model, PetSitting_P003_VO logVO, MultipartHttpServletRequest uploadFile){
+	public String logregisterdata(Model model, PetSitting_P003_VO logVO, MultipartHttpServletRequest uploadFile, HttpServletRequest request){
 		// TODO Auto-generated method stub
 		
 	//------------------------------- 일지 시간 ---------------------------
@@ -260,8 +260,8 @@ public class PetSitting_P003_ControllerImpl implements PetSitting_P003_Controlle
 	//----------------------------------------------------------------------------------
 		
 		model.addAttribute("logdata", logVO);
-		
-		//return "redirect: /petsitting/p003/loglookup?"+logVO;
+		request.setAttribute("logVO", logVO);
+		return "forward:loglookup";
 	}
 
 	@RequestMapping("/walkpathtest")
@@ -296,8 +296,12 @@ public class PetSitting_P003_ControllerImpl implements PetSitting_P003_Controlle
 
 	@RequestMapping("/loglookup")
 	@Override
-	public void loglookup(Model model, PetSitting_P003_VO logVO) {
+	public void loglookup(Model model, PetSitting_P003_VO logVO, HttpServletRequest request) {
 		// TODO Auto-generated method stub
+		if(request.getAttribute("logVO") != null) {
+			logVO = (PetSitting_P003_VO)request.getAttribute("logVO");
+			request.removeAttribute("logVO");
+		}
 		System.out.println("여기서의 logvo는?"+ logVO);
 		model.addAttribute("reservation_ID", logVO.getReservation_ID());
 		model.addAttribute("list", service.getLog(logVO));

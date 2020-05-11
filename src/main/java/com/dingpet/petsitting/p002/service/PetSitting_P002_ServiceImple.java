@@ -49,7 +49,7 @@ public class PetSitting_P002_ServiceImple implements PetSitting_P002_Service{
 	@Override
 	public List<PetSitting_P002_VO> reservedCustList(PetSitting_P002_VO vo) {
 		// TODO Auto-generated method stub
-		return mapper.reservedSitterList(vo);
+		return mapper.reservedCustList(vo);
 	}
 
 	@Override

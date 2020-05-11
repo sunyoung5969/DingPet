@@ -5,7 +5,7 @@
 <%@include file="../../includes/header.jsp"%>
 
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/profilelookup.css?v=3">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/profilelookup.css?v=5">
 
 <!--====  str of contents  ====-->
     <section style="padding-top:87px">
@@ -542,12 +542,29 @@
                     <!--====  End of Gallery  ====-->
                     <!--== start review ==-->
                     <div class="testimonials-wrap">
-                        <div class="container">
+                        <div class="container container--review">
                             <div class="heading-section">
                                 <span class="sub-heading">R E V I E W</span>
                                 <h2>펫시터 이용 후기</h2>
                             </div>
                             <div class="carousel-testimonial owl-carousel">
+                            	<c:forEach var="reviewlist" items="${review }">
+                            	 	<div class="item">
+                            	 	    <input type="hidden" class="exist" value="Y">
+                            	 	
+	                            		<div class="testimonial-box d-flex" style="min-height: 215px;">
+	                                        <div class="user-img" style="background-image: url(https://randomuser.me/api/portraits/men/82.jpg)">
+	                                        </div>
+	                                        <div class="text pl-4">
+	                                            <span class="quote"><i class="fa fa-quote-left"></i></span>
+	                                            <p>${reviewlist.review_Content }</p>
+	                                            <p class="name">${reviewlist.member_Nickname }</p>
+	                                            <span class="position">${reviewlist_review_Star }</span>
+	                                        </div>
+	                                    </div>
+                                    </div>
+                            	</c:forEach>
+                            	<!-- 
                                 <div class="item">
                                     <div class="testimonial-box d-flex">
                                         <div class="user-img" style="background-image: url(https://randomuser.me/api/portraits/men/82.jpg)">
@@ -684,6 +701,7 @@
                             
                         </div>
                     </div>   
+                    -->
                     <!--== end review ==-->  
                 </div>
             </div>
@@ -755,8 +773,12 @@ $('.bubblebtn--bubble').each(function() {
 	  $(this).on('mouseover', function() {
 	    btTl.restart();
 	  });
-	});
-
+});
+	
+	if($(".exist").val() != 'Y'){
+		$(".container--review").append("<h2 align='center' style='display:block'>아직 등록된 리뷰가 없습니다.</h2>");
+	}
+	
 </script>
 
 

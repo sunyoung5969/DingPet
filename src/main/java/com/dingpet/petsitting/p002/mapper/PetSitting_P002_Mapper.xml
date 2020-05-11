@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.dingpet.petsitting.p002.mapper.PetSitting_P002_Mapper">
 
 	<select id="getOrderIdSequence" resultType="int">
-		select seq_order_id.nextval from dual
+		select seq_notice_id.nextval from dual
 	</select>
 	
 	<insert id="reservationInsert">
@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				#{total_amount}, #{payment_Date}, #{item_Name}, #{vat}, #{tid}) 
 	</insert>
 	
-	<!-- 예약신청한 고객의 예약리스트 -->
+<!-- 예약신청한 고객의 예약리스트 -->
 	<select id="reservedSitterList" resultType="com.dingpet.petsitting.p002.vo.PetSitting_P002_VO">
 		select r.order_id, s.sitter_photo, s.sitter_nickname, 
 			   r.start_date, r.start_time, r.end_date, r.end_time 
@@ -31,10 +31,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 		group by r.order_id, s.sitter_photo, s.sitter_nickname, 
 				 r.start_date, r.start_time, r.end_date, r.end_time
+		order by r.start_date desc
 		
 	</select>
 	
-	<!-- 예약받은 펫시터의 예약리스트 -->
+<!-- 예약받은 펫시터의 예약리스트 -->
 	<select id="reservedCustList" resultType="com.dingpet.petsitting.p002.vo.PetSitting_P002_VO">
 		
 		select r.order_id, s.member_photo, s.member_nickname, 
@@ -46,10 +47,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from member sm, reservation sr
 		where sr.member_id = sm.member_id ) s
 		
-		where m.member_id = r.member_id and r.order_id = s.order_id and #{member_ID} = r.sitter_id
+		where m.member_id = r.member_id and r.order_id = s.order_id and r.sitter_id = #{member_ID}
 		
 		group by r.order_id, s.member_photo, s.member_nickname, 
 				 r.start_date, r.start_time, r.end_date, r.end_time
+				 
+		order by r.start_date desc
 	</select>
 
 	<select id="getReservedInfo" resultType="com.dingpet.petsitting.p002.vo.PetSitting_P002_VO">
