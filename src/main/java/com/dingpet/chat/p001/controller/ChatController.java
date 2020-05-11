@@ -28,7 +28,7 @@ import com.dingpet.customers.p001.service.Customers_P001_Service;
 import com.dingpet.customers.p001.vo.Customers_P001_VO;
 
 import lombok.extern.log4j.Log4j;
-import sun.tools.serialver.resources.serialver;
+//import sun.tools.serialver.resources.serialver;
 
 @Log4j
 @RequestMapping("/chat/*")
