@@ -126,8 +126,10 @@
 									</div>
 								</li>
 								<li>
-									<div class="messege-div" onclick="noticeClick()">
+									<div class="messege-div">
+									<a href="/chat/chatList">
 										<img class="messege-icon" height="35px" src="../../resources/images/icon/messege_icon.png">
+									</a>
 									</div>
 								</li>
 								<li>
