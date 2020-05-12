@@ -184,7 +184,7 @@ function isOwner(roomNo, userId){
 }
 
 function updatePw(roomNo) {
-	var input = prompt('수정할 비밀번호를 입력하세요!');
+	var input = confirm('삭제하시겠습니까 ?');
 	
 	$.ajax ({
 	   type:'get',

@@ -1,13 +1,51 @@
 package com.dingpet.chat.p001.vo;
 
 public class Message {
-	private String roomName;
-	private String writer;
-	private String message;
-	private String chatdate;
-	private String memberList;
-	private String messageType;
+	private String roomName; // 방이름
+	private String writer; // 작성자
+	private String message; // 내용
+	private String chatdate; // 보낸날짜
+	private String memberList; // 멤버
+	private String messageType; // 타입
+	private String sender; // 보낸이
+	private String target; // 받는이
+	private String roomno; // 방번호
+	private String member; // 멤버
+	
+	public String getSender() {
+		return sender;
+	}
 
+	public void setSender(String sender) {
+		this.sender = sender;
+	}
+
+	public String getTarget() {
+		return target;
+	}
+
+	public void setTarget(String target) {
+		this.target = target;
+	}
+
+	public String getRoomno() {
+		return roomno;
+	}
+
+	public void setRoomno(String roomno) {
+		this.roomno = roomno;
+	}
+
+	public String getMember() {
+		return member;
+	}
+
+	public void setMember(String member) {
+		this.member = member;
+	}
+
+
+	
 	public String getMessageType() {
 		return messageType;
 	}

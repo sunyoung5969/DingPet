@@ -10,13 +10,23 @@ import org.springframework.stereotype.Service;
 import com.dingpet.chat.p001.mapper.ChatMapper;
 import com.dingpet.chat.p001.vo.ChatRoom;
 import com.dingpet.chat.p001.vo.Criteria;
+import com.dingpet.chat.p001.vo.Message;
 
 @Service
 public class ChatServiceImpl implements ChatService {
 
 	@Autowired
 	ChatMapper dao;
-
+	
+	@Override
+	public void saveMessage(Message message) throws Exception {
+		dao.saveMessage(message);
+	}
+	@Override
+	public List<Message> getMessage(int roomno) throws Exception {
+		return dao.getRoomMessage(roomno);
+	}
+	
 	@Override
 	public List<ChatRoom> listChatRoom(Criteria cri, String newOwner) throws Exception {
 		return dao.listChatRoom(cri, newOwner);
