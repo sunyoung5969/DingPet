@@ -16,6 +16,7 @@ function connectWs() {
 		console.log($(".member_ID").val())
 		
 		$(".notice-div").css("display","block");
+		$(".messege-div").css("display","block");
 		
 		$.ajax({
 			url : '/common/notice/noticeCount',	// 카운터하는 컨트롤러로 디비에서 select count 가지고와야지
