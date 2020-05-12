@@ -35,7 +35,7 @@
 		SELECT reply_id, board_id, reply, replyer, reply_date
 		FROM lost_found_reply
 		WHERE board_id = #{board_id}
-		ORDER BY reply_id
+		ORDER BY reply_id desc
 	</select>
 </mapper>
 

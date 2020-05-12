@@ -1,12 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="../../includes/header.jsp"%>
-<script src="https://code.jquery.com/jquery-3.5.0.min.js"
-	integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
-	crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 <!-- lost_found.CSS -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/lost_found.css">
+<style>
+	.map_wrap {position:relative;width:100%;}
+    .title {font-weight:bold;display:block;}
+    .hAddr {position:absolute;left:10px;top:10px;border-radius: 2px;background:#fff;background:rgba(255,255,255,0.8);z-index:1;padding:5px;
+    	border: 1px solid #088cf3;}
+    #centerAddr {display:block;margin-top:2px;font-weight: normal;}
+    .bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap; }
+    
+    #lost_map_guide{
+    	position: absolute;
+    	left : 10px;
+    	background:rgba(255,255,255,0.8)
+    	;z-index:1;
+    	padding:5px;
+    }
+    
+	#address_display{
+		width : 70% !important;
+	}
+	    
+    #address_display:read-only{
+    	background: #fff;
+    }
+    
+    .fileDrop{
+    	width : 400px;
+    	height : 300px;
+    	border : 1px solid #088cf3;
+    }
+    
+</style>
+
 
 <!--====  str of contents  ====-->
 <section style="padding-top: 87px">
@@ -24,13 +54,13 @@
 				</div>
 
 				<div class="card-body pd40">
-					<form id="lost_found_form" action="/lostpets/p001/write" method="post">
+					<form id="lost_found_form" action="/lostpets/p001/write" method="post" enctype="multipart/form-data">
 						<div class="form-group row">
 							<label class="col-md-4 col-form-label text-md-right color_blue lost_found_label">카테고리</label>
 							<div class="col-md-6">
-								<input type="radio" id="tempshelters-title" class="form-control" name="category" value="lost"> 
+								<input type="radio" id="tempshelters-title" class="form-control" name="category" value="lost" required> 
 								<label for="lost">임시보호 등록</label>&nbsp;&nbsp; 
-								<input type="radio" id="tempshelters-title" class="form-control" name="category" value="find"> 
+								<input type="radio" id="tempshelters-title" class="form-control" name="category" value="find" required> 
 								<label for="find">실종견 찾기 등록</label>
 							</div>
 						</div>
@@ -48,8 +78,10 @@
 								class="col-md-4 col-form-label text-md-right color_blue lost_found_label">견종</label>
 							<div class="col-md-6">
 								<input list = "dog_breed" class="form-control" name="dog_breed"
-									maxlength="30" placeholder="예) 골든 리트리버" required>
+									maxlength="30" placeholder="목록에서 선택해주세요" required>
 								<datalist id = "dog_breed">
+									<option value ="믹스견" readonly>
+									<option value ="그 외">
 									<option value ="골든 리트리버">
 									<option value ="닥스훈트">
 									<option value ="달마시안">
@@ -64,8 +96,17 @@
 									<option value ="비숑 프리제">
 									<option value ="사모예드">
 									<option value ="삽살개">
+									<option value ="스피츠">
 									<option value ="시바">
-									 
+									<option value ="시추">
+									<option value ="시베리안 허스키">
+									<option value ="알래스칸 말라뮤트">
+									<option value ="요크셔 테리어">
+									<option value ="웰시 코기">
+									<option value ="저먼 셰퍼드">
+									<option value ="진돗개">
+									<option value ="치와와">
+									<option value ="코카 스파니엘">
 								</datalist>
 							</div>
 						</div>
@@ -110,17 +151,23 @@
 						<div class="form-group row">
 							<label
 								class="col-md-4 col-form-label text-md-right color_blue lost_found_label">발견장소</label>
-							<div class="col-md-6">
-								<input type="text" class="form-control" name="found_location"
-									maxlength="50" placeholder="예)종각역 YMCA 앞" required>
+							<div class="col-md-6 flex ">
+								<div class = "flex_row_around">
+									<input type="text" class="form-control mt-3"  id="address_display" name="found_location" placeholder = "주소 검색 버튼을 클릭하세요" required>
+									<input type = "button" class = "btn btn-primary" onclick="DaumPostcode()" value = "주소 검색">
+								</div>
+								<div id = "map_wrap" class = "mt-3" style = "display:none; position:relative;">
+									<div id="lost_map"  style = "width : 500px; height: 400px; display:none"></div>
+									<div class="hAddr"><span id="centerAddr"></span> </div>
+									<span id = "lost_map_guide" class = "color_blue" style = "display:none;">*지도에서 위치를 클릭해서 주소를 입력해주세요</span><br>
+								</div>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label
 								class="col-md-4 col-form-label text-md-right color_blue lost_found_label">특이사항</label>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="dog_note"
-									maxlength="1000">
+								<input type="text" class="form-control" name="dog_note" maxlength="1000" placeholder = "예) 빨간 가슴줄을 하고 있었어요, 겁이 많아요">
 							</div>
 						</div>
 						<div class="form-group row">
@@ -137,15 +184,21 @@
 							<label
 								class="col-md-4 col-form-label text-md-right color_blue lost_found_label">사진</label>
 							<div class="col-md-6">
-								<input type="file" name="uploadFile" id="profile_pt"
-									onchange="previewImage(this,'View_area')">
-								<div id='View_area' class="img_up"></div>
+								
+								<!-- @@@@@@@@사진 첨부@@@@@@@@222 -->
+								<div class = "uploadDiv">
+									<input type = "file" name = "frontImage" accept = "image/*" onchange="previewImage(this,'front_view')" required title = "정면 사진을 업로드 해주세요.">
+									<div id='front_view' class="img_up"></div>
+								</div>
+					
 							</div>
 						</div>
+						
 						<input type="hidden" class="form-control" name="member_id" value="${customers.member_id }">
-
+						<input type = "hidden" id = "lost_coords"  name = "lost_coords" value = "">
+						
 						<div class="pb-5 pt-5 text-center">
-							<button type="submit" class="btn btn-primary">등록하기</button>
+							<button id = "submitBtn" type="submit" class="btn btn-primary">등록하기</button>
 						</div>
 
 					</form>
@@ -157,21 +210,39 @@
 </section>
 <!--====  end of contents  ====-->
 
-<!-- 데이트 피커 오늘 날짜로 기본값 설정 -->
-<script>
-    	$(document).ready(function(){
-    		var date = new Date();
-    		
-    		var day = date.getDate();
-    		var month = date.getMonth() + 1;
-    		var year = date.getFullYear();
-    		
-    		if(month < 10) month = "0" + month;
-    		if(day < 10) day = "0" + day;
-    		
-    		var today = year + "-" + month + "-" + day;
-    		$("#found_date").attr({value : today, max : today });
-    	});
-    </script>
+	<!-- readonly -->
+	<script>
+		$(function(){
+		    $("#address_display").on('keydown paste', function(e){
+		        e.preventDefault();
+		    });
+			
+		});		
+	</script>
+
+	<!-- 데이트 피커 오늘 날짜로 기본값 설정 -->
+		<script>
+	    	$(document).ready(function(){
+	    		var date = new Date();
+	    		
+	    		var day = date.getDate();
+	    		var month = date.getMonth() + 1;
+	    		var year = date.getFullYear();
+	    		
+	    		if(month < 10) month = "0" + month;
+	    		if(day < 10) day = "0" + day;
+	    		
+	    		var today = year + "-" + month + "-" + day;
+	    		$("#found_date").attr({value : today, max : today });
+	    	});
+	    </script>
+
+
+    <!-- 주소 검색용 우편번호 API -->
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <!-- 주소 검색용 카카오맵 API -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fffa8a8e4c6b7163952ecf2f1685ecd9&libraries=services"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/lost_map.js" ></script>
+    
 
 <%@include file="../../includes/footer.jsp"%>

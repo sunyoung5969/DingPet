@@ -27,6 +27,7 @@
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
+		
 		<multipart-config>
 			<!--<location>C:\\upload\\temp</location>-->
 			<location>/home/temp</location> 	임시 파일 폴더 경로 지정  

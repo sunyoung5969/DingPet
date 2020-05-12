@@ -12,39 +12,21 @@
 
 <!--====  str of contents  ====-->
 <section style="padding-top:87px">
-    <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); transform: translate3d(0px, 0px, 0px);">
+    <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); height : 300px;transform: translate3d(0px, 0px, 0px);">
     	<div class="floating_text pt-5 pb-5  mt-5 text-center heading-section m-auto">
                   	<h1 class="mb-2 color_white">유기견 찾기</h1>
-                 </div>
+        </div>
     </div>
-        <div class="main main-raised">
+    
 		<div class="row ">
 			<!-- 페이지 정보 div -->
 			<div class="col-xs-12 features">
-				 <!-- 
-				 <div class="pt-5 pb-5  mt-5 text-center heading-section">
-                  	<h2 class="text-black mb-2">유기견 찾기</h2>
-                 </div>
-				<!-- <p><c:out value = "${customers.member_id}"/></p> -->
-				 <div class = "d-flex justify-content-end mr-5 pr-3">
+
+				 <div class = "flex_row mr-5 pr-3">
+				 	<a id = "to_request_list" href="" class="btn_a"><span class="sub_txt">요청 목록 <img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr"></span> </a>
 				 	<a id = "lost_write" href="" class="btn_a"><span class="sub_txt">등록하기 <img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr"></span> </a>
 				</div>
 			</div>
-			
-			<script type="text/javascript">
-				var loggedInId = '${customers.member_id}';	
-			
-				$(document).ready(function(){
-					$("#lost_write").on("click", function(){
-						if(!loggedInId){
-							alert("로그인이 필요한 서비스입니다.\n로그인 페이지로 이동합니다.");
-							(this).setAttribute("href", "/customers/p001/signin");
-						}else{
-							(this).setAttribute("href", "/lostpets/p001/write");
-						}
-					});
-				});
-			</script>
 			
 				<div class="container ">
 					<div class="row">
@@ -82,7 +64,7 @@
 														<img alt="image" width="100%" height="60%" src="/resources/images/dog.jpg">
 													</div>
 													<div class="text_left w-100 pl-3">
-														<p><strong><c:out value="${list.title }" /></strong></p>
+														<p class = "text_overflow"><strong><c:out value="${list.title }" /></strong></p>
 														<p class = "pl-2"><span class="tag">견종</span><span> </span><c:out value="${list.dog_breed}" /></p>
 														<p class = "pl-2"><span class="tag">성별</span><span></span> <c:out value="${list.dog_sex}" /></p>
 														<p class = "pl-2">
@@ -141,7 +123,7 @@
 														<img alt="image" width="100%" height="60%" src="/resources/images/blue.jpg">
 													</div>
 													<div class="text_left w-100 pl-3">
-														<p><strong><c:out value="${list.title }" /></strong></p>
+														<p class = "text_overflow"><strong><c:out value="${list.title }" /></strong></p>
 														<p class = "pl-2"><span class="tag">견종</span><span> </span><c:out value="${list.dog_breed}" /></p>
 														<p class = "pl-2"><span class="tag">성별</span><span></span> <c:out value="${list.dog_sex}" /></p>
 														<p class = "pl-2">
@@ -179,6 +161,7 @@
 												</ul>
 											</nav>
 										</div>
+										<!-- pagination ends -->
 								</div>
 							</div>
 						</div>
@@ -186,7 +169,6 @@
 				</div>
 	
 			</div>
-		</div>
 </section>
 
 <!-- 데이터 전송용 get form -->
@@ -194,6 +176,33 @@
 	<input type="hidden" name="pageNum" value="${pagination.cri.pageNum }">
 	<input type="hidden" name="amount" value="${pagination.cri.amount }">
 </form>
+
+			<script type="text/javascript">
+				var loggedInId = '${customers.member_id}';	
+			
+				$(document).ready(function(){
+					
+					if(!loggedInId){
+						$("#lost_write, #to_request_list").on("click", function(){
+							alert("로그인이 필요한 서비스입니다.\n로그인 페이지로 이동합니다.");
+							(this).setAttribute("href", "/customers/p001/signin");
+						});
+						/*	
+						$("#to_request_list").click(function(){
+							alert("로그인이 필요한 서비스입니다.\n로그인 페이지로 이동합니다.");
+							(this).setAttribute("href", "/customers/p001/signin");
+						})*/
+						}else{
+							$("#lost_write").on("click", function(){
+								(this).setAttribute("href", "/lostpets/p001/write");
+							});
+							
+							$("#to_request_list").click(function(){
+								(this).setAttribute("href", "/lostpets/p001/request?member_id=" + loggedInId);
+							});
+						}
+				});
+			</script>
 
 <script type="text/javascript">
 	

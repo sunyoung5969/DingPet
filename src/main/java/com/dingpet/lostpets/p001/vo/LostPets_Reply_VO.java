@@ -6,6 +6,7 @@ public class LostPets_Reply_VO {
 	private String reply;
 	private String replyer;
 	private String reply_date;
+	
 	public String getReply_id() {
 		return reply_id;
 	}

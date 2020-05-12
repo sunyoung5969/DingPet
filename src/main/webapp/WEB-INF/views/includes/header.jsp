@@ -70,8 +70,11 @@
 
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                 <li><a href="/" class="nav-link">Home</a></li>
-                <li class="has-children">
-                  <a href="#about-section" class="nav-link">반려견 찾기</a>
+                <li>
+                  <a href="#about-section" class="nav-link">About</a>
+                <li>
+                  <a href="/lostpets/p001/list" class="nav-link">유기견 찾기</a>
+                  <!-- 
                   <ul class="dropdown">
                     <li><a href="/lostpets/p001/list" class="nav-link">유기견 보호</a></li>
                     <li><a href="#" class="nav-link">유기견 찾기</a></li>
@@ -84,6 +87,7 @@
                       </ul>
                     </li>
                   </ul>
+                   -->
                 </li>
                 
                 <li class="has-children">
