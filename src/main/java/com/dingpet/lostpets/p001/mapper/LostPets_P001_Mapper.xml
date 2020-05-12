@@ -45,12 +45,17 @@
 		FROM dual
 	</select>
 	
+	<select id = "getBoardId" resultType = "string">
+		SELECT seq_lost_found.nextval
+		FROM dual
+	</select>
+	
 	<insert id="writeLost" parameterType="java.util.Map">
 		insert into lost_found
 		(category, board_id, member_id, dog_id, title, content, 
-		board_date, status, status_reason, lost_found_report)
-		values (#{category}, seq_lost_found.nextval, #{member_id}, #{dog_id}, #{title}, #{content},
-		to_char(sysdate, 'yyyymmddhh24mi'), 'n', null, null)
+		board_date, status, status_reason)
+		values (#{category}, #{board_id}, #{member_id}, #{dog_id}, #{title}, #{content},
+		to_char(sysdate, 'yyyymmddhh24mi'), 'n', null)
 	</insert>
 
 	<insert id = "writeDog" parameterType = "java.util.Map">
@@ -59,17 +64,25 @@
 		values (#{dog_id}, 'stray', #{member_id}, #{dog_name}, #{dog_breed}, #{dog_sex}, #{dog_size},
 		#{dog_note}, #{found_date}, #{found_location})
 	</insert>
+	
+	<insert id = "upload" parameterType = "java.util.Map">
+		INSERT INTO lost_found_photo (
+			board_id, category, front_name, front_path)
+		VALUES (#{board_id}, #{category}, #{front_name}, #{front_path})
+	</insert>
 	<!-- 글 등록 끝 -->
 
 
 
 	<!-- 글 조회 -->
 	<select id="view" resultType="com.dingpet.lostpets.p001.vo.LostPets_P001_VO" parameterType = "String">
-		select category, board_id, LF.member_id, LF.dog_id, title, content, board_date, 
-			dog_name, dog_breed, dog_sex, dog_size, dog_note, found_date, found_location
-		from lost_found LF, dog D 
+		select LF.category, LF.board_id, LF.member_id, LF.dog_id, title, content, board_date, 
+			dog_name, dog_breed, dog_sex, dog_size, dog_note, found_date, found_location, 
+			front_name, front_path
+		from lost_found LF, dog D, lost_found_photo P 
 		where LF.dog_id = D.dog_id
-		and board_id = #{board_id}
+		and LF.board_id = P.board_id
+		and LF.board_id = #{board_id}
 	</select>
 	<!-- 글 조회 끝 -->
 
@@ -104,12 +117,58 @@
 		delete from lost_found 
 		where board_id = #{board_id}
 	</delete>
+	
 	<delete id="deleteDog">
 		delete from Dog 
 		where dog_id = #{dog_id}
 	</delete>
+	
+	<delete id="deletePhoto">
+		delete from lost_found_photo
+		where board_id = #{board_id}
+	</delete>
 	<!-- 글 삭제 끝 -->
 
 
+	<!-- 요청 목록 가져오기 -->
+	<!-- 요청이 있는 내 글 목록 -->
+	<select id="myList" resultType="com.dingpet.lostpets.p001.vo.LostPets_P001_VO" parameterType = "String">
+		SELECT LF.title, LF.board_id, D.dog_breed, D.dog_sex, d.found_location, P.front_name
+		FROM lost_found LF, dog D, lost_found_photo P
+		WHERE LF.board_id = P.board_id
+		AND LF.dog_id = D.dog_id
+		AND LF.member_id = #{member_id}
+        AND LF.status = 'n'
+        AND LF.member_id in (
+           SELECT receiver_id
+           FROM lost_found_request
+           WHERE request_status = 'n'
+        )
+        AND LF.board_id in (
+            SELECT receiver_b_id
+            FROM lost_found_request
+            WHERE request_status = 'n'
+        )
+	</select>
+	<!-- 내 글에 대한 요청 목록 -->
+	<select id="requestList" resultType="com.dingpet.lostpets.p001.vo.LostPets_P001_VO" parameterType = "String">
+		SELECT *
+		FROM 
+		    (
+		        SELECT LF.board_id, LF.title, D.dog_breed, D.dog_sex, D.found_location, P.front_name 
+		        FROM lost_found LF, dog D, lost_found_photo P
+		        WHERE LF.dog_id = D.dog_id
+		        AND LF.board_id = P.board_id
+		    ) B, 
+		    (
+		        SELECT request_id, sender_id, receiver_id, sender_b_id, receiver_b_id, request_status
+		        FROM lost_found_request
+		        WHERE receiver_id = #{member_id}
+		        AND request_status = 'n'
+		    ) R
+		WHERE R.sender_b_id = B.board_id
+	</select>
+	
+	
 
 </mapper>

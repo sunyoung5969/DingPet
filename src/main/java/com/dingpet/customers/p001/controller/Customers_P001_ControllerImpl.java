@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import java.util.Iterator;
-
+import java.util.List;
 import java.util.UUID;
 
 import javax.mail.internet.MimeMessage;
@@ -77,7 +77,7 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		ModelAndView mav = new ModelAndView();
 		
 		Customers_P001_VO result = service.loginCheck(customers); 
-		Customers_P001_VO dogResult = service.dogInfo(customers); 
+		List<Customers_P001_VO> dogResult = service.dogInfo(customers); 
 		 
 		if(result != null) {
 			HttpSession session = request.getSession(); //세션처리

@@ -69,6 +69,7 @@ public class LostPets_Reply_Controller {
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
+	//댓글 수정
 	@RequestMapping(method = {RequestMethod.PUT, RequestMethod.PATCH}, value = "/{reply_id}",
 			consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<String> modify(@RequestBody LostPets_Reply_VO reply_vo, @PathVariable("reply_id") String reply_id){
@@ -79,4 +80,5 @@ public class LostPets_Reply_Controller {
 				? new ResponseEntity<>("success", HttpStatus.OK)
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+	
 }

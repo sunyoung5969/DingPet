@@ -1,17 +1,12 @@
 package com.dingpet.lostpets.p001.controller;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletResponse;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,14 +14,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dingpet.lostpets.p001.service.LostPets_P001_Service;
-import com.dingpet.lostpets.p001.util.FileUploadUtils;
 import com.dingpet.lostpets.p001.vo.Criteria;
 import com.dingpet.lostpets.p001.vo.LostPets_P001_VO;
 import com.dingpet.lostpets.p001.vo.PageDTO;
@@ -63,8 +55,63 @@ public class LostPets_P001_ControllerImpl implements LostPets_P001_Controller {
 	// 글 등록
 	@Override
 	@PostMapping("/write")
-	public String write(@RequestParam Map<String, Object> writeMap, MultipartFile file, RedirectAttributes rttr) throws Exception {
+	public String write(@RequestParam Map<String, Object> writeMap, 
+			MultipartHttpServletRequest uploadFile, RedirectAttributes rttr) throws Exception {
+		
+		//image upload
+		String uploadFolder = "/var/lib/tomcat8/webapps/lost";
+		String fileName = "";
+		
+		Iterator<String> files = uploadFile.getFileNames();
+
+		while(files.hasNext()) {
+			
+			File saveFile;
+			String filePath;
+			String index = files.next();
+			UUID uuid = UUID.randomUUID();
+			
+			MultipartFile mFile = uploadFile.getFile(index);
+			fileName = mFile.getOriginalFilename();
+		
+
+			if(!fileName.equals("")) {
+
+				if(index.equals("frontImage")) {
+					saveFile = new File(uploadFolder, uuid.toString()+"_frontImage_"+fileName);
+					filePath = saveFile.getPath();
+					writeMap.put("front_name", uuid.toString()+"_frontImage_"+fileName);
+					writeMap.put("front_path", filePath);
+					
+				}else if(index.equals("sideImage")){
+					saveFile = new File(uploadFolder, uuid.toString()+"_sideImage_"+fileName);
+					filePath = saveFile.getPath();
+					writeMap.put("side_name", uuid.toString()+"_sideImage_"+fileName);
+					writeMap.put("side_path", filePath);
+				
+				}else {
+					saveFile = new File(uploadFolder, uuid.toString()+"_wholeImage_"+fileName);
+					filePath = saveFile.getPath();
+					writeMap.put("whole_name", uuid.toString()+"_wholeImage_"+fileName);
+					writeMap.put("whole_path", filePath);
+				}
+					
+				try {
+					mFile.transferTo(saveFile);
+					
+				} catch (Exception e) {
+					// TODO: handle exception
+					System.out.println("사진업로드 Exception " + e);
+				}
+			}
+		}
+		//end of image upload
+		
 		service.write(writeMap);
+		
+		if(files != null) {
+			service.upload(writeMap);
+		}
 		rttr.addFlashAttribute("result", writeMap.get("board_id"));
 		
 		return "redirect:/lostpets/p001/list";
@@ -103,8 +150,24 @@ public class LostPets_P001_ControllerImpl implements LostPets_P001_Controller {
 		log.info("delete");
 		return "redirect:/lostpets/p001/list";
 	}
+	
+	@GetMapping("/lost_found_map")
+	public void readMap() {
+		
+	}
+	
+	//요청 목록 가져오기
+	@GetMapping("/request")
+	public void request(@RequestParam("member_id") String member_id, Model model) {
+		List<LostPets_P001_VO> myList = service.myList(member_id);
+		List<LostPets_P001_VO> requestList = service.requestList(member_id);
 
+		model.addAttribute("myList", myList);
+		model.addAttribute("requestList", requestList);
+	}
+	
 
-
+	
+	
 
 }

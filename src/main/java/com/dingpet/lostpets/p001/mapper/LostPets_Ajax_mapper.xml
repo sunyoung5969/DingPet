@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.or//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- LOST -->
+<mapper namespace="com.dingpet.lostpets.p001.mapper.LostPets_Ajax_mapper">
+
+<!-- 내가 쓴 글 목록 -->
+<select id="myList" resultType="com.dingpet.lostpets.p001.vo.LostPets_P001_VO" parameterType = "String">
+	SELECT LF.board_id, LF.title, LF.board_date, D.dog_breed, D.dog_sex, D.found_location, P.front_path
+	FROM lost_found LF, dog D, lost_found_photo P
+	WHERE LF.board_id = P.board_id
+	AND LF.dog_id = D.dog_id
+	AND LF.member_id = #{member_id}
+	AND LF.status = 'n'
+</select>
+
+<!-- 요청 전송 -->
+<insert id = "send">
+	INSERT INTO lost_found_request (
+		request_id, sender_id, sender_b_id, receiver_id, receiver_b_id 
+	)VALUES (
+		seq_request.nextval, #{sender_id}, #{sender_b_id}, #{receiver_id}, #{receiver_b_id}
+	)
+</insert>
+
+<!-- 특정 글에 대한 요청 글 목록 -->
+	<select id = "requestList" resultType="com.dingpet.lostpets.p001.vo.LostPets_P001_VO" parameterType = "String">
+		SELECT *
+		FROM lost_found
+		WHERE board_id IN (
+			SELECT sender_b_id
+			FROM lost_found_request
+			WHERE receiver_b_id = #{board_id}
+			)
+	</select>
+
+
+	<!-- 요청 삭제 -->
+	<delete id = "deleteRequest">
+		DELETE 
+		FROM lost_found_request
+		WHERE request_id = #{request_id}
+	</delete>
+	
+	
+	<!-- 완료처리 -->
+	<update id="confirmRequest">
+		UPDATE lost_found_request
+		SET request_status = 'y',
+			completed_date = to_char(sysdate, 'yyyymmddhh24mi')
+		WHERE request_id = #{request_id}
+	</update>
+	
+	<update id = "complete">
+		UPDATE lost_found
+		SET status = 'y',
+			status_reason = 'matched'
+		WHERE board_id = #{board_id}
+	</update>
+
+</mapper>

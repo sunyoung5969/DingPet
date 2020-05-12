@@ -14,8 +14,9 @@ public interface LostPets_P001_Service {
 	public int getTotalAmount(Criteria cri);
 	
 	// 등록
-	public void write(Map<String, Object> writeMap) throws Exception;
-
+	public void write(Map<String, Object> writeMap);
+	public void upload(Map<String, Object> writeMap);
+	
 	// 조회
 	public LostPets_P001_VO view(String board_id);
 
@@ -24,5 +25,9 @@ public interface LostPets_P001_Service {
 
 	// 수정
 	public boolean modify(LostPets_P001_VO lostVO);
+	
+	//요청 목록
+	public List<LostPets_P001_VO> myList(String member_id);
+	public List<LostPets_P001_VO> requestList(String member_id);
 
 }

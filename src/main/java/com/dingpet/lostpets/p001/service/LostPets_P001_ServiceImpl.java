@@ -32,13 +32,22 @@ public class LostPets_P001_ServiceImpl implements LostPets_P001_Service{
 	}
 
 	//등록
-	@Override
-	public void write(Map<String, Object> writeMap) throws Exception{
+	public void write(Map<String, Object> writeMap){
 		String dog_id = mapper.getDogId();
 		writeMap.put("dog_id", dog_id);
+		
+		String board_id = mapper.getBoardId();
+		writeMap.put("board_id", board_id);
+		
 		mapper.writeLost(writeMap);
 		mapper.writeDog(writeMap);
 		log.info("write");
+	}
+	
+	// 등록 시 사진 업로드
+	public void upload(Map<String, Object> writeMap){
+		mapper.upload(writeMap);
+		log.info("upload");
 	}
 	
 	//조회
@@ -54,7 +63,7 @@ public class LostPets_P001_ServiceImpl implements LostPets_P001_Service{
 		log.info("delete==========" + board_id);
 		
 		boolean result = false;
-		if(mapper.deleteDog(dog_id) == 1 && mapper.deleteLost(board_id) == 1) {
+		if(mapper.deleteDog(dog_id) == 1 && mapper.deleteLost(board_id) == 1 && mapper.deletePhoto(board_id) == 1) {
 			result = true;
 		}
 		return result;
@@ -66,5 +75,20 @@ public class LostPets_P001_ServiceImpl implements LostPets_P001_Service{
 		log.info("modify==========" + lostVO);
 		return mapper.modifyLost(lostVO) == 1 && mapper.modifyDog(lostVO) == 1;
 	}
+
+	//요청 목록
+	public List<LostPets_P001_VO> myList(String member_id) {
+		
+		return mapper.myList(member_id);
+	}
+
+	@Override
+	public List<LostPets_P001_VO> requestList(String member_id) {
+		
+		return mapper.requestList(member_id);
+	}
+	
+	
+	
 	
 }

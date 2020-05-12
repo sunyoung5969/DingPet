@@ -144,12 +144,6 @@
 </style>
 <%-- <jsp:include page ="/WEB-INF/views/common/header.jsp" flush="false" />  --%>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script>
-var id = '${customers.member_id }';
-var name = '${customers.member_name }';
-console.log(id);
-console.log(name);
-</script>
 <div id="container2">
 <div class="wrap loginwrap">
 <h1 class="cre_tit">채팅방 생성</h1>
