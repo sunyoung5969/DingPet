@@ -15,12 +15,14 @@ public class Customers_P003_ServiceImple implements Customers_P003_Service{
 	
 	private Customers_P003_Mapper mapper;
 	
+	@Override
 	public void infoupdate(Customers_P003_VO customers) {
 		log.info("일반회원 정보 수정 처리");
 		mapper.update1(customers);
 	}
 	
 	
+	@Override
 	public void petsitterupdate(Customers_P003_VO customers) {
 		log.info("펫시터회원 정보 수정 처리");
 		mapper.update2(customers);

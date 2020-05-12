@@ -15,14 +15,14 @@ html {
 }
 
 *, ::after, ::before {
-	box-sizing: inherit
+	box-sizing: inherit;
 }
 
 .container {
 	width: 100%;
 	background: #fff;
-	padding-right: 15px;
-	padding-left: 15px;
+	padding-right: 15px !important;
+	padding-left: 15px !important;
 	margin-right: auto;
 	margin-left: auto
 }
@@ -7202,11 +7202,6 @@ ul[data-card-columns="3"] .listing-card {
 
 .widget-area--listing-sidebar .listing-card {
 	width: 100% !important
-}
-
-.container {
-	padding-left: 25px;
-	padding-right: 25px
 }
 
 @media ( min-width :768px) {

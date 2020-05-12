@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dingpet.petsitting.p003.mapper.PetSitting_P003_Mapper">
+	
+	<select id="logCount" resultType="int">
+		select nvl(count(reservation_id), '0') from log 
+		where reservation_id = #{reservation_ID}
+	</select>
+	
+	<insert id="logInsert">
+		insert into log (log_id, reservation_id, log_date, log_type, 
+						 log_title, log_content, log_photo, distance, 
+						 start_time, end_time, locationjson) 
+		values (#{log_ID}, #{reservation_ID}, #{log_Date}, #{log_Type}, 
+				#{log_Title}, #{log_Content}, #{log_Photo, jdbcType=VARCHAR},
+				#{distance, jdbcType=VARCHAR}, #{start_Time, jdbcType=VARCHAR},
+				#{end_Time, jdbcType=VARCHAR}, #{locationJSON, jdbcType=VARCHAR})
+	</insert>
+
+	<insert id="locationData">
+		insert into location_data (log_id, lat, lit) 
+		values( #{log_ID}, #{locationVO.lat}, #{locationVO.lit}) 
+	</insert>
+	
+	<select id="getLocation" resultType="com.dingpet.petsitting.p003.vo.LocationVO">
+		select lat, lit from location_data
+		where log_id = #{log_ID}
+	</select>
+	
+	<select id="getLog" resultType="com.dingpet.petsitting.p003.vo.PetSitting_P003_VO">
+		select * from log where reservation_id = #{reservation_ID}
+		order by log_id desc
+	</select>
+	
+	<select id="getwalk" resultType="int">
+		select count(*) from log where log_Type = 'walk' and reservation_id = #{reservation_ID}
+	
+	</select>
+
+</mapper>

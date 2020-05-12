@@ -2,8 +2,6 @@ package com.dingpet.lostpets.p001.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
 import com.dingpet.lostpets.p001.vo.Criteria;
 import com.dingpet.lostpets.p001.vo.LostPets_Reply_VO;
 
@@ -21,5 +19,5 @@ public interface LostPets_Reply_Service {
 	public int modify(LostPets_Reply_VO reply_vo);
 
 	// 댓글 목록
-	public List<LostPets_Reply_VO> list(Criteria cri, String board_id);
+	public List<LostPets_Reply_VO> list(Criteria cri, String site_id);
 }

@@ -2,11 +2,8 @@ package com.dingpet.petsitting.p001.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.springframework.dao.PessimisticLockingFailureException;
-
 import com.dingpet.petsitting.p001.vo.PetSitting_P001_VO;
+import com.dingpet.petsitting.p004.vo.PetSitting_P004_VO;
 
 public interface PetSitting_P001_Mapper {	
 
@@ -36,5 +33,8 @@ public interface PetSitting_P001_Mapper {
 	
 	// 프로필 조회 SELECT
 	public PetSitting_P001_VO profileLookup(PetSitting_P001_VO profile);
+	
+	// 리뷰 가져오기 SELECT
+	public List<PetSitting_P004_VO> getReview(PetSitting_P001_VO profile);
 	
 }

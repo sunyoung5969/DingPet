@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,8 +35,8 @@ public class LostPets_P001_ControllerImpl implements LostPets_P001_Controller {
 	@Autowired
 	private LostPets_P001_Service service;
 	
-	
 	//목록 조회
+	@Override
 	@GetMapping("/list")
 	public void list(Criteria cri, Model model) {
 		log.info("list" + cri);
@@ -54,6 +53,7 @@ public class LostPets_P001_ControllerImpl implements LostPets_P001_Controller {
 	}
 	
 	// 글 등록
+	@Override
 	@PostMapping("/write")
 	public String write(@RequestParam Map<String, Object> writeMap, 
 			MultipartHttpServletRequest uploadFile, RedirectAttributes rttr) throws Exception {
@@ -118,6 +118,7 @@ public class LostPets_P001_ControllerImpl implements LostPets_P001_Controller {
 	}
 	
 	// 글 조회
+	@Override
 	@GetMapping({"/view", "/modify"})
 	public void view(@RequestParam("board_id") String board_id, @ModelAttribute("cri") Criteria cri, Model model) {
 		model.addAttribute("board", service.view(board_id));
@@ -125,6 +126,7 @@ public class LostPets_P001_ControllerImpl implements LostPets_P001_Controller {
 	}
 
 	// 글 수정
+	@Override
 	@PostMapping("/modify")
 	public String modify( LostPets_P001_VO lostVO, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
 		if (service.modify(lostVO)) {
@@ -137,6 +139,7 @@ public class LostPets_P001_ControllerImpl implements LostPets_P001_Controller {
 	}
 
 	// 글 삭제
+	@Override
 	@PostMapping("/delete")
 	public String delete(@RequestParam("board_id") String board_id, @RequestParam("dog_id") String dog_id, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
 		if (service.delete(board_id, dog_id)) {

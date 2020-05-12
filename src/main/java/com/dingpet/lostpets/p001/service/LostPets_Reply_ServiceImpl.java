@@ -18,29 +18,34 @@ public class LostPets_Reply_ServiceImpl implements LostPets_Reply_Service {
 
 	private LostPets_Reply_Mapper mapper;
 	
+	@Override
 	public int write(LostPets_Reply_VO reply_vo) {
 		log.info("writing reply");
 		return mapper.write(reply_vo);
 	}
 
+	@Override
 	public LostPets_Reply_VO view(String reply_id) {
 		log.info("viewing reply");
 		return mapper.view(reply_id);
 	}
 
+	@Override
 	public int delete(String reply_id) {
 		log.info("deleting reply");
 		return mapper.delete(reply_id);
 	}
 
+	@Override
 	public int modify(LostPets_Reply_VO reply_vo) {
 		log.info("modifying reply");
 		return mapper.modify(reply_vo);
 	}
 
-	public List<LostPets_Reply_VO> list(Criteria cri, String board_id) {
+	@Override
+	public List<LostPets_Reply_VO> list(Criteria cri, String site_id) {
 		log.info("listing replies");
-		return mapper.list(cri, board_id);
+		return mapper.list(cri, site_id);
 	}
 
 }

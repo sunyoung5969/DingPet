@@ -5,7 +5,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -19,7 +18,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -43,6 +41,7 @@ public class FacilityMap_P001_UploadControllerImpl implements FacilityMap_P001_U
 //	private String uploadFolder = "C:\\upload";
 
 	// 다중 파일첨부 AJAX 뷰  
+	@Override
 	@RequestMapping(value="/display", method = {RequestMethod.GET})
 	@ResponseBody
 	public ResponseEntity<byte[]> getFile(String fileName) {
@@ -97,6 +96,7 @@ public class FacilityMap_P001_UploadControllerImpl implements FacilityMap_P001_U
 	}
 
 	// AJAX 다중 업로드 Action
+	@Override
 	@RequestMapping(value="/uploadAjaxAction", method = {RequestMethod.POST})
 	public ResponseEntity<List<FileAttachDTO>> uploadFormPost(MultipartFile[] uploadFile) {
 		//String uploadFolder = "C:\\upload";
@@ -152,6 +152,7 @@ public class FacilityMap_P001_UploadControllerImpl implements FacilityMap_P001_U
 	}
 	
 	// AJAX 업로드 Delete
+	@Override
 	@RequestMapping(value="/deleteFile", method = {RequestMethod.POST})
 	@ResponseBody
 	public ResponseEntity<String> deleteFile(String fileName, String type) {

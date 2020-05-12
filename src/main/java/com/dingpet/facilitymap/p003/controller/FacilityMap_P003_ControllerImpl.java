@@ -1,12 +1,7 @@
 package com.dingpet.facilitymap.p003.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
 import com.dingpet.facilitymap.p003.service.FacilityMap_P003_Service;
 
 import lombok.AllArgsConstructor;

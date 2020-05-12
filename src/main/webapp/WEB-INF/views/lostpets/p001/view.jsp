@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <%@include file="../../includes/header.jsp"%>
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 
@@ -18,16 +19,18 @@
 
     <!--====  str of contents  ====-->
     <section style="padding-top:87px">
-        <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); transform: translate3d(0px, 0px, 0px);">
-       		<div class="floating_text pt-5 pb-5  mt-5 text-center heading-section m-auto">
-                  	<h1 class="mb-2 color_white">임시보호 견 상세 정보</h1>
-           	</div>	
-        </div>
+        <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); 
+        	transform: translate3d(0px, 0px, 0px);"></div>
         <div class="main main-raised">
             <div class="profile-content">
-                <div class="container w-75">
+                <div class="container">
+                    <div class="row justify-content-center pt-5 pb-5" data-aos="fade-up">
+                        <div class="text-center heading-section">
+                          <h2 class="text-black mb-2">임시보호견 상세 정보</h2>
+                        </div>
+                    </div>
                     <!-- 제목, 작성자, 작성일시-->
-                    <div class="ml-3 mr-3 pt-5 align-self-center pb-3">
+                    <div class="ml-3 mr-3 mt-3 align-self-center pb-3">
 	                	<h2 class = "mb-2 color_blue" ><c:out  value = "${board.title}"/></h2>
 	                    <div class = "top_info">
 		    	            <span><strong><c:out value = "${board.member_id}"/></strong></span>

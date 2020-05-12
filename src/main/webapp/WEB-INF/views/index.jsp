@@ -21,12 +21,17 @@
 					<h3>${customers.member_nickname}님 어서오세요!</h3>
 				</c:when>
 				</c:choose>
+				<a href="/customers/p001/signin">로그인</a>
+				<a href="/customers/p001/admin_board">펫시터신청목록</a>
+				<a href="/petsitting/p002/reservationlist">예약리스트</a>
 				<a href="/customers/p005/message">메시지</a>
 				<a href="/petsitting/p001/profilelist">펫시터</a>
 				<a href="/facilitymap/p001/mylocation">산책하기</a>
 				<a href="/facilitymap/p001/facilityMap">시설 지도</a>
 				<a href="/facilitymap/p001/register">시설 신규 등록</a>
 				<a href="/facilitymap/p001/infopage?place_num=1">시설 상세정보</a>
+				<a href="/chat/chatList"> 채팅 하기 </a>
+				<a href="/chat/chatList"> 채팅 하기22 </a>
 			</div>
 			
           </div>

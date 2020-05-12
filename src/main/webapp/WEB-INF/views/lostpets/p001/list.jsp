@@ -18,12 +18,14 @@
         </div>
     </div>
     
+
 		<div class="row ">
 			<!-- 페이지 정보 div -->
 			<div class="col-xs-12 features">
 
 				 <div class = "flex_row mr-5 pr-3">
 				 	<a id = "to_request_list" href="" class="btn_a"><span class="sub_txt">요청 목록 <img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr"></span> </a>
+
 				 	<a id = "lost_write" href="" class="btn_a"><span class="sub_txt">등록하기 <img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr"></span> </a>
 				</div>
 			</div>

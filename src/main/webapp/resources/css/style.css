@@ -20,6 +20,32 @@ body {
 	color: #fff;
 }
 
+.notice-div{
+	cursor: pointer;
+	display: none;
+}
+
+.notice_count--div{
+	visibility: hidden;
+    float: right;
+    position: relative;
+    left: -9px;
+    top: -7px;
+    background-color: indianred;
+    color: #fff;
+    border-radius: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+.notice_count--text{
+	margin: 0px;
+    position: relative;
+    top: 2px;
+    text-align: center;
+    font-size: 80%;
+}
+
 a {
 	-webkit-transition: .3s all ease;
 	-o-transition: .3s all ease;
@@ -889,6 +915,7 @@ body:after {
 		max-width: 400px;
 		margin-left: auto;
 		margin-right: auto;
+		width: 50vw;
 	}
 }
 
@@ -3343,38 +3370,3 @@ figure figcaption {
 	color: rgb(83, 130, 235);
 	margin: 0;
 }
-
-/*header icons*/
-.notification_container, .chat_container{
-	position: relative;
-	margin-right: 10px;
-}
-
-
-.notification_bubble, .chat_bubble{
-	position: absolute;
-    top: 0px;
-    right: -5px;
-    padding: 1px 6px 2px 6px;
-    background-color: #088cf3;
-    color: white;
-    font-size: 0.65em;
-    border-radius: 50%;
-    box-shadow: 1px 1px 1px grey;
-    display: none;
-}
-
-.notification_container i, .chat_container i{
-	width: 50px;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    border-radius: 50%;
-    border: 1px solid #eeeeee;
-    color: #4e4e4e;
-    font-size: 19px;
-    cursor: pointer;
-}
-
-
-

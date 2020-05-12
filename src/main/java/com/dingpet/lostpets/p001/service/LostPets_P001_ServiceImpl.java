@@ -20,11 +20,13 @@ public class LostPets_P001_ServiceImpl implements LostPets_P001_Service{
 	private LostPets_P001_Mapper mapper;
 
 	//목록 조회
+	@Override
 	public List<Map<String, String>> list(Criteria cri) {
 		log.info("list is called at Service");
 		return mapper.listWithPaging(cri);
 	}
 	
+	@Override
 	public int getTotalAmount(Criteria cri) {
 		return mapper.getTotalAmount(cri);
 	}
@@ -49,12 +51,14 @@ public class LostPets_P001_ServiceImpl implements LostPets_P001_Service{
 	}
 	
 	//조회
+	@Override
 	public LostPets_P001_VO view(String board_id) {
 		log.info("view===========" + board_id);
 		return mapper.view(board_id);
 	}
 
 	//삭제
+	@Override
 	public boolean delete(String board_id, String dog_id) {
 		log.info("delete==========" + board_id);
 		
@@ -66,6 +70,7 @@ public class LostPets_P001_ServiceImpl implements LostPets_P001_Service{
 	}
 
 	//수정
+	@Override
 	public boolean modify(LostPets_P001_VO lostVO) {
 		log.info("modify==========" + lostVO);
 		return mapper.modifyLost(lostVO) == 1 && mapper.modifyDog(lostVO) == 1;

@@ -14,7 +14,6 @@ import com.dingpet.facilitymap.p001.vo.FacilityMap_P001_ReplyVO;
 import com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO;
 
 import lombok.AllArgsConstructor;
-import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j;
 
 
@@ -62,7 +61,10 @@ public class FacilityMap_P001_ServiceImple implements FacilityMap_P001_Service {
 		// TODO Auto-generated method stub
 		return mapper.getseq();
 	}
-	
+	@Override
+	public String getStarAvg(String site_id) {
+		return mapper.getstaravg(site_id);
+	}
 	@Transactional
 	@Override
 	public void register(FacilityMap_P001_VO vo) {
@@ -86,7 +88,18 @@ public class FacilityMap_P001_ServiceImple implements FacilityMap_P001_Service {
 			attachMapper.insert(attach);
 		});
 	}
-		
+	@Transactional
+	@Override
+	public void reviewregister(FacilityMap_P001_ReplyVO vo) {
+		log.info("REVIEW register....");
+		// ------- site id - get --------------
+		int sitesq = vo.getSite_id();
+		log.info(sitesq);		
+		// -------===============--------------
+		log.info("DB Insert End...:"+vo);
+		mapper.reviewRegister(vo);
+	}
+	
 	@Override
 	public List<FacilityMap_AttachVO> getAttachList(int site_id) {
 

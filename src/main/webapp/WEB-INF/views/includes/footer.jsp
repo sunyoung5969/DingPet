@@ -50,6 +50,7 @@
 	<script src="${pageContext.request.contextPath}/resources/js/jquery.sticky.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/isotope.pkgd.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
-  
+  	<script src="${pageContext.request.contextPath}/resources/js/sockjs.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
   </body>
 </html>

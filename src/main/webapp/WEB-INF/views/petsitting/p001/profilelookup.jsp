@@ -5,7 +5,7 @@
 <%@include file="../../includes/header.jsp"%>
 
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/profilelookup.css?v=8">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/profilelookup.css?v=5">
 
 <!--====  str of contents  ====-->
     <section style="padding-top:87px">
@@ -19,7 +19,7 @@
 							<img class="profileIMG-reservation" alt="Circle Image" src="/resources/images/dogger_img_big_1.jpg">
 						</div>
 						<!-- 프로필 자기소개 한줄 -->
-						<div class="profile_h6Div-reservation" align="center">                       		
+						<div class="profile_h6Div-reservation" align="center">
 							<h6 class="profile_h6-reservation">${profile.profile_Content }</h6>
 						</div>
 						<div>
@@ -153,7 +153,11 @@
 					</div>
 				</div>
 				<div class="schedule-reservation">
-					<div class='Calendar-reservation pt-5'>	
+					<div class='Calendar-reservation pt-5'>
+						<div class="reserved-date--text">
+							<h4 class="start-date--text"></h4>
+							<h4 class="end-date--text"></h4>
+						</div>	
 						<div class="dateTime">
 							<div class="dateTime-text">
 								<button type="button" onclick="timeClick.reselect()">뒤로</button>
@@ -175,26 +179,27 @@
 							</c:forEach>
 						</div>							
 						<!-- <        > -->
-						<div align='center' class="CalendarMonth">
-							<img width="35px" class="imgbtn" onclick="calendar.calendarYearMonth('before')" src="/resources/images/petsitting/calendar_before.png">
-							<h3 class='CalendarMonth_small'></h3>
-							
-							<img width="35px" class="imgbtn" onclick="calendar.calendarYearMonth('next')" src="/resources/images/petsitting/calendar_next.png">
-						</div>
-						
-							
-						<div align='center' class="DayOfTheWeek">
-							<ul class="DayOfTheWeek_ui">
-								<li class="DayOfTheWeek_li"><small>일</small></li>
-								<li class="DayOfTheWeek_li"><small>월</small></li>
-								<li class="DayOfTheWeek_li"><small>화</small></li>
-								<li class="DayOfTheWeek_li"><small>수</small></li>
-								<li class="DayOfTheWeek_li"><small>목</small></li>
-								<li class="DayOfTheWeek_li"><small>금</small></li>
-								<li class="DayOfTheWeek_li"><small>토</small></li>
-							</ul>
-						</div>
+						<div class="calender-div">
+							<div align='center' class="CalendarMonth">
+								<img width="35px" class="imgbtn" onclick="calendar.calendarYearMonth('before')" src="/resources/images/petsitting/calendar_before.png">
+								<h3 class='CalendarMonth_small'></h3>
+								
+								<img width="35px" class="imgbtn" onclick="calendar.calendarYearMonth('next')" src="/resources/images/petsitting/calendar_next.png">
+							</div>
+								
+							<div align='center' class="DayOfTheWeek">
+								<ul class="DayOfTheWeek_ui">
+									<li class="DayOfTheWeek_li"><small>일</small></li>
+									<li class="DayOfTheWeek_li"><small>월</small></li>
+									<li class="DayOfTheWeek_li"><small>화</small></li>
+									<li class="DayOfTheWeek_li"><small>수</small></li>
+									<li class="DayOfTheWeek_li"><small>목</small></li>
+									<li class="DayOfTheWeek_li"><small>금</small></li>
+									<li class="DayOfTheWeek_li"><small>토</small></li>
+								</ul>
+							</div>
 						<div align='center' class='CalendarDayDiv'></div>
+						</div>
 						<div id="askldlka">
 						
 						</div>
@@ -251,7 +256,7 @@
 				</form>
 				
 			</div>
-			<div class="backbtn">
+			<div class="backbtn" align="center">
 				<button type="button" onclick="reservation()" class="btn btn-secondary">
 					<p class="reservtext">X</p>
 				</button>
@@ -271,7 +276,7 @@
                                 </div>
                                 <div class="name text-center">
                                     <h4 class="title">${profile.member_NickName }</h4>
-                                    <h6>PetSitter</h6>
+                                    <h6>한줄소개</h6>
                                 </div>
                            </div>
                         </div>
@@ -542,12 +547,29 @@
                     <!--====  End of Gallery  ====-->
                     <!--== start review ==-->
                     <div class="testimonials-wrap">
-                        <div class="container">
+                        <div class="container container--review">
                             <div class="heading-section">
                                 <span class="sub-heading">R E V I E W</span>
                                 <h2>펫시터 이용 후기</h2>
                             </div>
                             <div class="carousel-testimonial owl-carousel">
+                            	<c:forEach var="reviewlist" items="${review }">
+                            	 	<div class="item">
+                            	 	    <input type="hidden" class="exist" value="Y">
+                            	 	
+	                            		<div class="testimonial-box d-flex" style="min-height: 215px;">
+	                                        <div class="user-img" style="background-image: url(https://randomuser.me/api/portraits/men/82.jpg)">
+	                                        </div>
+	                                        <div class="text pl-4">
+	                                            <span class="quote"><i class="fa fa-quote-left"></i></span>
+	                                            <p>${reviewlist.review_Content }</p>
+	                                            <p class="name">${reviewlist.member_Nickname }</p>
+	                                            <span class="position">${reviewlist_review_Star }</span>
+	                                        </div>
+	                                    </div>
+                                    </div>
+                            	</c:forEach>
+                            	<!-- 
                                 <div class="item">
                                     <div class="testimonial-box d-flex">
                                         <div class="user-img" style="background-image: url(https://randomuser.me/api/portraits/men/82.jpg)">
@@ -684,6 +706,7 @@
                             
                         </div>
                     </div>   
+                    -->
                     <!--== end review ==-->  
                 </div>
             </div>
@@ -692,7 +715,7 @@
     <!--====  end of contents  ====-->
 
 
-<script src="${pageContext.request.contextPath}/resources/js/profilelookup.js?v=10"></script>
+<script src="${pageContext.request.contextPath}/resources/js/profilelookup.js?v=13"></script>
 
 <script>timeClick.apm('default')</script>
 <script>calendar.calendarYearMonth()</script>
@@ -755,8 +778,12 @@ $('.bubblebtn--bubble').each(function() {
 	  $(this).on('mouseover', function() {
 	    btTl.restart();
 	  });
-	});
-
+});
+	
+	if($(".exist").val() != 'Y'){
+		$(".container--review").append("<h2 align='center' style='display:block'>아직 등록된 리뷰가 없습니다.</h2>");
+	}
+	
 </script>
 
 

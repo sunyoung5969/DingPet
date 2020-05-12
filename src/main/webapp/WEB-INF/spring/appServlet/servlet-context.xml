@@ -4,7 +4,8 @@
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:websocket="http://www.springframework.org/schema/websocket"
-	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.1.xsd
 		http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
@@ -32,9 +33,38 @@
 	-->
 	<context:component-scan
 		base-package="com.dingpet.*.*.controller" />
+
+	<!-- 업로드 패스 설정	
+	<beans:bean class = "java.lang.String" id = "uploadPath" >
+		<beans:constructor-arg value = "C:\Users\vegai\OneDrive\바탕 화면\Programming\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\DingPet\resources"/>
+	</beans:bean> 
+		<resources mapping = "/imgUpload/**" location = "/resources/imgUpload/"/>-->
 	
 	<beans:bean id = "multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="maxInMemorySize" value = "377759039"/>
 		<beans:property name="maxUploadSize" value = "5048570"/>
 	</beans:bean>
+	
+	<!-- websocket handler -->
+	<beans:bean id="echoHandler" class="com.dingpet.common.notice.handler.EchoHandler" />
+	
+	<websocket:handlers><websocket:mapping handler="echoHandler" path="/echo" />
+		<websocket:handshake-interceptors>
+			<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+		</websocket:handshake-interceptors>
+		<websocket:sockjs/>
+	</websocket:handlers>
+	
+	<!-- Interceptors -->
+	<mvc:interceptors>
+         <mvc:interceptor>
+         	<mvc:mapping path="/petsitting/p001/profileregister" />		<!-- 프로필 등록 리스트 -->
+			<mvc:mapping path="/petsitting/p002/reservationlist" />		<!-- 내 예약 리스트 -->
+			<mvc:mapping path="/petsitting/p002/reservation" /> 		<!-- 예약페이지 -->
+			<mvc:mapping path="/petsitting/p003/*" />					<!-- 일지 관련 등록 조회 등  -->
+			<mvc:mapping path="/petsitting/p004/*" /> 					<!-- 리뷰 등록 조회 등 -->
+			<beans:bean class="com.dingpet.common.interceptor.ViewIntercepter" />
+         </mvc:interceptor>
+	</mvc:interceptors>	
+	
 </beans:beans>

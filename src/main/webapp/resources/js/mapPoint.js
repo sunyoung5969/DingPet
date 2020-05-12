@@ -4,8 +4,6 @@
 	
 	document.getElementById("btnStart").addEventListener("click", init);
 	document.getElementById("btnTest1").addEventListener("click", btnTest);
-	document.getElementById("btnTest3").addEventListener("click", btnTest3);
-	document.getElementById("btnTest4").addEventListener("click", btnTest4);
 	document.getElementById("btnTest5").addEventListener("click", btnTest5);
 	document.getElementById("btnStop").addEventListener("click", clearWatch);
 	var watchID = null;
@@ -24,14 +22,16 @@
 	var mapOption = {
 			 center:latlng,
 		     level:3
-		     }
+		     };
 	var map;
-	
+	var routeLocation = new Array();
+
+		
 	function findLocation() {
 		navigator.geolocation.getCurrentPosition(function(pos) {
 			console.log("현위치");
-			$('#latitude').html(pos.coords.latitude);     // 위도
-            $('#longitude').html(pos.coords.longitude); // 경도
+			$('#latitude').val(pos.coords.latitude);     // 위도
+            $('#longitude').val(pos.coords.longitude); // 경도
             lat = pos.coords.latitude;
             lit = pos.coords.longitude;
             latlng =  new kakao.maps.LatLng(lat,lit);
@@ -50,6 +50,22 @@
 	function init()
 		{
 			console.log("====Start Click ======");
+			var date = new Date();
+			var startTime = '';
+			
+			startTime += date.getFullYear();
+			startTime += "/";
+			startTime += addzero(date.getMonth()+1, 2);
+			startTime += "/";
+			startTime += addzero(date.getDate(), 2)
+			startTime += " ";
+			startTime += addzero(date.getHours(), 2);
+			startTime += ":";
+			startTime += addzero(date.getMinutes(), 2);
+			
+			console.log("시작 시간 - "+startTime);
+			$(".start_Time").val(startTime);
+			
 			var options = { enableHighAccuracy: true };
 			
 			watchID = navigator.geolocation.watchPosition(current_position, onError, options);
@@ -64,15 +80,32 @@
 		    	}
 		      }, 6000);
 		} // init End
+	
+	function addzero(num, digit){
+		
+		var zero = '';
+		num = num.toString();
+		
+		if(num.length >= digit){
+			return num;
+		}else{
+			
+			for(var i=0; i<digit-num.length; i++){
+				zero += '0';
+				zero += num;
+			}
+			return zero;
+		}
+	}
 		 
 	function current_position(position)
 		{
 			console.log("포지션====");
 			lat = position.coords.latitude;
 			lit = position.coords.longitude;
-			return lat, lit;
 			console.log("포_위도"+lat);
 			console.log("포_경도"+lit);
+			return lat, lit;
 			
 		}    // current End
 	
@@ -273,11 +306,24 @@
 		}
 	
 	function btnTest2() {
+			var walkLocation = {};
+			var index = 0;
 		    latlng = new kakao.maps.LatLng(lat, lit);
 		    console.log("실시간찍힘");
 			console.log(latlng);
 			var clickPosition = latlng;
-			
+		    
+		    walkLocation.lat = lat;
+		    walkLocation.lit = lit;
+		    
+		    console.log("디비에 넣을 데이터 = " + walkLocation.lat);
+		    console.log("디비에 넣을 데이터 = " + walkLocation.lit);
+
+		    routeLocation.push(walkLocation);
+			console.log("위도 경도 객체 ============== ");
+			console.log(walkLocation)
+			console.log("==========================")
+			console.log(routeLocation);
 		    // 지도 클릭이벤트가 발생했는데 선을 그리고있는 상태가 아니면
 		    if (!drawingFlag) {
 		
@@ -329,123 +375,8 @@
 		        var distance = Math.round(clickLine.getLength());
 		        displayCircleDot(clickPosition, distance);
 		    }
+
 			
-		}
-	
-	function btnTest3() {
-			latlng = new kakao.maps.LatLng(37.6045457, 127.074291);
-			var clickPosition = latlng;
-			
-		    // 지도 클릭이벤트가 발생했는데 선을 그리고있는 상태가 아니면
-		    if (!drawingFlag) {
-		
-		        // 상태를 true로, 선이 그리고있는 상태로 변경합니다
-		        drawingFlag = true;
-		        
-		        // 지도 위에 선이 표시되고 있다면 지도에서 제거합니다
-		        deleteClickLine();
-		        
-		        // 지도 위에 커스텀오버레이가 표시되고 있다면 지도에서 제거합니다
-		        deleteDistnce();
-		
-		        // 지도 위에 선을 그리기 위해 클릭한 지점과 해당 지점의 거리정보가 표시되고 있다면 지도에서 제거합니다
-		        deleteCircleDot();
-		    
-		        // 클릭한 위치를 기준으로 선을 생성하고 지도위에 표시합니다
-		        clickLine = new kakao.maps.Polyline({
-		            map: map, // 선을 표시할 지도입니다
-		            path: [clickPosition], // 선을 구성하는 좌표 배열입니다 클릭한 위치를 넣어줍니다
-		            strokeWeight: 3, // 선의 두께입니다
-		            strokeColor: '#db4040', // 선의 색깔입니다
-		            strokeOpacity: 1, // 선의 불투명도입니다 0에서 1 사이값이며 0에 가까울수록 투명합니다
-		            strokeStyle: 'solid' // 선의 스타일입니다
-		        });
-		        
-		        // 선이 그려지고 있을 때 마우스 움직임에 따라 선이 그려질 위치를 표시할 선을 생성합니다
-		        moveLine = new kakao.maps.Polyline({
-		            strokeWeight: 3, // 선의 두께입니다
-		            strokeColor: '#db4040', // 선의 색깔입니다
-		            strokeOpacity: 0.5, // 선의 불투명도입니다 0에서 1 사이값이며 0에 가까울수록 투명합니다
-		            strokeStyle: 'solid' // 선의 스타일입니다
-		        });
-		    
-		        // 클릭한 지점에 대한 정보를 지도에 표시합니다
-		        displayCircleDot(clickPosition, 0);
-		
-		            
-		    } else { // 선이 그려지고 있는 상태이면
-		
-		        // 그려지고 있는 선의 좌표 배열을 얻어옵니다
-		        var path = clickLine.getPath();
-		
-		        // 좌표 배열에 클릭한 위치를 추가합니다
-		        path.push(clickPosition);
-		        
-		        // 다시 선에 좌표 배열을 설정하여 클릭 위치까지 선을 그리도록 설정합니다
-		        clickLine.setPath(path);
-		
-		        var distance = Math.round(clickLine.getLength());
-		        displayCircleDot(clickPosition, distance);
-		    }
-			console.log(customEvent3);
-			console.log(latlng);
-		}
-	
-	function btnTest4() {
-			latlng = new kakao.maps.LatLng(37.6045367, 127.074212);
-			var clickPosition = latlng;
-			
-		    // 지도 클릭이벤트가 발생했는데 선을 그리고있는 상태가 아니면
-		    if (!drawingFlag) {
-		
-		        // 상태를 true로, 선이 그리고있는 상태로 변경합니다
-		        drawingFlag = true;
-		        
-		        // 지도 위에 선이 표시되고 있다면 지도에서 제거합니다
-		        deleteClickLine();
-		        
-		        // 지도 위에 커스텀오버레이가 표시되고 있다면 지도에서 제거합니다
-		        deleteDistnce();
-		
-		        // 지도 위에 선을 그리기 위해 클릭한 지점과 해당 지점의 거리정보가 표시되고 있다면 지도에서 제거합니다
-		        deleteCircleDot();
-		    
-		        // 클릭한 위치를 기준으로 선을 생성하고 지도위에 표시합니다
-		        clickLine = new kakao.maps.Polyline({
-		            map: map, // 선을 표시할 지도입니다
-		            path: [clickPosition], // 선을 구성하는 좌표 배열입니다 클릭한 위치를 넣어줍니다
-		            strokeWeight: 3, // 선의 두께입니다
-		            strokeColor: '#db4040', // 선의 색깔입니다
-		            strokeOpacity: 1, // 선의 불투명도입니다 0에서 1 사이값이며 0에 가까울수록 투명합니다
-		            strokeStyle: 'solid' // 선의 스타일입니다
-		        });
-		        
-		        // 선이 그려지고 있을 때 마우스 움직임에 따라 선이 그려질 위치를 표시할 선을 생성합니다
-		        moveLine = new kakao.maps.Polyline({
-		            strokeWeight: 3, // 선의 두께입니다
-		            strokeColor: '#db4040', // 선의 색깔입니다
-		            strokeOpacity: 0.5, // 선의 불투명도입니다 0에서 1 사이값이며 0에 가까울수록 투명합니다
-		            strokeStyle: 'solid' // 선의 스타일입니다
-		        });
-		    
-		        // 클릭한 지점에 대한 정보를 지도에 표시합니다
-		        displayCircleDot(clickPosition, 0);
-		
-		            
-		    } else { // 선이 그려지고 있는 상태이면
-		
-		        // 그려지고 있는 선의 좌표 배열을 얻어옵니다
-		        var path = clickLine.getPath();
-		
-		        // 좌표 배열에 클릭한 위치를 추가합니다
-		        path.push(clickPosition);
-		        
-		        // 다시 선에 좌표 배열을 설정하여 클릭 위치까지 선을 그리도록 설정합니다
-		        clickLine.setPath(path);
-		
-		        var distance = Math.round(clickLine.getLength());
-		        displayCircleDot(clickPosition, distance);
-		    }
 		}
 	
 	function btnTest5() {
@@ -553,9 +484,61 @@
 		        // 상태를 false로, 그리지 않고 있는 상태로 변경합니다
 		        drawingFlag = false;          
 		    }  
+		    
+		    var date = new Date();
+			var endTime = '';
+			
+			endTime += date.getFullYear();
+			endTime += "/";
+			endTime += addzero(date.getMonth()+1, 2);
+			endTime += "/";
+			endTime += addzero(date.getDate(), 2)
+			endTime += " ";
+			endTime += addzero(date.getHours(), 2);
+			endTime += ":";
+			endTime += addzero(date.getMinutes(), 2);
+			
+			console.log("종료 시간 - " + endTime);
+			
+			var distanceKm = '';
+			
+			if(distance >= 1000){
+				distance *= 100;
+				distanceKm = Math.floor(distance/1000)/100;
+				distanceKm += "Km";
+			}else{
+				distanceKm = distance;
+				distanceKm += "M"
+			}
+							 
+			for(var i =0; i< routeLocation.length; i++){
+				console.log("위도 - " + routeLocation[i].lat);
+				console.log("경도 - " + routeLocation[i].lit)
+			}
+			
+			var count = 0;
+			
+			var jsonstr = '{ ';
+			
+			for(var w=0; w<routeLocation.length; w++){
+				jsonstr += '"location_'+w+'" : { "lat" : "'+routeLocation[w].lat+'", "lit" : "'+routeLocation[w].lit+'" }, ';
+				count++;
+			}			
+			
+			jsonstr += '"count" : ' + count;
+			
+			jsonstr += ' }';
+			
+			console.log(jsonstr);
+			console.log("총 거리 - " + distanceKm);
+			$(".distance").val(distanceKm);
+			$(".end_Time").val(endTime);
+			$(".locationJSON").val(jsonstr);
+			console.log("데이터 들어가니? "+$(".distance").val() +" "+$(".end_Time")+" "+$(".locationArr").val())
+		
 			navigator.geolocation.clearWatch(watchID);
 		    watchID = null;
-		} // clearWatch End
+	} // clearWatch End
 		
 		
 	// onError Callback receives a PositionError object    

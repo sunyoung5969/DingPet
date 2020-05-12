@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,6 +44,7 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 	}
 	
 	// 시설지도 페이지
+	@Override
 	@RequestMapping(value="/facilityMap", method = {RequestMethod.GET})
 	public void facilityMap(Model model) {
 		
@@ -121,6 +121,7 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 	} // CafeMap End
 	
 	// 시설지도 등록페이지 
+	@Override
 	@RequestMapping(value="/register", method = {RequestMethod.GET})
 	public void test(Model model) {
 		
@@ -128,6 +129,7 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 	}
 
 	// 시설지도 등록 Action
+	@Override
 	@RequestMapping(value="/register", method = {RequestMethod.POST})
 	public String registerAction(Model model, FacilityMap_P001_VO vo, MultipartHttpServletRequest uploadFile, RedirectAttributes rttr) {
 		log.info("========register 등록중====");
@@ -185,8 +187,61 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 
 		return "/facilitymap/p001/facilityMap";
 		}
-	
+		
+		// 상세페이지 리뷰 등록 Action
+		@Override
+		@RequestMapping(value= "/revregister", method = {RequestMethod.POST})
+		public String ReviewRegister (Model model, FacilityMap_P001_ReplyVO vo, MultipartHttpServletRequest uploadFile, RedirectAttributes rttr)  {
+			System.out.println("============Review write!!!!!");
+			
+			//---------------------------	사진 업로드 데이터 처리	---------------------------
+			String uploadFolder = "/var/lib/tomcat8/webapps/siteimg";
+			//String uploadFolder = "C:\\upload";		
+			String fileName = "";		
+			Iterator<String> files = uploadFile.getFileNames();		
+			while(files.hasNext()) {			
+				File saveFile = null;
+				String saveFileName;
+				String filePath;
+				String index = files.next();
+				UUID placeimg_UUID = UUID.randomUUID();
+
+				MultipartFile mFile = uploadFile.getFile(index);
+				fileName = mFile.getOriginalFilename();
+
+				if(!fileName.equals("")) {
+					if(index.equals("reviewPic")) {
+						saveFileName = placeimg_UUID.toString()+"reviewpic_"+fileName;
+						saveFile = new File(uploadFolder, saveFileName);
+						filePath = saveFile.getPath();
+						vo.setReview_pic(filePath);
+						vo.setReview_picname(saveFileName);
+					} else {}
+					
+					try {
+						mFile.transferTo(saveFile);
+					} catch (Exception e) {
+						// TODO: handle exception
+						System.out.println("사진업로드 Exception " + e);
+					}
+				}
+			}
+			
+			log.info("사진 업로드 완료");
+			//---------------------------------------------------------------------------
+			log.info("==========================");
+			log.info("rev id : "+vo.getMember_id());
+			service.reviewregister(vo);
+			rttr.addFlashAttribute("result", vo.getSite_id());
+			model.addAttribute("url", "https://www.dingpet.shop/siteimg/");
+			int site = vo.getSite_id();
+			//model.addAttribute("info", service.getDogPlace(site));
+			
+			return "redirect:/facilitymap/p001/mapinfo?site_id="+site;
+		} // ReviewRegister End
+		
 	// 시설지도 상세페이지 (병원,약국)
+	@Override
 	@RequestMapping("/infopage")
 	public void facilityinfo(@RequestParam("place_num") int place_num, Model model) {
 		System.out.println("==============  Map Info Page");
@@ -201,6 +256,8 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 	public void Mapinfo(@RequestParam("site_id") int site_id, Model model) {
 		System.out.println("==============  Map Info Page");
 		model.addAttribute("infopage", "조회 페이지 입니다");
+		String site = String.valueOf(site_id);
+		model.addAttribute("star", Double.valueOf(service.getStarAvg(site)));
 		model.addAttribute("url", "https://www.dingpet.shop/siteimg/");
 		model.addAttribute("info", service.getDogPlace(site_id));
 		

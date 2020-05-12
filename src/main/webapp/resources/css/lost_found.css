@@ -51,6 +51,7 @@
 .floating_text{
 	display : relative;
 	z-index: 1;
+
 }
 
 .text_left{
@@ -343,7 +344,6 @@ box-shadow: 0px 0px 15px 4px rgba(214,214,214,0.66);
 
 .nav-link:hover, .nav-link:focus {
 	text-decoration: none;
-	outline: none;
 }
 
 .nav-link.disabled {
@@ -683,4 +683,3 @@ nav>div a.nav-item.nav-link:hover {
  	height: 1px; 
   	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(8, 140, 243, 0.5), rgba(0, 0, 0, 0));
 }
-
