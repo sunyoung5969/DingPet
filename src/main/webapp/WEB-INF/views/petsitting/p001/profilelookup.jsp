@@ -283,7 +283,7 @@
                         <div class="btn_div" style="height:65px">
 							<ul class="list-inline text-center">
 								<li class="list-inline-item" style="padding: 0.5rem; margin: 0;">
-									<a href="#" class="btn btn-primary">문의하기</a>
+									<a href="" class="btn btn-primary">문의하기</a>
 								</li>
 								<li class="list-inline-item" style="padding: 0.5rem;">
 									<button type="button" onclick="reservation()" class="btn btn-secondary"><p class="reservtext">예약하기</p></button>
