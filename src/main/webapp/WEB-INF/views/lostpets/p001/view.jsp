@@ -41,7 +41,7 @@
                     <div class="col-12 row pt-3 dp-webkit ">
                             <div class="image-block bg-about w-100" >
                             	<c:set var = "front_path" value = "https://www.dingpet.shop/lost/${board.front_name}" />
-                                <img class="img-fluid" src="${board.front_name != null ? front_path : '/resources/images/dogger_img_big_1.jpg'}"  style = "width: 500px; height: 400px;">
+                                <img class="img-fluid m-auto" src="${board.front_name != null ? front_path : '/resources/images/dogger_img_big_1.jpg'}"  style = "width: 500px; height: 400px;">
                             </div>
                     </div>
                      <div class="col-12 row pt-3 dp-webkit ">
@@ -127,17 +127,24 @@
                     
 		            <!-- 확인요청 --> 
 					<%@include file="../../lostpets/p001/requestModal.jsp"%>
-                    
+					<div class = "small_space">
+	                    <hr class = "hr_style">
+					</div>
 					<!-- 댓글 -->              
                     <%@include file="../../lostpets/p001/reply.jsp"%>
                      
 					<!-- buttons -->
 					<div class="text-center pb-5">
-						<button data-oper="list" class="btn-sm btn btn-primary">목록으로</button>
-						<c:if test = "${customers.member_id == board.member_id}">
-							<button data-oper="modify" class="btn-sm btn btn-primary">수정</button>
-							<button data-oper="delete" class="btn-sm btn btn-primary">삭제</button>
-						</c:if>
+						<button data-oper="list" class="btn-sm btn btn-primary mr-3">목록으로</button>
+						<c:choose >
+							<c:when test = "${customers.member_id == board.member_id}"> 
+								<button data-oper="modify" class="btn-sm btn btn-primary">수정</button>
+								<button data-oper="delete" class="btn-sm btn btn-primary">삭제</button>
+							</c:when>
+							<c:when test = "${not empty customers.member_id}">
+								<button id="confirmation_request" class="btn btn-primary">확인 요청</button>
+							</c:when>
+						</c:choose>
 					</div>
 					<!-- buttons end--> 
 					</div>

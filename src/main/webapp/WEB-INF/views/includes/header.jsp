@@ -8,6 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link href="/resources/images/favicon.png" rel="icon" type="image/png">
 	
+	
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700, 900|Vollkorn:400i" rel="stylesheet">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/fonts/icomoon/style.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
@@ -23,9 +24,7 @@
 	
 	<!--css 추가-->
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-	
 	<link rel="stylesheet" type="text/css" href="https://assets.mypetlife.co.kr/map/wp-content/themes/listify/css/style.min.css?v=3">
-	
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css?v=3">
 	
 	<!-- Font Awesome 아이콘 -->

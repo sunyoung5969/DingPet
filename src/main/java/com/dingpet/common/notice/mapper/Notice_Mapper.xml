@@ -26,5 +26,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="readNotice">
 		update notice set confirm_read = 'Y' where notice_type = #{notice_Type} and member_id = #{member_ID}
 	</update>
-
+	
 </mapper>

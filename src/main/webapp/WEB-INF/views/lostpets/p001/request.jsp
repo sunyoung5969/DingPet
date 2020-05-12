@@ -96,7 +96,8 @@
 										</a>
 
 										<div class="flex_row b_round_border">
-											<button data-board_id="${myList.board_id }" data-request_id="${request.request_id }" class="confirmRequest confirm_left"><strong>완료</strong></button>
+											<button data-board_id="${myList.board_id }" data-request_id="${request.request_id }" data-sender_id = "${myList.member_id} " 
+											 data-receiver_id = "${request.member_id}"class="confirmRequest confirm_left"><strong>완료</strong></button>
 											<button data-request_id="${request.request_id }" class="deleteRequest confirm_right"><strong>삭제</strong></button>
 										</div>
 
@@ -121,58 +122,56 @@
 <script type = "text/javascript" src = "/resources/js/request.js"></script>
 
 <script>
-
-//요청 목록은 확인 요청 모달의 내 게시글 목록과 같은 디자인. 맞아요 아니에요 버튼만 추가 
-
-//아니에요 버튼 >> 요청 목록에서 삭제 ajax로
-$(function(){
-	$(".detector").click(function(){
-		console.log($(event.target).parents(".request_box"));
-		var parent_div = $(event.target).parents(".request_box");
-		parent_div.hide('slow');
-	});
+	$(function(){
+		//완료 버튼 >> 완료 처리 : lost_found에서 status y로 변경(y이면 글에 완료됐다는 표시해주기), 완료 테이블에 해당 글 lost_id, find_id, 컬럼으로 두 개의 board_id 매핑 저장, 완료 날짜 저장	
+		$(".confirmRequest").click(function(){
+			var board_id = $(event.target).attr('data-board_id');
+			var request_id = $(event.target).attr('data-request_id');
+			var sender_id = $(event.target).attr('data-sender_id');
+			var receiver_id = $(event.target).attr('data-receiver_id');
+			
+			var ids = {
+					board_id : board_id,
+					request_id : request_id
+			}
+			
+			console.log("request_id = " + ids.request_id);
+			console.log("board_id = " + ids.board_id);
+			var parent_div = $(event.target).parents(".request_box");
 	
-	$(".confirmRequest").click(function(){
-		var board_id = $(event.target).attr('data-board_id');
-		var request_id = $(event.target).attr('data-request_id');
-		
-		var ids = {
-				board_id : board_id,
-				request_id : request_id
-		}
-		
-		console.log("request_id = " + ids.request_id);
-		console.log("board_id = " + ids.board_id);
-		var parent_div = $(event.target).parents(".request_box");
-
-		if(confirm('정말 완료하시겠어요?')){
-			requestService.confirm(ids, function(){
-				console.log(parent_div);
-				parent_div.hide('slow');
-				alert('축하드려요! 완료 처리 되었습니다.');
-			});
-		}
-	});
-	
-	$(".deleteRequest").click(function(){
-		var request_id = $(event.target).attr('data-request_id');
-		console.log("request_id = " + request_id);
-		
-		var parent_div = $(event.target).parents(".request_box");
-		
-		if(confirm('정말 삭제하시겠어요?')){
-			requestService.remove(request_id, function(){
-				parent_div.hide('slow');
+			if(confirm('정말 완료하시겠어요?')){
+				requestService.confirm(ids, function(){
+					console.log(parent_div);
+					parent_div.hide('slow');
+					alert('축하드려요! 완료 처리 되었습니다.');
+				});
 				
-			});
-		}
+			}
+		});
+		
+		//아니에요 버튼 >> 요청 목록에서 삭제 ajax로
+		$(".deleteRequest").click(function(){
+			var request_id = $(event.target).attr('data-request_id');
+			console.log("request_id = " + request_id);
+			
+			var parent_div = $(event.target).parents(".request_box");
+			
+			if(confirm('정말 삭제하시겠어요?')){
+				requestService.remove(request_id, function(){
+					parent_div.hide('slow');
+					
+				});
+			}
+		});
+		
 	});
-});
-//맞아요 버튼 >> 완료 처리 : lost_found에서 status y로 변경(y이면 글에 완료됐다는 표시해주기), 완료 테이블에 해당 글 lost_id, find_id, 컬럼으로 두 개의 board_id 매핑 저장, 완료 날짜 저장
+</script>
 
-//완료 목록은 완료 테이블에 저장된 두 개의 board_id로 각각의 글을 불러와서 간략하게 보여줌
-
-//요청 테이블 : 요청 id, lost_id, find_id, 수신자 id, 발신자 id, 전송날짜, 완료여부, 완료날짜 
+<script>
+	$(function(){
+		
+		
+	});
 </script>
 
 <!--====  end of contents  ====-->

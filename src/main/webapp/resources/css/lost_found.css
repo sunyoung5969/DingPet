@@ -1,4 +1,11 @@
 @charset "UTF-8";
+body{
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+i:hover{
+	cursor: pointer;
+}
 
 .requestListItem{
 	list-style: none;
@@ -43,6 +50,11 @@
 	color: #F9F9F9;
 }
 
+.small_space{
+	padding-top : 3rem;
+	padding-bottom : 3rem;	
+}
+
 .section_space{
 	padding-top : 9rem;
 	padding-bottom : 9rem;
@@ -52,6 +64,10 @@
 	display : relative;
 	z-index: 1;
 
+}
+
+.text_right{
+	text-align : right;
 }
 
 .text_left{
@@ -273,7 +289,7 @@ box-shadow: 0px 0px 15px 4px rgba(214,214,214,0.66);
 }
 
 /*lost_found reply CSS*/
-.reply_info span, reply_info {
+.reply_info span, .reply_info {
 	display: inline;
 	margin-left: 0.5rem;
 	font-size: 1em;
@@ -285,9 +301,6 @@ box-shadow: 0px 0px 15px 4px rgba(214,214,214,0.66);
 	padding-bottom: 0.25rem;
 }
 
-#comments li:hover {
-	background-color: rgba(145, 198, 255, .2);
-}
 
 #lost_found_form ::placeholder {
 	color: #ADBFCD;

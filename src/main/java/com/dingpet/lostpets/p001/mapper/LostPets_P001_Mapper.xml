@@ -15,6 +15,7 @@
 				SELECT /*+INDEX_DESC (LOST_FOUND LOST_FOUND_IX)*/ rownum rn, board_id, title, dog_breed, dog_sex, found_location
 				FROM lost_found LF, dog D
 				WHERE LF.dog_id = D.dog_id
+				AND status = 'n'
 				AND rownum <= #{pageNum} * #{amount}
 				AND board_id > 0
 			)
@@ -133,7 +134,7 @@
 	<!-- 요청 목록 가져오기 -->
 	<!-- 요청이 있는 내 글 목록 -->
 	<select id="myList" resultType="com.dingpet.lostpets.p001.vo.LostPets_P001_VO" parameterType = "String">
-		SELECT LF.title, LF.board_id, D.dog_breed, D.dog_sex, d.found_location, P.front_name
+		SELECT LF.title, LF.member_id, LF.board_id, D.dog_breed, D.dog_sex, d.found_location, P.front_name
 		FROM lost_found LF, dog D, lost_found_photo P
 		WHERE LF.board_id = P.board_id
 		AND LF.dog_id = D.dog_id
@@ -155,7 +156,7 @@
 		SELECT *
 		FROM 
 		    (
-		        SELECT LF.board_id, LF.title, D.dog_breed, D.dog_sex, D.found_location, P.front_name 
+		        SELECT LF.board_id, LF.member_id, LF.title, D.dog_breed, D.dog_sex, D.found_location, P.front_name 
 		        FROM lost_found LF, dog D, lost_found_photo P
 		        WHERE LF.dog_id = D.dog_id
 		        AND LF.board_id = P.board_id
