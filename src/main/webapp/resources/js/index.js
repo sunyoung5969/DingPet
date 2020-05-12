@@ -7,7 +7,7 @@ $(document).ready(function() {
 
 function connectWs() {
 	// sock = new WebSocket( 'ws://localhost:8099/echo/websocket');
-	sock = new SockJS('http://localhost:8080/echo');
+	sock = new SockJS('http://localhost:8099/echo');
 	// sock = new SockJS('/replyEcho');
 	socket = sock;
 
@@ -45,10 +45,7 @@ function connectWs() {
 
 	//메세지 받았을 떄
 	sock.onmessage = function(evt) {
-		var data = evt.data;
-		console.log("ReceivMessage : " + data + "\n");
-		$(".noticeDiv").css('display', 'block');
-		$(".noticeText").text(data);
+		
 		console.log( $(".member_ID").val());
 		$.ajax({
 			url : '/common/notice/noticeCount',	// 카운터하는 컨트롤러로 디비에서 select count 가지고와야지
