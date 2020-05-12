@@ -127,6 +127,13 @@
 									</div>
 								</li>
 								<li>
+									<div class="messege-div">
+									<a href="/chat/chatList">
+										<img class="messege-icon" height="35px" src="../../resources/images/icon/messege_icon.png">
+									</a>
+									</div>
+								</li>
+								<li>
 									<div>
 										<c:choose>
 											<c:when test="${isLogOn == true && customers != null}">
@@ -164,6 +171,10 @@
 				<h2 class="noticeText"></h2>
 			</div>
 		</header>
+		
+		<div class="notice_messege-div">
+			<img class="notice_messege-img" src="${pageContext.request.contextPath}/resources/images/icon/notice_message.png">
+		</div>
 
 		<div class="tl_box">
 			<div class="tl_config">

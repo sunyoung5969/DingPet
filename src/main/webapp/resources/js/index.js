@@ -7,7 +7,7 @@ $(document).ready(function() {
 
 function connectWs() {
 	// sock = new WebSocket( 'ws://localhost:8099/echo/websocket');
-	sock = new SockJS('http://localhost:8080/echo');
+	sock = new SockJS('http://localhost:8099/echo');
 	// sock = new SockJS('/replyEcho');
 	socket = sock;
 
@@ -16,6 +16,7 @@ function connectWs() {
 		console.log($(".member_ID").val())
 		
 		$(".notice-div").css("display","block");
+		$(".messege-div").css("display","block");
 		
 		$.ajax({
 			url : '/common/notice/noticeCount',	// 카운터하는 컨트롤러로 디비에서 select count 가지고와야지
@@ -45,10 +46,7 @@ function connectWs() {
 
 	//메세지 받았을 떄
 	sock.onmessage = function(evt) {
-		var data = evt.data;
-		console.log("ReceivMessage : " + data + "\n");
-		$(".noticeDiv").css('display', 'block');
-		$(".noticeText").text(data);
+		
 		console.log( $(".member_ID").val());
 		$.ajax({
 			url : '/common/notice/noticeCount',	// 카운터하는 컨트롤러로 디비에서 select count 가지고와야지
@@ -59,7 +57,6 @@ function connectWs() {
 				if(data.count == '0'){		// 알람이 0개이면 패스
 					$('#notice_count--div').css('visibility', 'hidden')
 				}else{					// 알림이 하나이상이면 뱃지표시
-					
 					// 뱃지 css적용 클래스 삽입
 					//$('#notice_count--div').addClass('notice_count--div')
 					$('#notice_count--div').css('visibility', 'visible')
@@ -75,7 +72,12 @@ function connectWs() {
 			}
 	   	});
 	   	
-		// 모달 알림
+		$(".notice_messege-div").css('display', 'block');
+		
+		setTimeout(function() {
+			$(".notice_messege-div").css('display', 'none');
+		}, 3000);
+		// 실시간 알림
 	};
 
 	// 연결 해제할 때

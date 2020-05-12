@@ -62,6 +62,15 @@
 	border-top: 1.5px solid #c3c3c3;
 }
 
+.messege_notice-div{
+  	position: fixed;
+    top: 59px;
+    left: 53.9%;
+    display: none;
+}
+.messege_notice-img{
+	width:50%;
+}
 .newnotice {
 	background: #e5f1ff;
 	border-bottom: solid 1px #c3c3c3;
@@ -75,7 +84,7 @@
 
 .notice-div {
 	text-align: center;
-	margin-left: 50px;
+	margin-left: 30px;
 }
 
 .notice-id {
@@ -106,4 +115,27 @@
 	background: #fff;
 	position: relative;
 	top: 3px;
+}
+
+.messege-div{
+	display: none;
+	margin-right:20px;
+}
+
+.messege-icon{
+	height: 35px;
+    margin-bottom: 6px;
+    cursor: pointer;
+}
+
+.notice_messege-div{
+	display: none;
+	position: fixed;
+    left: 53.5%;
+    top: 65px;
+    width: 250px;
+}
+
+.notice_messege-img{
+	width:100%;
 }
