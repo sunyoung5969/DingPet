@@ -26,6 +26,9 @@ public class AjaxService {
 	
 		    return list;
 	 }
-			
+
+	public int removeRoom(int roomNo, String member) throws Exception {
+		return chatdao.removeRoom(roomNo); // 방 삭제
+	}
 
 }

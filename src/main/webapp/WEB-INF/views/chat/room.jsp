@@ -9,13 +9,10 @@
 <meta charset="UTF-8">
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
 <title>Chatting</title>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/dist/sockjs.min.js"></script>
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script	src="${pageContext.request.contextPath}/resources/dist/sockjs.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/chat_socket.js?v=<%=System.currentTimeMillis() %>"
+<script	src="${pageContext.request.contextPath}/resources/js/chat_socket.js?v=<%=System.currentTimeMillis() %>"
 	type="text/javascript"></script>
 
 
@@ -209,17 +206,19 @@ li {
 			<div class="row">
 				<div class="chatWrap col-md-12 align-self-center">
 					<div class="main_tit">
-						<h1>방 이름 [ ${room.roomName} ]</h1>
+						<h2>방 이름 [ ${room.roomName} ]</h2>
 					</div>
 					<div class="content chatcontent" data-room-no="${room.roomNo}" data-member="${customers.member_id}">
 						<div class="user">
 							<ul>
-
 							</ul>
 						</div>
-						<div class="box"></div>
-
-
+						<div class="box">
+							<c:forEach items="${msgList}" var="msg">
+						      <li> ${msg.sender} : <br/> ${msg.message} </li>
+						      <span>[보낸 시간] ${msg.chatdate}</span><br>
+							</c:forEach><!-- 채팅 리스트 -->
+						</div>
 						<div class="fix_btn">
 							<input type="text" id="msgi" name="msg" placeholder="메세지를 입력하세요" />
 							<button type="button" class="send">보내기</button>
@@ -227,7 +226,7 @@ li {
 							<input type="hidden" value="${cri.page}" id="page" name="page" />
 							<input type="hidden" value="${cri.perPageNum }" id="perPageNum" name="perPageNum" />
 							<button type="button" class="btnPass" onclick="return isOwner(${room.roomNo}, '${customers.member_id}')">
-							방수정하기</button>
+							방삭제하기</button>
 						</div>
 					</div>
 				</div>

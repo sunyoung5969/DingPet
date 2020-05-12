@@ -1,5 +1,6 @@
 package com.dingpet.chat.p001.controller;
 
+import java.security.Provider.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -126,12 +127,13 @@ public class ChatController {
 		Customers_P001_VO sessionId = (Customers_P001_VO) session.getAttribute("customers");
 		System.out.println("세션 아이디 "+sessionId);
 		// 방에 멤버 추가해줌
+		
 		System.out.println(roomNo +"```"+ room + "---- -------");
 		System.out.println("id는 " + sessionId.getMember_id());
 		chatService.addMember(roomNo, sessionId.getMember_id());
 		model.addAttribute("cri", cri);
 		model.addAttribute("room", chatService.getRoom(roomNo));
-		
+		model.addAttribute("msgList",chatService.getMessage(roomNo));
 
 		return "chat/room";
 	}
