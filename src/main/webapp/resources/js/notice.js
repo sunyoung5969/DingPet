@@ -1,7 +1,6 @@
 var noticeService = (function(){
 	
 	function formNotice(noticeData){
-		
 		//스크랩 알림 DB저장
 		$.ajax({
 			type : 'post',
