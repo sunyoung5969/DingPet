@@ -65,13 +65,7 @@ $(document).ready(function(){
                    },// para 1/ -1
             
                   success:function(data){
-                	  alert(data);
-                     if(data == -1){
-                    	 viewList();
-                     }else{
-                    	 viewList();
-                     }
-                     
+                    	 viewList();                     
                   }// success
                });// ajax
                

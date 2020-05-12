@@ -23,10 +23,10 @@ function checkPersonnel(roomNo, roomPw, result) {
 	      success:function(data) {
 	    	  /* alert(data); */
 	         if (data >= 6) {
-	            alert("방 인원이 꽉 찼습니다");
+	            alert("들어갈 수 없습니다");
 	            return false;
 	         } else {
-	        	 alert("들어갈수 있음"+!result + data );
+	        	 alert("방에 입장 중 입니다.");
 	            if (!result) {
 	               check(roomNo, roomPw);
 	            } else {
@@ -138,6 +138,8 @@ function submitForm(roomNo){
 			<table class="table">
 			   <tr class="thead">
 			      <th>방 이름</th>
+			      <th>방유저</th>
+			      <th>     </th>
 			      <th>생성 시간</th>
 			      <th>입장</th>
 			   </tr>
@@ -145,6 +147,8 @@ function submitForm(roomNo){
 			   <c:forEach items="${roomList}" var="room">
 			      <tr>
 			         <td>${room.roomName}</td>
+			         <td>${room.roomMember }</td>
+			         <td>${room.room_owner }</td>			         
 			         <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${room.reg_date}" /></td>
 			         <c:choose>
 			         	<c:when test="${room.roomPw == '' || room.roomPw eq null ||  room.roomPw eq ''}">
