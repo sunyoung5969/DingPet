@@ -283,7 +283,12 @@
                         <div class="btn_div" style="height:65px">
 							<ul class="list-inline text-center">
 								<li class="list-inline-item" style="padding: 0.5rem; margin: 0;">
-									<a href="#" class="btn btn-primary">문의하기</a>
+								<form action="../../chat/createRoom" method="post" >
+	   								<input type='hidden' name='room_owner' id='room_owner' value='${customers.member_id }' />    
+	   								<input type="hidden" name="roomName" id="roomName" value="예약 문의 합니다"/>
+	   								<input type="hidden" name="roomMember" id="roomMember" value='${profile.member_ID }'/>
+      								<button type='submit' class="btn btn-primary">문의하기</button>
+      							</form>
 								</li>
 								<li class="list-inline-item" style="padding: 0.5rem;">
 									<button type="button" onclick="reservation()" class="btn btn-secondary"><p class="reservtext">예약하기</p></button>
