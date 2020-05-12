@@ -26,7 +26,7 @@
     <div class="container section_space">
 		<c:choose>
 			<c:when  test = "${empty myList }">
-				<h2>확인할 요청이 없습니다.</h2>
+				<h2 class = "section_space color_black text_center">확인할 요청이 없습니다.</h2>
 			</c:when>
 			<c:otherwise>
 			
