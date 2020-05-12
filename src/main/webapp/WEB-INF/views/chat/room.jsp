@@ -211,8 +211,7 @@ li {
 					<div class="main_tit">
 						<h1>방 이름 [ ${room.roomName} ]</h1>
 					</div>
-					<div class="content chatcontent" data-room-no="${room.roomNo}"
-						data-member="${customers.member_id}">
+					<div class="content chatcontent" data-room-no="${room.roomNo}" data-member="${customers.member_id}">
 						<div class="user">
 							<ul>
 
@@ -224,14 +223,11 @@ li {
 						<div class="fix_btn">
 							<input type="text" id="msgi" name="msg" placeholder="메세지를 입력하세요" />
 							<button type="button" class="send">보내기</button>
-							<button type="button" class="roomOut"
-								value="${customers.member_id}">방 나가기</button>
+							<button type="button" class="roomOut" value="${customers.member_id}">방 나가기</button>
 							<input type="hidden" value="${cri.page}" id="page" name="page" />
-							<input type="hidden" value="${cri.perPageNum }" id="perPageNum"
-								name="perPageNum" />
-							<button type="button" class="btnPass"
-								onclick="return isOwner(${room.roomNo}, '${customers.member_id}')">방
-								수정하기</button>
+							<input type="hidden" value="${cri.perPageNum }" id="perPageNum" name="perPageNum" />
+							<button type="button" class="btnPass" onclick="return isOwner(${room.roomNo}, '${customers.member_id}')">
+							방수정하기</button>
 						</div>
 					</div>
 				</div>

@@ -33,7 +33,7 @@ public interface Customers_P001_Service {
 	
 	//내정보 조회
 	public Customers_P001_VO myinfo(Customers_P001_VO cust);
-	public Customers_P001_VO dogInfo(Customers_P001_VO cust);
+	public List<Customers_P001_VO> dogInfo(Customers_P001_VO cust);
 	public Customers_P001_VO readPw(Customers_P001_VO cust);
 	
 	//펫시터회원 정보조회
