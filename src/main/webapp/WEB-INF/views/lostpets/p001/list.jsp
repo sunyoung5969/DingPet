@@ -11,28 +11,167 @@
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
 <!--====  str of contents  ====-->
-<section style="padding-top:87px">
+<section style="padding-top:87px" class = "nanumbarungothic">
     <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); height : 300px;transform: translate3d(0px, 0px, 0px);">
     	<div class="floating_text pt-5 pb-5  mt-5 text-center heading-section m-auto">
                   	<h1 class="mb-2 color_white">유기견 찾기</h1>
         </div>
     </div>
     
+      <div class="carousel-testimonial owl-carousel">
+	   	<c:forEach var="list" items="${list }">
+	   	 	<div class="item">
+	    		<div class="testimonial-box d-flex" style="min-height: 215px;">
+	                <div class="user-img" style="background-image: url(https://randomuser.me/api/portraits/men/82.jpg)">
+	                </div>
+	                <div class="text pl-4">
+	                    <span class="quote"><i class="fa fa-quote-left"></i></span>
+	                    <p>${list.title }</p>
+	                    <p class="name">${list.member_id }</p>
+	                    <span class="position">${list.board_date }</span>
+	                </div>
+	            </div>
+	           </div>
+	   	</c:forEach>
+   	</div>
+    
 
 		<div class="row ">
-			<!-- 페이지 정보 div -->
-			<div class="col-xs-12 features">
-
-				 <div class = "flex_row mr-5 pr-3">
-				 	<a id = "to_request_list" href="" class="btn_a"><span class="sub_txt">요청 목록 <img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr"></span> </a>
-
-				 	<a id = "lost_write" href="" class="btn_a"><span class="sub_txt">등록하기 <img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr"></span> </a>
-				</div>
-			</div>
-			
-				<div class="container ">
-					<div class="row">
-						<div class="col-xs-12  m-5">
+		<!-- 페이지 정보 div -->
+			<div class="m_container  o_hidden black">
+				<div class="">
+					<div class="col-xs-12 ">
+						<div class = "section_space"><!-- section wrap -->
+							<div class ="flex_row_between"><!-- 설명 section wrap -->
+								<a href = "/lostpets/p001/completedList">
+									<div class = "d-inline-block"><!-- 타이틀, span -->
+										<h2 class="d-inline-block 700">완료 목록</h2>
+										<span class ="pl-2"><small><img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr">&nbsp;바로 가기</small></span>
+										<p  class = "pl-2">딩펫을 통해 가족과 재회하고 행복을 되찾은 반려견들을 만나보세요!</p>
+									</div>
+								</a>
+								<div class = "d-inline-block pr-5">
+									<a id = "write" href="" class="btn_a no_text_deco"><span class="sub_txt ">등록하기 <img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr"></span> </a>
+								</div>
+							</div><!-- 설명 section wrap ends-->
+							<div><!-- list wrap -->
+								<c:choose>
+									<c:when test ="${empty list }">
+										<h2 class = "text_center">아직 작성된 글이 없습니다.</h2>
+									</c:when>
+									<c:otherwise>
+										<ul class = "requests flex_row_start o_hidden">
+											<c:forEach items="${list}" var="list">
+												<li class ="requestListItem my-3 div_33">
+												<a class = " no_text_deco" href = "#">
+														<div class = "fair_border hover_shadow">
+															<div ><!-- img div -->
+																<img src = "/resources/images/dog.jpg" style = " height : 250px;">
+															</div>
+															<div style = "max-width : 400px;"class = "p-3"><!-- 내용 -->
+																<p class = "text_overflow"><strong><c:out value="${list.title }" /></strong></p>
+																<p class = "pl-2"><span class="tag">견종</span><span> </span><c:out value="${list.dog_breed}" /></p>
+																<p class = "pl-2"><span class="tag">성별</span><span></span> <c:out value="${list.dog_sex}" /></p>
+																<p class = "pl-2">
+																	<span class="tag">발견장소</span><span></span>
+																	<c:out value="${list.found_location}" />
+																</p>
+															</div>
+														</div>
+													</a>
+												</li>
+											</c:forEach>
+										</ul>
+									</c:otherwise>
+								</c:choose>
+							</div>
+						</div>
+						
+						<div class = "section_space_bottom"><!-- section wrap -->
+							<div class ="flex_row_between"><!-- 설명 section wrap -->
+								<a href = "/lostpets/p001/lostList">
+									<div class = "d-inline-block"><!-- 타이틀, span -->
+										<h2 class="d-inline-block">주인 찾기</h2>
+										<span class ="pl-2"><small><img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr">&nbsp;바로 가기</small></span>
+										<p  class = "pl-2">유기견을 임시보호 하고 계신가요? 딩펫에서 쉽고 빠르게 주인을 찾아보세요!</p>
+									</div>
+								</a>
+								<div class = "d-inline-block pr-5">
+									<a id = "write" href="" class="btn_a no_text_deco"><span class="sub_txt ">등록하기 <img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr"></span> </a>
+								</div>
+							</div><!-- 설명 section wrap ends-->
+							<div><!-- list wrap -->
+								<ul class = "requests flex_row_start o_hidden">
+									<c:forEach items="${list}" var="list">
+										<li class ="requestListItem my-3 div_33">
+											<a class = "no_text_deco" href = "#">
+												<div class = "fair_border hover_shadow">
+													<div ><!-- img div -->
+														<img src = "/resources/images/dog.jpg" style = " height : 250px;">
+													</div>
+													<div style = "width : 400px;" class = "p-3"><!-- 내용 -->
+														<p class = "text_overflow"><strong><c:out value="${list.title }" /></strong></p>
+															<p class = "pl-2"><span class="tag">견종</span><span> </span><c:out value="${list.dog_breed}" /></p>
+															<p class = "pl-2"><span class="tag">성별</span><span></span> <c:out value="${list.dog_sex}" /></p>
+															<p class = "pl-2">
+																<span class="tag">발견장소</span><span></span>
+																<c:out value="${list.found_location}" />
+															</p>
+													</div>
+												</div>
+											</a>
+										</li>
+									</c:forEach>
+								</ul>
+							</div>
+						</div>
+						
+						<div class = "section_space_bottom"><!-- section wrap -->
+							<div class ="flex_row_between"><!-- 설명 section wrap -->
+								<a href = "/lostpets/p001/findList">
+									<div class = "d-inline-block"><!-- 타이틀, span -->
+										<h2  class="d-inline-block">반려견 찾기</h2>
+										<span class ="pl-2"><small><img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr">&nbsp;바로 가기</small></span>
+										<p  class = "pl-2">잃어버린 반려견을 찾고 계신가요? 딩펫이 도와드릴게요!</p>
+									</div>
+								</a>
+								<div class = "d-inline-block pr-5">
+									<a id = "write" href="" class="btn_a no_text_deco"><span class="sub_txt ">등록하기 <img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr"></span> </a>
+								</div>
+							</div><!-- 설명 section wrap ends-->
+							<div><!-- list wrap -->
+								<ul class = "requests flex_row_start o_hidden">
+									<c:forEach items="${list}" var="list">
+										<li class ="requestListItem my-3 div_33">
+											<a class = "no_text_deco" href = "#">
+												<div class = "fair_border hover_shadow">
+													<div ><!-- img div -->
+														<img src = "/resources/images/blue.jpg" style = " height : 250px;">
+													</div>
+													<div style = "width : 400px;" class = "p-3"><!-- 내용 -->
+														<p class = "text_overflow"><strong><c:out value="${list.title }" /></strong></p>
+															<p class = "pl-2"><span class="tag">견종</span><span> </span><c:out value="${list.dog_breed}" /></p>
+															<p class = "pl-2"><span class="tag">성별</span><span></span> <c:out value="${list.dog_sex}" /></p>
+															<p class = "pl-2">
+																<span class="tag">발견장소</span><span></span>
+																<c:out value="${list.found_location}" />
+															</p>
+													</div>
+												</div>
+											</a>
+										</li>
+									</c:forEach>
+								</ul>
+							</div>
+						</div>
+						
+						
+						
+						
+						
+						
+						
+							<!-- @@@@@@@@ -->
 							<!-- 탭 메뉴 -->
 							<nav>
 								<div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
@@ -166,6 +305,7 @@
 										<!-- pagination ends -->
 								</div>
 							</div>
+								<!-- @@@@@@@@ -->
 						</div>
 					</div>
 				</div>
@@ -179,32 +319,27 @@
 	<input type="hidden" name="amount" value="${pagination.cri.amount }">
 </form>
 
-			<script type="text/javascript">
-				var loggedInId = '${customers.member_id}';	
+<script type="text/javascript">
+	var loggedInId = '${customers.member_id}';	
+
+	$(document).ready(function(){
+		
+		if(!loggedInId){
+			$("#lost_write, #to_request_list").on("click", function(){
+				alert("로그인이 필요한 서비스입니다.\n로그인 페이지로 이동합니다.");
+				(this).setAttribute("href", "/customers/p001/signin");
+			});
+		}else{
+			$("#lost_write").on("click", function(){
+				(this).setAttribute("href", "/lostpets/p001/write");
+			});
 			
-				$(document).ready(function(){
-					
-					if(!loggedInId){
-						$("#lost_write, #to_request_list").on("click", function(){
-							alert("로그인이 필요한 서비스입니다.\n로그인 페이지로 이동합니다.");
-							(this).setAttribute("href", "/customers/p001/signin");
-						});
-						/*	
-						$("#to_request_list").click(function(){
-							alert("로그인이 필요한 서비스입니다.\n로그인 페이지로 이동합니다.");
-							(this).setAttribute("href", "/customers/p001/signin");
-						})*/
-						}else{
-							$("#lost_write").on("click", function(){
-								(this).setAttribute("href", "/lostpets/p001/write");
-							});
-							
-							$("#to_request_list").click(function(){
-								(this).setAttribute("href", "/lostpets/p001/request?member_id=" + loggedInId);
-							});
-						}
-				});
-			</script>
+			$("#to_request_list").click(function(){
+				(this).setAttribute("href", "/lostpets/request/list?member_id=" + loggedInId);
+			});
+		}
+	});
+</script>
 
 <script type="text/javascript">
 	
@@ -220,8 +355,7 @@
 
 		$(".move")	.on(	"click",function(e) {
 			e.preventDefault();
-			actionForm.append("<input type = 'hidden' name = 'board_id' value = '"
-				+ $(this).attr("href")+ "'>");
+			actionForm.append("<input type = 'hidden' name = 'board_id' value = '" + $(this).attr("href")+ "'>");
 			actionForm.attr("action", "view");
 			actionForm.submit();
 		});

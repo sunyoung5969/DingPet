@@ -22,14 +22,49 @@ public class LostPets_P001_ServiceImpl implements LostPets_P001_Service{
 	//목록 조회
 	@Override
 	public List<Map<String, String>> list(Criteria cri) {
-		log.info("list is called at Service");
 		return mapper.listWithPaging(cri);
 	}
 	
-	@Override
 	public int getTotalAmount(Criteria cri) {
 		return mapper.getTotalAmount(cri);
 	}
+	
+	
+	
+	//유기견 목록 조회
+	public List<LostPets_P001_VO> getLost(Criteria cri){
+		return mapper.getLost(cri);
+	}
+	
+	public int getLostAmount(Criteria cri) {
+		// TODO Auto-generated method stub
+		return mapper.getLostAmount(cri);
+	}
+
+
+	
+	//실종견 목록 조회
+	public List<LostPets_P001_VO> getFind(Criteria cri){
+		return mapper.getFind(cri);
+	}
+	
+	public int getFindAmount(Criteria cri) {
+		// TODO Auto-generated method stub
+		return mapper.getFindAmount(cri);
+	}
+	
+	
+	//완료 목록 조회
+	public List<LostPets_P001_VO> getCompleted(Criteria cri){
+		return mapper.getLost(cri);
+	}
+	
+	public int getCompletedAmount(Criteria cri) {
+		// TODO Auto-generated method stub
+		return mapper.getLostAmount(cri);
+	}
+	
+	
 
 	//등록
 	public void write(Map<String, Object> writeMap){
@@ -53,7 +88,6 @@ public class LostPets_P001_ServiceImpl implements LostPets_P001_Service{
 	//조회
 	@Override
 	public LostPets_P001_VO view(String board_id) {
-		log.info("view===========" + board_id);
 		return mapper.view(board_id);
 	}
 
@@ -76,17 +110,9 @@ public class LostPets_P001_ServiceImpl implements LostPets_P001_Service{
 		return mapper.modifyLost(lostVO) == 1 && mapper.modifyDog(lostVO) == 1;
 	}
 
-	//요청 목록
-	public List<LostPets_P001_VO> myList(String member_id) {
-		
-		return mapper.myList(member_id);
-	}
 
-	@Override
-	public List<LostPets_P001_VO> requestList(String member_id) {
-		
-		return mapper.requestList(member_id);
-	}
+
+
 	
 	
 	

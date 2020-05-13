@@ -38,6 +38,68 @@
 	</select>
 	<!-- 글 목록 끝 -->
 	
+	<!-- 유기견 글 목록  -->
+	<select id = "getLost" resultType="com.dingpet.lostpets.p001.vo.LostPets_P001_VO">
+	<![CDATA[
+		SELECT board_id, member_id, title, dog_breed, dog_sex, found_location, front_name
+		FROM (
+			SELECT rownum rn, LF.board_id, LF.member_id, LF.title, D.dog_breed, D.dog_sex, D.found_location, P.front_name 
+		    FROM lost_found LF, dog D, lost_found_photo P
+	        WHERE LF.dog_id = D.dog_id
+	        AND LF.board_id = P.board_id
+	        AND LF.category = 'lost'
+	        AND LF.status = 'n'
+	        AND rownum <= #{pageNum} * #{amount}
+			AND LF.board_id > 0
+		)
+		WHERE rn > (#{pageNum} - 1) * #{amount}
+        ORDER BY board_id DESC
+        ]]> 
+	</select>
+	<!-- 유기견 전체 글 수 -->
+	<select id = "getLostAmount" resultType = "int">
+		SELECT count(*)
+		FROM lost_found
+		WHERE category = 'lost'
+		AND status = 'n'
+		AND board_id > 0
+	</select>
+	
+	<!-- 실종견  글 목록  -->
+	<select id = "getFind" resultType="com.dingpet.lostpets.p001.vo.LostPets_P001_VO">
+		<![CDATA[
+		SELECT board_id, member_id, title, dog_breed, dog_sex, found_location, front_name
+		FROM (
+			SELECT rownum rn, LF.board_id, LF.member_id, LF.title, D.dog_breed, D.dog_sex, D.found_location, P.front_name 
+		    FROM lost_found LF, dog D, lost_found_photo P
+	        WHERE LF.dog_id = D.dog_id
+	        AND LF.board_id = P.board_id
+	        AND LF.category = 'find'
+	        AND LF.status = 'n'
+	        AND rownum <= #{pageNum} * #{amount}
+			AND LF.board_id > 0
+		)
+		WHERE rn > (#{pageNum} - 1) * #{amount}
+        ORDER BY board_id DESC
+        ]]> 
+	</select>
+	<!-- 실종견 전체 글 수 -->
+	<select id = "getFindAmount" resultType = "int">
+		SELECT count(*)
+		FROM lost_found
+		WHERE category = 'find'
+		AND status = 'n'
+		AND board_id > 0
+	</select>
+	
+	<!-- 완료 글 목록  -->
+	<select id = "getCompleted" resultType="com.dingpet.lostpets.p001.vo.LostPets_P001_VO">
+	
+	</select>
+	<!-- 유기견 전체 글 수 -->
+	<select id = "getCompletedAmount" resultType = "int">
+		
+	</select>
 	
 
 	<!-- 글 등록 --> 
@@ -131,46 +193,6 @@
 	<!-- 글 삭제 끝 -->
 
 
-	<!-- 요청 목록 가져오기 -->
-	<!-- 유기견 글에 대한 요청 -->
-	<!-- 요청이 있는 내 글 목록 -->
-	<select id="myList" resultType="com.dingpet.lostpets.p001.vo.LostPets_P001_VO" parameterType = "String">
-		SELECT LF.title, LF.member_id, LF.board_id, D.dog_breed, D.dog_sex, d.found_location, P.front_name
-		FROM lost_found LF, dog D, lost_found_photo P
-		WHERE LF.board_id = P.board_id
-		AND LF.dog_id = D.dog_id
-		AND LF.member_id = #{member_id}
-        AND LF.status = 'n'
-        AND LF.member_id in (
-           SELECT receiver_id
-           FROM lost_found_request
-           WHERE request_status = 'n'
-        )
-        AND LF.board_id in (
-            SELECT receiver_b_id
-            FROM lost_found_request
-            WHERE request_status = 'n'
-        )
-	</select>
-	<!-- 내 글에 대한 요청 목록 -->
-	<select id="requestList" resultType="com.dingpet.lostpets.p001.vo.LostPets_P001_VO" parameterType = "String">
-		SELECT *
-		FROM 
-		    (
-		        SELECT LF.board_id, LF.member_id, LF.title, D.dog_breed, D.dog_sex, D.found_location, P.front_name 
-		        FROM lost_found LF, dog D, lost_found_photo P
-		        WHERE LF.dog_id = D.dog_id
-		        AND LF.board_id = P.board_id
-		    ) B, 
-		    (
-		        SELECT request_id, sender_id, receiver_id, sender_b_id, receiver_b_id, request_status
-		        FROM lost_found_request
-		        WHERE receiver_id = #{member_id}
-		        AND request_status = 'n'
-		    ) R
-		WHERE R.sender_b_id = B.board_id
-	</select>
-	<!-- 실종견 글에 대한 요청 -->
 	
 
 </mapper>

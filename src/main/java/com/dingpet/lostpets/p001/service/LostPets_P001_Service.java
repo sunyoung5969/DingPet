@@ -13,21 +13,37 @@ public interface LostPets_P001_Service {
 	//전체 글 개수 가져오기
 	public int getTotalAmount(Criteria cri);
 	
+	//유기견 목록 조회
+	public List<LostPets_P001_VO> getLost(Criteria cri);
+	public int getLostAmount(Criteria cri);
+	
+	//실종견 목록 조회
+	public List<LostPets_P001_VO> getFind(Criteria cri);
+	public int getFindAmount(Criteria cri);
+
+	//실종견 목록 조회
+	public List<LostPets_P001_VO> getCompleted(Criteria cri);
+	public int getCompletedAmount(Criteria cri);
+	
+	
 	// 등록
 	public void write(Map<String, Object> writeMap);
 	public void upload(Map<String, Object> writeMap);
 	
+	
+	
 	// 조회
 	public LostPets_P001_VO view(String board_id);
 
+	
+	
 	// 삭제
 	public boolean delete(String board_id, String dog_id);
 
+	
+	
 	// 수정
 	public boolean modify(LostPets_P001_VO lostVO);
-	
-	//요청 목록
-	public List<LostPets_P001_VO> myList(String member_id);
-	public List<LostPets_P001_VO> requestList(String member_id);
+
 
 }
