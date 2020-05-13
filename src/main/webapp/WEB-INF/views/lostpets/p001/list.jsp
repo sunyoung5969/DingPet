@@ -17,300 +17,138 @@
                   	<h1 class="mb-2 color_white">유기견 찾기</h1>
         </div>
     </div>
-    
-      <div class="carousel-testimonial owl-carousel">
-	   	<c:forEach var="list" items="${list }">
-	   	 	<div class="item">
-	    		<div class="testimonial-box d-flex" style="min-height: 215px;">
-	                <div class="user-img" style="background-image: url(https://randomuser.me/api/portraits/men/82.jpg)">
-	                </div>
-	                <div class="text pl-4">
-	                    <span class="quote"><i class="fa fa-quote-left"></i></span>
-	                    <p>${list.title }</p>
-	                    <p class="name">${list.member_id }</p>
-	                    <span class="position">${list.board_date }</span>
-	                </div>
-	            </div>
-	           </div>
-	   	</c:forEach>
-   	</div>
-    
 
-		<div class="row ">
-		<!-- 페이지 정보 div -->
-			<div class="m_container  o_hidden black">
-				<div class="">
-					<div class="col-xs-12 ">
-						<div class = "section_space"><!-- section wrap -->
-							<div class ="flex_row_between"><!-- 설명 section wrap -->
-								<a href = "/lostpets/p001/completedList">
-									<div class = "d-inline-block"><!-- 타이틀, span -->
-										<h2 class="d-inline-block 700">완료 목록</h2>
-										<span class ="pl-2"><small><img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr">&nbsp;바로 가기</small></span>
-										<p  class = "pl-2">딩펫을 통해 가족과 재회하고 행복을 되찾은 반려견들을 만나보세요!</p>
-									</div>
-								</a>
-								<div class = "d-inline-block pr-5">
-									<a id = "write" href="" class="btn_a no_text_deco"><span class="sub_txt ">등록하기 <img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr"></span> </a>
+	<div class="row ">
+	<!-- 페이지 정보 div -->
+		<div class="m_container  o_hidden black">
+				<div class="col-xs-12 ">
+					<div class = "section_space"><!-- section wrap -->
+						<div class ="flex_row_between"><!-- 설명 section wrap -->
+							<a href = "/lostpets/p001/completedList">
+								<div class = "d-inline-block"><!-- 타이틀, span -->
+									<h2 class="d-inline-block 700">완료 목록</h2>
+									<span class ="pl-2"><small><img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr">&nbsp;바로 가기</small></span>
+									<p  class = "pl-2">딩펫을 통해 가족과 재회하고 행복을 되찾은 반려견들을 만나보세요!</p>
 								</div>
-							</div><!-- 설명 section wrap ends-->
-							<div><!-- list wrap -->
-								<c:choose>
-									<c:when test ="${empty list }">
-										<h2 class = "text_center">아직 작성된 글이 없습니다.</h2>
-									</c:when>
-									<c:otherwise>
-										<ul class = "requests flex_row_start o_hidden">
-											<c:forEach items="${list}" var="list">
-												<li class ="requestListItem my-3 div_33">
-												<a class = " no_text_deco" href = "#">
-														<div class = "fair_border hover_shadow">
-															<div ><!-- img div -->
-																<img src = "/resources/images/dog.jpg" style = " height : 250px;">
-															</div>
-															<div style = "max-width : 400px;"class = "p-3"><!-- 내용 -->
-																<p class = "text_overflow"><strong><c:out value="${list.title }" /></strong></p>
-																<p class = "pl-2"><span class="tag">견종</span><span> </span><c:out value="${list.dog_breed}" /></p>
-																<p class = "pl-2"><span class="tag">성별</span><span></span> <c:out value="${list.dog_sex}" /></p>
-																<p class = "pl-2">
-																	<span class="tag">발견장소</span><span></span>
-																	<c:out value="${list.found_location}" />
-																</p>
-															</div>
-														</div>
-													</a>
-												</li>
-											</c:forEach>
-										</ul>
-									</c:otherwise>
-								</c:choose>
+							</a>
+							<div class = "d-inline-block pr-5">
+								<a id = "write" href="" class="btn_a no_text_deco"><span class="sub_txt ">등록하기 <img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr"></span> </a>
 							</div>
-						</div>
-						
-						<div class = "section_space_bottom"><!-- section wrap -->
-							<div class ="flex_row_between"><!-- 설명 section wrap -->
-								<a href = "/lostpets/p001/lostList">
-									<div class = "d-inline-block"><!-- 타이틀, span -->
-										<h2 class="d-inline-block">주인 찾기</h2>
-										<span class ="pl-2"><small><img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr">&nbsp;바로 가기</small></span>
-										<p  class = "pl-2">유기견을 임시보호 하고 계신가요? 딩펫에서 쉽고 빠르게 주인을 찾아보세요!</p>
-									</div>
-								</a>
-								<div class = "d-inline-block pr-5">
-									<a id = "write" href="" class="btn_a no_text_deco"><span class="sub_txt ">등록하기 <img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr"></span> </a>
-								</div>
-							</div><!-- 설명 section wrap ends-->
-							<div><!-- list wrap -->
-								<ul class = "requests flex_row_start o_hidden">
-									<c:forEach items="${list}" var="list">
-										<li class ="requestListItem my-3 div_33">
-											<a class = "no_text_deco" href = "#">
-												<div class = "fair_border hover_shadow">
-													<div ><!-- img div -->
-														<img src = "/resources/images/dog.jpg" style = " height : 250px;">
-													</div>
-													<div style = "width : 400px;" class = "p-3"><!-- 내용 -->
-														<p class = "text_overflow"><strong><c:out value="${list.title }" /></strong></p>
-															<p class = "pl-2"><span class="tag">견종</span><span> </span><c:out value="${list.dog_breed}" /></p>
-															<p class = "pl-2"><span class="tag">성별</span><span></span> <c:out value="${list.dog_sex}" /></p>
-															<p class = "pl-2">
-																<span class="tag">발견장소</span><span></span>
-																<c:out value="${list.found_location}" />
-															</p>
-													</div>
-												</div>
-											</a>
-										</li>
-									</c:forEach>
-								</ul>
-							</div>
-						</div>
-						
-						<div class = "section_space_bottom"><!-- section wrap -->
-							<div class ="flex_row_between"><!-- 설명 section wrap -->
-								<a href = "/lostpets/p001/findList">
-									<div class = "d-inline-block"><!-- 타이틀, span -->
-										<h2  class="d-inline-block">반려견 찾기</h2>
-										<span class ="pl-2"><small><img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr">&nbsp;바로 가기</small></span>
-										<p  class = "pl-2">잃어버린 반려견을 찾고 계신가요? 딩펫이 도와드릴게요!</p>
-									</div>
-								</a>
-								<div class = "d-inline-block pr-5">
-									<a id = "write" href="" class="btn_a no_text_deco"><span class="sub_txt ">등록하기 <img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr"></span> </a>
-								</div>
-							</div><!-- 설명 section wrap ends-->
-							<div><!-- list wrap -->
-								<ul class = "requests flex_row_start o_hidden">
-									<c:forEach items="${list}" var="list">
-										<li class ="requestListItem my-3 div_33">
-											<a class = "no_text_deco" href = "#">
-												<div class = "fair_border hover_shadow">
-													<div ><!-- img div -->
-														<img src = "/resources/images/blue.jpg" style = " height : 250px;">
-													</div>
-													<div style = "width : 400px;" class = "p-3"><!-- 내용 -->
-														<p class = "text_overflow"><strong><c:out value="${list.title }" /></strong></p>
-															<p class = "pl-2"><span class="tag">견종</span><span> </span><c:out value="${list.dog_breed}" /></p>
-															<p class = "pl-2"><span class="tag">성별</span><span></span> <c:out value="${list.dog_sex}" /></p>
-															<p class = "pl-2">
-																<span class="tag">발견장소</span><span></span>
-																<c:out value="${list.found_location}" />
-															</p>
-													</div>
-												</div>
-											</a>
-										</li>
-									</c:forEach>
-								</ul>
-							</div>
-						</div>
-						
-						
-						
-						
-						
-						
-						
-							<!-- @@@@@@@@ -->
-							<!-- 탭 메뉴 -->
-							<nav>
-								<div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-									<a class="nav-item nav-link active" id="nav-home-tab"
-										data-toggle="tab" href="#nav-home" role="tab"
-										aria-controls="nav-home" aria-selected="true"><strong>임시보호</strong></a> <a
-										class="nav-item nav-link" id="nav-profile-tab"
-										data-toggle="tab" href="#nav-profile" role="tab"
-										aria-controls="nav-profile" aria-selected="false"><strong>실종견 찾기</strong></a>
-								</div>
-							</nav>
-							
-							<!-- 탭 내용 -->
-							<div class="col-xs-12 tab-content py-3 px-3 mb-5 px-sm-0 blue_border soft_shadow " id="nav-tabContent">
-								<div class="tab-pane mt-5 mb-3 fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-									
-									<!-- 내용이 없는 경우 -->
-									<c:if test="${empty list }">
-										<c:out value="비어있음" />
-									</c:if>
-									
-									<!-- 내용 표시 -->
-									<div class = "list_content pl-5 pb-3 mb-3" >
+						</div><!-- 설명 section wrap ends-->
+						<div><!-- list wrap -->
+							<c:choose>
+								<c:when test ="${empty list }">
+									<h2 class = "text_center">아직 작성된 글이 없습니다.</h2>
+								</c:when>
+								<c:otherwise>
+									<ul class = "requests flex_row_start o_hidden">
 										<c:forEach items="${list}" var="list">
-											<div class="w-40 col-xs-12 col-md-6 col-sm-6 wow soft_border fadeInUp m-4 animated hover_shadow"
-												data-wow-duration="300ms" data-wow-delay="0ms"
-												style=" visibility: visible; animation-duration: 300ms; animation-delay: 0ms; animation-name: fadeInUp;">
-												<a class="move" href='<c:out value = "${list.board_id}"/>'>
-												<div class="flex_column">
-													<div class="mb-2">
-														<img alt="image" width="100%" height="60%" src="/resources/images/dog.jpg">
+											<li class ="requestListItem my-3 div_33">
+											<a class = " no_text_deco" href = "#">
+													<div class = "fair_border hover_shadow">
+														<div ><!-- img div -->
+															<img src = "/resources/images/dog.jpg" style = " height : 250px;">
+														</div>
+														<div style = "max-width : 400px;"class = "p-3"><!-- 내용 -->
+															<p class = "text_overflow"><strong><c:out value="${list.title }" /></strong></p>
+															<p class = "pl-2"><span class="tag">견종</span><span> </span><c:out value="${list.dog_breed}" /></p>
+															<p class = "pl-2"><span class="tag">성별</span><span></span> <c:out value="${list.dog_sex}" /></p>
+															<p class = "pl-2">
+																<span class="tag">발견장소</span><span></span>
+																<c:out value="${list.found_location}" />
+															</p>
+														</div>
 													</div>
-													<div class="text_left w-100 pl-3">
-														<p class = "text_overflow"><strong><c:out value="${list.title }" /></strong></p>
-														<p class = "pl-2"><span class="tag">견종</span><span> </span><c:out value="${list.dog_breed}" /></p>
-														<p class = "pl-2"><span class="tag">성별</span><span></span> <c:out value="${list.dog_sex}" /></p>
-														<p class = "pl-2">
-															<span class="tag">발견장소</span><span></span>
-															<c:out value="${list.found_location}" />
-														</p>
-													</div>
-												</div>
 												</a>
-											</div>
+											</li>
 										</c:forEach>
-									</div>
-								<hr class = "hr_style mb-3 w-75">
-								<!-- Pagination -->
-									<div>
-											<nav class = "pagination_nav"aria-label="Page navigation example">
-												<ul class="pagination">
-													<c:if test="${pagination.prev }">
-														<li class="page-item"><a class="page-link"
-															href="#	aria-label= "Previous"> <span aria-hidden="true">&laquo;</span>
-																<span class="sr-only">Previous</span>
-														</a></li>
-													</c:if>
-													<c:forEach var="num" begin="${pagination.startPage }"
-														end="${pagination.endPage }">
-														<li class="page-item ${pagination.cri.pageNum == num ? "active" : "" }"><a
-															class="page-link" href="${num }">${num }</a></li>
-													</c:forEach>
-													<c:if test="${pagination.next }">
-														<li class="page-item"><a class="page-link" href="#"
-															aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-																<span class="sr-only">Next</span>
-														</a></li>
-													</c:if>
-												</ul>
-											</nav>
-										</div>
-								<!--pagination ends  -->
-								</div>
-	
-								<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-								<!-- 내용이 없는 경우 -->
-									<c:if test="${empty list }">
-										<c:out value="비어있음" />
-									</c:if>
-									
-									<!-- 내용 표시 -->
-									<div class = "list_content pl-5  pb-3 mb-3" >
-										<c:forEach items="${list}" var="list" begin ="1" end ="5">
-											<div class="w-40 col-xs-12 col-md-6 col-sm-6 wow soft_border fadeInUp m-4 animated hover_shadow"
-												data-wow-duration="300ms" data-wow-delay="0ms"
-												style=" visibility: visible; animation-duration: 300ms; animation-delay: 0ms; animation-name: fadeInUp;">
-												<a class="move" href='<c:out value = "${list.board_id}"/>'>
-												<div class="flex_column">
-													<div class="mb-2">
-														<img alt="image" width="100%" height="60%" src="/resources/images/blue.jpg">
-													</div>
-													<div class="text_left w-100 pl-3">
-														<p class = "text_overflow"><strong><c:out value="${list.title }" /></strong></p>
-														<p class = "pl-2"><span class="tag">견종</span><span> </span><c:out value="${list.dog_breed}" /></p>
-														<p class = "pl-2"><span class="tag">성별</span><span></span> <c:out value="${list.dog_sex}" /></p>
-														<p class = "pl-2">
-															<span class="tag">발견장소</span><span></span>
-															<c:out value="${list.found_location}" />
-														</p>
-													</div>
-												</div>
-												</a>
-											</div>
-										</c:forEach>
-									</div>
-								<hr class = "hr_style mb-3 w-75">
-								<!-- Pagination -->
-									<div>
-											<nav class = "pagination_nav"aria-label="Page navigation example">
-												<ul class="pagination">
-													<c:if test="${pagination.prev }">
-														<li class="page-item"><a class="page-link"
-															href="#	aria-label= "Previous"> <span aria-hidden="true">&laquo;</span>
-																<span class="sr-only">Previous</span>
-														</a></li>
-													</c:if>
-													<c:forEach var="num" begin="${pagination.startPage }"
-														end="${pagination.endPage }">
-														<li class="page-item ${pagination.cri.pageNum == num ? "active" : "" }"><a
-															class="page-link" href="${num }">${num }</a></li>
-													</c:forEach>
-													<c:if test="${pagination.next }">
-														<li class="page-item"><a class="page-link" href="#"
-															aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-																<span class="sr-only">Next</span>
-														</a></li>
-													</c:if>
-												</ul>
-											</nav>
-										</div>
-										<!-- pagination ends -->
-								</div>
-							</div>
-								<!-- @@@@@@@@ -->
+									</ul>
+								</c:otherwise>
+							</c:choose>
 						</div>
 					</div>
-				</div>
-	
+					
+					<div class = "section_space_bottom"><!-- section wrap -->
+						<div class ="flex_row_between"><!-- 설명 section wrap -->
+							<a href = "/lostpets/p001/lostList">
+								<div class = "d-inline-block"><!-- 타이틀, span -->
+									<h2 class="d-inline-block">주인 찾기</h2>
+									<span class ="pl-2"><small><img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr">&nbsp;바로 가기</small></span>
+									<p  class = "pl-2">유기견을 임시보호 하고 계신가요? 딩펫에서 쉽고 빠르게 주인을 찾아보세요!</p>
+								</div>
+							</a>
+							<div class = "d-inline-block pr-5">
+								<a id = "write" href="" class="btn_a no_text_deco"><span class="sub_txt ">등록하기 <img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr"></span> </a>
+							</div>
+						</div><!-- 설명 section wrap ends-->
+						<div><!-- list wrap -->
+							<ul class = "requests flex_row_start o_hidden">
+								<c:forEach items="${list}" var="list">
+									<li class ="requestListItem my-3 div_33">
+										<a class = "no_text_deco" href = "#">
+											<div class = "fair_border hover_shadow">
+												<div ><!-- img div -->
+													<img src = "/resources/images/dog.jpg" style = " height : 250px;">
+												</div>
+												<div style = "width : 400px;" class = "p-3"><!-- 내용 -->
+													<p class = "text_overflow"><strong><c:out value="${list.title }" /></strong></p>
+														<p class = "pl-2"><span class="tag">견종</span><span> </span><c:out value="${list.dog_breed}" /></p>
+														<p class = "pl-2"><span class="tag">성별</span><span></span> <c:out value="${list.dog_sex}" /></p>
+														<p class = "pl-2">
+															<span class="tag">발견장소</span><span></span>
+															<c:out value="${list.found_location}" />
+														</p>
+												</div>
+											</div>
+										</a>
+									</li>
+								</c:forEach>
+							</ul>
+						</div>
+					</div>
+					
+					<div class = "section_space_bottom"><!-- section wrap -->
+						<div class ="flex_row_between"><!-- 설명 section wrap -->
+							<a href = "/lostpets/p001/findList">
+								<div class = "d-inline-block"><!-- 타이틀, span -->
+									<h2  class="d-inline-block">반려견 찾기</h2>
+									<span class ="pl-2"><small><img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr">&nbsp;바로 가기</small></span>
+									<p  class = "pl-2">잃어버린 반려견을 찾고 계신가요? 딩펫이 도와드릴게요!</p>
+								</div>
+							</a>
+							<div class = "d-inline-block pr-5">
+								<a id = "write" href="" class="btn_a no_text_deco"><span class="sub_txt ">등록하기 <img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr"></span> </a>
+							</div>
+						</div><!-- 설명 section wrap ends-->
+						<div><!-- list wrap -->
+							<ul class = "requests flex_row_start o_hidden">
+								<c:forEach items="${list}" var="list">
+									<li class ="requestListItem my-3 div_33">
+										<a class = "no_text_deco" href = "#">
+											<div class = "fair_border hover_shadow">
+												<div ><!-- img div -->
+													<img src = "/resources/images/blue.jpg" style = " height : 250px;">
+												</div>
+												<div style = "width : 400px;" class = "p-3"><!-- 내용 -->
+													<p class = "text_overflow"><strong><c:out value="${list.title }" /></strong></p>
+														<p class = "pl-2"><span class="tag">견종</span><span> </span><c:out value="${list.dog_breed}" /></p>
+														<p class = "pl-2"><span class="tag">성별</span><span></span> <c:out value="${list.dog_sex}" /></p>
+														<p class = "pl-2">
+															<span class="tag">발견장소</span><span></span>
+															<c:out value="${list.found_location}" />
+														</p>
+												</div>
+											</div>
+										</a>
+									</li>
+								</c:forEach>
+							</ul>
+						</div>
+					</div>
 			</div>
+	</div>
+	
+	</div>
 </section>
 
 <!-- 데이터 전송용 get form -->
