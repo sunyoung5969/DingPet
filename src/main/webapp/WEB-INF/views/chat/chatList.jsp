@@ -138,7 +138,7 @@ function submitForm(roomNo){
 			<table class="table">
 			   <tr class="thead">
 			      <th>방 이름</th>
-			      <th>방유저</th>
+			      <th>유저 ID</th>
 			      <th>생성 시간</th>
 			      <th>입장</th>
 			   </tr>
