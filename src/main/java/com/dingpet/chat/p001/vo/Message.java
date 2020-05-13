@@ -11,7 +11,16 @@ public class Message {
 	private String target; // 받는이
 	private String roomno; // 방번호
 	private String member; // 멤버
+	private String send_date; // 보낸날짜
 	
+	public String getSend_date() {
+		return send_date;
+	}
+
+	public void setSend_date(String send_date) {
+		this.send_date = send_date;
+	}
+
 	public String getSender() {
 		return sender;
 	}
