@@ -23,4 +23,6 @@ public interface PetSitting_P003_Mapper {
 	public List<PetSitting_P003_VO> getLog(PetSitting_P003_VO logVO);
 	
 	public int getwalk(PetSitting_P003_VO logVO);
+	
+	public String getmemberID(PetSitting_P003_VO logVO);
 }

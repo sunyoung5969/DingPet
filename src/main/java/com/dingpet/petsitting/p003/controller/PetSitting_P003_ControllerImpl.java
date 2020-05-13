@@ -255,7 +255,8 @@ public class PetSitting_P003_ControllerImpl implements PetSitting_P003_Controlle
 		service.logInsert(logVO);
 		
 	//----------------------------------------------------------------------------------
-		
+		model.addAttribute("regitser", "Y");
+		model.addAttribute("receive_ID", service.getmemberID(logVO));
 		model.addAttribute("logdata", logVO);
 		request.setAttribute("logVO", logVO);
 		return "forward:loglookup";
@@ -299,6 +300,11 @@ public class PetSitting_P003_ControllerImpl implements PetSitting_P003_Controlle
 			logVO = (PetSitting_P003_VO)request.getAttribute("logVO");
 			request.removeAttribute("logVO");
 		}
+		
+		if(request.getParameter("reservation_ID") != null) {
+			logVO.setReservation_ID(request.getParameter("reservation_ID"));
+		}
+		
 		System.out.println("여기서의 logvo는?"+ logVO);
 		model.addAttribute("reservation_ID", logVO.getReservation_ID());
 		model.addAttribute("list", service.getLog(logVO));
