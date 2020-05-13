@@ -138,8 +138,7 @@ function submitForm(roomNo){
 			<table class="table">
 			   <tr class="thead">
 			      <th>방 이름</th>
-			      <th>방유저</th>
-			      <th>     </th>
+			      <th>유저 ID</th>
 			      <th>생성 시간</th>
 			      <th>입장</th>
 			   </tr>
@@ -147,8 +146,7 @@ function submitForm(roomNo){
 			   <c:forEach items="${roomList}" var="room">
 			      <tr>
 			         <td>${room.roomName}</td>
-			         <td>${room.roomMember }</td>
-			         <td>${room.room_owner }</td>			         
+			         <td>${room.roomMember == customers.member_id ? room.room_owner : room.roomMember}</td>
 			         <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${room.reg_date}" /></td>
 			         <c:choose>
 			         	<c:when test="${room.roomPw == '' || room.roomPw eq null ||  room.roomPw eq ''}">

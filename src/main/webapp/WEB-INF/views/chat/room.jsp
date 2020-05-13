@@ -216,7 +216,7 @@ li {
 						<div class="box">
 							<c:forEach items="${msgList}" var="msg">
 						      <li> ${msg.sender} : <br/> ${msg.message} </li>
-						      <span>[보낸 시간] ${msg.chatdate}</span><br>
+						      <span>[보낸 시간] ${msg.send_date}</span><br>
 							</c:forEach><!-- 채팅 리스트 -->
 						</div>
 						<div class="fix_btn">
