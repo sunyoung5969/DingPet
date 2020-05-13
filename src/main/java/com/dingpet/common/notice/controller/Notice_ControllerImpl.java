@@ -125,6 +125,12 @@ public class Notice_ControllerImpl implements Notice_Controller {
 			service.readNotice(noticeVO);
 			
 			return "redirect:/petsitting/p002/reservationlist";
+			
+		}else if(type.equals("일지")) {
+			
+			service.readNotice(noticeVO);
+			
+			return "redirect:/petsitting/p002/reservationlist";
 		}
 		return null;
 	}
