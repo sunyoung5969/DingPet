@@ -128,5 +128,6 @@ public class Notice_ControllerImpl implements Notice_Controller {
 		}
 		return null;
 	}
+	
 
 }

@@ -14,6 +14,10 @@ html {
 	-ms-overflow-style: scrollbar
 }
 
+*:focus{
+	outline:none;
+}
+
 *, ::after, ::before {
 	box-sizing: inherit;
 }

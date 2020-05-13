@@ -52,5 +52,11 @@ public class PetSitting_P003_ServiceImple implements PetSitting_P003_Service{
 		return mapper.getwalk(logVO);
 	}
 
+	@Override
+	public String getmemberID(PetSitting_P003_VO logVO) {
+		// TODO Auto-generated method stub
+		return mapper.getmemberID(logVO);
+	}
+
 
 }

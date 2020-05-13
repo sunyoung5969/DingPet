@@ -36,7 +36,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="getwalk" resultType="int">
 		select count(*) from log where log_Type = 'walk' and reservation_id = #{reservation_ID}
-	
 	</select>
-
+	
+	<select id="getmemberID" resultType="String">
+		select member_id from reservation
+		where order_id = #{reservation_ID}
+	</select>
+	
 </mapper>

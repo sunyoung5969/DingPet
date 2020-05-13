@@ -382,7 +382,7 @@ function closedPopup(){
 	
 			}
 			$('.dateTime').css('display', 'none');
-	
+			$('.calender-div').css('display', 'block');
 		}
 			
 	}
@@ -650,6 +650,11 @@ function closedPopup(){
 	},
 	
 	dateSelect : function(event){
+		
+		if($(".num-small").text()=='0' && $(".num-medium").text()=='0' && $(".num-large").text()=='0'){
+			alert("맡기실 강아지를 먼저 선택해주세요")
+			return
+		}
 		
 		var date = $(event).val();
 		

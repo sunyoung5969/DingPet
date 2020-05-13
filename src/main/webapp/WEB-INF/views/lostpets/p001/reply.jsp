@@ -68,16 +68,16 @@
 									}
 									for(var i = 0, length = list.length || 0; i < length; i++){
 										str += "<li class = 'mb-2' data-reply_id ='" + list[i].reply_id + "'>";
-										str += "<div><div class =  reply_info'><span><strong>" + list[i].replyer +"</strong>님</span>";
-										str += "<span><small>" + replyService.formatDate(list[i].reply_date) + "</small></span>";
+										str += "<div><div class =  'reply_info pb-2'><span><strong>" + list[i].replyer +"</strong>님</span>";
+										str += "<span class = 'pl-2'><small>" + replyService.formatDate(list[i].reply_date) + "</small></span>";
 										
 										//댓글 작성자에게만 수정 삭제 버튼 표시
 										if(list[i].replyer == loggedInId){
-											str += "<button class = 'small_btn btn btn-primary float-right' id = 'reply_modify'>수정</button>";
-											str += "<button class = 'small_btn btn btn-primary float-right' id = 'reply_delete'>삭제</button>";
+											str += "<i id = 'reply_modify' class='fas fa-pen px-2 color_blue text_right'></i>";
+											str += "<i id = 'reply_delete' class='fas fa-trash-alt px-2 color_blue text_right'></i>";
 										}
 
-										str += "</div><div class='comment-content comment reply_info'>";
+										str += "</div><div class='comment-content comment'>";
 										str += "<p id = 'original_content' class = 'fn ml-3 mr-3'>" + list[i].reply + "</p>";
 										str += "<div class = 'flex_row toggle_div pb-2' style = 'display : none'><div class = 'w-90'><textarea cols='45' rows='4'  class='form-control' maxlength='65525' required></textarea></div>";
 										str += "<div class = 'flex_column w-10'><button id = 'modified_submit' class = 'small_btn btn btn-primary'>등록</button><button id = 'modified_cancel' class = 'small_btn btn btn-primary'>취소</button>";
