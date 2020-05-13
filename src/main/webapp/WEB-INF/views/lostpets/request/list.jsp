@@ -89,9 +89,7 @@
 											<c:forEach items="${requestFrom}" var="requestFrom">
 												<c:if test="${myList.board_id == requestFrom.receiver_b_id }">
 													<li class = "requestListItem">
-													<div class="m-3 request_box soft_shadow no_round_border" style="width: 300px; height : 450px;">
-														<div class=" d-inline-block ">
-					
+														<div class="m-3 request_box soft_shadow no_round_border" style="width: 300px; height : 450px;">
 															<a class="no_text_deco" target="_blank" href="/lostpets/p001/view?board_id=${requestFrom.board_id}">
 																<div class=" round_top_border o_hidden">
 																	<img class="round_top_border" style="width: 100%; height: 200px;" src='/resources/images/dog2.jpg'>
@@ -118,9 +116,9 @@
 																 data-receiver_id = "${requestFrom.member_id}"class="confirmRequest confirm_left"><strong>완료</strong></button>
 																<button data-request_id="${requestFrom.request_id}" class="deleteRequest confirm_right"><strong>삭제</strong></button>
 															</div>
-					
+						
 														</div>
-													</div></li>
+													</li>
 												</c:if>
 											</c:forEach>
 										</ul>
@@ -129,12 +127,12 @@
 								</div>
 							</div>
 							
-							</div>	
-					</c:forEach>
-				</c:otherwise>
-				</c:choose>
+						</div>	
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
 			
-			<hr class = "hr_style mb-3 w-75">
+		<hr class = "hr_style mb-3 w-75">
 			<!-- Pagination -->
 			<div>
 					<nav class = "pagination_nav"aria-label="Page navigation example">
@@ -177,7 +175,7 @@
 													<img class=".nav-pills" style="width: 150px; height: 150px;" src='/resources/images/dog2.jpg'>
 												</div>
 												<div class="w-75 pl-3 pt-3 d-inline-block">
-													<p class = "text_overflow"> <strong>${myRequest.board_id}${myRequest.title}</strong> </p>
+													<p class = "text_overflow"> <strong>${myRequest.title}</strong> </p>
 													<p class="pl-2">
 														<span class="tag">견종</span><span> </span> <span>${myRequest.dog_breed}</span> 
 														<span class="pl-2"></span> 
@@ -208,16 +206,14 @@
 									<c:forEach items="${requestTo}" var="requestTo">
 										<c:if test="${myRequest.board_id == requestTo.sender_b_id }">
 											<li class = "requestListItem">
-											<div class="m-3 request_box soft_shadow no_round_border" style="width: 300px; height : 450px;">
-												<div class="  ">
-													
+												<div class="m-3 request_box soft_shadow no_round_border" style="width: 300px; height : 450px;">
 													<a class="no_text_deco" target="_blank" href="/lostpets/p001/view?board_id=${requestTo.board_id}">
 														<div class=" round_top_border o_hidden">
 															<img class="round_top_border" style="width: 100%; height: 200px;" src='/resources/images/dog2.jpg'>
 														</div>
 			
 														<div class="p-3  o_hidden" style = "height: 190px;">
-															<p class="text_overflow"> <strong>${requestTo.board_id}${requestTo.title}</strong> </p>
+															<p class="text_overflow"> <strong>${requestTo.title}</strong> </p>
 															<p class="pl-2">
 																<span class="tag">견종</span><span> </span> <span>${requestTo.dog_breed}</span>
 																<span class="pl-2"></span> 
@@ -235,9 +231,9 @@
 													<div class="flex_row b_round_border">
 														<button data-request_id="${requestTo.request_id}" class="deleteRequest requestCancel"><strong>요청 취소</strong></button>
 													</div>
-			
+				
 												</div>
-											</div></li>
+											</li>
 										</c:if>
 									</c:forEach>
 								</ul>
