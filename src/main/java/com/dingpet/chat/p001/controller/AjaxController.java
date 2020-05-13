@@ -45,6 +45,12 @@ public class AjaxController {
 		 
 		 return data;
 	 }
-	 
+
+	 @RequestMapping(value = "/updatePw", method = RequestMethod.GET)
+	 public int updatePw(int roomNo, String newPass) throws Exception {
+	  
+		   
+	      return  service.removeRoom(roomNo, newPass);
+	  } 
  
 }

@@ -3,28 +3,35 @@ package com.dingpet.chat.p001.controller;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dingpet.chat.p001.service.ChatService;
 import com.dingpet.chat.p001.vo.Message;
 
 
 
 @RestController
 public class MessageController {
-	
+	@Autowired
+	ChatService service;
 	
     // 채팅 메세지 전달
     @MessageMapping("/app/{roomNo}")
     @SendTo("/subscribe/chat/{roomNo}")
-    public Message sendChatMessage(@DestinationVariable String roomNo, Message message) {
+    public Message sendChatMessage(@DestinationVariable String roomNo, Message message) throws Exception {
     	System.out.println(">>>>message");
-    	
+    	message.setRoomName(roomNo);
+    	message.setRoomno(roomNo);
     	message.setMessageType("");
         message.setChatdate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy년 M월 d일 a h시 m분")));
-        System.out.println("message~~~~");
+        message.setSender(message.getWriter());
+        System.out.println(message);
+        service.saveMessage(message);
+        
         return message;
     }
     

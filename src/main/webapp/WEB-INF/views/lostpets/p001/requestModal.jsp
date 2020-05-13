@@ -61,28 +61,18 @@ a:link, a:visited {
 
 
 
-<div class="flex_row_around pt-3">
-	<c:choose>
-		<c:when test = "${customers.member_id == board.member_id}">
-			<button id="complete" class="btn btn-primary">완료 처리</button>
-		</c:when>
-		<c:otherwise>
-			<button id="confirmation_request" class="btn btn-primary">확인 요청</button>
-		</c:otherwise>
-	</c:choose>
-</div>
+
 
 
 <!-- 확인 요청 모달 -->
 <div id="modal" class="modal">
 	<div class="modal-content">
-		<span class="close">&times;</span>
-		<div class="text_center py-1 color_black">
-			<h2>확인 요청</h2>
-			<span>요청하실 게시글을 선택해주세요.</span>
+		<div class="text_center py-1">
+			<h2 class ="color_blue">확인 요청</h2>
+			<span>게시하신 글을 바탕으로 확인을 요청하실 수 있습니다. 게시글을 선택해주세요.</span>
 		</div>
-		<div class = "content_area">
-
+		<div class = "content_area pt-3">
+ 			<!--
 			<c:forEach begin="1" end="5">
 				<div class="my-2">
 					<a href="#">
@@ -104,17 +94,18 @@ a:link, a:visited {
 									<p class="pl-2">
 										<span class="tag">실종 장소</span><span> </span><span>서울특별시 영등포구 국회대로29길 8</span>
 									</p>
-								</div>
+								</div> 
 
 							</div>
 						</div>
 					</a>
 				</div>
-			</c:forEach>
+			</c:forEach>-->
 		</div>
 
 		<div class="py-5 m-auto">
 			<button id="send" class="btn-sm btn btn-primary">요청 전송</button>
+			<button id = "closeBtn" class="btn-sm btn btn-primary">닫기</button> 
 		</div>
 	</div>
 </div>
@@ -125,7 +116,6 @@ a:link, a:visited {
 
 	var loggedIn_id = '${customers.member_id}';
 	var modal = $("#modal");
-	var span = $(".close")[0];
 	var window = $(window);
 	var content_area = $(".content_area");
 	
@@ -148,7 +138,9 @@ a:link, a:visited {
 				//버튼을 누르면 ajax로 내 작성글 데이터를 가져오고 동적으로 html 요소 형성 
 				requestService.list(loggedIn_id, function(senderList){
 					if(!senderList || senderList.length == 0){
-						content_area.html('<h2>아직 작성된 글이 없습니다.</h2>');
+						content_area.html('<h2 class = "text_center">아직 작성하신 글이 없습니다.</h2>');
+						$("#send").hide();
+						return;
 					}else{
 						for(var i = 0; i < senderList.length; i++){
 							str += "<div class='radio small_list_border w-90 mx-auto my-2' data-sender_b_id = '" + senderList[i].board_id +"' data-sender_id = '" + loggedIn_id + "'>";
@@ -176,10 +168,10 @@ a:link, a:visited {
 		}
 		
 		
-		// X 버튼 클릭시 닫기
-		span.onclick = function() {
+		// 닫기 버튼 누르면 닫기
+		$("#closeBtn").click(function(){
 			modal.css("display", "none");
-		}
+		});
 		
 		//모달 바깥 영역 클릭시 닫기
 		window.onclick = function(event) {
@@ -218,12 +210,24 @@ a:link, a:visited {
 						receiver_id : receiver_id,
 						receiver_b_id : receiver_b_id
 					};
-
+					
+					var noticeData = {
+						notice_Type : "확인 요청",
+						sender_ID : sender_id,
+						member_ID : receiver_id,
+						notice_Contents : sender_id + "님이 확인 요청을 보내셨습니다.",
+						url : "/lostpets/p001/view?board_id=" + sender_b_id
+					}
+					
 					requestService.send(requestData, function(){
 					//중복확인 필요@@@@@@@@@@@@@@@@@@@@
 						alert('요청이 전송되었습니다!');
 						modal.css("display", "none");
 					});
+					
+					noticeService.form(noticeData,function(){
+						alert('알림 전송 성공');
+					})
 				
 				}
 				
@@ -240,7 +244,7 @@ a:link, a:visited {
 	
 		})
 </script>
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/notice.js" ></script>
 
 
 
