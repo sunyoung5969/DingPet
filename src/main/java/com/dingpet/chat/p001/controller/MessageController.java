@@ -48,10 +48,7 @@ public class MessageController {
     	
     	Date date = new Date();
     	SimpleDateFormat form = new SimpleDateFormat("yy. MM. dd a hh:mm");
-
     	System.out.println(form.format(date));
-    	
-    	
     	
     	message.setMessage(message.getWriter() + "님이 입장하셨습니다");
         message.setMessageType("System message"); 
