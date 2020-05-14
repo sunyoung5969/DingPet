@@ -1,18 +1,21 @@
+
 $(document).ready(function(){
-
-
+	chatcon();
+})
+	var onoff = false;
 	var page = $('#page').val();
 	var perPageNum = $('#perPageNum').val();
 
-	$(function () {
-        var chatBox = $('.box');
+	function chatcon(roomNo) {
+        var chatBox = $('.chat-panel');
         var messageInput = $('input[name="msg"]');
         var roomNo = $('.content').data('room-no');
         var member = $('.content').data('member');
         var sock = new SockJS("/endpoint");
         var client = Stomp.over(sock);
-        
+        onoff = true;
         function sendmsg(){
+        	roomNo = $('.content').data('room-no');
         	var message = messageInput.val();
             if(message == ""){
             	return false;
@@ -26,6 +29,9 @@ $(document).ready(function(){
         }
         
         client.connect({}, function () {
+        	console.log("채팅방")
+        	roomNo = $('.content').data('room-no');
+        	console.log("룸넘버버버버버 : " +roomNo)
         	// 여기는 입장시
         	client.send('/app/join/'+ roomNo , {}, JSON.stringify({ writer: member})); 
 //           일반메세지 들어오는곳         
@@ -33,8 +39,13 @@ $(document).ready(function(){
                 var content = JSON.parse(chat.body);
                 
                 if(content.messageType == ""){
-                	
-                	chatBox.append("<li>" + content.writer + " :  <br/>" + content.message + "</li>").append('<span>' + "[보낸 시간]" + content.chatdate + "</span>" + "<br>");
+                	var str=""
+                	str += '<div class="no-gutters--right"><div class="offset-md-9">';
+					str += '<div class="textBox-div--right"><div class="chat-bubble chat-bubble--right"><li>'+content.message;
+					str += '</li></div></div><span class="chat-date">'+content.chatdate+'</span>';
+					str += '</div></div>';
+					
+                	chatBox.append(str);
                 	  
                 }else{
                 	$('.user ul').empty();                	
@@ -54,7 +65,7 @@ $(document).ready(function(){
         
 //        나가기
         $('.roomOut').click(function(){
-         
+        	roomNo = $('.content').data('room-no');
             if(member != null){
                $.ajax({
                   type : "get",
@@ -73,14 +84,16 @@ $(document).ready(function(){
      });// click
       
 
-	function closeConnection () {
+	function closeConnection() {
+		console.log("퇴장")
+		onoff = false;
 	    sock.close();
 	}
 
 	function viewList(){
 	
 		alert('viewList');
-		var url = "/chat/chatList?page=" + page + "&perPageNum=" + perPageNum;
+		var url = "/chat/chatList";
 		location.replace(url);
 	}
 
@@ -148,12 +161,8 @@ $(document).ready(function(){
 		 }
 		 
 		}
-	
-	});
 
-
-
-});
+	}
 
 function isOwner(roomNo, userId){
 	alert(roomNo + userId);

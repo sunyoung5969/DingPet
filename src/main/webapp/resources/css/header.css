@@ -131,9 +131,10 @@
 .notice_messege-div{
 	display: none;
 	position: fixed;
-    left: 49%;
+    left: 53.5%;
     top: 65px;
     width: 250px;
+    z-index: 999;
 }
 
 .notice_messege-img{

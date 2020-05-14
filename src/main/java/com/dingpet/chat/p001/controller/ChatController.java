@@ -120,8 +120,9 @@ public class ChatController {
 		return "chat/room";
 	}
 //	
+	@ResponseBody
 	@RequestMapping(value = "enterRoom", method = {RequestMethod.POST}) // 방 들어갈 때, list에서 pick해서 들어갈 때
-	public String chat(int roomNo, HttpSession session, HttpServletRequest request, ChatRoom room, Model model
+	public Map chat(int roomNo, HttpSession session, HttpServletRequest request, ChatRoom room, Model model
 												, Criteria cri) throws Exception {
 		//세션 id 가져오기 
 		Customers_P001_VO sessionId = (Customers_P001_VO) session.getAttribute("customers");
@@ -135,7 +136,12 @@ public class ChatController {
 		model.addAttribute("room", chatService.getRoom(roomNo));
 		model.addAttribute("msgList",chatService.getMessage(roomNo));
 
-		return "chat/room";
+		Map map = new HashMap();
+		
+		map.put("chatList", chatService.getMessage(roomNo));
+		
+		//return "chat/room";
+		return map;
 	}
 	
 }
