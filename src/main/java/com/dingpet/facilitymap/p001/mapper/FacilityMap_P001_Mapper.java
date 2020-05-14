@@ -14,6 +14,10 @@ public interface FacilityMap_P001_Mapper {
 	public List<FacilityMap_P001_VO> medicenterSearch(PlaceDTO dto);
 	//애견카페 맵마킹
 	public List<FacilityMap_P001_VO> cafeSearch(PlaceDTO dto);
+	//애견식당 맵마킹
+	public List<FacilityMap_P001_VO> restaurantSearch(PlaceDTO dto);
+	//애견호텔 맵마킹
+	public List<FacilityMap_P001_VO> hotelSearch(PlaceDTO dto);
 	//상세정보 페이지 (동물병원,약국)
 	public FacilityMap_P001_VO readcenter(int PLACE_NUM);
 	//상세정보 페이지 (동물병원,약국)

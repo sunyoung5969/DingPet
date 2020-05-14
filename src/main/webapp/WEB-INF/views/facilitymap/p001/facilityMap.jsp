@@ -12,11 +12,24 @@
 	font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
 	font-size: 12px;
 }
-
+.hAddr {
+	position:absolute;
+	right:30px;
+	top:10px;
+	border-radius: 2px;
+	background:#fff;
+	background:rgba(255,255,255,0.8);
+	z-index:1;
+	padding:5px 10px;
+	border: 1px solid #088cf3;}
+#centerAddr {
+	display:block;
+	margin-top:2px;
+	font-weight: normal;}
 .map_wrap {
 	position: relative;
 	width: 100%;
-	height: 350px;
+	height: 550px;
 }
 
 #category {
@@ -182,11 +195,7 @@
 				<div class="col-md-12 align-self-center">
 					<!-- 임시 메뉴 -->
 					<p style="margin-top: -12px">
-						<em class="link">
-							<a href="http://apis.map.kakao.com/web/documentation/#CategoryCode" target="_blank">카테고리 코드목록을 보시려면 여기를 클릭하세요!</a>
-						</em>
-					</p>
-					<
+					</p>					
 					<input type="hidden" name="lat" id="latitude">
 					<input type="hidden" name="lit" id="longitude">
 					<input class="btn btn-primary" id="mylocation" type="button" value=" 내 현재 위치로 이동 " /><br><br>
@@ -199,13 +208,12 @@
 							약국</li>
 							<li id="CA7" data-order="2"><span class="category_bg cafe"></span>
 							카페</li>
-							<li id="OL7" data-order="3"><span class="category_bg oil"></span>
-							주유소</li>
-							<li id="CE7" data-order="4"><span class="category_bg cafe"></span>
-							카페</li>
-							<li id="CS2" data-order="5"><span class="category_bg store"></span>
-							편의점</li>
+							<li id="RE7" data-order="3"><span class="category_bg oil"></span>
+							식당</li>
+							<li id="HT7" data-order="4"><span class="category_bg cafe"></span>
+							호텔</li>
 						</ul>
+						<div class="hAddr"><span id="centerAddr"></span> </div>
 					</div>
 
 				</div>
