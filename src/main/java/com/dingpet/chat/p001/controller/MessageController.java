@@ -44,7 +44,7 @@ public class MessageController {
     	System.out.println(">>>>join");
     	
     	Date date = new Date();
-    	SimpleDateFormat form = new SimpleDateFormat("yy. MM. dd hh:mm");
+    	SimpleDateFormat form = new SimpleDateFormat("yy. MM. dd a hh:mm");
     	System.out.println(form.format(date));
     	
     	
