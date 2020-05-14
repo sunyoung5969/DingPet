@@ -18,12 +18,12 @@
 			<div><h4 align="center">아이디와 가입할 때 입력하신 메일주소를 기입하세요.</h4></div>
 			아이디<input type="text" name="member_id" id="member_id" />
 			이메일<input type="email" name="member_email" id="member_email" />
-			<input type="button" value="비밀번호 찾기" onClick="find_pw()" class="btn btn-primary" />
+			<div style="color:blue">${yespw} ${nopw}</div>
+			
+			<input type="button" value="비밀번호 찾기" onClick="find_pw()" class="btn btn-primary"
+			style="margin-top:5px" />
+			
 		</form>
-		
-		<h3>${yesID}</h3>
-		<h3>${noID}</h3>
-
 		
 		<script type="text/javascript">	
 		function find_pw(){

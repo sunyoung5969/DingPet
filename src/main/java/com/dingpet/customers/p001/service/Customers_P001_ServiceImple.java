@@ -68,12 +68,12 @@ public class Customers_P001_ServiceImple implements Customers_P001_Service{
 		return mapper.read(cust);
 	}
 	
-	public List<Customers_P001_VO> dogInfo(Customers_P001_VO cust) {
+	public Customers_P001_VO dogInfo(Customers_P001_VO cust) {
 		log.info("강아지 정보 service");
 		return mapper.dogInfo(cust);
 	}
 	
-	public Customers_P001_VO readPw(Customers_P001_VO cust) {
+	public String readPw(Customers_P001_VO cust) {
 		log.info("정보조회를 위한 비밀번호 입력 처리 service");
 		return mapper.readPw(cust);
 	}

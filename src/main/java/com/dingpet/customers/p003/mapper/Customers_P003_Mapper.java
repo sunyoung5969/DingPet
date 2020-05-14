@@ -1,5 +1,7 @@
 package com.dingpet.customers.p003.mapper;
 
+import org.apache.ibatis.annotations.Select;
+
 import com.dingpet.customers.p003.vo.Customers_P003_VO;
 
 public interface Customers_P003_Mapper {

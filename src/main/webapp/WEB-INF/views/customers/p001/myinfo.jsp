@@ -6,7 +6,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sign.css">
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(function(){
+/*
+$(document).ready(function(){
     		
 		var formObj = $("form");
     		
@@ -27,7 +28,20 @@
     			formObj.submit();
     		});
     });
-    </script>
+ */
+	function withdraw(){
+	 	
+	 	var withdraw = document.memberInfo;
+	 	
+	 	withdraw.method = "post";
+	 	withdraw.action = "/customers/p001/withdraw",
+		withdraw.submit();
+ 	}
+ 
+ 	function apply(){
+ 		return location.href='/customers/p001/change';
+ 	}
+</script>
 
 
 <div class="main">  
@@ -37,7 +51,7 @@
 	<div class="w-75 m-auto">
 		<h2 class="form-title pb-3">마이페이지</h2>
 			
-		<form method="post" action="myinfo">
+		<form method="post" action="myinfo" id="memberInfo" name="memberInfo">
 			<div class = "flex-row">
 			<h3 class = "color_blue d-inline">회원 정보</h3>
 			</div>
@@ -140,9 +154,9 @@
 			</div>   
  			
  			<div class="form-group form-button" align="center">                    
-			<input type="button" data-oper='modify' class="form-submit" value="정보수정">
-			<input type="button" data-oper='withdraw' class="form-submit" value="회원탈퇴">
-			<input type="button" data-oper='change' class="form-submit" value="기분전환">
+			<input type="submit" class="form-submit" value="정보수정">
+			<input type="button" class="form-submit" onclick="withdraw()" value="회원탈퇴">
+			<input type="button" class="form-submit" onclick="apply()" value="펫시터 신청">
 			</div>
 		</form>   
 						 

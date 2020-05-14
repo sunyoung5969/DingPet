@@ -105,7 +105,7 @@
 											<a href="/facilitymap/p001/facilityMap"	class="nav-link">시설지도</a>
 										</li>
 										<li>
-											<a href="/facilitymap/p001/register" class="nav-link">시설지도	등록</a>
+											<a href="/facilitymap/p001/register" class="nav-link" id="admin_menu" style="display:none;">시설지도 등록</a>
 										</li>
 									</ul>
 								</li>
