@@ -12,7 +12,20 @@
 	font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
 	font-size: 12px;
 }
-
+.hAddr {
+	position:absolute;
+	right:30px;
+	top:10px;
+	border-radius: 2px;
+	background:#fff;
+	background:rgba(255,255,255,0.8);
+	z-index:1;
+	padding:5px 10px;
+	border: 1px solid #088cf3;}
+#centerAddr {
+	display:block;
+	margin-top:2px;
+	font-weight: normal;}
 .map_wrap {
 	position: relative;
 	width: 100%;
@@ -200,6 +213,7 @@
 							<li id="HT7" data-order="4"><span class="category_bg cafe"></span>
 							호텔</li>
 						</ul>
+						<div class="hAddr"><span id="centerAddr"></span> </div>
 					</div>
 
 				</div>

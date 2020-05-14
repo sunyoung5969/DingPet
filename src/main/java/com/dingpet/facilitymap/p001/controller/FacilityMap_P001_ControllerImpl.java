@@ -120,7 +120,7 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 		return new ResponseEntity<>(data, HttpStatus.OK);	
 	} // CafeMap End
 	// 시설지도 - 식당 마킹
-	@RequestMapping(value="/RestaurantMap", method = {RequestMethod.GET})
+	@RequestMapping(value="/restaurantMap", method = {RequestMethod.GET})
 	@ResponseBody
 	@Override
 	public ResponseEntity<List<FacilityMap_P001_VO>> RestaurantMap(PlaceDTO dto) {
