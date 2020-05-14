@@ -43,7 +43,8 @@
 					str += '</div></div>';
 					
                 	chatBox.append(str);
-                	  
+                	chatBox.scrollTop(chatBox[0].scrollHeight);
+
                 }else{
                 	$('.user ul').empty();                	
                 	chatBox.append("<li>" + content.messageType + " :  <br/>" + content.message + "</li>").append('<span>' + "[보낸 시간]" + content.chatdate + "</span>" + "<br>");

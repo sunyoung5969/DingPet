@@ -1,7 +1,9 @@
 package com.dingpet.chat.p001.controller;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
@@ -41,9 +43,15 @@ public class MessageController {
     public Message sendJoinChatMessage(@DestinationVariable String roomNo, Message message) throws NumberFormatException, Exception {
     	System.out.println(">>>>join");
     	
+    	Date date = new Date();
+    	SimpleDateFormat form = new SimpleDateFormat("yy. MM. dd hh:mm");
+    	System.out.println(form.format(date));
+    	
+    	
+    	
     	message.setMessage(message.getWriter() + "님이 입장하셨습니다");
         message.setMessageType("System message"); 
-        message.setChatdate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy년 M월 d일 a h시 m분")));
+        message.setChatdate(form.format(date));
         
         System.out.println("-------------------" + message.getWriter());
         return message;

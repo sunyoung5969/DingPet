@@ -15,7 +15,6 @@
 <script>
 function checkPersonnel(roomNo, roomPw, result) {
 	  /* 	alert(typeof roomNo + roomPw + result); */
-	  console.log(roomNo);
 	//$(".content").data('room-no', roomNo);
 	$(".content").attr('data-room-no', roomNo);
 
@@ -34,7 +33,7 @@ function checkPersonnel(roomNo, roomPw, result) {
 				console.log("방에 입장 중 입니다.");
 				if(!onoff){
 					console.log("한번만 연겨려렬려려려려려려렬")
-						chatcon();
+					chatcon();
 				}
 	
 				if (!result) {
@@ -49,8 +48,8 @@ function checkPersonnel(roomNo, roomPw, result) {
 	
 function check(roomNo, roomPw){
 	/* alert(roomNo + "roomPw" + roomPw); */
-	
 	var input = prompt('패스워드를 입력하세요 > ');
+	
 	if(input == roomPw){
 		alert("일치함");
 		
@@ -62,13 +61,13 @@ function check(roomNo, roomPw){
 }
 
 function submitForm(roomNo){
-	console.log("여기타나요?")
+
 	$("#subNo").val(roomNo);
 	
 	var chatData = {
-			userId : $("userId").val(),
-			userNmae : $("userName").val(),
-			roomNo : roomNo,
+		userId : $("userId").val(),
+		userNmae : $("userName").val(),
+		roomNo : roomNo,
 	}
 
 	 $.ajax ({
@@ -81,7 +80,6 @@ function submitForm(roomNo){
 			$(".chat-panel").empty(); //여기서 append
 
 			if(chatList.length > 0){
-				console.log(chatList)
 
 				var chatClass="";	
 				var str = "";	
@@ -102,36 +100,12 @@ function submitForm(roomNo){
 					str += '</div></div>';
 					
 					$(".chat-panel").append(str); //여기서 append
+					$(".chat-panel").scrollTop($(".chat-panel")[0].scrollHeight);
+
 				}
-	
-				/*
-				<div class="content chatcontent" data-room-no="${room.roomNo}" data-member="${customers.member_id}">
-					<div class="user">
-						<ul>
-						</ul>
-					</div>
-					<div class="box">
-						<c:forEach items="${msgList}" var="msg">
-					      <li> ${msg.sender} : <br/> ${msg.message} </li>
-					      <span>[보낸 시간] ${msg.send_date}</span><br>
-						</c:forEach><!-- 채팅 리스트 -->
-					</div>
-					<div class="fix_btn">
-						<input type="text" id="msgi" name="msg" placeholder="메세지를 입력하세요" />
-						<button type="button" class="send">보내기</button>
-						<button type="button" class="roomOut" value="${customers.member_id}">방 나가기</button>
-						<input type="hidden" value="${cri.page}" id="page" name="page" />
-						<input type="hidden" value="${cri.perPageNum }" id="perPageNum" name="perPageNum" />
-						<button type="button" class="btnPass" onclick="return isOwner(${room.roomNo}, '${customers.member_id}')">
-						방삭제하기</button>
-					</div>
-				</div>
-		        */
 	        }
         }
      });
-	
-	//$("#formByNo").submit();
 }
 
 </script>
