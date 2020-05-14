@@ -119,7 +119,50 @@ public class FacilityMap_P001_ControllerImpl implements FacilityMap_P001_Control
 		log.info("====End Map Method====");
 		return new ResponseEntity<>(data, HttpStatus.OK);	
 	} // CafeMap End
-	
+	// 시설지도 - 식당 마킹
+	@RequestMapping(value="/RestaurantMap", method = {RequestMethod.GET})
+	@ResponseBody
+	@Override
+	public ResponseEntity<List<FacilityMap_P001_VO>> RestaurantMap(PlaceDTO dto) {
+		HttpHeaders responseHeaders = new HttpHeaders(); // 헤더변경 시 사용
+		responseHeaders.add("Content-Type", "text/html; charset=utf-8"); 
+		log.info("====Restaurant Map Method====");
+		List<FacilityMap_P001_VO> data = service.getRestaurantMap(dto);
+		log.info(dto);
+		log.info(service);
+		String msg = "";
+		boolean status = data.isEmpty();
+		if (status) {
+			msg = "fail";
+		} else {
+			msg = "success";
+		}
+		log.info(msg);
+		log.info("====End Map Method====");
+		return new ResponseEntity<>(data, HttpStatus.OK);	
+	} // RestaurantMap End
+	// 시설지도 - 호텔 마킹
+	@RequestMapping(value="/hotelMap", method = {RequestMethod.GET})
+	@ResponseBody
+	@Override
+	public ResponseEntity<List<FacilityMap_P001_VO>> HotelMap(PlaceDTO dto) {
+		HttpHeaders responseHeaders = new HttpHeaders(); // 헤더변경 시 사용
+		responseHeaders.add("Content-Type", "text/html; charset=utf-8"); 
+		log.info("====HOTEL Map Method====");
+		List<FacilityMap_P001_VO> data = service.getHotelMap(dto);
+		log.info(dto);
+		log.info(service);
+		String msg = "";
+		boolean status = data.isEmpty();
+		if (status) {
+			msg = "fail";
+		} else {
+			msg = "success";
+		}
+		log.info(msg);
+		log.info("====End Map Method====");
+		return new ResponseEntity<>(data, HttpStatus.OK);	
+	} // HotelMap End
 	// 시설지도 등록페이지 
 	@Override
 	@RequestMapping(value="/register", method = {RequestMethod.GET})

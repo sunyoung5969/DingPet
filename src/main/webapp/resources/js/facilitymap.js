@@ -114,6 +114,64 @@ function searchPlaces() {
 				
 			}
 		}); // end of ajax	
+	} else if (currCategory == "RE7"){
+		console.log("식당찾아");
+		$.ajax({
+			url: '/facilitymap/p001/restaurantMap',
+			data: {myX:myX,myY:myY,useMapBounds : true},
+			type: 'GET',
+			datatype:'JSON',
+			success: function(data){
+				if(data == null){
+					alert("현재위치를 확인해주세요.");
+					return;					
+				} else {		
+					status = "OK";
+					order = 0;
+					pagination = { 
+					totalCount: 45,
+					hasNextPage: true,
+					hasPrevPage: false,
+					first: 1,
+					current: 1,
+					last: 3,
+					perPage: 15
+					};
+					placesSearchCB(data, status, pagination);
+					useMapBounds : true;
+					console.log("Restaurant AJAX");
+				}
+			}
+		}); // end of ajax	
+	} else if (currCategory == "HT7"){
+		console.log("호텔찾아");
+		$.ajax({
+			url: '/facilitymap/p001/hotelMap',
+			data: {myX:myX,myY:myY,useMapBounds : true},
+			type: 'GET',
+			datatype:'JSON',
+			success: function(data){
+				if(data == null){
+					alert("현재위치를 확인해주세요.");
+					return;					
+				} else {		
+					status = "OK";
+					order = 0;
+					pagination = { 
+					totalCount: 45,
+					hasNextPage: true,
+					hasPrevPage: false,
+					first: 1,
+					current: 1,
+					last: 3,
+					perPage: 15
+					};
+					placesSearchCB(data, status, pagination);
+					useMapBounds : true;
+					console.log("Hotel AJAX");
+				}
+			}
+		}); // end of ajax	
 	} else if (currCategory == "HP2"){
 			console.log("약국찾아");
 			$.ajax({

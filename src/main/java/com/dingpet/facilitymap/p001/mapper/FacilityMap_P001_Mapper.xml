@@ -24,6 +24,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		Y < (#{myY, jdbcType=VARCHAR}+0.00015) AND Y > (#{myY, jdbcType=VARCHAR}-0.00015) 
 		]]>	
 	</select>
+	<select id="restaurantSearch" resultType="com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO" parameterType="com.dingpet.facilitymap.p001.dto.PlaceDTO">
+		<![CDATA[
+		SELECT SITE_ID, PLACE_NAME, ADDRESS_NAME, CATEGORY_NAME, PHONE, X, Y, PLACE_URL
+		FROM SITE WHERE CATEGORY_NAME='restaurant' AND X < (#{myX, jdbcType=VARCHAR}+0.05) AND X > (#{myX, jdbcType=VARCHAR}-0.05) OR
+		Y < (#{myY, jdbcType=VARCHAR}+0.00015) AND Y > (#{myY, jdbcType=VARCHAR}-0.00015) 
+		]]>	
+	</select>
+	<select id="hotelSearch" resultType="com.dingpet.facilitymap.p001.vo.FacilityMap_P001_VO" parameterType="com.dingpet.facilitymap.p001.dto.PlaceDTO">
+		<![CDATA[
+		SELECT SITE_ID, PLACE_NAME, ADDRESS_NAME, CATEGORY_NAME, PHONE, X, Y, PLACE_URL
+		FROM SITE WHERE CATEGORY_NAME='hotel' AND X < (#{myX, jdbcType=VARCHAR}+0.05) AND X > (#{myX, jdbcType=VARCHAR}-0.05) OR
+		Y < (#{myY, jdbcType=VARCHAR}+0.00015) AND Y > (#{myY, jdbcType=VARCHAR}-0.00015) 
+		]]>	
+	</select>
 	<select id="getseq" resultType="int">
 	    SELECT site_seq.nextval as sitesq from dual
     </select> 
