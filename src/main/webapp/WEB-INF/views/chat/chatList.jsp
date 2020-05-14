@@ -19,31 +19,33 @@ function checkPersonnel(roomNo, roomPw, result) {
 	//$(".content").data('room-no', roomNo);
 	$(".content").attr('data-room-no', roomNo);
 
-	   $.ajax ({
-	      type:'get',
-	      url:'/checkPersonnel',
-	      data: {
-	    	  roomNo : roomNo
-	      },
-	      success:function(data) {
+	$.ajax ({
+		type:'get',
+		url:'/checkPersonnel',
+		data: {
+			roomNo : roomNo
+		},
+		success:function(data) {
 	    	  /* alert(data); */
-	         if (data >= 6) {
-	            console.log("들어갈 수 없습니다");
-	            return false;
-	         } else {
-	        	
-	        	 console.log("방에 입장 중 입니다.");
-	        	// chatcon();
-	            if (!result) {
-	               check(roomNo, roomPw);
-	            } else {
-	            	submitForm(roomNo);
-	            }
-	        }
-         }
-      });
-   }
-
+			if (data >= 6) {
+				console.log("들어갈 수 없습니다");
+					return false;
+			} else {
+				console.log("방에 입장 중 입니다.");
+				if(!onoff){
+					console.log("한번만 연겨려렬려려려려려려렬")
+						chatcon();
+				}
+	
+				if (!result) {
+		               check(roomNo, roomPw);
+				} else {
+					submitForm(roomNo);
+				}
+			}
+		}
+	});
+}
 	
 function check(roomNo, roomPw){
 	/* alert(roomNo + "roomPw" + roomPw); */

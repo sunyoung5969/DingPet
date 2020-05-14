@@ -1,12 +1,9 @@
 
-$(document).ready(function(){
-	chatcon();
-})
 	var onoff = false;
 	var page = $('#page').val();
 	var perPageNum = $('#perPageNum').val();
 
-	function chatcon(roomNo) {
+	function chatcon() {
         var chatBox = $('.chat-panel');
         var messageInput = $('input[name="msg"]');
         var roomNo = $('.content').data('room-no');
