@@ -43,20 +43,22 @@ public class EchoHandler extends TextWebSocketHandler {
 		String msg = message.getPayload();	
 		if(StringUtils.isNotEmpty(msg)) {
 			String[] strs = msg.split(",");
-			
+			System.out.println("여긴타니니니니? : "+ strs.length);
 			if(strs != null && strs.length == 4) {
-				System.out.println(strs[0]+ strs[1]+ strs[2]+ strs[3]);
+				System.out.println("받아오는거 확인 " + strs[0]+ strs[1]+ strs[2]+ strs[3]);
 				String cmd = strs[0];
 				String caller = strs[1]; 
 				String receiver = strs[2];
 				String seq = strs[3];
 				
+				System.out.println("타게된다면 뭐가나오니???? : "+ cmd);
 				// 알림받는 작성자가 로그인 되어있으면
 				WebSocketSession boardWriterSession = userSessionsMap.get(receiver);
 				
 				// 실시간 예약 알림
 				if("reserved".equals(cmd) && boardWriterSession != null) {
 					TextMessage tmpMsg = new TextMessage("예약번호 : "+seq+" "+caller+"님이 "+receiver+"님에게 펫시터 예약을 하였습니다.");
+					System.out.println("최종적으로 여기를 타야되거든 타니?????");
 					boardWriterSession.sendMessage(tmpMsg);
 				
 				}else if("follow".equals(cmd) && boardWriterSession != null) {
@@ -76,10 +78,10 @@ public class EchoHandler extends TextWebSocketHandler {
 	
 	private String getId(WebSocketSession session) {
 		// TODO Auto-generated method stub
-				
+		
 		Map<String, Object> httpSession = session.getAttributes();
 		Customers_P001_VO login = (Customers_P001_VO)httpSession.get("customers"); // 유저 아이디 가져오기
-
+		System.out.println("하 진짜 이거 왜 업슨거나ㅣㅇㅁ : "+login);
 		Notice_VO loginUser = new Notice_VO();
 		
 		loginUser.setMember_ID(login.getMember_id());

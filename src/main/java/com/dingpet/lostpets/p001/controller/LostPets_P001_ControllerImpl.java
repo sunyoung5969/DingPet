@@ -36,15 +36,43 @@ public class LostPets_P001_ControllerImpl implements LostPets_P001_Controller {
 	private LostPets_P001_Service service;
 	
 	//목록 조회
-	@Override
 	@GetMapping("/list")
 	public void list(Criteria cri, Model model) {
-		log.info("list" + cri);
 		model.addAttribute("list", service.list(cri));
 		
 		int total = service.getTotalAmount(cri);
 		model.addAttribute("pagination", new PageDTO(cri, total));
 	}
+	
+	//유기견 목록
+	@GetMapping("/lostList")
+	public void getLost(Criteria cri, Model model) {
+
+		model.addAttribute("lostList", service.getLost(cri));
+		
+		int total = service.getLostAmount(cri);
+		model.addAttribute("lost_pagination", new PageDTO(cri, total));
+	}
+	
+	//실종견 목록
+	@GetMapping("/findList")
+	public void getFind(Criteria cri, Model model) {
+		model.addAttribute("findList", service.getFind(cri));
+		
+		int total = service.getFindAmount(cri);
+		log.info("실종견 토털 " + total);
+		model.addAttribute("find_pagination", new PageDTO(cri, total));
+	}
+	
+	/*완료 목록
+	@GetMapping("/completedList")
+	public void getCompleted(Criteria cri, Model model) {
+
+		model.addAttribute("completedList", service.getCompleted(cri));
+		
+		int total = service.getCompletedAmount(cri);
+		model.addAttribute("completed_pagination", new PageDTO(cri, total));
+	}*/
 
 	// 글 등록 폼으로 이동
 	@GetMapping("/write")
@@ -156,15 +184,7 @@ public class LostPets_P001_ControllerImpl implements LostPets_P001_Controller {
 		
 	}
 	
-	//요청 목록 가져오기
-	@GetMapping("/request")
-	public void request(@RequestParam("member_id") String member_id, Model model) {
-		List<LostPets_P001_VO> myList = service.myList(member_id);
-		List<LostPets_P001_VO> requestList = service.requestList(member_id);
-
-		model.addAttribute("myList", myList);
-		model.addAttribute("requestList", requestList);
-	}
+	
 	
 
 	

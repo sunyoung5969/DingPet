@@ -29,5 +29,4 @@ public interface LostPets_P001_Controller {
 	//글 삭제
 	public String delete(String board_id, String dog_id, Criteria cri, RedirectAttributes rttr);
 
-	public void request(String member_id, Model model);
 }

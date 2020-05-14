@@ -1,16 +1,8 @@
 package com.dingpet.lostpets.p003.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
 
-import com.dingpet.lostpets.p003.service.LostPets_P003_Service;
+public interface LostPets_P003_Controller {
+	public void request(String member_id, Model model);
 
-import lombok.AllArgsConstructor;
-
-@RequestMapping("/lostpets/p003/*")
-@AllArgsConstructor
-@Controller
-public class LostPets_P003_Controller {
-
-	private LostPets_P003_Service service;
 }

@@ -255,9 +255,9 @@ public class PetSitting_P003_ControllerImpl implements PetSitting_P003_Controlle
 		service.logInsert(logVO);
 		
 	//----------------------------------------------------------------------------------
-		model.addAttribute("regitser", "Y");
 		model.addAttribute("receive_ID", service.getmemberID(logVO));
 		model.addAttribute("logdata", logVO);
+		request.setAttribute("regitser", "Y");
 		request.setAttribute("logVO", logVO);
 		return "forward:loglookup";
 	}
