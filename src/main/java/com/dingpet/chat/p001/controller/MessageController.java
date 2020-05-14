@@ -46,9 +46,9 @@ public class MessageController {
     public Message sendJoinChatMessage(@DestinationVariable String roomNo, Message message) throws NumberFormatException, Exception {
     	System.out.println(">>>>join");
     	
+    	Date date = new Date();
+    	SimpleDateFormat form = new SimpleDateFormat("yy. MM. dd a hh:mm");
     	System.out.println(form.format(date));
-    	
-    	
     	
     	message.setMessage(message.getWriter() + "님이 입장하셨습니다");
         message.setMessageType("System message"); 
