@@ -128,7 +128,7 @@ function submitForm(roomNo){
 					<c:choose>
 						<c:when	test="${room.roomPw == '' || room.roomPw eq null || room.roomPw eq ''}">
 							<div class="friend-drawer friend-drawer--onhover" onclick="return checkPersonnel(${room.roomNo}, ${room.roomNo}, true)">
-								<img class="profile-image" src="" alt="사진">
+								<small></small>
 								<div class="text">
 									<h6>${room.roomMember == customers.member_id ? room.room_owner : room.roomMember}</h6>
 								</div>
@@ -136,7 +136,7 @@ function submitForm(roomNo){
 						</c:when>
 						<c:otherwise>
 							<div class="friend-drawer friend-drawer--onhover" onclick="return checkPersonnel(${room.roomNo}, ${room.roomPw}, false)">
-								<img class="profile-image" src="" alt="사진">
+								<small></small>
 								<div class="text">
 									<h6>${room.roomMember == customers.member_id ? room.room_owner : room.roomMember}</h6>
 								</div>
