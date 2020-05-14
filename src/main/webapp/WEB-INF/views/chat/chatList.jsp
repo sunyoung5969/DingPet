@@ -101,6 +101,7 @@ function submitForm(roomNo){
 					
 					$(".chat-panel").append(str); //여기서 append
 					$(".chat-panel").scrollTop($(".chat-panel")[0].scrollHeight);
+					str = "";
 
 				}
 	        }
