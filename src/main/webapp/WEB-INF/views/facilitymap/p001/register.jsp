@@ -176,8 +176,6 @@ $(document).ready(function(){
 	      var jobj = $(obj);
 	      
 	      console.dir(jobj);
-	      console.log("-------------------------");
-	      console.log(jobj.data("filename"));
 	      
 	      
 	      str += "<input type='hidden' name='attachList["+i+"].fileName' value='"+jobj.data("filename")+"'>";
@@ -187,7 +185,6 @@ $(document).ready(function(){
 	      
 	    });
 	    
-	    console.log(str);
 	    
 	    formObj.append(str).submit();
 	    
@@ -235,7 +232,6 @@ $(document).ready(function(){
 	      type: 'POST',
 	      dataType:'json',
 	        success: function(result){
-	          console.log(result); 
 			  showUploadResult(result); //업로드 결과 처리 함수 
 
 	      }
@@ -254,8 +250,7 @@ $(document).ready(function(){
 	    $(uploadResultArr).each(function(i, obj){
 	    	if(obj.image){
 				var fileCallPath =  encodeURIComponent( obj.uploadPath+ "/s_"+obj.uuid +"_"+obj.fileName);
-				console.log(fileCallPath);
-				console.log(obj.fileName);
+			
 				
 				str += "<li data-path='"+obj.uploadPath+"'";
 				str +=" data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"'"

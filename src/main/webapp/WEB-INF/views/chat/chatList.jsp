@@ -27,12 +27,10 @@ function checkPersonnel(roomNo, roomPw, result) {
 		success:function(data) {
 	    	  /* alert(data); */
 			if (data >= 6) {
-				console.log("들어갈 수 없습니다");
 					return false;
 			} else {
 				console.log("방에 입장 중 입니다.");
 				if(!onoff){
-					console.log("한번만 연겨려렬려려려려려려렬")
 					chatcon();
 				}
 	

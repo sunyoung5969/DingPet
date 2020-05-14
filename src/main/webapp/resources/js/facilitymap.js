@@ -24,7 +24,7 @@ var myX, myY;
 // 내 현 위치 찾기
 function findLocation() {
 navigator.geolocation.getCurrentPosition(function(pos) {
-	console.log("현위치");
+	
     lat = pos.coords.latitude;
     lit = pos.coords.longitude;
     $('#latitude').html(pos.coords.latitude);     // 위도 입력
@@ -81,12 +81,11 @@ function searchPlaces() {
 	placeOverlay.setMap(null);
 	// 지도에 표시되고 있는 마커를 제거합니다
 	removeMarker();
-	console.log(currCategory);
+	
 	findLocation2();
-	console.log("x: "+myX);
-	console.log("y: "+myY);
+	
 	if (currCategory == "CA7"){
-		console.log("카페찾아");
+		
 		$.ajax({
 			url: '/facilitymap/p001/cafeMap',
 			data: {myX:myX,myY:myY,useMapBounds : true},
@@ -110,13 +109,13 @@ function searchPlaces() {
 					};
 					placesSearchCB(data, status, pagination);
 					useMapBounds : true;
-					console.log("CAFE AJAX");
+					
 				}
 				
 			}
 		}); // end of ajax	
 	} else if (currCategory == "RE7"){
-		console.log("식당찾아");
+		
 		$.ajax({
 			url: '/facilitymap/p001/restaurantMap',
 			data: {myX:myX,myY:myY,useMapBounds : true},
@@ -140,12 +139,12 @@ function searchPlaces() {
 					};
 					placesSearchCB(data, status, pagination);
 					useMapBounds : true;
-					console.log("Restaurant AJAX");
+					
 				}
 			}
 		}); // end of ajax	
 	} else if (currCategory == "HT7"){
-		console.log("호텔찾아");
+		
 		$.ajax({
 			url: '/facilitymap/p001/hotelMap',
 			data: {myX:myX,myY:myY,useMapBounds : true},
@@ -169,12 +168,11 @@ function searchPlaces() {
 					};
 					placesSearchCB(data, status, pagination);
 					useMapBounds : true;
-					console.log("Hotel AJAX");
+					
 				}
 			}
 		}); // end of ajax	
 	} else if (currCategory == "HP2"){
-			console.log("약국찾아");
 			$.ajax({
 				url: '/facilitymap/p001/mediMap2',
 				data: {myX:myX,myY:myY,useMapBounds : true},
@@ -198,13 +196,11 @@ function searchPlaces() {
 						};
 						placesSearchCB(data, status, pagination);
 						useMapBounds : true;
-						console.log("YAK AJAX");
 					}
 					
 				}
 			}); // end of ajax	
 		} else if (currCategory == "HP9" ){
-		console.log("병원찾아");
 		$.ajax({
 			url: '/facilitymap/p001/medicenterMap',
 			data: {myX:myX,myY:myY,useMapBounds : true},
@@ -228,7 +224,6 @@ function searchPlaces() {
 					}
 					placesSearchCB(list, status, pagination);
 					useMapBounds : true
-					console.log("Hospital AJAX");
 				}
 				
 			}
@@ -243,8 +238,6 @@ function searchPlaces() {
 function placesSearchCB(data, status, pagination) {
 	if (status === kakao.maps.services.Status.OK) {
 		// 정상적으로 검색이 완료됐으면 지도에 마커를 표출합니다
-		console.log(status);
-		console.log(data);
 		displayPlaces(data);		
 	} else if (status === kakao.maps.services.Status.ZERO_RESULT) {
 		// 검색결과가 없는경우 해야할 처리가 있다면 이곳에 작성해 주세요

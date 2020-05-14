@@ -262,8 +262,6 @@ background:url(${pageContext.request.contextPath}/resources/images/ministar.png)
         </div>
       </section>
     <!--====  end of contents  ====-->  
-console.log(${info.site_date});
-console.log(${info.place_name});
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <!-- 댓글 ajax 처리 -->
 <script type = "text/javascript" src = "/resources/js/facilityMapReply.js?v=2"></script>
@@ -322,8 +320,6 @@ function showList(pageNum){
 		function(replyCnt, list){
 			var str = "";
 			loggedInId = '${customers.member_id}';
-	        console.log("replyCnt: "+ replyCnt );
-	        console.log("list: " + list);
 	        if(pageNum == -1){
 	          pageNume = Math.ceil(replyCnt/10.0);
 	          showList(pageNume);
@@ -385,7 +381,6 @@ function showList(pageNum){
 		        str+= "<li class='page-item'><a class='page-link' href='"+(endNum + 1)+"'>Next</a></li>";
 		    }		      
 		   str += "</ul></div>";
-		   console.log(str);
 		   replyPageFooter.html(str);
 		   }
 		     
@@ -393,7 +388,6 @@ function showList(pageNum){
 		     e.preventDefault();
 		     console.log("page click");
 		     var targetPageNum = $(this).attr("href");		        
-		     console.log("targetPageNum: " + targetPageNum);		        
 		     pageNum = targetPageNum;		        
 		     showList(pageNum);
 		   });     				
