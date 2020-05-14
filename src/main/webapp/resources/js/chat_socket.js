@@ -35,7 +35,7 @@
             client.subscribe('/subscribe/chat/' + roomNo, function (chat) {
                 var content = JSON.parse(chat.body);
                 
-                if(content.messageType == ""){
+                if(content.writer == $('.member_ID').val()){
                 	var str=""
                 	str += '<div class="no-gutters--right"><div class="offset-md-9">';
 					str += '<div class="textBox-div--right"><div class="chat-bubble chat-bubble--right"><li>'+content.message;
@@ -47,8 +47,14 @@
 
                 }else{
                 	$('.user ul').empty();                	
-                	chatBox.append("<li>" + content.messageType + " :  <br/>" + content.message + "</li>").append('<span>' + "[보낸 시간]" + content.chatdate + "</span>" + "<br>");
-                	var members = content.memberList;	            		            	
+                	var str=""
+                    	str += '<div class="no-gutters--left"><div class="offset-md-9">';
+    					str += '<div class="textBox-div--left"><div class="chat-bubble chat-bubble--left"><li>'+content.message;
+    					str += '</li></div></div><span class="chat-date">'+content.chatdate+'</span>';
+    					str += '</div></div>';
+    					
+                    	chatBox.append(str);
+                    	chatBox.scrollTop(chatBox[0].scrollHeight)
                 }
                 
                 $(".chatcontent").scrollTop($(".chatcontent")[0].scrollHeight);

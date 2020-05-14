@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       values (msg_SEQ.nextval, #{sender, jdbcType=VARCHAR}, #{chatdate, jdbcType=VARCHAR}, #{roomno, jdbcType=VARCHAR},#{member, jdbcType=VARCHAR} , #{message, jdbcType=VARCHAR})
  </insert>
   <select id="getRoomMessage" resultType="com.dingpet.chat.p001.vo.Message">
-     select * from (select rownum rn,sender,send_date,roomno,message from message) where roomno = #{roomno,jdbcType=VARCHAR} 
+     select * from (select rownum rn,message_id , sender,send_date,roomno,message from message order by send_date asc) where roomno = #{roomno,jdbcType=VARCHAR}
   </select>
 <insert id="createRoom">
       insert into chatRoom (roomNo, roomName, room_owner, roomMember, roomType, roomPw)
