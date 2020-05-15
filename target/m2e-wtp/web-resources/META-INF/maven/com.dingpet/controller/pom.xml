@@ -14,8 +14,26 @@
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
+	
+	
+	<dependencyManagement>
+	      <dependencies>
+	        <dependency>
+	          <groupId>com.google.cloud</groupId>
+	          <artifactId>libraries-bom</artifactId>
+	          <version>4.4.1</version>
+	          <type>pom</type>
+	          <scope>import</scope>
+	        </dependency>
+	      </dependencies>
+	    </dependencyManagement>
+	
 	<dependencies>
-
+		<dependency>
+	        <groupId>com.google.cloud</groupId>
+	        <artifactId>google-cloud-vision</artifactId>
+      </dependency> 
+      
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -229,7 +247,6 @@
 			<version>2.6</version>
 		</dependency>
 
-
 	</dependencies>
 
 
@@ -269,6 +286,8 @@
 					<mainClass>org.test.int1.Main</mainClass>
 				</configuration>
 			</plugin>
+			
+			
 		</plugins>
 	</build>
 </project>

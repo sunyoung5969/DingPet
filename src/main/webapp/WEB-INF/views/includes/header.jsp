@@ -81,6 +81,7 @@
 				                <li class="has-children">
 				                  <a href="/lostpets/p001/list" class="nav-link">멍멍이 찾기</a>
 				                  <ul class="dropdown">
+				                    <li><a href="/lostpets/p001/list" class="nav-link">멍멍이 찾기</a></li>
 				                    <li><a href="/lostpets/p001/lostList" class="nav-link">주인 찾기</a></li>
 				                    <li><a href="/lostpets/p001/findList"  class="nav-link">반려견 찾기</a></li>
 				                    <c:if test = "${not empty customers.member_id }">

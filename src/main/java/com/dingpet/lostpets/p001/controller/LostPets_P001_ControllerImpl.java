@@ -1,6 +1,11 @@
 package com.dingpet.lostpets.p001.controller;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +27,16 @@ import com.dingpet.lostpets.p001.service.LostPets_P001_Service;
 import com.dingpet.lostpets.p001.vo.Criteria;
 import com.dingpet.lostpets.p001.vo.LostPets_P001_VO;
 import com.dingpet.lostpets.p001.vo.PageDTO;
+import com.google.cloud.vision.v1.AnnotateImageRequest;
+import com.google.cloud.vision.v1.AnnotateImageResponse;
+import com.google.cloud.vision.v1.BatchAnnotateImagesResponse;
+import com.google.cloud.vision.v1.EntityAnnotation;
+import com.google.cloud.vision.v1.Feature;
+import com.google.cloud.vision.v1.Feature.Type;
+import com.google.cloud.vision.v1.Image;
+import com.google.cloud.vision.v1.ImageAnnotatorClient;
+
+import com.google.protobuf.ByteString;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -35,16 +50,25 @@ public class LostPets_P001_ControllerImpl implements LostPets_P001_Controller {
 	@Autowired
 	private LostPets_P001_Service service;
 	
-	//목록 조회
+	/*목록 조회
 	@GetMapping("/list")
 	public void list(Criteria cri, Model model) {
 		model.addAttribute("list", service.list(cri));
 		
 		int total = service.getTotalAmount(cri);
 		model.addAttribute("pagination", new PageDTO(cri, total));
+	}*/
+	
+	//메인 페이지 최신 목록 조회
+	@GetMapping("/list")
+	public void list(Model model) {
+		model.addAttribute("recentCompleted", service.recentCompleted());
+		model.addAttribute("recentLost", service.recentLost());
+		model.addAttribute("recentFind", service.recentFind());
 	}
 	
-	//유기견 목록
+	
+	//주인 찾기 전체 목록
 	@GetMapping("/lostList")
 	public void getLost(Criteria cri, Model model) {
 
@@ -54,7 +78,7 @@ public class LostPets_P001_ControllerImpl implements LostPets_P001_Controller {
 		model.addAttribute("lost_pagination", new PageDTO(cri, total));
 	}
 	
-	//실종견 목록
+	//반려견 찾기 전체 목록
 	@GetMapping("/findList")
 	public void getFind(Criteria cri, Model model) {
 		model.addAttribute("findList", service.getFind(cri));
@@ -64,7 +88,7 @@ public class LostPets_P001_ControllerImpl implements LostPets_P001_Controller {
 		model.addAttribute("find_pagination", new PageDTO(cri, total));
 	}
 	
-	/*완료 목록
+	//완료 전체 목록
 	@GetMapping("/completedList")
 	public void getCompleted(Criteria cri, Model model) {
 
@@ -72,7 +96,7 @@ public class LostPets_P001_ControllerImpl implements LostPets_P001_Controller {
 		
 		int total = service.getCompletedAmount(cri);
 		model.addAttribute("completed_pagination", new PageDTO(cri, total));
-	}*/
+	}
 
 	// 글 등록 폼으로 이동
 	@GetMapping("/write")
@@ -89,51 +113,82 @@ public class LostPets_P001_ControllerImpl implements LostPets_P001_Controller {
 		//image upload
 		String uploadFolder = "/var/lib/tomcat8/webapps/lost";
 		String fileName = "";
+		String filePath = "";
 		
 		Iterator<String> files = uploadFile.getFileNames();
 
 		while(files.hasNext()) {
 			
 			File saveFile;
-			String filePath;
 			String index = files.next();
 			UUID uuid = UUID.randomUUID();
 			
 			MultipartFile mFile = uploadFile.getFile(index);
 			fileName = mFile.getOriginalFilename();
-		
+			String savedFileName = uuid.toString() + fileName;
 
 			if(!fileName.equals("")) {
-
-				if(index.equals("frontImage")) {
-					saveFile = new File(uploadFolder, uuid.toString()+"_frontImage_"+fileName);
-					filePath = saveFile.getPath();
-					writeMap.put("front_name", uuid.toString()+"_frontImage_"+fileName);
-					writeMap.put("front_path", filePath);
-					
-				}else if(index.equals("sideImage")){
-					saveFile = new File(uploadFolder, uuid.toString()+"_sideImage_"+fileName);
-					filePath = saveFile.getPath();
-					writeMap.put("side_name", uuid.toString()+"_sideImage_"+fileName);
-					writeMap.put("side_path", filePath);
-				
-				}else {
-					saveFile = new File(uploadFolder, uuid.toString()+"_wholeImage_"+fileName);
-					filePath = saveFile.getPath();
-					writeMap.put("whole_name", uuid.toString()+"_wholeImage_"+fileName);
-					writeMap.put("whole_path", filePath);
-				}
+				saveFile = new File(uploadFolder, fileName);
+				filePath = saveFile.getPath();
+				writeMap.put("front_name", savedFileName);
+				writeMap.put("front_path", filePath);
 					
 				try {
 					mFile.transferTo(saveFile);
-					
 				} catch (Exception e) {
 					// TODO: handle exception
 					System.out.println("사진업로드 Exception " + e);
 				}
+				/*
+				// Instantiates a client
+			    try (ImageAnnotatorClient vision = ImageAnnotatorClient.create()) {
+			
+			      // The path to the image file to annotate
+			      String file = "/resources/images/blue.jpg";
+			      System.out.println(file);
+			      // Reads the image file into memory
+			      Path path = Paths.get(file);
+			      System.out.println(path);
+			      System.out.println(path.toAbsolutePath());
+			      byte[] data = Files.readAllBytes(path);
+			      ByteString imgBytes = ByteString.copyFrom(data);
+			
+			      // Builds the image annotation request
+			      List<AnnotateImageRequest> requests = new ArrayList<>();
+			      Image img = Image.newBuilder().setContent(imgBytes).build();
+			      Feature feat = Feature.newBuilder().setType(Type.LABEL_DETECTION).build();
+			      AnnotateImageRequest request =
+			          AnnotateImageRequest.newBuilder().addFeatures(feat).setImage(img).build();
+			      requests.add(request);
+			
+			      // Performs label detection on the image file
+			      BatchAnnotateImagesResponse response = vision.batchAnnotateImages(requests);
+			      List<AnnotateImageResponse> responses = response.getResponsesList();
+			
+			      for (AnnotateImageResponse res : responses) {
+				        if (res.hasError()) {
+				          System.out.printf("Error: %s\n", res.getError().getMessage());
+				          break;
+				        }
+				
+				        for (EntityAnnotation annotation : res.getLabelAnnotationsList()) {
+				          annotation
+				              .getAllFields()
+				              .forEach((k, v) -> System.out.printf("%s : %s\n", k, v.toString()));
+				        }
+			      }
+			      
+			      String theData = com.google.protobuf.util.JsonFormat.printer().print(response);
+			      System.out.println(theData);
+			      
+			    } catch (IOException e) {
+					e.printStackTrace();
+					System.out.println("비전 에러");
+				}*/
+				//end of image upload
+				
 			}
 		}
-		//end of image upload
 		
 		service.write(writeMap);
 		
@@ -146,11 +201,15 @@ public class LostPets_P001_ControllerImpl implements LostPets_P001_Controller {
 	}
 	
 	// 글 조회
-	@Override
 	@GetMapping({"/view", "/modify"})
 	public void view(@RequestParam("board_id") String board_id, @ModelAttribute("cri") Criteria cri, Model model) {
 		model.addAttribute("board", service.view(board_id));
-		log.info("view");
+	}
+	
+	// 글 조회
+	@GetMapping("/completedView")
+	public void completedView(@RequestParam("match_id") String match_id, @ModelAttribute("cri") Criteria cri, Model model) {
+		model.addAttribute("completed", service.completedView(match_id));
 	}
 
 	// 글 수정

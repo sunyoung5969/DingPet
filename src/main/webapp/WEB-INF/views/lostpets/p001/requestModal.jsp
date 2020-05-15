@@ -58,12 +58,6 @@ a:link, a:visited {
 
 
 
-
-
-
-
-
-
 <!-- 확인 요청 모달 -->
 <div id="modal" class="modal">
 	<div class="modal-content">
@@ -72,43 +66,24 @@ a:link, a:visited {
 			<span>게시하신 글을 바탕으로 확인을 요청하실 수 있습니다. 게시글을 선택해주세요.</span>
 		</div>
 		<div class = "content_area pt-3">
- 			<!--
-			<c:forEach begin="1" end="5">
-				<div class="my-2">
-					<a href="#">
-						<div class="small_list_border w-90 m-auto my-3">
-							<div class="flex_row p-3">
-
-								<div class="w-25 d-inline-block">
-									<img class=".nav-pills" style="width: 150px; height: 150px;" src='/resources/images/dog2.jpg'>
-								</div>
-								<div class="w-75 pl-3 pt-3 d-inline-block">
-									<p>
-										<strong>작은 말티즈 쪼롱이를 찾고 있어요</strong>
-									</p>
-									<p class="pl-2">
-										<span class="tag">견종</span><span> </span> <span>말티즈</span> 
-										<span class="pl-2"></span> 
-										<span class="tag">성별</span><span></span> <span>암컷</span>
-									</p>
-									<p class="pl-2">
-										<span class="tag">실종 장소</span><span> </span><span>서울특별시 영등포구 국회대로29길 8</span>
-									</p>
-								</div> 
-
-							</div>
-						</div>
-					</a>
-				</div>
-			</c:forEach>-->
 		</div>
+		
+		<form action="../../chat/createRoom" method="post" >
+            <input type='hidden' name='room_owner' id='room_owner' value='${customers.member_id }' />    
+            <input type="hidden" name="roomName" id="roomName" value="확인 요청합니다"/>
+            <input type="hidden" name="roomMember" id="roomMember" value='${board.member_id}'/>
 
-		<div class="py-5 m-auto">
-			<button id="send" class="btn-sm btn btn-primary">요청 전송</button>
-			<button id = "closeBtn" class="btn-sm btn btn-primary">닫기</button> 
-		</div>
+			<div class="py-5 flex_row">
+				<button type = 'submit'  id="send" class="btn-sm btn btn-primary mr-3">요청 전송</button>
+				<button type = "button"id = "closeBtn" class="btn-sm btn btn-primary">닫기</button> 
+			</div>
+		 </form>
 	</div>
 </div>
+
+		
+	
+
 
 
 <script type = "text/javascript" src = "/resources/js/request.js"></script>

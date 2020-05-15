@@ -19,8 +19,6 @@ public interface LostPets_Ajax_mapper {
 	//요청 삭제
 	public int deleteRequest(String request_id);
 	
-	//요청 완료처리
-	public int confirmRequest(String request_id);
-	public int complete(String board_id);
+
 	
 }

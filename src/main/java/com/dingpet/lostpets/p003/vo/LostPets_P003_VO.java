@@ -24,10 +24,6 @@ public class LostPets_P003_VO {
 	
 	private String front_name;
 	private String front_path;
-	private String side_name;
-	private String side_path;
-	private String whole_name;
-	private String whole_path;
 	
 	private String request_category; 
 	private String request_id; 
@@ -39,7 +35,44 @@ public class LostPets_P003_VO {
 	private String request_status; 
 	private String completed_date;
 
+	private String match_id;
+	private String match_title;
+	private String match_content;
+	private String photo_name;
+	private String photo_path;
 
+
+
+	public String getMatch_id() {
+		return match_id;
+	}
+	public void setMatch_id(String match_id) {
+		this.match_id = match_id;
+	}
+	public String getMatch_title() {
+		return match_title;
+	}
+	public void setMatch_title(String match_title) {
+		this.match_title = match_title;
+	}
+	public String getMatch_content() {
+		return match_content;
+	}
+	public void setMatch_content(String match_content) {
+		this.match_content = match_content;
+	}
+	public String getPhoto_name() {
+		return photo_name;
+	}
+	public void setPhoto_name(String photo_name) {
+		this.photo_name = photo_name;
+	}
+	public String getPhoto_path() {
+		return photo_path;
+	}
+	public void setPhoto_path(String photo_path) {
+		this.photo_path = photo_path;
+	}
 	public String getRequest_category() {
 		return request_category;
 	}
@@ -106,30 +139,7 @@ public class LostPets_P003_VO {
 	public void setFront_path(String front_path) {
 		this.front_path = front_path;
 	}
-	public String getSide_name() {
-		return side_name;
-	}
-	public void setSide_name(String side_name) {
-		this.side_name = side_name;
-	}
-	public String getSide_path() {
-		return side_path;
-	}
-	public void setSide_path(String side_path) {
-		this.side_path = side_path;
-	}
-	public String getWhole_name() {
-		return whole_name;
-	}
-	public void setWhole_name(String whole_name) {
-		this.whole_name = whole_name;
-	}
-	public String getWhole_path() {
-		return whole_path;
-	}
-	public void setWhole_path(String whole_path) {
-		this.whole_path = whole_path;
-	}
+	
 	public String getCategory() {
 		return category;
 	}

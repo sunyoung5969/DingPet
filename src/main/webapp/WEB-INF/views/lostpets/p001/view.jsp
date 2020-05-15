@@ -18,7 +18,7 @@
 
 
     <!--====  str of contents  ====-->
-    <section style="padding-top:87px">
+    <section class = "nanumbarungothic" style="padding-top:87px">
         <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); 
         	transform: translate3d(0px, 0px, 0px);"></div>
         <div class="main main-raised">
@@ -39,7 +39,7 @@
                    	</div>
                    	<hr class = "hr_style">
                     <div class="col-12 row pt-3 dp-webkit ">
-                            <div class="image-block bg-about w-100" >
+                            <div class="image-block bg-about w-100 text_center" >
                             	<c:set var = "front_path" value = "https://www.dingpet.shop/lost/${board.front_name}" />
                                 <img class="img-fluid m-auto" src="${board.front_name != null ? front_path : '/resources/images/dogger_img_big_1.jpg'}"  style = "width: 500px; height: 400px;">
                             </div>

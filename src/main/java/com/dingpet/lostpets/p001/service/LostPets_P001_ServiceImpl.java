@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.dingpet.lostpets.p001.mapper.LostPets_P001_Mapper;
 import com.dingpet.lostpets.p001.vo.Criteria;
 import com.dingpet.lostpets.p001.vo.LostPets_P001_VO;
+import com.dingpet.lostpets.p003.vo.LostPets_P003_VO;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -29,13 +30,29 @@ public class LostPets_P001_ServiceImpl implements LostPets_P001_Service{
 		return mapper.getTotalAmount(cri);
 	}
 	
+	//주인 찾기 최신 목록 조회
+	public List<LostPets_P003_VO> recentCompleted(){
+		return mapper.recentCompleted();
+	}
+	
+	//주인 찾기 최신 목록 조회
+	public List<LostPets_P001_VO> recentLost(){
+		return mapper.recentLost();
+	}
+
+	//주인 찾기 최신 목록 조회
+	public List<LostPets_P001_VO> recentFind(){
+		return mapper.recentFind();
+	}
 	
 	
-	//유기견 목록 조회
+	
+	
+	//주인 찾기 전체 목록 조회
 	public List<LostPets_P001_VO> getLost(Criteria cri){
 		return mapper.getLost(cri);
 	}
-	
+	//페이지네이션
 	public int getLostAmount(Criteria cri) {
 		// TODO Auto-generated method stub
 		return mapper.getLostAmount(cri);
@@ -43,11 +60,11 @@ public class LostPets_P001_ServiceImpl implements LostPets_P001_Service{
 
 
 	
-	//실종견 목록 조회
+	//반려견 찾기 전체 목록 조회
 	public List<LostPets_P001_VO> getFind(Criteria cri){
 		return mapper.getFind(cri);
 	}
-	
+	//페이지네이션
 	public int getFindAmount(Criteria cri) {
 		// TODO Auto-generated method stub
 		return mapper.getFindAmount(cri);
@@ -55,13 +72,13 @@ public class LostPets_P001_ServiceImpl implements LostPets_P001_Service{
 	
 	
 	//완료 목록 조회
-	public List<LostPets_P001_VO> getCompleted(Criteria cri){
-		return mapper.getLost(cri);
+	public List<LostPets_P003_VO> getCompleted(Criteria cri){
+		return mapper.getCompleted(cri);
 	}
 	
 	public int getCompletedAmount(Criteria cri) {
 		// TODO Auto-generated method stub
-		return mapper.getLostAmount(cri);
+		return mapper.getCompletedAmount(cri);
 	}
 	
 	
@@ -86,13 +103,18 @@ public class LostPets_P001_ServiceImpl implements LostPets_P001_Service{
 	}
 	
 	//조회
-	@Override
 	public LostPets_P001_VO view(String board_id) {
 		return mapper.view(board_id);
 	}
+	
+	//완료 조회
+	public LostPets_P003_VO completedView(String match_id) {
+		// TODO Auto-generated method stub
+		return mapper.completedView(match_id);
+	}
+
 
 	//삭제
-	@Override
 	public boolean delete(String board_id, String dog_id) {
 		log.info("delete==========" + board_id);
 		
@@ -104,17 +126,10 @@ public class LostPets_P001_ServiceImpl implements LostPets_P001_Service{
 	}
 
 	//수정
-	@Override
 	public boolean modify(LostPets_P001_VO lostVO) {
 		log.info("modify==========" + lostVO);
 		return mapper.modifyLost(lostVO) == 1 && mapper.modifyDog(lostVO) == 1;
 	}
-
-
-
-
-	
-	
 	
 	
 }

@@ -78,4 +78,32 @@
 		WHERE R.receiver_b_id = B.board_id
 	</select>
 	
+	
+	<!-- 완료처리 -->
+	<insert id="write" parameterType="com.dingpet.lostpets.p003.vo.LostPets_P003_VO">
+		INSERT INTO lost_found_matched
+		VALUES (seq_lost_found_matched.nextval, #{match_title}, #{match_content}, #{photo_name}, #{photo_path}, #{request_id})
+	</insert>
+	
+	<update id="confirmRequest" parameterType="com.dingpet.lostpets.p003.vo.LostPets_P003_VO">
+		UPDATE lost_found_request
+		SET request_status = 'y',
+			completed_date = to_char(sysdate, 'yyyymmddhh24mi')
+		WHERE request_id = #{request_id}
+	</update>
+	
+	<update id = "complete_lost" parameterType="com.dingpet.lostpets.p003.vo.LostPets_P003_VO">
+		UPDATE lost_found
+		SET status = 'y',
+			status_reason = 'matched'
+		WHERE board_id = #{receiver_b_id}
+	</update>
+	
+	<update id = "complete_find" parameterType="com.dingpet.lostpets.p003.vo.LostPets_P003_VO">
+		UPDATE lost_found
+		SET status = 'y',
+			status_reason = 'matched'
+		WHERE board_id = #{sender_b_id}
+	</update>
+	
 </mapper>

@@ -106,7 +106,7 @@ body:after {
 
 .btn {
 	font-size: 16px;
-	border-radius: 30px;
+	border-radius: 30px !important;
 	padding: 10px 30px;
 }
 

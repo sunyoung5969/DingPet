@@ -3,8 +3,7 @@
 <%@include file="../../includes/header.jsp"%>
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 <!-- lost_found.CSS -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/lost_found.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/lost_found.css">
 <style>
 	.map_wrap {position:relative;width:100%;}
     .title {font-weight:bold;display:block;}
@@ -29,11 +28,21 @@
     	background: #fff;
     }
     
+    .addressBtn{
+    	padding : 10px 30px !important;
+    	margin-left : 20px;
+    }
+    
     .fileDrop{
     	width : 400px;
     	height : 300px;
     	border : 1px solid #088cf3;
     }
+    
+    #front_view{
+    width : 400px;
+    height : 300px;}
+    
     
 </style>
 
@@ -49,7 +58,7 @@
 				
 				<div class="row justify-content-center pt-5 pb-5" data-aos="fade-up">
 					<div class="text-center heading-section">
-						<h2 class="text-black mb-2">임시보호 / 실종견 찾기 등록</h2>
+						<h2 class="text-black mb-2">주인 찾기 / 반려견 찾기 등록</h2>
 					</div>
 				</div>
 
@@ -59,9 +68,9 @@
 							<label class="col-md-4 col-form-label text-md-right color_blue lost_found_label">카테고리</label>
 							<div class="col-md-6">
 								<input type="radio" id="tempshelters-title" class="form-control" name="category" value="lost" required> 
-								<label for="lost">임시보호 등록</label>&nbsp;&nbsp; 
+								<label for="lost">주인 찾기 등록</label>&nbsp;&nbsp; 
 								<input type="radio" id="tempshelters-title" class="form-control" name="category" value="find" required> 
-								<label for="find">실종견 찾기 등록</label>
+								<label for="find">반려견 찾기 등록</label>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -77,25 +86,22 @@
 							<label
 								class="col-md-4 col-form-label text-md-right color_blue lost_found_label">견종</label>
 							<div class="col-md-6">
-								<input list = "dog_breed" class="form-control" name="dog_breed"
-									maxlength="30" placeholder="목록에서 선택해주세요" required>
+								<input list = "dog_breed" class="form-control" name="dog_breed" maxlength="30" placeholder="목록에서 선택해주세요" 
+								pattern = "믹스견|그 외|골든 리트리버|닥스훈트|도베르만|래브라도 리트리버|말티즈|미니어쳐 핀셔|불독|비글|비숑 프리제|사모예드|스피츠|시바|시추|
+								시베리안 허스키|알래스칸 말라뮤트|요크셔 테리어|웰시 코기|저먼 셰퍼드|진돗개|치와와|코카 스파니엘" required title = "목록에서 선택해주세요">
 								<datalist id = "dog_breed">
 									<option value ="믹스견" readonly>
 									<option value ="그 외">
 									<option value ="골든 리트리버">
 									<option value ="닥스훈트">
-									<option value ="달마시안">
 									<option value ="도베르만">
-									<option value ="동경이">
 									<option value ="래브라도 리트리버">
 									<option value ="말티즈">
 									<option value ="미니어쳐 핀셔">
-									<option value ="보더콜리">
 									<option value ="불독">
 									<option value ="비글">
 									<option value ="비숑 프리제">
 									<option value ="사모예드">
-									<option value ="삽살개">
 									<option value ="스피츠">
 									<option value ="시바">
 									<option value ="시추">
@@ -152,9 +158,9 @@
 							<label
 								class="col-md-4 col-form-label text-md-right color_blue lost_found_label">발견장소</label>
 							<div class="col-md-6 flex ">
-								<div class = "flex_row_around">
-									<input type="text" class="form-control mt-3"  id="address_display" name="found_location" placeholder = "주소 검색 버튼을 클릭하세요" required>
-									<input type = "button" class = "btn btn-primary" onclick="DaumPostcode()" value = "주소 검색">
+								<div class = "flex_row_start">
+									<input type="text" class="form-control"  id="address_display" name="found_location" placeholder = "주소 검색 버튼을 클릭하세요" required>
+									<input type = "button" class = "addressBtn btn btn-primary" onclick="DaumPostcode()" value = "주소 검색">
 								</div>
 								<div id = "map_wrap" class = "mt-3" style = "display:none; position:relative;">
 									<div id="lost_map"  style = "width : 500px; height: 400px; display:none"></div>
@@ -184,13 +190,11 @@
 							<label
 								class="col-md-4 col-form-label text-md-right color_blue lost_found_label">사진</label>
 							<div class="col-md-6">
-								
 								<!-- @@@@@@@@사진 첨부@@@@@@@@222 -->
 								<div class = "uploadDiv">
-									<input type = "file" name = "frontImage" accept = "image/*" onchange="previewImage(this,'front_view')" required title = "정면 사진을 업로드 해주세요.">
-									<div id='front_view' class="img_up"></div>
+									<input type = "file" name = "frontImage" id = "frontImage" accept = "image/*" required title = "사진을 업로드 해주세요.">
+									<img id='front_view' style ="display:none;" src = "">
 								</div>
-					
 							</div>
 						</div>
 						
@@ -209,6 +213,28 @@
 		</div>
 </section>
 <!--====  end of contents  ====-->
+	
+		<script>
+			    var upload = document.querySelector('#frontImage');
+			 	
+			    upload.addEventListener('change',function (e) {
+			    	
+			        var get_file = e.target.files;
+			        console.log(get_file)
+			        
+			        //FileReader 객체 생성
+			        var reader = new FileReader();
+			        
+			        // reader 시작시 함수 구현
+			        reader.onload = function(aImg){
+			        	console.log(1);
+				        $("#front_view").attr("src", aImg.target.result)
+			        }
+			        reader.readAsDataURL(e.target.files[0])
+			        
+			        $("#front_view").show();
+			    })
+			</script>
 
 	<!-- readonly -->
 	<script>

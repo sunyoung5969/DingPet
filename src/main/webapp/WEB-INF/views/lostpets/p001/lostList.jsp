@@ -28,8 +28,8 @@
 						<div class = "section_space"><!-- section wrap -->
 							<div class ="flex_row_between"><!-- 설명 section wrap -->
 								<div class = "d-inline-block"><!-- 타이틀, span -->
-									<h2>주인 찾기</h2>
-									<span  class = "pl-2 d-inline-block">유기견을 임시보호 하고 계신가요? 딩펫에서 쉽고 빠르게 주인을 찾아보세요!</span>
+									<h1 class="color_dark_blue narrow">주인 찾기</h1>
+									<span class = "pl-2 d-inline-block color_grey">유기견을 임시보호 하고 계신가요? 딩펫에서 쉽고 빠르게 주인을 찾아보세요!</span>
 								</div>
 								<div class = "d-inline-block pr-5">
 									<a id = "write" href="" class="btn_a "><span class="sub_txt ">등록하기 <img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr"></span> </a>
@@ -109,12 +109,12 @@
 	$(document).ready(function(){
 		
 		if(!loggedInId){
-			$("#lost_write, #to_request_list").on("click", function(){
+			$("#write, #to_request_list").on("click", function(){
 				alert("로그인이 필요한 서비스입니다.\n로그인 페이지로 이동합니다.");
 				(this).setAttribute("href", "/customers/p001/signin");
 			});
 		}else{
-			$("#lost_write").on("click", function(){
+			$("#write").on("click", function(){
 				(this).setAttribute("href", "/lostpets/p001/write");
 			});
 			
