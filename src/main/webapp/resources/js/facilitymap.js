@@ -2,7 +2,8 @@ var latlng = null;
 var lat;
 var lit;
 var marker = new kakao.maps.Marker();
-
+//주소-좌표 변환 객체를 생성합니다
+var geocoder = new kakao.maps.services.Geocoder();
 // 	마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
 var placeOverlay = new kakao.maps.CustomOverlay({
 	zIndex : 1
@@ -23,7 +24,7 @@ var myX, myY;
 // 내 현 위치 찾기
 function findLocation() {
 navigator.geolocation.getCurrentPosition(function(pos) {
-	console.log("현위치");
+	
     lat = pos.coords.latitude;
     lit = pos.coords.longitude;
     $('#latitude').html(pos.coords.latitude);     // 위도 입력
@@ -80,12 +81,11 @@ function searchPlaces() {
 	placeOverlay.setMap(null);
 	// 지도에 표시되고 있는 마커를 제거합니다
 	removeMarker();
-	console.log(currCategory);
+	
 	findLocation2();
-	console.log("x: "+myX);
-	console.log("y: "+myY);
+	
 	if (currCategory == "CA7"){
-		console.log("카페찾아");
+		
 		$.ajax({
 			url: '/facilitymap/p001/cafeMap',
 			data: {myX:myX,myY:myY,useMapBounds : true},
@@ -109,13 +109,70 @@ function searchPlaces() {
 					};
 					placesSearchCB(data, status, pagination);
 					useMapBounds : true;
-					console.log("CAFE AJAX");
+					
 				}
 				
 			}
 		}); // end of ajax	
+	} else if (currCategory == "RE7"){
+		
+		$.ajax({
+			url: '/facilitymap/p001/restaurantMap',
+			data: {myX:myX,myY:myY,useMapBounds : true},
+			type: 'GET',
+			datatype:'JSON',
+			success: function(data){
+				if(data == null){
+					alert("현재위치를 확인해주세요.");
+					return;					
+				} else {		
+					status = "OK";
+					order = 0;
+					pagination = { 
+					totalCount: 45,
+					hasNextPage: true,
+					hasPrevPage: false,
+					first: 1,
+					current: 1,
+					last: 3,
+					perPage: 15
+					};
+					placesSearchCB(data, status, pagination);
+					useMapBounds : true;
+					
+				}
+			}
+		}); // end of ajax	
+	} else if (currCategory == "HT7"){
+		
+		$.ajax({
+			url: '/facilitymap/p001/hotelMap',
+			data: {myX:myX,myY:myY,useMapBounds : true},
+			type: 'GET',
+			datatype:'JSON',
+			success: function(data){
+				if(data == null){
+					alert("현재위치를 확인해주세요.");
+					return;					
+				} else {		
+					status = "OK";
+					order = 0;
+					pagination = { 
+					totalCount: 45,
+					hasNextPage: true,
+					hasPrevPage: false,
+					first: 1,
+					current: 1,
+					last: 3,
+					perPage: 15
+					};
+					placesSearchCB(data, status, pagination);
+					useMapBounds : true;
+					
+				}
+			}
+		}); // end of ajax	
 	} else if (currCategory == "HP2"){
-			console.log("약국찾아");
 			$.ajax({
 				url: '/facilitymap/p001/mediMap2',
 				data: {myX:myX,myY:myY,useMapBounds : true},
@@ -139,13 +196,11 @@ function searchPlaces() {
 						};
 						placesSearchCB(data, status, pagination);
 						useMapBounds : true;
-						console.log("YAK AJAX");
 					}
 					
 				}
 			}); // end of ajax	
 		} else if (currCategory == "HP9" ){
-		console.log("병원찾아");
 		$.ajax({
 			url: '/facilitymap/p001/medicenterMap',
 			data: {myX:myX,myY:myY,useMapBounds : true},
@@ -169,7 +224,6 @@ function searchPlaces() {
 					}
 					placesSearchCB(list, status, pagination);
 					useMapBounds : true
-					console.log("Hospital AJAX");
 				}
 				
 			}
@@ -184,8 +238,6 @@ function searchPlaces() {
 function placesSearchCB(data, status, pagination) {
 	if (status === kakao.maps.services.Status.OK) {
 		// 정상적으로 검색이 완료됐으면 지도에 마커를 표출합니다
-		console.log(status);
-		console.log(data);
 		displayPlaces(data);		
 	} else if (status === kakao.maps.services.Status.ZERO_RESULT) {
 		// 검색결과가 없는경우 해야할 처리가 있다면 이곳에 작성해 주세요
@@ -316,4 +368,37 @@ function changeCategoryClass(el) {
 	if (el) {
 		el.className = 'on';
 	}
+}
+// 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
+searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+
+// 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
+kakao.maps.event.addListener(map, 'idle', function() {
+    searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+});
+
+
+function searchAddrFromCoords(coords, callback) {
+    // 좌표로 행정동 주소 정보를 요청합니다
+    geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);         
+}
+
+function searchDetailAddrFromCoords(coords, callback) {
+    // 좌표로 법정동 상세 주소 정보를 요청합니다
+    geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
+}
+
+// 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
+function displayCenterInfo(result, status) {
+    if (status === kakao.maps.services.Status.OK) {
+        var infoDiv = document.getElementById('centerAddr');
+
+        for(var i = 0; i < result.length; i++) {
+            // 행정동의 region_type 값은 'H' 이므로
+            if (result[i].region_type === 'H') {
+                infoDiv.innerHTML = result[i].address_name;
+                break;
+            }
+        }
+    }    
 }

@@ -63,6 +63,8 @@
 			<mvc:mapping path="/petsitting/p002/reservation" /> 		<!-- 예약페이지 -->
 			<mvc:mapping path="/petsitting/p003/*" />					<!-- 일지 관련 등록 조회 등  -->
 			<mvc:mapping path="/petsitting/p004/*" /> 					<!-- 리뷰 등록 조회 등 -->
+			<mvc:mapping path="/facilitymap/p001/register" />			<!-- 시설 등록 등 -->
+			<mvc:mapping path="/chat/chatList" />						<!-- 채팅 -->			
 			<beans:bean class="com.dingpet.common.interceptor.ViewIntercepter" />
          </mvc:interceptor>
 	</mvc:interceptors>	

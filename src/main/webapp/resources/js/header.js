@@ -1,22 +1,17 @@
 //헤더 알림 자바스크립트
 
 $(document).ready(function(){
-	console.log("려ㅛ려려려려")
-
 	privilege();
 })
 
 function privilege(){
-	console.log("356337437")
 
 	var p_id = $(".privilege_id").val(); 
 	
 	if(p_id == '02' || p_id == '01' || p_id == '00'){
-		console.log("타타타타")
 		$("#headerreservedlist").attr("href", "${pageContext.request.contextPath}/petsitting/p002/reservationlist")
 		
 	}else{
-		console.log("두랕타타타타")
 		$("#headerreservedlist").attr('href', "${pageContext.request.contextPath}/customers/p001/signin")
 		console.log($("#headerreservedlist").attr('class'))
 	}

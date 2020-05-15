@@ -25,6 +25,9 @@ update member set member_type = 'user' where member_id = #{member_id}
 <delete id="delete">
 	delete from member where member_id = #{member_id}
 </delete>
+<delete id="delete1">
+	delete from priv_user where member_id = #{member_id}
+</delete>
 <delete id="deletePet">
 	delete from dog where member_id = #{member_id}
 </delete>
@@ -35,7 +38,7 @@ update member set member_type = 'user' where member_id = #{member_id}
 					  member_email = #{member_email},    
 					  member_pwd = #{member_pwd},
 					  member_contact = #{member_contact},
-					  m.member_photo = #{m.member_photo}
+					  member_photo = #{member_photo, jdbcType=VARCHAR}
 	where member_id = #{member_id}
 </update>
 <update id="updatePet">
@@ -52,9 +55,8 @@ update member set member_type = 'user' where member_id = #{member_id}
 <!-- 일반회원 정보조회 -->
 <select id="read" resultType="com.dingpet.customers.p001.vo.Customers_P001_VO">
 	select m.member_id, m.member_nickname, m.member_name, m.member_email, m.member_pwd, m.member_contact, m.member_photo,
-		   d.dog_name, d.dog_breed, d.dog_sex, d.dog_size, d.activity_level, d.dog_note,
-		   pu.privilege_id
-	from member m, dog d, priv_user pu
+		   d.dog_name, d.dog_breed, d.dog_sex, d.dog_size, d.activity_level, d.dog_note
+	from member m, dog d
 	where m.member_id = d.member_id 
 	and m.member_id = #{member_id}
 </select>
@@ -65,7 +67,7 @@ update member set member_type = 'user' where member_id = #{member_id}
 </select>
 
 <!-- 정보조회 비밀번호 입력처리 -->
-<select id="readPw" resultType="com.dingpet.customers.p001.vo.Customers_P001_VO">
+<select id="readPw" resultType="String">
 	select member_pwd from member where member_id = #{member_id} and member_pwd =#{member_pwd}
 </select>
 
@@ -118,7 +120,11 @@ update member set member_type = 'user' where member_id = #{member_id}
 	where m.member_id = pu.member_id 
 	and m.member_id=#{member_id} and m.member_pwd=#{member_pwd}
 </select>
-
+<select id="readPrivNo" resultType="String">
+	select privilege_id
+	from priv_user
+	where member_id = #{member_id}
+</select>
 <!-- 펫정보 -->
 <select id="dogInfo" resultType="com.dingpet.customers.p001.vo.Customers_P001_VO">
 	select member_id, dog_name, dog_breed, dog_sex, dog_size, activity_level, dog_note, dog_photo

@@ -32,10 +32,9 @@ import lombok.extern.log4j.Log4j;
 public class Customers_P002_ControllerImpl implements Customers_P002_Controller {
 
 	private Customers_P002_Service service;
-	
 	private JavaMailSender mailSender;
 	
-	//아이디 찾기 처리
+	//id찾기 처리
 	@RequestMapping(value="/lostid", method={RequestMethod.POST})
 	public ModelAndView lostid(Model model, HttpServletRequest request, HttpServletResponse response) throws
 				ServletException, IOException{
@@ -67,52 +66,22 @@ public class Customers_P002_ControllerImpl implements Customers_P002_Controller 
 		}catch(Exception e){
 			System.out.println(e);
 		}
-		
-		
 	}
 	//입력한 이메일이 존재하지 않으면 "일치하는 아이디가 없어요" 화면출력	
 	else{
 		System.out.println("아이디 없음");
 		model.addAttribute("noID", "일치하는 아이디가 없어요");
-	}
+		}
 	
 	mav.setViewName("customers/p002/lostid");
 	return mav;
 	}
 	
+	//id찾기 페이지
 	@RequestMapping(value="/lostid", method = {RequestMethod.GET})
 	public void lostid() {
 		System.out.println("아이디찾기 페이지");
 	}
-	
-	/*
-	//아이디 찾기
-	@RequestMapping(value="/lostid", method = {RequestMethod.POST})
-	public ModelAndView lostid(Model model) throws ServletException, IOException{
-		System.out.println("아이디찾기 controller");
-		
-		ModelAndView mav = new ModelAndView();
-		
-		String id = request.getParameter("member_email"); //입력한 email
-		System.out.println(id);
-		
-		String _id = service.lostId(id); //id
-		System.out.println(_id);
-		
-		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");
-		
-		if(_id != null) {
-			System.out.println("아이디 찾았다!"); 
-			model.addAttribute("_id", "아이디 찾았어요!"+ "<br>" + _id);
-		}else {
-			System.out.println("일치하는 아이디 없음"); 
-			model.addAttribute("noID","일치하는 아이디가 없어요");
-		}	
-		mav.setViewName("customers/p002/lostid");
-		return mav;
-	}
-	 */
 
 	//pw찾기 페이지
 	@RequestMapping(value="/lostpwd", method = {RequestMethod.GET})

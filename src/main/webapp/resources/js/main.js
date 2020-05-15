@@ -289,6 +289,7 @@ jQuery(document).ready(function($) {
 	siteSticky();
 
 	// navigation
+	/*
   var OnePageNavigation = function() {
     var navToggler = $('.site-menu-toggle');
    	$("body").on("click", ".main-menu li a[href^='#'], .smoothscroll[href^='#'], .site-mobile-menu .site-nav-wrap li a", function(e) {
@@ -305,7 +306,7 @@ jQuery(document).ready(function($) {
     });
   };
   OnePageNavigation();
-
+*/
   var siteScroll = function() {
 
   	

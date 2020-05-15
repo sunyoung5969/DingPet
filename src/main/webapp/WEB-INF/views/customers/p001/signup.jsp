@@ -7,6 +7,9 @@
 <!-- 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/lost_found.css">
 -->
+<style>
+	
+</style>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 
@@ -25,18 +28,24 @@
  	//id중복체크 함수
 	function id_Check(){
 		var memberID = $('#member_id').val();
+		
 		$.ajax({
 			type:"post",
 			url:"/customers/p001/possibleId",
 			data: {id : memberID},
 			success: function(data, textStatus){
-				if(data == "usable"){
-					$('#idCheckMessage').html('사용가능한 아이디');
+				if(data == "id needed"){
+					$('#idCheckMessage').text('아이디를 입력하세요');
+				}else if(data == "usable"){
+					$('#idCheckMessage').text('사용가능한 아이디입니다');
+					$("#idCheckMessage").val('Y');
 				}else{
-					$('#idCheckMessage').html('사용불가능한 아이디');
+					$('#idCheckMessage').text('사용불가능한 아이디입니다');
+					$("#idCheckMessage").val('N');
 				}
 			}
 		})
+		
 	}
  	
 	//email중복체크 함수
@@ -49,10 +58,15 @@
 			url:"/customers/p001/possibleEmail",
 			data: {email : memberEmail},
 			success: function(data, textStatus){
-				if(data == "usable"){
-					$('#emailCheckMessage').html('사용가능한 이메일');
+				
+				if(data == "email needed"){
+					$('#emailCheckMessage').text('이메일을 입력하세요');
+				}else if(data == "usable"){
+					$('#emailCheckMessage').text('사용가능한 이메일입니다');
+					$("#emailCheckMessage").val('Y');
 				}else{
-					$('#emailCheckMessage').html('사용불가능한 이메일');
+					$('#emailCheckMessage').text('사용불가능한 이메일입니다');
+					$("#emailCheckMessage").val('N');
 				}
 			}
 		})
@@ -61,6 +75,65 @@
 	//가입취소 버튼
 	function cancleBtn(){
 		return location.href='/';
+	}
+	
+	//onsubmit 버튼
+	function btnCheck(){
+		console.log("@@@@onsubmit@@@@@");
+		
+		if($("#idCheckMessage").val() == ''){
+			console.log("아이디 중복확인 안했어")
+			alert("아이디 중복확인을 하세요")
+			return false;
+		}else if($("#idCheckMessage").val() == 'N'){
+			console.log("아이디 중복된다")
+			alert("이미 사용중인 아이디입니다. 다른 아이디를 입력하세요.")
+			return false;
+		}else if($("#emailCheckMessage").val() == ''){
+			console.log("이메일 중복확인 안했어")
+			alert("이메일 중복확인을 하세요")
+			return false;
+		}else if($("#emailCheckMessage").val() == 'N'){
+			console.log("이메일 중복된다")
+			alert("이미 사용중인 이메일입니다. 다른 이메일 주소를 입력하세요.")
+			return false;
+		}else{
+			return true;
+		}
+		return false;
+	}
+	
+	//인증번호 전송
+	function auth(){
+		//1. 인증번호 입력칸, 확인 버튼 생성
+		$("#auth").append(
+		'<input type="text" id="authid" maxlength="8" placeholder="8자리 입력" style="width:47%; display:inline;"/> <input type="button" onclick="auth_check()" value="인증번호확인" style="width:50%; display:inline; color:black; padding:6px; font-size:12px">'
+		);
+		
+		//2. 인증번호 전송
+		var emailForAuth = $('#member_email').val();
+		$.ajax({
+			type:"post",
+			url:"/customers/p001/auth_email",
+			data: {emailAuth : emailForAuth},
+			success: function(data, textStatus){
+				$('#hiddenAuthNo').val(data);
+				$('#emailCheckMessage').text('인증번호가 전송되었습니다.')
+			}
+		});
+	}
+	
+	//인증번호 확인
+	function auth_check(){
+		
+		var idCheck = $('#authid').val();
+		var idAuth = $('#hiddenAuthNo').val();
+		
+		if(idCheck == idAuth){
+			alert("인증완료");
+		}else{
+			alert("인증오류");
+		}
 	}
 	
 </script>
@@ -72,7 +145,7 @@
 	<div class="w-75 m-auto">
 		<h2 class="form-title pb-3">일 반 회 원 가 입</h2>
 			
-		<form method="POST" class="register-form" id="register-form" action="signup" enctype="multipart/form-data">	
+		<form method="POST" class="register-form" id="register-form" action="signup" onsubmit="return btnCheck()" enctype="multipart/form-data">	
 		<!-- 일반회원 정보입력 -->
 			<div class = "flex-row">
 			<h3 class = "color_blue d-inline">회원 정보</h3>
@@ -82,11 +155,13 @@
 			<div class = "round_border mt-3 mb-4">
 			<div class = "m-5">
 				<div class="form-group" name="memberID">
-				<strong>*아이디</strong>
-				<input type="text" id="member_id" name="member_id" maxlength="20" placeholder="Your ID" autofocus required/>
-				<div id="idCheckMessage" class="color_blue"></div>
-				<input type="button" value="ID중복체크" id="idCheck" onclick="id_Check()" /> 
-				</div>
+            	<strong style="display: block;">*아이디</strong> 
+            	<input type="text" id="member_id" name="member_id" maxlength="20" placeholder="Your ID" autofocus required
+            	style = "width: 47%; display: inline;" />
+            	<input type="button" value="ID중복체크" id="idCheck" onclick="id_Check()" 
+            	style = "width: 50%; display: inline; color:black; padding:6px; font-size:12px" /> 
+            	<div id="idCheckMessage" style="color: blue;"></div>
+            	</div>
 		
 				<div class="form-group">
 				<strong>*비밀번호</strong>
@@ -114,50 +189,31 @@
 				<strong>*연락처</strong>
 				<input type="text" name="member_contact" id="member_contact" maxlength="20" placeholder="Your Contact Info." required />
 				</div>
-							
-			 	<!--
+				
 				<div class="form-group">
-				연락처
-            	<select id="member_contact01" name="member_contact01">
-                <option value="010" selected>010</option>
-                <option value="011">011</option>
-                <option value="016">017</option>
-                <option value="018">018</option>
-                <option value="019">019</option>
-            	</select>
-            	- <input id="member_contact02" name="member_contact02" type="text" maxlength="4">
-            	- <input id="member_contact03" name="member_contact03" type="text" maxlength="4">
-        		</div>
-				-->	
-					
-				<div class="form-group">
-				<strong>*이메일</strong>
-				<input type="email" name="member_email" id="member_email" maxlength="40" placeholder="Your Email" required />
-				<div id="emailCheckMessage" class="color_blue"></div>
-				<input type="button" value="EMAIL중복체크" id="emailCheck" onclick="email_Check()" />
+				<strong style="display: block;">*이메일</strong>
+				<input type="email" name="member_email" id="member_email" maxlength="40" placeholder="Your Email" required
+				style = "width: 47%; display: inline;" />
+			
+				<input type="button" value="EMAIL중복체크" id="emailCheck" onclick="email_Check()"
+				style = "width: 25%; display: inline; color:black; padding:6px; font-size:12px" /> 
+				
+				<input type="button" value="인증번호전송" onclick="auth(); this.onclick=null;"
+				style = "width: 25%; display: inline; color:black; padding:6px; font-size:12px" /> 
+				<div id="emailCheckMessage" style="color:blue"></div>
+				
+				<div id="auth"></div>
+				<input type="hidden" id="hiddenAuthNo" name="hiddenAuthNo">
+				
 				</div>
 				
-				<!--
-				<div class="form-group">
-				이메일
-        		<input type="text" id="member_email" name="member_email" maxlength="20" autocomplete="off"><span>@</span>
-            	<input id="member_email_domain" name="member_email_domain" list="domains" placeholder="도메인입력/선택">
-            	<datalist id="domains">
-                <option value="naver.com">
-                <option value="daum.net">
-                <option value="gmail.com">
-                <option value="yahoo.co.kr">
-            	</datalist>
-            	<br>
-            	-->
-            	
 				<div class="filebox">
-				<strong>프로필 사진</strong>
-				<input type="file" name="file" id="member_photo" accept="image/*" />
-				</div>
-				<div class="img_wrap">
-				<img id="img">
-				</div>
+				<strong style="display:block">프로필 사진</strong>
+					<div class="img_wrap" style="border:10px; min-height:150px; border:solid 1px #757575; overflow:hidden !important">
+						<img id="img" style="width:100%; height:100%; padding:0px">
+					</div>
+				<input type="file" name="file" id="member_photo" accept="image/*" />	
+				</div>	
 				
 				<script>
 				var sel_file;
@@ -193,7 +249,8 @@
 				<div onclick="dog_plus_btn()" class="far fa-plus-square" style="font-size:24px"></div>
 				<div onclick="dog_minus_btn()" class="far fa-minus-square" style="font-size:24px"></div>
 			
-			<div id = "dog_info" class = "round_border mt-3 mb-4 pb-3">
+			<div id = "dog_info" class = "round_border mt-3 mb-4 pb-3"
+			style="padding-bottom:0px !important; margin:0px !important">
 			<div class = "m-5">
 				<div class="form-group">
 				<strong>반려견 이름</strong>
@@ -206,14 +263,20 @@
 				</div>
 				
 				<div class="form-group">
-				<strong>반려견 성별</strong> &nbsp;&nbsp;&nbsp;
-				수컷<input type="radio" id="dog_sex" name="dog_sex" value="수컷" />
-				암컷<input type="radio" id="dog_sex" name="dog_sex" value="암컷"/>
+				<strong style="display:block; padding-bottom:10px">반려견 성별</strong>
+				<select id="dog_sex" name="dog_sex"
+				style="width:100%; padding: 6px 0px;
+				background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%;">
+					<option value="수컷" selected>수컷</option>
+					<option value="암컷">암컷</option>
+				</select>
 				</div>
 		
 				<div class="form-group">
-				<strong>반려견 크기</strong> &nbsp;&nbsp;&nbsp;
-				<select id="dog_size" name="dog_size">
+				<strong style="display:block; padding-bottom:10px">반려견 크기</strong>
+				<select id="dog_size" name="dog_size"
+				style="width:100%; padding: 6px 0px;
+				background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%;">
 					<option value="대형" selected>대형견</option>
 					<option value="중형">중형견</option>
 					<option value="소형">소형견</option>
@@ -221,8 +284,9 @@
 				</div>
 				
 				<div class="form-group">
-				<strong>활동성</strong>
-        		<input type="range" name="activity_level" min="0" max="100" step="10" oninput="document.getElementById('value').innerHTML=this.value;">
+				<strong style="display:block; padding-bottom:10px">활동성</strong>
+        		<input type="range" name="activity_level" min="0" max="100" step="10" oninput="document.getElementById('value').innerHTML=this.value;"
+        		style="background-color: aliceblue;">
         		활동점수:<span id="value"></span>
     			</div>
 		
@@ -231,6 +295,7 @@
 				<input type="text" id="dog_note" name="dog_note" maxlength="100" placeholder="Remark" />
 				</div>
 			</div>
+			<hr align="center" style="border:solid 1px aliceblue; width:50%">
 			</div>
 			
 			<div id="addInfo"></div>
@@ -239,12 +304,15 @@
 			
 			<!-- 가입&취소 버튼 -->
 			<div class="form-group form-button" align="center">  
-				<input type="submit" name="signup" id="signup" class="form-submit" value="가입하기" /> 
-				<input type="button" name="signup" class="form-submit" onclick="cancleBtn()" value="취소하기" />
+				<input type="submit" name="signup" id="signup" class="form-submit" value="가입하기" 
+				style="margin:0px" /> 
+				<input type="button" name="signup" class="form-submit" onclick="cancleBtn()" value="취소하기"
+				style="margin:0px" />
 			</div>	
+			<hr align="center" style="border:solid 1px aliceblue; width:50%">
 		</form>
 	
-			<div class = "pt-3 flex_row" align="center">
+			<div class = "pt-3 flex_row" align="center" style="padding:0px !important;">
 				이미 회원이신가요? <a href="signin" class="term-service color_blue">로그인하기</a>
 			</div>
 	</div>	

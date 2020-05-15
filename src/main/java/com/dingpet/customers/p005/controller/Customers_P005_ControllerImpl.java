@@ -1,6 +1,7 @@
 package com.dingpet.customers.p005.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.dingpet.customers.p005.service.CustomersP005Service;
@@ -23,7 +24,6 @@ public class Customers_P005_ControllerImpl implements Customers_P005_Controller{
 	//	model.addAttribute("message", "메시지 페이지 입니당");	
 	//}
 	
-	@Override
 	@RequestMapping("/message")
 	public CustomersP005VO inbox(String member_id) {
 		log.info("메세지함controller");

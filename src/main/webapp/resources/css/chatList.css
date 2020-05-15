@@ -1,0 +1,320 @@
+@charset "UTF-8";
+
+tfoot tr {
+	height: 36px;
+}
+
+.wrap_table {
+	width: 89%;
+	overflow: hidden;
+	position: absolute;
+	top: 160px;
+	left: 5%;
+}
+
+.text-center {
+	margin-top: 10px;
+}
+
+.pagination {
+	width: 60%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.pagination li {
+	display: inline-block;
+	padding: 10px 5px 0 5px;
+}
+
+.cre {
+	float: right;
+	width: 120px;
+	height: 30px;
+	padding-top: 10px;
+	margin-right: 10%;
+	text-align: center;
+	border: 1px solid #ededed;
+}
+
+.cre a:hover {
+	text-decoration: none;
+	color: #aeaeae;
+}
+
+.thead {
+	color: #fff;
+	background-color: #3d3d3d;
+}
+
+.container-chat {
+	margin: 60px auto;
+	background: #fff;
+	padding: 0;
+	border-radius: 7px;
+	width: 70%;
+}
+
+.row-div {
+	display: flex;
+}
+
+.col-md-4 {
+	width: 28%;
+	padding-right: 20px;
+	max-height: 750px;
+	min-height: 750px;
+	overflow-y: scroll;
+	-ms-overflow-style: none;
+}
+
+.col-md-8 {
+	width: 70%;
+}
+
+.profile-image {
+	width: 50px;
+	height: 50px;
+	border-radius: 40px;
+}
+
+.settings-tray {
+	background: #eee;
+	padding: 10px 15px;
+	border-radius: 7px;
+}
+
+.settings-tray .no-gutters {
+	padding: 0;
+}
+
+.chat-panel {
+	max-height: 697px; min-height : 697px;
+	overflow-y: scroll;
+	-ms-overflow-style: none;
+	min-height: 697px;
+}
+
+.chat-panel::-webkit-scrollbar, .col-md-4::-webkit-scrollbar {
+	display: none !important;
+}
+
+.row-messegesend {
+	margin: 0px;
+	padding: 0px;
+}
+
+.no-guttters {
+	display: block;
+	margin-right: 30px;
+	width: 95%;
+}
+
+.no-gutters--right {
+	text-align: right;
+}
+
+.search-box .input-wrapper {
+	background: #fff;
+	border-radius: 40px;
+}
+
+.search-box .input-wrapper i {
+	color: grey;
+	margin-left: 7px;
+	vertical-align: middle;
+}
+
+input {
+	border: none;
+	border-radius: 30px;
+	width: 100%;
+}
+
+input::placeholder {
+	color: #e3e3e3;
+	font-weight: 300;
+	margin-left: 20px;
+}
+
+input:focus {
+	outline: none;
+}
+
+.col-md-3 {
+	
+}
+
+.friend-drawer {
+	padding: 10px 15px;
+	display: flex;
+	vertical-align: baseline;
+	background: #fff;
+	transition: 0.3s ease;
+}
+
+.friend-drawer--grey {
+	background: #eee;
+}
+
+.friend-drawer .text {
+	margin-left: 12px;
+	width: 70%;
+	font-size: 30px
+}
+
+.friend-drawer .text h6 {
+	margin-top: 6px;
+	margin-bottom: 0;
+}
+
+.friend-drawer .text p {
+	margin: 0;
+}
+
+.friend-drawer .time {
+	color: grey;
+}
+
+.friend-drawer--onhover:hover {
+	background: #74b9ff;
+	cursor: pointer;
+}
+
+.friend-drawer--onhover:hover p, .friend-drawer--onhover:hover h6,
+	.friend-drawer--onhover:hover .time {
+	color: #fff !important;
+}
+
+hr {
+	margin: 5px auto;
+	width: 60%;
+}
+
+.textBox-div--right {
+	padding-right: 30px;
+	text-align: right;
+}
+
+.textBox-div--left {
+	padding-left: 30px;
+}
+
+.chat-bubble {
+	display: inline-block;
+	max-width: 40%;
+	padding: 10px 14px;
+	margin: 10px 0px;;
+	border-radius: 9px;
+	position: relative;
+	animation: fadeIn 1s ease-in;
+}
+
+.chat-bubble li {
+	list-style: none;
+}
+
+.chat-bubble--right {
+	background: #74b9ff;
+}
+
+.chat-bubble--left {
+	background: #8e8e8e;
+}
+
+.chat-bubble:after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-bottom: 0;
+	margin-top: -10px;
+}
+
+.chat-bubble--left:after {
+	left: 0;
+	border-right-color: #8e8e8e;
+	border-left: 0;
+	margin-left: -20px;
+	display: inline;
+}
+
+.chat-bubble--right:after {
+	right: 0;
+	border-left-color: #74b9ff;
+	border-right: 0;
+	margin-right: -20px;
+	display: inline;
+}
+
+@keyframes fadeIn { 
+	0% {
+		opacity: 0;
+	}
+	
+	100% {
+		opacity : 1;
+	}
+}
+.chat-date {
+	padding: 0px 30px;
+	color: #999;
+	animation: fadeIn 1s ease-in;
+}
+
+.offset-md-9 {
+	color: #fff;
+}
+
+.chat-box-tray {
+	background: #eee;
+	display: flex;
+	align-items: baseline;
+	padding: 10px 15px;
+	align-items: center;
+	margin-top: 19px;
+	bottom: 0;
+}
+
+.chat-box-tray input {
+	margin: 0 10px;
+	padding: 6px 15px;
+}
+
+.chat-box-tray i {
+	color: grey;
+	font-size: 30px;
+	vertical-align: middle;
+}
+
+.chat-box-tray i:last-of-type {
+	margin-left: 25px;
+}
+
+@media ( min-width : 768px) {
+	.offset-md-9 {
+		margin: 0px !important;
+	}
+}
+
+.btn-send {
+	margin: 0px;
+	padding: 0px;
+	height: 33px;
+	border-radius: 15px;
+	background: #fff;
+	font-size: 12px !important;
+	font-weight: 600 !important;
+	border: solid 1.2px;
+	border-color: #69acb8;
+	color: #69acb8;
+	width: 10%;
+}
+
+.btn-send:hover {
+	color: #fff;
+	background: #69acb8;
+	border-color: #69acb8;
+}

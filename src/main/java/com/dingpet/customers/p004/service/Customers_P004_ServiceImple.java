@@ -12,7 +12,6 @@ public class Customers_P004_ServiceImple implements Customers_P004_Service{
 	
 	private Customers_P004_Mapper mapper;
 	
-	@Override
 	public boolean withdraw(String member_id) {
 		return mapper.delete(member_id) == 1;
 	}

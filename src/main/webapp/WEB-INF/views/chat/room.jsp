@@ -12,8 +12,7 @@
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 <script	src="${pageContext.request.contextPath}/resources/dist/sockjs.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script	src="${pageContext.request.contextPath}/resources/js/chat_socket.js?v=<%=System.currentTimeMillis() %>"
-	type="text/javascript"></script>
+<script	src="${pageContext.request.contextPath}/resources/js/chat_socket.js?v=<%=System.currentTimeMillis() %>"	type="text/javascript"></script>
 
 
 <style>

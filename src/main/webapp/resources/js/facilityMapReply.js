@@ -59,7 +59,6 @@ var replyService = (function(){
 	
 	//댓글 수정
 	function modify(reply, callback, error){
-		console.log("review_id : " + reply.review_id);
 		
 		$.ajax({
 			type : 'put',

@@ -38,9 +38,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 	@Override
 	public void profilelist(Model model) {
 		// TODO Auto-generated method stub
-		System.out.println("제발 오니?");
 		model.addAttribute("list", service.profileGetList());
-
 	}
 
 	@RequestMapping("profileregister")
@@ -55,8 +53,6 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 	public String registerdata(Model model, PetSitting_P001_VO profile, MultipartHttpServletRequest uploadFile, HttpServletRequest request) {
 		// TODO Auto-generated method stub
 		
-		System.out.println(profile);
-
 		String[] closed;
 		
 		try {
@@ -139,7 +135,6 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 					}				
 				}
 			}
-			System.out.println("-----------------------------------3");
 
 //---------------------------------------------------------------------------
 
@@ -160,22 +155,16 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 			for(int i=0; i<jsonArr.size(); i++) {
 
 				profile.setSchedule_Closed((String)jsonArr.get(i));
-				System.out.println("휴무일 뽑아봐 " + profile.getSchedule_Closed());
 				service.closedInsert(profile);
 				closed[i] = profile.getSchedule_Closed();
 			}
-			System.out.println("-----------------------------------4");
 
 //---------------------------------------------------------------------------
-			
-			System.out.println(profile);
 			
 			if(profile.getLicense_Date() != null && profile.getLicense_Agency() != null && profile.getLicense_Name() != null) {
 				service.licenseInsert(profile);
 			}
 			service.profileInsert(profile);
-			
-			System.out.println("컨트롤러 끗끝끗");
 			
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -220,7 +209,6 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("files", files);
-		System.out.println("ajax 세션 "+ session.getAttribute("files"));
 	}
 	
 }

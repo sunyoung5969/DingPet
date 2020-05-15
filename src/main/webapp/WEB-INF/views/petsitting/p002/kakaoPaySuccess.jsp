@@ -95,7 +95,6 @@
 					if(socket){		// 열려있는 소켓이 있으면
 						// websocket에 보내기 (reserved, 보내는사람, 받는사람, 예약번호)
 						let socketMsg = "reserved,"+ $("#member_ID").text()+","+$("#sitter_ID").text()+","+"20938123";
-						console.log("msg : " + socketMsg);	// 실시간 알림메시지 확인
 						socket.send(socketMsg);				// 실시간 알림 메시지 전송
 					}
 				},

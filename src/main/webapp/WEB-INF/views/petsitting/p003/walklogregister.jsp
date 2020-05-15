@@ -207,7 +207,7 @@
 									<input type="hidden" name="reservation_ID" value="${walk.reservation_ID }">
 									<input type="hidden" name="start_Time" value="${walk.start_Time }">
 									<input type="hidden" name="end_Time" value="${walk.end_Time }">
-									<input type="hidden" name="ditance" value="${walk.distance }">
+									<input type="hidden" name="distance" value="${walk.distance }">
 									<input type="hidden" name="log_Type" value="walk">
 									<input type="hidden" name="path_Photo" value="">
 									<input class="form-control--title" type="text" name="log_Title" maxlength="100" required><br>							

@@ -12,7 +12,24 @@ public class ChatRoom {
 	private String roomType;
 	private String roomPw;
 	private Date reg_date;
+	private String anick;
+	private String bnick;
 
+	public String getAnick() {
+		return anick;
+	}
+
+	public void setAnick(String anick) {
+		this.anick = anick;
+	}
+
+	public String getBnick() {
+		return bnick;
+	}
+
+	public void setBnick(String bnick) {
+		this.bnick = bnick;
+	}
 
 	public int getRoomNo() {
 		return roomNo;

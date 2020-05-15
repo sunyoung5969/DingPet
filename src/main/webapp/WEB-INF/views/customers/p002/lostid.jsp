@@ -17,12 +17,11 @@
 		<form action="lostid" method="post" name="findIdForm">
 			<div><h4 align="center">가입할 때 입력하신 메일주소를 기입하세요.</h4></div>
 			<input type="email" name="member_email" />
-			<input type="button" onClick="find_id()" value="아이디 찾기" class="btn btn-primary" />
+			<div style="color:blue">${yesID} ${noID}</div>
+			
+			<input type="button" onClick="find_id()" value="아이디 찾기" class="btn btn-primary"
+			style="margin-top:5px" />
 		</form>
-		
-		<h3>${yesID}</h3>
-		<h3>${noID}</h3>
-
 		
 		<script type="text/javascript">	
 		function find_id(){
