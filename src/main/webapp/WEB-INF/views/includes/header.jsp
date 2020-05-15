@@ -38,10 +38,19 @@
 	padding: 0px 15px !important;
 }
 </style>
-
+<script type="text/javascript">
+$(document).ready(function(){
+	$( function() {
+		if( $('.member_ID').val() == "admin" ){
+			$('.admin_menu').css('display','block');
+		}else{
+			$('.admin_menu').css('display','none');
+		}
+	});	
+});
+</script>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300" id="home-section">
-
 	<div id="overlayer"></div>
 	<div class="loader">
 		<div class="spinner-border text-primary" role="status">
@@ -105,7 +114,7 @@
 											<a href="/facilitymap/p001/facilityMap"	class="nav-link">시설지도</a>
 										</li>
 										<li>
-											<a href="/facilitymap/p001/register" class="nav-link" id="admin_menu" >시설지도 등록</a>
+											<a href="/facilitymap/p001/register" class="nav-link admin_menu" id="admin_menu" >시설지도 등록</a>
 										</li>
 									</ul>
 								</li>
@@ -126,14 +135,17 @@
 								</li>
 								<li>
 									<div>
+									
 										<c:choose>
 								 			<c:when test="${isLogOn == true && customers != null}">
 								    			<a href="/customers/p001/logout" class="nav-link btn btn-primary" style="color: #fff !important; line-height: 1rem;">로그아웃</a>
 								    			<a href="/customers/p001/toMyinfo" class="nav-link btn btn-primary" style="color: #fff !important; line-height: 1rem;">마이페이지</a>
+								    			<input type="hidden" class="member_ID" value="${customers.member_id }">
 								    		</c:when>
 								    		<c:when test="${adLogOn == true && customers != null}">
 								    			<a href="/customers/p001/logout" class="nav-link btn btn-primary" style="color: #fff !important; line-height: 1rem;">로그아웃</a>
 								    			<a href="/customers/p001/admin_board" class="nav-link btn btn-primary" style="color: #fff !important; line-height: 1rem;">펫시터신청목록</a>
+								    			<input type="hidden" class="member_ID" value="${customers.member_id }">
 								    		</c:when>
 								 			<c:otherwise>
 								 				<a href="/customers/p001/signin" class="nav-link btn btn-primary" style="color: #fff !important; line-height: 1rem;">로그인</a>
