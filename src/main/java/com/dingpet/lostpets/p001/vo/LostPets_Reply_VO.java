@@ -6,7 +6,16 @@ public class LostPets_Reply_VO {
 	private String reply;
 	private String replyer;
 	private String reply_date;
+	private String nickname;
 	
+	
+	
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 	public String getReply_id() {
 		return reply_id;
 	}

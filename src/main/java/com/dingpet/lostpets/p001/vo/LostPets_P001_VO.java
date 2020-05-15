@@ -40,8 +40,18 @@ public class LostPets_P001_VO {
 	private String request_date; 
 	private String request_status; 
 	private String completed_date;
+	
+	private String member_nickname;
+	
+	
 
 
+	public String getMember_nickname() {
+		return member_nickname;
+	}
+	public void setMember_nickname(String member_nickname) {
+		this.member_nickname = member_nickname;
+	}
 	public String getRequest_category() {
 		return request_category;
 	}

@@ -45,11 +45,11 @@
 												<a class = " no_text_deco" href = "/lostpets/p001/completedView?match_id=${recentCompleted.match_id }">
 													<div class = "fair_border hover_shadow">
 														<div ><!-- img div -->
-															<img src = "/resources/images/dog2.jpg" style = "width:400px; height : 250px;">
+															<img src = "https://www.dingpet.shop/lost/${recentCompleted.photo_name}" style = "width:400px; height : 250px;">
 														</div>
 														<div style = "max-width : 400px;"class = "p-3"><!-- 내용 -->
 															<p class = "text_overflow"><strong><c:out value="${recentCompleted.match_title }" /></strong></p>
-															<p class = "pl-2">AAA님, BBB님</p>
+															<p class = "pl-2">${recentCompleted.receiver_nick }님, ${recentCompleted.sender_nick }님</p>
 														</div>
 													</div>
 												</a>
@@ -90,7 +90,7 @@
 												<a class = "no_text_deco" href = "/lostpets/p001/view?board_id=${recentLost.board_id}">
 													<div class = "fair_border hover_shadow">
 														<div ><!-- img div -->
-															<img src = "/resources/images/dog.jpg" style = "width:400px; height : 250px;">
+															<img src = "https://www.dingpet.shop/lost/${recentLost.front_name}" style = "width:400px; height : 250px;">
 														</div>
 														<div style = "width : 400px;" class = "p-3"><!-- 내용 -->
 															<p class = "text_overflow"><strong><c:out value="${recentLost.title }" /></strong></p>
@@ -140,7 +140,7 @@
 												<a class = "no_text_deco" href = "/lostpets/p001/view?board_id=${recentFind.board_id}">
 													<div class = "fair_border hover_shadow">
 														<div ><!-- img div -->
-															<img src = "/resources/images/blue.jpg" style = "width:400px; height : 250px;">
+															<img src = "https://www.dingpet.shop/lost/${recentFind.front_name}" style = "width:400px; height : 250px;">
 														</div>
 														<div style = "width : 400px;" class = "p-3"><!-- 내용 -->
 															<p class = "text_overflow"><strong><c:out value="${recentFind.title }" /></strong></p>

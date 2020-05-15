@@ -41,9 +41,16 @@
 	<!-- 최신 완료 글 9개 -->
 	<select id = "recentCompleted" resultType="com.dingpet.lostpets.p003.vo.LostPets_P003_VO">
 	<![CDATA[
-		SELECT *
-	    FROM lost_found_matched
-        WHERE rownum <= 9
+		SELECT match_id, match_title, match_content, photo_name, photo_path, A.member_nickname as receiver_nick, B.member_nickname as sender_nick 
+		FROM (
+		    SELECT match_id, match_title, match_content, photo_name, photo_path, sender_id, mb.member_nickname
+		    FROM lost_found_matched M, lost_found_request R, member MB
+		    WHERE M.request_id = R.request_id
+		    AND R.receiver_id = MB.member_id
+		    ) A,
+		    member B
+		WHERE A.sender_id = B.member_id
+		AND rownum <= 9
         ORDER BY match_id DESC
         ]]> 
 	</select>
@@ -80,15 +87,19 @@
 	<!-- 완료 글 목록  -->
 	<select id = "getCompleted" resultType="com.dingpet.lostpets.p003.vo.LostPets_P003_VO">
 		<![CDATA[
-		SELECT *
+		SELECT match_id, match_title, match_content, photo_name, photo_path, A.member_nickname as receiver_nick, B.member_nickname as sender_nick 
 		FROM (
-			SELECT rownum rn, match_id, match_title, match_content, photo_name, photo_path
-		    FROM lost_found_matched
-	        WHERE rownum <= #{pageNum} * #{amount}
+		    SELECT match_id, match_title, match_content, photo_name, photo_path, sender_id, mb.member_nickname
+		    FROM lost_found_matched M, lost_found_request R, member MB
+		    WHERE M.request_id = R.request_id
+		    AND R.receiver_id = MB.member_id
+		    AND rownum <= #{pageNum} * #{amount}
 			AND match_id > 0
 			ORDER BY match_id DESC
-		)
-		WHERE rn > (#{pageNum} - 1) * #{amount}
+		    ) A,
+		    member B
+		WHERE A.sender_id = B.member_id
+		AND rownum > (#{pageNum} - 1) * #{amount}
         ORDER BY match_id DESC
         ]]> 
 	</select>
@@ -105,13 +116,14 @@
 		SELECT board_id, member_id, title, dog_breed, dog_sex, found_location, front_name
 		FROM (
 			SELECT rownum rn, LF.board_id, LF.member_id, LF.title, D.dog_breed, D.dog_sex, D.found_location, P.front_name 
-		    FROM lost_found LF, dog D, lost_found_photo P
+		    FROM lost_found LF, dog D, lost_found_photo P 
 	        WHERE LF.dog_id = D.dog_id
 	        AND LF.board_id = P.board_id
 	        AND LF.category = 'lost'
 	        AND LF.status = 'n'
 	        AND rownum <= #{pageNum} * #{amount}
 			AND LF.board_id > 0
+			ORDER BY board_id DESC
 		)
 		WHERE rn > (#{pageNum} - 1) * #{amount}
         ORDER BY board_id DESC
@@ -139,6 +151,7 @@
 	        AND LF.status = 'n'
 	        AND rownum <= #{pageNum} * #{amount}
 			AND LF.board_id > 0
+			ORDER BY board_id DESC
 		)
 		WHERE rn > (#{pageNum} - 1) * #{amount}
         ORDER BY board_id DESC
@@ -193,13 +206,14 @@
 
 	<!-- 글 조회 -->
 	<select id="view" resultType="com.dingpet.lostpets.p001.vo.LostPets_P001_VO" parameterType = "String">
-		select LF.category, LF.board_id, LF.member_id, LF.dog_id, title, content, board_date, 
+		SELECT LF.category, M.member_nickname, LF.board_id, LF.member_id, LF.dog_id, title, content, board_date, 
 			dog_name, dog_breed, dog_sex, dog_size, dog_note, found_date, found_location, 
 			front_name, front_path
-		from lost_found LF, dog D, lost_found_photo P 
-		where LF.dog_id = D.dog_id
-		and LF.board_id = P.board_id
-		and LF.board_id = #{board_id}
+		FROM lost_found LF, dog D, lost_found_photo P, member M 
+		WHERE LF.dog_id = D.dog_id
+		AND LF.member_id = M.member_id
+		AND LF.board_id = P.board_id
+		AND LF.board_id = #{board_id}
 	</select>
 	<!-- 글 조회 끝 -->
 	
@@ -207,9 +221,16 @@
 	
 	<!-- 완료 글 조회 -->
 	<select id="completedView" resultType="com.dingpet.lostpets.p003.vo.LostPets_P003_VO" parameterType = "String">
-		select*
-		from lost_found_matched
-		where match_id = #{match_id}
+		SELECT match_id, match_title, match_content, photo_name, photo_path, A.member_nickname as receiver_nick, B.member_nickname as sender_nick
+		FROM (
+			SELECT match_id, match_title, match_content, photo_name, photo_path, MB.member_nickname 
+			FROM lost_found_matched M, lost_found_request R, member MB
+			WHERE M.request_id = R.request_id
+			AND match_id = #{match_id}
+			AND M.receiver_id = MB.member_id
+		) A,
+		member B
+		where A.sender_id = B.member_id
 	</select>
 	<!-- 완료 글 조회 끝 -->
 

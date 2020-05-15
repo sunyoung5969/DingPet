@@ -26,7 +26,7 @@
 						
 						<div class = "section_space"><!-- section wrap -->
 							<div><!-- title section starts-->
-								<h2 class = "color_dark_blue narrow"">완료 목록</h2>
+								<h2 class = "color_dark_blue narrow">완료 목록</h2>
 								<span  class = "pl-2 color_grey">딩펫을 통해 가족과 재회하고 행복을 되찾은 반려견들을 만나보세요!</span>
 							</div><!-- title section ends-->
 							<div class = "pt-3"><!-- list wrap -->
@@ -41,11 +41,11 @@
 												<a class = " no_text_deco" href = "completedView?match_id=${completedList.match_id }">
 													<div class = "fair_border hover_shadow">
 														<div ><!-- img div -->
-															<img src = "/resources/images/dog2.jpg" style = "width:400px; height : 250px;">
+															<img src = "https://www.dingpet.shop/lost/${completedList.photo_name}" style = "width:400px; height : 250px;">
 														</div>
 														<div style = "max-width : 400px;"class = "p-3"><!-- 내용 -->
 															<p class = "text_overflow"><strong><c:out value="${completedList.match_title }" /></strong></p>
-															<p class = "pl-2">AAA님, BBB님</p>
+															<p class = "pl-2">${completedList.receiver_nick }님, ${completedList.sender_nick }님</p>
 														</div>
 													</div>
 												</a>

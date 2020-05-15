@@ -47,7 +47,7 @@
 													<a class="move" href='<c:out value = "${lostList.board_id}"/>'>
 														<div class = "fair_border hover_shadow">
 															<div ><!-- img div -->
-																<img src = "/resources/images/dog.jpg" style = " height : 250px;">
+																<img src = "https://www.dingpet.shop/lost/${lostList.front_name}" style = "width : 400px; height : 250px;">
 															</div>
 															<div style = "width : 400px;" class = "p-3"><!-- 내용 -->
 																<p  style = "width : 100%; "class="text_overflow"><strong><c:out value="${lostList.title }" /></strong></p>

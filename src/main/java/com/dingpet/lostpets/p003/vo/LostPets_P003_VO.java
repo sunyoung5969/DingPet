@@ -40,9 +40,23 @@ public class LostPets_P003_VO {
 	private String match_content;
 	private String photo_name;
 	private String photo_path;
+	
+	private String receiver_nick;
+	private String sender_nick;
+	
 
-
-
+	public String getReceiver_nick() {
+		return receiver_nick;
+	}
+	public void setReceiver_nick(String receiver_nick) {
+		this.receiver_nick = receiver_nick;
+	}
+	public String getSender_nick() {
+		return sender_nick;
+	}
+	public void setSender_nick(String sender_nick) {
+		this.sender_nick = sender_nick;
+	}
 	public String getMatch_id() {
 		return match_id;
 	}

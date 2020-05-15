@@ -53,21 +53,23 @@
 									<div class = "my-5">
 										<div class="shadow_around no_round_border w-90 mx-auto my-2">
 											<a class ="no_text_deco" target = "_blank" href="/lostpets/p001/view?board_id=${myList.board_id}">
-												<div class="py-4">
+												<div class="py-4 w-70">
 													<div class="soft_border_orange flex_row p-3 mt-5 mb-3 mx-auto w-75">
-														<div class="w-25 d-inline-block">
-															<img class=".nav-pills" style="width: 150px; height: 150px;" src='/resources/images/dog2.jpg'>
-														</div>
-														<div class="w-75 pl-3 pt-3 d-inline-block">
-															<p class = "text_overflow"> <strong>${myList.title}</strong> </p>
-															<p class="pl-2">
-																<span class="tag">견종</span><span> </span> <span>${myList.dog_breed}</span> 
-																<span class="pl-2"></span> 
-																<span class="tag">성별</span><span></span> <span>${myList.dog_sex}</span>
-															</p>
-															<p class="pl-2">
-																<span class="tag">실종 장소</span><span> </span><span>${myList.found_location}</span>
-															</p>
+														<div class="m-3 w-100">
+															<div class="w-30 d-inline-block text_center v_center">
+																<img class=".nav-pills" style="width: 150px; height: 150px;" src="https://www.dingpet.shop/lost/${myList.front_name}">
+															</div>
+															<div class="w-70 pl-3 pt-3 d-inline-block v_center">
+																<p class = "text_overflow"> <strong>${myList.title}</strong> </p>
+																<p class="pl-2">
+																	<span class="tag">견종</span><span> </span> <span>${myList.dog_breed}</span> 
+																	<span class="pl-2"></span> 
+																	<span class="tag">성별</span><span></span> <span>${myList.dog_sex}</span>
+																</p>
+																<p class="pl-2">
+																	<span class="tag">실종 장소</span><span> </span><span>${myList.found_location}</span>
+																</p>
+															</div>
 														</div>
 													</div>
 												</div>
@@ -83,7 +85,7 @@
 														<div class="m-3 request_box soft_shadow no_round_border" style="width: 300px; height : 450px;">
 															<a class="no_text_deco" target="_blank" href="/lostpets/p001/view?board_id=${requestFrom.board_id}">
 																<div class=" round_top_border o_hidden">
-																	<img class="round_top_border" style="width: 100%; height: 200px;" src='/resources/images/dog2.jpg'>
+																	<img class="round_top_border" style="width: 100%; height: 200px;" src='https://www.dingpet.shop/lost/${requestFrom.front_name}'>
 																</div>
 					
 																<div class="p-3  o_hidden" style = "height: 190px;">
@@ -140,19 +142,21 @@
 									<a class ="no_text_deco" target = "_blank" href="/lostpets/p001/view?board_id=${myRequest.board_id}">
 										<div class="py-4">	
 											<div class="soft_border_blue flex_row p-3 mt-5 mb-3 mx-auto w-75">
-												<div class="w-25 d-inline-block">
-													<img class=".nav-pills" style="width: 150px; height: 150px;" src='/resources/images/dog2.jpg'>
-												</div>
-												<div class="w-75 pl-3 pt-3 d-inline-block">
-													<p class = "text_overflow"> <strong>${myRequest.title}</strong> </p>
-													<p class="pl-2">
-														<span class="tag">견종</span><span> </span> <span>${myRequest.dog_breed}</span> 
-														<span class="pl-2"></span> 
-														<span class="tag">성별</span><span></span> <span>${myRequest.dog_sex}</span>
-													</p>
-													<p class="pl-2">
-														<span class="tag">실종 장소</span><span> </span><span>${myRequest.found_location}</span>
-													</p>
+												<div class="m-3 w-100">
+													<div class="w-30 d-inline-block text_center v_center">
+														<img class=".nav-pills" style="width: 150px; height: 150px;" src='https://www.dingpet.shop/lost/${myRequest.front_name}'>
+													</div>
+													<div class="w-70 pl-3 pt-3 d-inline-block v_center">
+														<p class = "text_overflow"> <strong>${myRequest.title}</strong> </p>
+														<p class="pl-2">
+															<span class="tag">견종</span><span> </span> <span>${myRequest.dog_breed}</span> 
+															<span class="pl-2"></span> 
+															<span class="tag">성별</span><span></span> <span>${myRequest.dog_sex}</span>
+														</p>
+														<p class="pl-2">
+															<span class="tag">실종 장소</span><span> </span><span>${myRequest.found_location}</span>
+														</p>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -168,7 +172,7 @@
 														<div class="m-3 request_box soft_shadow no_round_border" style="width: 300px; height : 450px;">
 															<a class="no_text_deco" target="_blank" href="/lostpets/p001/view?board_id=${requestTo.board_id}">
 																<div class=" round_top_border o_hidden">
-																	<img class="round_top_border" style="width: 100%; height: 200px;" src='/resources/images/dog2.jpg'>
+																	<img class="round_top_border" style="width: 100%; height: 200px;" src='https://www.dingpet.shop/lost/${requestTo.front_name}'>
 																</div>
 					
 																<div class="p-3  o_hidden" style = "height: 190px;">

@@ -93,6 +93,7 @@ $(document).ready(function(){
 				                    <li><a href="/lostpets/p001/list" class="nav-link">멍멍이 찾기</a></li>
 				                    <li><a href="/lostpets/p001/lostList" class="nav-link">주인 찾기</a></li>
 				                    <li><a href="/lostpets/p001/findList"  class="nav-link">반려견 찾기</a></li>
+				                    <li><a href="/lostpets/p001/completedList"  class="nav-link">완료 목록</a></li>
 				                    <c:if test = "${not empty customers.member_id }">
 				                    	<li><a href="/lostpets/request/list?member_id=${customers.member_id }"  class="nav-link">내 요청 목록</a></li>
 				                    </c:if>
