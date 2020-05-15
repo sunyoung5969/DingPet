@@ -25,6 +25,9 @@ update member set member_type = 'user' where member_id = #{member_id}
 <delete id="delete">
 	delete from member where member_id = #{member_id}
 </delete>
+<delete id="delete1">
+	delete from priv_user where member_id = #{member_id}
+</delete>
 <delete id="deletePet">
 	delete from dog where member_id = #{member_id}
 </delete>
@@ -117,7 +120,11 @@ update member set member_type = 'user' where member_id = #{member_id}
 	where m.member_id = pu.member_id 
 	and m.member_id=#{member_id} and m.member_pwd=#{member_pwd}
 </select>
-
+<select id="readPrivNo" resultType="String">
+	select privilege_id
+	from priv_user
+	where member_id = #{member_id}
+</select>
 <!-- 펫정보 -->
 <select id="dogInfo" resultType="com.dingpet.customers.p001.vo.Customers_P001_VO">
 	select member_id, dog_name, dog_breed, dog_sex, dog_size, activity_level, dog_note, dog_photo

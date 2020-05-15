@@ -86,33 +86,48 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
     
 	*/
 
-    
     //로그인 처리
 	@RequestMapping(value = "/signin", method = {RequestMethod.POST })
 	public ModelAndView signin(Customers_P001_VO customers, RedirectAttributes rttr, Model model)
 	throws Exception{
 		
+		log.info("로그인처리 controller");
+		log.info("입력된 값:"+customers);
 		ModelAndView mav = new ModelAndView();
 		
 		Customers_P001_VO result = service.loginCheck(customers); 
-		List<Customers_P001_VO> dogResult = service.dogInfo(customers); 
+		String privNo = service.readPrivNo(customers);
+		//Customers_P001_VO dogResult = service.dogInfo(customers); 
+		log.info("result:"+result);
+		log.info("privNo:"+privNo);
 		
+		//log.info("권한번호:"+result.getPrivilege_id());
+		//String pId = (String)result.getPrivilege_id();
 		//String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
 		//System.out.println("네이버:" + naverAuthUrl);
 		//model.addAttribute("url", naverAuthUrl);
 		 
-		if(result != null) {
+		if(result != null && privNo.equals("02")) { //일반
 			HttpSession session = request.getSession(); //세션처리
 			session.setAttribute("customers", result);
-			session.setAttribute("dogs", dogResult);
+			//session.setAttribute("dogs", dogResult);
 			session.setAttribute("isLogOn", true);
 
 			log.info(session.getAttribute("customers"));
-			log.info("로그인 성공");
+			log.info("@로그인 성공@");
+			mav.setViewName("redirect:/");
+			
+		} else if(result != null && privNo.equals("00")){
+			HttpSession session = request.getSession(); 
+			session.setAttribute("customers", result);
+			//session.setAttribute("dogs", dogResult);
+			session.setAttribute("adLogOn", true);
+			log.info(session.getAttribute("customers"));
+			log.info("@관리자 로그인 성공@");
 			mav.setViewName("redirect:/");
 			
 		} else {
-			log.info("로그인 실패");
+			log.info("@로그인 실패@");
 			mav.setViewName("redirect:/customers/p001/signin");
 			rttr.addFlashAttribute("fail", "아이디와 비밀번호가 일치하지 않습니다");
 		}
@@ -169,6 +184,7 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		log.info("회원정보:"+info);
 		log.info(info.getMember_id());
 		service.withdraw(info);
+		service.withdraww(info);
 		service.withdrawPet(info);
 		//rttr.addFlashAttribute("result", "success");
 		session.removeAttribute("customers");
@@ -240,6 +256,7 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		log.info("로그아웃");
 		session.removeAttribute("customers");
 		session.removeAttribute("isLogOn");
+		session.removeAttribute("adLogOn");
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/");
 		return mav;

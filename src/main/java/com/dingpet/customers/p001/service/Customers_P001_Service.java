@@ -25,6 +25,7 @@ public interface Customers_P001_Service {
 
 	//로그인
 	public Customers_P001_VO loginCheck(Customers_P001_VO customers);
+	public String readPrivNo(Customers_P001_VO privNo) ;
 
 	
 	//id중복체크
@@ -46,4 +47,6 @@ public interface Customers_P001_Service {
 	//탈퇴
 	public boolean withdraw(Customers_P001_VO id);
 	public boolean withdrawPet(Customers_P001_VO id);
+	public boolean withdraww(Customers_P001_VO id) ;
+
 }
