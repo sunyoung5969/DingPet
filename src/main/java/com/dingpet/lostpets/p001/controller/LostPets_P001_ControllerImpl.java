@@ -27,16 +27,6 @@ import com.dingpet.lostpets.p001.service.LostPets_P001_Service;
 import com.dingpet.lostpets.p001.vo.Criteria;
 import com.dingpet.lostpets.p001.vo.LostPets_P001_VO;
 import com.dingpet.lostpets.p001.vo.PageDTO;
-import com.google.cloud.vision.v1.AnnotateImageRequest;
-import com.google.cloud.vision.v1.AnnotateImageResponse;
-import com.google.cloud.vision.v1.BatchAnnotateImagesResponse;
-import com.google.cloud.vision.v1.EntityAnnotation;
-import com.google.cloud.vision.v1.Feature;
-import com.google.cloud.vision.v1.Feature.Type;
-import com.google.cloud.vision.v1.Image;
-import com.google.cloud.vision.v1.ImageAnnotatorClient;
-
-import com.google.protobuf.ByteString;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
