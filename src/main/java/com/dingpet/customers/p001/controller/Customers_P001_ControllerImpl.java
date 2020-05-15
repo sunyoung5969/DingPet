@@ -97,7 +97,7 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		
 		Customers_P001_VO result = service.loginCheck(customers); 
 		String privNo = service.readPrivNo(customers);
-		//Customers_P001_VO dogResult = service.dogInfo(customers); 
+		List<Customers_P001_VO> dogResult = service.dogInfo(customers); 
 		log.info("result:"+result);
 		log.info("privNo:"+privNo);
 		
@@ -110,7 +110,7 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		if(result != null && privNo.equals("02")) { //일반
 			HttpSession session = request.getSession(); //세션처리
 			session.setAttribute("customers", result);
-			//session.setAttribute("dogs", dogResult);
+			session.setAttribute("dogs", dogResult);
 			session.setAttribute("isLogOn", true);
 
 			log.info(session.getAttribute("customers"));
@@ -120,7 +120,7 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		} else if(result != null && privNo.equals("00")){
 			HttpSession session = request.getSession(); 
 			session.setAttribute("customers", result);
-			//session.setAttribute("dogs", dogResult);
+			session.setAttribute("dogs", dogResult);
 			session.setAttribute("adLogOn", true);
 			log.info(session.getAttribute("customers"));
 			log.info("@관리자 로그인 성공@");
@@ -192,6 +192,7 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		return "redirect:/customers/p004/withdraw_";	
 	}
 	
+	
 	//내정보조회
 	@RequestMapping(value="/myinfo", method={RequestMethod.GET})
 	public void myinfo(Customers_P001_VO cust, Model model) {
@@ -199,6 +200,7 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		log.info(session.getAttribute("customers"));
 		log.info("세션에 저장된 회원정보를 가져와서 내 정보를 조회:" +service.myinfo((Customers_P001_VO)session.getAttribute("customers")));
 		model.addAttribute("customers", service.myinfo((Customers_P001_VO)session.getAttribute("customers")));
+		model.addAttribute("dogs", service.dogInfo((Customers_P001_VO)session.getAttribute("dogs")));
 	}
 	
 	//정보수정
@@ -402,7 +404,6 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		
 	}
 
-	@Override
 	public void myinfo() {
 		
 	}

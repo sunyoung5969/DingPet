@@ -11,7 +11,7 @@ import com.dingpet.customers.p001.vo.Customers_P001_VO;
 public interface Customers_P001_Controller {
 	
 	public void toMyinfo(); //내정보조회
-	public void myinfo(); //내정보조회
+	public void myinfo(Customers_P001_VO cust, Model model); //내정보조회
 	public void readPetSitter(String id); //펫시터 신청서 조회
 	public String signin(Model model, HttpSession session); //로그인
 	public void signout(); //로그아웃

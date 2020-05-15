@@ -470,8 +470,8 @@
             <div class="paws">
               <span class="icon-paw"></span>
             </div>
-            <h2 class="text-black mb-2">Our Services</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            <h2 class="text-black mb-2">서비스</h2>
+            <p>딩펫에서 제공되는 서비스 리스트 입니다.</p>
           </div>
         </div>
         <div class="row">
@@ -479,23 +479,23 @@
             
             <div class="block_service">
               <img src="${pageContext.request.contextPath}/resources/images/dogger_checkup.svg" alt="Image mb-5">
-              <h3>Dog Checkup</h3>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+              <h3>애견 상태 확인</h3>
+              <p>애견상태를 상시로 확인 하고있습니다.</p>
             </div>
 
           </div>
           <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up"  data-aos-delay="100">
             <div class="block_service">
               <img src="${pageContext.request.contextPath}/resources/images/dogger_dermatology.svg" alt="Image mb-5">
-              <h3>Dog Dermatology</h3>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+              <h3>애견 피부</h3>
+              <p>애견 피부 상태 또한 확인 하여<br> 건강한 모발을 유지 할 수 있습니다.</p>
             </div>
           </div>
           <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up"  data-aos-delay="200">
             <div class="block_service">
               <img src="${pageContext.request.contextPath}/resources/images/dogger_bones.svg" alt="Image mb-5">
-              <h3>For Strong Teeth</h3>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+              <h3>튼튼한 치아를 위해</h3>
+              <p>애견의 튼튼한 치아를 위해 개껌 등을<br> 제공하며 치아건강을 유지합니다</p>
             </div>
           </div>
 
@@ -504,23 +504,23 @@
             
             <div class="block_service">
               <img src="${pageContext.request.contextPath}/resources/images/dogger_veterinary.svg" alt="Image mb-5">
-              <h3>Dog First Aid</h3>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+              <h3>애견 응급치료</h3>
+              <p>어떠한 상황이 생겼을 때 <br>우선적으로 응급치료를 할 수 있도록 합니다.</p>
             </div>
 
           </div>
           <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up"  data-aos-delay="100">
             <div class="block_service">
               <img src="${pageContext.request.contextPath}/resources/images/dogger_dryer.svg" alt="Image mb-5">
-              <h3>Dog Dryer</h3>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+              <h3>애견 드라이</h3>
+              <p>애견의 모 상태를 체크하여<br>샤워후 젖은 애견의 드라이 서비스도 제공합니다. </p>
             </div>
           </div>
           <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up"  data-aos-delay="200">
             <div class="block_service">
               <img src="${pageContext.request.contextPath}/resources/images/dogger_veterinarian.svg" alt="Image mb-5">
-              <h3>Expert Veterinarian</h3>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+              <h3>전문 수의사</h3>
+              <p>항시 위기상황을 대비하여 <br>전문 수의사 선생님이 있습니다. </p>
             </div>
           </div>
             
