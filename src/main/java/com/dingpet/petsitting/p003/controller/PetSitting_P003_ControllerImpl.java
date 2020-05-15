@@ -70,9 +70,7 @@ public class PetSitting_P003_ControllerImpl implements PetSitting_P003_Controlle
 			JSONObject jsonOb = (JSONObject) jsonparser.parse(json);
 			JSONObject jsonOb2 = new JSONObject();
 			
-			
 			int count = Integer.parseInt(String.valueOf(jsonOb.get("count")));
-			System.out.println(logVO);
 
 			//json에 있는 객체를 가져오기
 			for(int i=0; i< count; i++) {
@@ -104,34 +102,7 @@ public class PetSitting_P003_ControllerImpl implements PetSitting_P003_Controlle
 	@Override
 	public void walklogregister(Model model, PetSitting_P003_VO logVO) {
 		// TODO Auto-generated method stub
-	/*
-	//----------------------------산책 경로 데이터 처리----------------------------------------
-		HttpSession session = request.getSession();
-		
-		//logVO.setReservation_ID("20200421160004");
-		
-		List<LocationVO> list = service.getLocation(logVO);
-		
-		String strJSON = "{ ";
-		int count = 0;
-		
-		for(int i=0; i<list.size(); i++) {
-
-			strJSON += "\"location_"+i+"\" : "
-					+ "{\"lat\":"+ list.get(i).getLat()+", \"lit\":"+list.get(i).getLit()+"}, ";
-			
-			count++;
-		}
-		
-		strJSON += "\"count\" : "+count+"}"; 
-				
-		logVO.setLocationJSON(strJSON);
-		
-		//model.addAttribute("vo", logVO);
-		 */
-		 
-	//----------------------------------------------------------------------------------------
-		System.out.println(logVO);
+	
 		model.addAttribute("walk", logVO);	
 		
 	}	
@@ -206,10 +177,9 @@ public class PetSitting_P003_ControllerImpl implements PetSitting_P003_Controlle
 			}
 		}
 	//----------------------------------------------------------------------------------
-	//---------------------------------- 산책 경로 저장 ------------------------------------
+	//---------------------------------- 산책 경로 저장 -------------------------------------
 		
 		if(logVO.getLog_Type().equals("walk")) {
-			System.out.println("여기타지?");
 			LocationVO locatioinVO = new LocationVO();
 			
 			//json형태의 문자열 가져오기
@@ -223,9 +193,7 @@ public class PetSitting_P003_ControllerImpl implements PetSitting_P003_Controlle
 				JSONObject jsonOb = (JSONObject) jsonparser.parse(json);
 				JSONObject jsonOb2 = new JSONObject();
 				
-				
 				int pathCount = Integer.parseInt(String.valueOf(jsonOb.get("count")));
-				System.out.println(logVO);
 
 				//json에 있는 객체를 가져오기
 				for(int i=0; i< pathCount; i++) {
@@ -248,17 +216,17 @@ public class PetSitting_P003_ControllerImpl implements PetSitting_P003_Controlle
 			
 		}		
 	//----------------------------------------------------------------------------------
-		System.out.println("일지작성 vo데이러 = "+logVO);
 		
 	//--------------------------------------- DB 삽입 -----------------------------------
-	
+		System.out.println("logVO = ? " +logVO );
 		service.logInsert(logVO);
-		
 	//----------------------------------------------------------------------------------
+		
 		model.addAttribute("receive_ID", service.getmemberID(logVO));
 		model.addAttribute("logdata", logVO);
 		request.setAttribute("regitser", "Y");
 		request.setAttribute("logVO", logVO);
+		
 		return "forward:loglookup";
 	}
 
@@ -268,8 +236,6 @@ public class PetSitting_P003_ControllerImpl implements PetSitting_P003_Controlle
 		// TODO Auto-generated method stub
 	//----------------------------산책 경로 데이터 처리----------------------------------------
 		HttpSession session = request.getSession();
-		
-		logVO.setReservation_ID("20200421160004");
 		
 		List<LocationVO> list = service.getLocation(logVO);
 		
@@ -305,10 +271,10 @@ public class PetSitting_P003_ControllerImpl implements PetSitting_P003_Controlle
 			logVO.setReservation_ID(request.getParameter("reservation_ID"));
 		}
 		
-		System.out.println("여기서의 logvo는?"+ logVO);
 		model.addAttribute("reservation_ID", logVO.getReservation_ID());
 		model.addAttribute("list", service.getLog(logVO));
 		model.addAttribute("count", service.getwalk(logVO));
+		System.out.println(logVO);
 	}
 
 }

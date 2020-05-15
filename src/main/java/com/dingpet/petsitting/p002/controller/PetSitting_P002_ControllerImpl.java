@@ -60,8 +60,6 @@ public class PetSitting_P002_ControllerImpl implements PetSitting_P002_Controlle
 		reserved.setOrder_ID(order_id);
 // -------------------------------------------------------------------	
 		
-		System.out.println("왜 안넘오인 : "+reserved);
-		
 		session.setAttribute("reinfo", reserved);
 		
 		return "redirect:" + kakaoPay.kakaoPayReady(reserved);	
@@ -83,7 +81,6 @@ public class PetSitting_P002_ControllerImpl implements PetSitting_P002_Controlle
         KakaoPayApprovalVO reserved_info = kakaoPay.kakaoPayInfo(pg_token, reserved);
                 
         SimpleDateFormat form = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        log.info("결제결제결제 " +reserved_info.getApproved_at());
         String date = form.format(reserved_info.getCreated_at());
         
    //--------------------------------------------------------------------------------------------
@@ -110,8 +107,6 @@ public class PetSitting_P002_ControllerImpl implements PetSitting_P002_Controlle
     	
     	service.deleteReserved(reserved);
 
-    	System.out.println("삭제완료 ㅎㅎ");
-    	
     	return "redirect: /petsitting/p002/reservationlist";
 	}
 

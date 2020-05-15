@@ -58,8 +58,6 @@ var calendar = {
 				$(".CalendarMonth").val(this.month);
 				$(".CalendarYear").val(this.year);
 				
-				//console.log(month);
-				
 				document.getElementsByClassName("CalendarMonth_small")[0].innerHTML = this.year + '년 ' + this.addzero(this.month, 2) +'월' ;
 				this.calendarDay();
 		}
@@ -149,7 +147,6 @@ var calendar = {
 				this.closed.splice(i, 1);
 				
 				$(click).css('background-color', 'white');
-				console.log($(click).val())
 				this.cancel = true;			// 휴무일이 저장되어있는 배열안에 클릭날짜와 같은 데이터가 있었다
 			}
 			
@@ -158,11 +155,7 @@ var calendar = {
 		if(!this.cancel){					// 휴무일이 저장되어있는 배열안에 클릭날짜와 같은 데이터가 없을 때
 			this.closed.push(closeddate);	// 휴무일 추가
 			$(click).css('background-color', 'black');
-			console.log($(click).val())
 		}
-		
-		console.log(this.closed.length);
-		console.log(this.closed);
 	
 	},
 	
@@ -191,15 +184,7 @@ var calendar = {
 		
 		savestr += "</div><div class='closed-saved--text'><h3 class='closed-saved-h3'>휴무일이 저장되었습니다.</h3></div>"
 		jsonstr	+= ']}';
-		/*
-		console.log(jsonstr);
 		
-		var jsonparse = JSON.parse(jsonstr);
-		
-		console.log(jsonparse);
-		
-		$(".closedSave").val(jsonparse);
-		*/
 		$(".closedDiv").empty();
 		$(".closedDiv").append(savestr);	// 뷰 출력용 문자열
 		$(".closedSave").val(jsonstr);		// json 문자열

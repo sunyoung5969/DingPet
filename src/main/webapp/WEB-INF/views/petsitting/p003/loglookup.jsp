@@ -82,6 +82,64 @@
 	margin: 10px;
 }
 
+.walkInfo{
+	cursor: pointer;
+    background: #fff;
+    width: 50px;
+    height: 50px;
+    border: double 5px indianred;
+    border-radius: 25px;
+    position: relative;
+    top: 80px;
+    left: 43%;
+    z-index: 9;
+}
+
+.walkInfo:hover{
+    background: indianred;
+    border: double 5px #fff;
+
+}
+
+.walkInfo:hover h2{
+    color: #fff;
+}
+
+.info-text{
+    margin: 0px;
+    font-size: 33px;
+    color: indianred;
+    padding-right: 3px;
+    padding-top: 2px;
+    font-style: italic;
+}
+.info-text-hover{
+    margin-top: 0px;
+    color: indianred;
+    font-size: 18px;
+}
+
+.walkInfo-detail{
+	height: 0px;
+}
+
+.info-table{
+	width: 25%;
+    border: solid 2px indianred;
+    border-radius: 11px;
+    position: relative;
+    display: none;
+    left: 33%;
+    top: 80px;
+    background: #fff;
+    z-index: 10;
+}
+
+.info-table--td{
+	border: none;
+	text-align: center;
+}
+
 @media screen and (max-width: 770px) {
 	
 	.main-raised {
@@ -115,10 +173,37 @@
 	.page-title{
 		font-size: 5vw !important; 
 	}
+	
+	.walkInfo {
+	    width: 40px;
+	    height: 40px;
+	    border-radius: 20px;
+	    top: 80px;
+	    left: 39%;
+	    z-index: 9;
+	}
+	
+	.info-text{
+	    font-size: 25px;
+	}
+	
+	.info-text-hover{
+	    margin-top: 7px;
+	    color: indianred;
+	    font-size: 12px;
+    }
+    
+    .info-table{
+	    width: 40%;
+	    left: 24%;
+	    top: 80px;
+    }
+    
+    .info-table--td{
+        padding: 0px;
+    }
 
 }
-
-
 
 
 </style>
@@ -148,9 +233,8 @@
 								<input type="hidden" class="walkcount" value="${count }">
 								<% int i = 0; %>
 								<c:forEach var="list" items="${list }" varStatus="statuss">
-									<input type="hidden" class="log_ID" name="log_ID" value="${list.log_ID }">
-									<input type="hidden" class="locationJSON_<%=i %>" value='${list.locationJSON }'>
 									<div class="log-container">
+										<input type="hidden" class="log_ID" name="log_ID" value="${list.log_ID }">
 										<div>
 											<h3 class="log-time" align="left"> ${list.log_Date } </h3>
 										</div>
@@ -158,136 +242,131 @@
 											<h5 class="log-tilte">${list.log_Title }</h5>
 										</div>
 										<c:if test="${list.log_Type == 'nomal'}">
-										<div>
-											<img class="log-pic" src="/resources/images/dogger_img_sm_4.jpg">
-										</div>
+											<c:if test="${list.log_Photo != null}">
+												<div>
+													<img class="log-pic" src="/resources/images/dogger_img_sm_4.jpg">
+												</div>
+											</c:if>
+											<div class="log-content-div">
+												<small class="log-content">${list.log_Content }</small>
+											</div>
 										</c:if>
 										<c:if test="${list.log_Type == 'walk' }">
+											<input type="hidden" class="locationJSON_<%=i %>" value='${list.locationJSON }'>
+											<div class="walkInfo"><h2 class="info-text">i</h2></div>
+											<div class="walkInfo-detail">
+												<table class="info-table">
+													<tr>
+														<td class="info-table--td"><h4 class="info-text-hover">총 산책 거리</h4></td> 
+														<td class="info-table--td"><h4 class="info-text-hover"> : </h4></td>
+														<td class="info-table--td"><h4 class="info-text-hover">${list.distance }</h4></td>
+													</tr>
+													<tr>
+														<td class="info-table--td"><h4 class="info-text-hover">산책 시작 시간</h4></td> 
+														<td class="info-table--td"><h4 class="info-text-hover"> : </h4></td>
+														<td class="info-table--td"><h4 class="info-text-hover">${list.start_Time }</h4></td>													
+													</tr>
+													<tr>
+														<td class="info-table--td"><h4 class="info-text-hover">산책 종료 시간</h4></td> 
+														<td class="info-table--td"><h4 class="info-text-hover"> : </h4></td>
+														<td class="info-table--td"><h4 class="info-text-hover">${list.end_Time }</h4></td>													
+													</tr>
+												</table>
+											</div>
+											
 											<div class="map-div" id="map_<%=i++ %>" value="${list.log_ID }" style="width: 100%; height: 350px;"></div>
+											
+											<c:if test="${list.log_Photo != null}">
+												<div>
+													<img class="log-pic" src="/resources/images/dogger_img_sm_4.jpg">
+												</div>
+											</c:if>
+											
+											<div class="log-content-div">
+												<small class="log-content">${list.log_Content }</small>
+											</div>
+											
 										</c:if>
-										<div class="log-content-div">
-											<small class="log-content">${list.log_Content }</small>
-										</div>
 									</div>
 								</c:forEach>
+								
+								<script>
+									function map (){
+									// ------------------------ 중심 좌표 구하기 ------------------------------
+										//var map = new Array();
+										var latArr = new Array();	// 위도 담을 배열
+										var litArr = new Array();	// 경도 담을 배열
+										var minLat = '';			// 위도 중 제일 작은 값
+										var maxLat = '';			// 위도 중 제일 큰 값
+										var minLit = '';			// 경도 중 제일 작은 값
+										var maxLit = '';			// 경도 중 제일 큰 값
+		
+										var count = $(".walkcount").val();
+										var logID = '';
+										for(var i=0; i<count; i++){
+											latArr = [];
+											litArr = [];
+											var strJSON = $(".locationJSON_"+i).val();	// JSON 문자열 가져오기
+											var jsonOb = '';
+											console.log("???????????????????"+strJSON);
+											var jsonparse = JSON.parse(strJSON);		// JSON문자열 파싱
 											
-						<script>
-							function map (){
-
-							// ------------------------ 중심 좌표 구하기 ------------------------------
-								//var map = new Array();
-								var latArr = new Array();	// 위도 담을 배열
-								var litArr = new Array();	// 경도 담을 배열
-								var minLat = '';			// 위도 중 제일 작은 값
-								var maxLat = '';			// 위도 중 제일 큰 값
-								var minLit = '';			// 경도 중 제일 작은 값
-								var maxLit = '';			// 경도 중 제일 큰 값
-
-								var count = $(".walkcount").val();
-								console.log(count)
-								var logID = '';
-								for(var i=0; i<count; i++){
-									latArr = [];
-									litArr = [];
-									//console.log($(".locationJSON_"+i).val().toString())
-									var strJSON = $(".locationJSON_"+i).val();	// JSON 문자열 가져오기
-									var jsonOb = '';
-									
-									var jsonparse = JSON.parse(strJSON);		// JSON문자열 파싱
-									
-									for(var j=0; j<jsonparse.count; j++){
-										jsonOb = jsonparse['location_'+j];		// JSON안의 객체 가져오기
-									
-										latArr.push(jsonOb.lat);				// 위도들 배열에 담기
-										litArr.push(jsonOb.lit);				// 경도들 배열에 담기
+											for(var j=0; j<jsonparse.count; j++){
+												jsonOb = jsonparse['location_'+j];		// JSON안의 객체 가져오기
+											
+												latArr.push(jsonOb.lat);				// 위도들 배열에 담기
+												litArr.push(jsonOb.lit);				// 경도들 배열에 담기
+											}
+											latArr.sort();		// 정렬
+											litArr.sort();		// 정렬
+											
+											minLat = latArr[0];
+											minLit = litArr[0];
+											maxLat = latArr[latArr.length-1];
+											maxLit = litArr[litArr.length-1];
+											
+											var centerLat = parseFloat(minLat) + ((maxLat - minLat) / 2);	// 위도 중심좌표 구하기
+											var centerLit = parseFloat(minLit) + ((maxLit - minLit) / 2);	// 경도 중심좌표 구하기
+		
+										// ---------------------------------------------------------------------									
+											
+								      		logID = "map_";
+								      		logID += i;
+									  		var mapContainer = document.getElementById("map_"+i) // 지도를 표시할 div
+									  		mapOption = {
+									  		center : new kakao.maps.LatLng(centerLat, centerLit), // 지도의 중심좌표
+									  		level : 5		// 지도의 확대 레벨
+									  		};
+									  		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+									  		
+									  		
+									  		// 선을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 선을 표시합니다
+									  		var linePath = new Array();
+									  		
+									  		for(var k=0; k<jsonparse.count; k++){
+									  			linePath.push(new kakao.maps.LatLng(jsonparse['location_'+k].lat, jsonparse['location_'+k].lit));
+									  		}
+		
+									  		// 지도에 표시할 선을 생성합니다
+									  		var polyline = new kakao.maps.Polyline({
+									  			path : linePath,			// 선을 구성하는 좌표배열 입니다
+									  			strokeWeight : 5,			// 선의 두께 입니다
+									  			strokeColor : '#37c5be',	// 선의 색깔입니다
+									  			strokeOpacity : 0.7,		// 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+									  			strokeStyle : 'solid'		// 선의 스타일입니다
+									  		});
+		
+									  		// 지도에 선을 표시합니다
+									  		polyline.setMap(map);
+										}
 									}
-									latArr.sort();		// 정렬
-									litArr.sort();		// 정렬
 									
-									minLat = latArr[0];
-									minLit = litArr[0];
-									maxLat = latArr[latArr.length-1];
-									maxLit = litArr[litArr.length-1];
-									
-									var centerLat = parseFloat(minLat) + ((maxLat - minLat) / 2);	// 위도 중심좌표 구하기
-									var centerLit = parseFloat(minLit) + ((maxLit - minLit) / 2);	// 경도 중심좌표 구하기
-
-								// ---------------------------------------------------------------------									
-									
-						      		logID = "map_";
-						      		logID += i;
-						      		console.log(logID);
-							  		var mapContainer = document.getElementById("map_"+i) // 지도를 표시할 div
-							  		console.log("맵컨테이너" + mapContainer)
-							  		//centerLat *= 1;
-							  		//centerLit *= 1;
-							  		console.log("센터값 머들어가 = "+centerLat)
-							  		console.log("센터값 머들어가 = "+centerLit)
-							  		mapOption = {
-							  		center : new kakao.maps.LatLng(centerLat, centerLit), // 지도의 중심좌표
-							  		level : 5		// 지도의 확대 레벨
-							  		};
-							  		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-							  		
-							  		
-							  		// 선을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 선을 표시합니다
-							  		var linePath = new Array();
-							  		
-							  		for(var k=0; k<jsonparse.count; k++){
-							  			linePath.push(new kakao.maps.LatLng(jsonparse['location_'+k].lat, jsonparse['location_'+k].lit));
-							  		}
-
-							  		console.log(linePath)
-
-							  		// 지도에 표시할 선을 생성합니다
-							  		var polyline = new kakao.maps.Polyline({
-							  			path : linePath,			// 선을 구성하는 좌표배열 입니다
-							  			strokeWeight : 5,			// 선의 두께 입니다
-							  			strokeColor : '#37c5be',	// 선의 색깔입니다
-							  			strokeOpacity : 0.7,		// 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-							  			strokeStyle : 'solid'		// 선의 스타일입니다
-							  		});
-
-							  		// 지도에 선을 표시합니다
-							  		polyline.setMap(map);
-								}
-							}
-							
-					    </script>
+							    </script>
+								
 								<script>map()</script>
-								
-								<div class="log-container">
-									<input type="hidden" class="log_ID" name="log_ID">
-									<div>
-										<h3 class="log-time" align="left"> 2020/05/01 14:44 </h3>
-									</div>
-									<div>
-										<h5 class="log-tilte"> 일 지 타 이 틀</h5>
-									</div>
-									<div>
-										<img class="log-pic" src="/resources/images/dogger_img_sm_4.jpg">
-									</div>
-									<div class="log-content-div">
-										<small class="log-content"> 일지 내용 입니다 여기에 적어주세요 뭐했는지 여기에 내용이 나옵니다일지 내용 입니다 여기에 적어주세요 뭐했는지 여기에 내용이 나옵니다일지 내용 입니다 여기에 적어주세요 뭐했는지 여기에 내용이 나옵니다</small>
-									</div>
-								</div>
-								
-								<div class="log-container">
-									<div>
-										<h3 class="log-time" align="left"> 2020/05/01 14:44 </h3>
-									</div>
-									<div>
-										<h5 class="log-tilte"> 일 지 타 이 틀</h5>
-									</div>
-									<div class="map-div" id="map" style="width: 100%; height: 350px;"></div>
-									<div class="log-content-div">
-										<small class="log-content"> 일지 내용 입니다 여기에 적어주세요 뭐했는지 여기에 내용이 나옵니다일지 내용 입니다 여기에 적어주세요 뭐했는지 여기에 내용이 나옵니다일지 내용 입니다 여기에 적어주세요 뭐했는지 여기에 내용이 나옵니다</small>
-									</div>
-								</div>
 							
 							</div>
 						</div>						
-					
 					</form>
 				</div>
 			</div>
@@ -301,9 +380,7 @@
 
 		setTimeout(function() {
 			if($(".register").val()=='Y'){
-				console.log("여기타니??222222")
 				formnotice();
-				console.log("여기타니??333333333")
 			}
 		}, 500);
 				
@@ -317,7 +394,6 @@
 	/*알림내용*/	"notice_Contents" : "새로운 일지가 등록 되었습니다.",
 				"url" : "petsitting/p003/loglookup?reservation_ID=" + $(".reservation_ID").val()	// 알림 메시지 클릭 시 이동할 매핑주소
 			}
-			console.log("1111111111111111111111111111111")
 			//스크랩 알림 DB저장
 			$.ajax({
 				type : 'post',
@@ -326,17 +402,10 @@
 				dataType : 'json',
 				async: false,
 				success : function(data){
-					console.log("22222222222222222222222222222")
-					
 					if(socket){		// 열려있는 소켓이 있으면
-						console.log("3333333333333333333333333333333333")
-
 						// websocket에 보내기 (reserved, 보내는사람, 받는사람, 예약번호)
 						let socketMsg = "reserved,"+ $(".member_ID").val()+","+$(".receive_ID").val()+","+"20938123";
-						console.log("msg : " + socketMsg);	// 실시간 알림메시지 확인
 						socket.send(socketMsg);				// 실시간 알림 메시지 전송
-						console.log("44444444444444444444444444444444444")
-
 					}
 				},
 				error : function(err){
@@ -344,4 +413,12 @@
 				}
 			});
 		}
+		
+		$(".walkInfo").on('mouseover', function(){
+			$(".info-table").toggle();
+		})
+		
+		$(".walkInfo").on('mouseout', function(){
+			$(".info-table").toggle();
+		})
 </script>

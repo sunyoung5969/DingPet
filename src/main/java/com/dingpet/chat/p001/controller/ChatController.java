@@ -57,7 +57,6 @@ public class ChatController {
 		List<Map<String, Object>> resultMap = null;
 		List<Map<String, Object>> tmp = null;
 		List<String> classList = null;
-			
 		
 		log.info(resultMap);
 		return resultMap;

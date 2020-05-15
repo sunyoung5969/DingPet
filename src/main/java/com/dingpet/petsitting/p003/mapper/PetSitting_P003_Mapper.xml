@@ -30,7 +30,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="getLog" resultType="com.dingpet.petsitting.p003.vo.PetSitting_P003_VO">
-		select * from log where reservation_id = #{reservation_ID}
+		select log_id, reservation_id, log_date, log_type, 
+			   log_title, log_content, log_photo, distance, 
+			   substr(start_time, -5) as start_time, substr(end_time, -5) as end_time, locationjson
+		from log where reservation_id = #{reservation_ID}
 		order by log_id desc
 	</select>
 	

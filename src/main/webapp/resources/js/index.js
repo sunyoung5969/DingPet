@@ -6,14 +6,14 @@ $(document).ready(function() {
 });
 
 function connectWs() {
-	// sock = new WebSocket( 'ws://localhost:8099/echo/websocket');
-	sock = new SockJS('http://localhost:8080/echo');
+	//sock = new WebSocket( 'ws://localhost:8080/echo/websocket');
+	// sock = new SockJS('http://localhost:8080/echo');
+	sock = new SockJS('https://www.dingpet.shop/echo');
 	// sock = new SockJS('/replyEcho');
 	socket = sock;
 
 	sock.onopen = function() {
 		console.log('info: connection opened.');
-		console.log($(".member_ID").val())
 		
 		$(".notice-div").css("display","block");
 		$(".messege-div").css("display","block");
@@ -34,7 +34,6 @@ function connectWs() {
 					$('.notice_count--text').empty();
 					$('.notice_count--text').text(data.count);
 					
-					console.log("알림수 체크체크 = " +data.count);
 				}
 			},
 			error : function(err){
@@ -47,7 +46,6 @@ function connectWs() {
 	//메세지 받았을 떄
 	sock.onmessage = function(evt) {
 		
-		console.log( $(".member_ID").val());
 		$.ajax({
 			url : '/common/notice/noticeCount',	// 카운터하는 컨트롤러로 디비에서 select count 가지고와야지
 			type : 'POST',
@@ -64,7 +62,6 @@ function connectWs() {
 					$('.notice_count--text').empty();
 					$('.notice_count--text').text(data.count);
 					
-					console.log("알림수 체크체크 = " +data.count);
 				}
 			},
 			error : function(err){

@@ -360,8 +360,6 @@
 			
 			var currentDate = year+month+day;
 			
-			console.log("askldjklandla"+currentDate)
-			
 			return currentDate
 		}
 		

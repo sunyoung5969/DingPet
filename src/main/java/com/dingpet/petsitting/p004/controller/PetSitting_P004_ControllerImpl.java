@@ -60,7 +60,6 @@ public class PetSitting_P004_ControllerImpl implements PetSitting_P004_Controlle
 		
 	//--------------------------------------------------------------
 		
-		System.out.println("리뷰데이터 볼거에용"+reviewVO);
 		model.addAttribute("ok", reviewVO);
 		
 		service.setReview(reviewVO);
