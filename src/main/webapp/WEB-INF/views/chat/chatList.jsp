@@ -27,12 +27,10 @@ function checkPersonnel(roomNo, roomPw, result) {
 		success:function(data) {
 	    	  /* alert(data); */
 			if (data >= 6) {
-				console.log("들어갈 수 없습니다");
 					return false;
 			} else {
 				console.log("방에 입장 중 입니다.");
 				if(!onoff){
-					console.log("한번만 연겨려렬려려려려려려렬")
 					chatcon();
 				}
 	
@@ -130,7 +128,13 @@ function submitForm(roomNo){
 							<div class="friend-drawer friend-drawer--onhover" onclick="return checkPersonnel(${room.roomNo}, ${room.roomNo}, true)">
 								<small></small>
 								<div class="text">
-									<h6>${room.roomMember == customers.member_id ? room.room_owner : room.roomMember}</h6>
+								<c:if test="${empty room.bnick}">
+									<c:set var="bnick" value="존재하지 않는 사용자" />
+								</c:if>
+								<c:if test="${empty room.anick}">
+									<c:set var="anick" value="존재하지 않는 사용자" />
+								</c:if>
+									<h6>${room.roomMember == customers.member_id ? room.anick : room.bnick}</h6>
 								</div>
 							</div>
 						</c:when>

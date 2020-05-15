@@ -15,7 +15,6 @@ public class CustomersP005ServiceImple implements CustomersP005Service{
 	
 	private CustomersP005Mapper mapper;
 	
-	@Override
 	public CustomersP005VO inbox(String member_id) {
 		log.info("메세지함service");
 		return mapper.inbox(member_id);

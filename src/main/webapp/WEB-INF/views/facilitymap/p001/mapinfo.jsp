@@ -240,7 +240,7 @@ background:url(${pageContext.request.contextPath}/resources/images/ministar.png)
                                 
                                 <p class="comment-form-comment pt-3">
                                     <label for="comment">리뷰</label> 
-                                    <textarea id="review_content" name="review_content" cols="45" rows="8"  class="form-control" maxlength="255" required="required" placeholder = "댓글을 쓰려면 먼저 로그인 해주세요!" disabled></textarea>
+                                    <textarea id="review_content" name="review_content" cols="45" rows="8"  class="form-control" maxlength="255" required="required" placeholder = "리뷰를 쓰려면 먼저 로그인 해주세요!" disabled></textarea>
                                 </p>
                                 <p class="comment-form-author">
                                     <label for="author">이름 <span class="required">*</span></label> 
@@ -262,8 +262,6 @@ background:url(${pageContext.request.contextPath}/resources/images/ministar.png)
         </div>
       </section>
     <!--====  end of contents  ====-->  
-console.log(${info.site_date});
-console.log(${info.place_name});
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <!-- 댓글 ajax 처리 -->
 <script type = "text/javascript" src = "/resources/js/facilityMapReply.js?v=2"></script>
@@ -272,7 +270,7 @@ $(document).ready(function() {
 	var loggedInId = '${customers.member_id}';
 		
 	if(loggedInId){
-		$("#review_content").attr("placeholder", "안녕하세요," + loggedInId + "님! 댓글을 남겨 회원들과 소통해보세요!(최대 250자)");
+		$("#review_content").attr("placeholder", "안녕하세요, " + loggedInId + " 님! 리뷰를 남겨 회원들과 소통해보세요!(최대 250자)");
 		$("#review_content").removeAttr("disabled");
 	}
 	$('#review_content').on('keyup', function() {
@@ -322,8 +320,6 @@ function showList(pageNum){
 		function(replyCnt, list){
 			var str = "";
 			loggedInId = '${customers.member_id}';
-	        console.log("replyCnt: "+ replyCnt );
-	        console.log("list: " + list);
 	        if(pageNum == -1){
 	          pageNume = Math.ceil(replyCnt/10.0);
 	          showList(pageNume);
@@ -385,7 +381,6 @@ function showList(pageNum){
 		        str+= "<li class='page-item'><a class='page-link' href='"+(endNum + 1)+"'>Next</a></li>";
 		    }		      
 		   str += "</ul></div>";
-		   console.log(str);
 		   replyPageFooter.html(str);
 		   }
 		     
@@ -393,7 +388,6 @@ function showList(pageNum){
 		     e.preventDefault();
 		     console.log("page click");
 		     var targetPageNum = $(this).attr("href");		        
-		     console.log("targetPageNum: " + targetPageNum);		        
 		     pageNum = targetPageNum;		        
 		     showList(pageNum);
 		   });     				

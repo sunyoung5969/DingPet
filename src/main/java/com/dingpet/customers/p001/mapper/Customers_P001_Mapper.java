@@ -24,6 +24,7 @@ public interface Customers_P001_Mapper {
 
 	//로그인 
 	public Customers_P001_VO loginCheck(Customers_P001_VO customers);
+	public String readPrivNo(Customers_P001_VO privNo);
 	
 	//id중복체크
 	public int overlappedId(String id);
@@ -32,7 +33,7 @@ public interface Customers_P001_Mapper {
 	//일반회원 정보조회
 	public Customers_P001_VO read(Customers_P001_VO cust);
 	public List<Customers_P001_VO> dogInfo(Customers_P001_VO cust);
-	public Customers_P001_VO readPw(Customers_P001_VO cust);
+	public String readPw(Customers_P001_VO cust);
 	
 	//펫시터회원 정보조회
 	public Customers_P001_VO readPetSitter(String id);
@@ -43,6 +44,7 @@ public interface Customers_P001_Mapper {
 	
 	//탈퇴
 	public boolean delete(Customers_P001_VO id);
+	public boolean delete1(Customers_P001_VO id);
 	public boolean deletePet(Customers_P001_VO id);
 
 }

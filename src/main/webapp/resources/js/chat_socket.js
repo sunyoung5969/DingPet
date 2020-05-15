@@ -26,9 +26,7 @@
         }
         
         client.connect({}, function () {
-        	console.log("채팅방")
         	roomNo = $('.content').data('room-no');
-        	console.log("룸넘버버버버버 : " +roomNo)
         	// 여기는 입장시
         	client.send('/app/join/'+ roomNo , {}, JSON.stringify({ writer: member})); 
 //           일반메세지 들어오는곳         
@@ -89,7 +87,6 @@
       
 
 	function closeConnection() {
-		console.log("퇴장")
 		onoff = false;
 	    sock.close();
 	}

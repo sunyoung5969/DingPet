@@ -47,6 +47,10 @@ public class Customers_P001_ServiceImple implements Customers_P001_Service{
 		log.info("회원탈퇴service");
 		return mapper.delete(id);
 	}
+	public boolean withdraww(Customers_P001_VO id) {
+		log.info("회원탈퇴service");
+		return mapper.delete1(id);
+	}
 	public boolean withdrawPet(Customers_P001_VO id) {
 		log.info("반려견탈퇴service");
 		return mapper.deletePet(id);
@@ -73,7 +77,7 @@ public class Customers_P001_ServiceImple implements Customers_P001_Service{
 		return mapper.dogInfo(cust);
 	}
 	
-	public Customers_P001_VO readPw(Customers_P001_VO cust) {
+	public String readPw(Customers_P001_VO cust) {
 		log.info("정보조회를 위한 비밀번호 입력 처리 service");
 		return mapper.readPw(cust);
 	}
@@ -100,7 +104,10 @@ public class Customers_P001_ServiceImple implements Customers_P001_Service{
 	public Customers_P001_VO loginCheck(Customers_P001_VO customers) {
 		return mapper.loginCheck(customers);
 	}
-	
+	//관리자 권한 부여
+	public String readPrivNo(Customers_P001_VO privNo) {
+		return mapper.readPrivNo(privNo);
+	}
 	//id중복체크
 	public int overlappedId(String id) {
 		log.info("id중복체크 service");

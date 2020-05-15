@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 import javax.mail.internet.MimeMessage;
@@ -15,16 +16,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -32,7 +33,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dingpet.customers.p001.service.Customers_P001_Service;
 import com.dingpet.customers.p001.vo.Customers_P001_VO;
-
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -50,6 +50,11 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 	HttpServletResponse response;
 	HttpSession session;
 
+	@RequestMapping(value = "test", method = {RequestMethod.GET})
+	public void test() {
+		log.info("test");
+	}
+	
 	@RequestMapping(value = "/admin_board", method = {RequestMethod.GET})
 	public void list(Model model) {
 		log.info("펫시터 전환 신청자 목록 controller");
@@ -69,36 +74,83 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		log.info("로그인 화면");
 	}
 	
+	/*
+	private NaverLoginBO naverLoginBO;
+    private String apiResult = null;
+    
+   
+    @Autowired
+    private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
+        this.naverLoginBO = naverLoginBO;
+    }
+    
+	*/
+
     //로그인 처리
 	@RequestMapping(value = "/signin", method = {RequestMethod.POST })
-	public ModelAndView signin(Customers_P001_VO customers, RedirectAttributes rttr)
+	public ModelAndView signin(Customers_P001_VO customers, RedirectAttributes rttr, Model model)
 	throws Exception{
 		
+		log.info("로그인처리 controller");
+		log.info("입력된 값:"+customers);
 		ModelAndView mav = new ModelAndView();
 		
 		Customers_P001_VO result = service.loginCheck(customers); 
-		List<Customers_P001_VO> dogResult = service.dogInfo(customers); 
+		String privNo = service.readPrivNo(customers);
+		//Customers_P001_VO dogResult = service.dogInfo(customers); 
+		log.info("result:"+result);
+		log.info("privNo:"+privNo);
+		
+		//log.info("권한번호:"+result.getPrivilege_id());
+		//String pId = (String)result.getPrivilege_id();
+		//String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
+		//System.out.println("네이버:" + naverAuthUrl);
+		//model.addAttribute("url", naverAuthUrl);
 		 
-		if(result != null) {
+		if(result != null && privNo.equals("02")) { //일반
 			HttpSession session = request.getSession(); //세션처리
 			session.setAttribute("customers", result);
-			session.setAttribute("dogs", dogResult);
+			//session.setAttribute("dogs", dogResult);
 			session.setAttribute("isLogOn", true);
 
 			log.info(session.getAttribute("customers"));
-			log.info("로그인 성공");
+			log.info("@로그인 성공@");
+			mav.setViewName("redirect:/");
+			
+		} else if(result != null && privNo.equals("00")){
+			HttpSession session = request.getSession(); 
+			session.setAttribute("customers", result);
+			//session.setAttribute("dogs", dogResult);
+			session.setAttribute("adLogOn", true);
+			log.info(session.getAttribute("customers"));
+			log.info("@관리자 로그인 성공@");
 			mav.setViewName("redirect:/");
 			
 		} else {
-			log.info("로그인 실패");
+			log.info("@로그인 실패@");
 			mav.setViewName("redirect:/customers/p001/signin");
 			rttr.addFlashAttribute("fail", "아이디와 비밀번호가 일치하지 않습니다");
 		}
 		return mav;
 	}
 	
-
+	/*
 	
+	@RequestMapping("/callback")
+	public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
+	            throws IOException {
+	        System.out.println("여기는 callback");
+	        OAuth2AccessToken oauthToken;
+	        oauthToken = naverLoginBO.getAccessToken(session, code, state);
+	        //로그인 사용자 정보를 읽어온다.
+	        apiResult = naverLoginBO.getUserProfile(oauthToken);
+	        System.out.println(naverLoginBO.getUserProfile(oauthToken).toString());
+	        model.addAttribute("result", apiResult);
+	        System.out.println("result"+apiResult);
+	       
+	        return "/";
+	}
+	*/
 	
 
 	//내정보조회
@@ -110,46 +162,49 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 	//내정보조회 절차
 	@RequestMapping(value="/toMyinfo", method={RequestMethod.POST})
 	public String toMyinfo(Customers_P001_VO pwd) {
-		log.info("정보조회를 위해 비밀번호 확인");
-		Customers_P001_VO a = service.readPw(pwd);
+		
+		log.info("정보조회를 위해 비밀번호 확인 controller");
+		log.info(pwd);
+		
+		String a = service.readPw(pwd);
 		
 		if(a != null) {
+			log.info("정보조회");
 			return "redirect:/customers/p001/myinfo";
-		}else {
+		}else{
+			log.info("비밀번호오류");
 			return "redirect:/customers/p001/toMyinfo";
 		}
 	}
 	
 	//회원탈퇴 
 	@RequestMapping(value="/withdraw", method={RequestMethod.POST})
-	public String myinfo(Customers_P001_VO cust, RedirectAttributes rttr) {
+	public String myinfo(Customers_P001_VO info, RedirectAttributes rttr) {
 		log.info("회원탈퇴 controller");
-		log.info(service.withdraw(cust));
-		
-		ModelAndView mav = new ModelAndView();
-		
-		service.withdraw(cust);
-		service.withdrawPet(cust);
+		log.info("회원정보:"+info);
+		log.info(info.getMember_id());
+		service.withdraw(info);
+		service.withdraww(info);
+		service.withdrawPet(info);
 		//rttr.addFlashAttribute("result", "success");
 		session.removeAttribute("customers");
 		session.removeAttribute("isLogOn");
-		mav.setViewName("redirect:/withdraw_");
 		return "redirect:/customers/p004/withdraw_";	
 	}
 	
 	//내정보조회
 	@RequestMapping(value="/myinfo", method={RequestMethod.GET})
 	public void myinfo(Customers_P001_VO cust, Model model) {
-		log.info("내정보페이지");
+		log.info("내정보조회 controller");
 		log.info(session.getAttribute("customers"));
-		log.info("사람 결과값" +service.myinfo((Customers_P001_VO)session.getAttribute("customers")));
+		log.info("세션에 저장된 회원정보를 가져와서 내 정보를 조회:" +service.myinfo((Customers_P001_VO)session.getAttribute("customers")));
 		model.addAttribute("customers", service.myinfo((Customers_P001_VO)session.getAttribute("customers")));
 	}
 	
 	//정보수정
 	@RequestMapping(value="/myinfo", method={RequestMethod.POST})
 	public String myinfo(Customers_P001_VO cust, RedirectAttributes rttr, Model model) {
-		log.info("정보수정");
+		log.info("정보수정controller");
 		log.info(service.modify(cust));
 		log.info(service.modifyPet(cust));
 		service.modify(cust);
@@ -164,9 +219,12 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		PrintWriter pw = response.getWriter();
 		
 		String id = (String)request.getParameter("id");	
+		log.info("id입력:"+id);
 		int overlappedId = service.overlappedId(id);
-		
-			if(overlappedId >= 1) {
+			
+			if(id == "") {
+				pw.print("id needed");
+			}else if(overlappedId >= 1) {
 				pw.print("not_usable");
 			}else {
 				pw.print("usable");
@@ -180,8 +238,10 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		PrintWriter pw = response.getWriter();
 		String email = (String)request.getParameter("email");	
 		int overlappedEmail = service.overlappedEmail(email);
-		
-			if(overlappedEmail >= 1) {
+			
+			if(email == "") {
+				pw.print("email needed");
+			}else if(overlappedEmail >= 1) {
 				pw.print("not_usable");
 			}else {
 				pw.print("usable");
@@ -196,6 +256,7 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		log.info("로그아웃");
 		session.removeAttribute("customers");
 		session.removeAttribute("isLogOn");
+		session.removeAttribute("adLogOn");
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/");
 		return mav;
@@ -207,9 +268,45 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		log.info("회원가입 페이지");
 	}
 	
+	//회원가입 이메일 인증번호 전송
+	@RequestMapping(value="/auth_email", method= {RequestMethod.POST})
+	@ResponseBody
+	public void auth_email(String emailAuth, Model model) throws IOException{
+		log.info("회원가입 이메일 인증번호 전송");
+		
+		Random rd = new Random();
+		int no = rd.nextInt(19900729)+19900729; //이메일로 받는 인증번호
+		model.addAttribute("no", no);
+		log.info("내가 보낸 인증번호:"+no);
+		
+		//이메일 전송
+		String receiver = (String)request.getParameter("emailAuth");
+		log.info("이메일받는 사람:"+receiver);
+		String sender ="pepupx2@gmail.com";		
+		String title ="[Dingpet] 회원가입 인증 이메일";
+		String content = "귀하의 인증번호는 "+no+"입니다."; 
+		
+		PrintWriter pw = response.getWriter();
+		pw.print(no);
+		
+		try{
+			MimeMessage msg = mailSender.createMimeMessage();
+			MimeMessageHelper msgHelper = new MimeMessageHelper(msg, true, "UTF-8");
+			msgHelper.setFrom(sender);
+			msgHelper.setTo(receiver);
+			msgHelper.setSubject(title);
+			msgHelper.setText(content);	
+			mailSender.send(msg);
+		
+		}catch(Exception e){
+			System.out.println(e);
+		}
+	}
+
+	
 	//회원가입 처리
 	@RequestMapping(value="/signup", method= {RequestMethod.POST})
-	public String signup(Customers_P001_VO customers, MultipartHttpServletRequest uploadFile) {
+	public String signup(Customers_P001_VO customers, MultipartHttpServletRequest uploadFile) throws IOException {
 		log.info("회원가입 처리");
 		log.info(customers);
 		
@@ -249,27 +346,6 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		service.signupp(customers);
 		service.signupPet(customers);
 		
-		
-		//이메일 전송
-		String receiver = customers.getMember_email();
-		String sender ="pepupx2@gmail.com";		
-		String title ="[Dingpet] 회원가입 완료";
-		String content = customers.getMember_name()+"님, 환영합니다."; 
-		
-		try{
-			MimeMessage msg = mailSender.createMimeMessage();
-			MimeMessageHelper msgHelper = new MimeMessageHelper(msg, true, "UTF-8");
-			msgHelper.setFrom(sender);
-			msgHelper.setTo(receiver);
-			msgHelper.setSubject(title);
-			msgHelper.setText(content);
-			
-			mailSender.send(msg);
-
-		}catch(Exception e){
-			System.out.println(e);
-		}
-		
 		return "redirect:/customers/p001/signup_";
 	}	
 	
@@ -280,7 +356,7 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 	}
 	
 	//펫시터전환신청 페이지
-	@PostMapping("/change")
+	@RequestMapping(value="/change", method = {RequestMethod.GET})
 	public void change() {
 		log.info("펫시터회원 신청 페이지");
 	}
@@ -341,12 +417,6 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		return null;
 	}
 
-	
-	@RequestMapping("/callback")
-	public void callback(){
-		log.info("네아로");
-		
-	}
 	
 	@Override
 	public void readPetSitter(String id) {

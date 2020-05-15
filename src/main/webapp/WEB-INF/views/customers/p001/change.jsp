@@ -116,7 +116,7 @@
 
 			<div class="form-group">
 			<strong>활동가능시간</strong>
-			<input type="text" name="active_hours" id="time" placeholder="Your time available" required/>
+			<input type="text" name="active_hours" id="time" placeholder="ex)07:00~19:00" required/>
 			</div>
                             
 			<div class="form-group">
