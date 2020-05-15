@@ -7,7 +7,8 @@ $(document).ready(function() {
 
 function connectWs() {
 	// sock = new WebSocket( 'ws://localhost:8099/echo/websocket');
-	sock = new SockJS('http://localhost:8080/echo');
+	//sock = new SockJS('http://localhost:8080/echo');
+	sock = new SockJS('https://www.dingpet.shop/echo');
 	// sock = new SockJS('/replyEcho');
 	socket = sock;
 

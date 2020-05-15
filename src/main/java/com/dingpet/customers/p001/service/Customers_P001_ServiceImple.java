@@ -68,7 +68,7 @@ public class Customers_P001_ServiceImple implements Customers_P001_Service{
 		return mapper.read(cust);
 	}
 	
-	public Customers_P001_VO dogInfo(Customers_P001_VO cust) {
+	public List<Customers_P001_VO> dogInfo(Customers_P001_VO cust) {
 		log.info("강아지 정보 service");
 		return mapper.dogInfo(cust);
 	}

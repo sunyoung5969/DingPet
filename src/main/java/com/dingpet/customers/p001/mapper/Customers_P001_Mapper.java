@@ -31,7 +31,7 @@ public interface Customers_P001_Mapper {
 	
 	//일반회원 정보조회
 	public Customers_P001_VO read(Customers_P001_VO cust);
-	public Customers_P001_VO dogInfo(Customers_P001_VO cust);
+	public List<Customers_P001_VO> dogInfo(Customers_P001_VO cust);
 	public String readPw(Customers_P001_VO cust);
 	
 	//펫시터회원 정보조회
