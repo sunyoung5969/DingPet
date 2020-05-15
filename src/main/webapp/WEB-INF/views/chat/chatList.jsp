@@ -128,7 +128,13 @@ function submitForm(roomNo){
 							<div class="friend-drawer friend-drawer--onhover" onclick="return checkPersonnel(${room.roomNo}, ${room.roomNo}, true)">
 								<small></small>
 								<div class="text">
-									<h6>${room.roomMember == customers.member_id ? room.room_owner : room.roomMember}</h6>
+								<c:if test="${empty room.bnick}">
+									<c:set var="bnick" value="존재하지 않는 사용자" />
+								</c:if>
+								<c:if test="${empty room.anick}">
+									<c:set var="anick" value="존재하지 않는 사용자" />
+								</c:if>
+									<h6>${room.roomMember == customers.member_id ? room.anick : room.bnick}</h6>
 								</div>
 							</div>
 						</c:when>

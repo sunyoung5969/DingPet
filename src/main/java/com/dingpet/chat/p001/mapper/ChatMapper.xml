@@ -19,7 +19,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      select room_SEQ.nextval as roomNo from dual
   </select>
   <select id="listChatRoom" resultType="com.dingpet.chat.p001.vo.ChatRoom">
-     select * from chatRoom WHERE room_owner = #{newOwner, jdbcType=VARCHAR} OR roomMember = #{newOwner, jdbcType=VARCHAR} order by reg_date DESC 
+    select o.roomno, o.roomname, o.room_owner, o.roommember, o.roomtype, o.reg_date, o.roompw, m2.member_nickname as anick, o.member_nickname as bnick 
+	from (select c.roomno, c.roomname, c.room_owner, c.roommember, c.roomtype, c.reg_date, c.roompw, m.member_nickname from chatRoom c LEFT OUTER JOIN member m ON c.roommember=m.member_id) o LEFT OUTER JOIN
+	member m2 ON o.room_owner = m2.member_id 
+	where o.room_owner =  #{newOwner, jdbcType=VARCHAR} OR o.roommember = #{newOwner, jdbcType=VARCHAR} order by o.reg_date DESC 
   </select>
   
   <select id="getTotalRoomNum" resultType="int">
