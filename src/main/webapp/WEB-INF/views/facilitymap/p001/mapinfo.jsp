@@ -240,7 +240,7 @@ background:url(${pageContext.request.contextPath}/resources/images/ministar.png)
                                 
                                 <p class="comment-form-comment pt-3">
                                     <label for="comment">리뷰</label> 
-                                    <textarea id="review_content" name="review_content" cols="45" rows="8"  class="form-control" maxlength="255" required="required" placeholder = "댓글을 쓰려면 먼저 로그인 해주세요!" disabled></textarea>
+                                    <textarea id="review_content" name="review_content" cols="45" rows="8"  class="form-control" maxlength="255" required="required" placeholder = "리뷰를 쓰려면 먼저 로그인 해주세요!" disabled></textarea>
                                 </p>
                                 <p class="comment-form-author">
                                     <label for="author">이름 <span class="required">*</span></label> 
@@ -270,7 +270,7 @@ $(document).ready(function() {
 	var loggedInId = '${customers.member_id}';
 		
 	if(loggedInId){
-		$("#review_content").attr("placeholder", "안녕하세요," + loggedInId + "님! 댓글을 남겨 회원들과 소통해보세요!(최대 250자)");
+		$("#review_content").attr("placeholder", "안녕하세요, " + loggedInId + " 님! 리뷰를 남겨 회원들과 소통해보세요!(최대 250자)");
 		$("#review_content").removeAttr("disabled");
 	}
 	$('#review_content').on('keyup', function() {
