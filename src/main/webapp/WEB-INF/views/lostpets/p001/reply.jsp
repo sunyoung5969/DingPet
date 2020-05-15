@@ -68,7 +68,7 @@
 									}
 									for(var i = 0, length = list.length || 0; i < length; i++){
 										str += "<li class = 'mb-2' data-reply_id ='" + list[i].reply_id + "'>";
-										str += "<div><div class =  'reply_info pb-2'><span><strong>" + list[i].replyer +"</strong>님</span>";
+										str += "<div><div class =  'reply_info pb-2'><span><strong>" + list[i].nickname +"</strong>님</span>";
 										str += "<span class = 'pl-2'><small>" + replyService.formatDate(list[i].reply_date) + "</small></span>";
 										
 										//댓글 작성자에게만 수정 삭제 버튼 표시

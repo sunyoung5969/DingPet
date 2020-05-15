@@ -28,7 +28,7 @@
                     <div class="ml-3 mr-3 mt-3 align-self-center pb-3">
 	                	<h2 class = "mb-2 color_blue" ><c:out  value = "${completed.match_title}"/></h2>
 	                    <div class = "top_info">
-		    	            <span><strong><c:out value = "AA님"/></strong></span>
+		    	            <span><strong><c:out value = "${completed.receiver_nick}님, ${completed.sender_nick }님"/></strong></span>
 		    	            <span id = "board_date"></span>
 	                    </div>
                    	</div>

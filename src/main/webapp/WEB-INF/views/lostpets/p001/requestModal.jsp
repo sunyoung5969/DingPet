@@ -120,7 +120,7 @@ a:link, a:visited {
 						for(var i = 0; i < senderList.length; i++){
 							str += "<div class='radio small_list_border w-90 mx-auto my-2' data-sender_b_id = '" + senderList[i].board_id +"' data-sender_id = '" + loggedIn_id + "'>";
 							str += "<div class = 'flex_row p-3'><div class= 'w-25 d-inline-block'>";
-							str += "<img class = '.nav-pills' style= 'width: 150px; height: 150px;' src='/resources/images/dog2.jpg'></div>";
+							str += "<img class = '.nav-pills' style= 'width: 150px; height: 150px;' src='https://www.dingpet.shop/lost/'" + $senderList[i].front_name} + "'></div>";
 							str += "<div class= 'w-75 pl-3 pt-3 d-inline-block'>";
 							str += "<p><strong>" + senderList[i].title + "</strong></p><p class='pl-2'> <span class='tag'>견종</span><span> </span><span>" + senderList[i].dog_breed +"</span>";
 							str += "<span class = 'pl-2'></span> <span class='tag'>성별</span><span></span> <span>" + senderList[i].dog_sex +"</span> </p><p class='pl-2'>";
