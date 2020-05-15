@@ -54,7 +54,7 @@ update member set member_type = 'user' where member_id = #{member_id}
 
 <!-- 일반회원 정보조회 -->
 <select id="read" resultType="com.dingpet.customers.p001.vo.Customers_P001_VO">
-	select m.member_id, m.member_nickname, m.member_name, m.member_email, m.member_pwd, m.member_contact, m.member_photo,
+	select m.member_id, m.member_nickname, m.member_name, m.member_email, m.member_pwd, m.member_contact, m.member_photo
 	from member m
 	where m.member_id = #{member_id}
 </select>
