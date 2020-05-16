@@ -54,11 +54,9 @@ update member set member_type = 'user' where member_id = #{member_id}
 
 <!-- 일반회원 정보조회 -->
 <select id="read" resultType="com.dingpet.customers.p001.vo.Customers_P001_VO">
-	select m.member_id, m.member_nickname, m.member_name, m.member_email, m.member_pwd, m.member_contact, m.member_photo,
-		   d.dog_name, d.dog_breed, d.dog_sex, d.dog_size, d.activity_level, d.dog_note
-	from member m, dog d
-	where m.member_id = d.member_id 
-	and m.member_id = #{member_id}
+	select m.member_id, m.member_nickname, m.member_name, m.member_email, m.member_pwd, m.member_contact, m.member_photo
+	from member m
+	where m.member_id = #{member_id}
 </select>
 
 <!-- 펫시터 정보조회 -->

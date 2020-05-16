@@ -14,8 +14,8 @@ import com.dingpet.lostpets.p001.vo.LostPets_P001_VO;
 public interface LostPets_P001_Controller {
 
 	//목록 조회
-//	public void list(Model model);
-	public void list(Criteria cri, Model model);
+	public void list(Model model);
+	//public void list(Criteria cri, Model model);
 	
 	//글 조회
 	public void view(String board_id, Criteria cri, Model model);

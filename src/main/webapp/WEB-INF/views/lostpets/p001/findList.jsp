@@ -29,8 +29,8 @@
 						<div class = "section_space"><!-- section wrap -->
 							<div class ="flex_row_between"><!-- 설명 section wrap -->
 								<div class = "d-inline-block"><!-- 타이틀, span -->
-									<h2>반려견 찾기</h2>
-									<span  class = "pl-2 d-inline-block">잃어버린 반려견을 찾고 계신가요? 딩펫이 도와드릴게요!</span>
+									<h1 class="color_dark_blue narrow">반려견 찾기</h1>
+									<span  class = "pl-2 d-inline-block color_grey">잃어버린 반려견을 찾고 계신가요? 딩펫이 도와드릴게요!</span>
 								</div>
 								<div class = "d-inline-block pr-5">
 									<a id = "write" href="" class="btn_a "><span class="sub_txt ">등록하기 <img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr"></span> </a>
@@ -43,7 +43,7 @@
 											<a class="move" href='<c:out value = "${findList.board_id}"/>'>
 												<div class = "fair_border hover_shadow">
 													<div ><!-- img div -->
-														<img src = "/resources/images/blue.jpg" style = " height : 250px;">
+														<img src = "https://www.dingpet.shop/lost/${findList.front_name}" style = "width : 400px; height : 250px;">
 													</div>
 													<div style = "width : 400px;" class = "p-3"><!-- 내용 -->
 														<p  style = "width : 100%;" class="text_overflow"><strong><c:out value="${findList.title }" /></strong></p>

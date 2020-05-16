@@ -61,7 +61,7 @@ public class LostPets_P001_RestController {
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	//완료 처리
+	/*//완료 처리
 	@RequestMapping(method = {RequestMethod.PUT, RequestMethod.PATCH}, value = "/confirmRequest/{board_id}/{request_id}",
 			consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<String> modify(@RequestBody LostPets_P001_VO vo, @PathVariable("request_id") String request_id, @PathVariable("board_id") String board_id){
@@ -76,7 +76,7 @@ public class LostPets_P001_RestController {
 		log.info("requestList 메소드 호출");
 		
 		return new ResponseEntity<>(service.requestList(member_id), HttpStatus.OK);
-	}
+	}*/
 	
 	
 	

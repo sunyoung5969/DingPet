@@ -1,15 +1,24 @@
 package com.dingpet.lostpets.p003.controller;
 
+import java.io.File;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dingpet.lostpets.p001.vo.LostPets_P001_VO;
 import com.dingpet.lostpets.p003.service.LostPets_P003_Service;
+import com.dingpet.lostpets.p003.vo.LostPets_P003_VO;
 
 import lombok.AllArgsConstructor;
 
@@ -36,5 +45,45 @@ public class LostPets_P003_ControllerImpl implements LostPets_P003_Controller {
 			
 			model.addAttribute("myRequest", myRequest);
 			model.addAttribute("requestTo", requestTo);
+		}
+		
+		@PostMapping("/complete")
+		public String complete(LostPets_P003_VO vo, MultipartHttpServletRequest uploadFile, RedirectAttributes rttr) throws Exception {
+			//image upload
+			String uploadFolder = "/var/lib/tomcat8/webapps/lost";
+			String fileName = "";
+			String filePath = "";
+			
+			Iterator<String> files = uploadFile.getFileNames();
+
+			while(files.hasNext()) {
+				
+				File saveFile;
+				String index = files.next();
+				UUID uuid = UUID.randomUUID();
+				
+				MultipartFile mFile = uploadFile.getFile(index);
+				fileName = mFile.getOriginalFilename();
+				String savedFileName = uuid.toString() + fileName;
+
+				if(!fileName.equals("")) {
+					saveFile = new File(uploadFolder, fileName);
+					filePath = saveFile.getPath();
+					vo.setPhoto_name(savedFileName);
+					vo.setPhoto_path(filePath);
+						
+					try {
+						mFile.transferTo(saveFile);
+					} catch (Exception e) {
+						// TODO: handle exception
+						System.out.println("사진업로드 Exception " + e);
+					}
+			
+				}
+			}
+			
+			service.write(vo);
+			
+			return "redirect:/lostpets/request/list?member_id=" + vo.getMember_id();
 		}
 }

@@ -20,24 +20,14 @@
     
 
 	<div class="row ">
-		<!-- 페이지 정보 div -->
-		<div class="col-xs-12 features">
-
-			 <div class = "flex_row mr-5 pr-3">
-			 	<a id = "to_request_list"  href="" class="btn_a"><span class="sub_txt">요청 목록 <img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr"></span> </a>
-
-			 	<a id = "lost_write" href="" class="btn_a"><span class="sub_txt">등록하기 <img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr"></span> </a>
-			</div>
-		</div>
-		
 			<div class="m_container  o_hidden">
 				<div class="">
 					<div class="col-xs-12 ">
 						
 						<div class = "section_space"><!-- section wrap -->
 							<div><!-- title section starts-->
-								<h2 class = "">완료 목록</h2>
-								<span  class = "pl-2">딩펫을 통해 가족과 재회하고 행복을 되찾은 반려견들을 만나보세요!</span>
+								<h2 class = "color_dark_blue narrow">완료 목록</h2>
+								<span  class = "pl-2 color_grey">딩펫을 통해 가족과 재회하고 행복을 되찾은 반려견들을 만나보세요!</span>
 							</div><!-- title section ends-->
 							<div class = "pt-3"><!-- list wrap -->
 								<c:choose>
@@ -46,26 +36,21 @@
 									</c:when>
 									<c:otherwise>
 										<ul class = "requests flex_row_start_wrap o_hidden">
-											<c:forEach items="${lostList}" var="lostList">
-												<li class ="requestListItem my-4 div_33">
-													<a class="move" href='<c:out value = "${lostList.board_id}"/>'>
-														<div class = "fair_border hover_shadow">
-															<div ><!-- img div -->
-																<img src = "/resources/images/dog.jpg" style = " height : 250px;">
-															</div>
-															<div class = "p-3"><!-- 내용 -->
-																<p  class="text_overflow"><strong><c:out value="${lostList.title }" /></strong></p>
-																<p class = "pl-2"><span class="tag">견종</span><span> </span><c:out value="${lostList.dog_breed}" /></p>
-																<p class = "pl-2"><span class="tag">성별</span><span></span> <c:out value="${lostList.dog_sex}" /></p>
-																<p class = "pl-2">
-																	<span class="tag">발견장소</span><span></span>
-																	<c:out value="${lostList.found_location}" />
-																</p>
-															</div>
+											<c:forEach items="${completedList}" var="completedList">
+											<li class ="requestListItem my-3 div_33">
+												<a class = " no_text_deco" href = "completedView?match_id=${completedList.match_id }">
+													<div class = "fair_border hover_shadow">
+														<div ><!-- img div -->
+															<img src = "https://www.dingpet.shop/lost/${completedList.photo_name}" style = "width:400px; height : 250px;">
 														</div>
-													</a>
-												</li>
-											</c:forEach>
+														<div style = "max-width : 400px;"class = "p-3"><!-- 내용 -->
+															<p class = "text_overflow"><strong><c:out value="${completedList.match_title }" /></strong></p>
+															<p class = "pl-2">${completedList.receiver_nick }님, ${completedList.sender_nick }님</p>
+														</div>
+													</div>
+												</a>
+											</li>
+										</c:forEach>
 										</ul>
 									</c:otherwise>
 								</c:choose>
@@ -74,17 +59,17 @@
 							<div><!-- Pagination starts -->
 								<nav class = "pagination_nav"aria-label="Page navigation example">
 									<ul class="pagination">
-										<c:if test="${lost_pagination.prev }">
+										<c:if test="${completed_pagination.prev }">
 											<li class="page-item"><a class="page-link"
 												href="#	aria-label= "Previous"> <span aria-hidden="true">&laquo;</span>
 													<span class="sr-only">Previous</span>
 											</a></li>
 										</c:if>
-										<c:forEach var="num" begin="${lost_pagination.startPage }" end="${lost_pagination.endPage }">
-											<li class="page-item ${lost_pagination.cri.pageNum == num ? "active" : "" }"><a
+										<c:forEach var="num" begin="${completed_pagination.startPage }" end="${completed_pagination.endPage }">
+											<li class="page-item ${completed_pagination.cri.pageNum == num ? "active" : "" }"><a
 												class="page-link" href="${num }">${num }</a></li>
 										</c:forEach>
-										<c:if test="${lost_pagination.next }">
+										<c:if test="${completed_pagination.next }">
 											<li class="page-item"><a class="page-link" href="#"
 												aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 													<span class="sr-only">Next</span>
@@ -102,32 +87,11 @@
 	</div>
 </section>
 
-<form id='actionForm' action="/lostpets/p001/lostList" method='get'>
-	<input type="hidden" name="pageNum" value="${lost_pagination.cri.pageNum }">
-	<input type="hidden" name="amount" value="${lost_pagination.cri.amount }">
+<form id='actionForm' action="/lostpets/p001/completedList" method='get'>
+	<input type="hidden" name="pageNum" value="${completed_pagination.cri.pageNum }">
+	<input type="hidden" name="amount" value="${completed_pagination.cri.amount }">
 </form>
 
-<script type="text/javascript">
-	var loggedInId = '${customers.member_id}';	
-
-	$(document).ready(function(){
-		
-		if(!loggedInId){
-			$("#lost_write, #to_request_list").on("click", function(){
-				alert("로그인이 필요한 서비스입니다.\n로그인 페이지로 이동합니다.");
-				(this).setAttribute("href", "/customers/p001/signin");
-			});
-		}else{
-			$("#lost_write").on("click", function(){
-				(this).setAttribute("href", "/lostpets/p001/write");
-			});
-			
-			$("#to_request_list").click(function(){
-				(this).setAttribute("href", "/lostpets/request/list?member_id=" + loggedInId);
-			});
-		}
-	});
-</script>
 
 <script>
 $(document).ready(function() {
@@ -143,7 +107,7 @@ $(document).ready(function() {
 	$(".move")	.on(	"click",function(e) {
 		e.preventDefault();
 		actionForm.append("<input type = 'hidden' name = 'board_id' value = '" + $(this).attr("href")+ "'>");
-		actionForm.attr("action", "view");
+		actionForm.attr("action", "completedview");
 		actionForm.submit();
 	});
 });

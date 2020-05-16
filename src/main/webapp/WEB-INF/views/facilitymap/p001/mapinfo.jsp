@@ -126,7 +126,7 @@ background:url(${pageContext.request.contextPath}/resources/images/ministar.png)
                                          <br><br>
                                          <div>                                         
                                             <span class="listing-rating-count listing-rating-count--single">
-                                            <a href="#respond">0개의 리뷰</a>	</span>
+                                            <a href="">0개의 리뷰</a>	</span>
                                         </div>
                                         <div class="job_listing-location job_listing-location-none">${info.address_name }</div>
                                         <div class="job_listing-location job_listing-location-none">${info.phone }</div>
@@ -242,10 +242,8 @@ background:url(${pageContext.request.contextPath}/resources/images/ministar.png)
                                     <label for="comment">리뷰</label> 
                                     <textarea id="review_content" name="review_content" cols="45" rows="8"  class="form-control" maxlength="255" required="required" placeholder = "리뷰를 쓰려면 먼저 로그인 해주세요!" disabled></textarea>
                                 </p>
-                                <p class="comment-form-author">
-                                    <label for="author">이름 <span class="required">*</span></label> 
-                                    <input id="review_name" name="review_name" type="text"  class="form-control" value="" size="30" maxlength="245" required="required">
-                                </p>
+                                <input id="review_name" name="review_name" type="hidden"  class="form-control" value="${customers.member_nickname }" size="30" maxlength="245" >
+                                
                                 <p class="comment-form-email">
                                     <label for="email">이메일 <span class="required">*</span></label> 
                                     <input id="review_email" name="review_email" type="email"  class="form-control" value="" size="30" maxlength="100" required="required">

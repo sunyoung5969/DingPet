@@ -44,19 +44,6 @@
 	</delete>
 	
 	
-	<!-- 완료처리 -->
-	<update id="confirmRequest">
-		UPDATE lost_found_request
-		SET request_status = 'y',
-			completed_date = to_char(sysdate, 'yyyymmddhh24mi')
-		WHERE request_id = #{request_id}
-	</update>
 	
-	<update id = "complete">
-		UPDATE lost_found
-		SET status = 'y',
-			status_reason = 'matched'
-		WHERE board_id = #{board_id}
-	</update>
 
 </mapper>

@@ -41,6 +41,7 @@ public class LostPets_P001_RestService {
 		return mapper.deleteRequest(request_id);
 	}
 	
+	/*
 	//완료 처리
 	public int confirmRequest(String request_id) {
 		return mapper.confirmRequest(request_id);
@@ -48,5 +49,5 @@ public class LostPets_P001_RestService {
 	
 	public int complete(String board_id) {
 		return mapper.complete(board_id);
-	}
+	}*/
 }

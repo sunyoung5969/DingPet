@@ -59,10 +59,10 @@ public class FacilityMap_P001_ServiceImple implements FacilityMap_P001_Service {
 		// TODO Auto-generated method stub
 		return mapper.readcenter(num);
 	}
-	
+	// dog 플레이스 정보 가져오기
 	@Override
 	public FacilityMap_P001_VO getDogPlace(int num) {
-		// TODO Auto-generated method stub
+		
 		return mapper.dogcenter(num);
 	}
 	@Override

@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+.list_wrap{
+	position:relative;
+}
+
+.list_nav{
+	position:absolute;
+	width: 100%;
+	top:50%;
+}
+
+.arrow_prev, .arrow_prev_o{
+	float:left;
+}
+
+.arrow_next, .arrow_next_o{
+	float:right;
+}
+
+.arrow_prev:hover, .arrow_next:hover, .arrow_prev_o:hover, .arrow_next_o:hover{
+	cursor : pointer;
+	color : #2A2A2A;
+}
+
+.arrow_prev_o, .arrow_next_o{
+	color: #FFA967;
+	font-size: 3em;
+}
+
+.arrow_prev, .arrow_next {
+	color: #4EA9EF;
+	font-size: 3em;
+}

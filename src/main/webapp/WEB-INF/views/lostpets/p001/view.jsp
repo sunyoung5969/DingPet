@@ -18,7 +18,7 @@
 
 
     <!--====  str of contents  ====-->
-    <section style="padding-top:87px">
+    <section class = "nanumbarungothic" style="padding-top:87px">
         <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); 
         	transform: translate3d(0px, 0px, 0px);"></div>
         <div class="main main-raised">
@@ -33,15 +33,14 @@
                     <div class="ml-3 mr-3 mt-3 align-self-center pb-3">
 	                	<h2 class = "mb-2 color_blue" ><c:out  value = "${board.title}"/></h2>
 	                    <div class = "top_info">
-		    	            <span><strong><c:out value = "${board.member_id}"/></strong></span>
+		    	            <span><strong><c:out value = "${board.member_nickname}"/></strong></span>
 		    	            <span id = "board_date"></span>
 	                    </div>
                    	</div>
                    	<hr class = "hr_style">
                     <div class="col-12 row pt-3 dp-webkit ">
-                            <div class="image-block bg-about w-100" >
-                            	<c:set var = "front_path" value = "https://www.dingpet.shop/lost/${board.front_name}" />
-                                <img class="img-fluid m-auto" src="${board.front_name != null ? front_path : '/resources/images/dogger_img_big_1.jpg'}"  style = "width: 500px; height: 400px;">
+                            <div class="image-block bg-about w-100 text_center" >
+                                <img class="img-fluid m-auto" src="https://www.dingpet.shop/lost/${board.front_name}"  style = "width: 500px; height: 400px;">
                             </div>
                     </div>
                      <div class="col-12 row pt-3 dp-webkit ">

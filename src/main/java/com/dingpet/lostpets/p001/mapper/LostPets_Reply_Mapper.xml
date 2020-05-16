@@ -11,9 +11,13 @@
 	
 	<!-- 댓글 조회-->
 	<select id = "view" resultType = "com.dingpet.lostpets.p001.vo.LostPets_Reply_VO">
-		SELECT *
-		FROM lost_found_reply
-		WHERE reply_id = #{reply_id}
+		SELECT reply_id, board_id, reply, replyer, reply_date, B.member_nickname as nickname
+		FROM (
+			SELECT reply_id, board_id, reply, replyer, reply_date
+			FROM lost_found_reply
+			WHERE reply_id = #{reply_id}
+		) A, member B
+		WHERE A.replyer = B.member_id
 	</select>
 	
 	<!-- 댓글 삭제 -->
@@ -32,10 +36,15 @@
 	
 	<!-- 댓글 목록 -->
 	<select id="list" resultType = "com.dingpet.lostpets.p001.vo.LostPets_Reply_VO">
-		SELECT reply_id, board_id, reply, replyer, reply_date
-		FROM lost_found_reply
-		WHERE board_id = #{board_id}
-		ORDER BY reply_id desc
+		SELECT reply_id, board_id, reply, replyer, reply_date, B.member_nickname as nickname
+		FROM (
+			SELECT reply_id, board_id, reply, replyer, reply_date
+			FROM lost_found_reply
+			WHERE reply_id = #{reply_id}
+		) A, member B
+		WHERE A.replyer = B.member_id
+		AND board_id = #{board_id}
+		ORDER BY reply_id ASC
 	</select>
 </mapper>
 
