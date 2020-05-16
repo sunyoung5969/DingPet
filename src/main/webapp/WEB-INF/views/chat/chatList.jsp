@@ -93,7 +93,7 @@ function submitForm(roomNo){
 						chatBoxLocation ="left";
 					}
 					str += '<div class="no-gutters--'+chatBoxLocation+'"><div class="offset-md-9">';
-					str += '<div class="textBox-div--'+chatBoxLocation+'"><div class="chat-bubble chat-bubble--'+chatBoxLocation+'"><li>'+chatList[i].message;
+					str += '<div class="textBox-div--'+chatBoxLocation+'"><div class="chat-bubble chat-bubble--'+chatBoxLocation+'"><li style="word-break: break-all;">'+chatList[i].message;
 					str += '</li></div></div><span class="chat-date">'+chatList[i].send_date+'</span>';
 					str += '</div></div>';
 					

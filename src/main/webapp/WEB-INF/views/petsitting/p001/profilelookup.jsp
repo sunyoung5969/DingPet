@@ -263,7 +263,7 @@
 			</div>
 		</div>
     
-        <div class="page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); transform: translate3d(0px, 0px, 0px);"></div>
+        <div class="page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/beagle_dog_running992831.jpg'); transform: translate3d(0px, 0px, 0px);"></div>
         
         <div class="main main-raised">
             <div class="profile-content">
@@ -272,7 +272,7 @@
                         <div class="col-md-6 ml-auto mr-auto" style='left: 13%'>
                           <div class="profile">
                                 <div class="avatar text-center">
-                                    <img src="/resources/images/dogger_img_big_1.jpg" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+                                    <img src="https://www.dingpet.shop/img/${profile.profile_PicName }" alt="Circle Image" class="img-raised rounded-circle img-fluid">
                                 </div>
                                 <div class="name text-center">
                                     <h4 class="title">${profile.member_NickName }</h4>
@@ -563,11 +563,11 @@
                             	 	    <input type="hidden" class="exist" value="Y">
                             	 	
 	                            		<div class="testimonial-box d-flex" style="min-height: 215px;">
-	                                        <div class="user-img" style="background-image: url(https://randomuser.me/api/portraits/men/82.jpg)">
+	                                        <div class="user-img" style="background-image: url(https://www.dingpet.shop/img/${reviewlist.member_photo})">
 	                                        </div>
 	                                        <div class="text pl-4">
 	                                            <span class="quote"><i class="fa fa-quote-left"></i></span>
-	                                            <p>${reviewlist.review_Content }</p>
+	                                            <p class="review-content">${reviewlist.review_Content }</p>
 	                                            <p class="name">${reviewlist.member_Nickname }</p>
 	                                            <span class="position">${reviewlist_review_Star }</span>
 	                                        </div>

@@ -24,7 +24,7 @@ public class PetSitting_P004_ControllerImpl implements PetSitting_P004_Controlle
 	@Override
 	public void reviewregister(Model model, PetSitting_P004_VO reviewVO) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("skldjalksjdlkasjdlkasjdlkas " + reviewVO.getReservation_ID());
 		model.addAttribute("reservation_ID", reviewVO.getReservation_ID());
 	}
 
@@ -56,12 +56,14 @@ public class PetSitting_P004_ControllerImpl implements PetSitting_P004_Controlle
 		
 		String reviewDate = reviewform.format(date);
 		
+		
 		reviewVO.setReview_Date(reviewDate);
 		
 	//--------------------------------------------------------------
 		
 		model.addAttribute("ok", reviewVO);
-		
+		System.out.println("?????????????????");
+		System.out.println(reviewVO);
 		service.setReview(reviewVO);
 	}
 }

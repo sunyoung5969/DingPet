@@ -369,6 +369,11 @@
     top: 20px;
 }
 
+
+.review-content{
+	word-break: break-all;
+}
+
 /* 예약 버튼 css */
 
 
