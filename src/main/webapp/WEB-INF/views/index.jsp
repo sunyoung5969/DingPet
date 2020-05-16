@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%@include file="./includes/header.jsp"%>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/index.css?v=5">
 
 <section class="site-blocks-cover overflow-hidden bg-light">
       <div class="container">
@@ -132,62 +133,28 @@
             <div class="paws white">
               <span class="icon-paw"></span>
             </div>
-            <h2 class="mb-2 heading">Our Trainers</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            <h2 class="mb-2 heading">Hall of Fame</h2>
+            <p>고객님들께서 가장 많이 이용하신 펫시터를 소개합니다 인증된 펫시터에게 소중한 반려견을 믿고 맡겨보세요.</p>
           </div>
         </div>
         <div class="row">
-         
-          <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up" data-aos-delay="">
-            <div class="trainer">
-              <figure>
-              <img src="${pageContext.request.contextPath}/resources/images/dogger_trainer_1.jpg" alt="Image" class="img-fluid">
-              </figure>
-              <div class="px-md-3">
-                <h3>Jessica White</h3>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                <ul class="ul-social-circle">
-                  <li><a href="#"><span class="icon-twitter"></span></a></li>
-                  <li><a href="#"><span class="icon-instagram"></span></a></li>
-                  <li><a href="#"><span class="icon-facebook"></span></a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="trainer">
-              <figure>
-              <img src="${pageContext.request.contextPath}/resources/images/dogger_trainer_2.jpg" alt="Image" class="img-fluid">
-              </figure>
-              <div class="px-md-3">
-                <h3>Valerie Elash</h3>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                <ul class="ul-social-circle">
-                  <li><a href="#"><span class="icon-twitter"></span></a></li>
-                  <li><a href="#"><span class="icon-instagram"></span></a></li>
-                  <li><a href="#"><span class="icon-facebook"></span></a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up"  data-aos-delay="200">
-            <div class="trainer">
-              <figure>
-              <img src="${pageContext.request.contextPath}/resources/images/dogger_trainer_3.jpg" alt="Image" class="img-fluid">
-              </figure>
-              <div class="px-md-3">
-                <h3>Alicia Jones</h3>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                <ul class="ul-social-circle">
-                  <li><a href="#"><span class="icon-twitter"></span></a></li>
-                  <li><a href="#"><span class="icon-instagram"></span></a></li>
-                  <li><a href="#"><span class="icon-facebook"></span></a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
+        <c:forEach var="HoF" items="${HoF }">
+        	<input type="hidden" name="sitter_ID" value="${HoF.sitter_ID }">
+        	<div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up" data-aos-delay="">
+	            <div class="trainer">
+					<figure>
+						<img class="HoF-img" src="https://www.dingpet.shop/img/${HoF.profile_PicName }" alt="Image" class="img-fluid">
+					</figure>
+					<div class="px-md-3">
+						<h3>${HoF.member_Nickname }</h3>
+						<p>${HoF.profile_Content }</p>
+						<ul class="ul-social-circle">
+							<li>${HoF.profile_Star }</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+        </c:forEach>
         </div>
       </div>
     </section>
@@ -199,70 +166,45 @@
             <div class="paws">
               <span class="icon-paw"></span>
             </div>
-            <h2 class="mb-2 text-black heading">Pricing Table</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            <h2 class="mb-2 text-black heading">펫시터 평균 이용 가격</h2>
           </div>
         </div>
         <div class="row no-gutters">
-          <div class="col-12 col-sm-6 col-md-6 col-lg-4 bg-primary p-3 p-md-5" data-aos="fade-up" data-aos-delay="">
-            
-
+          <div class="col-12 col-sm-6 col-md-6 col-lg-4 bg-primary p-3 p-md-5 small-card" data-aos="fade-up" data-aos-delay="">
             <div class="pricing">
-              <h3 class="text-center text-white text-uppercase">Basic</h3>
+              <h3 class="text-center text-white text-uppercase">소 형 견</h3>
               <div class="price text-center mb-4 ">
-                <span><span>$47</span> / year</span>
+                <span><span>&#8361; 7900</span> / 1시간</span>
               </div>
-              <ul class="list-unstyled ul-check success mb-5">
-                
-                <li>Officia quaerat eaque neque</li>
-                <li>Possimus aut consequuntur incidunt</li>
-                <li class="remove">Lorem ipsum dolor sit amet</li>
-                <li class="remove">Consectetur adipisicing elit</li>
-                <li class="remove">Dolorum esse odio quas architecto sint</li>
-              </ul>
-              <p class="text-center">
-                <a href="#" class="btn btn-secondary">Buy Now</a>
-              </p>
+                <p>소형견 크기 기준</p>
+                <p>10kg 미만</p>
+                <img class="small-size-img" src="${pageContext.request.contextPath}/resources/images/small_size_img.png">
             </div>
-
+			<div class="small-size"><p class="text-center dog-type"><a href="#" class="btn btn-secondary">이용하기</a></p></div>
           </div>
-          <div class="col-12 col-sm-6 col-md-6 col-lg-4 bg-dark  p-3 p-md-5" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-12 col-sm-6 col-md-6 col-lg-4 bg-dark  p-3 p-md-5 medium-card" data-aos="fade-up" data-aos-delay="100">
             <div class="pricing">
-              <h3 class="text-center text-white text-uppercase">Premium</h3>
+              <h3 class="text-center text-white text-uppercase">중 형 견</h3>
               <div class="price text-center mb-4 ">
-                <span><span>$250</span> / year</span>
+                <span><span>&#8361; 8750</span> / 1시간</span>
               </div>
-              <ul class="list-unstyled ul-check success mb-5">
-                
-                <li>Officia quaerat eaque neque</li>
-                <li>Possimus aut consequuntur incidunt</li>
-                <li>Lorem ipsum dolor sit amet</li>
-                <li>Consectetur adipisicing elit</li>
-                <li class="remove">Dolorum esse odio quas architecto sint</li>
-              </ul>
-              <p class="text-center">
-                <a href="#" class="btn btn-primary">Buy Now</a>
-              </p>
+                <p>중형견 크기 기준</p>
+                <p>10kg이상 25kg미만</p>
+                <div><img class="medium-size-img" src="${pageContext.request.contextPath}/resources/images/medium_size_img.png"></div>
             </div>
+            <div class="medium-size"><p class="text-center dog-type"><a href="#" class="btn medium-btn">이용하기</a></p></div>
           </div>
-          <div class="col-12 col-sm-6 col-md-6 col-lg-4 bg-primary  p-3 p-md-5" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-12 col-sm-6 col-md-6 col-lg-4 bg-primary  p-3 p-md-5 large-card" data-aos="fade-up" data-aos-delay="200">
             <div class="pricing">
-              <h3 class="text-center text-white text-uppercase">Professional</h3>
+              <h3 class="text-center text-white text-uppercase">대 형 견</h3>
               <div class="price text-center mb-4 ">
-                <span><span>$850</span> / year</span>
+                <span><span>&#8361; 9000</span> / 1시간</span>
               </div>
-              <ul class="list-unstyled ul-check success mb-5">
-                
-                <li>Officia quaerat eaque neque</li>
-                <li>Possimus aut consequuntur incidunt</li>
-                <li>Lorem ipsum dolor sit amet</li>
-                <li>Consectetur adipisicing elit</li>
-                <li>Dolorum esse odio quas architecto sint</li>
-              </ul>
-              <p class="text-center">
-                <a href="#" class="btn btn-secondary">Buy Now</a>
-              </p>
+                <p>대형견 크기 기준</p>
+                <p>25kg 이상</p>
+                <img class="large-size-img" src="${pageContext.request.contextPath}/resources/images/large_size_img.png">
             </div>
+            <div class="large-size"><p class="text-center dog-type"><a href="#" class="btn btn-secondary">이용하기</a></p></div>
           </div>
         </div>
       </div>

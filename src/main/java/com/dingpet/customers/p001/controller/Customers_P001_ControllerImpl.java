@@ -107,7 +107,7 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		//System.out.println("네이버:" + naverAuthUrl);
 		//model.addAttribute("url", naverAuthUrl);
 		 
-		if(result != null && privNo.equals("02")) { //일반
+		if(result != null && (privNo.equals("02") || privNo.equals("01"))) { //일반 시터
 			HttpSession session = request.getSession(); //세션처리
 			session.setAttribute("customers", result);
 			session.setAttribute("dogs", dogResult);

@@ -1,0 +1,59 @@
+.HoF-img {
+	min-height: 465px;
+	width: 100%;
+}
+
+.small-card, .large-card, .medium-card {
+	padding: 0px !important;
+}
+
+.pricing {
+	min-height: 500px;
+	max-height: 500px;
+}
+
+.small-size, .large-size {
+	width: 100%;
+	height: 95px;
+	background: #343a40;
+}
+
+.medium-size {
+	width: 100%;
+	height: 95px;
+	background: #088cf3;
+}
+
+.dog-type {
+	position: relative;
+	top: 25%;
+}
+
+.small-size-img {
+	width: 60%;
+	position: relative;
+	top: 45px;
+}
+
+.medium-size-img {
+	width: 50%;
+	position: relative;
+	top: 47px;
+}
+
+.medium-btn {
+	color: #fff;
+	background: #6c757d;
+}
+
+.medium-btn:hover {
+	background: #5a6268;
+	color: #fff;
+}
+
+.large-size-img {
+	width: 60%;
+	position: relative;
+	top: -21px;
+	max-height: 303px;
+}
