@@ -12,9 +12,10 @@
 
 <!--====  str of contents  ====-->
 <section style="padding-top:87px" class = "nanumbarungothic">
-    <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); height : 300px;transform: translate3d(0px, 0px, 0px);">
-    	<div class="floating_text pt-5 pb-5  mt-5 text-center heading-section m-auto">
-                  	<h1 class="mb-2 color_white">유기견 찾기</h1>
+    <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/bg/find.jpg'); height:400px; transform: translate3d(0px, 0px, 0px);">
+    	<div class="floating_text pt-5 pb-5  mt-5 text-center heading-section m-auto color_white">
+           	<h1 style="font-family:GmarketSansBold;">주인 찾기</h1>
+           	<span style="font-size:1.1em;">유기견을 임시보호 하고 계신가요? 딩펫에서 쉽고 빠르게 주인을 찾아보세요!</span>
         </div>
     </div>
     
@@ -28,7 +29,7 @@
 						<div class = "section_space"><!-- section wrap -->
 							<div class ="flex_row_between"><!-- 설명 section wrap -->
 								<div class = "d-inline-block"><!-- 타이틀, span -->
-									<h1 class="color_dark_blue narrow">주인 찾기</h1>
+									<h1 class="color_dark_blue narrow" style="font-family:GmarketSansBold;">주인 찾기</h1>
 									<span class = "pl-2 d-inline-block color_grey">유기견을 임시보호 하고 계신가요? 딩펫에서 쉽고 빠르게 주인을 찾아보세요!</span>
 								</div>
 								<div class = "d-inline-block pr-5">

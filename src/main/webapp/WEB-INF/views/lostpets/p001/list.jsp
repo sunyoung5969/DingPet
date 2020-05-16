@@ -13,9 +13,10 @@
 
 <!--====  str of contents  ====-->
 <section style="padding-top:87px" class = "nanumbarungothic">
-    <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); height : 300px;transform: translate3d(0px, 0px, 0px);">
-    	<div class="floating_text pt-5 pb-5  mt-5 text-center heading-section m-auto">
-        	<h1 class="mb-2 color_white">유기견 찾기</h1>
+    <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/bg/al.jpg'); height : 400px;transform: translate3d(0px, 0px, 0px);">
+    	<div class="floating_text pt-5 pb-5  mt-5 text-center heading-section m-auto color_white">
+             <h1 style="font-family:GmarketSansBold;">실종견 찾기</h1>
+             <p style="font-size:1.1em;">잃어버린 반려견을 찾는 주인과 주인을 잃어버린 반려견을 이어드립니다.</p>
         </div>
     </div>
 
@@ -27,7 +28,7 @@
 						<div class ="flex_row_between"><!-- 설명 section wrap -->
 							<a href = "/lostpets/p001/completedList">
 								<div class = "d-inline-block"><!-- 타이틀, span -->
-									<h1 class="d-inline-block color_dark_blue narrow">완료 목록</h1>
+									<h1 class="d-inline-block color_dark_blue narrow" style="font-family:GmarketSansBold;">찾았어요</h1>
 									<span class ="pl-2 color_grey"><small><img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr">&nbsp;바로 가기</small></span>
 									<p  class = "pl-2 color_grey">딩펫을 통해 가족과 재회하고 행복을 되찾은 반려견들을 만나보세요!</p>
 								</div>
@@ -69,7 +70,7 @@
 						<div class ="flex_row_between"><!-- 설명 section wrap -->
 							<a href = "/lostpets/p001/lostList">
 								<div class = "d-inline-block"><!-- 타이틀, span -->
-									<h1 class="d-inline-block color_dark_blue narrow">주인 찾기</h1>
+									<h1 class="d-inline-block color_dark_blue narrow" style="font-family:GmarketSansBold;">주인 찾기</h1>
 									<span class ="pl-2 color_grey"><small><img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr">&nbsp;바로 가기</small></span>
 									<p  class = "pl-2 color_grey">유기견을 임시보호 하고 계신가요? 딩펫에서 쉽고 빠르게 주인을 찾아보세요!</p>
 								</div>
@@ -119,7 +120,7 @@
 						<div class ="flex_row_between"><!-- 설명 section wrap -->
 							<a href = "/lostpets/p001/findList">
 								<div class = "d-inline-block"><!-- 타이틀, span -->
-									<h1 class="d-inline-block color_dark_blue narrow">반려견 찾기</h1>
+									<h1 class="d-inline-block color_dark_blue narrow" style="font-family:GmarketSansBold;">반려견 찾기</h1>
 									<span class ="pl-2 color_grey"><small><img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr">&nbsp;바로 가기</small></span>
 									<p  class = "pl-2 color_grey">잃어버린 반려견을 찾고 계신가요? 딩펫이 도와드릴게요!</p>
 								</div>

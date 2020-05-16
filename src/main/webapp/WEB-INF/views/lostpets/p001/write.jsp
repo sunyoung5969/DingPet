@@ -58,7 +58,7 @@
 				
 				<div class="row justify-content-center pt-5 pb-5" data-aos="fade-up">
 					<div class="text-center heading-section">
-						<h2 class="text-black mb-2">주인 찾기 / 반려견 찾기 등록</h2>
+						<h2 class="text-black mb-2" style="font-family:GmarketSansBold;">주인 찾기 / 반려견 찾기 등록</h2>
 					</div>
 				</div>
 
@@ -199,7 +199,9 @@
 						</div>
 						
 						<input type="hidden" class="form-control" name="member_id" value="${customers.member_id }">
-						<input type = "hidden" id = "lost_coords"  name = "lost_coords" value = "">
+						<input type = "hidden" id = "coords"  name = "coords" value = "">
+						<input type = "hidden" id = "lat" name = "lat" >
+						<input type = "hidden" id = "lng"  name = "lng" >
 						
 						<div class="pb-5 pt-5 text-center">
 							<button id = "submitBtn" type="submit" class="btn btn-primary">등록하기</button>

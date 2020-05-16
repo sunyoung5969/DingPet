@@ -123,57 +123,12 @@ public class LostPets_P001_ControllerImpl implements LostPets_P001_Controller {
 					// TODO: handle exception
 					System.out.println("사진업로드 Exception " + e);
 				}
-				/*
-				// Instantiates a client
-			    try (ImageAnnotatorClient vision = ImageAnnotatorClient.create()) {
-			
-			      // The path to the image file to annotate
-			      String file = "/resources/images/blue.jpg";
-			      System.out.println(file);
-			      // Reads the image file into memory
-			      Path path = Paths.get(file);
-			      System.out.println(path);
-			      System.out.println(path.toAbsolutePath());
-			      byte[] data = Files.readAllBytes(path);
-			      ByteString imgBytes = ByteString.copyFrom(data);
-			
-			      // Builds the image annotation request
-			      List<AnnotateImageRequest> requests = new ArrayList<>();
-			      Image img = Image.newBuilder().setContent(imgBytes).build();
-			      Feature feat = Feature.newBuilder().setType(Type.LABEL_DETECTION).build();
-			      AnnotateImageRequest request =
-			          AnnotateImageRequest.newBuilder().addFeatures(feat).setImage(img).build();
-			      requests.add(request);
-			
-			      // Performs label detection on the image file
-			      BatchAnnotateImagesResponse response = vision.batchAnnotateImages(requests);
-			      List<AnnotateImageResponse> responses = response.getResponsesList();
-			
-			      for (AnnotateImageResponse res : responses) {
-				        if (res.hasError()) {
-				          System.out.printf("Error: %s\n", res.getError().getMessage());
-				          break;
-				        }
-				
-				        for (EntityAnnotation annotation : res.getLabelAnnotationsList()) {
-				          annotation
-				              .getAllFields()
-				              .forEach((k, v) -> System.out.printf("%s : %s\n", k, v.toString()));
-				        }
-			      }
-			      
-			      String theData = com.google.protobuf.util.JsonFormat.printer().print(response);
-			      System.out.println(theData);
-			      
-			    } catch (IOException e) {
-					e.printStackTrace();
-					System.out.println("비전 에러");
-				}*/
-				//end of image upload
+		//end of image upload
 				
 			}
 		}
 		
+		log.info(writeMap);
 		service.write(writeMap);
 		
 		if(files != null) {

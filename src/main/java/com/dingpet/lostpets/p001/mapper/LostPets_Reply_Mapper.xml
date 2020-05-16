@@ -40,7 +40,6 @@
 		FROM (
 			SELECT reply_id, board_id, reply, replyer, reply_date
 			FROM lost_found_reply
-			WHERE reply_id = #{reply_id}
 		) A, member B
 		WHERE A.replyer = B.member_id
 		AND board_id = #{board_id}

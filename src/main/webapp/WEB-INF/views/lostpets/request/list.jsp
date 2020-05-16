@@ -13,9 +13,10 @@
 				
 <!--====  str of contents  ====-->
 <section style="padding-top:87px">
-    <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); height : 300px; transform: translate3d(0px, 0px, 0px);">
-    	<div class="floating_text pt-5 pb-5  mt-5 text-center heading-section m-auto">
-                  	<h1 class="mb-2 color_white">확인 요청 목록</h1>
+    <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/bg/main.jpg'); height : 400px;transform: translate3d(0px, 0px, 0px);">
+    	<div class="floating_text pt-5 pb-5  mt-5 text-center heading-section m-auto color_white">
+             <h1 style="font-family:GmarketSansBold;">요청 목록</h1>
+             <p style="font-size:1.1em;">받은 요청과 보낸 요청을 조회하고 관리할 수 있습니다. </p>
         </div>
     </div>
     
@@ -23,14 +24,14 @@
 	<div class="m_container color: color_black">
 		<div class="row">
 			<div class="col-xs-12  m-5">
-			
-				<div class ="flex_row_between"><!-- 설명 section wrap -->
-					<div class = "pb-3"><!-- 타이틀, span -->
+			<!-- 
+				<div class ="flex_row_between"><!-- 설명 section wrap 
+					<div class = "pb-3"><!-- 타이틀, span 
 						<h1 class="color_dark_blue narrow">요청 목록</h1>
-						<p  class = "pl-2 color_grey">받은 요청과 보낸 요청을 조회할 수 있습니다.</p>
+						<span  class = "pl-2 d-inline-block color_grey">받은 요청과 보낸 요청을 조회하고 관리할 수 있습니다.</span>
 					</div>
-				</div><!-- 설명 section wrap ends-->
-			
+				</div><!-- 설명 section wrap ends
+			 -->
 				<!-- 탭 메뉴 -->
 				<nav>
 					<div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">

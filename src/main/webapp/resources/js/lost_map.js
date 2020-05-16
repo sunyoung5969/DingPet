@@ -75,13 +75,23 @@
 	                marker.setDraggable(true); 
 	                marker.setPosition(mouseEvent.latLng);
 	                marker.setMap(map);
-
+	                
 	                // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
 	                infowindow.setContent(content);
 	                infowindow.open(map, marker);
 	                
 	                //클릭 시 인풋 태그에 주소 변동 반영 
 	                document.getElementById("address_display").value = addrString;
+	                
+	                //마커 좌표 가져옴
+	                var position = marker.getPosition();
+	                var lat = position.getLat();
+	                var lng = position.getLng();
+	                
+	                //input hidden으로 리퀘스트 바디에 포함
+                	document.getElementById("coords").value = position;
+	                document.getElementById("lat").value = lat;
+	                document.getElementById("lng").value = lng;
 	                
 	            }   
 	        });
@@ -118,6 +128,8 @@
 	        }    
 	    }
 	    
-	  
+	    function mark(){
+	    	
+	    }
 	    
 	    
