@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.dingpet.petsitting.p001.mapper.PetSitting_P001_Mapper">
 
 	<select id="profileGetList" resultType="com.dingpet.petsitting.p001.vo.PetSitting_P001_VO">
-		select s.member_id, m.member_nickname, s.profile_picpath, s.profile_content, s.list_address, s.profile_picpath 
+		select s.member_id, m.member_nickname, s.profile_picpath, s.profile_content, s.list_address, s.profile_picpath, s.profile_picname
 		from sitter_profile s, member m 
 		where s.member_id = m.member_id
 	</select>

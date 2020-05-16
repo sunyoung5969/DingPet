@@ -198,7 +198,7 @@
 </style>
 <!--====  str of contents  ====-->
     <section style="padding-top:87px">
-        <div class="page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); transform: translate3d(0px, 0px, 0px);"></div>
+        <div class="page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/beagle_dog_running992831.jpg'); transform: translate3d(0px, 0px, 0px);"></div>
         <div class="main main-raised">
             <div class="profile-content">
                 <div class="container">
@@ -218,7 +218,6 @@
 								<c:set var="currentDate" value='#{date }' />
 								<c:set var="currentTime" value='#{time }' />
 								<!-- 탭 내용 -->
-								
 								
 <!-- ----------------------------------시터 전용 돌봄 목록------------------------------------ -->
 								<div class="list-container-sitter">
@@ -271,9 +270,7 @@
 								</div>
 <!-- --------------------------------------------------------------------------------------- -->
 								
-								
 <!-- ----------------------------------유저 공통 목록------------------------------------------- -->
-								
 								
 								<div class="list-container-common">
 									<div class="list-div">
@@ -302,13 +299,13 @@
 				                                <div class="cancel-btn">
 				                                	<c:if test="${currentDate > sitterlist.end_Date2}">
 					                                	<form class="btnform" action="/petsitting/p004/reviewregister" method="get">
-															<input type="hidden" name="reservation_ID" value="${list.order_ID }">
+															<input type="hidden" name="reservation_ID" value="${sitterlist.order_ID }">
 						                                    <button class="btn btn-log--review">리뷰<br>등록</button>
 					                               		</form>
 					                               	</c:if>
 				                                	<c:if test="${currentDate >= sitterlist.start_Date2 }">
 					                               		<form class="btnform" action="/petsitting/p003/loglookup" method="post">
-															<input type="hidden" name="reservation_ID" value="${list.order_ID }">
+															<input type="hidden" name="reservation_ID" value="${sitterlist.order_ID }">
 						                                    <button class="btn btn-log--lookup">일지<br>조회</button>
 					                               		</form>
 					                               	</c:if>
