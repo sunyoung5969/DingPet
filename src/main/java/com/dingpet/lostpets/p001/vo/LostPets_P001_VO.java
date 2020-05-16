@@ -12,8 +12,9 @@ public class LostPets_P001_VO {
 	private String content;
 	private String board_date;
 	private String status;
-	private String status_reason;
-	private String lost_found_report;
+	private String lat;
+	private String lng;
+	
 	
 	private String dog_type;
 	private String dog_name;
@@ -44,8 +45,20 @@ public class LostPets_P001_VO {
 	private String member_nickname;
 	
 	
+	
 
-
+	public String getLat() {
+		return lat;
+	}
+	public void setLat(String lat) {
+		this.lat = lat;
+	}
+	public String getLng() {
+		return lng;
+	}
+	public void setLng(String lng) {
+		this.lng = lng;
+	}
 	public String getMember_nickname() {
 		return member_nickname;
 	}
@@ -189,18 +202,6 @@ public class LostPets_P001_VO {
 	}
 	public void setStatus(String status) {
 		this.status = status;
-	}
-	public String getStatus_reason() {
-		return status_reason;
-	}
-	public void setStatus_reason(String status_reason) {
-		this.status_reason = status_reason;
-	}
-	public String getLost_found_report() {
-		return lost_found_report;
-	}
-	public void setLost_found_report(String lost_found_report) {
-		this.lost_found_report = lost_found_report;
 	}
 	public String getFound_date() {
 		return found_date;

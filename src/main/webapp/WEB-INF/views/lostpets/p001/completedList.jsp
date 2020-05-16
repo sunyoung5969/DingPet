@@ -12,9 +12,10 @@
 
 <!--====  str of contents  ====-->
 <section style="padding-top:87px" class = "nanumbarungothic">
-    <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); height : 300px;transform: translate3d(0px, 0px, 0px);">
-    	<div class="floating_text pt-5 pb-5  mt-5 text-center heading-section m-auto">
-                  	<h1 class="mb-2 color_white">유기견 찾기</h1>
+    <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/bg/com.jpg'); height : 400px;transform: translate3d(0px, 0px, 0px);">
+    	<div class="floating_text pt-5 pb-5  mt-5 text-center heading-section m-auto color_white">
+           	<h1  style="font-family:GmarketSansBold;">찾았어요</h1>
+           	<span style="font-size:1.1em;">딩펫을 통해 가족과 재회하고 행복을 되찾은 반려견들을 만나보세요!</span>
         </div>
     </div>
     
@@ -25,10 +26,12 @@
 					<div class="col-xs-12 ">
 						
 						<div class = "section_space"><!-- section wrap -->
-							<div><!-- title section starts-->
+							<!-- 
+							<div><!-- title section starts
 								<h2 class = "color_dark_blue narrow">완료 목록</h2>
 								<span  class = "pl-2 color_grey">딩펫을 통해 가족과 재회하고 행복을 되찾은 반려견들을 만나보세요!</span>
-							</div><!-- title section ends-->
+							</div><!-- title section ends
+							 -->
 							<div class = "pt-3"><!-- list wrap -->
 								<c:choose>
 									<c:when test ="${empty completedList }">

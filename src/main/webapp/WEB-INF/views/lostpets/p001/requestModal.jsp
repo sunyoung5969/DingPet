@@ -62,7 +62,7 @@ a:link, a:visited {
 <div id="modal" class="modal">
 	<div class="modal-content">
 		<div class="text_center py-1">
-			<h2 class ="color_blue">확인 요청</h2>
+			<h2 class ="color_blue" style="font-family:GmarketSansBold;">확인 요청</h2>
 			<span>게시하신 글을 바탕으로 확인을 요청하실 수 있습니다. 게시글을 선택해주세요.</span>
 		</div>
 		<div class = "content_area pt-3">

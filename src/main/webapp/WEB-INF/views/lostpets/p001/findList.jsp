@@ -12,9 +12,10 @@
 
 <!--====  str of contents  ====-->
 <section style="padding-top:87px" class = "nanumbarungothic">
-    <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); height : 300px;transform: translate3d(0px, 0px, 0px);">
+    <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/bg/lost.jpg'); height : 400px;transform: translate3d(0px, 0px, 0px);">
     	<div class="floating_text pt-5 pb-5  mt-5 text-center heading-section m-auto">
-                  	<h1 class="mb-2 color_white">유기견 찾기</h1>
+             <h1 class=" color_white" style="font-family:GmarketSansBold;">반려견 찾기</h1>
+             <span  class = "pl-2 d-inline-block  color_white "style="font-size:1.1em;">잃어버린 반려견을 찾고 계신가요? 딩펫이 도와드릴게요!</span>
         </div>
     </div>
     
@@ -29,7 +30,7 @@
 						<div class = "section_space"><!-- section wrap -->
 							<div class ="flex_row_between"><!-- 설명 section wrap -->
 								<div class = "d-inline-block"><!-- 타이틀, span -->
-									<h1 class="color_dark_blue narrow">반려견 찾기</h1>
+									<h1 class="color_dark_blue narrow" style="font-family:GmarketSansBold;">반려견 찾기</h1>
 									<span  class = "pl-2 d-inline-block color_grey">잃어버린 반려견을 찾고 계신가요? 딩펫이 도와드릴게요!</span>
 								</div>
 								<div class = "d-inline-block pr-5">
