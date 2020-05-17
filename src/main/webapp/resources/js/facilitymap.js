@@ -259,7 +259,7 @@ function displayPlaces(places) {
 	for (var i = 0; i < places.length; i++) {
 
 		// 마커를 생성하고 지도에 표시합니다
-		var marker = addMarker(new kakao.maps.LatLng(places[i].y, places[i].x));
+		var marker = addMarker(new kakao.maps.LatLng(places[i].y, places[i].x), order);
 
 		// 마커와 검색결과 항목을 클릭 했을 때
 		// 장소정보를 표출하도록 클릭 이벤트를 등록합니다
@@ -272,21 +272,13 @@ function displayPlaces(places) {
 }
 
 // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
-function addMarker(position) {
-	var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png', // 마커
-	// 이미지
-	// url,
-	// 스프라이트
-	// 이미지를
-	// 씁니다
+function addMarker(position, order) {
+	var imageSrc = 'https://www.dingpet.shop/imgs/places_category.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
 	imageSize = new kakao.maps.Size(27, 28), // 마커 이미지의 크기
 	imgOptions = {
 		spriteSize : new kakao.maps.Size(72, 208), // 스프라이트 이미지의 크기
-		spriteOrigin : new kakao.maps.Point(46, (1 * 36)), // 스프라이트 이미지 중
-		// 사용할 영역의 좌상단
-		// 좌표
-		offset : new kakao.maps.Point(11, 28)
-	// 마커 좌표에 일치시킬 이미지 내에서의 좌표
+		spriteOrigin : new kakao.maps.Point(46, (order * 36)), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+		offset : new kakao.maps.Point(11, 28) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
 	}, markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions), marker = new kakao.maps.Marker(
 			{
 				position : position, // 마커의 위치

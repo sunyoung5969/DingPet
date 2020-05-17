@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dingpet.index.main.mapper.Index_Mapper">
+
+	<select id="getHoF" resultType="com.dingpet.index.main.vo.IndexPetsitterVO">
+		select * 
+		from (select r.sitter_id, s.profile_picname, m.member_nickname,
+		s.profile_content, nvl(s.profile_star, 0)as profile_star ,count(r.sitter_id) as count 
+		from member m, reservation r, sitter_profile s
+		where m.member_id = r.sitter_id and m.member_id = s.member_id
+		group by r.sitter_id, s.profile_picname, m.member_nickname, s.profile_content, profile_star
+		order by count desc)
+		<![CDATA[ where rownum < 4]]>
+	</select>
+	
+	<select id="getPriceAVG" resultType="com.dingpet.index.main.vo.IndexPriceVO"> 
+		select avg(price_small) as small_Price_AVG
+		, avg(price_medium) as medium_Price_AVG
+		, avg(price_large) as large_Price_AVG from sitter_profile 
+	</select>
+
+	
+</mapper>

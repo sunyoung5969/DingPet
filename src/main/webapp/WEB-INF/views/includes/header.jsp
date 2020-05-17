@@ -68,7 +68,6 @@ $(document).ready(function(){
 			<div class="site-mobile-menu-body"></div>
 		</div>
 
-
 		<header class="site-navbar js-sticky-header site-navbar-target"
 			role="banner">
 
@@ -137,12 +136,12 @@ $(document).ready(function(){
 								</li>
 								<li>
 									<div>
-									
 										<c:choose>
 								 			<c:when test="${isLogOn == true && customers != null}">
 								    			<a href="/customers/p001/logout" class="nav-link btn btn-primary" style="color: #fff !important; line-height: 1rem;">로그아웃</a>
 								    			<a href="/customers/p001/toMyinfo" class="nav-link btn btn-primary" style="color: #fff !important; line-height: 1rem;">마이페이지</a>
 								    			<input type="hidden" class="member_ID" value="${customers.member_id }">
+								    			<input type="hidden" class="privilege_ID" value="${customers.privilege_id }">
 								    		</c:when>
 								    		<c:when test="${adLogOn == true && customers != null}">
 								    			<a href="/customers/p001/logout" class="nav-link btn btn-primary" style="color: #fff !important; line-height: 1rem;">로그아웃</a>
@@ -164,7 +163,6 @@ $(document).ready(function(){
 							<span class="icon-menu h3"></span>
 						</a>
 					</div>
-
 				</div>
 			</div>
 			<div class="noticeDiv" style="display: none">
@@ -175,7 +173,6 @@ $(document).ready(function(){
 		<div class="notice_messege-div">
 			<img class="notice_messege-img" src="${pageContext.request.contextPath}/resources/images/icon/notice_message.png">
 		</div>
-
 		<div class="tl_box">
 			<div class="tl_config">
 				<dl>

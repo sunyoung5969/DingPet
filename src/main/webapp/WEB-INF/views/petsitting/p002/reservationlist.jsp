@@ -82,6 +82,9 @@
     border: solid 1px;
     border-color: #79a4ca;
     color: #79a4ca;
+    transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out,
+    			border-color 0.35s ease-in-out, box-shadow 0.35s ease-in-out,
+    			-webkit-box-shadow 0.35s ease-in-out;
 }
 .btn-log--register:hover{
 	color: #fff;
@@ -97,6 +100,9 @@
     border: solid 1px;
     border-color: #69acb8;
     color: #69acb8;
+    transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out,
+    			border-color 0.35s ease-in-out, box-shadow 0.35s ease-in-out,
+    			-webkit-box-shadow 0.35s ease-in-out;
 }
 
 .btn-log--lookup:hover{
@@ -113,6 +119,9 @@
     border: solid 1px;
     border-color: #dc3545;
     color: #dc3545;
+    transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out,
+    			border-color 0.35s ease-in-out, box-shadow 0.35s ease-in-out,
+    			-webkit-box-shadow 0.35s ease-in-out;
 }
 
 .btn-reserved--cancel:hover{
@@ -129,6 +138,9 @@
     border: solid 1px;
     border-color: #905bc8;
     color: #905bc8;
+    transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out,
+    			border-color 0.35s ease-in-out, box-shadow 0.35s ease-in-out,
+    			-webkit-box-shadow 0.35s ease-in-out;
 }
 
 .btn-log--review:hover{
@@ -248,19 +260,19 @@
 				                                	<c:if test="${custlist.start_Date2 <= currentDate <custlist.end_Date2 }">
 														<form class="btnform" action="/petsitting/p003/logregister" method="post">
 															<input type="hidden" name="reservation_ID" value="${custlist.order_ID }">
-						                                    <button class="btn btn-log--register">일지<br>등록</button>
+						                                    <button class="btn-log--register">일지<br>등록</button>
 					                               		</form>
 					                               	</c:if>
 				                                	<c:if test="${currentDate >= custlist.start_Date2 }">
 					                               		<form class="btnform" action="/petsitting/p003/loglookup" method="post">
 															<input type="hidden" name="reservation_ID" value="${custlist.order_ID }">
-						                                    <button class="btn btn-log--lookup">일지<br>조회</button>
+						                                    <button class="btn-log--lookup">일지<br>조회</button>
 					                               		</form>
 					                               	</c:if>
 				                                	<c:if test="${currentDate < custlist.start_Date2}">
 						                                <form class="btnform" action="kakaoPayCancel" method="post" onsubmit="return check()">
 						                                    <input type="hidden" class="order_ID" name="order_ID" value="${custlist.order_ID }">
-															<button class="btn btn-reserved--cancel">예약<br>취소</button>
+															<button class="btn-reserved--cancel">예약<br>취소</button>
 					                               		</form>
 					                               	</c:if>
 			                               		</div>
@@ -300,20 +312,20 @@
 				                                	<c:if test="${currentDate > sitterlist.end_Date2}">
 					                                	<form class="btnform" action="/petsitting/p004/reviewregister" method="get">
 															<input type="hidden" name="reservation_ID" value="${sitterlist.order_ID }">
-						                                    <button class="btn btn-log--review">리뷰<br>등록</button>
+						                                    <button class="btn-log--review">리뷰<br>등록</button>
 					                               		</form>
 					                               	</c:if>
 				                                	<c:if test="${currentDate >= sitterlist.start_Date2 }">
 					                               		<form class="btnform" action="/petsitting/p003/loglookup" method="post">
 															<input type="hidden" name="reservation_ID" value="${sitterlist.order_ID }">
-						                                    <button class="btn btn-log--lookup">일지<br>조회</button>
+						                                    <button class="btn-log--lookup">일지<br>조회</button>
 					                               		</form>
 					                               	</c:if>
 				                                	<c:if test="${currentDate < sitterlist.start_Date2}">
 						                                <form class="btnform" action="kakaoPayCancel" method="post" onsubmit="return check()">
 						                                  
 						                                    <input type="hidden" class="order_ID" name="order_ID" value="${sitterlist.order_ID }">
-															<button class="btn btn-reserved--cancel">예약<br>취소</button>
+															<button class="btn-reserved--cancel">예약<br>취소</button>
 					                               		</form>
 					                               	</c:if>
 			                               		</div>

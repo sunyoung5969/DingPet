@@ -74,6 +74,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where m.member_id = r.member_id and sitter_id = #{member_ID} and r.review_id is not null
 		order by r.review_date
 	</select>
-
 	
 </mapper>

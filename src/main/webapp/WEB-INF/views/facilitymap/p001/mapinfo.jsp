@@ -125,8 +125,8 @@ background:url(${pageContext.request.contextPath}/resources/images/ministar.png)
                                              
                                          <br><br>
                                          <div>                                         
-                                            <span class="listing-rating-count listing-rating-count--single">
-                                            <a href="">0개의 리뷰</a>	</span>
+                                            <span class="listing-rating-count listing-rating-count--single" id="recount">
+                                            </span>
                                         </div>
                                         <div class="job_listing-location job_listing-location-none">${info.address_name }</div>
                                         <div class="job_listing-location job_listing-location-none">${info.phone }</div>
@@ -310,7 +310,7 @@ $("#board_date").html("<small>" + replyService.formatDate(dateString) + "</small
 //댓글 목록 표시
 var site_idValue = '<c:out value = "${info.site_id}"/>';
 var replyUL = $("#comments");
-			
+var recount = $("#recount");
 showList(1);
 						
 function showList(pageNum){
@@ -345,6 +345,7 @@ function showList(pageNum){
 				}
 				replyUL.html(str);
 				showReplyPage(replyCnt);
+				recount.html("<a href='#respond'> " + replyCnt+" 개의 리뷰 </a>");
 		}); //list End
 	}; // showList End
 		
