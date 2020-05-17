@@ -74,18 +74,11 @@
                                                 <input type="text" id="place_name" class="form-control" name="place_name"  required>
                                             </div>
                                         </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-md-3 col-form-label text-md-right">주소</label>
-                                            <div class="col-md-7">
-                                                <input type="text" id="adress_name" class="form-control" name="address_name"  required>
-                                            </div>
-                                        </div>
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label text-md-right">시설 종류</label>
                                             <div class="col-md-7">
                                                 <div class="row">
-                                                    <div class="col-sm-4">
+                                                    <div class="col-sm-7">
                                                         <select class="form-control" name="category_name" >
                                                         <optgroup label="시설 종류" >
                                                             <option value="hospital">동물병원</option>
@@ -106,15 +99,27 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
+                                        	<label class="col-md-3 col-form-label text-md-right">주소검색</label>                                        
+										    <div class = "col-md-7">
+											     <input type="text" class="form-control"  id="address_display" name="adress_name" placeholder = "주소 검색 버튼을 클릭하세요" required>
+											     <input type = "button" class="addressBtn btn btn-primary " onclick="DaumPostcode()" value = "주소 검색" style="padding:7px 10px;margin:5px 380px -10px;">
+										    </div>
+										   <div id = "map_wrap" class = "mt-3" style = "display:none; position:relative;">
+										      <div id="lost_map"  style = "width : 500px; height: 400px; display:none"></div>
+										      <div class="hAddr"><span id="centerAddr"></span> </div>
+										      <span id = "lost_map_guide" class = "color_blue" style = "display:none;">*지도에서 위치를 클릭해서 주소를 입력해주세요</span><br>
+										   </div>
+										</div>
+                                        <div class="form-group row">
                                             <label class="col-md-3 col-form-label text-md-right">위도</label>
                                             <div class="col-md-7">
-                                                <input type="text" id="Latitude" class="form-control" name="X"  required>
+                                                <input type="text" id="lat" class="form-control" name="X"  required>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label text-md-right">경도</label>
                                             <div class="col-md-7">
-                                            	<input type="text" id="longitude" class="form-control" name="Y"  required>
+                                            	<input type="text" id="lng" class="form-control" name="Y"  required>
                                             	<input type="hidden" id="place_url" class="form-control" name="place_url" value="https://www.dingpet.shop/facilitymap/p001/mapinfo?site_id=">
                                             </div>
                                         </div>
@@ -306,6 +311,11 @@ $(document).ready(function(){
 	});
 
 </script> 
+
+<!-- 주소 검색용 우편번호 API -->
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=78d603c9ceea19aeba68479415b917d4&libraries=services"></script>
+<script src="${pageContext.request.contextPath}/resources/js/map_register.js" type="text/javascript"></script>
 </body>
 <%@ include file="/WEB-INF/views/includes/footer.jsp"%>
 </html>
