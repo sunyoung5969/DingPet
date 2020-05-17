@@ -40,8 +40,8 @@
     }
     
     #front_view{
-    width : 400px;
-    height : 300px;}
+    max-width : 600px;
+    height : 400px;}
     
     
 </style>
@@ -58,7 +58,7 @@
 				
 				<div class="row justify-content-center pt-5 pb-5" data-aos="fade-up">
 					<div class="text-center heading-section">
-						<h2 class="text-black mb-2" style="font-family:GmarketSansBold;">주인 찾기 / 반려견 찾기 등록</h2>
+						<h2 class="color_dark_blue narrow mb-2" style="font-family:GmarketSansBold;">찾기 등록</h2>
 					</div>
 				</div>
 
@@ -87,8 +87,8 @@
 								class="col-md-4 col-form-label text-md-right color_blue lost_found_label">견종</label>
 							<div class="col-md-6">
 								<input list = "dog_breed" class="form-control" name="dog_breed" maxlength="30" placeholder="목록에서 선택해주세요" 
-								pattern = "믹스견|그 외|골든 리트리버|닥스훈트|도베르만|래브라도 리트리버|말티즈|미니어쳐 핀셔|불독|비글|비숑 프리제|사모예드|스피츠|시바|시추|
-								시베리안 허스키|알래스칸 말라뮤트|요크셔 테리어|웰시 코기|저먼 셰퍼드|진돗개|치와와|코카 스파니엘" required title = "목록에서 선택해주세요">
+								pattern = "믹스견|그 외|골든 리트리버|닥스훈트|도베르만|래브라도 리트리버|말티즈|미니어쳐 핀셔|불독|비글|비숑 프리제|사모예드|스피츠|시바|시추|시베리안 허스키|알래스칸 말라뮤트|요크셔 테리어|웰시 코기|저먼 셰퍼드|진돗개|치와와|코카 스파니엘" 
+								required title = "목록에서 선택해주세요">
 								<datalist id = "dog_breed">
 									<option value ="믹스견" readonly>
 									<option value ="그 외">

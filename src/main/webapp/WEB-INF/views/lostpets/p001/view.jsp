@@ -26,7 +26,7 @@
                 <div class="container">
                     <div class="row justify-content-center pt-5 pb-5" data-aos="fade-up">
                         <div class="text-center heading-section">
-                          <h2 class="text-black mb-2">임시보호견 상세 정보</h2>
+                          <h1 class="color_dark_blue narrow mb-2" style="font-family:GmarketSansBold;">반려견 상세 정보</h1>
                         </div>
                     </div>
                     <!-- 제목, 작성자, 작성일시-->
@@ -40,7 +40,7 @@
                    	<hr class = "hr_style">
                     <div class="col-12 row pt-3 dp-webkit ">
                             <div class="image-block bg-about w-100 text_center" >
-                                <img class="img-fluid m-auto" src="https://www.dingpet.shop/lost/${board.front_name}"  style = "width: 500px; height: 400px;">
+                                <img class="img-fluid m-auto" src="https://www.dingpet.shop/lost/${board.front_name}"  style = "max-width:900px;height: 400px;">
                             </div>
                     </div>
                      <div class="col-12 row pt-3 dp-webkit ">

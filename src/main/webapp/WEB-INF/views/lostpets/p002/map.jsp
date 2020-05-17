@@ -113,7 +113,7 @@ padding:0.5rem 1rem;
 	<div class="modal-content">
 		<div class="section_space_top text_center">
 			<h2 class ="color_dark_blue narrow" style="font-family:GmarketSansBold;">실종견 지도</h2>
-			<p  class = "pl-2 color_grey">주인 찾기, 반려견 찾기 게시글을 한눈에 보여드립니다.</p>
+			<p  class = "pl-2 color_grey">카테고리를 클릭하시면 실종견 정보를 한눈에 보여드립니다.</p>
 		</div>
 		<div class = "content_area pt-3">
 			<section class="nanumbarungothic">

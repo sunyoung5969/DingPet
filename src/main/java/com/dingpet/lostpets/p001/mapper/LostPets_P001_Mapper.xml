@@ -126,7 +126,6 @@
 			ORDER BY board_id DESC
 		)
 		WHERE rn > (#{pageNum} - 1) * #{amount}
-        ORDER BY board_id DESC
         ]]> 
 	</select>
 	<!-- 유기견 전체 글 수 -->

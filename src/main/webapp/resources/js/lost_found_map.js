@@ -295,8 +295,8 @@ function removeMarker() {
 
 // 클릭한 마커에 대한 장소 상세정보를 커스텀 오버레이로 표시하는 함수입니다
 function displayPlaceInfo (place) {
-    var content = '<div class="placeinfo"><div class="p-3"><div>'
-   content += '<a style="cursor:pointer;" href="/lostpets/p001/view?board_id=' + place.board_id + '" target="_blank" title="제목을 클릭하면 게시글로 이동합니다.">';
+    var content = '<div class="placeinfo" style="cursor:normal;"title="제목을 클릭하면 게시글로 이동합니다."><div class="p-3"><div>'
+   content += '<a style="cursor:pointer;" href="/lostpets/p001/view?board_id=' + place.board_id + '" target="_blank">';
    content += '<span class = "text_overflow my-2" style="width:90%;"><strong>' + place.title +'</strong></span></a>';
    content += '<i class="fas fa-times pl-2" onclick="closeInfo()" style="width:10%;"></i></div>'; 
    content += '	<p class = "pl-2"><span class="tag">견종</span><span>' + place.dog_breed + '</span></p>';

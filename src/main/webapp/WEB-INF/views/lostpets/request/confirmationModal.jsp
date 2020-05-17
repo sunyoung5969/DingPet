@@ -68,7 +68,7 @@ a:link, a:visited {
 <div id="modal" class="modal">
 	<div class="modal-content">
 		<div class="text_center py-3">
-			<h2 class ="color_blue narrow" style="font-size:24px; font-weight:bold;">완료 처리</h2>
+			<h2 class ="color_dark_blue narrow" style="font-family:GmarketSansBold;">완료 처리</h2>
 			<span class = "color_grey">축하합니다! 간단한 후기를 등록하시면 매칭이 완료됩니다.</span>
 		</div>
 		<form method="post" action="/lostpets/request/complete" method="post" enctype="multipart/form-data" >

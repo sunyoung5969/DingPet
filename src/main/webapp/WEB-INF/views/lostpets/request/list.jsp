@@ -106,8 +106,8 @@
 															</a>
 					
 															<div class="flex_row b_round_border">
-																<button class="confirmRequest confirm_left"><strong>완료</strong></button>
-																<button data-request_id="${requestFrom.request_id}" class="deleteRequest confirm_right"><strong>삭제</strong></button>
+																<button class="confirmRequest confirm_left"><strong>맞아요!</strong></button>
+																<button data-request_id="${requestFrom.request_id}" class="deleteRequest confirm_right"><strong>아니에요</strong></button>
 															</div>
 															<%@include file="../../lostpets/request/confirmationModal.jsp"%>
 														</div>
