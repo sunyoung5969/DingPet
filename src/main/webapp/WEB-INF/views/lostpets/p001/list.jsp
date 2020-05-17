@@ -76,7 +76,8 @@
 								</div>
 							</a>
 							<div class = "d-inline-block pr-5">
-								<a href="" class="write btn_a no_text_deco"><span class="sub_txt ">등록하기 <img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr"></span> </a>
+								<button class="blueBtn mapBtn mr-3">지도로 보기</button>
+								<button class="blueBtn write">등록하기</button>
 							</div>
 						</div><!-- 설명 section wrap ends-->
 						<div class="list_wrap"><!-- list wrap -->
@@ -126,7 +127,8 @@
 								</div>
 							</a>
 							<div class = "d-inline-block pr-5">
-								<a href="" class="write btn_a no_text_deco"><span class="sub_txt ">등록하기 <img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr"></span> </a>
+								<button class="blueBtn mapBtn mr-3">지도로 보기</button>
+								<button class="blueBtn write">등록하기</button>
 							</div>
 						</div><!-- 설명 section wrap ends-->
 						<div class="list_wrap"><!-- list wrap -->
@@ -184,17 +186,14 @@
 	$(document).ready(function(){
 		
 		if(!loggedInId){
-			$(".write, #to_request_list").on("click", function(){
+			$(".write").on("click", function(){
 				alert("로그인이 필요한 서비스입니다.\n로그인 페이지로 이동합니다.");
-				(this).setAttribute("href", "/customers/p001/signin");
+				location.href = "/customers/p001/signin";
 			});
 		}else{
 			$(".write").on("click", function(){
+				location.href = "/lostpets/p001/write";
 				(this).setAttribute("href", "/lostpets/p001/write");
-			});
-			
-			$("#to_request_list").click(function(){
-				(this).setAttribute("href", "/lostpets/request/list?member_id=" + loggedInId);
 			});
 		}
 	});
@@ -223,5 +222,6 @@
 
 
 <!--====  end of contents  ====-->
-<script type = "text/javascript" src = "/resources/js/carousel.js"></script>s
+<script type = "text/javascript" src = "/resources/js/carousel.js"></script>
+<%@include file="../p002/map.jsp"%>
 <%@include file="../../includes/footer.jsp"%>

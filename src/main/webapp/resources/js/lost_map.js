@@ -85,13 +85,13 @@
 	                
 	                //마커 좌표 가져옴
 	                var position = marker.getPosition();
-	                var lat = position.getLat();
-	                var lng = position.getLng();
+	                var y = position.getLat();
+	                var x = position.getLng();
 	                
 	                //input hidden으로 리퀘스트 바디에 포함
                 	document.getElementById("coords").value = position;
-	                document.getElementById("lat").value = lat;
-	                document.getElementById("lng").value = lng;
+	                document.getElementById("lat").value = y;
+	                document.getElementById("lng").value = x;
 	                
 	            }   
 	        });

@@ -200,8 +200,8 @@
 						
 						<input type="hidden" class="form-control" name="member_id" value="${customers.member_id }">
 						<input type = "hidden" id = "coords"  name = "coords" value = "">
-						<input type = "hidden" id = "lat" name = "lat" >
-						<input type = "hidden" id = "lng"  name = "lng" >
+						<input type = "hidden" id = "lat" name = "y" >
+						<input type = "hidden" id = "lng"  name = "x" >
 						
 						<div class="pb-5 pt-5 text-center">
 							<button id = "submitBtn" type="submit" class="btn btn-primary">등록하기</button>

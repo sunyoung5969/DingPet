@@ -34,7 +34,8 @@
 									<span  class = "pl-2 d-inline-block color_grey">잃어버린 반려견을 찾고 계신가요? 딩펫이 도와드릴게요!</span>
 								</div>
 								<div class = "d-inline-block pr-5">
-									<a id = "write" href="" class="btn_a "><span class="sub_txt ">등록하기 <img src="/resources/images/icon/arrow_right_gray.png" class="sub_arr"></span> </a>
+									<button class="blueBtn mapBtn mr-3">지도로 보기</button>
+									<button class="blueBtn write">등록하기</button>
 								</div>
 							</div><!-- 설명 section wrap ends-->
 							<div class = "pt-3"><!-- list wrap -->
@@ -98,19 +99,15 @@
 	var loggedInId = '${customers.member_id}';	
 
 	$(document).ready(function(){
-		
 		if(!loggedInId){
-			$("#write, #to_request_list").on("click", function(){
+			$(".write").on("click", function(){
 				alert("로그인이 필요한 서비스입니다.\n로그인 페이지로 이동합니다.");
-				(this).setAttribute("href", "/customers/p001/signin");
+				location.href = "/customers/p001/signin";
 			});
 		}else{
-			$("#write").on("click", function(){
+			$(".write").on("click", function(){
+				location.href = "/lostpets/p001/write";
 				(this).setAttribute("href", "/lostpets/p001/write");
-			});
-			
-			$("#to_request_list").click(function(){
-				(this).setAttribute("href", "/lostpets/request/list?member_id=" + loggedInId);
 			});
 		}
 	});
@@ -138,5 +135,5 @@ $(document).ready(function() {
 
 
 <!--====  end of contents  ====-->
-
+<%@include file="../p002/map.jsp"%>
 <%@include file="../../includes/footer.jsp"%>
