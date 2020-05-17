@@ -14,6 +14,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		order by count desc)
 		<![CDATA[ where rownum < 4]]>
 	</select>
+	
+	<select id="getPriceAVG" resultType="com.dingpet.index.main.vo.IndexPriceVO"> 
+		select avg(price_small) as small_Price_AVG
+		, avg(price_medium) as medium_Price_AVG
+		, avg(price_large) as large_Price_AVG from sitter_profile 
+	</select>
 
 	
 </mapper>

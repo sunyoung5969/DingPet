@@ -92,9 +92,7 @@
                     <div class="row justify-content-center pt-3" data-aos="fade-up">
                         <div class="text-center heading-section">
                           <h2 class="text-black mb-2">펫시터 정보</h2>                          
-                          <div class="rBtn-warp" >
-                            
-                          </div>
+                          <div class="rBtn-warp" ></div>
                         </div>
                         <div class="listrow">
 	                        <c:forEach items="${ list}" var="sitter" varStatus="status">	   
@@ -141,7 +139,7 @@
 	<script>
 		var str="";
 		
-		if($(".privilege_ID").val == '01'){
+		if($(".privilege_ID").val() == '01'){
 			str += '<a href="profileregister" class="rBtn-a">';
 	        str += '<p class="rBtn">펫시터 등록</p></a>';
 	        $(".rBtn-warp").append(str);

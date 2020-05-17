@@ -174,7 +174,7 @@
             <div class="pricing">
               <h3 class="text-center text-white text-uppercase">소 형 견</h3>
               <div class="price text-center mb-4 ">
-                <span><span>&#8361; 7900</span> / 1시간</span>
+                <span><span>&#8361; ${AVGPrice.small_Price_AVG }</span> / 1시간</span>
               </div>
                 <p>소형견 크기 기준</p>
                 <p>10kg 미만</p>
@@ -186,7 +186,7 @@
             <div class="pricing">
               <h3 class="text-center text-white text-uppercase">중 형 견</h3>
               <div class="price text-center mb-4 ">
-                <span><span>&#8361; 8750</span> / 1시간</span>
+                <span><span>&#8361; ${AVGPrice.medium_Price_AVG }</span> / 1시간</span>
               </div>
                 <p>중형견 크기 기준</p>
                 <p>10kg이상 25kg미만</p>
@@ -198,7 +198,7 @@
             <div class="pricing">
               <h3 class="text-center text-white text-uppercase">대 형 견</h3>
               <div class="price text-center mb-4 ">
-                <span><span>&#8361; 9000</span> / 1시간</span>
+                <span><span>&#8361; ${AVGPrice.large_Price_AVG }</span> / 1시간</span>
               </div>
                 <p>대형견 크기 기준</p>
                 <p>25kg 이상</p>

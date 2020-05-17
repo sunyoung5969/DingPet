@@ -44,6 +44,9 @@ public class HomeController {
 		model.addAttribute("HoF", service.getHoF());
 		
 	//----------------------------------------------------------------------
+	//--------------------------------평균 가격--------------------------------
+		model.addAttribute("AVGPrice", service.getPriceAVG());
+	//----------------------------------------------------------------------
 		
 		model.addAttribute("serverTime", formattedDate );
 		
