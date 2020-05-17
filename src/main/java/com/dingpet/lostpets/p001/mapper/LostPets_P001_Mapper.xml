@@ -183,9 +183,9 @@
 	<insert id="writeLost" parameterType="java.util.Map">
 		insert into lost_found
 		(category, board_id, member_id, dog_id, title, content, 
-		board_date, status, lat, lng)
+		board_date, status, y, x)
 		values (#{category}, #{board_id}, #{member_id}, #{dog_id}, #{title}, #{content},
-		to_char(sysdate, 'yyyymmddhh24mi'), 'n', #{lat}, #{lng})
+		to_char(sysdate, 'yyyymmddhh24mi'), 'n', #{y}, #{x})
 	</insert>
 
 	<insert id = "writeDog" parameterType = "java.util.Map">

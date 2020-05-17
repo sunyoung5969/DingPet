@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.or//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.dingpet.lostpets.p002.mapper.LostPets_P002_Mapper">
+
+<select id="getLost" resultType="com.dingpet.lostpets.p002.vo.LostPets_P002_VO" parameterType="com.dingpet.lostpets.p002.vo.LostPets_P002_VO" >
+	<![CDATA[
+	SELECT board_id, title, content, dog_breed, dog_sex, found_date, x, y
+	FROM lost_found LF, Dog D
+	WHERE LF.dog_id = D.dog_id  
+	AND x < #{maxX}
+	AND x > #{minX}
+	AND y < #{maxY}
+	AND y > #{minY}
+	AND category = #{category}
+	]]>	
+</select>
+	
+</mapper>

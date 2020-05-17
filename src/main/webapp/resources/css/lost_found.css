@@ -89,6 +89,24 @@ fair black : #4e5566
 	letter-spacing: -2px;
 }
 
+.blueBtn{
+    border: 1px solid #088cf3;
+    font-size:1em;
+	padding:0.5rem 1rem;
+    border-radius: 20px;
+    background-color:#FFF;
+    color:#088cf3;
+}
+
+.blueBtn:focus{
+	outline:0;
+}
+
+.blueBtn:hover{
+	background-color:#088cf3;
+    color:#FFF;
+}
+
 i:hover, a:hover {
 	cursor: pointer;
 }

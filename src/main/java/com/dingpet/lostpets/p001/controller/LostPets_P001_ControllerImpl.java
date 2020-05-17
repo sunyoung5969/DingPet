@@ -97,26 +97,25 @@ public class LostPets_P001_ControllerImpl implements LostPets_P001_Controller {
 		//image upload
 		String uploadFolder = "/var/lib/tomcat8/webapps/lost";
 		String fileName = "";
-		String filePath = "";
 		
 		Iterator<String> files = uploadFile.getFileNames();
 
 		while(files.hasNext()) {
-			
 			File saveFile;
+			String filePath;
 			String index = files.next();
 			UUID uuid = UUID.randomUUID();
 			
 			MultipartFile mFile = uploadFile.getFile(index);
 			fileName = mFile.getOriginalFilename();
-			String savedFileName = uuid.toString() + fileName;
 
 			if(!fileName.equals("")) {
-				saveFile = new File(uploadFolder, fileName);
+				saveFile = new File(uploadFolder, uuid.toString() + fileName);
 				filePath = saveFile.getPath();
-				writeMap.put("front_name", savedFileName);
-				writeMap.put("front_path", filePath);
-					
+				log.info(filePath);
+				writeMap.put("front_name",  uuid.toString() + fileName);
+				writeMap.put("front_path", uploadFolder +"/"+ uuid.toString() + fileName);
+				log.info("@@@@@@@@@@" + uploadFolder +"/"+ uuid.toString() + fileName);	
 				try {
 					mFile.transferTo(saveFile);
 				} catch (Exception e) {

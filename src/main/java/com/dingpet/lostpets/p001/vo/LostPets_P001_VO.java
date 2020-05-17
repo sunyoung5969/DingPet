@@ -12,9 +12,8 @@ public class LostPets_P001_VO {
 	private String content;
 	private String board_date;
 	private String status;
-	private String lat;
-	private String lng;
-	
+	private String y;
+	private String x;
 	
 	private String dog_type;
 	private String dog_name;
@@ -27,10 +26,6 @@ public class LostPets_P001_VO {
 	
 	private String front_name;
 	private String front_path;
-	private String side_name;
-	private String side_path;
-	private String whole_name;
-	private String whole_path;
 	
 	private String request_category; 
 	private String request_id; 
@@ -47,17 +42,18 @@ public class LostPets_P001_VO {
 	
 	
 
-	public String getLat() {
-		return lat;
+	
+	public String getY() {
+		return y;
 	}
-	public void setLat(String lat) {
-		this.lat = lat;
+	public void setY(String y) {
+		this.y = y;
 	}
-	public String getLng() {
-		return lng;
+	public String getX() {
+		return x;
 	}
-	public void setLng(String lng) {
-		this.lng = lng;
+	public void setX(String x) {
+		this.x = x;
 	}
 	public String getMember_nickname() {
 		return member_nickname;
@@ -131,30 +127,7 @@ public class LostPets_P001_VO {
 	public void setFront_path(String front_path) {
 		this.front_path = front_path;
 	}
-	public String getSide_name() {
-		return side_name;
-	}
-	public void setSide_name(String side_name) {
-		this.side_name = side_name;
-	}
-	public String getSide_path() {
-		return side_path;
-	}
-	public void setSide_path(String side_path) {
-		this.side_path = side_path;
-	}
-	public String getWhole_name() {
-		return whole_name;
-	}
-	public void setWhole_name(String whole_name) {
-		this.whole_name = whole_name;
-	}
-	public String getWhole_path() {
-		return whole_path;
-	}
-	public void setWhole_path(String whole_path) {
-		this.whole_path = whole_path;
-	}
+
 	public String getCategory() {
 		return category;
 	}
