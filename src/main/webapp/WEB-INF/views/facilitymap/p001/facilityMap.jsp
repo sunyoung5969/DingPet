@@ -78,7 +78,7 @@
 
 #category li .category_bg {
 	background:
-		url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png)
+		url(https://www.dingpet.shop/imgs/places_category.png)
 		no-repeat;
 }
 
@@ -202,15 +202,15 @@
 					<div class="map_wrap">
 						<div id="map" style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
 						<ul id="category">
-							<li id="HP9" data-order="0"><span class="category_bg pharmacy"></span>
+							<li id="HP9" data-order="2"><span class="category_bg pharmacy"></span>
 							병원</li>
-							<li id="HP2" data-order="1"><span class="category_bg pharmacy"></span>
+							<li id="HP2" data-order="0"><span class="category_bg bank"></span>
 							약국</li>
-							<li id="CA7" data-order="2"><span class="category_bg cafe"></span>
+							<li id="CA7" data-order="4"><span class="category_bg cafe"></span>
 							카페</li>
 							<li id="RE7" data-order="3"><span class="category_bg oil"></span>
 							식당</li>
-							<li id="HT7" data-order="4"><span class="category_bg cafe"></span>
+							<li id="HT7" data-order="5"><span class="category_bg store"></span>
 							호텔</li>
 						</ul>
 						<div class="hAddr"><span id="centerAddr"></span> </div>
