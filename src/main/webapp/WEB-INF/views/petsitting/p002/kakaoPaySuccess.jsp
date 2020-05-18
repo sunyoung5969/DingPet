@@ -69,7 +69,7 @@
 		 -->
 	</div> 
 	 
-	<script src="${pageContext.request.contextPath}/resources/js/profilelookup.js?v=12"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/profilelookup.js?v=14"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/index.js"></script>
 	<script>
 		$(document).ready(function(){

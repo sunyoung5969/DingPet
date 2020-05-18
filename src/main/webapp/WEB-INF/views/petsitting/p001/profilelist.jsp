@@ -86,6 +86,7 @@
 	display: inline-block;
 }
 .star-rating {
+    text-align: left;
 	width:150px;
 }
 .star-rating,.star-rating span {

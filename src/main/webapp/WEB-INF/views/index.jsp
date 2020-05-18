@@ -5,14 +5,33 @@
 
 <%@include file="./includes/header.jsp"%>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/index.css?v=5">
+<link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap" rel="stylesheet">
+<style>
+	
+	@font-face { font-family: 'BMHANNAAir'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff') format('woff'); font-weight: normal; font-style: normal; }
 
+	.text-center {font-family: 'BMHANNAAir';}
+	
+	.bg-sitter{
+		background: #163e5e;
+	}
+	
+	.HoF-title{
+		color: #babc56 !important;
+	}
+	
+	.HoF-name{
+		color: #fff !important;
+	}
+	
+</style>
 <section class="site-blocks-cover overflow-hidden bg-light">
       <div class="container">
         <div class="row">
           <div class="col-md-7 align-self-center text-center text-md-left">
             <div class="intro-text">
-              <h1>반려견을<span class="d-md-block">찾아드립니다!</span></h1>
-              <p class="mb-4">잃어버린 반려견을 사진과 함께 등록하면 <span class="d-block">임시 보호 중인 유기견 사진과 비교하여 반려견을 찾아 드립니다!</p>
+              <h1><span style="color:#088cf3">DingPet</span> 서비스<span class="d-md-block">바로 이용해보세요!</span></h1>
+              <p class="mb-4">펫시터 활동 및 예약 / 반려견 찾기 / 반려견 동반 시설지도 <span class="d-block">딩펫에서 해결하는건 어떠신가요?</p>
             </div>
             
             <!-- 임시 메뉴 -->
@@ -97,7 +116,8 @@
       </div>
     </section>
 
-    <section class="site-section" id="about-section">
+    <section class="site-section bg-sitter trainers" id="about-section">
+    <!-- 
       <div class="container">
         <div class="row justify-content-center" data-aos="fade-up">
           <div class="col-lg-5 align-self-center mr-auto text-left heading-section mb-5">
@@ -124,17 +144,15 @@
           </div>
         </div>
       </div>
-    </section>
-
-    <section class="site-section bg-primary trainers" id="trainers-section">
-      <div class="container">
+       -->
+        <div class="container">
         <div class="row justify-content-center" data-aos="fade-up">
           <div class="col-lg-7 text-center heading-section mb-5">
             <div class="paws white">
               <span class="icon-paw"></span>
             </div>
-            <h2 class="mb-2 heading">Hall of Fame</h2>
-            <p>고객님들께서 가장 많이 이용하신 펫시터를 소개합니다 인증된 펫시터에게 소중한 반려견을 믿고 맡겨보세요.</p>
+            <h2 class="mb-2 heading text-center HoF-title">Hall of Fame</h2>
+            <p class="text-center">고객님들께서 가장 많이 이용하신 펫시터를 소개합니다 인증된 펫시터에게 소중한 반려견을 믿고 맡겨보세요.</p>
           </div>
         </div>
         <div class="row">
@@ -146,7 +164,7 @@
 						<img class="HoF-img" src="https://www.dingpet.shop/img/${HoF.profile_PicName }" alt="Image" class="img-fluid">
 					</figure>
 					<div class="px-md-3">
-						<h3 class="HoF-name">${HoF.member_Nickname }</h3>
+						<h3 class="HoF-name text-center">${HoF.member_Nickname }</h3>
 						<div class="wrap-star">
 					   		<div class='star-rating'>
 						   		<c:set var="starper" value="${HoF.profile_Star*20}%" />
@@ -154,10 +172,7 @@
 		    				</div>        
 		    				<span style="position: right; margin: 0px;">${HoF.profile_Star}/5.0</span>	
 						</div>
-						<p>${HoF.profile_Content }</p>
-						<ul class="ul-social-circle">
-							<li>${HoF.profile_Star }</li>
-						</ul>
+						<p class="text-center">${HoF.profile_Title }</p>
 					</div>
 				</div>
 			</div>
@@ -166,7 +181,95 @@
       </div>
     </section>
 
+    <section class="site-section" id="trainers-section">
+      <!-- 
+      <div class="container">
+        <div class="row justify-content-center" data-aos="fade-up">
+          <div class="col-lg-7 text-center heading-section mb-5">
+            <div class="paws white">
+              <span class="icon-paw"></span>
+            </div>
+            <h2 class="mb-2 heading text-center HoF-title">Hall of Fame</h2>
+            <p class="text-center">고객님들께서 가장 많이 이용하신 펫시터를 소개합니다 인증된 펫시터에게 소중한 반려견을 믿고 맡겨보세요.</p>
+          </div>
+        </div>
+        <div class="row">
+        <c:forEach var="HoF" items="${HoF }">
+        	<input type="hidden" name="sitter_ID" value="${HoF.sitter_ID }">
+        	<div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up" data-aos-delay="">
+	            <div class="trainer">
+					<figure>
+						<img class="HoF-img" src="https://www.dingpet.shop/img/${HoF.profile_PicName }" alt="Image" class="img-fluid">
+					</figure>
+					<div class="px-md-3">
+						<h3 class="HoF-name text-center">${HoF.member_Nickname }</h3>
+						<div class="wrap-star">
+					   		<div class='star-rating'>
+						   		<c:set var="starper" value="${HoF.profile_Star*20}%" />
+			    		   		<span style ="width:${HoF.profile_Star*20}%"></span>
+		    				</div>        
+		    				<span style="position: right; margin: 0px;">${HoF.profile_Star}/5.0</span>	
+						</div>
+						<p class="text-center">${HoF.profile_Title }</p>
+					</div>
+				</div>
+			</div>
+        </c:forEach>
+        </div>
+      </div>
+       -->
+       <div class="container">
+        <div class="row justify-content-center" data-aos="fade-up">
+          <div class="col-lg-7 text-center heading-section mb-5">
+            <div class="paws">
+              <span class="icon-paw"></span>
+            </div>
+            <h2 class="mb-2 text-black heading">펫시터 평균 이용 가격</h2>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col-12 col-sm-6 col-md-6 col-lg-4 bg-primary p-3 p-md-5 small-card" data-aos="fade-up" data-aos-delay="">
+            <div class="pricing">
+              <h3 class="text-center text-white text-uppercase">소 형 견</h3>
+              <div class="price text-center mb-4 ">
+                <span><span>${AVGPrice.small_Price_AVG } 원</span> / 1시간</span>
+              </div>
+                <p class="text-center">소형견 크기 기준</p>
+                <p class="text-center">10kg 미만</p>
+                <img class="small-size-img" src="${pageContext.request.contextPath}/resources/images/small_size_img.png">
+            </div>
+			<div class="small-size"><p class="text-center dog-type"><a href="#" class="btn btn-secondary">이용하기</a></p></div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-6 col-lg-4 bg-dark  p-3 p-md-5 medium-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="pricing">
+              <h3 class="text-center text-white text-uppercase">중 형 견</h3>
+              <div class="price text-center mb-4 ">
+                <span><span> ${AVGPrice.medium_Price_AVG } 원</span> / 1시간</span>
+              </div>
+                <p class="text-center" style="color: #fff;">중형견 크기 기준</p>
+                <p class="text-center" style="color: #fff;">10kg이상 25kg미만</p>
+                <div><img class="medium-size-img" src="${pageContext.request.contextPath}/resources/images/medium_size_img.png"></div>
+            </div>
+            <div class="medium-size"><p class="text-center dog-type"><a href="#" class="btn medium-btn text-center">이용하기</a></p></div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-6 col-lg-4 bg-primary  p-3 p-md-5 large-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="pricing">
+              <h3 class="text-center text-white text-uppercase">대 형 견</h3>
+              <div class="price text-center mb-4 ">
+                <span><span>${AVGPrice.large_Price_AVG } 원</span> / 1시간</span>
+              </div>
+                <p class="text-center">대형견 크기 기준</p>
+                <p class="text-center">25kg 이상</p>
+                <img class="large-size-img" src="${pageContext.request.contextPath}/resources/images/large_size_img.png">
+            </div>
+            <div class="large-size"><p class="text-center dog-type"><a href="#" class="btn btn-secondary text-center">이용하기</a></p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="site-section" id="pricing-section">
+      <!-- 
       <div class="container">
         <div class="row justify-content-center" data-aos="fade-up">
           <div class="col-lg-7 text-center heading-section mb-5">
@@ -181,10 +284,10 @@
             <div class="pricing">
               <h3 class="text-center text-white text-uppercase">소 형 견</h3>
               <div class="price text-center mb-4 ">
-                <span><span>&#8361; ${AVGPrice.small_Price_AVG }</span> / 1시간</span>
+                <span><span>${AVGPrice.small_Price_AVG } 원</span> / 1시간</span>
               </div>
-                <p>소형견 크기 기준</p>
-                <p>10kg 미만</p>
+                <p class="text-center">소형견 크기 기준</p>
+                <p class="text-center">10kg 미만</p>
                 <img class="small-size-img" src="${pageContext.request.contextPath}/resources/images/small_size_img.png">
             </div>
 			<div class="small-size"><p class="text-center dog-type"><a href="#" class="btn btn-secondary">이용하기</a></p></div>
@@ -193,30 +296,93 @@
             <div class="pricing">
               <h3 class="text-center text-white text-uppercase">중 형 견</h3>
               <div class="price text-center mb-4 ">
-                <span><span>&#8361; ${AVGPrice.medium_Price_AVG }</span> / 1시간</span>
+                <span><span> ${AVGPrice.medium_Price_AVG } 원</span> / 1시간</span>
               </div>
-                <p>중형견 크기 기준</p>
-                <p>10kg이상 25kg미만</p>
+                <p class="text-center" style="color: #fff;">중형견 크기 기준</p>
+                <p class="text-center" style="color: #fff;">10kg이상 25kg미만</p>
                 <div><img class="medium-size-img" src="${pageContext.request.contextPath}/resources/images/medium_size_img.png"></div>
             </div>
-            <div class="medium-size"><p class="text-center dog-type"><a href="#" class="btn medium-btn">이용하기</a></p></div>
+            <div class="medium-size"><p class="text-center dog-type"><a href="#" class="btn medium-btn text-center">이용하기</a></p></div>
           </div>
           <div class="col-12 col-sm-6 col-md-6 col-lg-4 bg-primary  p-3 p-md-5 large-card" data-aos="fade-up" data-aos-delay="200">
             <div class="pricing">
               <h3 class="text-center text-white text-uppercase">대 형 견</h3>
               <div class="price text-center mb-4 ">
-                <span><span>&#8361; ${AVGPrice.large_Price_AVG }</span> / 1시간</span>
+                <span><span>${AVGPrice.large_Price_AVG } 원</span> / 1시간</span>
               </div>
-                <p>대형견 크기 기준</p>
-                <p>25kg 이상</p>
+                <p class="text-center">대형견 크기 기준</p>
+                <p class="text-center">25kg 이상</p>
                 <img class="large-size-img" src="${pageContext.request.contextPath}/resources/images/large_size_img.png">
             </div>
-            <div class="large-size"><p class="text-center dog-type"><a href="#" class="btn btn-secondary">이용하기</a></p></div>
+            <div class="large-size"><p class="text-center dog-type"><a href="#" class="btn btn-secondary text-center">이용하기</a></p></div>
           </div>
         </div>
       </div>
-    </section>
+       -->
+       <div class="container">
+        <div class="row justify-content-center" data-aos="fade-up">
+          <div class="col-lg-6 text-center heading-section mb-5">
+            <div class="paws">
+              <span class="icon-paw"></span>
+            </div>
+            <h2 class="text-black mb-2">서비스</h2>
+            <p>딩펫에서 제공되는 서비스 리스트 입니다.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up" data-aos-delay="">
+            
+            <div class="block_service">
+              <img src="${pageContext.request.contextPath}/resources/images/dogger_checkup.svg" alt="Image mb-5">
+              <h3>애견 상태 확인</h3>
+              <p>애견상태를 상시로 확인 하고있습니다.</p>
+            </div>
 
+          </div>
+          <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up"  data-aos-delay="100">
+            <div class="block_service">
+              <img src="${pageContext.request.contextPath}/resources/images/dogger_dermatology.svg" alt="Image mb-5">
+              <h3>애견 피부</h3>
+              <p>애견 피부 상태 또한 확인 하여<br> 건강한 모발을 유지 할 수 있습니다.</p>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up"  data-aos-delay="200">
+            <div class="block_service">
+              <img src="${pageContext.request.contextPath}/resources/images/dogger_bones.svg" alt="Image mb-5">
+              <h3>튼튼한 치아를 위해</h3>
+              <p>애견의 튼튼한 치아를 위해 개껌 등을<br> 제공하며 치아건강을 유지합니다</p>
+            </div>
+          </div>
+
+
+          <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up"  data-aos-delay="">
+            
+            <div class="block_service">
+              <img src="${pageContext.request.contextPath}/resources/images/dogger_veterinary.svg" alt="Image mb-5">
+              <h3>애견 응급치료</h3>
+              <p>어떠한 상황이 생겼을 때 <br>우선적으로 응급치료를 할 수 있도록 합니다.</p>
+            </div>
+
+          </div>
+          <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up"  data-aos-delay="100">
+            <div class="block_service">
+              <img src="${pageContext.request.contextPath}/resources/images/dogger_dryer.svg" alt="Image mb-5">
+              <h3>애견 드라이</h3>
+              <p>애견의 모 상태를 체크하여<br>샤워후 젖은 애견의 드라이 서비스도 제공합니다. </p>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up"  data-aos-delay="200">
+            <div class="block_service">
+              <img src="${pageContext.request.contextPath}/resources/images/dogger_veterinarian.svg" alt="Image mb-5">
+              <h3>전문 수의사</h3>
+              <p>항시 위기상황을 대비하여 <br>전문 수의사 선생님이 있습니다. </p>
+            </div>
+          </div>
+            
+        </div>
+      </div>
+    </section>
+<!-- 
     <section class="site-section" id="faq-section">
       <div class="container" id="accordion">
         <div class="row justify-content-center" data-aos="fade-up">
@@ -242,7 +408,7 @@
                   <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
                 </div>
               </div>
-            </div> <!-- .accordion-item -->
+            </div> <!-- .accordion-item 
 
             <div class="accordion-item">
               <h3 class="mb-0 heading">
@@ -253,7 +419,7 @@
                   <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
                 </div>
               </div>
-            </div> <!-- .accordion-item -->
+            </div> <!-- .accordion-item 
 
             <div class="accordion-item">
               <h3 class="mb-0 heading">
@@ -264,7 +430,7 @@
                   <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
                 </div>
               </div>
-            </div> <!-- .accordion-item -->
+            </div> <!-- .accordion-item 
 
             <div class="accordion-item">
               <h3 class="mb-0 heading">
@@ -275,7 +441,7 @@
                   <p>The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.</p>
                 </div>
               </div>
-            </div> <!-- .accordion-item -->
+            </div> <!-- .accordion-item 
 
           </div>
 
@@ -557,5 +723,5 @@
         </div>
       </div>
     </section>
-
+-->
 <%@include file="./includes/footer.jsp"%>
