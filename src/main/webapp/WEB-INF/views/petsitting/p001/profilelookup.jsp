@@ -20,7 +20,7 @@
 						</div>
 						<!-- 프로필 자기소개 한줄 -->
 						<div class="profile_h6Div-reservation" align="center">
-							<h6 class="profile_h6-reservation">${profile.profile_Content }</h6>
+							<h6 class="profile_h6-reservation">${profile.profile_Title }</h6>
 						</div>
 						<div>
 							<!-- 이용가능서비스 -->
@@ -227,7 +227,7 @@
 					</svg>
 					
 					<span class="bubblebtn--bubble__container">
-					  <input type='submit' onclick="reservation_Payment()" class="bubblebtn bubblebtn--bubble" value="Hover me">
+					  <input type='submit' onclick="reservation_Payment()" class="bubblebtn bubblebtn--bubble" value="예 약">
 					  <span class="bubblebtn--bubble__effect-container">
 					    <span class="circle top-left"></span>
 					    <span class="circle top-left"></span>
@@ -283,7 +283,7 @@
 								</div>
                                 <div class="name text-center" style="margin-top: -10px;">
                                     <h4 class="title">${profile.member_NickName }</h4>
-                                    <h6>한줄소개</h6>
+                                    <h6>${profile.profile_Title }</h6>
                                 </div>
                            </div>
                         </div>

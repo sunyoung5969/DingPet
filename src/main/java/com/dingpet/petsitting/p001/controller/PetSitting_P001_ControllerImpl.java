@@ -205,7 +205,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 
 //---------------------------------------------------------------------------
 	
-		return "redirect: /petsitting/p001/profilelist";
+		return "redirect:/petsitting/p001/profilelist";
 	}	
 	
 	

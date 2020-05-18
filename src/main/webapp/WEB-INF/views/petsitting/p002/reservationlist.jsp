@@ -262,7 +262,7 @@
 													<p class="card-text">예약 번호 : ${custlist.order_ID }</p>
 					                                <!-- 사진 -->
 				                            		<div class="crop">
-				                                    	<img class="card-img-top" src="/resources/images/person_8.jpg"> <!-- C:\test\pic\ff8fe0c3-e64d-462d-ab7a-fb4152345112profile_pngguru.com (7).png -->
+				                                    	<img class="card-img-top" src="https://www.dingpet.shop/img/${custlist.member_Photo }"> <!-- C:\test\pic\ff8fe0c3-e64d-462d-ab7a-fb4152345112profile_pngguru.com (7).png -->
 					                                </div>
 				                                	<!-- 닉네임 / 예약일시 -->
 				                                	<div class="reserved-date-div" align="center">
@@ -314,7 +314,7 @@
 													<p class="card-text">예약 번호 : ${sitterlist.order_ID }</p>
 					                                <!-- 사진 -->
 				                            		<div class="crop">
-				                                    	<img class="card-img-top" src="/resources/images/person_8.jpg"> <!-- C:\test\pic\ff8fe0c3-e64d-462d-ab7a-fb4152345112profile_pngguru.com (7).png -->
+				                                    	<img class="card-img-top" src="https://www.dingpet.shop/img/${sitterlist.sitter_Photo }"> <!-- C:\test\pic\ff8fe0c3-e64d-462d-ab7a-fb4152345112profile_pngguru.com (7).png -->
 					                                </div>
 				                                	<!-- 닉네임 / 예약일시 -->
 				                                	<div class="reserved-date-div" align="center">
