@@ -281,7 +281,7 @@
 			SELECT match_id, match_title, match_content, photo_name, photo_path, sender_id, MB.member_nickname 
 			FROM lost_found_matched M, lost_found_request R, member MB
 			WHERE M.request_id = R.request_id
-			AND match_id = #{match_id}
+			AND match_id = '21'
 			AND R.receiver_id = MB.member_id
 		) A,
 		member B
