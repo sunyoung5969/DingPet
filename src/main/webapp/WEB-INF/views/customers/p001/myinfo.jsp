@@ -118,40 +118,42 @@ $(document).ready(function(){
 			<br>
 			<br>
 			<!-- 반려동물 정보 -->
-			<div class = "flex-row">
-			<h3 class = "color_blue d-inline">반려견 정보</h3>
-			</div>
-			<br>
-			       
-			<div class="form-group">
-			<strong>반려견 이름</strong>
-			<input type="text" id="dog_name" name="dog_name" maxlength="30" value="<c:out value="${dogs.dog_name}" />" />
-			</div>
-						
-			<div class="form-group">
-			<strong>견종</strong>
-			<input type="text" id="dog_breed" name="dog_breed" maxlength="30" value="<c:out value="${dogs.dog_breed}" />" />
-			</div>
+			<c:forEach items="${dogs }" var="dogs" varStatus="status">
+				<div class = "flex-row">
+				<h3 class = "color_blue d-inline">반려견 정보 ${status.count }</h3>
+				</div>
+				<br>
+				       
+				<div class="form-group">
+				<strong>반려견 이름</strong>
+				<input type="text" id="dog_name" name="dog_name" maxlength="30" value="<c:out value="${dogs.dog_name}" />" />
+				</div>
 							
-			<div class="form-group">
-			<strong>반려견 성별</strong>
-			<input type="text" id="dog_sex" name="dog_sex" value="<c:out value="${dogs.dog_sex}" />" />
-			</div>
-							
-			<div class="form-group">
-			<strong>반려견 크기</strong>
-			<input type="text" id="dog_size" name="dog_size" value="<c:out value="${dogs.dog_size}" />" />
-			</div>
-							
-			<div class="form-group">
-			<strong>활동성</strong>
-			<input type="text" name="activity_level" value="<c:out value="${dogs.activity_level}" />" />
-			</div>
-							
-			<div class="form-group">
-			<strong>특이사항</strong>
-			<input type="text" id="dog_note" name="dog_note" maxlength="100" value="<c:out value="${dogs.dog_note}" />" />
-			</div>   
+				<div class="form-group">
+				<strong>견종</strong>
+				<input type="text" id="dog_breed" name="dog_breed" maxlength="30" value="<c:out value="${dogs.dog_breed}" />" />
+				</div>
+								
+				<div class="form-group">
+				<strong>반려견 성별</strong>
+				<input type="text" id="dog_sex" name="dog_sex" value="<c:out value="${dogs.dog_sex}" />" />
+				</div>
+								
+				<div class="form-group">
+				<strong>반려견 크기</strong>
+				<input type="text" id="dog_size" name="dog_size" value="<c:out value="${dogs.dog_size}" />" />
+				</div>
+								
+				<div class="form-group">
+				<strong>활동성</strong>
+				<input type="text" name="activity_level" value="<c:out value="${dogs.activity_level}" />" />
+				</div>
+								
+				<div class="form-group">
+				<strong>특이사항</strong>
+				<input type="text" id="dog_note" name="dog_note" maxlength="100" value="<c:out value="${dogs.dog_note}" />" />
+				</div> 
+			</c:forEach>  
  			
  			<div class="form-group form-button" align="center">                    
 			<input type="submit" class="form-submit" value="정보수정">
