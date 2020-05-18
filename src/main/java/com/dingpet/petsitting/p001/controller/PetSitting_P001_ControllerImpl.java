@@ -4,8 +4,10 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -231,13 +234,21 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 		model.addAttribute("review", service.getReview(profile));
 	}
 	
-	@RequestMapping(value="/filessaved", method=RequestMethod.POST)
+	@ResponseBody
+	@RequestMapping(value="filessaved", method=RequestMethod.POST)
 	@Override
-	public void filessaved(HttpServletRequest request, MultipartFile[] files) {
+	public Map filessaved(HttpServletRequest request, MultipartFile[] files) {
 		// TODO Auto-generated method stub
 		
+		Map result = new HashMap();
+		
+		System.out.println("로그로그로그로그");
 		HttpSession session = request.getSession();
 		session.setAttribute("files", files);
+		
+		result.put("result", true);
+		
+		return result;
 	}
 	
 }
