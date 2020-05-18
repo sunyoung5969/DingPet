@@ -193,7 +193,7 @@
 		)
         WHERE R >(#{pageNum} - 1) * #{amount}
         ]]> 
-        
+         
         <!-- 
         		SELECT board_id, member_id, title, dog_breed, dog_sex, found_location, front_name
 		FROM (
