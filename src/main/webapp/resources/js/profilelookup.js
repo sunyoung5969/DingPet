@@ -213,7 +213,7 @@ function reservation_Payment(){
 }
 
 function closedPopup(){
-	opener.location.reload();
+	opener.location.href = "/petsitting/p002/reservation";
     window.close();
 }
 

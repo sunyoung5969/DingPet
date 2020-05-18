@@ -19,18 +19,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 예약신청한 고객의 예약리스트 -->
 	<select id="reservedSitterList" resultType="com.dingpet.petsitting.p002.vo.PetSitting_P002_VO">
 		select r.order_id, s.sitter_photo, s.sitter_nickname, 
-			   r.start_date, r.start_time, r.end_date, r.end_time 
+		       r.start_date, r.start_time, r.end_date, r.end_time 
 		
 		from member m, reservation r, 
 		
-		(select sr.order_id, sm.member_nickname as sitter_nickname, sm.member_photo as sitter_photo
-		from member sm, reservation sr
-		where sr.sitter_id = sm.member_id ) s
+		(select sr.order_id, sm.member_nickname as sitter_nickname, ss.profile_picname as sitter_photo
+		from member sm, reservation sr, sitter_profile ss
+		where sr.sitter_id = sm.member_id and sm.member_id = ss.member_id) s
 		
 		where m.member_id = r.member_id and r.order_id = s.order_id and #{member_ID} = r.member_id
 		
 		group by r.order_id, s.sitter_photo, s.sitter_nickname, 
-				 r.start_date, r.start_time, r.end_date, r.end_time
+		         r.start_date, r.start_time, r.end_date, r.end_time
 		order by r.start_date desc
 		
 	</select>
