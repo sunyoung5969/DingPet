@@ -40,7 +40,7 @@
 							</div><!-- 설명 section wrap ends-->
 							<div class = "pt-3"><!-- list wrap -->
 								<ul class = "requests flex_row_start_wrap o_hidden">
-									<c:forEach items="${findList}" var="findList"> 
+									<c:forEach items="${findList}" var="findList">
 										<li class ="requestListItem my-4 div_33">
 											<a class="move" href='<c:out value = "${findList.board_id}"/>'>
 												<div class = "fair_border hover_shadow">

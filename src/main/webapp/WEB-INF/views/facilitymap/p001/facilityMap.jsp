@@ -15,7 +15,7 @@
 .hAddr {
 	position:absolute;
 	right:30px;
-	top:10px;
+	top:30px;
 	border-radius: 2px;
 	background:#fff;
 	background:rgba(255,255,255,0.8);
@@ -29,13 +29,13 @@
 .map_wrap {
 	position: relative;
 	width: 100%;
-	height: 550px;
+	height: 700px;
 }
 
 #category {
 	position: absolute;
-	top: 10px;
-	left: 10px;
+	top: 30px;
+	left: 30px;
 	border-radius: 5px;
 	border: 1px solid #909090;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
@@ -183,24 +183,51 @@
 	font-size: 11px;
 	margin-top: 0;
 }
+
+.btnWrap{
+	position:absolute;
+	right: 30px;
+	bottom:30px;
+	z-index:1;
+}
+
+.myBtn{
+	font-size: 16px;
+    border-radius: 30px !important;
+    background-color : #088cf3;
+    border:none;
+}
+
+.m_container{
+	height:auto;
+}
 </style>
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/lost_found.css">
 </head>
 
-<body>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-	<section class="site-blocks-cover overflow-hidden bg-light">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 align-self-center">
+<body>
+<div style="padding-top:87px" class = "nanumbarungothic section_space_bottom">
+	    <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/bg/fa.jpg'); height : 400px;transform: translate3d(0px, 0px, 0px);">
+    	<div class="floating_text pt-5 pb-5  mt-5 text-center heading-section m-auto">
+             <h1 class=" color_white" style="font-family:GmarketSansBold; font-size:2.5rem !important">동반시설 지도</h1>
+             <p  class = "pl-2 d-inline-block  color_white " style="font-size:18px;">어쩌구 저쩌구 문구 바꾸셔~~~~~</p>
+        </div>
+    </div>
+</div>
+	
+	
+	<section class="site-blocks-cover overflow-hidden ">
+		<div class="m_container" style="height:100%;">
+				<div class="col-md-12 align-self-center" style="height:100%;">
 					<!-- 임시 메뉴 -->
 					<p style="margin-top: -12px">
 					</p>					
 					<input type="hidden" name="lat" id="latitude">
 					<input type="hidden" name="lit" id="longitude">
-					<input class="btn btn-primary" id="mylocation" type="button" value=" 내 현재 위치로 이동 " /><br><br>
 					<div class="map_wrap">
-						<div id="map" style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
+						<div id="map" style="width: 100%; height: 700px; position: relative; overflow: hidden;"></div>
 						<ul id="category">
 							<li id="HP9" data-order="2"><span class="category_bg pharmacy"></span>
 							병원</li>
@@ -214,10 +241,12 @@
 							호텔</li>
 						</ul>
 						<div class="hAddr"><span id="centerAddr"></span> </div>
+						<div class="btnWrap">
+							<input class="myBtn" id="mylocation" type="button" value=" 내 현재 위치로 이동 " />
+						</div>
 					</div>
 
 				</div>
-			</div>
 		</div>
 	</section>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=78d603c9ceea19aeba68479415b917d4&libraries=services"></script>

@@ -199,7 +199,6 @@
 						</div>
 						
 						<input type="hidden" class="form-control" name="member_id" value="${customers.member_id }">
-						<input type = "hidden" id = "coords"  name = "coords" value = "">
 						<input type = "hidden" id = "lat" name = "y" >
 						<input type = "hidden" id = "lng"  name = "x" >
 						

@@ -227,16 +227,48 @@
 	}
 }
 
+.main-raised{
+	margin: 1% 15% 7% !important;
+}
+
+@font-face {
+	font-family: 'GmarketSansBold';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.color_white {
+	color: #F9F9F9;
+}
+
+.floating_text {
+	display: relative;
+	z-index: 1;
+}
+
+.section_space {
+	padding-top: 4rem;
+	padding-bottom: 4rem;
+}
 </style>
+
 <!--====  str of contents  ====-->
     <section style="padding-top:87px">
-        <div class="page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/beagle_dog_running992831.jpg'); transform: translate3d(0px, 0px, 0px);"></div>
+    	<div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/bg/re.jpg'); height : 400px;transform: translate3d(0px, 0px, 0px);">
+	    	<div class="floating_text pt-5 pb-5  mt-5 text-center heading-section m-auto">
+	             <h1 class=" color_white" style="font-family:GmarketSansBold; font-size:2.5rem !important">예약 목록</h1>
+	             <span  class = "pl-2 d-inline-block  color_white "style="font-size:18px;">어쩌구 저쩌구 문구 바꾸셔~~~~~</span>
+	        </div>
+    	</div>
+        
         <div class="main main-raised">
-            <div class="profile-content">
+            <div class="profile-content section_space">
                 <div class="container">
                     <div class="row justify-content-center pt-3" data-aos="fade-up">
                         <div class="text-center heading-section">
-                          <h2 class="text-black mb-2">예약 정보</h2>                          
                         </div>
                         <div class="reservation-row">
 	                        <div class="list-div">
