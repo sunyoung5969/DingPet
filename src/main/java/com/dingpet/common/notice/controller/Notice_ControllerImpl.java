@@ -121,16 +121,16 @@ public class Notice_ControllerImpl implements Notice_Controller {
 		
 		if(type.equals("예약")) {
 			// 알람 테이블 읽음확인 변경 
-			
 			service.readNotice(noticeVO);
-			
 			return "redirect:/petsitting/p002/reservationlist";
 			
 		}else if(type.equals("일지")) {
-			
 			service.readNotice(noticeVO);
-			
 			return "redirect:/petsitting/p002/reservationlist";
+			
+		}else if(type.equals("확인 요청")){
+			service.readNotice(noticeVO);
+			return "redirect:/lostpets/request/list?member_id=" + member_ID;
 		}
 		return null;
 	}

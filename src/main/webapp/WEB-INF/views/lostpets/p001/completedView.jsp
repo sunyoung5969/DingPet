@@ -21,7 +21,7 @@
                 <div class="container">
                     <div class="row justify-content-center pt-5 pb-5" data-aos="fade-up">
                         <div class="text-center heading-section">
-                          <h2 class="text-black mb-2">완료 후기</h2>
+                          <h2 class="color_dark_blue narrow mb-2" style="font-family:GmarketSansBold;">완료 후기</h2>
                         </div>
                     </div>
                     <!-- 제목, 작성자, 작성일시-->
