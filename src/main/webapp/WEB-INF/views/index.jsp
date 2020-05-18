@@ -146,7 +146,14 @@
 						<img class="HoF-img" src="https://www.dingpet.shop/img/${HoF.profile_PicName }" alt="Image" class="img-fluid">
 					</figure>
 					<div class="px-md-3">
-						<h3>${HoF.member_Nickname }</h3>
+						<h3 class="HoF-name">${HoF.member_Nickname }</h3>
+						<div class="wrap-star">
+					   		<div class='star-rating'>
+						   		<c:set var="starper" value="${HoF.profile_Star*20}%" />
+			    		   		<span style ="width:${HoF.profile_Star*20}%"></span>
+		    				</div>        
+		    				<span style="position: right; margin: 0px;">${HoF.profile_Star}/5.0</span>	
+						</div>
 						<p>${HoF.profile_Content }</p>
 						<ul class="ul-social-circle">
 							<li>${HoF.profile_Star }</li>

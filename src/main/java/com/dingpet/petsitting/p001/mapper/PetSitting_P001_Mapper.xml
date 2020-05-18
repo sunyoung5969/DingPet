@@ -4,19 +4,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dingpet.petsitting.p001.mapper.PetSitting_P001_Mapper">
 
+	<select id="getProfileIDSequence" resultType="int">
+		select seq_profile_id.nextval from dual
+	</select>
+
 	<select id="profileGetList" resultType="com.dingpet.petsitting.p001.vo.PetSitting_P001_VO">
-		select s.member_id, m.member_nickname, s.profile_picpath, s.profile_content, s.list_address, s.profile_picpath, s.profile_picname
-		from sitter_profile s, member m 
-		where s.member_id = m.member_id
+		select s.member_id, m.member_nickname, s.profile_picpath, 
+		        s.profile_content, s.list_address, s.profile_picpath, 
+		        s.profile_picname, nvl(avg(r.review_star), 0) as profile_star
+		from sitter_profile s, member m, reservation r
+		where s.member_id = m.member_id and s.member_id= r.sitter_id(+) 
+		group by s.member_id, m.member_nickname, s.profile_picpath, 
+		        s.profile_content, s.list_address, s.profile_picpath, 
+		        s.profile_picname
 	</select>
 	
 	<select id="profileLookup" resultType="com.dingpet.petsitting.p001.vo.PetSitting_P001_VO">
-		select s.member_id, s.profile_picpath, s.profile_picname, s.profile_title, s.profile_content, 
+		select s.member_id, s.profile_picpath, nvl(avg(r.review_star), 0) as profile_star, s.profile_picname, s.profile_title, s.profile_content, 
 		s.price_small, s.price_medium, s.price_large, s.list_address, s.profile_jibunAddress, 
 		s.service_00, s.service_01, s.service_02, s.service_03, s.service_04, 
 		s.service_05, s.service_06, s.service_07, m.member_nickname
-		from sitter_profile s, member m 
-		where s.member_id = #{member_ID} and s.member_id = m.member_id
+		from sitter_profile s, member m, reservation r
+		where s.member_id = #{member_ID} and s.member_id = m.member_id and s.member_id = r.sitter_id(+)
+        group by s.member_id, s.profile_picpath, s.profile_picname, s.profile_title, s.profile_content, 
+		s.price_small, s.price_medium, s.price_large, s.list_address, s.profile_jibunAddress, 
+		s.service_00, s.service_01, s.service_02, s.service_03, s.service_04, 
+		s.service_05, s.service_06, s.service_07, m.member_nickname
 	</select>
 	
 	<select id="getLicenseList" resultType="com.dingpet.petsitting.p001.vo.PetSitting_P001_VO">
@@ -33,15 +46,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="profileInsert">
-		insert into sitter_profile (member_id, profile_picpath, profile_content, 
-		price_small, price_medium, price_large, profile_roadaddress, 
-		profile_jibunaddress, profile_detailaddress, list_address, 
-		service_00, service_01, service_02, service_03, 
-		service_04, service_05, service_06, service_07) 
-		values(#{member_ID}, #{profile_PicPath}, #{profile_Content}, #{price_Small}, #{price_Medium}, #{price_Large}, 
-		#{profile_RoadAddress}, #{profile_JibunAddress}, #{profile_DetailAddress}, #{list_Address}, 
-		#{service_00}, #{service_01}, #{service_02}, #{service_03}, 
-		#{service_04}, #{service_05}, #{service_06}, #{service_07})
+		insert into 	sitter_profile (member_id, profile_picpath, profile_picname, profile_content, 
+						price_small, price_medium, price_large, profile_roadaddress, 
+						profile_jibunaddress, profile_detailaddress, list_address, 
+						service_00, service_01, service_02, service_03, 
+						service_04, service_05, service_06, service_07) 
+		values			(#{member_ID}, #{profile_PicPath}, #{profile_PicName}, 
+						#{profile_Content}, #{price_Small}, #{price_Medium}, #{price_Large}, 
+						#{profile_RoadAddress}, #{profile_JibunAddress}, #{profile_DetailAddress}, #{list_Address}, 
+						#{service_00}, #{service_01}, #{service_02}, #{service_03}, 
+						#{service_04}, #{service_05}, #{service_06}, #{service_07})
 	</insert>
 	
 	<insert id="licenseInsert">
@@ -74,5 +88,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where m.member_id = r.member_id and sitter_id = #{member_ID} and r.review_id is not null
 		order by r.review_date
 	</select>
+	
+	<insert id="setMultiPhoto">
+		insert into photo (profile_id, photo_id, act_photo)
+		values(#{profile_ID}, #{photo_ID}, #{act_Photo})
+	
+	</insert>
 	
 </mapper>

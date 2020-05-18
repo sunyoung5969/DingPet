@@ -48,7 +48,7 @@
     text-align: center;
     display: none;
     
-    background: rgba(57, 57, 57, 0.5);
+    background: rgba(57, 57, 57, 0.7);
     color: rgb(238, 238, 238);
     position: relative;
     top: -301px;
@@ -82,6 +82,25 @@
     color: #fff !important;
 }
 
+.wrap-star{
+	display: inline-block;
+}
+.star-rating {
+	width:150px;
+}
+.star-rating,.star-rating span {
+	display:inline-block; 
+	height:26px; 
+	overflow:hidden; 
+	background:url(/resources/images/bigstar.png)no-repeat; 
+}
+.star-rating span{
+	background-position:left bottom; 
+	line-height:0;
+	vertical-align:top; 
+}
+
+
 </style>
 <!--====  str of contents  ====-->
     <section style="padding-top:87px">
@@ -114,6 +133,13 @@
 			                                    <!-- 주소 -->
 			                                    <p class="card-text">${sitter.list_Address }</p>
 			                                    <!-- 버튼 -->
+			                                    <div class="wrap-star">
+											   		<div class='star-rating'>
+												   		<c:set var="starper" value="${sitter.profile_Star*20}%" />
+									    		   		<span style ="width:${sitter.profile_Star*20}%"></span>
+								    				</div>        
+								    				<span style="position: right; margin: 0px;">${sitter.profile_Star}/5.0</span>	
+												</div>
 			                                </div>
 		                                </div>
 		                                <form action="profilelookup" method='post'>

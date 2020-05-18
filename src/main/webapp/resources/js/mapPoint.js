@@ -62,9 +62,9 @@
 			startTime += addzero(date.getHours(), 2);
 			startTime += ":";
 			startTime += addzero(date.getMinutes(), 2);
-			
-			console.log("시작 시간 - "+startTime);
-			$(".start_Time").val(startTime);
+			st = startTime
+			console.log("시작 시간 - "+st);
+			$(".start_Time").val(st);
 			
 			var options = { enableHighAccuracy: true };
 			
