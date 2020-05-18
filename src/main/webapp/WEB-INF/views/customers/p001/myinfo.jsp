@@ -122,7 +122,7 @@ $(document).ready(function(){
 			<h3 class = "color_blue d-inline">반려견 정보</h3>
 			</div>
 			<br>
-			               
+			       
 			<div class="form-group">
 			<strong>반려견 이름</strong>
 			<input type="text" id="dog_name" name="dog_name" maxlength="30" value="<c:out value="${dogs.dog_name}" />" />
