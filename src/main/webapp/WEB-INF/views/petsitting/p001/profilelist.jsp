@@ -100,20 +100,31 @@
 	vertical-align:top; 
 }
 
+.main-raised{
+	margin: 1% 15% 7% !important;
+}
 
 </style>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/lost_found.css">
 <!--====  str of contents  ====-->
     <section style="padding-top:87px">
-        <div class="page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); transform: translate3d(0px, 0px, 0px);"></div>
+        
+	<div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/bg/sitter.jpg'); height : 400px;transform: translate3d(0px, 0px, 0px);">
+    	<div class="floating_text pt-5 pb-5  mt-5 text-center heading-section m-auto">
+             <h1 class=" color_white" style="font-family:GmarketSansBold; font-size:2.5rem !important">펫시터 목록</h1>
+             <span  class = "pl-2 d-inline-block  color_white "style="font-size:18px;">어쩌구 저쩌구 문구 바꾸셔~~~~~</span>
+        </div>
+    </div>
+        
+        
         <div class="main main-raised">
             <div class="profile-content">
                 <div class="container">
                     <div class="row justify-content-center pt-3" data-aos="fade-up">
                         <div class="text-center heading-section">
-                          <h2 class="text-black mb-2">펫시터 정보</h2>                          
                           <div class="rBtn-warp" ></div>
                         </div>
-                        <div class="listrow">
+                        <div class="listrow section_space">
 	                        <c:forEach items="${ list}" var="sitter" varStatus="status">	   
 								<c:set var="count" value="${count+1}" />
 								<c:if test="${status.index%3 == '0'}">

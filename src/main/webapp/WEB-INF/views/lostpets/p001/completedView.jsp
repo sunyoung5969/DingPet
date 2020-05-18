@@ -36,7 +36,7 @@
                     <div class="col-12 row pt-3 dp-webkit ">
                             <div class="image-block bg-about w-100 text_center" >
                             	<c:set var = "photo_path" value = "https://www.dingpet.shop/lost/${completed.photo_name}" />
-                                <img class="img-fluid m-auto" src="${completed.photo_name != null ? photo_path : '/resources/images/blue.jpg'}"  style = "width: 500px; height: 400px;">
+                                <img class="img-fluid m-auto" src="${completed.photo_name != null ? photo_path : '/resources/images/blue.jpg'}"  style = "max-width: 900px; height: 400px;">
                             </div>
                     </div>
                      <div class="col-12 row pt-3 dp-webkit ">

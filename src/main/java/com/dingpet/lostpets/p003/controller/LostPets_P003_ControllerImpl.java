@@ -67,10 +67,10 @@ public class LostPets_P003_ControllerImpl implements LostPets_P003_Controller {
 				String savedFileName = uuid.toString() + fileName;
 
 				if(!fileName.equals("")) {
-					saveFile = new File(uploadFolder, fileName);
+					saveFile = new File(uploadFolder,  uuid.toString() + fileName);
 					filePath = saveFile.getPath();
-					vo.setPhoto_name(savedFileName);
-					vo.setPhoto_path(filePath);
+					vo.setPhoto_name( uuid.toString() + fileName);
+					vo.setPhoto_path(uploadFolder +"/"+ uuid.toString() + fileName);
 						
 					try {
 						mFile.transferTo(saveFile);
