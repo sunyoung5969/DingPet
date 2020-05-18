@@ -219,7 +219,7 @@
 							<div class="text-center heading-section">
 								<h2 class="page-title">일지 등록 페이지입니당</h2>
 								<form action="/petsitting/p003/logregister" class="walkform" align="right">
-			                       	<input type="hidden" name="reservation_ID" value="${reservation_ID }">
+			                       	<input type="hidden" class="reservation_ID" name="reservation_ID" value="${reservation_ID }">
 			                       	<input type="submit" class="walkbtn" value='일지 작성'>
 								</form>
 							</div>
@@ -244,7 +244,7 @@
 										<c:if test="${list.log_Type == 'nomal'}">
 											<c:if test="${list.log_Photo != null}">
 												<div>
-													<img class="log-pic" src="/resources/images/dogger_img_sm_4.jpg">
+													<img class="log-pic" src="https://www.dingpet.shop/img/${list.log_Photo }">
 												</div>
 											</c:if>
 											<div class="log-content-div">
@@ -278,7 +278,7 @@
 											
 											<c:if test="${list.log_Photo != null}">
 												<div>
-													<img class="log-pic" src="/resources/images/dogger_img_sm_4.jpg">
+													<img class="log-pic" src="https://www.dingpet.shop/img/${list.log_Photo }">
 												</div>
 											</c:if>
 											
@@ -394,6 +394,7 @@
 	/*알림내용*/	"notice_Contents" : "새로운 일지가 등록 되었습니다.",
 				"url" : "petsitting/p003/loglookup?reservation_ID=" + $(".reservation_ID").val()	// 알림 메시지 클릭 시 이동할 매핑주소
 			}
+			console.log(noticeData)
 			//스크랩 알림 DB저장
 			$.ajax({
 				type : 'post',

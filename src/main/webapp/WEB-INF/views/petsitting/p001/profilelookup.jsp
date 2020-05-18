@@ -271,10 +271,17 @@
                     <div class="row">
                         <div class="col-md-6 ml-auto mr-auto" style='left: 13%'>
                           <div class="profile">
-                                <div class="avatar text-center">
+                                <div class="avatar text-center" style="height: 120px;">
                                     <img src="https://www.dingpet.shop/img/${profile.profile_PicName }" alt="Circle Image" class="img-raised rounded-circle img-fluid">
                                 </div>
-                                <div class="name text-center">
+                                <div class="wrap-star">
+							   		<div class='star-rating'>
+								   		<c:set var="starper" value="${profile.profile_Star*20}%" />
+					    		   		<span style ="width:${profile.profile_Star*20}%"></span>
+				    				</div>        
+				    				<span style="position: right; margin: 0px;">${profile.profile_Star}/5.0</span>	
+								</div>
+                                <div class="name text-center" style="margin-top: -10px;">
                                     <h4 class="title">${profile.member_NickName }</h4>
                                     <h6>한줄소개</h6>
                                 </div>

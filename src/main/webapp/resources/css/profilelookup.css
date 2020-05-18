@@ -1,4 +1,23 @@
 @charset "UTF-8";
+.wrap-star{
+	text-align: center;
+    position: relative;
+    left: 4.5%;
+}
+.star-rating {
+	width:150px;
+}
+.star-rating,.star-rating span {
+	display:inline-block; 
+	height:26px; 
+	overflow:hidden; 
+	background:url(/resources/images/bigstar.png)no-repeat; 
+}
+.star-rating span{
+	background-position:left bottom; 
+	line-height:0;
+	vertical-align:top; 
+}
 
 .DayOfTheWeek_li {
 	display: inline-block;

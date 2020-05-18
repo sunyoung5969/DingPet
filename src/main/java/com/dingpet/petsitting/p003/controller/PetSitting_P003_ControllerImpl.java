@@ -164,7 +164,7 @@ public class PetSitting_P003_ControllerImpl implements PetSitting_P003_Controlle
 	
 				saveFile = new File(uploadFolder, log_UUID.toString()+"log_"+fileName);
 				filePath = saveFile.getPath();
-				logVO.setLog_Photo(filePath);
+				logVO.setLog_Photo(log_UUID.toString()+"log_"+fileName);
 				
 				try {
 					mFile.transferTo(saveFile);
