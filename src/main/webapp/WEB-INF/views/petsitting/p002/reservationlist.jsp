@@ -309,7 +309,7 @@
 				                                    
 				                                </div>
 				                                <div class="cancel-btn">
-				                                	<c:if test="${custlist.start_Date2 <= currentDate <custlist.end_Date2 }">
+				                                	<c:if test="${custlist.start_Date2 <= currentDate <= custlist.end_Date2 }">
 														<form class="btnform" action="/petsitting/p003/logregister" method="post">
 															<input type="hidden" name="reservation_ID" value="${custlist.order_ID }">
 						                                    <button class="btn-log btn-log--register">일지<br>등록</button>

@@ -7,6 +7,6 @@ public class IndexPetsitterVO {
 	private String sitter_ID;
 	private String profile_PicName;
 	private String member_Nickname;
-	private String profile_Content;
+	private String profile_Title;
 	private float profile_Star;
 }
