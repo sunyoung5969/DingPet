@@ -85,9 +85,10 @@ tfoot tr {
 }
 
 .settings-tray {
-	background: #74b9ff;
-	padding: 10px 15px;
+	background: #677380;
+	padding: 20px 15px;
 	border-radius: 7px;
+	margin-bottom : 5px;
 }
 
 .settings-tray .no-gutters {
@@ -156,6 +157,8 @@ input:focus {
 	vertical-align: baseline;
 	background: #fff;
 	transition: 0.3s ease;
+	border-radius : 7px;
+	margin-bottom : 5px;
 }
 
 .friend-drawer--grey {
@@ -182,14 +185,10 @@ input:focus {
 }
 
 .friend-drawer--onhover:hover {
-	background: #74b9ff;
+	border: 2px solid #74b9ff;
 	cursor: pointer;
 }
 
-.friend-drawer--onhover:hover p, .friend-drawer--onhover:hover h6,
-	.friend-drawer--onhover:hover .time {
-	color: #fff !important;
-}
 
 hr {
 	margin: 5px auto;

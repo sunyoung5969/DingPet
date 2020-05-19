@@ -82,11 +82,12 @@ function submitForm(roomNo){
 			
 			$(".chat-mem").empty();
 			$(".chat-panel").empty(); //여기서 append
+			/*
 			if (logged == room2.room_owner){
 				$(".chat-mem").append(room2.bnick+"님과 대화 중");
 			}else{
 				$(".chat-mem").append(room2.anick+"님과 대화 중");
-			}
+			}*/
 			if(chatList.length > 0){
 
 				var chatClass="";	
@@ -132,7 +133,7 @@ function submitForm(roomNo){
 		<div class="row no-gutters row-div">
 			<div class="col-md-4 border-right">
 				<div class="settings-tray">
-					<h4 class="chat-memid">${customers.member_nickname }</h4>
+					<h4 class="chat-memid">환영합니다, ${customers.member_nickname }님!</h4>
 				</div>
 				<c:forEach items="${roomList}" var="room">
 					<c:choose>
