@@ -6,6 +6,7 @@
 }
 .star-rating {
 	width:150px;
+    text-align: left;
 }
 .star-rating,.star-rating span {
 	display:inline-block; 

@@ -8,10 +8,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select *
 		from 
 		(select r.sitter_id, s.profile_picname, m.member_nickname,
-		s.profile_content, count(r.sitter_id) as count, nvl(avg(r.review_star), 0) as profile_star
+		s.profile_title, count(r.sitter_id) as count, nvl(avg(r.review_star), 0) as profile_star
 		from member m, reservation r, sitter_profile s
 		where m.member_id = r.sitter_id and m.member_id = s.member_id
-		group by r.sitter_id, s.profile_picname, m.member_nickname, s.profile_content, profile_star
+		group by r.sitter_id, s.profile_picname, m.member_nickname, s.profile_title, profile_star
 		order by count desc)
 		<![CDATA[ where rownum < 4]]>
 	</select>
