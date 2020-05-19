@@ -511,19 +511,26 @@
 						</div>
 						<div class="licenseContainer" align="center">
 							<div class="licenseDiv">
+							<c:forEach items="${license }" var="license">
+								<c:if test="${license.license_PicPath != null}">
+								<div class="licensePic">
+									<img width="150px" src="https://www.dingpet.shop/img/${license.license_PicPath }">
+								</div>
+								</c:if>
+								<c:if test="${license.license_PicPath == null}">
 								<div class="licensePic">
 									<img width="150px" src="/resources/images/dogger_veterinary.svg">
 								</div>
+								</c:if>
 								<div class="licenseDetail">
-									<c:forEach items="${license }" var="license">
-										<p class="license_txth1" align="left">자 격 증 명</p>
-										<p class="license_txth2" align="left">${license.license_Name }</p>
-										<p class="license_txth1" align="left">발 급 일 자</p>
-										<p class="license_txth2" align="left">${license.license_Date }</p>
-										<p class="license_txth1" align="left">발 급 기 관</p>
-										<p class="license_txth2" align="left">${license.license_Agency }</p>
-									</c:forEach>
+									<p class="license_txth1" align="left">자 격 증 명</p>
+									<p class="license_txth2" align="left">${license.license_Name }</p>
+									<p class="license_txth1" align="left">발 급 일 자</p>
+									<p class="license_txth2" align="left">${license.license_Date }</p>
+									<p class="license_txth1" align="left">발 급 기 관</p>
+									<p class="license_txth2" align="left">${license.license_Agency }</p>
 								</div>
+							</c:forEach>
 							</div>
 						</div>
                     </div>
