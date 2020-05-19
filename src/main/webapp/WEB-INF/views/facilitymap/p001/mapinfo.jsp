@@ -118,7 +118,7 @@ background:url(${pageContext.request.contextPath}/resources/images/ministar.png)
                                         	<div class="wrap-star">
 										   		<div class='star-rating'>
 										   		<c:set var="starper" value="${star*20}%" />
-							    		   		<span style ="width:${star*20}%"></span>
+							    		   		<span style ="width:${star*20}%"> </span>
 							    				</div>        
 							    			<span style="position: right; margin: 0px;">${star}/5</span>	
                                              </div>
