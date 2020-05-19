@@ -106,6 +106,13 @@ a:link, a:visited {
 font-size:1em;
 padding:0.5rem 1rem;
 }
+
+.fa-times{
+	position : absolute;
+	right:10px;
+	top : 19px;
+}
+
 </style>
 
 <!-- 확인 요청 모달 -->

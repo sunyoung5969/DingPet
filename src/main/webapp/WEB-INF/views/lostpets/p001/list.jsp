@@ -99,7 +99,7 @@
 																<p class = "pl-2"><span class="tag">견종</span><span> </span><c:out value="${recentLost.dog_breed}" /></p>
 																<p class = "pl-2"><span class="tag">성별</span><span></span> <c:out value="${recentLost.dog_sex}" /></p>
 																<p class = "pl-2">
-																	<span class="tag">발견장소</span><span></span>
+																	<span class="tag">발견 장소</span><span></span>
 																	<c:out value="${recentLost.found_location}" />
 																</p>
 														</div>
@@ -150,7 +150,7 @@
 																<p class = "pl-2"><span class="tag">견종</span><span> </span><c:out value="${recentFind.dog_breed}" /></p>
 																<p class = "pl-2"><span class="tag">성별</span><span></span> <c:out value="${recentFind.dog_sex}" /></p>
 																<p class = "pl-2">
-																	<span class="tag">발견장소</span><span></span>
+																	<span class="tag">실종 장소</span><span></span>
 																	<c:out value="${recentFind.found_location}" />
 																</p>
 														</div>

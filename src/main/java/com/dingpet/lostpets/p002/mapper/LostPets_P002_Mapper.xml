@@ -7,9 +7,10 @@
 
 <select id="getLost" resultType="com.dingpet.lostpets.p002.vo.LostPets_P002_VO" parameterType="com.dingpet.lostpets.p002.vo.LostPets_P002_VO" >
 	<![CDATA[
-	SELECT board_id, title, content, dog_breed, dog_sex, found_date, x, y
+	SELECT category, board_id, title, content, dog_breed, dog_sex, found_date, x, y
 	FROM lost_found LF, Dog D
 	WHERE LF.dog_id = D.dog_id  
+	AND status = 'n'
 	AND x < #{maxX}
 	AND x > #{minX}
 	AND y < #{maxY}
