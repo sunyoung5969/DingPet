@@ -84,6 +84,12 @@ public class PetSitting_P001_ServiceImple implements PetSitting_P001_Service{
 		mapper.setMultiPhoto(mpvo);
 	}
 
+	@Override
+	public List<MultiPhotoVO> getMultiPhoto(PetSitting_P001_VO profile) {
+		// TODO Auto-generated method stub
+		return mapper.getMultiPhoto(profile);
+	}
+
 	
 
 }

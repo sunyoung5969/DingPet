@@ -9,14 +9,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="profileGetList" resultType="com.dingpet.petsitting.p001.vo.PetSitting_P001_VO">
-		select s.member_id, m.member_nickname, s.profile_picpath, 
+		select s.profile_id, s.member_id, m.member_nickname, s.profile_picpath, 
 		        s.profile_title, s.list_address, s.profile_picpath, 
 		        s.profile_picname, nvl(avg(r.review_star), 0) as profile_star
 		from sitter_profile s, member m, reservation r
 		where s.member_id = m.member_id and s.member_id= r.sitter_id(+) 
-		group by s.member_id, m.member_nickname, s.profile_picpath, 
+		group by s.profile_id, s.member_id, m.member_nickname, s.profile_picpath, 
 		        s.profile_title, s.list_address, s.profile_picpath, 
 		        s.profile_picname
+		order by s.profile_id desc
 	</select>
 	
 	<select id="profileLookup" resultType="com.dingpet.petsitting.p001.vo.PetSitting_P001_VO">
@@ -77,11 +78,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values(#{member_ID}, seq_schedule.nextval, #{schedule_Closed})
 	</insert>
 	
-	<insert id="albumInsert">
-		insert into photo () 
-		values()
-	</insert>
-	
 	<select id="getReview" resultType="com.dingpet.petsitting.p004.vo.PetSitting_P004_VO">
 		select r.order_id, m.member_nickname, m.member_photo, r.review_content, r.review_date, r.review_Star
 		from member m, reservation r
@@ -92,7 +88,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="setMultiPhoto">
 		insert into photo (profile_id, photo_id, act_photo)
 		values(#{profile_ID}, #{photo_ID}, #{act_Photo})
-	
 	</insert>
+	
+	<select id="getMultiPhoto" resultType="com.dingpet.petsitting.p001.vo.MultiPhotoVO">
+		select act_photo from photo where profile_id = #{profile_ID}
+	</select>
 	
 </mapper>

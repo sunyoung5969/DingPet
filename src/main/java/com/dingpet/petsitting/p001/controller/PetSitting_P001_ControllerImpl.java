@@ -231,6 +231,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 		model.addAttribute("profile", service.profileLookup(profile));		
 		model.addAttribute("closed", service.getClosedList(profile));
 		model.addAttribute("license", service.getLicenseList(profile));
+		model.addAttribute("gallery", service.getMultiPhoto(profile));
 		model.addAttribute("review", service.getReview(profile));
 	}
 	

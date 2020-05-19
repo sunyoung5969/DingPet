@@ -88,7 +88,8 @@ public class Notice_ControllerImpl implements Notice_Controller {
 		Map data = new HashMap();
 		
 		data.put("count", service.getNotieCount(noticeVO));
-		
+		System.out.println("여기 왜 안타는거 같나요");
+		System.out.println(service.getNotieCount(noticeVO));
 		return data;
 	}
 	

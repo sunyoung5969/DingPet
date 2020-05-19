@@ -78,7 +78,7 @@
 		    	if(setNum == 1){
 		    		clearInterval(playMark);
 		    	}
-		      }, 6000);
+		      }, 15000);
 		} // init End
 	
 	function addzero(num, digit){
