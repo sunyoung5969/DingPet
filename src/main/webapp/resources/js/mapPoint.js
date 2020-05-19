@@ -52,7 +52,7 @@
 			console.log("====Start Click ======");
 			var date = new Date();
 			var startTime = '';
-			
+			alert("산책을 시작합니다")
 			startTime += date.getFullYear();
 			startTime += "/";
 			startTime += addzero(date.getMonth()+1, 2);
@@ -484,7 +484,8 @@
 		        // 상태를 false로, 그리지 않고 있는 상태로 변경합니다
 		        drawingFlag = false;          
 		    }  
-		    
+			alert("산책을 종료합니다")
+
 		    var date = new Date();
 			var endTime = '';
 			

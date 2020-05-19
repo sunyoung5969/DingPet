@@ -347,7 +347,7 @@
 				<div class="walk-container">
 					<div class="title-container">
 						<div class="text-center heading-section">
-							<h2 class="page-title">산책 등록</h2>
+							<h2>산책 등록</h2>
 						</div>
                     </div>
 						<div class="info-part1">
