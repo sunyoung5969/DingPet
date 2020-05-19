@@ -58,7 +58,7 @@
 													<div class="soft_border_orange flex_row p-3 mt-5 mb-3 mx-auto w-75">
 														<div class="m-3 w-100">
 															<div class="w-30 d-inline-block text_center v_center">
-																<img class=".nav-pills" style="width: 150px; height: 150px;" src="https://www.dingpet.shop/lost/${myList.front_name}">
+																<img style="width: 180px; height: 130px; border-radius:10px;" src="https://www.dingpet.shop/lost/${myList.front_name}">
 															</div>
 															<div class="w-70 pl-3 pt-3 d-inline-block v_center">
 																<p class = "text_overflow"> <strong>${myList.title}</strong> </p>
@@ -145,7 +145,7 @@
 											<div class="soft_border_blue flex_row p-3 mt-5 mb-3 mx-auto w-75">
 												<div class="m-3 w-100">
 													<div class="w-30 d-inline-block text_center v_center">
-														<img class=".nav-pills" style="width: 150px; height: 150px;" src='https://www.dingpet.shop/lost/${myRequest.front_name}'>
+														<img style="width: 180px; height: 130px; border-radius:10px;" src='https://www.dingpet.shop/lost/${myRequest.front_name}'>
 													</div>
 													<div class="w-70 pl-3 pt-3 d-inline-block v_center">
 														<p class = "text_overflow"> <strong>${myRequest.title}</strong> </p>

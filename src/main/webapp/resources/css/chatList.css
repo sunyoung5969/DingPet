@@ -207,7 +207,7 @@ hr {
 	margin: 10px 0px;;
 	border-radius: 9px;
 	position: relative;
-	animation: fadeIn 1s ease-in;
+	animation: fadeIn 0.5s ease-in;
 }
 
 .chat-bubble li {
@@ -308,13 +308,15 @@ hr {
 	font-size: 12px !important;
 	font-weight: 600 !important;
 	border: solid 1.2px;
-	border-color: #69acb8;
-	color: #69acb8;
+	border-color: #74b9ff ;
+	color: #74b9ff ;
 	width: 10%;
 }
 
 .btn-send:hover {
 	color: #fff;
-	background: #69acb8;
-	border-color: #69acb8;
+	background: #74b9ff ;
+	border-color: #74b9ff ;
 }
+
+

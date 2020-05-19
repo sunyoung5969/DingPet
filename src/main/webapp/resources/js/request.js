@@ -46,7 +46,7 @@ var requestService = (function(){
 		});
 	}
 	
-	//댓글 삭제
+	//요청 삭제
 	function deleteRequest(request_id, callback, error){
 		$.ajax({
 			type : 'delete',

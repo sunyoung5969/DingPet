@@ -109,7 +109,10 @@ function submitForm(roomNo){
 
 </script>
 <style>
-
+.bg{
+	background:#74b9ff !important;
+	color:#FFF;
+}
 </style>
 
 <section style="padding-top: 87px">
@@ -160,7 +163,7 @@ function submitForm(roomNo){
 				<div class="row-chat">
 					<div class="col-12" style="padding: 0px;">
 						<div class="chat-box-tray" style="margin: 0px;">
-							<input type="text" name="msg" placeholder="Type your message here...">
+							<input type="text" name="msg" placeholder="메세지를 입력하세요">
 							<button class="btn-send send">전 송</button>
 						</div>
 					</div>
@@ -168,11 +171,19 @@ function submitForm(roomNo){
 			</div>
 		</div>
 	</div>
+	
 	<script>
-$( '.friend-drawer--onhover' ).on( 'click',  function() {
-	  $( '.chat-bubble' ).hide('slow').show('slow');
-	  $( '.chat-date' ).hide('slow').show('slow');
-});
+	
+		$( '.friend-drawer' ).on( 'click',  function() {
+			  $( '.chat-bubble' ).hide('slow').show('slow');
+			  $( '.chat-date' ).hide('slow').show('slow');
+			
+			  $(".friend-drawer").removeClass("bg");
+			  $(this).addClass("bg");
+			  
+		});
+		
+		
 
 </script>
 

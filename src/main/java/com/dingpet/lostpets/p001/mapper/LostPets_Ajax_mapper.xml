@@ -7,7 +7,7 @@
 
 <!-- 내가 쓴 글 목록 -->
 <select id="myList" resultType="com.dingpet.lostpets.p001.vo.LostPets_P001_VO" parameterType = "String">
-	SELECT LF.board_id, LF.title, LF.board_date, D.dog_breed, D.dog_sex, D.found_location, P.front_path
+	SELECT LF.board_id, LF.title, LF.board_date, D.dog_breed, D.dog_sex, D.found_location, P.front_name
 	FROM lost_found LF, dog D, lost_found_photo P
 	WHERE LF.board_id = P.board_id
 	AND LF.dog_id = D.dog_id

@@ -261,9 +261,8 @@
 
 	<!-- 글 조회 -->
 	<select id="view" resultType="com.dingpet.lostpets.p001.vo.LostPets_P001_VO" parameterType = "String">
-		SELECT LF.category, M.member_nickname, LF.board_id, LF.member_id, LF.dog_id, title, content, board_date, 
-			dog_name, dog_breed, dog_sex, dog_size, dog_note, found_date, found_location, 
-			front_name, front_path
+		SELECT LF.category, M.member_nickname, LF.board_id, LF.member_id, LF.dog_id, title, content, board_date, x, y, 
+			dog_name, dog_breed, dog_sex, dog_size, dog_note, found_date, found_location, front_name
 		FROM lost_found LF, dog D, lost_found_photo P, member M 
 		WHERE LF.dog_id = D.dog_id
 		AND LF.member_id = M.member_id
@@ -298,8 +297,8 @@
 			category = #{category,  jdbcType=VARCHAR},
 			title = #{title,  jdbcType=VARCHAR},
 			content = #{content,  jdbcType=VARCHAR},
-			status = #{status, jdbcType=CHAR},
-			status_reason = #{status_reason, jdbcType=VARCHAR}
+			x = #{x},
+			y = #{y}
 		where (board_id=#{board_id,  jdbcType=VARCHAR})
 	</update>
 	<update id="modifyDog" parameterType="com.dingpet.lostpets.p001.vo.LostPets_P001_VO" >

@@ -14,14 +14,14 @@
 
     <!--====  str of contents  ====-->
     <section class = "nanumbarungothic" style="padding-top:87px">
-        <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); 
+        <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/bg/com.jpg'); 
         	transform: translate3d(0px, 0px, 0px);"></div>
         <div class="main main-raised">
             <div class="profile-content">
                 <div class="container">
                     <div class="row justify-content-center pt-5 pb-5" data-aos="fade-up">
                         <div class="text-center heading-section">
-                          <h2 class="color_dark_blue narrow mb-2" style="font-family:GmarketSansBold;">완료 후기</h2>
+                          <h2 class="color_dark_blue narrow mb-2" style="font-family:GmarketSansBold; font-size:35px;">완료 후기</h2>
                         </div>
                     </div>
                     <!-- 제목, 작성자, 작성일시-->
