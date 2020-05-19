@@ -39,8 +39,8 @@
 					str += '<div class="textBox-div--right"><div class="chat-bubble chat-bubble--right"><li style"word-break: break-all;">'+content.message;
 					str += '</li></div></div><span class="chat-date">'+content.chatdate+'</span>';
 					str += '</div></div>';
-					
-                	chatBox.append(str);
+			       
+                	chatBox.append();
                 	chatBox.scrollTop(chatBox[0].scrollHeight);
 
                 }else{
@@ -50,7 +50,7 @@
     					str += '<div class="textBox-div--left"><div class="chat-bubble chat-bubble--left"><li style="word-break: break-all;">'+content.message;
     					str += '</li></div></div><span class="chat-date">'+content.chatdate+'</span>';
     					str += '</div></div>';
-    					
+	
                     	chatBox.append(str);
                     	chatBox.scrollTop(chatBox[0].scrollHeight)
                 }

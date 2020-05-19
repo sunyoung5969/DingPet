@@ -4,6 +4,12 @@ tfoot tr {
 	height: 36px;
 }
 
+.chat-memid{
+	margin: 0px;
+	color: #fff;
+}
+
+
 .wrap_table {
 	width: 89%;
 	overflow: hidden;
@@ -62,8 +68,8 @@ tfoot tr {
 .col-md-4 {
 	width: 28%;
 	padding-right: 20px;
-	max-height: 750px;
-	min-height: 750px;
+	max-height: 653px;
+	min-height: 653px;
 	overflow-y: scroll;
 	-ms-overflow-style: none;
 }
@@ -79,7 +85,7 @@ tfoot tr {
 }
 
 .settings-tray {
-	background: #eee;
+	background: #74b9ff;
 	padding: 10px 15px;
 	border-radius: 7px;
 }
@@ -89,10 +95,9 @@ tfoot tr {
 }
 
 .chat-panel {
-	max-height: 697px; min-height : 697px;
+	max-height: 600px; min-height : 600px;
 	overflow-y: scroll;
 	-ms-overflow-style: none;
-	min-height: 697px;
 }
 
 .chat-panel::-webkit-scrollbar, .col-md-4::-webkit-scrollbar {

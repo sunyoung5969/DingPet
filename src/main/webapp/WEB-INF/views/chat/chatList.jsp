@@ -81,7 +81,6 @@ function submitForm(roomNo){
 
 				var chatClass="";	
 				var str = "";	
-		        	
 				for(var i=0; i<Object.keys(chatList).length; i++){
 					if ($(".member_ID").val() == chatList[i].sender){
 						chatBoxLocation = "right";
@@ -120,7 +119,7 @@ function submitForm(roomNo){
 		<div class="row no-gutters row-div">
 			<div class="col-md-4 border-right">
 				<div class="settings-tray">
-					<img class="profile-image" src="" alt="Profile img">
+					<h4 class="chat-memid">${customers.member_nickname }</h4>
 				</div>
 				<c:forEach items="${roomList}" var="room">
 					<c:choose>
@@ -153,10 +152,8 @@ function submitForm(roomNo){
 
 			<div class="col-md-8">
 				<div class="content chatcontent" data-room-no="" data-member="${customers.member_id}"></div>
-				<div class="chat-panel">
-				
-				
-				</div>
+				<div class="chat-mem"></div>
+				<div class="chat-panel"></div>
 				<div class="row-chat">
 					<div class="col-12" style="padding: 0px;">
 						<div class="chat-box-tray" style="margin: 0px;">
