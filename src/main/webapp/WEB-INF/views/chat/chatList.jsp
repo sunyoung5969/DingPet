@@ -152,7 +152,6 @@ function submitForm(roomNo){
 
 			<div class="col-md-8">
 				<div class="content chatcontent" data-room-no="" data-member="${customers.member_id}"></div>
-				<div class="chat-mem"></div>
 				<div class="chat-panel"></div>
 				<div class="row-chat">
 					<div class="col-12" style="padding: 0px;">

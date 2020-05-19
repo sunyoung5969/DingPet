@@ -32,7 +32,7 @@
 //           일반메세지 들어오는곳         
             client.subscribe('/subscribe/chat/' + roomNo, function (chat) {
                 var content = JSON.parse(chat.body);
-                
+
                 if(content.writer == $('.member_ID').val()){
                 	var str=""
                 	str += '<div class="no-gutters--right"><div class="offset-md-9">';
@@ -40,7 +40,7 @@
 					str += '</li></div></div><span class="chat-date">'+content.chatdate+'</span>';
 					str += '</div></div>';
 			       
-                	chatBox.append();
+                	chatBox.append(str);
                 	chatBox.scrollTop(chatBox[0].scrollHeight);
 
                 }else{
