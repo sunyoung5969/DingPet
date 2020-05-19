@@ -40,7 +40,7 @@
 					str += '</li></div></div><span class="chat-date">'+content.chatdate+'</span>';
 					str += '</div></div>';
 			       
-                	chatBox.append();
+                	chatBox.append(str);
                 	chatBox.scrollTop(chatBox[0].scrollHeight);
 
                 }else{
