@@ -64,7 +64,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 		
 		try {
 //-----------------------------   프로필 아이디 생성	-------------------------------
-			
+			System.out.println("1111111111111111111111");
 			String profile_id = "";
 			int seq_profile_id = 0;
 			Date now = new Date();
@@ -82,7 +82,8 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 			profile.setProfile_ID(profile_id);
 			
 //---------------------------	사진 업로드 데이터 처리	---------------------------
-			
+			System.out.println("22222222222222222222222");
+
 			String uploadFolder = "/var/lib/tomcat8/webapps/img";
 			//String uploadFolder = "C:\\test\\pic";
 			
@@ -167,6 +168,7 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 					}				
 				}
 			}
+			System.out.println("33333333333333333333333333333");
 
 //---------------------------------------------------------------------------
 
@@ -190,14 +192,18 @@ public class PetSitting_P001_ControllerImpl implements PetSitting_P001_Controlle
 				service.closedInsert(profile);
 				closed[i] = profile.getSchedule_Closed();
 			}
+			System.out.println("4444444444444444444444444444444");
 
 //---------------------------------------------------------------------------
 			
 			if(profile.getLicense_Date() != null && profile.getLicense_Agency() != null && profile.getLicense_Name() != null) {
 				service.licenseInsert(profile);
 			}
+			System.out.println("555555555555555555555555555555");
+			System.out.println("뭣때문에!!!! "+profile);
 			service.profileInsert(profile);
-			
+			System.out.println("666666666666666666666666666666");
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e);

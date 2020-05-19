@@ -47,14 +47,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="profileInsert">
-		insert into 	sitter_profile (profile_id, member_id, profile_picpath, profile_picname, progile_title, profile_content, 
+		insert into 	sitter_profile (profile_id, member_id, profile_picpath, profile_picname, profile_title, profile_content, 
 						price_small, price_medium, price_large, profile_roadaddress, 
 						profile_jibunaddress, profile_detailaddress, list_address, 
 						service_00, service_01, service_02, service_03, 
 						service_04, service_05, service_06, service_07) 
-		values			(#{profile_ID}, #{member_ID}, #{profile_PicPath}, #{profile_PicName}, #{profile_Title},
-						#{profile_Content}, #{price_Small}, #{price_Medium}, #{price_Large}, 
-						#{profile_RoadAddress}, #{profile_JibunAddress}, #{profile_DetailAddress}, #{list_Address}, 
+		values			(#{profile_ID}, #{member_ID}, #{profile_PicPath, jdbcType=VARCHAR}, #{profile_PicName, jdbcType=VARCHAR}, #{profile_Title, jdbcType=VARCHAR},
+						#{profile_Content, jdbcType=VARCHAR}, #{price_Small, jdbcType=VARCHAR}, #{price_Medium, jdbcType=VARCHAR}, #{price_Large, jdbcType=VARCHAR}, 
+						#{profile_RoadAddress, jdbcType=VARCHAR}, #{profile_JibunAddress, jdbcType=VARCHAR}, #{profile_DetailAddress, jdbcType=VARCHAR}, #{list_Address, jdbcType=VARCHAR}, 
 						#{service_00}, #{service_01}, #{service_02}, #{service_03}, 
 						#{service_04}, #{service_05}, #{service_06}, #{service_07})
 	</insert>
@@ -62,7 +62,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="licenseInsert">
 		insert into license (member_id, license_id, license_picpath, 
 		license_name, license_agency, license_date) 
-		values(#{member_ID}, seq_license.nextval, #{license_PicPath}, 
+		values(#{member_ID}, seq_license.nextval, #{license_PicPath, jdbcType=VARCHAR}, 
 		#{license_Name}, #{license_Agency}, #{license_Date})
 	</insert>
 	
