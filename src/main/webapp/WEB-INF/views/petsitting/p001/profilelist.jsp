@@ -48,7 +48,7 @@
     text-align: center;
     display: none;
     
-    background: rgba(57, 57, 57, 0.5);
+    background: rgba(57, 57, 57, 0.7);
     color: rgb(238, 238, 238);
     position: relative;
     top: -301px;
@@ -82,19 +82,50 @@
     color: #fff !important;
 }
 
+.wrap-star{
+	display: inline-block;
+}
+.star-rating {
+    text-align: left;
+	width:150px;
+}
+.star-rating,.star-rating span {
+	display:inline-block; 
+	height:26px; 
+	overflow:hidden; 
+	background:url(/resources/images/bigstar.png)no-repeat; 
+}
+.star-rating span{
+	background-position:left bottom; 
+	line-height:0;
+	vertical-align:top; 
+}
+
+.main-raised{
+	margin: 1% 15% 7% !important;
+}
+
 </style>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/lost_found.css">
 <!--====  str of contents  ====-->
     <section style="padding-top:87px">
-        <div class="page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); transform: translate3d(0px, 0px, 0px);"></div>
+        
+	<div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/bg/sitter.jpg'); height : 400px;transform: translate3d(0px, 0px, 0px);">
+    	<div class="floating_text pt-5 pb-5  mt-5 text-center heading-section m-auto">
+             <h1 class=" color_white" style="font-family:GmarketSansBold; font-size:2.5rem !important">펫시터 목록</h1>
+             <span  class = "pl-2 d-inline-block  color_white "style="font-size:18px;">검증된 펫시터에게 소중한 반려견을 맡겨보세요</span>
+        </div>
+    </div>
+        
+        
         <div class="main main-raised">
             <div class="profile-content">
                 <div class="container">
                     <div class="row justify-content-center pt-3" data-aos="fade-up">
                         <div class="text-center heading-section">
-                          <h2 class="text-black mb-2">펫시터 정보</h2>                          
                           <div class="rBtn-warp" ></div>
                         </div>
-                        <div class="listrow">
+                        <div class="listrow section_space">
 	                        <c:forEach items="${ list}" var="sitter" varStatus="status">	   
 								<c:set var="count" value="${count+1}" />
 								<c:if test="${status.index%3 == '0'}">
@@ -110,14 +141,22 @@
 			                                <div class="card-info card-info_${status.index}">
 			                                	<!-- 이름 / 한줄 자기소개 내용 -->
 			                                	<h5 class="card-name" style="margin-top: 0px">${sitter.member_NickName }</h5>
-			                                	<h5 class="card-title" style="margin-top: 0px">${sitter.profile_Content } </h5>
+			                                	<h5 class="card-title" style="margin-top: 0px">${sitter.profile_Title } </h5>
 			                                    <!-- 주소 -->
 			                                    <p class="card-text">${sitter.list_Address }</p>
 			                                    <!-- 버튼 -->
+			                                    <div class="wrap-star">
+											   		<div class='star-rating'>
+												   		<c:set var="starper" value="${sitter.profile_Star*20}%" />
+									    		   		<span style ="width:${sitter.profile_Star*20}%"></span>
+								    				</div>        
+								    				<span style="position: right; margin: 0px;">${sitter.profile_Star}/5.0</span>	
+												</div>
 			                                </div>
 		                                </div>
 		                                <form action="profilelookup" method='post'>
 		                                    <input type="hidden" name="member_ID" value='${sitter.member_ID }'>
+		                                    <input type="hidden" name="profile_ID" value="${sitter.profile_ID }">
 		                                    <input type="submit" class="card-btn" value="프로필 보기">
 	                               		</form>
 		                            </div>

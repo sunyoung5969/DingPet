@@ -2,10 +2,13 @@ package com.dingpet.petsitting.p001.mapper;
 
 import java.util.List;
 
+import com.dingpet.petsitting.p001.vo.MultiPhotoVO;
 import com.dingpet.petsitting.p001.vo.PetSitting_P001_VO;
 import com.dingpet.petsitting.p004.vo.PetSitting_P004_VO;
 
 public interface PetSitting_P001_Mapper {	
+	// 프로필 아이디 시퀀스
+	public int getProfileIDSequence();
 
 	// 프로필 목록 SELECT
 	public List<PetSitting_P001_VO> profileGetList();
@@ -29,10 +32,13 @@ public interface PetSitting_P001_Mapper {
 	public void closedInsert(PetSitting_P001_VO profile);
 	
 	// 활동 사진 INSERT
-	public void albumInsert(PetSitting_P001_VO profile);
-	
+	public void setMultiPhoto(MultiPhotoVO mpvo);
+
 	// 프로필 조회 SELECT
 	public PetSitting_P001_VO profileLookup(PetSitting_P001_VO profile);
+	
+	// 갤러리 사진 가져오기
+	public List<MultiPhotoVO> getMultiPhoto(PetSitting_P001_VO profile);
 	
 	// 리뷰 가져오기 SELECT
 	public List<PetSitting_P004_VO> getReview(PetSitting_P001_VO profile);

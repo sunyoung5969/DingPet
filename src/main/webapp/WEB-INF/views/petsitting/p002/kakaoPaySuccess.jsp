@@ -67,9 +67,9 @@
 			<img class='img-bottom' src="https://i.imgur.com/irDyXI6.png?1">
 		</div>
 		 -->
-	</div>
-	
-	<script src="${pageContext.request.contextPath}/resources/js/profilelookup.js?v=10"></script>
+	</div> 
+	 
+	<script src="${pageContext.request.contextPath}/resources/js/profilelookup.js?v=14"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/index.js"></script>
 	<script>
 		$(document).ready(function(){

@@ -235,7 +235,7 @@ function placesSearchCB(data, status, pagination) {
         displayPlaces(data);
     } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
         // 검색결과가 없는경우 해야할 처리가 있다면 이곳에 작성해 주세요
-    	$("#zero").show();
+    	document.getElementById('zero').style.display = 'block';
     } else if (status === kakao.maps.services.Status.ERROR) {
         // 에러로 인해 검색결과가 나오지 않은 경우 해야할 처리가 있다면 이곳에 작성해 주세요
         
@@ -295,15 +295,19 @@ function removeMarker() {
 
 // 클릭한 마커에 대한 장소 상세정보를 커스텀 오버레이로 표시하는 함수입니다
 function displayPlaceInfo (place) {
-    var content = '<div class="placeinfo"><div class="p-3"><div>'
-   content += '<a style="cursor:pointer;" href="/lostpets/p001/view?board_id=' + place.board_id + '" target="_blank" title="제목을 클릭하면 게시글로 이동합니다.">';
-   content += '<span class = "text_overflow my-2" style="width:90%;"><strong>' + place.title +'</strong></span></a>';
-   content += '<i class="fas fa-times pl-2" onclick="closeInfo()" style="width:10%;"></i></div>'; 
+	
+	var spanText = place.category == 'lost' ? '발견 일자' : '실종 일자';
+	
+    var content = '<div class="placeinfo" style="cursor:normal;"title="제목을 클릭하면 게시글로 이동합니다."><div class="p-3">'
+   content += '<a style="cursor:pointer;" href="/lostpets/p001/view?board_id=' + place.board_id + '" target="_blank">';
+   content += '<div style="width:90%; position:relative" class="text_overflow"><span class = "my-2"><strong>' + place.title +'</strong></span></div></a>';
+   content += '<i class="fas fa-times pl-2" onclick="closeInfo()" style="width:10%;"></i>'; 
    content += '	<p class = "pl-2"><span class="tag">견종</span><span>' + place.dog_breed + '</span></p>';
    content += '<p class = "pl-2"><span class="tag">성별</span><span>' + place.dog_sex + '</span></p>';
-   content += '<p class = "pl-2"> <span class="tag">발견일자</span><span>' + place.found_date + '</span></p>';
+   content += '<p class = "pl-2"> <span class="tag">' + spanText + '</span><span>' + place.found_date + '</span></p>';
    content += '</div></div><div class="after"></div>';
-
+   
+   
     contentNode.innerHTML = content;
     placeOverlay.setPosition(new kakao.maps.LatLng(place.y, place.x));
     placeOverlay.setMap(map);  

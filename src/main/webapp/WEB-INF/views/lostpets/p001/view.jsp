@@ -19,14 +19,16 @@
 
     <!--====  str of contents  ====-->
     <section class = "nanumbarungothic" style="padding-top:87px">
-        <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); 
-        	transform: translate3d(0px, 0px, 0px);"></div>
+        <div class="col-xs-12 page-header header-filter" data-parallax="true" 
+        style="background-image: url(<c:out value = "${board.category == 'lost' ? '/resources/images/bg/find.jpg' : '/resources/images/bg/lost.jpg' })" />; transform: translate3d(0px, 0px, 0px);"></div>
         <div class="main main-raised">
             <div class="profile-content">
                 <div class="container">
                     <div class="row justify-content-center pt-5 pb-5" data-aos="fade-up">
                         <div class="text-center heading-section">
-                          <h2 class="text-black mb-2">임시보호견 상세 정보</h2>
+                          <h1 class="color_dark_blue narrow mb-2" style="font-family:GmarketSansBold; font-size:35px;">
+	                          <c:out value = "${board.category == 'lost' ? '주인 찾기' : '반려견 찾기'}"/>
+                          </h1>
                         </div>
                     </div>
                     <!-- 제목, 작성자, 작성일시-->
@@ -40,7 +42,7 @@
                    	<hr class = "hr_style">
                     <div class="col-12 row pt-3 dp-webkit ">
                             <div class="image-block bg-about w-100 text_center" >
-                                <img class="img-fluid m-auto" src="https://www.dingpet.shop/lost/${board.front_name}"  style = "width: 500px; height: 400px;">
+                                <img class="img-fluid m-auto" src="https://www.dingpet.shop/lost/${board.front_name}"  style = "max-width:900px;height: 400px;">
                             </div>
                     </div>
                      <div class="col-12 row pt-3 dp-webkit ">
@@ -86,7 +88,7 @@
 		                    </div>
 		                    <!-- 반려견 정보 끝  -->
 		                    <!-- 발견 정보 -->
-							<h3 class = "color_blue mt-5">발견 정보</h3>	
+							<h3 class = "color_blue mt-5"><c:out value ="${board.category == 'lost' ? '발견 ' : '실종 '}"/>정보</h3>	
 		                    <div class = "round_border mt-3 mb-4">
 			                    <div class = "m-5 flex_row">
 			                    	<div class = "col-xs-12 w-50 d-inline-block">
@@ -98,13 +100,17 @@
 			                    	<div class = " col-xs-12 w-40 d-inline-block">
 				                    	<div class = "flex_row_align_center">
 				                            <div class="nav-tabs">
-				                            	<div class=" mt-1 color_blue pt-3 pb-3"><strong>발견일시</strong> </div>
+				                            	<div class=" mt-1 color_blue pt-3 pb-3">
+				                            		<strong><c:out value ="${board.category == 'lost' ? '발견 ' : '실종 '}"/>일시</strong> 
+				                            	</div>
 				                                <div class="pl-3 pb-3">
 				                                    <span class="h6"><c:out  value = "${board.found_date}"/></span>
 				                                </div>
 				                            </div>
 				                            <div class="nav-tabs">
-				                            	<div class=" mt-1 color_blue pt-3 pb-3"><strong>발견장소</strong> </div>
+				                            	<div class=" mt-1 color_blue pt-3 pb-3">
+				                            		<strong><c:out value ="${board.category == 'lost' ? '발견 ' : '실종 '}"/>장소</strong> 
+				                            	</div>
 				                                <div class="pl-3 pb-3">
 				                                    <span class="h6"><c:out  value = "${board.found_location}"/></span>
 				                                </div>
@@ -122,28 +128,32 @@
 		                    </div>
 		                    <!-- 내용 끝 -->
                         </div>
-                     
-                    
-		            <!-- 확인요청 --> 
-					<%@include file="../../lostpets/p001/requestModal.jsp"%>
-					<div class = "small_space">
-	                    <hr class = "hr_style">
-					</div>
+
+
+						<form action="../../chat/createRoom" method="post" >
+				            <input type='hidden' name='room_owner' id='room_owner' value='${customers.member_id }' />    
+				            <input type="hidden" name="roomName" id="roomName" value="문의합니다."/>
+				            <input type="hidden" name="roomMember" id="roomMember" value='${board.member_id}'/>
+				
+							<div class="py-5 flex_row">
+								<button type = 'submit'  id="send" class="btn btn-primary mr-3">문의하기</button>
+								<button type = "button"id = "confirmation_request" class="btn btn-primary">확인 요청</button> 
+							</div>
+						 </form>
+					
 					<!-- 댓글 -->              
                     <%@include file="../../lostpets/p001/reply.jsp"%>
+                    
+                    <!-- 확인요청 --> 
+					<%@include file="../../lostpets/p001/requestModal.jsp"%>
                      
 					<!-- buttons -->
 					<div class="text-center pb-5">
 						<button data-oper="list" class="btn-sm btn btn-primary mr-3">목록으로</button>
-						<c:choose >
-							<c:when test = "${customers.member_id == board.member_id}"> 
-								<button data-oper="modify" class="btn-sm btn btn-primary">수정</button>
-								<button data-oper="delete" class="btn-sm btn btn-primary">삭제</button>
-							</c:when>
-							<c:when test = "${not empty customers.member_id}">
-								<button id="confirmation_request" class="btn btn-primary">확인 요청</button>
-							</c:when>
-						</c:choose>
+						<c:if test = "${customers.member_id == board.member_id}"> 
+							<button data-oper="modify" class="btn-sm btn btn-primary mr-3">수정</button>
+							<button data-oper="delete" class="btn-sm btn btn-primary">삭제</button>
+						</c:if>
 					</div>
 					<!-- buttons end--> 
 					</div>
@@ -152,40 +162,53 @@
         </div>
       </section>
 					
-					<!--submitting hidden parameters -->
-					<form id='operForm' action='modify' method='get'>
-						<input type="hidden" id="board_id" name="board_id" value="${board.board_id }" />
-						<input type="hidden" id="dog_id" name="dog_id" value="${board.dog_id }" />
-						<input type="hidden" name="pageNum" value="${cri.pageNum }"> 
-						<input type="hidden" name="amount" value="${cri.amount }">
-					</form>
-					<!-- submitting hidden parameters ends -->
-					
-					<!-- 버튼 처리 -->
-					<script type="text/javascript">
-                     	$(document).ready(function(){
-                        	var operForm = $("#operForm");
-                            //수정 버튼
-                            $("button[data-oper = 'modify']").on("click", function(e){
-	                            	operForm.attr("action", "modify").submit();
-                            });
-                            //삭제 버튼
-                            $("button[data-oper = 'delete']").on("click", function(e){
-                            	if(confirm("정말 삭제하시겠어요?")){
-                            		operForm.attr({action : 'delete', method : 'post'}).submit();
-                            	}else{
-                            		return;
-                            	}
-                            })
-                            //목록으로 버튼        		
-                           	$("button[data-oper = 'list']").on("click", function(e){
-                           		 operForm.find("#dog_id").remove();
-                                 operForm.find("#board_id").remove();
-                                 operForm.attr("action", "list").submit();
-                            });
-                     	});
-		           	</script>
-		           	<!-- 버튼 처리 끝 -->
+		<!--submitting hidden parameters -->
+		<form id='operForm' action='modify' method='get'>
+			<input type="hidden" id="board_id" name="board_id" value="${board.board_id }" />
+			<input type="hidden" id="dog_id" name="dog_id" value="${board.dog_id }" />
+			<input type="hidden" name="pageNum" value="${cri.pageNum }"> 
+			<input type="hidden" name="amount" value="${cri.amount }">
+		</form>
+		<!-- submitting hidden parameters ends -->
+		
+		<!-- 버튼 처리 -->
+		<script type="text/javascript">
+	       	$(document).ready(function(){
+	          	var operForm = $("#operForm");
+	              //수정 버튼
+	              $("button[data-oper = 'modify']").on("click", function(e){
+	               	operForm.attr("action", "modify").submit();
+	              });
+	              //삭제 버튼
+	              $("button[data-oper = 'delete']").on("click", function(e){
+	              	if(confirm("정말 삭제하시겠어요?")){
+	              		operForm.attr({action : 'delete', method : 'post'}).submit();
+	              	}else{
+	              		return;
+	              	}
+	              })
+	              //목록으로 버튼        		
+	             	$("button[data-oper = 'list']").on("click", function(e){
+	             		 operForm.find("#dog_id").remove();
+	                   operForm.find("#board_id").remove();
+	                   operForm.attr("action", "list").submit();
+	              });
+	       	});
+	       	
+	       	<!--로그인 하지 않으면 문의하기/확인요청 할 수 없음-->
+	       	$("#send, #confirmation_request").click(function(){
+       			var loggedInId = '${customers.member_id}';	
+	       		
+       			if(!loggedInId){
+	       			event.preventDefault();
+	       			alert("로그인이 필요한 서비스입니다.\n로그인 페이지로 이동합니다.");
+					location.href = "/customers/p001/signin";
+	       		}
+	       	})
+	       	
+	       	
+         	</script>
+	         	<!-- 버튼 처리 끝 -->
 					
 					
 					
@@ -222,7 +245,7 @@
 		
 		        // 인포윈도우로 장소에 대한 설명을 표시합니다
 		        var infowindow = new kakao.maps.InfoWindow({
-		            content: '<div style="width:150px;text-align:center;padding:6px 0;">발견 장소</div>'
+		            content: '<div style="width:150px;text-align:center;padding:6px 0;">${board.category eq "lost" ? "발견 " : "실종 "}장소</div>'
 		        });
 		        infowindow.open(map, marker);
 		

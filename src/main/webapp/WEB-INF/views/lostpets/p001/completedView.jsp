@@ -14,14 +14,14 @@
 
     <!--====  str of contents  ====-->
     <section class = "nanumbarungothic" style="padding-top:87px">
-        <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); 
+        <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/bg/com.jpg'); 
         	transform: translate3d(0px, 0px, 0px);"></div>
         <div class="main main-raised">
             <div class="profile-content">
                 <div class="container">
                     <div class="row justify-content-center pt-5 pb-5" data-aos="fade-up">
                         <div class="text-center heading-section">
-                          <h2 class="text-black mb-2">완료 후기</h2>
+                          <h2 class="color_dark_blue narrow mb-2" style="font-family:GmarketSansBold; font-size:35px;">완료 후기</h2>
                         </div>
                     </div>
                     <!-- 제목, 작성자, 작성일시-->
@@ -36,7 +36,7 @@
                     <div class="col-12 row pt-3 dp-webkit ">
                             <div class="image-block bg-about w-100 text_center" >
                             	<c:set var = "photo_path" value = "https://www.dingpet.shop/lost/${completed.photo_name}" />
-                                <img class="img-fluid m-auto" src="${completed.photo_name != null ? photo_path : '/resources/images/blue.jpg'}"  style = "width: 500px; height: 400px;">
+                                <img class="img-fluid m-auto" src="${completed.photo_name != null ? photo_path : '/resources/images/blue.jpg'}"  style = "max-width: 900px; height: 400px;">
                             </div>
                     </div>
                      <div class="col-12 row pt-3 dp-webkit ">

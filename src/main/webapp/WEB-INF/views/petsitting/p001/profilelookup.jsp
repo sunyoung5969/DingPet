@@ -20,7 +20,7 @@
 						</div>
 						<!-- 프로필 자기소개 한줄 -->
 						<div class="profile_h6Div-reservation" align="center">
-							<h6 class="profile_h6-reservation">${profile.profile_Content }</h6>
+							<h6 class="profile_h6-reservation">${profile.profile_Title }</h6>
 						</div>
 						<div>
 							<!-- 이용가능서비스 -->
@@ -227,7 +227,7 @@
 					</svg>
 					
 					<span class="bubblebtn--bubble__container">
-					  <input type='submit' onclick="reservation_Payment()" class="bubblebtn bubblebtn--bubble" value="Hover me">
+					  <input type='submit' onclick="reservation_Payment()" class="bubblebtn bubblebtn--bubble" value="예 약">
 					  <span class="bubblebtn--bubble__effect-container">
 					    <span class="circle top-left"></span>
 					    <span class="circle top-left"></span>
@@ -271,12 +271,19 @@
                     <div class="row">
                         <div class="col-md-6 ml-auto mr-auto" style='left: 13%'>
                           <div class="profile">
-                                <div class="avatar text-center">
+                                <div class="avatar text-center" style="height: 120px;">
                                     <img src="https://www.dingpet.shop/img/${profile.profile_PicName }" alt="Circle Image" class="img-raised rounded-circle img-fluid">
                                 </div>
-                                <div class="name text-center">
+                                <div class="wrap-star">
+							   		<div class='star-rating'>
+								   		<c:set var="starper" value="${profile.profile_Star*20}%" />
+					    		   		<span style ="width:${profile.profile_Star*20}%"></span>
+				    				</div>        
+				    				<span style="position: right; margin: 0px;">${profile.profile_Star}/5.0</span>	
+								</div>
+                                <div class="name text-center" style="margin-top: -10px;">
                                     <h4 class="title">${profile.member_NickName }</h4>
-                                    <h6>한줄소개</h6>
+                                    <h6>${profile.profile_Title }</h6>
                                 </div>
                            </div>
                         </div>
@@ -504,19 +511,26 @@
 						</div>
 						<div class="licenseContainer" align="center">
 							<div class="licenseDiv">
+							<c:forEach items="${license }" var="license">
+								<c:if test="${license.license_PicPath != null}">
+								<div class="licensePic">
+									<img width="150px" src="https://www.dingpet.shop/img/${license.license_PicPath }">
+								</div>
+								</c:if>
+								<c:if test="${license.license_PicPath == null}">
 								<div class="licensePic">
 									<img width="150px" src="/resources/images/dogger_veterinary.svg">
 								</div>
+								</c:if>
 								<div class="licenseDetail">
-									<c:forEach items="${license }" var="license">
-										<p class="license_txth1" align="left">자 격 증 명</p>
-										<p class="license_txth2" align="left">${license.license_Name }</p>
-										<p class="license_txth1" align="left">발 급 일 자</p>
-										<p class="license_txth2" align="left">${license.license_Date }</p>
-										<p class="license_txth1" align="left">발 급 기 관</p>
-										<p class="license_txth2" align="left">${license.license_Agency }</p>
-									</c:forEach>
+									<p class="license_txth1" align="left">자 격 증 명</p>
+									<p class="license_txth2" align="left">${license.license_Name }</p>
+									<p class="license_txth1" align="left">발 급 일 자</p>
+									<p class="license_txth2" align="left">${license.license_Date }</p>
+									<p class="license_txth1" align="left">발 급 기 관</p>
+									<p class="license_txth2" align="left">${license.license_Agency }</p>
 								</div>
+							</c:forEach>
 							</div>
 						</div>
                     </div>
@@ -536,7 +550,7 @@
                             </div>
                           </div>
                           <div class="row no-gutters">
-                            
+							<!-- 
                               <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_1.jpg" data-fancybox="gal"><img src="/resources/images/dogger_img_sm_1.jpg" alt="Image" class="img-fluid"></a>
                               <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_2.jpg" data-fancybox="gal"><img src="/resources/images/dogger_img_sm_2.jpg" alt="Image" class="img-fluid"></a>
                               <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_3.jpg" data-fancybox="gal"><img src="/resources/images/dogger_img_sm_3.jpg" alt="Image" class="img-fluid"></a>
@@ -545,6 +559,10 @@
                               <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_6.jpg" data-fancybox="gal"><img src="/resources/images/dogger_img_sm_6.jpg" alt="Image" class="img-fluid"></a>
                               <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_1.jpg" data-fancybox="gal"><img src="/resources/images/dogger_img_sm_1.jpg" alt="Image" class="img-fluid"></a>
                               <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="/resources/images/dogger_img_sm_2.jpg" data-fancybox="gal"><img src="/resources/images/dogger_img_sm_2.jpg" alt="Image" class="img-fluid"></a>
+                           -->
+                           <c:forEach items="${gallery }" var="gallery">
+								<a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="https://www.dingpet.shop/img/${gallery.act_Photo }" data-fancybox="gal"><img src="https://www.dingpet.shop/img/${gallery.act_Photo }" alt="Image" class="img-fluid"></a>
+                           </c:forEach>
                           </div>
                         </div>
                       </section>

@@ -4,6 +4,12 @@ tfoot tr {
 	height: 36px;
 }
 
+.chat-memid{
+	margin: 0px;
+	color: #fff;
+}
+
+
 .wrap_table {
 	width: 89%;
 	overflow: hidden;
@@ -62,8 +68,8 @@ tfoot tr {
 .col-md-4 {
 	width: 28%;
 	padding-right: 20px;
-	max-height: 750px;
-	min-height: 750px;
+	max-height: 653px;
+	min-height: 653px;
 	overflow-y: scroll;
 	-ms-overflow-style: none;
 }
@@ -79,9 +85,10 @@ tfoot tr {
 }
 
 .settings-tray {
-	background: #eee;
-	padding: 10px 15px;
+	background: #677380;
+	padding: 20px 15px;
 	border-radius: 7px;
+	margin-bottom : 5px;
 }
 
 .settings-tray .no-gutters {
@@ -89,10 +96,9 @@ tfoot tr {
 }
 
 .chat-panel {
-	max-height: 697px; min-height : 697px;
+	max-height: 600px; min-height : 600px;
 	overflow-y: scroll;
 	-ms-overflow-style: none;
-	min-height: 697px;
 }
 
 .chat-panel::-webkit-scrollbar, .col-md-4::-webkit-scrollbar {
@@ -151,6 +157,8 @@ input:focus {
 	vertical-align: baseline;
 	background: #fff;
 	transition: 0.3s ease;
+	border-radius : 7px;
+	margin-bottom : 5px;
 }
 
 .friend-drawer--grey {
@@ -177,14 +185,10 @@ input:focus {
 }
 
 .friend-drawer--onhover:hover {
-	background: #74b9ff;
+	border: 2px solid #74b9ff;
 	cursor: pointer;
 }
 
-.friend-drawer--onhover:hover p, .friend-drawer--onhover:hover h6,
-	.friend-drawer--onhover:hover .time {
-	color: #fff !important;
-}
 
 hr {
 	margin: 5px auto;
@@ -207,7 +211,7 @@ hr {
 	margin: 10px 0px;;
 	border-radius: 9px;
 	position: relative;
-	animation: fadeIn 1s ease-in;
+	animation: fadeIn 0.5s ease-in;
 }
 
 .chat-bubble li {
@@ -216,6 +220,7 @@ hr {
 
 .chat-bubble--right {
 	background: #74b9ff;
+	text-align: left;
 }
 
 .chat-bubble--left {
@@ -308,13 +313,15 @@ hr {
 	font-size: 12px !important;
 	font-weight: 600 !important;
 	border: solid 1.2px;
-	border-color: #69acb8;
-	color: #69acb8;
+	border-color: #74b9ff ;
+	color: #74b9ff ;
 	width: 10%;
 }
 
 .btn-send:hover {
 	color: #fff;
-	background: #69acb8;
-	border-color: #69acb8;
+	background: #74b9ff ;
+	border-color: #74b9ff ;
 }
+
+

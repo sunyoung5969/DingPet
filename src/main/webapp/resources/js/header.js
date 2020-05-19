@@ -8,13 +8,7 @@ function privilege(){
 
 	var p_id = $(".privilege_id").val(); 
 	
-	if(p_id == '02' || p_id == '01' || p_id == '00'){
-		$("#headerreservedlist").attr("href", "${pageContext.request.contextPath}/petsitting/p002/reservationlist")
-		
-	}else{
-		$("#headerreservedlist").attr('href', "${pageContext.request.contextPath}/customers/p001/signin")
-		console.log($("#headerreservedlist").attr('class'))
-	}
+
 }
 
 function noticeClick(){

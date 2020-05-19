@@ -5,10 +5,13 @@ import lombok.Data;
 @Data
 public class PetSitting_P001_VO {
 	
+	private String profile_ID;				// 프로필 번호
 	private String member_ID;				// 회원 아이디
 	private String member_NickName;			// 회원 닉네임
+	private float profile_Star;				// 리뷰 평점
 	private String profile_PicPath;			// 프로필 사진 경로
 	private String profile_PicName;			// 프로필 사진 이름
+	private String profile_Title;			// 프로필 한줄 소개
 	private String profile_Content;			// 자기 소개
 	private String license_PicPath;			// 자격증 사진 경로
 	private String license_Name;			// 자격증 명

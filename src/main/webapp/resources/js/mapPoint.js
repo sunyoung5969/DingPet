@@ -52,7 +52,7 @@
 			console.log("====Start Click ======");
 			var date = new Date();
 			var startTime = '';
-			
+			alert("산책을 시작합니다")
 			startTime += date.getFullYear();
 			startTime += "/";
 			startTime += addzero(date.getMonth()+1, 2);
@@ -62,9 +62,9 @@
 			startTime += addzero(date.getHours(), 2);
 			startTime += ":";
 			startTime += addzero(date.getMinutes(), 2);
-			
-			console.log("시작 시간 - "+startTime);
-			$(".start_Time").val(startTime);
+			st = startTime
+			console.log("시작 시간 - "+st);
+			$(".start_Time").val(st);
 			
 			var options = { enableHighAccuracy: true };
 			
@@ -78,7 +78,7 @@
 		    	if(setNum == 1){
 		    		clearInterval(playMark);
 		    	}
-		      }, 6000);
+		      }, 15000);
 		} // init End
 	
 	function addzero(num, digit){
@@ -484,7 +484,8 @@
 		        // 상태를 false로, 그리지 않고 있는 상태로 변경합니다
 		        drawingFlag = false;          
 		    }  
-		    
+			alert("산책을 종료합니다")
+
 		    var date = new Date();
 			var endTime = '';
 			

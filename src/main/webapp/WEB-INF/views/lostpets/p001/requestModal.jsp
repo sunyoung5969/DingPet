@@ -44,15 +44,38 @@ a:link, a:visited {
 	cursor: pointer;
 }
 
-.radio{
-
-}
-
 .selected {
 	border-radius: 25px;
   	border: 2px solid #088cf3;
 }
 
+.d_table{
+display: table;
+width:100%;
+}
+.cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+.frame{
+	position: relative;
+	width: 180px; 
+	height: 120px;
+	display : inline-block;
+}
+
+.frame img{
+	position : absolute;
+	max-width: 100%;
+	max-height : 100%;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	margin:auto;
+}
 
 </style>
 
@@ -62,8 +85,8 @@ a:link, a:visited {
 <div id="modal" class="modal">
 	<div class="modal-content">
 		<div class="text_center py-1">
-			<h2 class ="color_blue" style="font-family:GmarketSansBold;">확인 요청</h2>
-			<span>게시하신 글을 바탕으로 확인을 요청하실 수 있습니다. 게시글을 선택해주세요.</span>
+			<h2 class ="color_dark_blue narrow" style="font-family:GmarketSansBold;">확인 요청</h2>
+			<span class="color_grey">게시하신 글을 바탕으로 확인을 요청하실 수 있습니다. 게시글을 선택해주세요.</span>
 		</div>
 		<div class = "content_area pt-3">
 		</div>
@@ -119,10 +142,11 @@ a:link, a:visited {
 					}else{
 						for(var i = 0; i < senderList.length; i++){
 							str += "<div class='radio small_list_border w-90 mx-auto my-2' data-sender_b_id = '" + senderList[i].board_id +"' data-sender_id = '" + loggedIn_id + "'>";
-							str += "<div class = 'flex_row p-3'><div class= 'w-25 d-inline-block'>";
-							str += "<img class = '.nav-pills' style= 'width: 150px; height: 150px;' src='https://www.dingpet.shop/lost/'" + $senderList[i].front_name} + "'></div>";
-							str += "<div class= 'w-75 pl-3 pt-3 d-inline-block'>";
-							str += "<p><strong>" + senderList[i].title + "</strong></p><p class='pl-2'> <span class='tag'>견종</span><span> </span><span>" + senderList[i].dog_breed +"</span>";
+							str += "<div class = 'p-3 d_table'><div class='cell frame pt-2'>";
+							str += "<img src='https://www.dingpet.shop/lost/" + senderList[i].front_name + "'></div>";
+							str += "<div style = 'width: 60%;' class= 'cell pl-3 pt-2 text_left d-inline-block'>";
+							str += "<p class='text_overflow'><strong>" + senderList[i].title + "</strong></p><p class='pl-2'>";
+							str += " <span class='tag'>견종</span><span> </span><span>" + senderList[i].dog_breed +"</span>";
 							str += "<span class = 'pl-2'></span> <span class='tag'>성별</span><span></span> <span>" + senderList[i].dog_sex +"</span> </p><p class='pl-2'>";
 							str += " <span class= 'tag'>실종 장소</span><span></span> <span>" + senderList[i].found_location + "</span>";
 							str += " </p> </div> </div> </div>";
@@ -173,6 +197,9 @@ a:link, a:visited {
 			
 			//요청 전송 버튼 클릭시
 			$("#send").on("click", function(){
+				//중복 실행 방지
+				event.stopPropagation();
+				
 				if(!sender_id || !sender_b_id){
 					alert("게시글을 선택해주세요.");
 				}else{
@@ -201,7 +228,7 @@ a:link, a:visited {
 					});
 					
 					noticeService.form(noticeData,function(){
-						alert('알림 전송 성공');
+						console.log('알림 전송 성공');
 					})
 				
 				}
@@ -210,14 +237,8 @@ a:link, a:visited {
 		});
 		
 		
-				//완료처리 
-			$("#complete").on('click', function(){
-			})
 	});
 	
-		$(function(){
-	
-		})
 </script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/notice.js" ></script>
 

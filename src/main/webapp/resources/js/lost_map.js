@@ -23,7 +23,7 @@
                 var addr = data.address; // 최종 주소 변수
 
                 // 주소 정보를 해당 필드에 넣는다.
-                document.getElementById("address_display").value = addr;
+               // document.getElementById("address_display").value = addr;
                 // 주소로 상세 정보를 검색
                 geocoder.addressSearch(data.address, function(results, status) {
                     // 정상적으로 검색이 완료됐으면
@@ -89,7 +89,6 @@
 	                var x = position.getLng();
 	                
 	                //input hidden으로 리퀘스트 바디에 포함
-                	document.getElementById("coords").value = position;
 	                document.getElementById("lat").value = y;
 	                document.getElementById("lng").value = x;
 	                

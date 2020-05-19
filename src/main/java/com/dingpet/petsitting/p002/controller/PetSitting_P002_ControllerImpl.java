@@ -107,7 +107,7 @@ public class PetSitting_P002_ControllerImpl implements PetSitting_P002_Controlle
     	
     	service.deleteReserved(reserved);
 
-    	return "redirect: /petsitting/p002/reservationlist";
+    	return "redirect:/petsitting/p002/reservationlist";
 	}
 
     @RequestMapping("reservationlist")
@@ -131,9 +131,9 @@ public class PetSitting_P002_ControllerImpl implements PetSitting_P002_Controlle
     		endTime = sitterList.get(i).getEnd_Time();
 
         	sitterList.get(i).setStart_Date2(startDate.replaceAll("-", ""));
-        	sitterList.get(i).setStart_Time2(startTime.replaceAll(":", ""));
+        	sitterList.get(i).setStart_Time2(startDate.replaceAll("-", "")+startTime.replaceAll(":", ""));
         	sitterList.get(i).setEnd_Date2(endDate.replaceAll("-", ""));
-        	sitterList.get(i).setEnd_Time2(endTime.replaceAll(":", ""));
+        	sitterList.get(i).setEnd_Time2(endDate.replaceAll("-", "")+endTime.replaceAll(":", ""));
     	}
     	
     	for(int i = 0; i < custList.size(); i++) {
@@ -143,9 +143,9 @@ public class PetSitting_P002_ControllerImpl implements PetSitting_P002_Controlle
     		endTime = custList.get(i).getEnd_Time();
 
     		custList.get(i).setStart_Date2(startDate.replaceAll("-", ""));
-        	custList.get(i).setStart_Time2(startTime.replaceAll(":", ""));
+        	custList.get(i).setStart_Time2(startDate.replaceAll("-", "")+startTime.replaceAll(":", ""));
         	custList.get(i).setEnd_Date2(endDate.replaceAll("-", ""));
-        	custList.get(i).setEnd_Time2(endTime.replaceAll(":", ""));
+        	custList.get(i).setEnd_Time2(endDate.replaceAll("-", "")+endTime.replaceAll(":", ""));
     	}
     	
     	Date date = new Date();
@@ -158,7 +158,8 @@ public class PetSitting_P002_ControllerImpl implements PetSitting_P002_Controlle
     	model.addAttribute("myCustList", custList);
     	
     	model.addAttribute("date", current.format(date));
-    	model.addAttribute("time", currentTime.format(date));
+    	model.addAttribute("currentTime", current.format(date)+currentTime.format(date));
+    	System.out.println(current.format(date)+currentTime.format(date));
     	
 	}
  
