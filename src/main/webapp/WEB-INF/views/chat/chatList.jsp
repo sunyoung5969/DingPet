@@ -79,7 +79,7 @@ function submitForm(roomNo){
 			
 			var chatList = data.chatList;
 			var room2 = data.room2;
-			console.log(room2.roomMember);
+			
 			$(".chat-mem").empty();
 			$(".chat-panel").empty(); //여기서 append
 			if (logged == room2.room_owner){
@@ -162,7 +162,10 @@ function submitForm(roomNo){
 
 			<div class="col-md-8">
 				<div class="content chatcontent" data-room-no="" data-member="${customers.member_id}"></div>
+<<<<<<< HEAD
 				<div class="chat-mem" id="choiceName"></div>
+=======
+>>>>>>> refs/remotes/origin/master
 				<div class="chat-panel"></div>
 				<div class="row-chat">
 					<div class="col-12" style="padding: 0px;">

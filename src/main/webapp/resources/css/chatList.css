@@ -221,6 +221,7 @@ hr {
 
 .chat-bubble--right {
 	background: #74b9ff;
+	text-align: left;
 }
 
 .chat-bubble--left {

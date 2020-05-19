@@ -107,7 +107,7 @@ public class PetSitting_P002_ControllerImpl implements PetSitting_P002_Controlle
     	
     	service.deleteReserved(reserved);
 
-    	return "redirect: /petsitting/p002/reservationlist";
+    	return "redirect:/petsitting/p002/reservationlist";
 	}
 
     @RequestMapping("reservationlist")
