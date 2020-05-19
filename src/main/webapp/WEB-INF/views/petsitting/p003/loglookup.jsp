@@ -169,10 +169,17 @@
 }
 
 @media screen and (max-width: 425px) {
-	
+	.page-header{
+		height: 30vh;
+	}
 	.page-title{
 		font-size: 5vw !important; 
 	}
+	
+	.log-time{
+	    font-size: 15px;
+	}
+	
 	
 	.walkInfo {
 	    width: 40px;
@@ -211,17 +218,19 @@
 
 <!--====  str of contents  ====-->
 	<section style="padding-top:87px">
-        <div class="page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); transform: translate3d(0px, 0px, 0px);"></div>
+        <div class="page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/bg/re.jpg'); transform: translate3d(0px, 0px, 0px);"></div>
         <div class="main main-raised">
 			<div class="profile-content">
 				<div class="container pb-5">
 						<div class="title-container">
 							<div class="text-center heading-section">
-								<h2 class="page-title">일지 등록 페이지입니당</h2>
+								<h2 class="page-title">예약 일지</h2>
+								<c:if test="${customers.privilege_id == '01' }">
 								<form action="/petsitting/p003/logregister" class="walkform" align="right">
 			                       	<input type="hidden" class="reservation_ID" name="reservation_ID" value="${reservation_ID }">
 			                       	<input type="submit" class="walkbtn" value='일지 작성'>
 								</form>
+								</c:if>
 							</div>
 	                    </div>
 	                   	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=78d603c9ceea19aeba68479415b917d4"></script>

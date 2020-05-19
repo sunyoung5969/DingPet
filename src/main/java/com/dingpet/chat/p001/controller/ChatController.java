@@ -136,9 +136,8 @@ public class ChatController {
 		model.addAttribute("msgList",chatService.getMessage(roomNo));
 
 		Map map = new HashMap();
-		
-		map.put("chatList", chatService.getMessage(roomNo));
-		
+		map.put("room2", chatService.getRoom(roomNo));
+		map.put("chatList", chatService.getMessage(roomNo));		
 		//return "chat/room";
 		return map;
 	}

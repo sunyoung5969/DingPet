@@ -10,6 +10,7 @@
  
 <style>
 
+
 .page-title{
     font-size: 28px;
     font-weight: 600;
@@ -169,9 +170,12 @@
 }
 
 @media screen and (max-width: 425px) {
-	
+	.page-header{
+		height: 30vh;
+	}
 	.page-title{
 		font-size: 5vw !important; 
+		
 	}
 
 }
@@ -184,13 +188,13 @@
 
 <!--====  str of contents  ====-->
     <section style="padding-top:87px">
-        <div class="page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/background/homepage-top.png'); transform: translate3d(0px, 0px, 0px);"></div>
+        <div class="page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/bg/re.jpg'); transform: translate3d(0px, 0px, 0px);"></div>
         <div class="main main-raised">
 			<div class="profile-content">
 				<div class="container pb-5">
 						<div class="title-container">
 							<div class="text-center heading-section">
-								<h2 class="page-title">일지 등록 페이지입니당</h2>
+								<h2 class="page-title">일지 등록</h2>
 								<form action="/petsitting/p003/walkregister" class="walkform" align="right">
 			                       	<input type="hidden" name="reservation_ID" value="${reservation_ID }">
 			                       	<input type="submit" class="walkbtn" value='산책등록'>

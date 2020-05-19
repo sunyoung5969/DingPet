@@ -212,7 +212,7 @@
 	    <div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/bg/fa.jpg'); height : 400px;transform: translate3d(0px, 0px, 0px);">
     	<div class="floating_text pt-5 pb-5  mt-5 text-center heading-section m-auto">
              <h1 class=" color_white" style="font-family:GmarketSansBold; font-size:2.5rem !important">동반시설 지도</h1>
-             <p  class = "pl-2 d-inline-block  color_white " style="font-size:18px;">어쩌구 저쩌구 문구 바꾸셔~~~~~</p>
+             <p  class = "pl-2 d-inline-block  color_white " style="font-size:18px;">애견동반 플레이스를 소개해드립니다.</p>
         </div>
     </div>
 </div>

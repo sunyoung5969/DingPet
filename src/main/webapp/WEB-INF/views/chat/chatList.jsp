@@ -13,6 +13,7 @@
 <script	src="${pageContext.request.contextPath}/resources/js/chat_socket.js?v=<%=System.currentTimeMillis() %>"	type="text/javascript"></script>
 
 <script>
+var logged = '${customers.member_id}';
 function checkPersonnel(roomNo, roomPw, result) {
 	  /* 	alert(typeof roomNo + roomPw + result); */
 	//$(".content").data('room-no', roomNo);
@@ -62,6 +63,7 @@ function submitForm(roomNo){
 
 	$("#subNo").val(roomNo);
 	
+	
 	var chatData = {
 		userId : $("userId").val(),
 		userNmae : $("userName").val(),
@@ -74,14 +76,21 @@ function submitForm(roomNo){
 		data: chatData,
 		success:function(data) {
 			/* alert(data); */
+			
 			var chatList = data.chatList;
+			var room2 = data.room2;
+			
+			$(".chat-mem").empty();
 			$(".chat-panel").empty(); //여기서 append
-
+			if (logged == room2.room_owner){
+				$(".chat-mem").append(room2.bnick+"님과 대화 중");
+			}else{
+				$(".chat-mem").append(room2.anick+"님과 대화 중");
+			}
 			if(chatList.length > 0){
 
 				var chatClass="";	
 				var str = "";	
-		        	
 				for(var i=0; i<Object.keys(chatList).length; i++){
 					if ($(".member_ID").val() == chatList[i].sender){
 						chatBoxLocation = "right";
@@ -118,19 +127,19 @@ function submitForm(roomNo){
 <section style="padding-top: 87px">
 
 	<input type="hidden" id="subNo" name="roomNo" />
-
+	<input type="hidden" id="subName" name="subName" />
 	<div class="container-chat">
 		<div class="row no-gutters row-div">
 			<div class="col-md-4 border-right">
 				<div class="settings-tray">
-					<img class="profile-image" src="" alt="Profile img">
+					<h4 class="chat-memid">${customers.member_nickname }</h4>
 				</div>
 				<c:forEach items="${roomList}" var="room">
 					<c:choose>
 						<c:when	test="${room.roomPw == '' || room.roomPw eq null || room.roomPw eq ''}">
 							<div class="friend-drawer friend-drawer--onhover" onclick="return checkPersonnel(${room.roomNo}, ${room.roomNo}, true)">
 								<small></small>
-								<div class="text">
+								<div class="text" >
 								<c:if test="${empty room.bnick}">
 									<c:set var="bnick" value="존재하지 않는 사용자" />
 								</c:if>
@@ -156,10 +165,8 @@ function submitForm(roomNo){
 
 			<div class="col-md-8">
 				<div class="content chatcontent" data-room-no="" data-member="${customers.member_id}"></div>
-				<div class="chat-panel">
-				
-				
-				</div>
+				<div class="chat-mem" id="choiceName"></div>
+				<div class="chat-panel"></div>
 				<div class="row-chat">
 					<div class="col-12" style="padding: 0px;">
 						<div class="chat-box-tray" style="margin: 0px;">

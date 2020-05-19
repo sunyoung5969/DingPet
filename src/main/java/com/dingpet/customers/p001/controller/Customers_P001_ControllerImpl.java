@@ -200,7 +200,6 @@ public class Customers_P001_ControllerImpl implements Customers_P001_Controller 
 		log.info(session.getAttribute("customers"));
 		log.info("세션에 저장된 회원정보를 가져와서 내 정보를 조회:" +service.myinfo((Customers_P001_VO)session.getAttribute("customers")));
 		model.addAttribute("customers", service.myinfo((Customers_P001_VO)session.getAttribute("customers")));
-		model.addAttribute("dogs", service.dogInfo((Customers_P001_VO)session.getAttribute("dogs")));
 	}
 	
 	//정보수정

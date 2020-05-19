@@ -9,7 +9,9 @@
 	width: 100%;
 	display: block;
 }
-
+.main-raised{
+	margin: 1% 15% 7% ;
+}
 .reservation-row{
 	display: inline-block;
 	width: 100%;
@@ -149,9 +151,34 @@
 	border-color: #9c85c7;
 }
 
+.color_white {
+	color: #F9F9F9;
+	
+}
+
+.white-title{
+	font-family:GmarketSansBold; 
+	font-size:2.5rem !important
+}
+
+.floating_text {
+	display: relative;
+	z-index: 1;
+}
+
+.section_space {
+	padding-top: 4rem;
+	padding-bottom: 4rem;
+}
+
 @media screen and (max-width: 770px){
 	.main-raised {
-	    margin: -10% 3% 7%;
+	    margin: 0% 3% 7%;
+	}
+	
+	.white-title {
+		margin: 0px;
+		font-size:2rem !important
 	}
 	
 	.list-div{
@@ -208,6 +235,13 @@
 }
 
 @media screen and (max-width: 750px){
+	.reservation-top{
+		height: 170px !important;
+	
+	}
+	.section_space{
+		padding-top:0px;
+	}
 
 	.btn-log{
 		width:100%;
@@ -227,9 +261,7 @@
 	}
 }
 
-.main-raised{
-	margin: 1% 15% 7% !important;
-}
+
 
 @font-face {
 	font-family: 'GmarketSansBold';
@@ -240,27 +272,14 @@
 	font-style: normal;
 }
 
-.color_white {
-	color: #F9F9F9;
-}
 
-.floating_text {
-	display: relative;
-	z-index: 1;
-}
-
-.section_space {
-	padding-top: 4rem;
-	padding-bottom: 4rem;
-}
 </style>
 
 <!--====  str of contents  ====-->
     <section style="padding-top:87px">
-    	<div class="col-xs-12 page-header header-filter" data-parallax="true" style="background-image: url('/resources/images/bg/re.jpg'); height : 400px;transform: translate3d(0px, 0px, 0px);">
+    	<div class="col-xs-12 page-header header-filter reservation-top" data-parallax="true" style="background-image: url('/resources/images/bg/re.jpg'); height : 400px;transform: translate3d(0px, 0px, 0px);">
 	    	<div class="floating_text pt-5 pb-5  mt-5 text-center heading-section m-auto">
-	             <h1 class=" color_white" style="font-family:GmarketSansBold; font-size:2.5rem !important">예약 목록</h1>
-	             <span  class = "pl-2 d-inline-block  color_white "style="font-size:18px;">어쩌구 저쩌구 문구 바꾸셔~~~~~</span>
+	             <h1 class="color_white white-title">예약 목록</h1>
 	        </div>
     	</div>
         
@@ -280,13 +299,15 @@
 									</div>
 								</nav>
 								<c:set var="currentDate" value='#{date }' />
-								<c:set var="currentTime" value='#{time }' />
+								<c:set var="currentTime" value='#{currentTime }' />
 								<!-- 탭 내용 -->
 								
 <!-- ----------------------------------시터 전용 돌봄 목록------------------------------------ -->
 								<div class="list-container-sitter">
 									<div class="list-div">
 										<c:forEach var="custlist" items="${myCustList }">
+			                                <input type="hidden" value="${custlist.start_Time2 }">
+										
 											<div class="reservation-list">
 			                            		
 				                                <div class="card-body">
@@ -309,19 +330,19 @@
 				                                    
 				                                </div>
 				                                <div class="cancel-btn">
-				                                	<c:if test="${custlist.start_Date2 <= currentDate <= custlist.end_Date2 }">
+				                                	<c:if test="${custlist.start_Time2 <= currentTime && currentTime <= custlist.end_Time2 }">
 														<form class="btnform" action="/petsitting/p003/logregister" method="post">
 															<input type="hidden" name="reservation_ID" value="${custlist.order_ID }">
 						                                    <button class="btn-log btn-log--register">일지<br>등록</button>
 					                               		</form>
 					                               	</c:if>
-				                                	<c:if test="${currentDate >= custlist.start_Date2 }">
+				                                	<c:if test="${currentTime >= custlist.start_Time2 }">
 					                               		<form class="btnform" action="/petsitting/p003/loglookup" method="post">
 															<input type="hidden" name="reservation_ID" value="${custlist.order_ID }">
 						                                    <button class="btn-log btn-log--lookup ">일지<br>조회</button>
 					                               		</form>
 					                               	</c:if>
-				                                	<c:if test="${currentDate < custlist.start_Date2}">
+				                                	<c:if test="${currentTime < custlist.start_Time2}">
 						                                <form class="btnform" action="kakaoPayCancel" method="post" onsubmit="return check()">
 						                                    <input type="hidden" class="order_ID" name="order_ID" value="${custlist.order_ID }">
 															<button class="btn-log btn-reserved--cancel">예약<br>취소</button>
@@ -361,19 +382,19 @@
 				                                    
 				                                </div>
 				                                <div class="cancel-btn">
-				                                	<c:if test="${currentDate > sitterlist.end_Date2}">
+				                                	<c:if test="${currentTime > sitterlist.end_Time2}">
 					                                	<form class="btnform" action="/petsitting/p004/reviewregister" method="get">
 															<input type="hidden" name="reservation_ID" value="${sitterlist.order_ID }">
 						                                    <button class="btn-log btn-log--review">리뷰<br>등록</button>
 					                               		</form>
 					                               	</c:if>
-				                                	<c:if test="${currentDate >= sitterlist.start_Date2 }">
+				                                	<c:if test="${currentTime >= sitterlist.start_Time2 }">
 					                               		<form class="btnform" action="/petsitting/p003/loglookup" method="post">
 															<input type="hidden" name="reservation_ID" value="${sitterlist.order_ID }">
 						                                    <button class="btn-log btn-log--lookup">일지<br>조회</button>
 					                               		</form>
 					                               	</c:if>
-				                                	<c:if test="${currentDate < sitterlist.start_Date2}">
+				                                	<c:if test="${currentTime < sitterlist.start_Time2}">
 						                                <form class="btnform" action="kakaoPayCancel" method="post" onsubmit="return check()">
 						                                  
 						                                    <input type="hidden" class="order_ID" name="order_ID" value="${sitterlist.order_ID }">
@@ -413,6 +434,8 @@
 			var year = current.getFullYear();
 			var month = current.getMonth()+1;
 			var day = current.getDate();
+			var time = curent.getTime();
+			console.log(time);
 			
 			if(month.length < 2)
 				month = "0"+month;
