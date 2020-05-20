@@ -82,7 +82,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select r.order_id, m.member_nickname, m.member_photo, r.review_content, r.review_date, r.review_Star
 		from member m, reservation r
 		where m.member_id = r.member_id and sitter_id = #{member_ID} and r.review_id is not null
-		order by r.review_date
+		order by r.review_date desc
 	</select>
 	
 	<insert id="setMultiPhoto">
