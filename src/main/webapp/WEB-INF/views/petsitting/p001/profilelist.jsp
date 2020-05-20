@@ -156,6 +156,7 @@
 		                                </div>
 		                                <form action="profilelookup" method='post'>
 		                                    <input type="hidden" name="member_ID" value='${sitter.member_ID }'>
+		                                    <input type="hidden" name="profile_ID" value="${sitter.profile_ID }">
 		                                    <input type="submit" class="card-btn" value="프로필 보기">
 	                               		</form>
 		                            </div>

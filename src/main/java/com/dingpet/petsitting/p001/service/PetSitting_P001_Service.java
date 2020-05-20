@@ -36,6 +36,9 @@ public interface PetSitting_P001_Service {
 		
 	// 활동 사진 INSERT
 	public void setMultiPhoto(MultiPhotoVO mpvo);
+	
+	// 갤러리 사진 가져오기
+	public List<MultiPhotoVO> getMultiPhoto(PetSitting_P001_VO profile);
 
 	// 리뷰 가져오기 SELECT
 	public List<PetSitting_P004_VO> getReview(PetSitting_P001_VO profile);

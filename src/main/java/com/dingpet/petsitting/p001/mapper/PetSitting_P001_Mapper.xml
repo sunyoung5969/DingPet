@@ -9,14 +9,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="profileGetList" resultType="com.dingpet.petsitting.p001.vo.PetSitting_P001_VO">
-		select s.member_id, m.member_nickname, s.profile_picpath, 
+		select s.profile_id, s.member_id, m.member_nickname, s.profile_picpath, 
 		        s.profile_title, s.list_address, s.profile_picpath, 
 		        s.profile_picname, nvl(avg(r.review_star), 0) as profile_star
 		from sitter_profile s, member m, reservation r
 		where s.member_id = m.member_id and s.member_id= r.sitter_id(+) 
-		group by s.member_id, m.member_nickname, s.profile_picpath, 
+		group by s.profile_id, s.member_id, m.member_nickname, s.profile_picpath, 
 		        s.profile_title, s.list_address, s.profile_picpath, 
 		        s.profile_picname
+		order by s.profile_id desc
 	</select>
 	
 	<select id="profileLookup" resultType="com.dingpet.petsitting.p001.vo.PetSitting_P001_VO">
@@ -46,14 +47,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="profileInsert">
-		insert into 	sitter_profile (profile_id, member_id, profile_picpath, profile_picname, progile_title, profile_content, 
+		insert into 	sitter_profile (profile_id, member_id, profile_picpath, profile_picname, profile_title, profile_content, 
 						price_small, price_medium, price_large, profile_roadaddress, 
 						profile_jibunaddress, profile_detailaddress, list_address, 
 						service_00, service_01, service_02, service_03, 
 						service_04, service_05, service_06, service_07) 
-		values			(#{profile_ID}, #{member_ID}, #{profile_PicPath}, #{profile_PicName}, #{profile_Title},
-						#{profile_Content}, #{price_Small}, #{price_Medium}, #{price_Large}, 
-						#{profile_RoadAddress}, #{profile_JibunAddress}, #{profile_DetailAddress}, #{list_Address}, 
+		values			(#{profile_ID}, #{member_ID}, #{profile_PicPath, jdbcType=VARCHAR}, #{profile_PicName, jdbcType=VARCHAR}, #{profile_Title, jdbcType=VARCHAR},
+						#{profile_Content, jdbcType=VARCHAR}, #{price_Small, jdbcType=VARCHAR}, #{price_Medium, jdbcType=VARCHAR}, #{price_Large, jdbcType=VARCHAR}, 
+						#{profile_RoadAddress, jdbcType=VARCHAR}, #{profile_JibunAddress, jdbcType=VARCHAR}, #{profile_DetailAddress, jdbcType=VARCHAR}, #{list_Address, jdbcType=VARCHAR}, 
 						#{service_00}, #{service_01}, #{service_02}, #{service_03}, 
 						#{service_04}, #{service_05}, #{service_06}, #{service_07})
 	</insert>
@@ -61,7 +62,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="licenseInsert">
 		insert into license (member_id, license_id, license_picpath, 
 		license_name, license_agency, license_date) 
-		values(#{member_ID}, seq_license.nextval, #{license_PicPath}, 
+		values(#{member_ID}, seq_license.nextval, #{license_PicPath, jdbcType=VARCHAR}, 
 		#{license_Name}, #{license_Agency}, #{license_Date})
 	</insert>
 	
@@ -77,11 +78,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values(#{member_ID}, seq_schedule.nextval, #{schedule_Closed})
 	</insert>
 	
-	<insert id="albumInsert">
-		insert into photo () 
-		values()
-	</insert>
-	
 	<select id="getReview" resultType="com.dingpet.petsitting.p004.vo.PetSitting_P004_VO">
 		select r.order_id, m.member_nickname, m.member_photo, r.review_content, r.review_date, r.review_Star
 		from member m, reservation r
@@ -92,7 +88,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="setMultiPhoto">
 		insert into photo (profile_id, photo_id, act_photo)
 		values(#{profile_ID}, #{photo_ID}, #{act_Photo})
-	
 	</insert>
+	
+	<select id="getMultiPhoto" resultType="com.dingpet.petsitting.p001.vo.MultiPhotoVO">
+		select act_photo from photo where profile_id = #{profile_ID}
+	</select>
 	
 </mapper>
