@@ -91,13 +91,13 @@ width:100%;
 		<div class = "content_area pt-3">
 		</div>
 		
-		<form action="../../chat/createRoom" method="post" >
-            <input type='hidden' name='room_owner' id='room_owner' value='${customers.member_id }' />    
-            <input type="hidden" name="roomName" id="roomName" value="확인 요청합니다"/>
-            <input type="hidden" name="roomMember" id="roomMember" value='${board.member_id}'/>
+		<form id = "toChat" action="../../chat/createRoom" method="post" >
+            <input type='hidden' name='room_owner'  value='${customers.member_id }' />    
+            <input type="hidden" name="roomName"  value="확인 요청합니다"/>
+            <input type="hidden" name="roomMember"  value='${board.member_id}'/>
 
 			<div class="py-5 flex_row">
-				<button type = 'submit'  id="send" class="btn-sm btn btn-primary mr-3">요청 전송</button>
+				<button type = 'submit'  id="sendRequest" class="btn-sm btn btn-primary mr-3">요청 전송</button>
 				<button type = "button"id = "closeBtn" class="btn-sm btn btn-primary">닫기</button> 
 			</div>
 		 </form>
@@ -196,9 +196,12 @@ width:100%;
 			console.log("receiver info " + receiver_id + ", " + receiver_b_id);
 			
 			//요청 전송 버튼 클릭시
-			$("#send").on("click", function(){
+			$("#sendRequest").on("click", function(){
 				//중복 실행 방지
+			//$("#toChat").submit(function(){
+				
 				event.stopPropagation();
+		
 				
 				if(!sender_id || !sender_b_id){
 					alert("게시글을 선택해주세요.");
@@ -233,7 +236,7 @@ width:100%;
 				
 				}
 				
-			})// 요청 버튼 클릭 이벤트 끝
+			});// 요청 버튼 클릭 이벤트 끝
 		});
 		
 		
