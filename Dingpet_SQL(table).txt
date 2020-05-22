@@ -1,0 +1,970 @@
+--------------------------------------------------------
+--  파일이 생성됨 - 토요일-5월-23-2020   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table CHATMEMBER
+--------------------------------------------------------
+
+  CREATE TABLE "CHATMEMBER" 
+   (	"CHATROOMID" VARCHAR2(20 BYTE), 
+	"MEMNUM" VARCHAR2(20 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table CHATROOM
+--------------------------------------------------------
+
+  CREATE TABLE "CHATROOM" 
+   (	"ROOMNO" NUMBER(38,0), 
+	"ROOMNAME" VARCHAR2(50 BYTE), 
+	"ROOM_OWNER" VARCHAR2(20 BYTE), 
+	"DEL_FLAG" VARCHAR2(2 BYTE) DEFAULT 'n', 
+	"ROOMMEMBER" VARCHAR2(250 BYTE), 
+	"ROOMTYPE" VARCHAR2(20 BYTE), 
+	"REG_DATE" DATE DEFAULT sysdate, 
+	"ROOMPW" VARCHAR2(20 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table DOG
+--------------------------------------------------------
+
+  CREATE TABLE "DOG" 
+   (	"DOG_ID" VARCHAR2(20 BYTE), 
+	"DOG_TYPE" VARCHAR2(10 BYTE), 
+	"MEMBER_ID" VARCHAR2(20 BYTE), 
+	"DOG_NAME" VARCHAR2(20 BYTE), 
+	"DOG_BREED" VARCHAR2(50 BYTE), 
+	"ACTIVITY_LEVEL" VARCHAR2(10 BYTE), 
+	"DOG_NOTE" VARCHAR2(1000 BYTE), 
+	"FOUND_DATE" VARCHAR2(20 BYTE), 
+	"FOUND_LOCATION" VARCHAR2(100 BYTE), 
+	"DOG_PHOTO" VARCHAR2(1000 BYTE), 
+	"DOG_SIZE" VARCHAR2(20 BYTE), 
+	"DOG_SEX" VARCHAR2(20 BYTE)
+   ) ;
+
+   COMMENT ON COLUMN "DOG"."DOG_ID" IS '개 ID';
+   COMMENT ON COLUMN "DOG"."DOG_TYPE" IS '분류';
+   COMMENT ON COLUMN "DOG"."MEMBER_ID" IS '회원 ID';
+   COMMENT ON COLUMN "DOG"."DOG_NAME" IS '이름';
+   COMMENT ON COLUMN "DOG"."DOG_BREED" IS '견종';
+   COMMENT ON COLUMN "DOG"."ACTIVITY_LEVEL" IS '활동성';
+   COMMENT ON COLUMN "DOG"."DOG_NOTE" IS '특이사항';
+   COMMENT ON COLUMN "DOG"."FOUND_DATE" IS '발견 일자';
+   COMMENT ON COLUMN "DOG"."FOUND_LOCATION" IS '발견 장소';
+   COMMENT ON COLUMN "DOG"."DOG_SIZE" IS '크기';
+   COMMENT ON COLUMN "DOG"."DOG_SEX" IS '성별';
+   COMMENT ON TABLE "DOG"  IS 'DOG';
+--------------------------------------------------------
+--  DDL for Table LICENSE
+--------------------------------------------------------
+
+  CREATE TABLE "LICENSE" 
+   (	"MEMBER_ID" VARCHAR2(20 BYTE), 
+	"LICENSE_ID" VARCHAR2(10 BYTE), 
+	"LICENSE_NAME" VARCHAR2(50 BYTE), 
+	"LICENSE_AGENCY" VARCHAR2(50 BYTE), 
+	"LICENSE_DATE" VARCHAR2(20 BYTE), 
+	"LICENSE_PICPATH" VARCHAR2(200 BYTE)
+   ) ;
+
+   COMMENT ON COLUMN "LICENSE"."MEMBER_ID" IS '회원 ID';
+   COMMENT ON COLUMN "LICENSE"."LICENSE_ID" IS '자격증 번호';
+   COMMENT ON COLUMN "LICENSE"."LICENSE_NAME" IS '자격증 명';
+   COMMENT ON COLUMN "LICENSE"."LICENSE_AGENCY" IS '기관 명';
+   COMMENT ON COLUMN "LICENSE"."LICENSE_DATE" IS '취득날짜';
+   COMMENT ON COLUMN "LICENSE"."LICENSE_PICPATH" IS '자격증 사진';
+   COMMENT ON TABLE "LICENSE"  IS 'LICENSE';
+--------------------------------------------------------
+--  DDL for Table LOCATION_DATA
+--------------------------------------------------------
+
+  CREATE TABLE "LOCATION_DATA" 
+   (	"LOG_ID" VARCHAR2(20 BYTE), 
+	"LAT" VARCHAR2(30 BYTE), 
+	"LIT" VARCHAR2(30 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table LOG
+--------------------------------------------------------
+
+  CREATE TABLE "LOG" 
+   (	"RESERVATION_ID" VARCHAR2(20 BYTE), 
+	"LOG_ID" VARCHAR2(20 BYTE), 
+	"LOG_DATE" VARCHAR2(20 BYTE), 
+	"LOG_TYPE" VARCHAR2(10 BYTE), 
+	"LOG_CONTENT" VARCHAR2(4000 BYTE), 
+	"START_TIME" VARCHAR2(20 BYTE), 
+	"END_TIME" VARCHAR2(20 BYTE), 
+	"PATH_PHOTO" VARCHAR2(300 BYTE), 
+	"DISTANCE" VARCHAR2(10 BYTE), 
+	"LOG_TITLE" VARCHAR2(100 BYTE), 
+	"LOG_PHOTO" VARCHAR2(200 BYTE), 
+	"LOCATIONJSON" VARCHAR2(4000 BYTE)
+   ) ;
+
+   COMMENT ON COLUMN "LOG"."RESERVATION_ID" IS '예약번호';
+   COMMENT ON COLUMN "LOG"."LOG_ID" IS '일과 번호';
+   COMMENT ON COLUMN "LOG"."LOG_DATE" IS '등록 일시';
+   COMMENT ON COLUMN "LOG"."LOG_TYPE" IS '유형';
+   COMMENT ON COLUMN "LOG"."LOG_CONTENT" IS '내용';
+   COMMENT ON COLUMN "LOG"."START_TIME" IS '시작시간';
+   COMMENT ON COLUMN "LOG"."END_TIME" IS '종료시간';
+   COMMENT ON COLUMN "LOG"."PATH_PHOTO" IS '경로 이미지';
+   COMMENT ON COLUMN "LOG"."DISTANCE" IS '총 이동거리';
+   COMMENT ON COLUMN "LOG"."LOG_TITLE" IS '일지타이틀';
+   COMMENT ON COLUMN "LOG"."LOG_PHOTO" IS '일지사진';
+   COMMENT ON COLUMN "LOG"."LOCATIONJSON" IS 'json문자열';
+   COMMENT ON TABLE "LOG"  IS 'LOG';
+--------------------------------------------------------
+--  DDL for Table LOST_FOUND
+--------------------------------------------------------
+
+  CREATE TABLE "LOST_FOUND" 
+   (	"CATEGORY" VARCHAR2(10 BYTE), 
+	"BOARD_ID" VARCHAR2(20 BYTE), 
+	"MEMBER_ID" VARCHAR2(20 BYTE), 
+	"DOG_ID" VARCHAR2(20 BYTE), 
+	"TITLE" VARCHAR2(500 BYTE), 
+	"CONTENT" CLOB, 
+	"BOARD_DATE" VARCHAR2(20 BYTE), 
+	"STATUS" CHAR(1 BYTE), 
+	"STATUS_REASON" VARCHAR2(500 BYTE), 
+	"Y" VARCHAR2(50 BYTE), 
+	"X" VARCHAR2(50 BYTE)
+   ) ;
+
+   COMMENT ON COLUMN "LOST_FOUND"."CATEGORY" IS '게시판 분류';
+   COMMENT ON COLUMN "LOST_FOUND"."BOARD_ID" IS '글 번호';
+   COMMENT ON COLUMN "LOST_FOUND"."MEMBER_ID" IS '작성자 ID';
+   COMMENT ON COLUMN "LOST_FOUND"."DOG_ID" IS '개 ID';
+   COMMENT ON COLUMN "LOST_FOUND"."TITLE" IS '제목';
+   COMMENT ON COLUMN "LOST_FOUND"."CONTENT" IS '글 내용';
+   COMMENT ON COLUMN "LOST_FOUND"."BOARD_DATE" IS '작성 일자';
+   COMMENT ON COLUMN "LOST_FOUND"."STATUS" IS '완료 여부';
+   COMMENT ON COLUMN "LOST_FOUND"."STATUS_REASON" IS '완료 사유';
+   COMMENT ON COLUMN "LOST_FOUND"."Y" IS '위도';
+   COMMENT ON COLUMN "LOST_FOUND"."X" IS '경도';
+   COMMENT ON TABLE "LOST_FOUND"  IS 'lost_found';
+--------------------------------------------------------
+--  DDL for Table LOST_FOUND_MATCHED
+--------------------------------------------------------
+
+  CREATE TABLE "LOST_FOUND_MATCHED" 
+   (	"MATCH_ID" VARCHAR2(20 BYTE), 
+	"MATCH_TITLE" VARCHAR2(500 BYTE), 
+	"MATCH_CONTENT" CLOB, 
+	"PHOTO_NAME" VARCHAR2(100 BYTE), 
+	"PHOTO_PATH" VARCHAR2(200 BYTE), 
+	"REQUEST_ID" VARCHAR2(20 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table LOST_FOUND_PHOTO
+--------------------------------------------------------
+
+  CREATE TABLE "LOST_FOUND_PHOTO" 
+   (	"BOARD_ID" VARCHAR2(20 BYTE), 
+	"CATEGORY" VARCHAR2(10 BYTE), 
+	"FRONT_NAME" VARCHAR2(100 BYTE), 
+	"FRONT_PATH" VARCHAR2(200 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table LOST_FOUND_REPLY
+--------------------------------------------------------
+
+  CREATE TABLE "LOST_FOUND_REPLY" 
+   (	"REPLY_ID" VARCHAR2(20 BYTE), 
+	"BOARD_ID" VARCHAR2(20 BYTE), 
+	"REPLY" VARCHAR2(2000 BYTE), 
+	"REPLYER" VARCHAR2(20 BYTE), 
+	"REPLY_DATE" VARCHAR2(20 BYTE) DEFAULT to_char(sysdate, 'yyyymmddhh24mi')
+   ) ;
+--------------------------------------------------------
+--  DDL for Table LOST_FOUND_REQUEST
+--------------------------------------------------------
+
+  CREATE TABLE "LOST_FOUND_REQUEST" 
+   (	"REQUEST_ID" VARCHAR2(20 BYTE), 
+	"RECEIVER_B_ID" VARCHAR2(20 BYTE), 
+	"SENDER_B_ID" VARCHAR2(20 BYTE), 
+	"RECEIVER_ID" VARCHAR2(20 BYTE), 
+	"SENDER_ID" VARCHAR2(20 BYTE), 
+	"REQUEST_DATE" VARCHAR2(20 BYTE) DEFAULT to_char(sysdate, 'yyyymmddhh24mi'), 
+	"REQUEST_STATUS" CHAR(1 BYTE) DEFAULT 'n', 
+	"COMPLETED_DATE" VARCHAR2(20 BYTE), 
+	"REQUEST_CATEGORY" VARCHAR2(10 BYTE)
+   ) ;
+
+   COMMENT ON COLUMN "LOST_FOUND_REQUEST"."REQUEST_ID" IS '요청 번호';
+   COMMENT ON COLUMN "LOST_FOUND_REQUEST"."RECEIVER_B_ID" IS '수신자 board_id';
+   COMMENT ON COLUMN "LOST_FOUND_REQUEST"."SENDER_B_ID" IS '발신자 board_id';
+   COMMENT ON COLUMN "LOST_FOUND_REQUEST"."RECEIVER_ID" IS '수신자 member_id';
+   COMMENT ON COLUMN "LOST_FOUND_REQUEST"."SENDER_ID" IS '발신자 member_id';
+   COMMENT ON COLUMN "LOST_FOUND_REQUEST"."REQUEST_DATE" IS '발신 날짜';
+   COMMENT ON COLUMN "LOST_FOUND_REQUEST"."REQUEST_STATUS" IS '완료 여부';
+   COMMENT ON COLUMN "LOST_FOUND_REQUEST"."COMPLETED_DATE" IS '완료 날짜';
+   COMMENT ON TABLE "LOST_FOUND_REQUEST"  IS '확인 요청';
+--------------------------------------------------------
+--  DDL for Table MEMBER
+--------------------------------------------------------
+
+  CREATE TABLE "MEMBER" 
+   (	"MEMBER_ID" VARCHAR2(20 BYTE), 
+	"MEMBER_TYPE" VARCHAR2(10 BYTE), 
+	"MEMBER_PWD" VARCHAR2(20 BYTE), 
+	"MEMBER_NAME" VARCHAR2(10 BYTE), 
+	"MEMBER_NICKNAME" VARCHAR2(20 BYTE), 
+	"MEMBER_EMAIL" VARCHAR2(50 BYTE), 
+	"MEMBER_CONTACT" VARCHAR2(20 BYTE), 
+	"SEX" CHAR(1 BYTE), 
+	"DATE_OF_BIRTH" VARCHAR2(20 BYTE), 
+	"PROFESSION" VARCHAR2(20 BYTE), 
+	"ACTIVE_HOURS" VARCHAR2(20 BYTE), 
+	"QUESTION1" VARCHAR2(4000 BYTE), 
+	"ANSWER1" VARCHAR2(4000 BYTE), 
+	"QUESTION2" VARCHAR2(4000 BYTE), 
+	"ANSWER2" VARCHAR2(4000 BYTE), 
+	"QUESTION3" VARCHAR2(4000 BYTE), 
+	"ANSWER3" VARCHAR2(4000 BYTE), 
+	"ZIPCODE" VARCHAR2(10 BYTE), 
+	"ADDRESS1" VARCHAR2(500 BYTE), 
+	"ADDRESS2" VARCHAR2(500 BYTE), 
+	"ADDRESS3" VARCHAR2(500 BYTE), 
+	"ADDRESS4" VARCHAR2(500 BYTE), 
+	"MEMBER_PHOTO" VARCHAR2(300 BYTE) DEFAULT 'default-picture.png'
+   ) ;
+
+   COMMENT ON COLUMN "MEMBER"."MEMBER_ID" IS '회원 ID';
+   COMMENT ON COLUMN "MEMBER"."MEMBER_TYPE" IS '회원유형';
+   COMMENT ON COLUMN "MEMBER"."MEMBER_PWD" IS '비밀번호';
+   COMMENT ON COLUMN "MEMBER"."MEMBER_NAME" IS '이름';
+   COMMENT ON COLUMN "MEMBER"."MEMBER_NICKNAME" IS '닉네임';
+   COMMENT ON COLUMN "MEMBER"."MEMBER_EMAIL" IS '이메일';
+   COMMENT ON COLUMN "MEMBER"."MEMBER_CONTACT" IS '연락처';
+   COMMENT ON COLUMN "MEMBER"."SEX" IS '성별';
+   COMMENT ON COLUMN "MEMBER"."DATE_OF_BIRTH" IS '생년월일';
+   COMMENT ON COLUMN "MEMBER"."PROFESSION" IS '직업';
+   COMMENT ON COLUMN "MEMBER"."ACTIVE_HOURS" IS '활동 가능 시간대';
+   COMMENT ON COLUMN "MEMBER"."QUESTION1" IS '질문1';
+   COMMENT ON COLUMN "MEMBER"."ANSWER1" IS '답변1';
+   COMMENT ON COLUMN "MEMBER"."QUESTION2" IS '질문2';
+   COMMENT ON COLUMN "MEMBER"."ANSWER2" IS '답변2';
+   COMMENT ON COLUMN "MEMBER"."QUESTION3" IS '질문3';
+   COMMENT ON COLUMN "MEMBER"."ANSWER3" IS '답변3';
+   COMMENT ON COLUMN "MEMBER"."ZIPCODE" IS '우편번호';
+   COMMENT ON COLUMN "MEMBER"."ADDRESS1" IS '도로명주소';
+   COMMENT ON COLUMN "MEMBER"."ADDRESS2" IS '지번주소';
+   COMMENT ON COLUMN "MEMBER"."ADDRESS3" IS '상세주소';
+   COMMENT ON COLUMN "MEMBER"."ADDRESS4" IS '참고항목';
+   COMMENT ON COLUMN "MEMBER"."MEMBER_PHOTO" IS '사진';
+   COMMENT ON TABLE "MEMBER"  IS 'MEMBER';
+--------------------------------------------------------
+--  DDL for Table MENU
+--------------------------------------------------------
+
+  CREATE TABLE "MENU" 
+   (	"MENU_ID" VARCHAR2(10 BYTE), 
+	"MENU_NAME" VARCHAR2(20 BYTE), 
+	"MENU_ORDER" VARCHAR2(10 BYTE), 
+	"UPPER_MENU" VARCHAR2(20 BYTE), 
+	"MENU_URL" VARCHAR2(20 BYTE)
+   ) ;
+
+   COMMENT ON COLUMN "MENU"."MENU_ID" IS '메뉴ID';
+   COMMENT ON COLUMN "MENU"."MENU_NAME" IS '메뉴명';
+   COMMENT ON COLUMN "MENU"."MENU_ORDER" IS '순서';
+   COMMENT ON COLUMN "MENU"."UPPER_MENU" IS '상위메뉴ID';
+   COMMENT ON COLUMN "MENU"."MENU_URL" IS 'URL';
+   COMMENT ON TABLE "MENU"  IS 'MENU';
+--------------------------------------------------------
+--  DDL for Table MESSAGE
+--------------------------------------------------------
+
+  CREATE TABLE "MESSAGE" 
+   (	"MESSAGE_ID" VARCHAR2(20 BYTE), 
+	"SENDER" VARCHAR2(20 BYTE), 
+	"TARGET" VARCHAR2(20 BYTE), 
+	"SEND_DATE" VARCHAR2(50 BYTE), 
+	"ROOMNO" VARCHAR2(20 BYTE), 
+	"MEMBER" VARCHAR2(20 BYTE), 
+	"MESSAGE" VARCHAR2(500 BYTE)
+   ) ;
+
+   COMMENT ON COLUMN "MESSAGE"."MESSAGE_ID" IS '메세지 번호';
+   COMMENT ON COLUMN "MESSAGE"."SENDER" IS '발신자';
+   COMMENT ON COLUMN "MESSAGE"."TARGET" IS '수신자';
+   COMMENT ON COLUMN "MESSAGE"."SEND_DATE" IS '발송일자';
+   COMMENT ON COLUMN "MESSAGE"."ROOMNO" IS '방번호';
+   COMMENT ON COLUMN "MESSAGE"."MEMBER" IS '멤버 ID';
+   COMMENT ON COLUMN "MESSAGE"."MESSAGE" IS '메세지 내용
+';
+   COMMENT ON TABLE "MESSAGE"  IS 'MESSAGE';
+--------------------------------------------------------
+--  DDL for Table NOTICE
+--------------------------------------------------------
+
+  CREATE TABLE "NOTICE" 
+   (	"NOTICE_ID" VARCHAR2(20 BYTE), 
+	"MEMBER_ID" VARCHAR2(20 BYTE), 
+	"SENDER_ID" VARCHAR2(20 BYTE), 
+	"SEND_DATE" VARCHAR2(20 BYTE), 
+	"NOTICE_CONTENTS" VARCHAR2(500 BYTE), 
+	"CONFIRM_READ" CHAR(1 BYTE) DEFAULT 'N', 
+	"NOTICE_TYPE" VARCHAR2(20 BYTE), 
+	"URL" VARCHAR2(100 BYTE)
+   ) ;
+
+   COMMENT ON COLUMN "NOTICE"."NOTICE_ID" IS '알림번호';
+   COMMENT ON COLUMN "NOTICE"."MEMBER_ID" IS '수신자';
+   COMMENT ON COLUMN "NOTICE"."SENDER_ID" IS '발신자';
+   COMMENT ON COLUMN "NOTICE"."SEND_DATE" IS '발신시각';
+   COMMENT ON COLUMN "NOTICE"."NOTICE_CONTENTS" IS '알림내용';
+   COMMENT ON COLUMN "NOTICE"."CONFIRM_READ" IS '읽음확인';
+   COMMENT ON COLUMN "NOTICE"."NOTICE_TYPE" IS '유형';
+   COMMENT ON COLUMN "NOTICE"."URL" IS '글번호';
+--------------------------------------------------------
+--  DDL for Table PET_MEDICENTER
+--------------------------------------------------------
+
+  CREATE TABLE "PET_MEDICENTER" 
+   (	"PLACE_NUM" NUMBER, 
+	"PLACE_NAME" VARCHAR2(100 BYTE), 
+	"ADDRESS_NAME" VARCHAR2(120 BYTE), 
+	"ROAD_ADDRESS_NAME" VARCHAR2(120 BYTE), 
+	"PLACE_ODATE" DATE, 
+	"PLACE_ON" VARCHAR2(20 BYTE), 
+	"CATEGORY_NAME" VARCHAR2(20 BYTE), 
+	"PHONE" VARCHAR2(20 BYTE), 
+	"Y" VARCHAR2(50 BYTE), 
+	"X" VARCHAR2(50 BYTE), 
+	"PLACE_INNUM" VARCHAR2(50 BYTE), 
+	"PLACE_STATUS" VARCHAR2(20 BYTE), 
+	"PLACE_URL" VARCHAR2(100 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table PHOTO
+--------------------------------------------------------
+
+  CREATE TABLE "PHOTO" 
+   (	"PROFILE_ID" VARCHAR2(20 BYTE), 
+	"PHOTO_ID" VARCHAR2(30 BYTE), 
+	"ACT_PHOTO" VARCHAR2(100 BYTE)
+   ) ;
+
+   COMMENT ON COLUMN "PHOTO"."PROFILE_ID" IS '회원 ID';
+   COMMENT ON COLUMN "PHOTO"."PHOTO_ID" IS '사진번호';
+   COMMENT ON COLUMN "PHOTO"."ACT_PHOTO" IS '활동사진';
+   COMMENT ON TABLE "PHOTO"  IS 'PHOTO';
+--------------------------------------------------------
+--  DDL for Table PRIV_MENU
+--------------------------------------------------------
+
+  CREATE TABLE "PRIV_MENU" 
+   (	"MENU_ID" VARCHAR2(10 BYTE), 
+	"PRIVILEGE_ID" VARCHAR2(10 BYTE), 
+	"P_READ" CHAR(1 BYTE), 
+	"P_CREATE" CHAR(1 BYTE), 
+	"P_UPDATE" CHAR(1 BYTE), 
+	"P_DELETE" CHAR(1 BYTE)
+   ) ;
+
+   COMMENT ON COLUMN "PRIV_MENU"."MENU_ID" IS '메뉴ID';
+   COMMENT ON COLUMN "PRIV_MENU"."PRIVILEGE_ID" IS '권한ID';
+   COMMENT ON COLUMN "PRIV_MENU"."P_READ" IS '조회';
+   COMMENT ON COLUMN "PRIV_MENU"."P_CREATE" IS '등록';
+   COMMENT ON COLUMN "PRIV_MENU"."P_UPDATE" IS '수정';
+   COMMENT ON COLUMN "PRIV_MENU"."P_DELETE" IS '삭제';
+   COMMENT ON TABLE "PRIV_MENU"  IS '권한-메뉴';
+--------------------------------------------------------
+--  DDL for Table PRIV_USER
+--------------------------------------------------------
+
+  CREATE TABLE "PRIV_USER" 
+   (	"PRIVILEGE_ID" VARCHAR2(10 BYTE), 
+	"MEMBER_ID" VARCHAR2(20 BYTE)
+   ) ;
+
+   COMMENT ON COLUMN "PRIV_USER"."PRIVILEGE_ID" IS '권한ID';
+   COMMENT ON COLUMN "PRIV_USER"."MEMBER_ID" IS '회원 ID';
+   COMMENT ON TABLE "PRIV_USER"  IS '권한-사용자';
+--------------------------------------------------------
+--  DDL for Table PRIVILEGE
+--------------------------------------------------------
+
+  CREATE TABLE "PRIVILEGE" 
+   (	"PRIVILEGE_ID" VARCHAR2(10 BYTE), 
+	"PRIVILEGE_NAME" VARCHAR2(20 BYTE)
+   ) ;
+
+   COMMENT ON COLUMN "PRIVILEGE"."PRIVILEGE_ID" IS '권한ID';
+   COMMENT ON COLUMN "PRIVILEGE"."PRIVILEGE_NAME" IS '권한명';
+   COMMENT ON TABLE "PRIVILEGE"  IS 'PRIVILEGE';
+--------------------------------------------------------
+--  DDL for Table RESERVATION
+--------------------------------------------------------
+
+  CREATE TABLE "RESERVATION" 
+   (	"ORDER_ID" VARCHAR2(20 BYTE), 
+	"MEMBER_ID" VARCHAR2(20 BYTE), 
+	"SITTER_ID" VARCHAR2(20 BYTE), 
+	"START_DATE" VARCHAR2(20 BYTE), 
+	"START_TIME" VARCHAR2(20 BYTE), 
+	"END_DATE" VARCHAR2(20 BYTE), 
+	"END_TIME" VARCHAR2(20 BYTE), 
+	"TOTAL_AMOUNT" VARCHAR2(10 BYTE), 
+	"RESERVATION_NOTE" VARCHAR2(1000 BYTE), 
+	"REVIEW_ID" VARCHAR2(30 BYTE), 
+	"REVIEW_CONTENT" VARCHAR2(1000 BYTE), 
+	"REVIEW_STAR" NUMBER, 
+	"REVIEW_DATE" VARCHAR2(30 BYTE), 
+	"REPLY_CONTENT" VARCHAR2(1000 BYTE), 
+	"REPLY_DATE" VARCHAR2(20 BYTE), 
+	"PAYMENT_DATE" VARCHAR2(20 BYTE), 
+	"ITEM_NAME" VARCHAR2(20 BYTE), 
+	"VAT" VARCHAR2(20 BYTE), 
+	"SITTER_NICKNAME" VARCHAR2(20 BYTE), 
+	"MEMBER_NICKNAME" VARCHAR2(20 BYTE), 
+	"SITTER_PHOTO" VARCHAR2(200 BYTE), 
+	"MEMBER_PHOTO" VARCHAR2(200 BYTE), 
+	"TID" VARCHAR2(20 BYTE)
+   ) ;
+
+   COMMENT ON COLUMN "RESERVATION"."ORDER_ID" IS '예약번호';
+   COMMENT ON COLUMN "RESERVATION"."MEMBER_ID" IS '이용자 ID';
+   COMMENT ON COLUMN "RESERVATION"."SITTER_ID" IS '시터 ID';
+   COMMENT ON COLUMN "RESERVATION"."START_DATE" IS '시작 일자';
+   COMMENT ON COLUMN "RESERVATION"."START_TIME" IS '시작 시간';
+   COMMENT ON COLUMN "RESERVATION"."END_DATE" IS '종료 일자';
+   COMMENT ON COLUMN "RESERVATION"."END_TIME" IS '종료 시간';
+   COMMENT ON COLUMN "RESERVATION"."TOTAL_AMOUNT" IS '총 가격';
+   COMMENT ON COLUMN "RESERVATION"."RESERVATION_NOTE" IS '특이사항';
+   COMMENT ON COLUMN "RESERVATION"."REVIEW_ID" IS '리뷰 번호';
+   COMMENT ON COLUMN "RESERVATION"."REVIEW_CONTENT" IS '리뷰 내용';
+   COMMENT ON COLUMN "RESERVATION"."REVIEW_STAR" IS '리뷰 평점';
+   COMMENT ON COLUMN "RESERVATION"."REVIEW_DATE" IS '리뷰 등록일자';
+   COMMENT ON COLUMN "RESERVATION"."REPLY_CONTENT" IS '답글 내용';
+   COMMENT ON COLUMN "RESERVATION"."REPLY_DATE" IS '답글 등록일자';
+   COMMENT ON COLUMN "RESERVATION"."PAYMENT_DATE" IS '결제 일자';
+   COMMENT ON COLUMN "RESERVATION"."ITEM_NAME" IS '상품명';
+   COMMENT ON COLUMN "RESERVATION"."VAT" IS '부과세';
+   COMMENT ON COLUMN "RESERVATION"."SITTER_NICKNAME" IS '시터 닉네임
+';
+   COMMENT ON COLUMN "RESERVATION"."MEMBER_NICKNAME" IS '유저 닉네임';
+   COMMENT ON COLUMN "RESERVATION"."SITTER_PHOTO" IS '시터사진';
+   COMMENT ON COLUMN "RESERVATION"."MEMBER_PHOTO" IS '유저사진';
+   COMMENT ON COLUMN "RESERVATION"."TID" IS '결제번호';
+   COMMENT ON TABLE "RESERVATION"  IS 'RESERVATION';
+--------------------------------------------------------
+--  DDL for Table SCHEDULE
+--------------------------------------------------------
+
+  CREATE TABLE "SCHEDULE" 
+   (	"MEMBER_ID" VARCHAR2(20 BYTE), 
+	"SCHEDULE_ID" VARCHAR2(10 BYTE), 
+	"SCHEDULE_CLOSED" VARCHAR2(20 BYTE)
+   ) ;
+
+   COMMENT ON COLUMN "SCHEDULE"."MEMBER_ID" IS '회원 ID';
+   COMMENT ON COLUMN "SCHEDULE"."SCHEDULE_ID" IS '휴무 번호';
+   COMMENT ON COLUMN "SCHEDULE"."SCHEDULE_CLOSED" IS '휴무일';
+   COMMENT ON TABLE "SCHEDULE"  IS 'SCHEDULE';
+--------------------------------------------------------
+--  DDL for Table SITE
+--------------------------------------------------------
+
+  CREATE TABLE "SITE" 
+   (	"SITE_ID" VARCHAR2(100 BYTE), 
+	"API_KEY" VARCHAR2(10 BYTE), 
+	"SITE_TYPE" VARCHAR2(10 BYTE), 
+	"CATEGORY_NAME" VARCHAR2(10 BYTE), 
+	"Y" VARCHAR2(50 BYTE), 
+	"X" VARCHAR2(50 BYTE), 
+	"PLACE_NAME" VARCHAR2(50 BYTE), 
+	"ADDRESS_NAME" VARCHAR2(500 BYTE), 
+	"PHONE" VARCHAR2(20 BYTE), 
+	"PLACE_PIC" VARCHAR2(200 BYTE), 
+	"PLACE_URL" VARCHAR2(100 BYTE), 
+	"PLACE_TEXT" VARCHAR2(1000 BYTE), 
+	"PLACE_PICNAME" VARCHAR2(300 BYTE), 
+	"SITE_DATE" VARCHAR2(20 BYTE) DEFAULT to_char(sysdate, 'yyyymmddhh24mi')
+   ) ;
+
+   COMMENT ON COLUMN "SITE"."SITE_ID" IS '시설 ID';
+   COMMENT ON COLUMN "SITE"."API_KEY" IS 'KEY';
+   COMMENT ON COLUMN "SITE"."SITE_TYPE" IS '유형';
+   COMMENT ON COLUMN "SITE"."CATEGORY_NAME" IS '카테고리';
+   COMMENT ON COLUMN "SITE"."Y" IS '경도';
+   COMMENT ON COLUMN "SITE"."X" IS '위도';
+   COMMENT ON COLUMN "SITE"."PLACE_NAME" IS '시설명';
+   COMMENT ON COLUMN "SITE"."ADDRESS_NAME" IS '주소';
+   COMMENT ON COLUMN "SITE"."PHONE" IS '연락처';
+   COMMENT ON COLUMN "SITE"."PLACE_PIC" IS '시설사진';
+   COMMENT ON COLUMN "SITE"."PLACE_URL" IS '상세주소URL';
+   COMMENT ON COLUMN "SITE"."PLACE_TEXT" IS '시설상세';
+   COMMENT ON COLUMN "SITE"."PLACE_PICNAME" IS '시설사진이름';
+   COMMENT ON TABLE "SITE"  IS 'SITE';
+--------------------------------------------------------
+--  DDL for Table SITE_ANSWER
+--------------------------------------------------------
+
+  CREATE TABLE "SITE_ANSWER" 
+   (	"SITE_ID" VARCHAR2(10 BYTE), 
+	"QUESTION_ID" VARCHAR2(10 BYTE), 
+	"ANSWER_ID" VARCHAR2(10 BYTE), 
+	"ANSWER_CONTENT" VARCHAR2(1000 BYTE), 
+	"ANSWER_DATE" VARCHAR2(20 BYTE), 
+	"MEMBER_ID" VARCHAR2(20 BYTE), 
+	"ANSWER_REPORT" VARCHAR2(10 BYTE)
+   ) ;
+
+   COMMENT ON COLUMN "SITE_ANSWER"."SITE_ID" IS '시설 ID';
+   COMMENT ON COLUMN "SITE_ANSWER"."QUESTION_ID" IS '문의 번호';
+   COMMENT ON COLUMN "SITE_ANSWER"."ANSWER_ID" IS '답변 번호';
+   COMMENT ON COLUMN "SITE_ANSWER"."ANSWER_CONTENT" IS '내용';
+   COMMENT ON COLUMN "SITE_ANSWER"."ANSWER_DATE" IS '등록 일자';
+   COMMENT ON COLUMN "SITE_ANSWER"."MEMBER_ID" IS '회원 ID';
+   COMMENT ON COLUMN "SITE_ANSWER"."ANSWER_REPORT" IS '신고 수';
+   COMMENT ON TABLE "SITE_ANSWER"  IS 'SITE_ANSWER';
+--------------------------------------------------------
+--  DDL for Table SITE_ATTACH
+--------------------------------------------------------
+
+  CREATE TABLE "SITE_ATTACH" 
+   (	"SITE_ID" VARCHAR2(200 BYTE), 
+	"UUID" VARCHAR2(200 BYTE), 
+	"FILENAME" VARCHAR2(500 BYTE), 
+	"FILETYPE" VARCHAR2(300 BYTE), 
+	"UPLOADPATH" VARCHAR2(300 BYTE), 
+	"NUM" NUMBER
+   ) ;
+--------------------------------------------------------
+--  DDL for Table SITE_QUESTION
+--------------------------------------------------------
+
+  CREATE TABLE "SITE_QUESTION" 
+   (	"SITE_ID" VARCHAR2(20 BYTE), 
+	"QUESTION_ID" VARCHAR2(20 BYTE), 
+	"MEMBER_ID" VARCHAR2(20 BYTE), 
+	"QUESTION_CONTENT" VARCHAR2(1000 BYTE), 
+	"QUESTION_DATE" DATE, 
+	"QUESTION_REPORT" NUMBER
+   ) ;
+
+   COMMENT ON COLUMN "SITE_QUESTION"."SITE_ID" IS '시설 ID';
+   COMMENT ON COLUMN "SITE_QUESTION"."QUESTION_ID" IS '문의 번호';
+   COMMENT ON COLUMN "SITE_QUESTION"."MEMBER_ID" IS '회원 ID';
+   COMMENT ON COLUMN "SITE_QUESTION"."QUESTION_CONTENT" IS '내용';
+   COMMENT ON COLUMN "SITE_QUESTION"."QUESTION_DATE" IS '등록 일자';
+   COMMENT ON COLUMN "SITE_QUESTION"."QUESTION_REPORT" IS '신고 수';
+   COMMENT ON TABLE "SITE_QUESTION"  IS 'SITE_QUESTION';
+--------------------------------------------------------
+--  DDL for Table SITE_REVIEW
+--------------------------------------------------------
+
+  CREATE TABLE "SITE_REVIEW" 
+   (	"SITE_ID" VARCHAR2(20 BYTE), 
+	"REVIEW_ID" VARCHAR2(20 BYTE), 
+	"MEMBER_ID" VARCHAR2(20 BYTE), 
+	"REVIEW_CONTENT" VARCHAR2(250 BYTE), 
+	"REVIEW_STAR" NUMBER, 
+	"REVIEW_PRICE" VARCHAR2(10 BYTE), 
+	"REVIEW_REPORT" NUMBER, 
+	"REVIEW_NAME" VARCHAR2(20 BYTE), 
+	"REVIEW_EMAIL" VARCHAR2(100 BYTE), 
+	"REVIEW_PIC" VARCHAR2(300 BYTE), 
+	"REVIEW_PICNAME" VARCHAR2(300 BYTE), 
+	"REVIEW_DATE" VARCHAR2(20 BYTE) DEFAULT to_char(sysdate, 'yyyymmddhh24mi')
+   ) ;
+
+   COMMENT ON COLUMN "SITE_REVIEW"."SITE_ID" IS '시설 ID';
+   COMMENT ON COLUMN "SITE_REVIEW"."REVIEW_ID" IS '후기 번호';
+   COMMENT ON COLUMN "SITE_REVIEW"."MEMBER_ID" IS '회원 ID';
+   COMMENT ON COLUMN "SITE_REVIEW"."REVIEW_CONTENT" IS '내용';
+   COMMENT ON COLUMN "SITE_REVIEW"."REVIEW_STAR" IS '시설 평가';
+   COMMENT ON COLUMN "SITE_REVIEW"."REVIEW_PRICE" IS '가격 평가';
+   COMMENT ON COLUMN "SITE_REVIEW"."REVIEW_REPORT" IS '신고 수';
+   COMMENT ON COLUMN "SITE_REVIEW"."REVIEW_NAME" IS '이름';
+   COMMENT ON COLUMN "SITE_REVIEW"."REVIEW_EMAIL" IS '이메일';
+   COMMENT ON COLUMN "SITE_REVIEW"."REVIEW_PIC" IS '리뷰사진
+';
+   COMMENT ON COLUMN "SITE_REVIEW"."REVIEW_PICNAME" IS '리뷰사진명
+';
+   COMMENT ON COLUMN "SITE_REVIEW"."REVIEW_DATE" IS '리뷰날짜';
+   COMMENT ON TABLE "SITE_REVIEW"  IS 'SITE_REVIEW';
+--------------------------------------------------------
+--  DDL for Table SITTER_PROFILE
+--------------------------------------------------------
+
+  CREATE TABLE "SITTER_PROFILE" 
+   (	"MEMBER_ID" VARCHAR2(20 BYTE), 
+	"PROFILE_CONTENT" VARCHAR2(4000 BYTE), 
+	"MAX_NUM" NUMBER(*,0), 
+	"PRICE_SMALL" VARCHAR2(10 BYTE), 
+	"PRICE_MEDIUM" VARCHAR2(10 BYTE), 
+	"PRICE_LARGE" VARCHAR2(10 BYTE), 
+	"PROFILE_ROADADDRESS" VARCHAR2(50 BYTE), 
+	"PROFILE_JIBUNADDRESS" VARCHAR2(50 BYTE), 
+	"PROFILE_DETAILADDRESS" VARCHAR2(50 BYTE), 
+	"PROFILE_PICPATH" VARCHAR2(200 BYTE), 
+	"LIST_ADDRESS" VARCHAR2(50 BYTE), 
+	"PROFILE_ID" NUMBER, 
+	"SERVICE_00" CHAR(1 BYTE) DEFAULT 'N', 
+	"SERVICE_01" CHAR(1 BYTE) DEFAULT 'N', 
+	"SERVICE_02" CHAR(1 BYTE) DEFAULT 'N', 
+	"SERVICE_03" CHAR(1 BYTE) DEFAULT 'N', 
+	"SERVICE_04" CHAR(1 BYTE) DEFAULT 'N', 
+	"SERVICE_05" CHAR(1 BYTE) DEFAULT 'N', 
+	"SERVICE_06" CHAR(1 BYTE) DEFAULT 'N', 
+	"SERVICE_07" CHAR(1 BYTE) DEFAULT 'N', 
+	"PROFILE_PICNAME" VARCHAR2(200 BYTE), 
+	"PROFILE_TITLE" VARCHAR2(105 BYTE), 
+	"PROFILE_STAR" NUMBER
+   ) ;
+
+   COMMENT ON COLUMN "SITTER_PROFILE"."MEMBER_ID" IS '회원 ID';
+   COMMENT ON COLUMN "SITTER_PROFILE"."PROFILE_CONTENT" IS '내용';
+   COMMENT ON COLUMN "SITTER_PROFILE"."MAX_NUM" IS '최대 마릿수';
+   COMMENT ON COLUMN "SITTER_PROFILE"."PRICE_SMALL" IS '소형견 가격';
+   COMMENT ON COLUMN "SITTER_PROFILE"."PRICE_MEDIUM" IS '중형견 가격';
+   COMMENT ON COLUMN "SITTER_PROFILE"."PRICE_LARGE" IS '대형견 가격';
+   COMMENT ON COLUMN "SITTER_PROFILE"."PROFILE_ROADADDRESS" IS '도로명 주소';
+   COMMENT ON COLUMN "SITTER_PROFILE"."PROFILE_JIBUNADDRESS" IS '지번 주소';
+   COMMENT ON COLUMN "SITTER_PROFILE"."PROFILE_DETAILADDRESS" IS '상세 주소';
+   COMMENT ON COLUMN "SITTER_PROFILE"."PROFILE_PICPATH" IS '프로필 사진';
+   COMMENT ON COLUMN "SITTER_PROFILE"."LIST_ADDRESS" IS '리스트 짧은주소';
+   COMMENT ON COLUMN "SITTER_PROFILE"."PROFILE_ID" IS '글 번호';
+   COMMENT ON COLUMN "SITTER_PROFILE"."SERVICE_03" IS '서비스 03';
+   COMMENT ON COLUMN "SITTER_PROFILE"."PROFILE_PICNAME" IS '닉네임';
+   COMMENT ON COLUMN "SITTER_PROFILE"."PROFILE_TITLE" IS '한줄소개';
+   COMMENT ON COLUMN "SITTER_PROFILE"."PROFILE_STAR" IS '별점';
+   COMMENT ON TABLE "SITTER_PROFILE"  IS 'SITTER_PROFILE';
+--------------------------------------------------------
+--  DDL for Index DOG_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "DOG_PK" ON "DOG" ("DOG_ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index LICENSE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "LICENSE_PK" ON "LICENSE" ("MEMBER_ID", "LICENSE_ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index LOG_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "LOG_PK" ON "LOG" ("RESERVATION_ID", "LOG_ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index LOST_FOUND_IX
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "LOST_FOUND_IX" ON "LOST_FOUND" ("BOARD_ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index LOST_FOUND_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "LOST_FOUND_PK" ON "LOST_FOUND" ("CATEGORY", "BOARD_ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index SYS_C004034
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SYS_C004034" ON "LOST_FOUND_MATCHED" ("MATCH_ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PK_LF_REPLY
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_LF_REPLY" ON "LOST_FOUND_REPLY" ("REPLY_ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index MEMBER_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MEMBER_PK" ON "MEMBER" ("MEMBER_ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index MENU_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MENU_PK" ON "MENU" ("MENU_ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index MESSAGE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MESSAGE_PK" ON "MESSAGE" ("MESSAGE_ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index NOTICE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "NOTICE_PK" ON "NOTICE" ("NOTICE_ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PHOTO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PHOTO_PK" ON "PHOTO" ("PROFILE_ID", "PHOTO_ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PRIV_MENU_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PRIV_MENU_PK" ON "PRIV_MENU" ("MENU_ID", "PRIVILEGE_ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PRIV_USER_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PRIV_USER_PK" ON "PRIV_USER" ("PRIVILEGE_ID", "MEMBER_ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PRIVILEGE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PRIVILEGE_PK" ON "PRIVILEGE" ("PRIVILEGE_ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index RESERVATION_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "RESERVATION_PK" ON "RESERVATION" ("ORDER_ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index SCHEDULE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SCHEDULE_PK" ON "SCHEDULE" ("MEMBER_ID", "SCHEDULE_ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index SITE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SITE_PK" ON "SITE" ("SITE_ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index SITE_ANSWER_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SITE_ANSWER_PK" ON "SITE_ANSWER" ("SITE_ID", "QUESTION_ID", "ANSWER_ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index SITE_QUESTION_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SITE_QUESTION_PK" ON "SITE_QUESTION" ("SITE_ID", "QUESTION_ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index SITE_REVIEW_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SITE_REVIEW_PK" ON "SITE_REVIEW" ("SITE_ID", "REVIEW_ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index SITTER_PROFILE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SITTER_PROFILE_PK" ON "SITTER_PROFILE" ("MEMBER_ID") 
+  ;
+--------------------------------------------------------
+--  Constraints for Table CHATMEMBER
+--------------------------------------------------------
+
+  ALTER TABLE "CHATMEMBER" MODIFY ("MEMNUM" NOT NULL ENABLE);
+  ALTER TABLE "CHATMEMBER" MODIFY ("CHATROOMID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table DOG
+--------------------------------------------------------
+
+  ALTER TABLE "DOG" ADD CONSTRAINT "DOG_PK" PRIMARY KEY ("DOG_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "DOG" MODIFY ("MEMBER_ID" NOT NULL ENABLE);
+  ALTER TABLE "DOG" MODIFY ("DOG_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table LICENSE
+--------------------------------------------------------
+
+  ALTER TABLE "LICENSE" ADD CONSTRAINT "LICENSE_PK" PRIMARY KEY ("MEMBER_ID", "LICENSE_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "LICENSE" MODIFY ("LICENSE_ID" NOT NULL ENABLE);
+  ALTER TABLE "LICENSE" MODIFY ("MEMBER_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table LOCATION_DATA
+--------------------------------------------------------
+
+  ALTER TABLE "LOCATION_DATA" MODIFY ("LOG_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table LOG
+--------------------------------------------------------
+
+  ALTER TABLE "LOG" ADD CONSTRAINT "LOG_PK" PRIMARY KEY ("RESERVATION_ID", "LOG_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "LOG" MODIFY ("LOG_ID" NOT NULL ENABLE);
+  ALTER TABLE "LOG" MODIFY ("RESERVATION_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table LOST_FOUND
+--------------------------------------------------------
+
+  ALTER TABLE "LOST_FOUND" ADD PRIMARY KEY ("BOARD_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "LOST_FOUND" MODIFY ("DOG_ID" NOT NULL ENABLE);
+  ALTER TABLE "LOST_FOUND" MODIFY ("MEMBER_ID" NOT NULL ENABLE);
+  ALTER TABLE "LOST_FOUND" MODIFY ("BOARD_ID" NOT NULL ENABLE);
+  ALTER TABLE "LOST_FOUND" MODIFY ("CATEGORY" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table LOST_FOUND_MATCHED
+--------------------------------------------------------
+
+  ALTER TABLE "LOST_FOUND_MATCHED" ADD PRIMARY KEY ("MATCH_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "LOST_FOUND_MATCHED" MODIFY ("MATCH_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table LOST_FOUND_REPLY
+--------------------------------------------------------
+
+  ALTER TABLE "LOST_FOUND_REPLY" ADD CONSTRAINT "PK_LF_REPLY" PRIMARY KEY ("REPLY_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "LOST_FOUND_REPLY" MODIFY ("REPLYER" NOT NULL ENABLE);
+  ALTER TABLE "LOST_FOUND_REPLY" MODIFY ("REPLY" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table LOST_FOUND_REQUEST
+--------------------------------------------------------
+
+  ALTER TABLE "LOST_FOUND_REQUEST" MODIFY ("REQUEST_DATE" NOT NULL ENABLE);
+  ALTER TABLE "LOST_FOUND_REQUEST" MODIFY ("SENDER_ID" NOT NULL ENABLE);
+  ALTER TABLE "LOST_FOUND_REQUEST" MODIFY ("RECEIVER_ID" NOT NULL ENABLE);
+  ALTER TABLE "LOST_FOUND_REQUEST" MODIFY ("SENDER_B_ID" NOT NULL ENABLE);
+  ALTER TABLE "LOST_FOUND_REQUEST" MODIFY ("RECEIVER_B_ID" NOT NULL ENABLE);
+  ALTER TABLE "LOST_FOUND_REQUEST" MODIFY ("REQUEST_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table MEMBER
+--------------------------------------------------------
+
+  ALTER TABLE "MEMBER" ADD CONSTRAINT "MEMBER_PK" PRIMARY KEY ("MEMBER_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "MEMBER" MODIFY ("MEMBER_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table MENU
+--------------------------------------------------------
+
+  ALTER TABLE "MENU" ADD CONSTRAINT "MENU_PK" PRIMARY KEY ("MENU_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "MENU" MODIFY ("MENU_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table MESSAGE
+--------------------------------------------------------
+
+  ALTER TABLE "MESSAGE" ADD CONSTRAINT "MESSAGE_PK" PRIMARY KEY ("MESSAGE_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "MESSAGE" MODIFY ("MESSAGE_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table NOTICE
+--------------------------------------------------------
+
+  ALTER TABLE "NOTICE" ADD CONSTRAINT "NOTICE_PK" PRIMARY KEY ("NOTICE_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "NOTICE" MODIFY ("MEMBER_ID" NOT NULL ENABLE);
+  ALTER TABLE "NOTICE" MODIFY ("NOTICE_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table PHOTO
+--------------------------------------------------------
+
+  ALTER TABLE "PHOTO" ADD CONSTRAINT "PHOTO_PK" PRIMARY KEY ("PROFILE_ID", "PHOTO_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "PHOTO" MODIFY ("PHOTO_ID" NOT NULL ENABLE);
+  ALTER TABLE "PHOTO" MODIFY ("PROFILE_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table PRIV_MENU
+--------------------------------------------------------
+
+  ALTER TABLE "PRIV_MENU" ADD CONSTRAINT "PRIV_MENU_PK" PRIMARY KEY ("MENU_ID", "PRIVILEGE_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "PRIV_MENU" MODIFY ("PRIVILEGE_ID" NOT NULL ENABLE);
+  ALTER TABLE "PRIV_MENU" MODIFY ("MENU_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table PRIV_USER
+--------------------------------------------------------
+
+  ALTER TABLE "PRIV_USER" ADD CONSTRAINT "PRIV_USER_PK" PRIMARY KEY ("PRIVILEGE_ID", "MEMBER_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "PRIV_USER" MODIFY ("MEMBER_ID" NOT NULL ENABLE);
+  ALTER TABLE "PRIV_USER" MODIFY ("PRIVILEGE_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table PRIVILEGE
+--------------------------------------------------------
+
+  ALTER TABLE "PRIVILEGE" ADD CONSTRAINT "PRIVILEGE_PK" PRIMARY KEY ("PRIVILEGE_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "PRIVILEGE" MODIFY ("PRIVILEGE_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table RESERVATION
+--------------------------------------------------------
+
+  ALTER TABLE "RESERVATION" ADD CONSTRAINT "RESERVATION_PK" PRIMARY KEY ("ORDER_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "RESERVATION" MODIFY ("SITTER_ID" NOT NULL ENABLE);
+  ALTER TABLE "RESERVATION" MODIFY ("MEMBER_ID" NOT NULL ENABLE);
+  ALTER TABLE "RESERVATION" MODIFY ("ORDER_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table SCHEDULE
+--------------------------------------------------------
+
+  ALTER TABLE "SCHEDULE" ADD CONSTRAINT "SCHEDULE_PK" PRIMARY KEY ("MEMBER_ID", "SCHEDULE_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "SCHEDULE" MODIFY ("SCHEDULE_ID" NOT NULL ENABLE);
+  ALTER TABLE "SCHEDULE" MODIFY ("MEMBER_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table SITE
+--------------------------------------------------------
+
+  ALTER TABLE "SITE" ADD CONSTRAINT "SITE_PK" PRIMARY KEY ("SITE_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "SITE" MODIFY ("SITE_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table SITE_ANSWER
+--------------------------------------------------------
+
+  ALTER TABLE "SITE_ANSWER" ADD CONSTRAINT "SITE_ANSWER_PK" PRIMARY KEY ("SITE_ID", "QUESTION_ID", "ANSWER_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "SITE_ANSWER" MODIFY ("MEMBER_ID" NOT NULL ENABLE);
+  ALTER TABLE "SITE_ANSWER" MODIFY ("ANSWER_ID" NOT NULL ENABLE);
+  ALTER TABLE "SITE_ANSWER" MODIFY ("QUESTION_ID" NOT NULL ENABLE);
+  ALTER TABLE "SITE_ANSWER" MODIFY ("SITE_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table SITE_ATTACH
+--------------------------------------------------------
+
+  ALTER TABLE "SITE_ATTACH" MODIFY ("SITE_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table SITE_QUESTION
+--------------------------------------------------------
+
+  ALTER TABLE "SITE_QUESTION" ADD CONSTRAINT "SITE_QUESTION_PK" PRIMARY KEY ("SITE_ID", "QUESTION_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "SITE_QUESTION" MODIFY ("MEMBER_ID" NOT NULL ENABLE);
+  ALTER TABLE "SITE_QUESTION" MODIFY ("QUESTION_ID" NOT NULL ENABLE);
+  ALTER TABLE "SITE_QUESTION" MODIFY ("SITE_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table SITE_REVIEW
+--------------------------------------------------------
+
+  ALTER TABLE "SITE_REVIEW" ADD CONSTRAINT "SITE_REVIEW_PK" PRIMARY KEY ("SITE_ID", "REVIEW_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "SITE_REVIEW" MODIFY ("REVIEW_ID" NOT NULL ENABLE);
+  ALTER TABLE "SITE_REVIEW" MODIFY ("SITE_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table SITTER_PROFILE
+--------------------------------------------------------
+
+  ALTER TABLE "SITTER_PROFILE" ADD CONSTRAINT "SITTER_PROFILE_PK" PRIMARY KEY ("MEMBER_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "SITTER_PROFILE" MODIFY ("MEMBER_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Ref Constraints for Table SITE_ATTACH
+--------------------------------------------------------
+
+  ALTER TABLE "SITE_ATTACH" ADD CONSTRAINT "SITE_ATTACH_FK1" FOREIGN KEY ("SITE_ID")
+	  REFERENCES "SITE" ("SITE_ID") ON DELETE CASCADE ENABLE;
